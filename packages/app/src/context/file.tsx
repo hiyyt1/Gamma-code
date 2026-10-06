@@ -1,3 +1,5 @@
+import { productRequest } from "@/utils/product"
+import type { FileNode, FileContent } from "@opencode-ai/sdk/v2/client"
 import { batch, createEffect, createMemo, onCleanup } from "solid-js"
 import { createStore, produce, reconcile } from "solid-js/store"
 import { createSimpleContext } from "@opencode-ai/ui/context"
@@ -80,9 +82,12 @@ export const { use: useFile, provider: FileProvider } = createSimpleContext({
       scope,
       normalizeDir: path.normalizeDir,
       list: (dir) =>
-        sdk()
-          .client.file.list({ path: dir })
-          .then((x) => x.data ?? []),
+        params.id
+          ? productRequest<FileNode[]>(
+              serverSDK().server.http,
+              `session/${encodeURIComponent(params.id)}/files?path=${encodeURIComponent(dir)}`,
+            )
+          : Promise.resolve([]),
       onError: (message) => {
         showToast({
           variant: "error",
@@ -180,11 +185,13 @@ export const { use: useFile, provider: FileProvider } = createSimpleContext({
 
       setLoading(file)
 
-      const promise = sdk()
-        .client.file.read({ path: file })
+      const promise = productRequest<FileContent>(
+        serverSDK().server.http,
+        `session/${encodeURIComponent(params.id ?? "")}/content?path=${encodeURIComponent(file)}`,
+      )
         .then((x) => {
           if (scope() !== directory) return
-          const content = x.data
+          const content = x
           setLoaded(file, content)
 
           if (!content) return
@@ -204,23 +211,20 @@ export const { use: useFile, provider: FileProvider } = createSimpleContext({
     }
 
     const search = (query: string, dirs: "true" | "false", options?: { limit?: number; signal?: AbortSignal }) =>
-      serverSDK()
-        .api.file.find(
-          {
-            location: { directory: sdk().directory },
-            query,
-            type: dirs === "true" ? "directory" : "file",
-            limit: options?.limit,
-          },
-          { signal: options?.signal },
-        )
-        .then(
-          (x) => x.data.map((entry) => path.normalize(entry.path)),
-          (error) => {
-            if (options?.signal?.aborted) throw error
-            return []
-          },
-        )
+      params.id
+        ? productRequest<string[]>(
+            serverSDK().server.http,
+            `session/${encodeURIComponent(params.id)}/find?query=${encodeURIComponent(query)}&type=${dirs === "true" ? "directory" : "file"}`,
+            undefined,
+            options?.signal,
+          ).then(
+            (results) => results.slice(0, options?.limit ?? 100),
+            (error) => {
+              if (options?.signal?.aborted) throw error
+              return []
+            },
+          )
+        : Promise.resolve([])
 
     const stop = sdk().event.listen((e) => {
       invalidateFromWatcher(e.details, {

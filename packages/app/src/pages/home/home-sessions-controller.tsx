@@ -38,7 +38,7 @@ export type HomeSessionGroup = {
 
 export type OpenSessionOptions = { background?: boolean }
 
-export function createHomeSessionsController(home: HomeController) {
+export function createHomeSessionsController(home: HomeController, paletteActive: Accessor<boolean> = () => true) {
   const tabs = useTabs()
   const command = useCommand()
   const dialog = useDialog()
@@ -52,33 +52,40 @@ export function createHomeSessionsController(home: HomeController) {
     () => new Map(home.project.list().flatMap((project) => (project.id ? [[project.id, project] as const] : []))),
   )
   const homeSessions = () => home.server.focusedSync().homeSessions
-  const sessionEventLoad = useQuery(() => ({
-    queryKey: homeSessions().eventsKey,
-    queryFn: async (): Promise<HomeSessionEvents> => ({ sequence: 0, entries: [] }),
-    initialData: { sequence: 0, entries: [] } satisfies HomeSessionEvents,
-    enabled: false,
-  }))
-  const sessionLoad = useQuery(() => ({
-    queryKey: homeSessions().indexKey,
-    enabled: !!home.server.focusedContext(),
-    queryFn: async ({ signal }) => {
-      const ctx = home.server.focusedContext()
-      if (!ctx) return { sessions: [], eventSequence: 0 }
-      const cache = homeSessions()
-      const eventSequence = cache.eventSequence()
-      const index = await loadHomeSessionIndex(
-        (input, options) => ctx.sdk.client.v2.session.list(input, options),
-        eventSequence,
-        signal,
-      )
-      cache.complete(eventSequence)
-      return index
-    },
-    retry: false,
-    staleTime: 30_000,
-    refetchOnMount: true,
-    refetchOnReconnect: true,
-  }))
+  // SSE updates the server sync cache, which can live above a nested QueryProvider.
+  const sessionEventLoad = useQuery(
+    () => ({
+      queryKey: homeSessions().eventsKey,
+      queryFn: async (): Promise<HomeSessionEvents> => ({ sequence: 0, entries: [] }),
+      initialData: { sequence: 0, entries: [] } satisfies HomeSessionEvents,
+      enabled: false,
+    }),
+    () => homeSessions().queryClient,
+  )
+  const sessionLoad = useQuery(
+    () => ({
+      queryKey: homeSessions().indexKey,
+      enabled: !!home.server.focusedContext(),
+      queryFn: async ({ signal }) => {
+        const ctx = home.server.focusedContext()
+        if (!ctx) return { sessions: [], eventSequence: 0 }
+        const cache = homeSessions()
+        const eventSequence = cache.eventSequence()
+        const index = await loadHomeSessionIndex(
+          (input, options) => ctx.sdk.client.v2.session.list(input, options),
+          eventSequence,
+          signal,
+        )
+        cache.complete(eventSequence)
+        return index
+      },
+      retry: false,
+      staleTime: 30_000,
+      refetchOnMount: true,
+      refetchOnReconnect: true,
+    }),
+    () => homeSessions().queryClient,
+  )
   const indexedSessions = createMemo(() =>
     retainHomeSessions(
       homeSessions().sessions(sessionLoad.data, sessionEventLoad.data),
@@ -131,37 +138,41 @@ export function createHomeSessionsController(home: HomeController) {
       })
   })
 
-  command.register("home.palette", () => [
-    {
-      id: "command.palette",
-      title: language.t("command.palette"),
-      hidden: true,
-      onSelect: async () => {
-        const conn = home.server.focused()
-        if (!conn) return
-        const ctx = home.server.focusedContext()
-        if (!ctx) return
-        const { DialogHomeCommandPaletteV2 } = await import("@/components/dialog-command-palette-v2")
-        void dialog.show(() => (
-          <DialogHomeCommandPaletteV2
-            server={conn}
-            onSelectSession={(entry) => {
-              if (!entry.sessionID || !entry.directory || !entry.server) return
-              const sessionID = entry.sessionID
-              const server = entry.server
-              const directory = entry.project?.worktree ?? entry.directory
-              ctx.projects.open(directory)
-              ctx.projects.touch(directory)
-              void startTransition(() => {
-                const tab = tabs.addSessionTab({ server, sessionId: sessionID })
-                tabs.select(tab)
-              })
-            }}
-          />
-        ))
+  // The shell stays mounted; retain the original Home-only command lifecycle.
+  createEffect(() => {
+    if (!paletteActive()) return
+    command.register("home.palette", () => [
+      {
+        id: "command.palette",
+        title: language.t("command.palette"),
+        hidden: true,
+        onSelect: async () => {
+          const conn = home.server.focused()
+          if (!conn) return
+          const ctx = home.server.focusedContext()
+          if (!ctx) return
+          const { DialogHomeCommandPaletteV2 } = await import("@/components/dialog-command-palette-v2")
+          void dialog.show(() => (
+            <DialogHomeCommandPaletteV2
+              server={conn}
+              onSelectSession={(entry) => {
+                if (!entry.sessionID || !entry.directory || !entry.server) return
+                const sessionID = entry.sessionID
+                const server = entry.server
+                const directory = entry.project?.worktree ?? entry.directory
+                ctx.projects.open(directory)
+                ctx.projects.touch(directory)
+                void startTransition(() => {
+                  const tab = tabs.addSessionTab({ server, sessionId: sessionID })
+                  tabs.select(tab)
+                })
+              }}
+            />
+          ))
+        },
       },
-    },
-  ])
+    ])
+  })
 
   return {
     copy: {

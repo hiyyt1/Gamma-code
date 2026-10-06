@@ -1,3 +1,4 @@
+import { PRODUCT_ENGLISH } from "./product"
 import { DESKTOP_NATIVE_KEYS } from "./desktop-native"
 
 const desktop = [
@@ -94,6 +95,8 @@ const desktop = [
 ]
 
 export const dict = {
+  ...PRODUCT_ENGLISH,
+  "app.name": "Oreshnik",
   ...Object.fromEntries(DESKTOP_NATIVE_KEYS.map((key, index) => [key, desktop[index]])),
   "command.category.suggested": "Predloženo",
   "command.category.view": "Prikaz",
@@ -224,7 +227,7 @@ export const dict = {
   "provider.connect.status.waiting": "Čeka se autorizacija...",
   "provider.connect.status.failed": "Autorizacija nije uspjela: {{error}}",
   "provider.connect.apiKey.description":
-    "Enter vaš {{provider}} API ključ za povezivanje vašeg računa i korištenje {{provider}} modela u OpenCode.",
+    "Enter vaš {{provider}} API ključ za povezivanje vašeg računa i korištenje {{provider}} modela u Oreshnik.",
   "provider.connect.apiKey.label": "{{provider}} API ključ",
   "provider.connect.apiKey.placeholder": "Ključ API",
   "provider.connect.apiKey.required": "Potreban je ključ API",
@@ -238,7 +241,7 @@ export const dict = {
   "provider.connect.oauth.code.visit.prefix": "Posjetiti",
   "provider.connect.oauth.code.visit.link": "ovaj link",
   "provider.connect.oauth.code.visit.suffix":
-    "za prikupljanje vašeg autorizacijskog koda za povezivanje vašeg računa i korištenje {{provider}} modela u OpenCode.",
+    "za prikupljanje vašeg autorizacijskog koda za povezivanje vašeg računa i korištenje {{provider}} modela u Oreshnik.",
   "provider.connect.oauth.code.label": "{{method}} autorizacijski kod",
   "provider.connect.oauth.code.placeholder": "Autorizacijski kod",
   "provider.connect.oauth.code.required": "Potreban je autorizacijski kod",
@@ -246,7 +249,7 @@ export const dict = {
   "provider.connect.oauth.auto.visit.prefix": "Posjetiti",
   "provider.connect.oauth.auto.visit.link": "ovaj link",
   "provider.connect.oauth.auto.visit.suffix":
-    "i unesite kod ispod kako biste povezali svoj račun i koristili {{provider}} modele u OpenCode.",
+    "i unesite kod ispod kako biste povezali svoj račun i koristili {{provider}} modele u Oreshnik.",
   "provider.connect.oauth.auto.confirmationCode": "Kod za potvrdu",
   "provider.connect.toast.connected.title": "{{provider}} povezan",
   "provider.connect.toast.connected.description": "{{provider}} modeli sada su dostupni za korištenje.",
@@ -518,7 +521,7 @@ export const dict = {
   "help.tabs.title": "Predstavljamo Tabs",
   "help.tabs.description": "Organizirajte svoj rad i aktivne sesije pomoću kartica",
   "help.tabs.date": "14. srpnja",
-  "help.tabs.introduction": "Radna površina OpenCode sada je izgrađena oko kartica.",
+  "help.tabs.introduction": "Radna površina Oreshnik sada je izgrađena oko kartica.",
   "help.tabs.sessions":
     "Započnite novu sesiju na kartici ili otvorite postojeću sesiju iz bilo kojeg od svojih projekata. Otvorite novu karticu kada započnete nešto novo i zatvorite je kada završite.",
   "help.tabs.organize":
@@ -629,7 +632,7 @@ export const dict = {
   "toast.session.listFailed.title": "Neuspješno učitavanje sesija za {{project}}",
   "toast.project.reloadFailed.title": "Ponovno učitavanje {{project}} nije uspjelo",
   "toast.update.title": "Ažuriranje dostupno",
-  "toast.update.description": "Nova verzija OpenCode ({{version}}) sada je dostupna za instalaciju.",
+  "toast.update.description": "Nova verzija Oreshnik ({{version}}) sada je dostupna za instalaciju.",
   "toast.update.action.installRestart": "Instalirajte i ponovno pokrenite",
   "toast.update.action.notYet": "Ne još",
   "error.page.title": "Nešto nije u redu",
@@ -916,7 +919,7 @@ export const dict = {
   "debugBar.direction.tip": "Nametnite cijeli smjer izgleda aplikacije bez promjene odabranog jezika",
   "debugBar.direction.ltr": "LTR",
   "debugBar.direction.rtl": "RTL",
-  "app.name.desktop": "OpenCode Radna površina",
+  "app.name.desktop": "Oreshnik Radna površina",
   "settings.section.desktop": "Radna površina",
   "settings.section.server": "Poslužitelj",
   "settings.tab.general": "Općenito",
@@ -932,18 +935,18 @@ export const dict = {
   "settings.general.section.feed": "hraniti se",
   "settings.general.section.display": "Prikaz",
   "settings.general.row.language.title": "Jezik",
-  "settings.general.row.language.description": "Promijenite jezik prikaza za OpenCode",
+  "settings.general.row.language.description": "Promijenite jezik prikaza za Oreshnik",
   "settings.general.row.shell.title": "Terminal školjka",
   "settings.general.row.shell.description": "Ljuska koju koriste alati terminala i agenta",
   "settings.general.row.shell.autoDefault": "Automatski (zadano)",
   "settings.general.row.shell.terminalOnly": "samo terminal",
   "settings.general.row.appearance.title": "Izgled",
-  "settings.general.row.appearance.description": "Prilagodite kako OpenCode izgleda na vašem uređaju",
+  "settings.general.row.appearance.description": "Prilagodite kako Oreshnik izgleda na vašem uređaju",
   "settings.general.row.colorScheme.title": "Shema boja",
   "settings.general.row.colorScheme.description":
-    "Odaberite hoće li OpenCode slijediti sistemsku, svijetlu ili tamnu temu",
+    "Odaberite hoće li Oreshnik slijediti sistemsku, svijetlu ili tamnu temu",
   "settings.general.row.theme.title": "Tema",
-  "settings.general.row.theme.description": "Prilagodite način na koji je OpenCode tematiziran.",
+  "settings.general.row.theme.description": "Prilagodite način na koji je Oreshnik tematiziran.",
   "settings.general.row.font.title": "Font koda",
   "settings.general.row.font.description": "Prilagodite font koji se koristi u blokovima koda",
   "settings.general.row.terminalFont.title": "Font Terminal",
@@ -997,7 +1000,7 @@ export const dict = {
   "settings.general.row.releaseNotes.title": "Bilješke o izdanju",
   "settings.general.row.releaseNotes.description": "Prikaži skočne prozore Što je novo nakon ažuriranja",
   "settings.updates.row.startup.title": "Provjerite ima li ažuriranja pri pokretanju",
-  "settings.updates.row.startup.description": "Automatski provjeri ima li ažuriranja kada se OpenCode pokrene",
+  "settings.updates.row.startup.description": "Automatski provjeri ima li ažuriranja kada se Oreshnik pokrene",
   "settings.updates.row.check.title": "Provjerite ima li ažuriranja",
   "settings.updates.row.check.description": "Ručno provjerite postoje li ažuriranja i instalirajte ih ako su dostupna",
   "settings.updates.action.checkNow": "Provjerite sada",
@@ -1005,7 +1008,7 @@ export const dict = {
   "settings.updates.action.downloading": "Preuzimanje...",
   "settings.updates.action.installing": "Instaliranje...",
   "settings.updates.toast.latest.title": "U toku ste",
-  "settings.updates.toast.latest.description": "Imate najnoviju verziju OpenCode.",
+  "settings.updates.toast.latest.description": "Imate najnoviju verziju Oreshnik.",
   "sound.option.none": "Nijedan",
   "sound.option.alert01": "Upozorenje 01",
   "sound.option.alert02": "Upozorenje 02",

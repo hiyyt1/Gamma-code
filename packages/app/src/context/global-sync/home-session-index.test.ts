@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test"
-import { QueryClient } from "@tanstack/solid-query"
+import { QueryClient, QueryObserver } from "@tanstack/solid-query"
 import type { Session, SessionV2Info } from "@opencode-ai/sdk/v2/client"
 import {
   applyHomeSessionEvent,
@@ -31,6 +31,39 @@ const session = (input: {
 })
 
 describe("Home V2 session index", () => {
+  test("Home observers share the SSE cache even beneath a different QueryProvider", () => {
+    const serverClient = new QueryClient()
+    const shellClient = new QueryClient()
+    const cache = createHomeSessionIndexCache(serverClient, "server")
+    const initial = { sessions: [] as Session[], eventSequence: 0 }
+    serverClient.setQueryData(cache.indexKey, initial)
+    shellClient.setQueryData(cache.indexKey, initial)
+
+    expect(cache.queryClient).toBe(serverClient)
+    const observer = new QueryObserver(cache.queryClient, {
+      queryKey: cache.indexKey,
+      enabled: false,
+    })
+    const updates: unknown[] = []
+    const unsubscribe = observer.subscribe((result) => updates.push(result.data))
+    const first = parseHomeSessionIndex([session({ id: "chat-a", updated: 2 })])[0]
+    cache.apply({ type: "session.created", properties: { sessionID: first.id, info: first } })
+    const titled = { ...first, title: "First message", time: { created: 1, updated: 3 } }
+    cache.apply({ type: "session.updated", properties: { sessionID: first.id, info: titled } })
+    const continued = { ...titled, time: { created: 1, updated: 4 } }
+    cache.apply({ type: "session.updated", properties: { sessionID: first.id, info: continued } })
+    expect(observer.getCurrentResult().data).toEqual({ sessions: [continued], eventSequence: 3 })
+
+    const second = parseHomeSessionIndex([session({ id: "chat-b", updated: 5 })])[0]
+    cache.apply({ type: "session.created", properties: { sessionID: second.id, info: second } })
+    expect(observer.getCurrentResult().data).toEqual({ sessions: [continued, second], eventSequence: 4 })
+    expect(updates).toHaveLength(4)
+    expect(shellClient.getQueryData<typeof initial>(cache.indexKey)).toEqual(initial)
+    unsubscribe()
+    serverClient.clear()
+    shellClient.clear()
+  })
+
   test("loads the Home index with one global V2 request", async () => {
     const calls: unknown[] = []
     const result = await loadHomeSessionIndex(async (input) => {

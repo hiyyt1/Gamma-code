@@ -1,3 +1,5 @@
+import { ProductBrand } from "./product-brand"
+import { ButtonV2 } from "@opencode-ai/ui/v2/button-v2"
 import {
   createEffect,
   createMemo,
@@ -10,6 +12,7 @@ import {
   Switch,
   untrack,
 } from "solid-js"
+import { Portal } from "solid-js/web"
 import { createStore } from "solid-js/store"
 import { useLocation, useNavigate, useParams } from "@solidjs/router"
 import { IconButton } from "@opencode-ai/ui/icon-button"
@@ -61,7 +64,12 @@ export function useTitlebarRightMount() {
   return mount
 }
 
-export function Titlebar(props: { update?: TitlebarUpdate; debugTools?: { visible: boolean; toggle: () => void } }) {
+export function Titlebar(props: {
+  newChat?: () => void
+  tabsMount?: HTMLElement
+  update?: TitlebarUpdate
+  debugTools?: { visible: boolean; toggle: () => void }
+}) {
   const layout = useLayout()
   const platform = usePlatform()
   const command = useCommand()
@@ -262,6 +270,7 @@ export function Titlebar(props: { update?: TitlebarUpdate; debugTools?: { visibl
             })
 
             const openNewTab = () => {
+              if (props.newChat) return props.newChat()
               const route = layout.route()
               const activeSession = session()
               if (route.type === "session" && activeSession) {
@@ -357,10 +366,27 @@ export function Titlebar(props: { update?: TitlebarUpdate; debugTools?: { visibl
             })
 
             const [tabsAreOverflowing, setTabsAreOverflowing] = createSignal(false)
+            const tabStrip = (
+              <TitlebarTabStrip
+                tabs={tabsStore}
+                currentTab={currentTab}
+                forceTruncate={tabsAreOverflowing()}
+                onOverflowChange={setTabsAreOverflowing}
+                onNavigate={(tab, el) => {
+                  tabs.select(tab)
+                  el?.scrollIntoView({ behavior: "instant" })
+                }}
+                onClose={(tab) => {
+                  const index = tabsStore.findIndex((item) => tabKey(item) === tabKey(tab))
+                  if (index !== -1) tabsStoreActions.closeTab(index)
+                }}
+                onReorder={(keys) => tabsStoreActions.reorder(keys)}
+              />
+            )
 
             return (
               <div
-                class="h-full flex-1 overflow-hidden flex flex-row items-center gap-1.5 px-2 md:pr-3"
+                class="oreshnik-titlebar-navigation h-full flex-1 overflow-hidden flex flex-row items-center gap-1.5 px-2 md:pr-3"
                 classList={{
                   "pt-2": !bottom(),
                   "pb-2": bottom(),
@@ -368,6 +394,7 @@ export function Titlebar(props: { update?: TitlebarUpdate; debugTools?: { visibl
                   "md:pl-4": !macTrafficLights(),
                 }}
               >
+                <ProductBrand class="oreshnik-titlebar-brand" />
                 <ChannelIndicator debugTools={props.debugTools} />
                 <Show when={windows() || linux()}>
                   <WindowsAppMenu command={command} platform={platform} variant="v2" />
@@ -395,21 +422,9 @@ export function Titlebar(props: { update?: TitlebarUpdate; debugTools?: { visibl
                   />
                 </TooltipV2>
 
-                <TitlebarTabStrip
-                  tabs={tabsStore}
-                  currentTab={currentTab}
-                  forceTruncate={tabsAreOverflowing()}
-                  onOverflowChange={setTabsAreOverflowing}
-                  onNavigate={(tab, el) => {
-                    tabs.select(tab)
-                    el?.scrollIntoView({ behavior: "instant" })
-                  }}
-                  onClose={(tab) => {
-                    const index = tabsStore.findIndex((item) => tabKey(item) === tabKey(tab))
-                    if (index !== -1) tabsStoreActions.closeTab(index)
-                  }}
-                  onReorder={(keys) => tabsStoreActions.reorder(keys)}
-                />
+                <Show when={props.tabsMount} fallback={tabStrip}>
+                  {(mount) => <Portal mount={mount()}>{tabStrip}</Portal>}
+                </Show>
                 <TooltipV2
                   placement="bottom"
                   value={
@@ -419,15 +434,17 @@ export function Titlebar(props: { update?: TitlebarUpdate; debugTools?: { visibl
                     </>
                   }
                 >
-                  <IconButtonV2
+                  <ButtonV2
                     type="button"
                     variant="ghost-muted"
                     size="large"
                     class="shrink-0"
-                    icon={<IconV2 name="plus" />}
+                    icon="plus"
                     onClick={openNewTab}
                     aria-label={language.t("command.session.new")}
-                  />
+                  >
+                    {language.t("command.session.new")}
+                  </ButtonV2>
                 </TooltipV2>
                 <div class="flex-1" />
                 <TitlebarV2Right state={v2RightState()} />
@@ -607,7 +624,10 @@ type TitlebarV2RightState = {
 
 function TitlebarV2Right(props: { state: TitlebarV2RightState }) {
   return (
-    <div class="relative z-20 flex shrink-0 items-center justify-end gap-0 overflow-visible">
+    <div
+      data-slot="oreshnik-page-controls"
+      class="relative z-20 flex shrink-0 items-center justify-end gap-0 overflow-visible"
+    >
       <Show when={props.state.update.visible}>
         <TitlebarUpdateIconButton state={props.state.update} />
       </Show>

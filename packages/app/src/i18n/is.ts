@@ -1,3 +1,4 @@
+import { PRODUCT_ENGLISH } from "./product"
 import { DESKTOP_NATIVE_KEYS } from "./desktop-native"
 
 const desktop = [
@@ -94,6 +95,8 @@ const desktop = [
 ]
 
 export const dict = {
+  ...PRODUCT_ENGLISH,
+  "app.name": "Oreshnik",
   ...Object.fromEntries(DESKTOP_NATIVE_KEYS.map((key, index) => [key, desktop[index]])),
   "command.category.suggested": "Tillögur",
   "command.category.view": "Skoða",
@@ -224,7 +227,7 @@ export const dict = {
   "provider.connect.status.waiting": "Bíður eftir heimild...",
   "provider.connect.status.failed": "Heimild mistókst: {{error}}",
   "provider.connect.apiKey.description":
-    "Sláðu inn API-lykilinn þinn fyrir {{provider}} til að tengja reikninginn og nota líkön frá {{provider}} í OpenCode.",
+    "Sláðu inn API-lykilinn þinn fyrir {{provider}} til að tengja reikninginn og nota líkön frá {{provider}} í Oreshnik.",
   "provider.connect.apiKey.label": "{{provider}} API lykill",
   "provider.connect.apiKey.placeholder": "API lykill",
   "provider.connect.apiKey.required": "API lykill er nauðsynlegur",
@@ -238,7 +241,7 @@ export const dict = {
   "provider.connect.oauth.code.visit.prefix": "Heimsókn",
   "provider.connect.oauth.code.visit.link": "þennan hlekk",
   "provider.connect.oauth.code.visit.suffix":
-    "til að safna heimildarkóðanum þínum til að tengja reikninginn þinn og nota {{provider}} gerðir í OpenCode.",
+    "til að safna heimildarkóðanum þínum til að tengja reikninginn þinn og nota {{provider}} gerðir í Oreshnik.",
   "provider.connect.oauth.code.label": "{{method}} heimildarkóði",
   "provider.connect.oauth.code.placeholder": "Heimildarkóði",
   "provider.connect.oauth.code.required": "Heimildarkóði er nauðsynlegur",
@@ -246,7 +249,7 @@ export const dict = {
   "provider.connect.oauth.auto.visit.prefix": "Heimsókn",
   "provider.connect.oauth.auto.visit.link": "þennan hlekk",
   "provider.connect.oauth.auto.visit.suffix":
-    "og sláðu inn kóðann hér að neðan til að tengja reikninginn þinn og nota {{provider}} gerðir í OpenCode.",
+    "og sláðu inn kóðann hér að neðan til að tengja reikninginn þinn og nota {{provider}} gerðir í Oreshnik.",
   "provider.connect.oauth.auto.confirmationCode": "Staðfestingarkóði",
   "provider.connect.toast.connected.title": "{{provider}} tengdur",
   "provider.connect.toast.connected.description": "{{provider}} gerðir eru nú fáanlegar til notkunar.",
@@ -518,7 +521,7 @@ export const dict = {
   "help.tabs.title": "Við kynnum Tab",
   "help.tabs.description": "Skipuleggðu vinnu þína og virkar lotur með flipa",
   "help.tabs.date": "14. júlí",
-  "help.tabs.introduction": "OpenCode Desktop er nú byggt í kringum flipa.",
+  "help.tabs.introduction": "Oreshnik Desktop er nú byggt í kringum flipa.",
   "help.tabs.sessions":
     "Byrjaðu nýja lotu í flipa eða opnaðu fyrirliggjandi lotu úr einhverju verkefnanna þinna. Opnaðu nýjan flipa þegar þú ert að byrja á einhverju nýju og lokaðu honum þegar þú ert búinn.",
   "help.tabs.organize":
@@ -627,7 +630,7 @@ export const dict = {
   "toast.session.listFailed.title": "Mistókst að hlaða lotum fyrir {{project}}",
   "toast.project.reloadFailed.title": "Mistókst að endurhlaða {{project}}",
   "toast.update.title": "Uppfærsla í boði",
-  "toast.update.description": "Ný útgáfa af OpenCode ({{version}}) er nú fáanleg til uppsetningar.",
+  "toast.update.description": "Ný útgáfa af Oreshnik ({{version}}) er nú fáanleg til uppsetningar.",
   "toast.update.action.installRestart": "Settu upp og endurræstu",
   "toast.update.action.notYet": "Ekki enn",
   "error.page.title": "Eitthvað fór úrskeiðis",
@@ -910,7 +913,7 @@ export const dict = {
   "debugBar.direction.tip": "Þvingaðu stefnu útlits forritsins í heild sinni án þess að breyta valnu tungumáli",
   "debugBar.direction.ltr": "LTR",
   "debugBar.direction.rtl": "RTL",
-  "app.name.desktop": "OpenCode skjáborð",
+  "app.name.desktop": "Oreshnik skjáborð",
   "settings.section.desktop": "Skrifborð",
   "settings.section.server": "Netþjónn",
   "settings.tab.general": "Almennt",
@@ -926,17 +929,17 @@ export const dict = {
   "settings.general.section.feed": "Fæða",
   "settings.general.section.display": "Skjár",
   "settings.general.row.language.title": "Tungumál",
-  "settings.general.row.language.description": "Breyttu skjátungumálinu fyrir OpenCode",
+  "settings.general.row.language.description": "Breyttu skjátungumálinu fyrir Oreshnik",
   "settings.general.row.shell.title": "Skel skjáhermis",
   "settings.general.row.shell.description": "Skelin sem skjáhermirinn og verkfæri fulltrúans nota",
   "settings.general.row.shell.autoDefault": "Sjálfvirkt (sjálfgefið)",
   "settings.general.row.shell.terminalOnly": "eingöngu flugstöð",
   "settings.general.row.appearance.title": "Útlit",
-  "settings.general.row.appearance.description": "Sérsníddu hvernig OpenCode lítur út á tækinu þínu",
+  "settings.general.row.appearance.description": "Sérsníddu hvernig Oreshnik lítur út á tækinu þínu",
   "settings.general.row.colorScheme.title": "Litasamsetning",
-  "settings.general.row.colorScheme.description": "Veldu hvort OpenCode fylgir kerfis-, ljósu eða dökku þema",
+  "settings.general.row.colorScheme.description": "Veldu hvort Oreshnik fylgir kerfis-, ljósu eða dökku þema",
   "settings.general.row.theme.title": "Þema",
-  "settings.general.row.theme.description": "Sérsníddu hvernig OpenCode er þema.",
+  "settings.general.row.theme.description": "Sérsníddu hvernig Oreshnik er þema.",
   "settings.general.row.font.title": "Kóða leturgerð",
   "settings.general.row.font.description": "Sérsníddu leturgerðina sem notuð er í kóðablokkum",
   "settings.general.row.terminalFont.title": "Leturgerð skjáhermis",
@@ -986,7 +989,7 @@ export const dict = {
   "settings.general.row.releaseNotes.title": "Útgáfuskýrslur",
   "settings.general.row.releaseNotes.description": "Sýna hvað er nýtt sprettiglugga eftir uppfærslur",
   "settings.updates.row.startup.title": "Leitaðu að uppfærslum við ræsingu",
-  "settings.updates.row.startup.description": "Athugaðu sjálfkrafa fyrir uppfærslur þegar OpenCode ræsir",
+  "settings.updates.row.startup.description": "Athugaðu sjálfkrafa fyrir uppfærslur þegar Oreshnik ræsir",
   "settings.updates.row.check.title": "Leitaðu að uppfærslum",
   "settings.updates.row.check.description": "Athugaðu handvirkt fyrir uppfærslur og settu upp ef það er tiltækt",
   "settings.updates.action.checkNow": "Athugaðu núna",
@@ -994,7 +997,7 @@ export const dict = {
   "settings.updates.action.downloading": "Sækir...",
   "settings.updates.action.installing": "Setur upp...",
   "settings.updates.toast.latest.title": "Þú ert uppfærður",
-  "settings.updates.toast.latest.description": "Þú ert að keyra nýjustu útgáfuna af OpenCode.",
+  "settings.updates.toast.latest.description": "Þú ert að keyra nýjustu útgáfuna af Oreshnik.",
   "sound.option.none": "Engin",
   "sound.option.alert01": "Viðvörun 01",
   "sound.option.alert02": "Viðvörun 02",

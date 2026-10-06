@@ -1,3 +1,4 @@
+import { PRODUCT_ENGLISH } from "./product"
 import { DESKTOP_NATIVE_KEYS } from "./desktop-native"
 
 const desktop = [
@@ -94,6 +95,8 @@ const desktop = [
 ]
 
 export const dict = {
+  ...PRODUCT_ENGLISH,
+  "app.name": "Oreshnik",
   ...Object.fromEntries(DESKTOP_NATIVE_KEYS.map((key, index) => [key, desktop[index]])),
   "command.category.suggested": "Siūloma",
   "command.category.view": "Rodinys",
@@ -224,7 +227,7 @@ export const dict = {
   "provider.connect.status.waiting": "Laukiama įgaliojimo...",
   "provider.connect.status.failed": "Autorizacija nepavyko: {{error}}",
   "provider.connect.apiKey.description":
-    "Įveskite {{provider}} API raktą, kad susietumėte paskyrą ir naudotumėte {{provider}} modelius programoje OpenCode.",
+    "Įveskite {{provider}} API raktą, kad susietumėte paskyrą ir naudotumėte {{provider}} modelius programoje Oreshnik.",
   "provider.connect.apiKey.label": "{{provider}} API raktas",
   "provider.connect.apiKey.placeholder": "API raktas",
   "provider.connect.apiKey.required": "Reikalingas API raktas",
@@ -238,7 +241,7 @@ export const dict = {
   "provider.connect.oauth.code.visit.prefix": "Aplankykite",
   "provider.connect.oauth.code.visit.link": "šią nuorodą",
   "provider.connect.oauth.code.visit.suffix":
-    "rinkti prieigos kodą, kad galėtumėte prisijungti prie paskyros ir naudoti {{provider}} modelius OpenCode.",
+    "rinkti prieigos kodą, kad galėtumėte prisijungti prie paskyros ir naudoti {{provider}} modelius Oreshnik.",
   "provider.connect.oauth.code.label": "{{method}} autorizacijos kodas",
   "provider.connect.oauth.code.placeholder": "Autorizacijos kodas",
   "provider.connect.oauth.code.required": "Reikalingas autorizacijos kodas",
@@ -246,7 +249,7 @@ export const dict = {
   "provider.connect.oauth.auto.visit.prefix": "Apsilankykite",
   "provider.connect.oauth.auto.visit.link": "šią nuorodą",
   "provider.connect.oauth.auto.visit.suffix":
-    "ir įveskite toliau esantį kodą, kad susietumėte paskyrą ir naudotumėte {{provider}} modelius OpenCode.",
+    "ir įveskite toliau esantį kodą, kad susietumėte paskyrą ir naudotumėte {{provider}} modelius Oreshnik.",
   "provider.connect.oauth.auto.confirmationCode": "Patvirtinimo kodas",
   "provider.connect.toast.connected.title": "{{provider}} prijungtas",
   "provider.connect.toast.connected.description": "Dabar galima naudoti {{provider}} modelius.",
@@ -519,7 +522,7 @@ export const dict = {
   "help.tabs.title": "Pristatome Tab",
   "help.tabs.description": "Tvarkykite savo darbą ir aktyvias sesijas naudodami skirtukus",
   "help.tabs.date": "liepos 14 d",
-  "help.tabs.introduction": "OpenCode Desktop dabar sukurtas iš skirtukų.",
+  "help.tabs.introduction": "Oreshnik Desktop dabar sukurtas iš skirtukų.",
   "help.tabs.sessions":
     "Pradėkite naują seansą skirtuke arba atidarykite esamą seansą iš bet kurio savo projekto. Atidarykite naują skirtuką, kai pradedate ką nors naujo, ir uždarykite, kai baigsite.",
   "help.tabs.organize":
@@ -629,7 +632,7 @@ export const dict = {
   "toast.session.listFailed.title": "Nepavyko įkelti seansų, skirtų {{project}}",
   "toast.project.reloadFailed.title": "Nepavyko iš naujo įkelti {{project}}",
   "toast.update.title": "Galimas atnaujinimas",
-  "toast.update.description": "Dabar galima įdiegti naują OpenCode ({{version}}) versiją.",
+  "toast.update.description": "Dabar galima įdiegti naują Oreshnik ({{version}}) versiją.",
   "toast.update.action.installRestart": "Įdiekite ir paleiskite iš naujo",
   "toast.update.action.notYet": "Dar ne",
   "error.page.title": "Kažkas nutiko",
@@ -922,7 +925,7 @@ export const dict = {
   "debugBar.direction.tip": "Priverskite visą programos išdėstymo kryptį nekeisdami pasirinktos kalbos",
   "debugBar.direction.ltr": "LTR",
   "debugBar.direction.rtl": "RTL",
-  "app.name.desktop": "OpenCode darbalaukis",
+  "app.name.desktop": "Oreshnik darbalaukis",
   "settings.section.desktop": "Darbalaukis",
   "settings.section.server": "Serveris",
   "settings.tab.general": "Bendra",
@@ -938,17 +941,17 @@ export const dict = {
   "settings.general.section.feed": "Pašaras",
   "settings.general.section.display": "Ekranas",
   "settings.general.row.language.title": "Kalba",
-  "settings.general.row.language.description": "Pakeiskite OpenCode ekrano kalbą",
+  "settings.general.row.language.description": "Pakeiskite Oreshnik ekrano kalbą",
   "settings.general.row.shell.title": "Terminalo apvalkalas",
   "settings.general.row.shell.description": "Terminalo ir agento įrankių naudojamas apvalkalas",
   "settings.general.row.shell.autoDefault": "Automatinis (numatytasis)",
   "settings.general.row.shell.terminalOnly": "tik terminalas",
   "settings.general.row.appearance.title": "Išvaizda",
-  "settings.general.row.appearance.description": "Tinkinkite, kaip OpenCode atrodo jūsų įrenginyje",
+  "settings.general.row.appearance.description": "Tinkinkite, kaip Oreshnik atrodo jūsų įrenginyje",
   "settings.general.row.colorScheme.title": "Spalvų schema",
-  "settings.general.row.colorScheme.description": "Pasirinkite, ar OpenCode seka sistemos, šviesios ar tamsios temos",
+  "settings.general.row.colorScheme.description": "Pasirinkite, ar Oreshnik seka sistemos, šviesios ar tamsios temos",
   "settings.general.row.theme.title": "tema",
-  "settings.general.row.theme.description": "Tinkinkite OpenCode temą.",
+  "settings.general.row.theme.description": "Tinkinkite Oreshnik temą.",
   "settings.general.row.font.title": "Kodo šriftas",
   "settings.general.row.font.description": "Tinkinkite kodo blokuose naudojamą šriftą",
   "settings.general.row.terminalFont.title": "Šriftas Terminal",
@@ -1000,7 +1003,7 @@ export const dict = {
   "settings.general.row.releaseNotes.title": "Išleidimo pastabos",
   "settings.general.row.releaseNotes.description": "Po atnaujinimų rodyti iššokančius langus „Kas naujo“.",
   "settings.updates.row.startup.title": "Patikrinkite, ar nėra naujinimų paleidžiant",
-  "settings.updates.row.startup.description": "Automatiškai patikrinkite, ar nėra naujinimų, kai paleidžiamas OpenCode",
+  "settings.updates.row.startup.description": "Automatiškai patikrinkite, ar nėra naujinimų, kai paleidžiamas Oreshnik",
   "settings.updates.row.check.title": "Patikrinkite, ar nėra atnaujinimų",
   "settings.updates.row.check.description": "Rankiniu būdu patikrinkite, ar nėra naujinimų, ir įdiekite, jei yra",
   "settings.updates.action.checkNow": "Patikrinkite dabar",
@@ -1008,7 +1011,7 @@ export const dict = {
   "settings.updates.action.downloading": "Atsisiunčiama...",
   "settings.updates.action.installing": "Diegiama...",
   "settings.updates.toast.latest.title": "Jūs esate atnaujintas",
-  "settings.updates.toast.latest.description": "Naudojate naujausią OpenCode versiją.",
+  "settings.updates.toast.latest.description": "Naudojate naujausią Oreshnik versiją.",
   "sound.option.none": "Nėra",
   "sound.option.alert01": "Įspėjimas 01",
   "sound.option.alert02": "Įspėjimas 02",

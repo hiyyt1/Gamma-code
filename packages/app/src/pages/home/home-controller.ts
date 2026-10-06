@@ -1,10 +1,14 @@
+import { useDialog } from "@opencode-ai/ui/context/dialog"
+import { DialogProductProject } from "@/components/dialog-product-project"
+import { productRequest, type ProductProject } from "@/utils/product"
+import type { LocalProject } from "@/context/layout"
 import { useGlobal } from "@/context/global"
 import { type HomeProjectSelection, useLayout } from "@/context/layout"
 import { ServerConnection, useServer } from "@/context/server"
 import { useServerSync } from "@/context/server-sync"
 import { useTabs } from "@/context/tabs"
 import { toggleHomeProjectSelection } from "@/pages/layout/helpers"
-import { createEffect, createMemo } from "solid-js"
+import { createEffect, createMemo, createResource, createComponent } from "solid-js"
 
 export function createHomeController() {
   const sync = useServerSync()
@@ -12,6 +16,7 @@ export function createHomeController() {
   const server = useServer()
   const global = useGlobal()
   const tabs = useTabs()
+  const dialog = useDialog()
   const selection = layout.home.selection
   const focusedServer = createMemo(
     () => global.servers.list().find((conn) => ServerConnection.key(conn) === selection().server) ?? server.current,
@@ -22,11 +27,14 @@ export function createHomeController() {
     return global.ensureServerCtx(conn)
   })
   const focusedSync = () => focusedServerCtx()?.sync ?? sync()
-  const projects = createMemo(() => focusedServerCtx()?.projects.list() ?? layout.projects.list())
-  const recentlyClosed = createMemo(
-    () => focusedServerCtx()?.projects.recentlyClosed() ?? layout.projects.recentlyClosed(),
+  const [catalog, { refetch }] = createResource(focusedServer, async (conn) => {
+    return productRequest<ProductProject[]>(conn.http, "projects").catch(() => [])
+  })
+  const projects = createMemo<LocalProject[]>(() =>
+    (catalog() ?? []).map((project) => ({ name: project.name, worktree: project.path, expanded: true, sandboxes: [] })),
   )
-  const homedir = createMemo(() => focusedSync().data.path.home ?? "")
+  const recentlyClosed = () => [] as LocalProject[]
+  const homedir = () => ""
   const selectedProject = createMemo(() => projects().find((project) => project.worktree === selection().directory))
   const newSessionProject = createMemo(
     () =>
@@ -46,11 +54,30 @@ export function createHomeController() {
     layout.home.setSelection(next)
   }
 
-  function openProjectNewSession(conn: ServerConnection.Any, directory: string) {
-    const ctx = global.ensureServerCtx(conn)
-    ctx.projects.open(directory)
-    ctx.projects.touch(directory)
-    void tabs.newDraft({ server: ServerConnection.key(conn), directory })
+  function openProjectNewSession(conn: ServerConnection.Any, _directory?: string) {
+    void dialog.show(() =>
+      createComponent(DialogProductProject, {
+        server: conn.http,
+        refresh: () => {
+          void refetch()
+        },
+        choose: async (project) => {
+          const ctx = global.ensureServerCtx(conn)
+          const response = await ctx.sdk.client.session.create({ directory: project.path })
+          if (!response.data) throw new Error("unavailable")
+          ctx.projects.open(project.path)
+          ctx.projects.touch(project.path)
+          setSelection({ server: ServerConnection.key(conn), directory: project.path })
+          try {
+            const tab = tabs.addSessionTab({ server: ServerConnection.key(conn), sessionId: response.data.id })
+            tabs.select(tab)
+          } catch (cause) {
+            throw new Error("navigation_failed", { cause })
+          }
+          dialog.close()
+        },
+      }),
+    )
   }
 
   return {
@@ -73,45 +100,16 @@ export function createHomeController() {
       homedir,
       selected: selectedProject,
       newSession: newSessionProject,
-      forServer: (conn: ServerConnection.Any) => global.ensureServerCtx(conn).projects.list(),
+      forServer: (_conn: ServerConnection.Any) => projects(),
       select: (conn: ServerConnection.Any, directory: string) => {
-        const key = ServerConnection.key(conn)
-        if (global.servers.health[key]?.healthy === false) return
-        if (
-          !global
-            .ensureServerCtx(conn)
-            .projects.list()
-            .some((project) => project.worktree === directory)
-        )
-          return
-        setSelection(toggleHomeProjectSelection(selection(), key, directory))
+        if (!projects().some((project) => project.worktree === directory)) return
+        setSelection(toggleHomeProjectSelection(selection(), ServerConnection.key(conn), directory))
       },
-      add: (conn: ServerConnection.Any, directories: string[]) => {
-        const directory = directories[0]
-        if (!directory) return
-        const ctx = global.ensureServerCtx(conn)
-        directories.forEach((item) => {
-          if (ctx.projects.list().some((project) => project.worktree === item)) return
-          const location = { directory: item }
-          void ctx.sdk.api.file
-            .list({ path: ".", location })
-            .then(async (files) => {
-              if (files.data.length > 0) return ctx.sdk.api.project.current({ location })
-              const result = await ctx.sdk.client.project.initGit({ directory: item })
-              return result.data ?? ctx.sdk.api.project.current({ location })
-            })
-            .then((project) => ctx.sync.child(item, { bootstrap: false })[1]("project", project.id))
-            .catch(() => undefined)
-          ctx.projects.open(item)
-        })
-        ctx.projects.touch(directory)
-        setSelection({ server: ServerConnection.key(conn), directory })
-      },
+      add: (conn: ServerConnection.Any, _directories: string[]) => openProjectNewSession(conn),
+      refresh: refetch,
       openNewSession: () => {
         const conn = focusedServer()
-        const project = newSessionProject()
-        if (!conn || !project) return
-        openProjectNewSession(conn, project.worktree)
+        if (conn) openProjectNewSession(conn)
       },
       openProjectNewSession,
     },

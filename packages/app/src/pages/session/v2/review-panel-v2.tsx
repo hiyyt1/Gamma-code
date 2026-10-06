@@ -20,7 +20,7 @@ import type {
 } from "@opencode-ai/session-ui/session-review"
 import FileTreeV2 from "@/components/file-tree-v2"
 import { useLanguage } from "@/context/language"
-import { useSDK } from "@/context/sdk"
+import { useFile } from "@/context/file"
 import {
   filterRenderableDiff,
   filterReviewFiles,
@@ -55,7 +55,7 @@ export type ReviewPanelV2Props = {
 }
 
 export function ReviewPanelV2(props: ReviewPanelV2Props) {
-  const sdk = useSDK()
+  const file = useFile()
 
   const diffs = createMemo(() => props.diffs().filter(filterRenderableDiff))
   const filteredFiles = createMemo(() =>
@@ -100,14 +100,10 @@ export function ReviewPanelV2(props: ReviewPanelV2Props) {
     return source
   })
 
-  const readFile = async (path: string) =>
-    sdk()
-      .client.file.read({ path })
-      .then((x) => x.data)
-      .catch((error) => {
-        console.debug("[session-review-v2] failed to read file", { path, error })
-        return undefined
-      })
+  const readFile = async (path: string) => {
+    await file.load(path, { force: true })
+    return file.get(path)?.content
+  }
 
   return (
     <SessionReviewV2

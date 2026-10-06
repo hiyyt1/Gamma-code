@@ -1,10 +1,18 @@
+import type { JSX } from "solid-js"
 import type { HomeProjectsController } from "./home-projects-controller"
 import { HomeProjectsView } from "./home-projects-view"
 import type { HomeScrollController } from "./home-scroll-controller"
 
-export function HomeProjects(props: { projects: HomeProjectsController; scroll: HomeScrollController }) {
+export function HomeProjects(props: {
+  projects: HomeProjectsController
+  scroll?: HomeScrollController
+  action?: JSX.Element
+  recent?: JSX.Element
+}) {
   return (
     <HomeProjectsView
+      action={props.action}
+      recent={props.recent}
       language={props.projects.copy.language}
       servers={props.projects.server.list}
       projects={props.projects.project.list}
@@ -18,7 +26,7 @@ export function HomeProjects(props: { projects: HomeProjectsController; scroll: 
       defaultServerKey={props.projects.server.defaultKey}
       canRevealProject={props.projects.project.canReveal}
       unseenCount={props.projects.project.unseenCount}
-      onWheel={props.scroll.viewport.containWheel}
+      onWheel={(event) => props.scroll?.viewport.containWheel(event)}
       onChooseProject={props.projects.project.choose}
       onFocusServer={props.projects.server.focus}
       onToggleCollapsed={props.projects.server.toggleCollapsed}

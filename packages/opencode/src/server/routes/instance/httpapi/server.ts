@@ -1,3 +1,4 @@
+import { workspaceFilesRoutes } from "./workspace-files"
 import { Config as EffectConfig, Context, Effect, Layer } from "effect"
 import { HttpApiBuilder, OpenApi } from "effect/unstable/httpapi"
 import { HttpClient, HttpMiddleware, HttpRouter, HttpServer, HttpServerResponse } from "effect/unstable/http"
@@ -274,6 +275,7 @@ export function createRoutes(
   const locationServiceMapV2 = buildLocationServiceMap()
 
   return Layer.mergeAll(
+    workspaceFilesRoutes.pipe(Layer.provide(httpApiAuthLayer)),
     rootApiRoutes,
     eventApiRoutes,
     ptyConnectApiRoutes,
