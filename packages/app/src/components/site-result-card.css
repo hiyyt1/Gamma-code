@@ -1,0 +1,66 @@
+.gamma-site-result-row {
+  min-width: 0;
+  margin-left: 32px;
+}
+.gamma-site-result {
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px 12px;
+  margin: 14px 0 4px;
+  padding: 14px;
+  border: 1px solid #e5dff1;
+  border-radius: 12px;
+  background: #fcfaff;
+  color: #7554ba;
+  width: 560px;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+.gamma-site-result > svg {
+  flex-shrink: 0;
+}
+.gamma-site-result > div {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  flex-direction: column;
+  gap: 3px;
+}
+.gamma-site-result strong {
+  color: #25212c;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+.gamma-site-result span,
+.gamma-site-result small {
+  color: #77717f;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 760px) {
+  .gamma-site-result-row {
+    margin-left: 16px;
+  }
+}
+.gamma-site-result button {
+  flex-shrink: 0;
+  border: 1px solid #e3d9f8;
+  border-radius: 8px;
+  background: white;
+  padding: 7px 10px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.gamma-site-result button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.gamma-site-result button:focus-visible {
+  outline: 2px solid #a794d7;
+  outline-offset: 2px;
+}
+.gamma-site-result > small {
+  grid-column: 1 / -1;
+}

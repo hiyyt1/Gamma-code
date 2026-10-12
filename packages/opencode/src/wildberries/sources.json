@@ -1,0 +1,214 @@
+{
+  "upstream": [
+    {
+      "repository": "https://github.com/DeviceIngineering/wb-mcp-server",
+      "commit": "b0e208318d5099a7d429d7e4bcf745352ca20771",
+      "license": "MIT",
+      "used": "research only; no upstream runtime installed"
+    },
+    {
+      "repository": "https://github.com/ilyautov/marketplaces-mcp-ru",
+      "commit": "a633bb802008c9fa42cbdda19646102d766596c1",
+      "license": "MIT",
+      "used": "research only; no upstream runtime installed"
+    },
+    {
+      "repository": "https://github.com/MissiaL/wildberries-api",
+      "commit": "acd1f775dfc539ca77331cacd4a4ea2e3d5e38cf",
+      "license": "not specified; no code copied",
+      "used": "research only; no upstream runtime installed"
+    },
+    {
+      "repository": "https://github.com/wildberries-tech/wildkit",
+      "commit": "cef3e916a5beec74f794e3324696b1664c9c0bab",
+      "license": "MIT",
+      "used": "research only; no upstream runtime installed"
+    }
+  ],
+  "unavailable": [
+    {
+      "repository": "https://github.com/filippi4/wildberries-api-mcp",
+      "result": "GitHub REST repository lookup HTTP 404; no commit/license available"
+    }
+  ],
+  "official": [
+    {
+      "source": "https://dev.wildberries.ru/api/swagger/yaml/en/09-communications.yaml",
+      "sha256": "666c8d6b4d0bede4b03c3e0317b3a50695ed3b8eb9ab2f272f50479b19275460",
+      "retrieved": "2026-10-10",
+      "operations": [
+        {
+          "path": "/api/v1/feedbacks",
+          "verb": "GET",
+          "readOnly": true,
+          "category": "questionsandfeedback",
+          "servers": [
+            "https://feedbacks-api.wildberries.ru",
+            "https://feedbacks-api-sandbox.wildberries.ru"
+          ]
+        },
+        {
+          "path": "/api/v1/feedbacks/answer",
+          "verb": "POST",
+          "readOnly": false,
+          "category": "questionsandfeedback",
+          "servers": [
+            "https://feedbacks-api.wildberries.ru",
+            "https://feedbacks-api-sandbox.wildberries.ru"
+          ]
+        }
+      ]
+    },
+    {
+      "source": "https://dev.wildberries.ru/api/swagger/yaml/en/12-reports.yaml",
+      "sha256": "e6882cdb73f03a44d10374f570b0fbf87be5d1ead135688ead3e1e7d027c2c47",
+      "retrieved": "2026-10-10",
+      "operations": [
+        {
+          "path": "/api/v1/supplier/orders",
+          "verb": "GET",
+          "readOnly": true,
+          "category": "statistics",
+          "servers": [
+            "https://statistics-api.wildberries.ru",
+            "https://statistics-api-sandbox.wildberries.ru"
+          ]
+        },
+        {
+          "path": "/api/v1/supplier/sales",
+          "verb": "GET",
+          "readOnly": true,
+          "category": "statistics",
+          "servers": [
+            "https://statistics-api.wildberries.ru",
+            "https://statistics-api-sandbox.wildberries.ru"
+          ]
+        }
+      ]
+    },
+    {
+      "source": "https://dev.wildberries.ru/api/swagger/yaml/en/02-items.yaml",
+      "sha256": "e2eef8712991355a44e5c28cdb96ad493a31775d18605f6b3263a3a84f0aa220",
+      "retrieved": "2026-10-10",
+      "operations": [
+        {
+          "path": "/content/v2/get/cards/list",
+          "verb": "POST",
+          "readOnly": true,
+          "category": "content",
+          "servers": [
+            "https://content-api.wildberries.ru",
+            "https://content-api-sandbox.wildberries.ru"
+          ]
+        },
+        {
+          "path": "/content/v2/cards/update",
+          "verb": "POST",
+          "readOnly": false,
+          "category": "content",
+          "servers": [
+            "https://content-api.wildberries.ru",
+            "https://content-api-sandbox.wildberries.ru"
+          ]
+        },
+        {
+          "path": "/api/v2/upload/task",
+          "verb": "POST",
+          "readOnly": false,
+          "category": "discountsandprices",
+          "servers": [
+            "https://discounts-prices-api.wildberries.ru",
+            "https://discounts-prices-api-sandbox.wildberries.ru"
+          ]
+        },
+        {
+          "path": "/api/v2/list/goods/filter",
+          "verb": "GET",
+          "readOnly": true,
+          "category": "discountsandprices",
+          "servers": [
+            "https://discounts-prices-api.wildberries.ru",
+            "https://discounts-prices-api-sandbox.wildberries.ru"
+          ]
+        }
+      ]
+    },
+    {
+      "source": "https://dev.wildberries.ru/api/swagger/yaml/en/13-finances.yaml",
+      "sha256": "b2ef4fae9fa1601cc33942081fcd7d48ce5255101946ba014d9b5abd8f95cb96",
+      "retrieved": "2026-10-10",
+      "operations": [
+        {
+          "path": "/api/finance/v1/sales-reports/detailed",
+          "verb": "POST",
+          "readOnly": true,
+          "category": "finance",
+          "servers": [
+            "https://finance-api.wildberries.ru"
+          ]
+        }
+      ]
+    },
+    {
+      "source": "https://dev.wildberries.ru/api/swagger/yaml/en/11-analytics.yaml",
+      "sha256": "21a9407e5ccee9912b4a329c025eea4e41135e2c7055fcbdf13920ee270e936c",
+      "retrieved": "2026-10-10",
+      "operations": [
+        {
+          "path": "/api/analytics/v1/stocks-report/wb-warehouses",
+          "verb": "POST",
+          "readOnly": true,
+          "category": "contentanalytics",
+          "servers": [
+            "https://seller-analytics-api.wildberries.ru"
+          ]
+        }
+      ]
+    },
+    {
+      "source": "https://dev.wildberries.ru/api/swagger/yaml/en/08-promotion.yaml",
+      "sha256": "06833ae06220c45988b27fe32f186079233417545123194d96eca77cbb866aeb",
+      "retrieved": "2026-10-10",
+      "operations": [
+        {
+          "path": "/adv/v1/promotion/count",
+          "verb": "GET",
+          "readOnly": true,
+          "category": "advert",
+          "servers": [
+            "https://advert-api.wildberries.ru",
+            "https://advert-api-sandbox.wildberries.ru"
+          ]
+        },
+        {
+          "path": "/adv/v0/pause",
+          "verb": "GET",
+          "readOnly": false,
+          "category": "advert",
+          "servers": [
+            "https://advert-api.wildberries.ru",
+            "https://advert-api-sandbox.wildberries.ru"
+          ]
+        },
+        {
+          "path": "/api/advert/v1/bids",
+          "verb": "PATCH",
+          "readOnly": false,
+          "category": "advert",
+          "servers": [
+            "https://advert-api.wildberries.ru"
+          ]
+        },
+        {
+          "path": "/adv/v3/fullstats",
+          "verb": "GET",
+          "readOnly": true,
+          "category": "advert",
+          "servers": [
+            "https://advert-api.wildberries.ru"
+          ]
+        }
+      ]
+    }
+  ]
+}

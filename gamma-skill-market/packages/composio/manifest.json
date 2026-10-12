@@ -1,0 +1,181 @@
+{
+  "id": "composio",
+  "name": "Composio OpenCode Skills",
+  "source": "https://github.com/composio-community/opencode-skills",
+  "author": "composio-community",
+  "category": "integrations",
+  "description": "Подключение сервисов и автоматизация задач.",
+  "revision": "5076f6673e5bf8b1f46dc5e934d1e3dd37250e10",
+  "license": null,
+  "skills": [
+    {
+      "name": "azure-messaging-workflows",
+      "description": "Workflow for building scalable messaging systems on Microsoft Azure using queues, event-driven architecture, pub/sub systems, service buses, and cloud-native communication patterns.",
+      "path": "skills/azure-messaging-workflows/SKILL.md",
+      "sha256": "0b5ad310ad009fefdbe679142b89d00bab2d94e20d534c688506b9179e73edce"
+    },
+    {
+      "name": "azure-observability-workflows",
+      "description": "Workflow for implementing observability systems on Microsoft Azure using logging, monitoring, tracing, telemetry, metrics, dashboards, and production-grade cloud diagnostics.",
+      "path": "skills/azure-observability-workflows/SKILL.md",
+      "sha256": "f45870017bb39ec158146c00dd257263b1d6646dfc67f03a9c3bd52e77346b41"
+    },
+    {
+      "name": "blender-geometry-nodes",
+      "description": "Workflow for creating procedural systems in Blender using Geometry Nodes, procedural materials, node-based modeling, and non-destructive generation techniques.",
+      "path": "skills/blender-geometry-nodes/SKILL.md",
+      "sha256": "f7b2985c9500a09cca38a0449cb5d7dadb4a9e84179b31ba9cd2c86601798a06"
+    },
+    {
+      "name": "blender-hard-surface-modeling",
+      "description": "Workflow for creating precise hard surface models in Blender using clean topology, subdivision workflows, bevel systems, and production-ready modeling techniques.",
+      "path": "skills/blender-hard-surface-modeling/SKILL.md",
+      "sha256": "999a27a361a6b9c06e81992e1cef114016ebebc752f69535fc2c7c5badfde233"
+    },
+    {
+      "name": "blender-python-integration",
+      "description": "Workflow for using Claude to generate Blender Python scripts, automate 3D workflows, and create procedural scenes, animations, and assets directly inside Blender.",
+      "path": "skills/blender-python-integration/SKILL.md",
+      "sha256": "5e4ec6af939397b1855e27b4f30e3ec5848454ba56250f89ddda5fbb75384a58"
+    },
+    {
+      "name": "blender-rigging-animation",
+      "description": "End-to-end workflow for setting up Blender, rigging a character, and creating a simple animation with a clear output (rendered animation).",
+      "path": "skills/blender-rigging-animation/SKILL.md",
+      "sha256": "2c5205691d5819890d6e208c331c39bc202fc6c1300a7a7599d2c78b66f89bcc"
+    },
+    {
+      "name": "claude-seo-workflows",
+      "description": "Workflow for performing SEO research, content optimization, keyword strategy, technical SEO analysis, and search-focused content generation using Claude.",
+      "path": "skills/claude-seo-workflows/SKILL.md",
+      "sha256": "96a0587f6db72ffe00482a949a06d29e30911887fbbc083e603842aac224e05e"
+    },
+    {
+      "name": "claude-subconscious-workflows",
+      "description": "Workflow for running background reasoning, reflective analysis, hidden planning layers, and iterative self-improvement systems to improve Claude’s execution quality across complex tasks.",
+      "path": "skills/claude-subconscious-workflows/SKILL.md",
+      "sha256": "12c9d5794ab7109d54e94335677668a64ae26caabe964c655514e934cc84bcff"
+    },
+    {
+      "name": "composio-cli",
+      "description": "Operate external SaaS apps (Slack, GitHub, Gmail, Notion, Linear, and 1000+ more) from the terminal via the Composio CLI — discover tools, connect accounts, inspect schemas, execute actions, subscribe to triggers. Use when the user asks to send/fetch/update something in an external app, \"connect my <app>\", run a tool by slug, or automate a cross-app workflow.",
+      "path": "skills/composio-cli/SKILL.md",
+      "sha256": "67f7047a792511570ced140f03cf9b1d47428b139b01b70ff1bbb72942d271e8"
+    },
+    {
+      "name": "context-engineering",
+      "description": "Workflow for managing, structuring, compressing, and orchestrating context effectively for Claude and AI agent systems to improve reasoning quality, execution consistency, and long-term workflow scalability.",
+      "path": "skills/context-engineering/SKILL.md",
+      "sha256": "e20d990fb6f2f4a45ea3f75f9ed2fa64d40f5940940977ec8aca90a28a876836"
+    },
+    {
+      "name": "frontend-design-systems",
+      "description": "Workflow for generating production-quality frontend interfaces using React, Tailwind CSS, and shadcn/ui with strong focus on spacing, alignment, readability, and non-generic visual design.",
+      "path": "skills/frontend-design-systems/SKILL.md",
+      "sha256": "397fb10beffe6d4e835496c375cb6d43c20ca01ce902af22064fce6b3b6040ec"
+    },
+    {
+      "name": "idea-to-plan",
+      "description": "Turn a vague idea or feature request into a written, reviewable spec and implementation plan before any code is written. Use when the user says \"I want to build X\", \"help me think through\", \"I have an idea\", or hands over an underspecified request.",
+      "path": "skills/idea-to-plan/SKILL.md",
+      "sha256": "75c5f8b762f3370f37f6164d3b5bfbe21c09c4a259715bd2d3227275b0b5cb8e"
+    },
+    {
+      "name": "marketing-skills-workflows",
+      "description": "Workflow for performing marketing strategy, SEO audits, audience positioning, content optimization, funnel analysis, and growth-focused marketing execution using Claude.",
+      "path": "skills/marketing-skills-workflows/SKILL.md",
+      "sha256": "3169e3bbb80daa32cfe0d204269066c97b249bfa0531d407acb14c912c03a068"
+    },
+    {
+      "name": "memory-management",
+      "description": "Workflow for building lightweight memory systems for Claude that improve long-term context retention, workflow continuity, task tracking, and agent consistency across projects.",
+      "path": "skills/memory-management/SKILL.md",
+      "sha256": "dbba0ac99101bfaad48819ac88bfeab0531af7f34c7740271c3fc43e86b0c723"
+    },
+    {
+      "name": "multi-agent-orchestration",
+      "description": "Split a large task across parallel sub-agents with clean role boundaries and a merge step. Use when the user asks to \"parallelize\", \"use multiple agents\", \"fan out\", or when a task has independent workstreams that bottleneck on one agent.",
+      "path": "skills/multi-agent-orchestration/SKILL.md",
+      "sha256": "4111f1c425fe551377a7039c3ec76cfd86199b4c5b4a7118f986bb721cb47fba"
+    },
+    {
+      "name": "playwright-mcp-workflows",
+      "description": "Workflow for using Playwright with MCP-based agent systems to automate browsers, test applications, perform UI validation, and execute reliable end-to-end workflows through structured browser orchestration.",
+      "path": "skills/playwright-mcp-workflows/SKILL.md",
+      "sha256": "81c21df5252fa5e6f145f059dd53f3dc9df469d7fa13cd26bee8c50ee8808091"
+    },
+    {
+      "name": "powerpoint-generation",
+      "description": "Workflow for generating professional PowerPoint presentations from rough notes, outlines, documents, or ideas using structured slide design, storytelling, and presentation-focused formatting.",
+      "path": "skills/powerpoint-generation/SKILL.md",
+      "sha256": "aa3729318e03ba91295706ee8eac6b9ffe199baab1379e646270cf9902334fa1"
+    },
+    {
+      "name": "remotion-animation-rules",
+      "description": "Workflow for building technically correct Remotion animations using frame-based rendering, spring physics, useCurrentFrame, and Remotion-native animation patterns.",
+      "path": "skills/remotion-animation-rules/SKILL.md",
+      "sha256": "a13ae60784924ba1c3a52ab33d751ab10a067c880678b8699872bbe7d060c49d"
+    },
+    {
+      "name": "remotion-creative-storytelling",
+      "description": "Workflow for collaboratively developing creative concepts, hooks, story structure, and audience-focused narratives for Remotion videos.",
+      "path": "skills/remotion-creative-storytelling/SKILL.md",
+      "sha256": "d578ded465d7438ebf3388b3e0f63302e0fbe08dc1114a7756bae2638ed07b5d"
+    },
+    {
+      "name": "remotion-image-video-masking",
+      "description": "Workflow for creating advanced masking effects in Remotion using layered compositions, image/video masking, text occlusion, and frame-based animation systems.",
+      "path": "skills/remotion-image-video-masking/SKILL.md",
+      "sha256": "e470ebee525cfbd38396a39bc78ddd27b8f46ec8f7b22c3cae675ac1e119a5d7"
+    },
+    {
+      "name": "remotion-layout-debugging",
+      "description": "Workflow for diagnosing and fixing layout instability, text jumping, resizing issues, and rendering inconsistencies in Remotion animations.",
+      "path": "skills/remotion-layout-debugging/SKILL.md",
+      "sha256": "344ea99a5be486ec6050602ca2059b02bb343e61912d53211d75601718920391"
+    },
+    {
+      "name": "repo-context-packaging",
+      "description": "Package a codebase into a compact, structured context bundle for an AI agent. Use when the user wants to \"give the whole repo to an LLM\", \"pack the codebase\", hits context limits sharing a project, or asks for a digest/summary of an unfamiliar repo.",
+      "path": "skills/repo-context-packaging/SKILL.md",
+      "sha256": "1eef7213f4d55c7d098e2e626949cea8a055f302231932b196001393417cdd63"
+    },
+    {
+      "name": "skill-doc-authoring",
+      "description": "Write a well-formed agent SKILL.md from a workflow, SOP, or repeated procedure. Use when the user wants to \"create a skill\", \"turn this process into a skill\", \"document this workflow as a skill\", or asks why a skill isn't triggering.",
+      "path": "skills/skill-doc-authoring/SKILL.md",
+      "sha256": "115f39ceda0428d7eb3df05186e7b4b494d297fa16b68a246d56f12a62872199"
+    },
+    {
+      "name": "skill-improvement-opportunity-logger",
+      "description": "Workflow for observing work sessions, identifying recurring inefficiencies or weaknesses, logging improvement opportunities, and autonomously refining workflows over time.",
+      "path": "skills/skill-improvement-opportunity-logger/SKILL.md",
+      "sha256": "d04ca809baf918897c17b376d4616410f2a369f920a519587dfd83685ff2971e"
+    },
+    {
+      "name": "structured-project-execution",
+      "description": "Execute a large multi-step project without losing the thread — track plan, progress, and decisions in a durable file. Use when the user starts a multi-day or multi-phase build, says \"let's keep this organized\", or work spans many sessions/handoffs.",
+      "path": "skills/structured-project-execution/SKILL.md",
+      "sha256": "7d858c4b712a6a1f6171603dd091b8eb609f738b742477adb213b93ae3f26bf6"
+    },
+    {
+      "name": "tdd-workflow",
+      "description": "Drive implementation with the red-green-refactor test-first loop. Use when the user asks to build a feature \"with TDD\", \"test-first\", \"write the tests first\", or when correctness matters and behavior is specifiable as tests.",
+      "path": "skills/tdd-workflow/SKILL.md",
+      "sha256": "aa50a590561214aaee94cd9c10aa48011a5dfd0cc5ca616edfc7491168379606"
+    },
+    {
+      "name": "vercel-react-best-practices",
+      "description": "Workflow for building production-quality React applications using Vercel-style best practices focused on readability, performance, maintainability, and stable UI behavior.",
+      "path": "skills/vercel-react-best-practices/SKILL.md",
+      "sha256": "44cde739cd46e9f819d729f0e6fc49d51d734ec5c052fa1b59c2fd29bf164f9e"
+    }
+  ],
+  "dependencies": [
+    "Composio и внешние интеграции; авторизация зависит от навыка"
+  ],
+  "compatibility": "unsupported",
+  "reason": "В закреплённой версии не найдена лицензия, разрешающая распространение пакета. Исходники не включены в поставку Gamma.",
+  "enabledByDefault": false,
+  "runtimes": []
+}

@@ -1,0 +1,62 @@
+{
+  "id": "ui-ux-pro-max",
+  "name": "UI/UX Pro Max",
+  "source": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+  "author": "nextlevelbuilder",
+  "category": "design",
+  "description": "Проектирование интерфейсов и дизайн-систем.",
+  "revision": "477bcb28c9812b385cb51a4605ddf30d7b2266e2",
+  "license": "MIT",
+  "skills": [
+    {
+      "name": "banner-design",
+      "description": "Design banners for social media, ads, website heroes, creative assets, and print. Multiple art direction options with optional generated or supplied visuals. Actions: design, create, generate banner. Platforms: Facebook, Twitter/X, LinkedIn, YouTube, Instagram, Google Display, website hero, print. Styles: minimalist, gradient, bold typography, photo-based, illustrated, geometric, retro, glassmorphism, 3D, neon, duotone, editorial, collage.",
+      "path": ".claude/skills/banner-design/SKILL.md",
+      "sha256": "ccb89ddc848f60bfe630cb19dfe3e062df94a029467a9b15259f2761019ac5c4"
+    },
+    {
+      "name": "brand",
+      "description": "Brand voice, visual identity, messaging frameworks, asset management, brand consistency. Activate for branded content, tone of voice, marketing assets, brand compliance, style guides.",
+      "path": ".claude/skills/brand/SKILL.md",
+      "sha256": "1c24139633e2ebf11da4f97eaeb1c0564f8658a40b3ad779387a5b8c6cb76dbc"
+    },
+    {
+      "name": "design-system",
+      "description": "Token architecture, component specifications, and slide generation. Three-layer tokens (primitive→semantic→component), CSS variables, spacing/typography scales, component specs, strategic slide creation. Use for design tokens, systematic design, brand-compliant presentations.",
+      "path": ".claude/skills/design-system/SKILL.md",
+      "sha256": "8aa5ff93320559a6e5289d37b6b06b3307737dbfb4a6f3fc44135c705613c511"
+    },
+    {
+      "name": "design",
+      "description": "Comprehensive design skill: brand identity, design tokens, UI styling, logo generation (55 styles, Gemini, Atlas Cloud, or MuAPI AI), corporate identity program (50 deliverables, CIP mockups), HTML presentations (Chart.js), banner design (22 styles, social/ads/web/print), icon design (15 styles, SVG, Gemini 3.1 Pro), social photos (HTML→screenshot, multi-platform). Actions: design logo, create CIP, generate mockups, build slides, design banner, generate icon, create social photos, social media images, brand identity, design system. Platforms: Facebook, Twitter, LinkedIn, YouTube, Instagram, Pinterest, TikTok, Threads, Google Ads.",
+      "path": ".claude/skills/design/SKILL.md",
+      "sha256": "c84f3ecfd6a0fd1c46abf6805a0bbc26ea0b94a104f457e243ccf0943ece123c"
+    },
+    {
+      "name": "slides",
+      "description": "Create strategic HTML presentations with Chart.js, design tokens, responsive layouts, copywriting formulas, and contextual slide strategies.",
+      "path": ".claude/skills/slides/SKILL.md",
+      "sha256": "86c07f19ec09f79441d3837e909cfcd51034b83bdcc88094c15e652be1e765cb"
+    },
+    {
+      "name": "ui-styling",
+      "description": "Create beautiful, accessible user interfaces with shadcn/ui components (built on Radix UI + Tailwind), Tailwind CSS utility-first styling, and canvas-based visual designs. Use when building user interfaces, implementing design systems, creating responsive layouts, adding accessible components (dialogs, dropdowns, forms, tables), customizing themes and colors, implementing dark mode, generating visual designs and posters, or establishing consistent styling patterns across applications.",
+      "path": ".claude/skills/ui-styling/SKILL.md",
+      "sha256": "625e302c60ee8f2e22d56cbe638c4a739e2657f566dae42689503ad517c30f1e"
+    },
+    {
+      "name": "ui-ux-pro-max",
+      "description": "UI/UX design intelligence for web, mobile, and desktop. This skill should be used when designing, building, reviewing, or fixing interfaces, including pages, components, design systems, accessibility, interaction, responsive layout, typography, color, charts, and stack-specific UI implementation. Searchable local data: 79 searchable styles (50 active), 192 product palettes and reasoning profiles, 74 font pairings, 119 UX guidelines, 105 icons, 17 GSAP presets, 25 chart types, and 22 stacks.",
+      "path": ".claude/skills/ui-ux-pro-max/SKILL.md",
+      "sha256": "ea087c341bfb5b23195c7302027268ede86da802554c18a5c4896a6017b439f9"
+    }
+  ],
+  "dependencies": [
+    "Python 3; локальные CSV-ресурсы поиска",
+    "Node.js и внешние инструменты для отдельных дизайн-сценариев"
+  ],
+  "compatibility": "needs-adaptation",
+  "reason": "Найдены дубли в .claude и cli/assets. Инструкции используют CLAUDE_PLUGIN_ROOT; Python-поиск, ресурсы дизайна и sibling paths требуют адаптации и отдельного тестирования.",
+  "enabledByDefault": false,
+  "runtimes": []
+}

@@ -1,3 +1,5 @@
+import { SessionAgent } from "@opencode-ai/core/session/agent"
+import { AgentMarketService } from "@opencode-ai/core/agent-market"
 import { LayerNode } from "@opencode-ai/core/effect/layer-node"
 import { PermissionV1 } from "@opencode-ai/core/v1/permission"
 import path from "path"
@@ -115,6 +117,7 @@ const layer = Layer.effect(
   Effect.gen(function* () {
     const status = yield* SessionStatus.Service
     const sessions = yield* Session.Service
+    const market = yield* AgentMarketService.Service
     const agents = yield* Agent.Service
     const provider = yield* Provider.Service
     const processor = yield* SessionProcessor.Service
@@ -145,7 +148,8 @@ const layer = Layer.effect(
       return {
         cancel: (sessionID: SessionID) => cancel(sessionID),
         resolvePromptParts: (template: string) => resolvePromptParts(template),
-        prompt: (input: PromptInput) => prompt(input).pipe(Effect.catch(Effect.die)),
+        prompt: (input: PromptInput) =>
+          bound(input.sessionID, input.agent, prompt(input)).pipe(Effect.catch(Effect.die)),
       } satisfies TaskPromptOps
     })
 
@@ -311,6 +315,7 @@ const layer = Layer.effect(
       )
 
       const taskAgent = yield* agents.get(task.agent)
+      const parentAgent = yield* agents.resolve(lastUser.agent, !!session.parentID)
       if (!taskAgent) {
         const available = (yield* agents.list()).filter((a) => !a.hidden).map((a) => a.name)
         const hint = available.length ? ` Available agents: ${available.join(", ")}` : ""
@@ -328,7 +333,7 @@ const layer = Layer.effect(
           sessionID,
           abort: taskAbort.signal,
           callID: part.callID,
-          extra: { bypassAgentCheck: true, promptOps },
+          extra: { bypassAgentCheck: !parentAgent.options.gammaAgent, promptOps },
           messages: msgs,
           metadata: (val: { title?: string; metadata?: Record<string, any> }) =>
             Effect.gen(function* () {
@@ -343,7 +348,10 @@ const layer = Layer.effect(
               .ask({
                 ...req,
                 sessionID,
-                ruleset: Permission.merge(taskAgent.permission, session.permission ?? []),
+                ruleset: Permission.merge(
+                  parentAgent.options.gammaAgent ? parentAgent.permission : taskAgent.permission,
+                  session.permission ?? [],
+                ),
               })
               .pipe(Effect.orDie),
         })
@@ -633,8 +641,14 @@ const layer = Layer.effect(
     })
 
     const createUserMessage = Effect.fn("SessionPrompt.createUserMessage")(function* (input: PromptInput) {
-      const agentName = input.agent
-      const ag = agentName ? yield* agents.get(agentName) : yield* agents.defaultInfo()
+      const binding = yield* SessionAgent.Current
+      if (binding) SessionAgent.assert(binding, input.agent)
+      const agentName = binding?.agent ?? input.agent
+      const owner = yield* sessions.get(input.sessionID).pipe(Effect.orDie)
+      const ag = yield* agents.resolve(
+        owner.agent === "gamma-guide" ? "gamma-guide" : (agentName ?? owner.agent ?? (yield* agents.defaultAgent())),
+        !!owner.parentID,
+      )
       if (!ag) {
         const available = (yield* agents.list()).filter((a) => !a.hidden).map((a) => a.name)
         const hint = available.length ? ` Available agents: ${available.join(", ")}` : ""
@@ -1052,22 +1066,36 @@ const layer = Layer.effect(
     const prompt: (input: PromptInput) => Effect.Effect<SessionV1.WithParts, Image.Error> = Effect.fn(
       "SessionPrompt.prompt",
     )(function* (input: PromptInput) {
-      const session = yield* sessions.get(input.sessionID).pipe(Effect.orDie)
-      yield* revert.cleanup(session)
-      const message = yield* createUserMessage(input)
-      yield* sessions.touch(input.sessionID)
+      const directory = yield* InstanceState.directory
+      return yield* market.withRun(
+        directory,
+        Effect.gen(function* () {
+          const admitted = yield* sessions.withUserInput(
+            input.sessionID,
+            Effect.gen(function* () {
+              const session = yield* sessions.get(input.sessionID).pipe(Effect.orDie)
+              yield* revert.cleanup(session)
+              const message = yield* createUserMessage(input)
+              return { session, message }
+            }),
+          )
+          const session = admitted.session
+          const message = admitted.message
+          yield* sessions.touch(input.sessionID)
 
-      const permissions: PermissionV1.Rule[] = []
-      for (const [t, enabled] of Object.entries(input.tools ?? {})) {
-        permissions.push({ permission: t, action: enabled ? "allow" : "deny", pattern: "*" })
-      }
-      if (permissions.length > 0) {
-        session.permission = permissions
-        yield* sessions.setPermission({ sessionID: session.id, permission: permissions })
-      }
+          const permissions: PermissionV1.Rule[] = []
+          for (const [t, enabled] of Object.entries(input.tools ?? {})) {
+            permissions.push({ permission: t, action: enabled ? "allow" : "deny", pattern: "*" })
+          }
+          if (permissions.length > 0) {
+            session.permission = permissions
+            yield* sessions.setPermission({ sessionID: session.id, permission: permissions })
+          }
 
-      if (input.noReply === true) return message
-      return yield* loop({ sessionID: input.sessionID })
+          if (input.noReply === true) return message
+          return yield* loop({ sessionID: input.sessionID })
+        }),
+      )
     })
 
     const lastAssistant = Effect.fnUntraced(function* (sessionID: SessionID) {
@@ -1167,7 +1195,8 @@ const layer = Layer.effect(
             continue
           }
 
-          const agent = yield* agents.get(lastUser.agent)
+          const binding = yield* SessionAgent.Current
+          const agent = yield* agents.resolve(binding?.agent ?? lastUser.agent, !!session.parentID)
           if (!agent) {
             const available = (yield* agents.list()).filter((a) => !a.hidden).map((a) => a.name)
             const hint = available.length ? ` Available agents: ${available.join(", ")}` : ""
@@ -1220,7 +1249,8 @@ const layer = Layer.effect(
 
           const outcome: "break" | "continue" = yield* Effect.gen(function* () {
             const lastUserMsg = msgs.findLast((m) => m.info.role === "user")
-            const bypassAgentCheck = lastUserMsg?.parts.some((p) => p.type === "agent") ?? false
+            const bypassAgentCheck =
+              !agent.options.gammaAgent && (lastUserMsg?.parts.some((p) => p.type === "agent") ?? false)
             const promptOps = yield* ops()
 
             const tools = yield* SessionTools.resolve({
@@ -1257,7 +1287,7 @@ const layer = Layer.effect(
             const [skills, env, instructions, mcpInstructions, modelMsgs] = yield* Effect.all([
               sys.skills(agent),
               sys.environment(model),
-              instruction.system().pipe(Effect.orDie),
+              agent.name === "gamma-guide" ? Effect.succeed([]) : instruction.system().pipe(Effect.orDie),
               sys.mcp(agent, session.permission),
               MessageV2.toModelMessagesEffect(msgs, model),
             ])
@@ -1343,7 +1373,12 @@ const layer = Layer.effect(
     const loop: (input: LoopInput) => Effect.Effect<SessionV1.WithParts> = Effect.fn("SessionPrompt.loop")(function* (
       input: LoopInput,
     ) {
-      return yield* state.ensureRunning(input.sessionID, lastAssistant(input.sessionID), runLoop(input.sessionID))
+      const directory = yield* InstanceState.directory
+      return yield* state.ensureRunning(
+        input.sessionID,
+        lastAssistant(input.sessionID),
+        market.withRun(directory, runLoop(input.sessionID)),
+      )
     })
 
     const shell: (input: ShellInput) => Effect.Effect<SessionV1.WithParts, Session.BusyError> = Effect.fn(
@@ -1367,7 +1402,8 @@ const layer = Layer.effect(
         yield* events.publish(Session.Event.Error, { sessionID: input.sessionID, error: error.toObject() })
         throw error
       }
-      const agentName = cmd.agent ?? input.agent
+      const owner = yield* SessionAgent.Current
+      const agentName = cmd.agent ?? input.agent ?? owner?.agent
 
       const raw = input.arguments.match(argsRegex) ?? []
       const args = raw.map((arg) => arg.replace(quoteTrimRegex, ""))
@@ -1450,7 +1486,8 @@ const layer = Layer.effect(
           ]
         : [...uniqueTemplateParts, ...(input.parts ?? [])]
 
-      const userAgent = isSubtask ? (input.agent ?? (yield* agents.defaultInfo()).name) : agent.name
+      const userAgent = isSubtask ? (owner?.agent ?? input.agent ?? (yield* agents.defaultInfo()).name) : agent.name
+      if (owner) SessionAgent.assert(owner, userAgent)
       const userModel = isSubtask
         ? input.model
           ? Provider.parseModel(input.model)
@@ -1480,12 +1517,19 @@ const layer = Layer.effect(
       return result
     })
 
+    const bound = <A, E>(sessionID: string, requested: string | undefined, run: Effect.Effect<A, E>) =>
+      Effect.gen(function* () {
+        const binding = yield* SessionAgent.load(sessionID).pipe(Effect.provideService(Database.Service, database))
+        SessionAgent.assert(binding, requested)
+        return yield* SessionAgent.provide(binding, run)
+      })
+
     return Service.of({
       cancel,
-      prompt,
-      loop,
-      shell,
-      command,
+      prompt: (input) => bound(input.sessionID, input.agent, prompt(input)),
+      loop: (input) => bound(input.sessionID, undefined, loop(input)),
+      shell: (input) => bound(input.sessionID, input.agent, shell(input)),
+      command: (input) => bound(input.sessionID, input.agent, command(input)),
       resolvePromptParts,
     })
   }),
@@ -1602,6 +1646,7 @@ export const node = LayerNode.make({
     SessionStatus.node,
     Session.node,
     Agent.node,
+    AgentMarketService.node,
     Provider.node,
     SessionProcessor.node,
     SessionCompaction.node,

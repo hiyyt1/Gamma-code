@@ -31,6 +31,13 @@ export const SkillTool = Tool.define(
             metadata: {},
           })
 
+          if (info.location === "<gamma-built-in>")
+            return {
+              title: `Loaded skill: ${info.name}`,
+              output: info.content,
+              metadata: { name: info.name, dir: "<gamma-built-in>" },
+            }
+
           const dir = path.dirname(info.location)
           const base = dir
           const files = yield* ripgrep.find({

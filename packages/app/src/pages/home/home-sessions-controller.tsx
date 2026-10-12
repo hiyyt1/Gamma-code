@@ -182,6 +182,7 @@ export function createHomeSessionsController(home: HomeController, paletteActive
       records,
       groups,
       loading: () => sessionLoad.isLoading,
+      empty: () => sessionLoad.isSuccess && !sessionLoad.isFetching && indexedSessions().length === 0,
       searchRecords: allRecords,
     },
     session: {

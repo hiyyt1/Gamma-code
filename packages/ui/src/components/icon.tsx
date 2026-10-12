@@ -179,3 +179,8 @@ export function Icon(props: IconProps) {
     </div>
   )
 }
+
+// Trusted, bundled icon artwork for canvas renderers using the same UI icons.
+export function iconSVG(name: keyof typeof icons) {
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${viewBox(name)}" width="128" height="128" fill="none" color="white">${icons[name]}</svg>`
+}

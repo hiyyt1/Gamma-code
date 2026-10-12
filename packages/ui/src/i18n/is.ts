@@ -194,4 +194,8 @@ export const dict: Record<string, string> = {
   "ui.question.multiHint": "Veldu öll svör sem eiga við",
   "ui.question.singleHint": "Veldu eitt svar",
   "ui.question.custom.placeholder": "Sláðu inn svarið þitt...",
+  // Explicit English fallback pending locale review.
+  "ui.sessionTurn.status.waitingProvider": "Waiting for provider",
+  "ui.sessionTurn.status.generating": "Model is generating a response",
+  "ui.sessionTurn.error.provider": "Provider error. You can send your message again.",
 }

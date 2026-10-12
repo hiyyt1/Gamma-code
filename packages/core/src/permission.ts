@@ -1,3 +1,5 @@
+import { Database } from "./database/database"
+import { SessionAgent } from "./session/agent"
 export * as PermissionV2 from "./permission"
 
 import { makeLocationNode } from "./effect/app-node"
@@ -74,6 +76,24 @@ export class NotFoundError extends Schema.TaggedErrorClass<NotFoundError>()("Per
 export type Error = BlockedError | CorrectedError
 
 export function evaluate(action: string, resource: string, ...rulesets: Permission.Ruleset[]): Permission.Rule {
+  const rules = rulesets.flat()
+  if (rules.some((rule) => rule.action === "__gamma_boundary__")) {
+    const groups: Permission.Rule[][] = [[]]
+    for (const rule of rules) {
+      if (rule.action === "__gamma_boundary__") groups.push([])
+      if (rule.action !== "__gamma_boundary__") groups[groups.length - 1].push(rule)
+    }
+    const matches = groups
+      .filter((group) =>
+        group.some((rule) => Wildcard.match(action, rule.action) && Wildcard.match(resource, rule.resource)),
+      )
+      .map((group) => evaluate(action, resource, group))
+    return (
+      matches.find((rule) => rule.effect === "deny") ??
+      matches.find((rule) => rule.effect === "ask") ??
+      matches[0] ?? { action, resource, effect: "ask" }
+    )
+  }
   return (
     rulesets
       .flat()
@@ -113,6 +133,7 @@ const layer = Layer.effect(
     const location = yield* Location.Service
     const agents = yield* AgentV2.Service
     const sessions = yield* SessionStore.Service
+    const database = yield* Database.Service
     const saved = yield* PermissionSaved.Service
     const pending = new Map<ID, Pending>()
 
@@ -140,7 +161,8 @@ const layer = Layer.effect(
     ) {
       const session = yield* sessions.get(sessionID)
       if (!session) return yield* new SessionV2.NotFoundError({ sessionID })
-      const agent = yield* agents.resolve(agentID ?? session.agent)
+      const binding = yield* SessionAgent.load(sessionID).pipe(EffectRuntime.provideService(Database.Service, database))
+      const agent = yield* SessionAgent.provide(binding, agents.resolve(agentID ?? session.agent))
       return agent?.permissions ?? missingAgentPermissions
     })
 
@@ -306,5 +328,5 @@ export const locationLayer = layer.pipe(Layer.provideMerge(AgentV2.locationLayer
 export const node = makeLocationNode({
   service: Service,
   layer,
-  deps: [EventV2.node, Location.node, AgentV2.node, SessionStore.node, PermissionSaved.node],
+  deps: [EventV2.node, Location.node, AgentV2.node, SessionStore.node, PermissionSaved.node, Database.node],
 })

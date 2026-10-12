@@ -67,7 +67,7 @@ export function LegacyHome() {
 
   return (
     <div class="mx-auto mt-55 w-full md:w-auto px-4">
-      <ProductBrand class="oreshnik-welcome" />
+      <ProductBrand class="gamma-welcome" />
       <Button
         size="large"
         variant="ghost"

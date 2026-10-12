@@ -13,6 +13,23 @@ function sessionTab(sessionId: string): SessionTab {
 }
 
 describe("tab migration", () => {
+  test("restores each draft agent without assigning an agent to legacy drafts", () => {
+    const drafts = migrateTabs(
+      [
+        { type: "draft", draftID: "one", server, directory: "/project", agent: "gamma-1c-developer" },
+        { type: "draft", draftID: "two", server, directory: "/project", agent: "gamma-bitrix24-developer" },
+        { type: "draft", draftID: "legacy", server, directory: "/project" },
+      ],
+      server,
+    )
+    expect(drafts.map((tab) => (tab.type === "draft" ? tab.agent : undefined))).toEqual([
+      "gamma-1c-developer",
+      "gamma-bitrix24-developer",
+      undefined,
+    ])
+    expect(migrateTabs(drafts, server)).toEqual(drafts)
+  })
+
   test("drops null and malformed persisted tabs", () => {
     expect(
       migrateTabs([null, sessionTab("a"), { type: "session", server }, { type: "unknown", server }, "invalid"], server),

@@ -518,6 +518,7 @@ export const RunCommand = effectCmd({
         const name = title()
         const result = await sdk.session.create({
           title: name,
+          agent: await pickAgent(sdk),
           permission: [...rules],
         })
         const id = result.data?.id

@@ -174,14 +174,14 @@ export const makeSessionGroup = <I extends HttpApiMiddleware.AnyId, S>(sessionLo
         params: { sessionID: Session.ID },
         payload: Schema.Struct({ agent: Agent.ID }),
         success: HttpApiSchema.NoContent,
-        error: SessionNotFoundError,
+        error: [SessionNotFoundError, ConflictError],
       })
         .middleware(sessionLocationMiddleware)
         .annotateMerge(
           OpenApi.annotations({
             identifier: "v2.session.switchAgent",
             summary: "Switch session agent",
-            description: "Switch the agent used by subsequent provider turns.",
+            description: "Verify the fixed session agent. Changing it requires a new session.",
           }),
         ),
     )

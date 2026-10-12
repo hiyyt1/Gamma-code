@@ -356,7 +356,10 @@
   --avatar-text-cyan: #0894b3;
   --avatar-text-lime: #5d770d;
   --text-stronger: #171717;
+}
 
+/* An explicit light palette must also apply before ThemeProvider mounts. */
+:root:not([data-color-scheme="light"]) {
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
     --text-mix-blend-mode: plus-lighter;

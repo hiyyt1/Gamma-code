@@ -1,0 +1,193 @@
+{
+  "scenario": {
+    "name": "clean-dark",
+    "system": "dark"
+  },
+  "metrics": {
+    "scheme": "dark",
+    "theme": "oc-2",
+    "newLayout": true,
+    "styles": [
+      {
+        "selector": "html",
+        "text": "\n    \n    \n    Gamma\n    \n    \n    \n    \n    \n    \n    \n    \n    ;(function () {",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(8, 8, 8)",
+        "display": "block",
+        "opacity": "1",
+        "pointerEvents": "auto",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 1366,
+          "height": 768
+        }
+      },
+      {
+        "selector": "body",
+        "text": "\n\n\n\n\n\n\n\n    You need to enable JavaScript to run this app.\n    GammaНовый чатГот",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(8, 8, 8)",
+        "display": "block",
+        "opacity": "1",
+        "pointerEvents": "auto",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 1366,
+          "height": 768
+        }
+      },
+      {
+        "selector": "#root",
+        "text": "GammaНовый чатГотовые агентыГотовые решенияБаза знанийВаши материалы и связиПрое",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(8, 8, 8)",
+        "display": "flex",
+        "opacity": "1",
+        "pointerEvents": "auto",
+        "rect": {
+          "x": 0,
+          "y": 0,
+          "width": 1366,
+          "height": 768
+        }
+      },
+      {
+        "selector": "[data-component=\"gamma-sidebar\"]",
+        "text": "GammaНовый чатГотовые агентыГотовые решенияБаза знанийВаши материалы и связиПрое",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(253, 253, 255)",
+        "display": "flex",
+        "opacity": "1",
+        "pointerEvents": "auto",
+        "rect": {
+          "x": 1,
+          "y": 1,
+          "width": 272,
+          "height": 766
+        }
+      },
+      {
+        "selector": ".workspace-files-content",
+        "text": "Timeline collapse state regressionПроект: TimelineStateRegressionБаза знаний0Ple",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(255, 255, 255)",
+        "display": "flex",
+        "opacity": "1",
+        "pointerEvents": "auto",
+        "rect": {
+          "x": 290,
+          "y": 1,
+          "width": 729,
+          "height": 766
+        }
+      },
+      {
+        "selector": "[data-session-title] h1",
+        "text": "Timeline collapse state regression",
+        "color": "rgb(250, 250, 250)",
+        "background": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "opacity": "1",
+        "pointerEvents": "auto",
+        "rect": {
+          "x": 369,
+          "y": 25,
+          "width": 292.046875,
+          "height": 24
+        }
+      },
+      {
+        "selector": "[data-component=\"prompt-input-v2\"]",
+        "text": "Спросите что угодно, / — команды, @ — контекст...Agent not determinedClaude Opus",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(255, 255, 255)",
+        "display": "block",
+        "opacity": "1",
+        "pointerEvents": "auto",
+        "rect": {
+          "x": 335,
+          "y": 620,
+          "width": 639,
+          "height": 116
+        }
+      },
+      {
+        "selector": "[contenteditable]",
+        "text": "",
+        "color": "rgb(250, 250, 250)",
+        "background": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "opacity": "1",
+        "pointerEvents": "auto",
+        "rect": {
+          "x": 336,
+          "y": 621,
+          "width": 637,
+          "height": 64
+        }
+      },
+      {
+        "selector": "[data-slot=\"text-part-body\"]",
+        "text": "Streaming\nImplementation plan\nStreaming **bold analysis\nconst initial = true",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0)",
+        "display": "block",
+        "opacity": "1",
+        "pointerEvents": "auto",
+        "rect": {
+          "x": 351,
+          "y": 289,
+          "width": 639,
+          "height": 239.125
+        }
+      },
+      {
+        "selector": "[data-slot=\"gamma-page-controls\"]",
+        "text": "",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0)",
+        "display": "flex",
+        "opacity": "1",
+        "pointerEvents": "auto",
+        "rect": {
+          "x": 1351,
+          "y": 27,
+          "width": 0,
+          "height": 0
+        }
+      },
+      {
+        "selector": "[data-component=\"gamma-sidebar\"] [data-component=\"button-v2\"]",
+        "text": "Новый чат",
+        "color": "rgb(250, 250, 250)",
+        "background": "rgba(255, 255, 255, 0.06)",
+        "display": "flex",
+        "opacity": "1",
+        "pointerEvents": "auto",
+        "rect": {
+          "x": 17,
+          "y": 73,
+          "width": 240,
+          "height": 40
+        }
+      }
+    ],
+    "longTasks": [
+      {
+        "start": 67.29999999993015,
+        "duration": 63
+      },
+      {
+        "start": 159.69999999995343,
+        "duration": 59
+      }
+    ],
+    "supports": {
+      "lightDark": true,
+      "colorMix": true
+    }
+  },
+  "errors": []
+}

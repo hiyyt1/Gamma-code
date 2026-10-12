@@ -33,3 +33,37 @@ logs/
 *.bun-build
 tsconfig.tsbuildinfo
 /artifacts/
+
+# Local credentials and runtime data (keep distributable examples)
+.env.*
+!.env.example
+!.env.*.example
+*.env
+!*.env.example
+auth.json
+credentials.json
+secrets.json
+*.pem
+*.key
+id_rsa
+id_ed25519
+*.db
+*.db-*
+*.sqlite
+*.sqlite-*
+*.sqlite3
+*.log
+*.tsbuildinfo
+coverage/
+playwright-report/
+test-results/
+/фотки /
+/AGENTS_MARKET_AUDIT.md
+
+# Source files intentionally shipped despite broad upstream rules
+!.opencode/.gitignore
+!.opencode/themes/.gitignore
+!.vscode/
+.vscode/*
+!.vscode/*.example.json
+!packages/opencode/script/build-node.ts

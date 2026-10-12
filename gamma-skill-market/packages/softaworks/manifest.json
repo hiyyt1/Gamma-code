@@ -1,0 +1,278 @@
+{
+  "id": "softaworks",
+  "name": "Softaworks Agent Toolkit",
+  "source": "https://github.com/softaworks/agent-toolkit",
+  "author": "softaworks",
+  "category": "automation",
+  "description": "Инструментарий для повседневной работы с агентом.",
+  "revision": "3027f20f3181758385a1bb8c022d4041dfb4de84",
+  "license": "MIT",
+  "skills": [
+    {
+      "name": "agent-md-refactor",
+      "description": "Refactor bloated AGENTS.md, CLAUDE.md, or similar agent instruction files to follow progressive disclosure principles. Splits monolithic files into organized, linked documentation.",
+      "path": "skills/agent-md-refactor/SKILL.md",
+      "sha256": "f20e68b59875ba43cd2680519cf5e77f6c55b51330b927394291f8f11478c21e"
+    },
+    {
+      "name": "backend-to-frontend-handoff-docs",
+      "description": "Create API handoff documentation for frontend developers. Use when backend work is complete and needs to be documented for frontend integration, or user says 'create handoff', 'document API', 'frontend handoff', or 'API documentation'.",
+      "path": "skills/backend-to-frontend-handoff-docs/SKILL.md",
+      "sha256": "b77b4b7d6c65d00f2fb38adf37eb7115c37c90802226faa2b2a77a8a6ece9e44"
+    },
+    {
+      "name": "c4-architecture",
+      "description": "Generate architecture documentation using C4 model Mermaid diagrams. Use when asked to create architecture diagrams, document system architecture, visualize software structure, create C4 diagrams, or generate context/container/component/deployment diagrams. Triggers include \"architecture diagram\", \"C4 diagram\", \"system context\", \"container diagram\", \"component diagram\", \"deployment diagram\", \"document architecture\", \"visualize architecture\".",
+      "path": "skills/c4-architecture/SKILL.md",
+      "sha256": "e27b4bac48f6da02183013f5ae8e35573774d96a3c5bf1ca24870a045135d1a6"
+    },
+    {
+      "name": "codex",
+      "description": "Use when the user asks to run Codex CLI (codex exec, codex resume) or references OpenAI Codex for code analysis, refactoring, or automated editing. Uses GPT-5.2 by default for state-of-the-art software engineering.",
+      "path": "skills/codex/SKILL.md",
+      "sha256": "78b3fcf4dfead4904fb25bed91e5560fe81adea806b1144186d544565be75e5c"
+    },
+    {
+      "name": "command-creator",
+      "description": "This skill should be used when creating a Claude Code slash command. Use when users ask to \"create a command\", \"make a slash command\", \"add a command\", or want to document a workflow as a reusable command. Essential for creating optimized, agent-executable slash commands with proper structure and best practices.",
+      "path": "skills/command-creator/SKILL.md",
+      "sha256": "250a46ebe34c22746c3f67f1f67be1627bcf9da3ccb470e080a6d33b551a4351"
+    },
+    {
+      "name": "commit-work",
+      "description": "Create high-quality git commits: review/stage intended changes, split into logical commits, and write clear commit messages (including Conventional Commits). Use when the user asks to commit, craft a commit message, stage changes, or split work into multiple commits.",
+      "path": "skills/commit-work/SKILL.md",
+      "sha256": "888588ea81b0b2c672e625ad9c49f6f3c69b4c2081962a9d7640a1ef24e105d8"
+    },
+    {
+      "name": "crafting-effective-readmes",
+      "description": "Use when writing or improving README files. Not all READMEs are the same — provides templates and guidance matched to your audience and project type.",
+      "path": "skills/crafting-effective-readmes/SKILL.md",
+      "sha256": "638b271fdc148249ed8896dbdcf15f9067a8d64ba7d2d82ec3e86f8d82831b51"
+    },
+    {
+      "name": "daily-meeting-update",
+      "description": "Interactive daily standup/meeting update generator. Use when user says 'daily', 'standup', 'scrum update', 'status update', 'what did I do yesterday', 'prepare for meeting', 'morning update', or 'team sync'. Pulls activity from GitHub, Jira, and Claude Code session history. Conducts 4-question interview (yesterday, today, blockers, discussion topics) and generates formatted Markdown update.",
+      "path": "skills/daily-meeting-update/SKILL.md",
+      "sha256": "153c2d8ddee3fd3b1c92143c829d9bf1e0456a70ded8258a2000807f85a09a05"
+    },
+    {
+      "name": "database-schema-designer",
+      "description": "Design robust, scalable database schemas for SQL and NoSQL databases. Provides normalization guidelines, indexing strategies, migration patterns, constraint design, and performance optimization. Ensures data integrity, query performance, and maintainable data models.",
+      "path": "skills/database-schema-designer/SKILL.md",
+      "sha256": "e485710c0bd15e047e31aa70689bae05e8f70561f0672005c01a38447ba0781b"
+    },
+    {
+      "name": "datadog-cli",
+      "description": "Datadog CLI for searching logs, querying metrics, tracing requests, and managing dashboards. Use this when debugging production issues or working with Datadog observability.",
+      "path": "skills/datadog-cli/SKILL.md",
+      "sha256": "d65cdb0087a704344efa2985a2ee8c698c1f6c8ca5bfe49fdea8ef6ee22f51d8"
+    },
+    {
+      "name": "dependency-updater",
+      "description": "Smart dependency management for any language. Auto-detects project type, applies safe updates automatically, prompts for major versions, diagnoses and fixes dependency issues.",
+      "path": "skills/dependency-updater/SKILL.md",
+      "sha256": "e3a63ca4bbf78d97d79d5a0dc30b7634974190479ee1e0d8a5280fce4001759f"
+    },
+    {
+      "name": "design-system-starter",
+      "description": "Create and evolve design systems with design tokens, component architecture, accessibility guidelines, and documentation templates. Ensures consistent, scalable, and accessible UI across products.",
+      "path": "skills/design-system-starter/SKILL.md",
+      "sha256": "f5efbd8477895d0f995359a6236029e8ec26ad90f8040fbc3cf98cf4aa8d3170"
+    },
+    {
+      "name": "difficult-workplace-conversations",
+      "description": "Structured approach to workplace conflicts, performance discussions, and challenging feedback using preparation-delivery-followup framework. Use when preparing for tough conversations, addressing conflicts, giving critical feedback, or navigating sensitive workplace discussions.",
+      "path": "skills/difficult-workplace-conversations/SKILL.md",
+      "sha256": "99dd7bca21e44da203b20e5a28da08a8dd0dbb90b73bcf55e3d341a1b6d7205f"
+    },
+    {
+      "name": "domain-name-brainstormer",
+      "description": "Generates creative domain name ideas for your project and checks availability across multiple TLDs (.com, .io, .dev, .ai, etc.). Saves hours of brainstorming and manual checking.",
+      "path": "skills/domain-name-brainstormer/SKILL.md",
+      "sha256": "495707739b354f81d1e28c6188dd55b97fdf5c64ae3e3c182ba6f092b2ab782b"
+    },
+    {
+      "name": "draw-io",
+      "description": "draw.io diagram creation, editing, and review. Use for .drawio XML editing, PNG conversion, layout adjustment, and AWS icon usage.",
+      "path": "skills/draw-io/SKILL.md",
+      "sha256": "fb23a8baa3a3166cccdb92e306233d15979f42d21fd6e6fac7840932692ab87a"
+    },
+    {
+      "name": "excalidraw",
+      "description": "Use when working with *.excalidraw or *.excalidraw.json files, user mentions diagrams/flowcharts, or requests architecture visualization - delegates all Excalidraw operations to subagents to prevent context exhaustion from verbose JSON (single files: 4k-22k tokens, can exceed read limits)",
+      "path": "skills/excalidraw/SKILL.md",
+      "sha256": "561c01a2b0c7587021e665645209bf316342ef370dee994a4be2a0b2c84e6d99"
+    },
+    {
+      "name": "feedback-mastery",
+      "description": "Navigate difficult conversations and deliver constructive feedback using structured frameworks. Covers the Preparation-Delivery-Follow-up model and Situation-Behavior-Impact (SBI) feedback technique. Use when preparing for difficult conversations, giving feedback, or managing conflicts.",
+      "path": "skills/feedback-mastery/SKILL.md",
+      "sha256": "d0ee923acf5ef526daceb0002084ae9478c8ab4def4661d63df4bb153b57eb9c"
+    },
+    {
+      "name": "frontend-to-backend-requirements",
+      "description": "Document frontend data needs for backend developers. Use when frontend needs to communicate API requirements to backend, or user says 'backend requirements', 'what data do I need', 'API requirements', or is describing data needs for a UI.",
+      "path": "skills/frontend-to-backend-requirements/SKILL.md",
+      "sha256": "d29acfeac522b3d6cf396a4ecce85803d08ed62b97c92b61055b4d5499c1e150"
+    },
+    {
+      "name": "game-changing-features",
+      "description": "Find 10x product opportunities and high-leverage improvements. Use when user wants strategic product thinking, mentions '10x', wants to find high-impact features, or says 'what would make this 10x better', 'product strategy', or 'what should we build next'.",
+      "path": "skills/game-changing-features/SKILL.md",
+      "sha256": "b700ff1d5ba94ba688600f01e866caf1a122db7386cf38f3405bd04660ea9df4"
+    },
+    {
+      "name": "gemini",
+      "description": "Use when the user asks to run Gemini CLI for code review, plan review, or big context (>200k) processing. Ideal for comprehensive analysis requiring large context windows. Uses Gemini 3 Pro by default for state-of-the-art reasoning and coding.",
+      "path": "skills/gemini/SKILL.md",
+      "sha256": "bc9c52aafed25734bbfec03c007f4f85cda960a5874ba0f49a16be02ffc1aae9"
+    },
+    {
+      "name": "gepetto",
+      "description": "Creates detailed, sectionized implementation plans through research, stakeholder interviews, and multi-LLM review. Use when planning features that need thorough pre-implementation analysis.",
+      "path": "skills/gepetto/SKILL.md",
+      "sha256": "6a52b8850ecb3c2c2b7c6070f75de6d38010dacbb0748289c9e87cf7c9c21dde"
+    },
+    {
+      "name": "humanizer",
+      "description": "Remove signs of AI-generated writing from text. Use when editing or reviewing\ntext to make it sound more natural and human-written. Based on Wikipedia's\ncomprehensive \"Signs of AI writing\" guide. Detects and fixes patterns including:\ninflated symbolism, promotional language, superficial -ing analyses, vague\nattributions, em dash overuse, rule of three, AI vocabulary words, negative\nparallelisms, and excessive conjunctive phrases.\n\nCredits: Original skill by @blader - https://github.com/blader/humanizer\n",
+      "path": "skills/humanizer/SKILL.md",
+      "sha256": "6688e4e292ab4f235e2a27f5193a7d048657c74b26ed6000398ee3371c9c3a4b"
+    },
+    {
+      "name": "jira",
+      "description": "Use when the user mentions Jira issues (e.g., \"PROJ-123\"), asks about tickets, wants to create/view/update issues, check sprint status, or manage their Jira workflow. Triggers on keywords like \"jira\", \"issue\", \"ticket\", \"sprint\", \"backlog\", or issue key patterns.",
+      "path": "skills/jira/SKILL.md",
+      "sha256": "80cd136d92343b002c2cb2e25c1aefe665c8c6b8241c46dfd66f39da3bb97430"
+    },
+    {
+      "name": "lesson-learned",
+      "description": "Analyze recent code changes via git history and extract software engineering lessons. Use when the user asks 'what is the lesson here?', 'what can I learn from this?', 'engineering takeaway', 'what did I just learn?', 'reflect on this code', or wants to extract principles from recent work.",
+      "path": "skills/lesson-learned/SKILL.md",
+      "sha256": "f2ee51f30ea8c2f15f961eac7d403945c0db5af042c1dc56c0d3b6a6561b9894"
+    },
+    {
+      "name": "marp-slide",
+      "description": "Create professional Marp presentation slides with 7 beautiful themes (default, minimal, colorful, dark, gradient, tech, business). Use when users request slide creation, presentations, or Marp documents. Supports custom themes, image layouts, and \"make it look good\" requests with automatic quality improvements.",
+      "path": "skills/marp-slide/SKILL.md",
+      "sha256": "4244be1fd746625cca59d9d04736357c587b270d8840f750b6ac9894886cf2aa"
+    },
+    {
+      "name": "meme-factory",
+      "description": "Generate memes using the memegen.link API. Use when users request memes, want to add humor to content, or need visual aids for social media. Supports 100+ popular templates with custom text and styling.",
+      "path": "skills/meme-factory/SKILL.md",
+      "sha256": "93244397e6ff47a2833a76b86d21a409b4d0aef076f2607edd65a63065777364"
+    },
+    {
+      "name": "mermaid-diagrams",
+      "description": "Comprehensive guide for creating software diagrams using Mermaid syntax. Use when users need to create, visualize, or document software through diagrams including class diagrams (domain modeling, object-oriented design), sequence diagrams (application flows, API interactions, code execution), flowcharts (processes, algorithms, user journeys), entity relationship diagrams (database schemas), C4 architecture diagrams (system context, containers, components), state diagrams, git graphs, pie charts, gantt charts, or any other diagram type. Triggers include requests to \"diagram\", \"visualize\", \"model\", \"map out\", \"show the flow\", or when explaining system architecture, database design, code structure, or user/application flows.",
+      "path": "skills/mermaid-diagrams/SKILL.md",
+      "sha256": "79bca3c767a821a28aa7d83a9673010b2066afa4889923ea5946153c8967e824"
+    },
+    {
+      "name": "mui",
+      "description": "Material-UI v7 component library patterns including sx prop styling, theme integration, responsive design, and MUI-specific hooks. Use when working with MUI components, styling with sx prop, theme customization, or MUI utilities.",
+      "path": "skills/mui/SKILL.md",
+      "sha256": "d1a9a06753be33dea0c76d339526217017ee6f78160145d5db666bd804efaaa4"
+    },
+    {
+      "name": "naming-analyzer",
+      "description": "Suggest better variable, function, and class names based on context and conventions.",
+      "path": "skills/naming-analyzer/SKILL.md",
+      "sha256": "6c4ce79fd17a804a29f72d59bbc0379a7d4b0528b9605c781952cecbddd967b6"
+    },
+    {
+      "name": "openapi-to-typescript",
+      "description": "Converts OpenAPI 3.0 JSON/YAML to TypeScript interfaces and type guards. This skill should be used when the user asks to generate types from OpenAPI, convert schema to TS, create API interfaces, or generate TypeScript types from an API specification.",
+      "path": "skills/openapi-to-typescript/SKILL.md",
+      "sha256": "a27383fcaea896bed2f1c017158055b7ef8a8e5f81797c61947eea770c622a39"
+    },
+    {
+      "name": "perplexity",
+      "description": "Web search and research using Perplexity AI. Use when user says \"search\", \"find\", \"look up\", \"ask\", \"research\", or \"what's the latest\" for generic queries. NOT for library/framework docs (use Context7) or workspace questions.",
+      "path": "skills/perplexity/SKILL.md",
+      "sha256": "e7c8c405d1ee8cec6e06efd5fe4ca9a2dccbf6318728fe3dacdb0cd2f9470b89"
+    },
+    {
+      "name": "plugin-forge",
+      "description": "Create and manage Claude Code plugins with proper structure, manifests, and marketplace integration. Use when creating plugins for a marketplace, adding plugin components (commands, agents, hooks), bumping plugin versions, or working with plugin.json/marketplace.json manifests.",
+      "path": "skills/plugin-forge/SKILL.md",
+      "sha256": "8179b93434f814607d2a028631e105fe46a3d7ba488c64fa70c8cb01cfc84104"
+    },
+    {
+      "name": "professional-communication",
+      "description": "Guide technical communication for software developers. Covers email structure, team messaging etiquette, meeting agendas, and adapting messages for technical vs non-technical audiences. Use when drafting professional messages, preparing meeting communications, or improving written communication.",
+      "path": "skills/professional-communication/SKILL.md",
+      "sha256": "05ad4e12e2314cbc80b019eb21e0a8cf9250298839010c916827eae74af0d515"
+    },
+    {
+      "name": "qa-test-planner",
+      "description": "Generate comprehensive test plans, manual test cases, regression test suites, and bug reports for QA engineers. Includes Figma MCP integration for design validation.",
+      "path": "skills/qa-test-planner/SKILL.md",
+      "sha256": "64adcbcf148712c6a67e9f05c5cee91b81e65da2f6ee458775c593fb0f5b657c"
+    },
+    {
+      "name": "react-dev",
+      "description": "This skill should be used when building React components with TypeScript, typing hooks, handling events, or when React TypeScript, React 19, Server Components are mentioned. Covers type-safe patterns for React 18-19 including generic components, proper event typing, and routing integration (TanStack Router, React Router).",
+      "path": "skills/react-dev/SKILL.md",
+      "sha256": "ce738985cbff5079c560709e534b5c93bbdff9bbb638e7569654521de39db0e5"
+    },
+    {
+      "name": "react-useeffect",
+      "description": "React useEffect best practices from official docs. Use when writing/reviewing useEffect, useState for derived values, data fetching, or state synchronization. Teaches when NOT to use Effect and better alternatives.",
+      "path": "skills/react-useeffect/SKILL.md",
+      "sha256": "f31e9925d6bb22e78b661152f857c7a28664b9fa97b803cd0fd0ef6afeb3111b"
+    },
+    {
+      "name": "reducing-entropy",
+      "description": "Manual-only skill for minimizing total codebase size. Only activate when explicitly requested by user. Measures success by final code amount, not effort. Bias toward deletion.",
+      "path": "skills/reducing-entropy/SKILL.md",
+      "sha256": "50958820599ab873eda7c8dca4949a01cb1026f845e6a09d3c448f2a7b95d1bb"
+    },
+    {
+      "name": "requirements-clarity",
+      "description": "Clarify ambiguous requirements through focused dialogue before implementation. Use when requirements are unclear, features are complex (>2 days), or involve cross-team coordination. Ask two core questions - Why? (YAGNI check) and Simpler? (KISS check) - to ensure clarity before coding.",
+      "path": "skills/requirements-clarity/SKILL.md",
+      "sha256": "c554f7779a6e8ba4f89c8f7b79738d2825aa39c64d2b5dcc36006534ef564924"
+    },
+    {
+      "name": "session-handoff",
+      "description": "Creates comprehensive handoff documents for seamless AI agent session transfers. Triggered when: (1) user requests handoff/memory/context save, (2) context window approaches capacity, (3) major task milestone completed, (4) work session ending, (5) user says 'save state', 'create handoff', 'I need to pause', 'context is getting full', (6) resuming work with 'load handoff', 'resume from', 'continue where we left off'. Proactively suggests handoffs after substantial work (multiple file edits, complex debugging, architecture decisions). Solves long-running agent context exhaustion by enabling fresh agents to continue with zero ambiguity.",
+      "path": "skills/session-handoff/SKILL.md",
+      "sha256": "8964e1b846170ac9cdbaa4c3c510e3493e08917620761cbb492c46d8d3567e64"
+    },
+    {
+      "name": "ship-learn-next",
+      "description": "Transform learning content (like YouTube transcripts, articles, tutorials) into actionable implementation plans using the Ship-Learn-Next framework. Use when user wants to turn advice, lessons, or educational content into concrete action steps, reps, or a learning quest.",
+      "path": "skills/ship-learn-next/SKILL.md",
+      "sha256": "503b2265e8d97ab8c52fe49c9ac5819653da31577e991e15c470c9a05cbd07f2"
+    },
+    {
+      "name": "skill-judge",
+      "description": "Evaluate Agent Skill design quality against official specifications and best practices. Use when reviewing, auditing, or improving SKILL.md files and skill packages. Provides multi-dimensional scoring and actionable improvement suggestions.",
+      "path": "skills/skill-judge/SKILL.md",
+      "sha256": "737ef3628f0e11353114c3bd05a1c9d0c448dbfec1ae85db839253cbe93198b6"
+    },
+    {
+      "name": "web-to-markdown",
+      "description": "Use ONLY when the user explicitly says: 'use the skill web-to-markdown ...' (or 'use a skill web-to-markdown ...'). Converts webpage URLs to clean Markdown by calling the local web2md CLI (Puppeteer + Readability), suitable for JS-rendered pages.",
+      "path": "skills/web-to-markdown/SKILL.md",
+      "sha256": "9c61df95ffd1004a3c1c70ded8bdfac6012ecb78153eafe07894394582f56c93"
+    },
+    {
+      "name": "writing-clearly-and-concisely",
+      "description": "Use when writing prose humans will read—documentation, commit messages, error messages, explanations, reports, or UI text. Applies Strunk's timeless rules for clearer, stronger, more professional writing.",
+      "path": "skills/writing-clearly-and-concisely/SKILL.md",
+      "sha256": "c5f4ecc8bfa7984d0df70d30cea3bfeb824f7b24d31db111d5a1a9a959880575"
+    }
+  ],
+  "dependencies": [
+    "Codex/Gemini CLI; Datadog/Jira credentials для соответствующих навыков",
+    "Дополнительные Python/Node-зависимости скриптов не установлены"
+  ],
+  "compatibility": "needs-adaptation",
+  "reason": "Исходные skills дублируются в dist/plugins. Часть инструкций требует Codex, Gemini, Datadog/Jira и Claude plugin/commands. Полный пакет не готов для Gamma.",
+  "enabledByDefault": false,
+  "runtimes": []
+}

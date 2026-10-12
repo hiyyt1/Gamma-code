@@ -1,0 +1,14 @@
+{
+  "source": {
+    "id": "composio",
+    "revision": "5076f6673e5bf8b1f46dc5e934d1e3dd37250e10",
+    "source": "https://github.com/composio-community/opencode-skills",
+    "license": null,
+    "archiveSha256": "d89af7d39f7083760ae700b3176c0cdb04e34a0b88e664fd23dd4dc7c2549fc5",
+    "rejected": []
+  },
+  "discoveredFiles": 27,
+  "invalidFrontmatter": [],
+  "duplicateNames": [],
+  "findings": []
+}

@@ -113,11 +113,18 @@ describe("AgentV2", () => {
         ),
       )
 
-      const agents = yield* agent.all()
+      const available = yield* agent.all()
+      expect(available.some((item) => item.id === "gamma-1c-developer")).toBe(true)
+      const agents = available.filter((item) => !item.id.startsWith("gamma-") || item.id === "gamma-guide")
+      expect((yield* agent.default())?.id).toBe(AgentV2.ID.make("gamma"))
+      expect((yield* agent.select()).id).toBe(AgentV2.ID.make("gamma"))
+      expect((yield* agent.select("build")).id).toBe(AgentV2.ID.make("build"))
       expect(agents.map((item) => String(item.id)).sort()).toEqual([
         "build",
         "compaction",
         "explore",
+        "gamma",
+        "gamma-guide",
         "general",
         "plan",
         "summary",

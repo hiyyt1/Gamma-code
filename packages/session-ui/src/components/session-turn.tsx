@@ -7,6 +7,7 @@ import {
 import type { FileDiffInfo } from "@opencode-ai/client/promise"
 import type { SessionStatus } from "@opencode-ai/sdk/v2"
 import { useData } from "../context"
+import { responsePhase } from "./response-phase"
 import { useFileComponent } from "@opencode-ai/ui/context/file"
 
 import { Binary } from "@opencode-ai/core/util/binary"
@@ -369,6 +370,9 @@ export function SessionTurn(
   })
   const assistantVisible = createMemo(() => assistantDerived().visible)
   const reasoningHeading = createMemo(() => assistantDerived().reason)
+  const phase = createMemo(() =>
+    responsePhase(list(data.store.part?.[assistantMessages().at(-1)?.id ?? ""], emptyParts)),
+  )
   const showThinking = createMemo(() => {
     if (!working() || !!error()) return false
     if (status().type === "retry") return false
@@ -421,7 +425,15 @@ export function SessionTurn(
               </Show>
               <Show when={showThinking()}>
                 <div data-slot="session-turn-thinking">
-                  <TextShimmer text={i18n.t("ui.sessionTurn.status.thinking")} />
+                  <TextShimmer
+                    text={i18n.t(
+                      phase() === "reasoning"
+                        ? "ui.sessionTurn.status.thinking"
+                        : phase() === "generating"
+                          ? "ui.sessionTurn.status.generating"
+                          : "ui.sessionTurn.status.waitingProvider",
+                    )}
+                  />
                   <Show when={!showReasoningSummaries()}>
                     <TextReveal
                       text={reasoningHeading()}
@@ -527,6 +539,9 @@ export function SessionTurn(
               </Show>
               <Show when={error()}>
                 <Card variant="error" class="error-card">
+                  <Show when={error()?.name === "APIError"}>
+                    <div>{i18n.t("ui.sessionTurn.error.provider")}</div>
+                  </Show>
                   {errorText()}
                 </Card>
               </Show>

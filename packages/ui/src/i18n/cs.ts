@@ -202,4 +202,8 @@ export const dict: Record<string, string> = {
   "ui.question.multiHint": "Vyberte všechny platné odpovědi",
   "ui.question.singleHint": "Vyberte jednu odpověď",
   "ui.question.custom.placeholder": "Napište svou odpověď...",
+  // Explicit English fallback pending locale review.
+  "ui.sessionTurn.status.waitingProvider": "Waiting for provider",
+  "ui.sessionTurn.status.generating": "Model is generating a response",
+  "ui.sessionTurn.error.provider": "Provider error. You can send your message again.",
 }

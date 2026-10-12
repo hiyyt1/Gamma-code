@@ -195,4 +195,8 @@ export const dict = {
   "ui.question.multiHint": "သက်ဆိုင်သည့် အဖြေအားလုံးကို ရွေးပါ။",
   "ui.question.singleHint": "အဖြေတစ်ခု ရွေးပါ။",
   "ui.question.custom.placeholder": "သင့်အဖြေကို ရိုက်ထည့်ပါ...",
+  // Explicit English fallback pending locale review.
+  "ui.sessionTurn.status.waitingProvider": "Waiting for provider",
+  "ui.sessionTurn.status.generating": "Model is generating a response",
+  "ui.sessionTurn.error.provider": "Provider error. You can send your message again.",
 }

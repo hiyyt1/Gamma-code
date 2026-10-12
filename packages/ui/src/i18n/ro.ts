@@ -198,4 +198,8 @@ export const dict: Record<string, string> = {
   "ui.question.multiHint": "Selectează toate răspunsurile corecte",
   "ui.question.singleHint": "Selectează un răspuns",
   "ui.question.custom.placeholder": "Scrie răspunsul...",
+  // Explicit English fallback pending locale review.
+  "ui.sessionTurn.status.waitingProvider": "Waiting for provider",
+  "ui.sessionTurn.status.generating": "Model is generating a response",
+  "ui.sessionTurn.error.provider": "Provider error. You can send your message again.",
 }

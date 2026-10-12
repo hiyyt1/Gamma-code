@@ -1,0 +1,464 @@
+{
+  "id": "open-hax",
+  "name": "Open-Hax Skills",
+  "source": "https://github.com/open-hax/opencode-skills",
+  "author": "open-hax",
+  "category": "automation",
+  "description": "Навыки и автоматизация для OpenCode.",
+  "revision": "d91bad1eda762044c6416d31f93bc7566b530043",
+  "license": "MIT",
+  "skills": [
+    {
+      "name": "agile-proces",
+      "description": "This skill guides agents and developers through the Kanban workflow defined in `orgs/riatzukiza/promethean/docs/agile/process.md`.",
+      "path": ".opencode/skills/agile-process/SKILL.md",
+      "sha256": "05fc3cd997724cb4514fffb1bf16a2c927af4ad72928054eb59011190a998e49"
+    },
+    {
+      "name": "apology-action-protocol",
+      "description": "Protocol to stop apology loops and focus on verified fixes.",
+      "path": ".opencode/skills/apology-action-protocol/SKILL.md",
+      "sha256": "4a6b463e4d9d50ef697a489be278e1b1e56497994ea35f3cf3f47f89ab64107d"
+    },
+    {
+      "name": "break-edit-loop",
+      "description": "Protocol to break out of repetitive, failing edit loops by forcing analysis over action.",
+      "path": ".opencode/skills/break-edit-loop/SKILL.md",
+      "sha256": "15a1c768edbd7edb029f54bc901fcb120ba87246f54c1b0e2ee3d529f5b2c7f3"
+    },
+    {
+      "name": "clojure-namespace-architect",
+      "description": "Resolves Clojure namespace-path mismatches and classpath errors with definitive path conversion",
+      "path": ".opencode/skills/clojure-namespace-architect/SKILL.md",
+      "sha256": "1b8cb5b0224a6b8e014b462bfa55af36083d2dc046b1eb86d4ff249dc42ab387"
+    },
+    {
+      "name": "clojure-quality",
+      "description": "Auto-fix Clojure delimiters and validate syntax with OpenCode tools.",
+      "path": ".opencode/skills/clojure-quality/SKILL.md",
+      "sha256": "6699d037c76f308fe49ba539ead963000bcb85fa6256a9b93cfca19441180cf5"
+    },
+    {
+      "name": "clojure-syntax-rescue",
+      "description": "Protocol to recover from Clojure/Script syntax errors, specifically bracket mismatches and EOF errors.",
+      "path": ".opencode/skills/clojure-syntax-rescue/SKILL.md",
+      "sha256": "91579bdb180d9054aab5239c1f7f8f6954993445177a32299c53350b65366461"
+    },
+    {
+      "name": "create-pm2-clj-config",
+      "description": "Create new pm2-clj ecosystem configuration files from scratch or templates for PM2 process management",
+      "path": ".opencode/skills/create-pm2-clj-config/SKILL.md",
+      "sha256": "a1dacb21b99970961930bbd217ff5a8862bacd27809d80be7a6898122796c68f"
+    },
+    {
+      "name": "create-pm2-ecosystem",
+      "description": "Create new PM2 ecosystem configuration files for the clobber-based system with proper defapp definitions",
+      "path": ".opencode/skills/create-pm2-ecosystem/SKILL.md",
+      "sha256": "f72a3db753e591f3e1951a51058bf4f05174f19e9ef20d3b085ea593dc5e3e48"
+    },
+    {
+      "name": "devsecops-free-auth",
+      "description": "Find free authentication, authorization, and identity services for DevSecOps applications",
+      "path": ".opencode/skills/devsecops-free-auth/SKILL.md",
+      "sha256": "ca722ce390bcf0278244cd3100a22c652ee2465785441e2fce475b2dd0da3168"
+    },
+    {
+      "name": "devsecops-free-cicd",
+      "description": "Find free CI/CD pipelines, build systems, and artifact repositories for DevSecOps workflows",
+      "path": ".opencode/skills/devsecops-free-cicd/SKILL.md",
+      "sha256": "62c8aab00dcc9244bd343ba10354b63253d52e4c5a441fce7135d3531f6f6391"
+    },
+    {
+      "name": "devsecops-free-cloud",
+      "description": "Discover free IaaS/PaaS compute, storage, and networking from major cloud providers",
+      "path": ".opencode/skills/devsecops-free-cloud/SKILL.md",
+      "sha256": "7de63dcd0a753f1f2430a2f473cb2fbf06a3100cc17aa55f5650bd6373303272"
+    },
+    {
+      "name": "devsecops-free-discovery",
+      "description": "Orchestrates discovery of free DevSecOps infrastructure from ripienaar/free-for-dev and other sources",
+      "path": ".opencode/skills/devsecops-free-discovery/SKILL.md",
+      "sha256": "f1d510d9b1a047af21cde38f24cb10f6f647f669b4fdf0ea2aae9af84577194e"
+    },
+    {
+      "name": "devsecops-free-dns",
+      "description": "Find free DNS, CDN, SSL, and DDoS protection services for DevSecOps infrastructure",
+      "path": ".opencode/skills/devsecops-free-dns/SKILL.md",
+      "sha256": "5bcbaa5f2b10ed2b152de74fa31bf8b13a3a1e80e82ff8d5f95ee4097674f527"
+    },
+    {
+      "name": "devsecops-free-monitoring",
+      "description": "Find free monitoring, logging, APM, and observability tools for DevSecOps",
+      "path": ".opencode/skills/devsecops-free-monitoring/SKILL.md",
+      "sha256": "4d26dea2d8a41b8ba0b9b47066355cecb03722a8bbf07b19067d579164fa5fba"
+    },
+    {
+      "name": "devsecops-free-security",
+      "description": "Find free security tools: vulnerability scanners, SAST/DAST, secrets management, and PKI",
+      "path": ".opencode/skills/devsecops-free-security/SKILL.md",
+      "sha256": "afc02505f565ceb482522e0952f2d9b15cc26694fde7bae4acb12b05a584500c"
+    },
+    {
+      "name": "devsecops-free-storage",
+      "description": "Find free object storage, databases, and file hosting for DevSecOps infrastructure",
+      "path": ".opencode/skills/devsecops-free-storage/SKILL.md",
+      "sha256": "074c9098111c12f4f5d63a684b2f3a706c97aca2680c2a63abd0db5abdef4aef"
+    },
+    {
+      "name": "docker-compose-control",
+      "description": "Start, stop, restart, inspect, and follow logs for Docker Compose-managed local stacks",
+      "path": ".opencode/skills/docker-compose-control/SKILL.md",
+      "sha256": "511d7d2a5d70e79f69d06fdeacd8b18ef6827a4a25ae3394e29dc755eb79013c"
+    },
+    {
+      "name": "emergency-confusion-reset",
+      "description": "Protocol for agents to recover when confused, hallucinating tools, or stuck in unproductive loops.",
+      "path": ".opencode/skills/emergency-confusion-reset/SKILL.md",
+      "sha256": "eab4a338a588153ceaed370bfce8fa70e586d62b6951c1ce2e915f4979bd57dd"
+    },
+    {
+      "name": "find-skills",
+      "description": "Helps users discover and install agent skills when they ask questions like 'how do I do X', 'find a skill for X', 'is there a skill that can...', or express interest in extending capabilities",
+      "path": ".opencode/skills/find-skills/SKILL.md",
+      "sha256": "b9c6b42a848da91d542bd82c658153769f5894c4474085ac0e9e40b1b3b132ff"
+    },
+    {
+      "name": "giga-workflow",
+      "description": "Execute Giga system operations for workspace automation, including watching changes, running submodule tests, and propagating commits",
+      "path": ".opencode/skills/giga-workflow/SKILL.md",
+      "sha256": "fe1ea2b628d746e3b375072bdefb86f288d1a88c1d878d2a424b20fa62fb27dc"
+    },
+    {
+      "name": "git-safety-check",
+      "description": "Protocol to ensure safe git operations and avoid detached HEAD or dirty commits.",
+      "path": ".opencode/skills/git-safety-check/SKILL.md",
+      "sha256": "3d29297dec89ff75c1c97812cf7331662bf426c8f6e36fbc19ecdfb5145ee12a"
+    },
+    {
+      "name": "github-integration",
+      "description": "Perform GitHub operations across all tracked repositories in orgs/**, including issue/PR management, repository synchronization, and automation workflows",
+      "path": ".opencode/skills/github-integration/SKILL.md",
+      "sha256": "a6de5bf2d90aa487d94119c054a45d8925b247a7db9c3983f128168f031c636e"
+    },
+    {
+      "name": "lint-gate",
+      "description": "Protocol to enforce zero lint/type errors before marking work done.",
+      "path": ".opencode/skills/lint-gate/SKILL.md",
+      "sha256": "11486b3b215680b5a627a824c2ae13c82dc94d23bf112bd1f5f6b406b2416d30"
+    },
+    {
+      "name": "lsp-server-integration",
+      "description": "Add and configure Language Server Protocol (LSP) servers to provide language intelligence in OpenCode",
+      "path": ".opencode/skills/lsp-server-integration/SKILL.md",
+      "sha256": "b30a9fd217ebfbb97c198ac13e9a8967e77adee3c487e65372841e486511bf43"
+    },
+    {
+      "name": "mcp-server-integration",
+      "description": "Add and configure Model Context Protocol (MCP) servers with correct protocol compliance and tool registration",
+      "path": ".opencode/skills/mcp-server-integration/SKILL.md",
+      "sha256": "ce0557d28b73ad9951947ea7c683582e2b4d01fac381f3362ded388fd909b3ae"
+    },
+    {
+      "name": "nx-integration",
+      "description": "Use Nx to detect affected projects and run targets across multiple submodules in the workspace",
+      "path": ".opencode/skills/nx-integration/SKILL.md",
+      "sha256": "1b17636194f40ac79103caf3bab1dfaa87e2e45b895f48632a50035a5266e37c"
+    },
+    {
+      "name": "opencode-agent-authoring",
+      "description": "Create or update OpenCode agent guidance with clear triggers, behavior, and constraints",
+      "path": ".opencode/skills/opencode-agent-authoring/SKILL.md",
+      "sha256": "1d8725fb4a7e09d02f0f7d42143d10e5821083c73fa3e806d388727c4c7e36e4"
+    },
+    {
+      "name": "opencode-agent-file-generator",
+      "description": "Recursively initialize and update AGENTS.md files across the workspace with context-aware skill advertisements.",
+      "path": ".opencode/skills/opencode-agent-file-generator/SKILL.md",
+      "sha256": "0f5df521f42ce7c38116754916f237cfaf75cd9f7aff44604d10094cfd6b1021"
+    },
+    {
+      "name": "opencode-agents-skills",
+      "description": "Author or update agents and skills that align with OpenCode guidance and repository conventions",
+      "path": ".opencode/skills/opencode-agents-skills/SKILL.md",
+      "sha256": "d94ec086faf4b09513d140cf5cc4fec8012f4c40b69fc3f2ecf5a37a489b199c"
+    },
+    {
+      "name": "opencode-apply-reconstituted-diffs",
+      "description": "Apply reconstructed diff patches safely and validate results",
+      "path": ".opencode/skills/opencode-apply-reconstituted-diffs/SKILL.md",
+      "sha256": "b11abee396f59d5c9fe0da0aeb8dbb6cd1593fd6ae766e22378a40575b2a32f8"
+    },
+    {
+      "name": "opencode-command-authoring",
+      "description": "Create and manage OpenCode commands with valid frontmatter and predictable execution",
+      "path": ".opencode/skills/opencode-command-authoring/SKILL.md",
+      "sha256": "f8bfb5fe57ccd96ca4906b23a4647dcd34fb0b461f10cd6307e6f5fd4b3622df"
+    },
+    {
+      "name": "opencode-configs",
+      "description": "Update OpenCode configuration, rules, commands, and permissions in line with official documentation",
+      "path": ".opencode/skills/opencode-configs/SKILL.md",
+      "sha256": "e9129962c57c90eba7fda8dcbee53e2cec28aabbbb8575dfaff86646bb78592a"
+    },
+    {
+      "name": "opencode-extract-diffs",
+      "description": "Extract and normalize diff snapshots from OpenCode session artifacts",
+      "path": ".opencode/skills/opencode-extract-diffs/SKILL.md",
+      "sha256": "952ba311f4380c0aedd8d07bb76dbc4093eed586b9516d732aa5509416181084"
+    },
+    {
+      "name": "opencode-model-variant-management",
+      "description": "Add new models, providers, or model variants with correct configuration, authentication, and validation",
+      "path": ".opencode/skills/opencode-model-variant-management/SKILL.md",
+      "sha256": "9238ee34ead50ef30fac1bd5728059215728eda0c57a780aac8dca2bff2d38d6"
+    },
+    {
+      "name": "opencode-models-providers",
+      "description": "Select, validate, or update model/provider configurations with authoritative provider documentation",
+      "path": ".opencode/skills/opencode-models-providers/SKILL.md",
+      "sha256": "b2872672c134ab8108b7ca25da1d33c92dc1e6c3c8bc94956b2a898adabfedd6"
+    },
+    {
+      "name": "opencode-plugin-authoring",
+      "description": "Create or update OpenCode plugins with correct packaging, runtime behavior, and documentation",
+      "path": ".opencode/skills/opencode-plugin-authoring/SKILL.md",
+      "sha256": "78a16ce00a3003432b067a289ddc5d59eefe693b58ea1db19e12e94d1459b815"
+    },
+    {
+      "name": "opencode-plugins",
+      "description": "Build or modify OpenCode plugins with correct packaging and runtime behavior",
+      "path": ".opencode/skills/opencode-plugins/SKILL.md",
+      "sha256": "f947804db9a69dcf145e7a70bc675ba5cb52947f3df8118f5b20970ef4f82f03"
+    },
+    {
+      "name": "opencode-reconstituter",
+      "description": "Run the reconstitute CLI to index, search, and reconstruct project context from OpenCode sessions",
+      "path": ".opencode/skills/opencode-reconstituter/SKILL.md",
+      "sha256": "589e95dc44ae17d64b910734986dcbc3d981ef18ac7f8d4b80707b3502745320"
+    },
+    {
+      "name": "opencode-recover-project",
+      "description": "Recover project state using OpenCode sessions, snapshots, and reconstituter outputs",
+      "path": ".opencode/skills/opencode-recover-project/SKILL.md",
+      "sha256": "3167fcc94b2b029eb2d63a35e1888b5f9e84d35faea58e3e479ddeaec1a8e9fd"
+    },
+    {
+      "name": "opencode-review-past-sessions",
+      "description": "Review OpenCode session history to recover decisions, intent, and prior changes",
+      "path": ".opencode/skills/opencode-review-past-sessions/SKILL.md",
+      "sha256": "c994d4236a187b5e8a38cae12f930acfa88bbbca359a1b227de66d93939f0b2d"
+    },
+    {
+      "name": "opencode-sdk",
+      "description": "Implement or regenerate OpenCode SDKs safely after server or API changes",
+      "path": ".opencode/skills/opencode-sdk/SKILL.md",
+      "sha256": "3e1a056a628b8dc949649d2e1f00f4cc87468b9e1c353abe59a8ffddaf59738e"
+    },
+    {
+      "name": "opencode-semantic-find-session",
+      "description": "Find relevant OpenCode sessions using semantic search and filtering",
+      "path": ".opencode/skills/opencode-semantic-find-session/SKILL.md",
+      "sha256": "3b4d052be9b60c323ec5e5c6dd3602fe6f9fd31dee6505befe65a862a1f97f41"
+    },
+    {
+      "name": "opencode-session-search",
+      "description": "Search and index OpenCode sessions using ChromaDB vector embeddings for semantic similarity retrieval and conversation reconstitute workflows",
+      "path": ".opencode/skills/opencode-session-search/SKILL.md",
+      "sha256": "a790eff249b2c49736f51f8f283fea37cdfd880e202494c31ae8e0898eeb59f6"
+    },
+    {
+      "name": "opencode-skill-creation",
+      "description": "Create new OpenCode skills that validate, load reliably, and follow repository conventions",
+      "path": ".opencode/skills/opencode-skill-creation/SKILL.md",
+      "sha256": "f569d130a6b211301360cbbff1549d7a9d9311815c90a7c053c96a14358f6af5"
+    },
+    {
+      "name": "opencode-tool-authoring",
+      "description": "Design and implement OpenCode tools with correct schemas, execution behavior, and documentation",
+      "path": ".opencode/skills/opencode-tool-authoring/SKILL.md",
+      "sha256": "59c7c3c6428a3b29dd7a19f1efdf88da1a935483cd4434ab02127e66a4384f7f"
+    },
+    {
+      "name": "opencode-tools-mcp",
+      "description": "Implement or adjust OpenCode tools, MCP servers, and ACP integrations with correct protocols",
+      "path": ".opencode/skills/opencode-tools-mcp/SKILL.md",
+      "sha256": "77181707c0ac1260042ce599e679ed461f4b243fb6ad781b912f62edd37420c5"
+    },
+    {
+      "name": "pm2-process-management",
+      "description": "Start, stop, restart, and manage PM2 processes using the ecosystem-based configuration system",
+      "path": ".opencode/skills/pm2-process-management/SKILL.md",
+      "sha256": "f2529b7775ce9e4fd34c325f8457a5c9d6c524129e7e033d71fa99d58680bb94"
+    },
+    {
+      "name": "pm2-server-control",
+      "description": "Start and stop a server with pm2 using `pm2 start ./my-server --name <name> --no-autorestart`, plus common supporting commands for status, logs, restart, and cleanup",
+      "path": ".opencode/skills/pm2-server-control/SKILL.md",
+      "sha256": "16fd069a1506a937c723d7bff9719a0ca9da33980aec6601c22de99c52812e83"
+    },
+    {
+      "name": "release-watcher",
+      "description": "Monitor upstream releases for OpenAI codex and SST opencode repositories, detect changes, and create GitHub issues for release impact analysis",
+      "path": ".opencode/skills/release-watcher/SKILL.md",
+      "sha256": "a0aeaae5aad4a4a44ef17ddf1ee82e939b80ab96bfb4d4fd06fcbe4a5ff181fe"
+    },
+    {
+      "name": "render-pm2-clj-config",
+      "description": "Render pm2-clj ecosystem files to JSON for validation and debugging without starting processes",
+      "path": ".opencode/skills/render-pm2-clj-config/SKILL.md",
+      "sha256": "240dd705f7834a56b41ce369f979a37cf7d41bbd72230b0389278fcca011081b"
+    },
+    {
+      "name": "shadow-cljs-debug",
+      "description": "Protocol to debug and fix shadow-cljs compilation errors.",
+      "path": ".opencode/skills/shadow-cljs-debug/SKILL.md",
+      "sha256": "4f50ba635c78bfc802a512e9b056e462c67538f306a3c167ddb8142b41559220"
+    },
+    {
+      "name": "skill-authoring",
+      "description": "Create or revise skills so they are reusable, scoped, and load correctly in OpenCode and Codex",
+      "path": ".opencode/skills/skill-authoring/SKILL.md",
+      "sha256": "0b51514ee818c614d3368b4c570c49a0f8e0cb43bf33adaf265d02bd384b1c17"
+    },
+    {
+      "name": "skill-optimizing",
+      "description": "Improve existing or new skills using the workspace optimization guide and template checks for clarity, scope, and reliability",
+      "path": ".opencode/skills/skill-optimizing/SKILL.md",
+      "sha256": "920e70c037ea2fbc39da41b63240d53868935faf286663aec6d777591616ab9e"
+    },
+    {
+      "name": "submodule-ops",
+      "description": "Make safe, consistent changes in a workspace with many git submodules under orgs/**",
+      "path": ".opencode/skills/submodule-ops/SKILL.md",
+      "sha256": "65654f941c74008fa6f1998297eb12fe7c1bf24aaf4da9574c3105d93c883415"
+    },
+    {
+      "name": "task-atomicity-guard",
+      "description": "Protocol to keep work atomic and prevent scope creep.",
+      "path": ".opencode/skills/task-atomicity-guard/SKILL.md",
+      "sha256": "d42014ebbd4b5313fac44bedde001c3835bfe0b033606592c02d4403ad8829ee"
+    },
+    {
+      "name": "test-preservation",
+      "description": "Protocol to forbid deleting or skipping tests to make builds pass.",
+      "path": ".opencode/skills/test-preservation/SKILL.md",
+      "sha256": "650aa6463b76311e4bb00a6f3a74b368f13e65844a401535d745b7354c3b39d5"
+    },
+    {
+      "name": "testing-bun",
+      "description": "Set up and write tests using Bun's built-in test runner for maximum performance and TypeScript support",
+      "path": ".opencode/skills/testing-bun/SKILL.md",
+      "sha256": "2cb5397a74cf674012b6493bfbe0d69ac36615d113efb4bb161f34d22288e0cd"
+    },
+    {
+      "name": "testing-clojure-cljs",
+      "description": "Set up and write tests for Clojure and ClojureScript projects using cljs.test, cljs-init-tests, and shadow-cljs",
+      "path": ".opencode/skills/testing-clojure-cljs/SKILL.md",
+      "sha256": "6353b05953a80f086114e0eac8dd162d0de24601cb38124921dd0226eb1f32b3"
+    },
+    {
+      "name": "testing-e2e",
+      "description": "Write end-to-end tests that verify complete user workflows and critical system paths across the full stack",
+      "path": ".opencode/skills/testing-e2e/SKILL.md",
+      "sha256": "4956159cd985c6767a8e23931faaea4f2d17eb2909e0f600d9bcd8445fdd7937"
+    },
+    {
+      "name": "testing-general",
+      "description": "Apply testing best practices, choose appropriate test types, and establish reliable test coverage across the codebase",
+      "path": ".opencode/skills/testing-general/SKILL.md",
+      "sha256": "435c72bd2c48cdc8044c63a65aa628287c5c2c46c4686d00b974fca722f9668d"
+    },
+    {
+      "name": "testing-integration",
+      "description": "Write integration tests that verify multiple components work together correctly with real dependencies",
+      "path": ".opencode/skills/testing-integration/SKILL.md",
+      "sha256": "90a080b08bf9998892f371f82ca7df24328e19aa17153bdd72816eca978b9f07"
+    },
+    {
+      "name": "testing-nx",
+      "description": "Configure and run tests across multiple projects using Nx affected detection for efficient workspace testing",
+      "path": ".opencode/skills/testing-nx/SKILL.md",
+      "sha256": "37d27ae0c89ec532e46e7b6b9a1ac6cf54f1531232eac12db23f47c1cac9dd58"
+    },
+    {
+      "name": "testing-typescript-ava",
+      "description": "Set up and write tests using Ava test runner for TypeScript with minimal configuration and fast execution",
+      "path": ".opencode/skills/testing-typescript-ava/SKILL.md",
+      "sha256": "02a993971c3de978d3b9c74df642a247ab4a636fd982f3cf81f0e34aa17e1a85"
+    },
+    {
+      "name": "testing-typescript-vitest",
+      "description": "Set up and write tests using Vitest for TypeScript projects with proper configuration and TypeScript support",
+      "path": ".opencode/skills/testing-typescript-vitest/SKILL.md",
+      "sha256": "a3f2f6bced34a64265b3a75722948d34041e1159dc12834f795a9f573a37c249"
+    },
+    {
+      "name": "testing-unit",
+      "description": "Write fast, focused unit tests for individual functions, classes, and modules with proper isolation and mocking",
+      "path": ".opencode/skills/testing-unit/SKILL.md",
+      "sha256": "ec322b7394ab3d0da6b558f3c2179476cca74b7e37a15da3a40d9e09d3c43fcf"
+    },
+    {
+      "name": "verify-resource-existence",
+      "description": "Protocol to verify a resource exists before creating a new one.",
+      "path": ".opencode/skills/verify-resource-existence/SKILL.md",
+      "sha256": "1c8284e792f4f572fe485d5d52817dc51c6ee9ab6df6f31509bbeb5fb0e2f1d5"
+    },
+    {
+      "name": "webring-site",
+      "description": "Research the live ussyco.de ring, build a distinct single-page site in this workspace, preview it locally, and optionally register it with an API key from the environment",
+      "path": ".opencode/skills/webring-site/SKILL.md",
+      "sha256": "93a311e8497049142c31e50cc9f2cf19dd1b2c6ccb93d0d719e24ac6f6f63972"
+    },
+    {
+      "name": "workspace-build",
+      "description": "Build all affected submodules across the workspace, including running tests for changed files, using Nx for affected project detection",
+      "path": ".opencode/skills/workspace-build/SKILL.md",
+      "sha256": "57a2d70a2c567251ab6544a37d82dc0095680e293ba5c97c2b2a84926564525d"
+    },
+    {
+      "name": "workspace-code-standards",
+      "description": "Apply workspace TypeScript and ESLint standards, including functional style and strict typing rules",
+      "path": ".opencode/skills/workspace-code-standards/SKILL.md",
+      "sha256": "d6cc38b9ccf081911e55318cfa2f596e53ff8eca4af9b13ea9b2600b1087a273"
+    },
+    {
+      "name": "workspace-commands",
+      "description": "Run common workspace-level commands for linting, typechecking, building, and utilities",
+      "path": ".opencode/skills/workspace-commands/SKILL.md",
+      "sha256": "7ffd83ca8aef1e498b0005b08f884b3effc84942ee2301870a5d640523b2123a"
+    },
+    {
+      "name": "workspace-dependency-check",
+      "description": "Protocol to diagnose pnpm workspace module resolution failures.",
+      "path": ".opencode/skills/workspace-dependency-check/SKILL.md",
+      "sha256": "2db7dcf92c2676faf9fdfa2d551d070486d4ec8f77b9d8047ffbf06f6a98e6b4"
+    },
+    {
+      "name": "workspace-lint",
+      "description": "Lint all TypeScript and markdown files across the entire workspace, including all submodules under orgs/**",
+      "path": ".opencode/skills/workspace-lint/SKILL.md",
+      "sha256": "424e66c58c30c0fb879ffa9b77d0d1be1e5461ddcafd0f1312bfc7999d0625c0"
+    },
+    {
+      "name": "workspace-navigation",
+      "description": "Locate the right repo, file, and pattern quickly in a multi-repo workspace with many submodules",
+      "path": ".opencode/skills/workspace-navigation/SKILL.md",
+      "sha256": "620e8f823ddc98e5b807ec3e5c52834a8e9db295c83c6e95fe02e580c1ec0f6d"
+    },
+    {
+      "name": "workspace-typecheck",
+      "description": "Type check all TypeScript files across the entire workspace, including all submodules under orgs/**, using strict TypeScript settings",
+      "path": ".opencode/skills/workspace-typecheck/SKILL.md",
+      "sha256": "6d5285a2718505d61a8d52f02dc480b2733ad928ce83e1b0cabadff80d9c508c"
+    }
+  ],
+  "dependencies": [
+    "Bun/Node.js; PM2, Docker, Clojure и Nx для соответствующих навыков",
+    "MCP и конфигурация конкретного workspace"
+  ],
+  "compatibility": "needs-adaptation",
+  "reason": "Часть SKILL.md не содержит пригодного frontmatter. Есть привязки к конкретному monorepo, PM2, Docker и управлению OpenCode. Нужна адаптация путей и аудит доступа к процессам.",
+  "enabledByDefault": false,
+  "runtimes": []
+}

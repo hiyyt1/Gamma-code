@@ -1,0 +1,41 @@
+# Replace the host/certificate paths with the real Gamma origin.
+# Keep existing Basic Auth until this gateway has passed staging checks.
+# Every application and API route must use the gateway; never proxy to :4096.
+map $http_upgrade $gamma_connection_upgrade {
+    default upgrade;
+    '' close;
+}
+
+server {
+    listen 443 ssl;
+    server_name gamma.example.com;
+    ssl_certificate /etc/letsencrypt/live/gamma.example.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/gamma.example.com/privkey.pem;
+    client_max_body_size 21m;
+    add_header Strict-Transport-Security "max-age=31536000" always;
+
+    # Enable only after verifying login, revocation, API/SSE/WS denial.
+    # The gateway then replaces browser Basic Auth; backend Basic remains.
+    auth_basic off;
+
+    location / {
+        proxy_pass http://127.0.0.1:4444;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header Authorization "";
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection $gamma_connection_upgrade;
+        proxy_buffering off;
+        proxy_request_buffering off;
+        proxy_read_timeout 24h;
+        proxy_send_timeout 24h;
+    }
+}
+
+server {
+    listen 80;
+    server_name gamma.example.com;
+    return 308 https://gamma.example.com$request_uri;
+}

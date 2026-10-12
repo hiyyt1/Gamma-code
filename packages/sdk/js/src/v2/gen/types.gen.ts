@@ -2708,16 +2708,16 @@ export type SessionNotFoundError = {
   message: string
 }
 
-export type PromptInput = {
-  text: string
-  files?: Array<PromptInputFileAttachment>
-  agents?: Array<PromptAgentAttachment>
-}
-
 export type ConflictError = {
   _tag: "ConflictError"
   message: string
   resource?: string
+}
+
+export type PromptInput = {
+  text: string
+  files?: Array<PromptInputFileAttachment>
+  agents?: Array<PromptAgentAttachment>
 }
 
 export type ServiceUnavailableError = {
@@ -11503,6 +11503,10 @@ export type V2SessionSwitchAgentErrors = {
    * SessionNotFoundError
    */
   404: SessionNotFoundError
+  /**
+   * ConflictError
+   */
+  409: ConflictError
 }
 
 export type V2SessionSwitchAgentError = V2SessionSwitchAgentErrors[keyof V2SessionSwitchAgentErrors]

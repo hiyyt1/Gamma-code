@@ -1,0 +1,16 @@
+{
+  "cleanup-before": {
+    "agents": 117.3,
+    "chat": 55.5,
+    "home": 19.0,
+    "knowledge": 120.5,
+    "projects": 11.4
+  },
+  "cleanup-compare": {
+    "agents": 117.1,
+    "chat": 70.4,
+    "home": 19.4,
+    "knowledge": 119.5,
+    "projects": 13.1
+  }
+}

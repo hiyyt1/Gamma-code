@@ -23,6 +23,13 @@ export const { use: useMarked, provider: MarkedProvider } = createSimpleContext(
         lang: name,
         theme: "OpenCode",
         tabindex: false,
+        transformers: [
+          {
+            code(node) {
+              node.properties.class = `language-${name}`
+            },
+          },
+        ],
       })
     }),
 })

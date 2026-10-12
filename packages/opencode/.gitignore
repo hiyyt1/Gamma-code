@@ -6,3 +6,5 @@ app.log
 script/build-*.ts
 temporary-*.md
 .artifacts
+
+!script/build-node.ts

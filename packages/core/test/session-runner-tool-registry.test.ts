@@ -5,6 +5,7 @@ import { AppNodeBuilder } from "@opencode-ai/core/effect/app-node-builder"
 import { LayerNode } from "@opencode-ai/core/effect/layer-node"
 import { ApplicationTools } from "@opencode-ai/core/tool/application-tools"
 import { SessionV2 } from "@opencode-ai/core/session"
+import { SessionAgent } from "@opencode-ai/core/session/agent"
 import { SessionMessage } from "@opencode-ai/core/session/message"
 import { ToolOutputStore } from "@opencode-ai/core/tool-output-store"
 import { ToolRegistry } from "@opencode-ai/core/tool/registry"
@@ -59,6 +60,39 @@ const make = (permission?: string) => {
 }
 
 describe("ToolRegistry", () => {
+  it.effect("isolates simultaneous profile registrations and settles by session identity", () =>
+    Effect.gen(function* () {
+      const service = yield* ToolRegistry.Service
+      const first = { sessionID: "ses_profile_first", agent: "gamma-first" }
+      const second = { sessionID: "ses_profile_second", agent: "gamma-second" }
+      const tool = (value: string) =>
+        Tool.make({
+          description: value,
+          input: Schema.Struct({ text: Schema.String }),
+          output: Schema.String,
+          execute: () => Effect.succeed(value),
+        })
+      yield* service
+        .register({ shared: tool("first"), only_first: tool("first") })
+        .pipe(Effect.provideService(SessionAgent.Current, first))
+      yield* service.register({ shared: tool("second") }).pipe(Effect.provideService(SessionAgent.Current, second))
+      expect((yield* toolDefinitions(service)).map((item) => item.name)).toEqual([])
+      expect(
+        (yield* toolDefinitions(service).pipe(Effect.provideService(SessionAgent.Current, second))).map(
+          (item) => item.name,
+        ),
+      ).toEqual(["shared"])
+      const result = (binding: typeof first) =>
+        executeTool(service, { ...call("shared"), sessionID: SessionV2.ID.make(binding.sessionID) }).pipe(
+          Effect.provideService(SessionAgent.Current, binding),
+        )
+      const [a, b] = yield* Effect.all([result(first), result(second)], { concurrency: "unbounded" })
+      expect(JSON.stringify(a)).toContain("first")
+      expect(JSON.stringify(a)).not.toContain("second")
+      expect(JSON.stringify(b)).toContain("second")
+    }),
+  )
+
   it.effect("filters disabled tools with edit aliases and ordered wildcard precedence", () =>
     Effect.gen(function* () {
       const service = yield* ToolRegistry.Service

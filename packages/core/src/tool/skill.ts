@@ -10,6 +10,8 @@ import { PermissionV2 } from "../permission"
 import { ToolRegistry } from "./registry"
 import { Tool } from "./tool"
 import { Tools } from "./tools"
+import { guideSkills } from "../gamma/system"
+import { AbsolutePath } from "../schema"
 
 export const name = "skill"
 const FILE_LIMIT = 10
@@ -70,7 +72,11 @@ const layer = Layer.effectDiscard(
           execute: (input, context) =>
             Effect.gen(function* () {
               const current = yield* skills.list()
-              const skill = current.find((skill) => skill.name === input.name)
+              const embedded =
+                context.agent === "gamma-guide" ? guideSkills.find((skill) => skill.name === input.name) : undefined
+              const skill = embedded
+                ? { ...embedded, location: AbsolutePath.make(`/builtin/${embedded.name}.md`) }
+                : current.find((skill) => skill.name === input.name)
               if (!skill) return yield* unableToLoad(input.name)
               return yield* Effect.gen(function* () {
                 yield* permission.assert({

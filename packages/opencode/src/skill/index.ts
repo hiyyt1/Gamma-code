@@ -17,6 +17,9 @@ import { Glob } from "@opencode-ai/core/util/glob"
 import { Discovery } from "./discovery"
 import { isRecord } from "@/util/record"
 import { escapeHtml } from "@/util/html"
+import { SkillMarketService } from "@opencode-ai/core/skill-market"
+import { SessionAgent } from "@opencode-ai/core/session/agent"
+import { guideSkills } from "@opencode-ai/core/gamma/system"
 
 const CLAUDE_EXTERNAL_DIR = ".claude"
 const AGENTS_EXTERNAL_DIR = ".agents"
@@ -102,7 +105,12 @@ export interface Interface {
   readonly available: (agent?: Agent.Info) => Effect.Effect<Info[]>
 }
 
-const add = Effect.fnUntraced(function* (state: State, match: string, events: EventV2Bridge.Service["Service"]) {
+const add = Effect.fnUntraced(function* (
+  state: State,
+  match: string,
+  events: EventV2Bridge.Service["Service"],
+  namespace?: string,
+) {
   const md = yield* Effect.tryPromise({
     try: () => ConfigMarkdown.parse(match),
     catch: (err) => err,
@@ -122,17 +130,20 @@ const add = Effect.fnUntraced(function* (state: State, match: string, events: Ev
 
   if (!isSkillFrontmatter(md.data)) return
 
-  if (state.skills[md.data.name]) {
+  // The Markdown parser caches its frontmatter object. Never mutate it on discovery.
+  const name = namespace ? `${namespace}:${md.data.name}` : md.data.name
+
+  if (state.skills[name]) {
     yield* Effect.logWarning("duplicate skill name", {
-      name: md.data.name,
-      existing: state.skills[md.data.name].location,
+      name,
+      existing: state.skills[name].location,
       duplicate: match,
     })
   }
 
   state.dirs.add(path.dirname(match))
-  state.skills[md.data.name] = {
-    name: md.data.name,
+  state.skills[name] = {
+    name,
     description: md.data.description,
     location: match,
     content: md.content,
@@ -256,6 +267,7 @@ const layer = Layer.effect(
     const fsys = yield* FSUtil.Service
     const global = yield* Global.Service
     const flags = yield* RuntimeFlags.Service
+    const market = yield* SkillMarketService.Service
     const discovered = yield* InstanceState.make(
       Effect.fn("Skill.discovery")(function* (ctx) {
         return yield* discoverSkills(
@@ -286,29 +298,60 @@ const layer = Layer.effect(
       }),
     )
 
-    const get = Effect.fn("Skill.get")(function* (name: string) {
+    const current = Effect.fn("Skill.current")(function* () {
       const s = yield* InstanceState.get(state)
-      return s.skills[name]
+      const directory = yield* InstanceState.directory
+      const sources = yield* market.sources(directory).pipe(
+        Effect.catch((error) =>
+          Effect.gen(function* () {
+            if ((yield* SessionAgent.Current)?.pin) return yield* Effect.die(error)
+            return yield* Effect.logWarning("market skills unavailable", { code: error.code }).pipe(Effect.as([]))
+          }),
+        ),
+      )
+      const result: State = { skills: { ...s.skills }, dirs: new Set(s.dirs) }
+      for (const source of sources) {
+        for (const skill of source.skills) {
+          // Local skills retain ownership of their names, even if created after
+          // activation. A market package must never replace a project skill.
+          if (result.skills[`${source.id}:${skill.name}`]) continue
+          yield* add(result, path.join(source.directory, "..", skill.path), events, source.id)
+          const loaded = result.skills[`${source.id}:${skill.name}`]
+          if (loaded)
+            result.skills[`${source.id}:${skill.name}`] = {
+              ...loaded,
+              content: loaded.content
+                .replaceAll("{{SKILLS_ROOT}}", source.directory)
+                .replaceAll("{{PYTHON}}", process.env.GAMMA_1C_PYTHON ?? "python3"),
+            }
+        }
+      }
+      for (const skill of guideSkills) result.skills[skill.name] = { ...skill, location: "<gamma-built-in>" }
+      return result
+    })
+
+    const get = Effect.fn("Skill.get")(function* (name: string) {
+      return (yield* current()).skills[name]
     })
 
     const require = Effect.fn("Skill.require")(function* (name: string) {
-      const s = yield* InstanceState.get(state)
+      const s = yield* current()
       const info = s.skills[name]
       if (info) return info
       return yield* new NotFoundError({ name, available: Object.keys(s.skills).toSorted() })
     })
 
     const all = Effect.fn("Skill.all")(function* () {
-      const s = yield* InstanceState.get(state)
+      const s = yield* current()
       return Object.values(s.skills)
     })
 
     const dirs = Effect.fn("Skill.dirs")(function* () {
-      return (yield* InstanceState.get(discovered)).dirs
+      return Array.from((yield* current()).dirs)
     })
 
     const available = Effect.fn("Skill.available")(function* (agent?: Agent.Info) {
-      const s = yield* InstanceState.get(state)
+      const s = yield* current()
       const list = Object.values(s.skills).toSorted((a, b) => a.name.localeCompare(b.name))
       if (!agent) return list
       return list.filter((skill) => Permission.evaluate("skill", skill.name, agent.permission).action !== "deny")
@@ -348,7 +391,15 @@ export function fmt(list: Info[], opts: { verbose: boolean }) {
 export const node = LayerNode.make({
   service: Service,
   layer: layer,
-  deps: [Discovery.node, Config.node, EventV2Bridge.node, FSUtil.node, Global.node, RuntimeFlags.node],
+  deps: [
+    Discovery.node,
+    Config.node,
+    EventV2Bridge.node,
+    FSUtil.node,
+    Global.node,
+    RuntimeFlags.node,
+    SkillMarketService.node,
+  ],
 })
 
 export * as Skill from "."

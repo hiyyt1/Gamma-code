@@ -1,0 +1,188 @@
+{
+  "id": "sentry-engineering",
+  "name": "Sentry Engineering Skills",
+  "source": "https://github.com/getsentry/skills",
+  "author": "getsentry",
+  "category": "testing",
+  "description": "Инженерные практики команды Sentry.",
+  "revision": "d18b7aa8ba878354e5c348310230e652f7690f9c",
+  "license": "Apache-2.0",
+  "skills": [
+    {
+      "name": "agents-md",
+      "description": "Creates and maintains concise AGENTS.md and CLAUDE.md project instruction files. Use when asked to create AGENTS.md, update AGENTS.md, maintain agent docs, set up CLAUDE.md, document repository agent conventions, or keep coding-agent instructions minimal and reference-backed.",
+      "path": "skills/agents-md/SKILL.md",
+      "sha256": "8a91ada35068f43ef7ee03e38937863bac4f407878b06f0a4f1ddb4af24bec7e"
+    },
+    {
+      "name": "blog-writing-guide",
+      "description": "Write, review, and improve blog posts for the Sentry engineering blog following Sentry's specific writing standards, voice, and quality bar. Use this skill whenever someone asks to write a blog post, draft a technical article, review blog content, improve a draft, write a product announcement, create an engineering deep-dive, or produce any written content destined for the Sentry blog or developer audience. Also trigger when the user mentions \"blog post,\" \"blog draft,\" \"write-up,\" \"announcement post,\" \"engineering post,\" \"deep dive,\" \"postmortem,\" or asks for help with technical writing for Sentry. Even if the user just says \"help me write about [feature/topic]\" — if it sounds like it could become a Sentry blog post, use this skill.",
+      "path": "skills/blog-writing-guide/SKILL.md",
+      "sha256": "8aba654d1af0820ee83370ddcbe51c24fb1c624c169931bd87f36247d181caa4"
+    },
+    {
+      "name": "brand-guidelines",
+      "description": "Write copy following Sentry brand guidelines. Use when writing UI text, error messages, empty states, onboarding flows, 404 pages, documentation, marketing copy, or any user-facing content. Covers both Plain Speech (default) and Sentry Voice tones.",
+      "path": "skills/brand-guidelines/SKILL.md",
+      "sha256": "59c75b089fc355f34862172222344801d267ea8158d1bcddb9d1338ba8e9bc39"
+    },
+    {
+      "name": "claude-settings-audit",
+      "description": "Analyze a repository to generate recommended Claude Code settings.json permissions. Use when setting up a new project, auditing existing settings, or determining which read-only bash commands to allow. Detects tech stack, build tools, and monorepo structure.",
+      "path": "skills/claude-settings-audit/SKILL.md",
+      "sha256": "53e0964b7a98c351e6d3dda055abb33ec5e2c287eebd4c74485b60312be9dfa9"
+    },
+    {
+      "name": "code-review",
+      "description": "Perform code reviews following Sentry engineering practices. Use when reviewing pull requests, examining code changes, or providing feedback on code quality. Covers security, performance, testing, and design review.",
+      "path": "skills/code-review/SKILL.md",
+      "sha256": "ec5fc8855cb4648b4f2c79b608f8c8824a2da6a683330524c4d6283e4a3954c4"
+    },
+    {
+      "name": "code-simplifier",
+      "description": "Simplifies and refines code for clarity, consistency, and maintainability while preserving all functionality. Use when asked to \"simplify code\", \"clean up code\", \"refactor for clarity\", \"improve readability\", or review recently modified code for elegance. Focuses on project-specific best practices.",
+      "path": "skills/code-simplifier/SKILL.md",
+      "sha256": "ad4ce00d2759e0773bee88f267f4ae0f52684979d7fbceb14dffd5efefbce141"
+    },
+    {
+      "name": "commit",
+      "description": "Use for every request to commit changes or draft a commit message. Creates Sentry-style conventional commits with issue references.",
+      "path": "skills/commit/SKILL.md",
+      "sha256": "0307d3ecfe3b3e70246cbd88b19dc5853340b624b6ee3cd935c7bffc45b64279"
+    },
+    {
+      "name": "create-branch",
+      "description": "Create a git branch following Sentry naming conventions. Use when asked to \"create a branch\", \"new branch\", \"start a branch\", \"make a branch\", \"switch to a new branch\", or when starting new work on the default branch.",
+      "path": "skills/create-branch/SKILL.md",
+      "sha256": "0e017d30c6031477fe147a39e7f40603acb6588ed2a00145c5cd46980a43c6cf"
+    },
+    {
+      "name": "django-access-review",
+      "description": "Django access control and IDOR security review. Use when reviewing Django views, DRF viewsets, ORM queries, or any Python/Django code handling user authorization. Trigger keywords: \"IDOR\", \"access control\", \"authorization\", \"Django permissions\", \"object permissions\", \"tenant isolation\", \"broken access\".",
+      "path": "skills/django-access-review/SKILL.md",
+      "sha256": "0b0891f6335b84bd557e92022db197ed7d948406e2389ed6d09fd2f45b695a03"
+    },
+    {
+      "name": "django-perf-review",
+      "description": "Django performance code review. Use when asked to \"review Django performance\", \"find N+1 queries\", \"optimize Django\", \"check queryset performance\", \"database performance\", \"Django ORM issues\", or audit Django code for performance problems.",
+      "path": "skills/django-perf-review/SKILL.md",
+      "sha256": "52283bff7b23f06f94bbb413d174fd1cbcf497f8e8a63d4f0d569ba6bfd949d4"
+    },
+    {
+      "name": "doc-coauthoring",
+      "description": "Guide users through a structured workflow for co-authoring documentation. Use when user wants to write documentation, proposals, technical specs, decision docs, or similar structured content. This workflow helps users efficiently transfer context, refine content through iteration, and verify the doc works for readers. Trigger when user mentions writing docs, creating proposals, drafting specs, or similar documentation tasks.",
+      "path": "skills/doc-coauthoring/SKILL.md",
+      "sha256": "819ad219b7e3f3fd8bc4b0a224dce9cf3b177df6f311b640831b87fb3b5d7730"
+    },
+    {
+      "name": "document-api-endpoint",
+      "description": "Document and type a Sentry API endpoint. Write or fix @extend_schema decorators, specify response TypedDicts, type request parameters, correct type drift between the declared schema and the runtime response, and validate the generated spec. Use when asked to \"document an endpoint\", \"add OpenAPI docs\", \"add/fix @extend_schema\", \"type an endpoint response\", \"fix the response type\", \"fix type drift\", \"reuse a response type\", \"split an overloaded endpoint\", \"specify the response schema\", \"add a TypedDict response\", \"migrate a legacy api-docs path\", \"fix a parameter type\", or \"make an endpoint public\" / \"promote an endpoint\" (promotion is one section here).",
+      "path": "skills/document-api-endpoint/SKILL.md",
+      "sha256": "40c7592cdfbef2e02bf004133446d7a9c85e98f9fd653d3cee689f3bba4bf7a9"
+    },
+    {
+      "name": "find-bugs",
+      "description": "Find bugs, security vulnerabilities, and code quality issues in local branch changes. Use when asked to review changes, find bugs, security review, or audit code on the current branch.",
+      "path": "skills/find-bugs/SKILL.md",
+      "sha256": "08664c3698f89116a4b04d12f699f95cff1aadb725da353b7f24f8ad73b02003"
+    },
+    {
+      "name": "gh-review-requests",
+      "description": "Fetch unread GitHub notifications for open PRs where review is requested from a specified team or opened by a team member. Use when asked to \"find PRs I need to review\", \"show my review requests\", \"what needs my review\", \"fetch GitHub review requests\", or \"check team review queue\".",
+      "path": "skills/gh-review-requests/SKILL.md",
+      "sha256": "c03fa31242d4dfa9002c1610376954cd6455a500931b054e13ba6fa6cde235bb"
+    },
+    {
+      "name": "gha-security-review",
+      "description": "GitHub Actions security review for workflow exploitation vulnerabilities. Use when asked to \"review GitHub Actions\", \"audit workflows\", \"check CI security\", \"GHA security\", \"workflow security review\", or review .github/workflows/ for pwn requests, expression injection, credential theft, and supply chain attacks. Exploitation-focused with concrete PoC scenarios.",
+      "path": "skills/gha-security-review/SKILL.md",
+      "sha256": "b75c6c43ff99c82b3cf44519bd30723917de97064f225e392ecfd6fdcd7455bd"
+    },
+    {
+      "name": "iterate-pr",
+      "description": "Iterate on a PR until actionable CI passes and high/medium review feedback is addressed. Use for PR CI failures, review feedback, or green-check loops; do not wait for human approval, draft status, or merge gates.",
+      "path": "skills/iterate-pr/SKILL.md",
+      "sha256": "d57ecb10e3f0619796a2b71045fbe6725b4ba6cf60aaf63d4c8860a83a83279e"
+    },
+    {
+      "name": "pr-link-issue",
+      "description": "Append a GitHub issue link and its Linear ticket to the current PR's description. Use when asked to \"link issue to pr\", \"fill in issue and linear in pr\", \"add issue refs to pr\", or when given a GitHub issue URL and asked to attach it to the current PR. Resolves the Linear ticket automatically from the issue's linear-linkback comment.",
+      "path": "skills/pr-link-issue/SKILL.md",
+      "sha256": "ae3fff3e5bec03c993ca8059669c785f675982e6bd71c8f09bcc095230f6535b"
+    },
+    {
+      "name": "pr-writer",
+      "description": "Create or refresh reviewer-facing PR titles and descriptions. Use when opening a PR, updating its title or body, or preparing branch changes for review.",
+      "path": "skills/pr-writer/SKILL.md",
+      "sha256": "785a2b1f084407e42f61661f83c7b0c621889865a483774f44c893c0cbcf57bc"
+    },
+    {
+      "name": "presentation-creator",
+      "description": "Create data-driven presentation slides using React, Vite, and Recharts with Sentry branding. Use when asked to \"create a presentation\", \"build slides\", \"make a deck\", \"create a data presentation\", \"build a Sentry presentation\". Scaffolds a complete slide-based app with charts, animations, and single-file HTML output.",
+      "path": "skills/presentation-creator/SKILL.md",
+      "sha256": "28c0cef62578ec5423da646049e336069cde5ca9c5a92b4161455f8d45262cc8"
+    },
+    {
+      "name": "prompt-optimizer",
+      "description": "Creates, optimizes, and iteratively refines agent prompts, system prompts, developer prompts, and reusable prompt templates. Use when asked to improve a prompt, optimize a system prompt, rewrite an agent prompt, tune prompt wording, make a prompt more reliable, port prompts between OpenAI, Claude, or Gemini, or build prompt evals.",
+      "path": "skills/prompt-optimizer/SKILL.md",
+      "sha256": "b5ba1525d7964004d8664fea9d5028972cca599f346ff4662152479b94e25cb3"
+    },
+    {
+      "name": "secret-serialization",
+      "description": "Finds secrets, tokens, passwords, and API keys that can leak through generated serialization: Python dataclass repr and asdict, attrs, pydantic model_dump, NamedTuple, JavaScript JSON.stringify and util.inspect, structured logs, tracing spans, and error reports. Use when asked to \"check for secret serialization\", \"credential in repr\", \"repr=False audit\", \"secret in spans\", \"token in logs\", or when a change adds a credential field to a dataclass, model, or config object, or adds code that stringifies whole objects or every kwarg into telemetry.",
+      "path": "skills/secret-serialization/SKILL.md",
+      "sha256": "fcff1bc1e5f38bdbe9dccccd21a39846bd45e2423307fda971c9cc1e53a39d3b"
+    },
+    {
+      "name": "security-review",
+      "description": "Security code review for vulnerabilities. Use when asked to \"security review\", \"find vulnerabilities\", \"check for security issues\", \"audit security\", \"OWASP review\", or review code for injection, XSS, authentication, authorization, cryptography issues. Provides systematic review with confidence-based reporting.",
+      "path": "skills/security-review/SKILL.md",
+      "sha256": "56a0f507ac82d7003f06103b7443472a0c4e6a5007a84f7b4d29b240359d0f9e"
+    },
+    {
+      "name": "skill-scanner",
+      "description": "Scan agent skills for security issues. Use when asked to \"scan a skill\", \"audit a skill\", \"review skill security\", \"check skill for injection\", \"validate SKILL.md\", or assess whether an agent skill is safe to install. Checks for prompt injection, malicious scripts, excessive permissions, secret exposure, and supply chain risks.",
+      "path": "skills/skill-scanner/SKILL.md",
+      "sha256": "b0fdcbb9cd0d11e0425815fa37bb5483b13e6dce5fe5f3aeb4529dc8f80708bd"
+    },
+    {
+      "name": "skill-writer",
+      "description": "Create, synthesize, and iteratively improve agent skills following the Agent Skills specification. Use when asked to \"create a skill\", \"write a skill\", \"synthesize sources into a skill\", \"improve a skill from positive/negative examples\", \"update a skill\", or \"maintain skill docs and registration\". Handles source capture, precision passes, authoring, registration, and validation.",
+      "path": "skills/skill-writer/SKILL.md",
+      "sha256": "d8597ec2e5f00cc8d87a73741369c7cc433a3bbb95801169c35e84a10d514d26"
+    },
+    {
+      "name": "sred-project-organizer",
+      "description": "Take a list of projects and their related documentation, and organize them into the SRED format for submission.",
+      "path": "skills/sred-project-organizer/SKILL.md",
+      "sha256": "2174432848a32e1ca8bb7085dfcb429b37b36cb46a874af6248cbcd90d827862"
+    },
+    {
+      "name": "sred-work-summary",
+      "description": "Go back through the previous year of work and create a Notion doc that groups relevant links into projects that can then be documented as SRED projects.",
+      "path": "skills/sred-work-summary/SKILL.md",
+      "sha256": "2ccbcb74155d8b53e00584aa3eedfb18615e2e21b58d11280a5659f652039534"
+    },
+    {
+      "name": "triage-frontend-issues",
+      "description": "Triage new issues in the Sentry `javascript` project by archiving non-actionable noise. Use when asked to \"triage issues\", \"triage the javascript project\", \"archive non-actionable issues\", \"triage new frontend issues\", or \"clean up the sentry/javascript queue\". Operates only on the sentry/javascript project, only archives (never resolves), and always archives with `untilEscalating`.",
+      "path": "skills/triage-frontend-issues/SKILL.md",
+      "sha256": "45c3d3f2562f5e3840ea2bbf3ecd35a49a848456af065701ae45682e7b49dabd"
+    },
+    {
+      "name": "typing-exclusion-worker",
+      "description": "Python typing exclusion worker: remove assigned mypy exclusion modules in small scoped batches, fix typing issues, run validation, and produce a structured completion summary. Use when running parallel typing-debt workers or when asked to remove modules from pyproject mypy exclusion overrides.",
+      "path": "skills/typing-exclusion-worker/SKILL.md",
+      "sha256": "0ec48152ced06a0322978d2f677cfcff2f37fd3ce4a0801e852fb6ec219ae861"
+    }
+  ],
+  "dependencies": [
+    "GitHub CLI и авторизация для PR-workflows",
+    "Claude Code settings и отдельные внутренние workflows не поддержаны автоматически"
+  ],
+  "compatibility": "needs-adaptation",
+  "reason": "Есть Claude settings audit и привязки к именованным skills, GitHub и внутренним практикам Sentry. security-review содержит отдельную атрибуцию OWASP. Нужен перенос и проверка полного пакета.",
+  "enabledByDefault": false,
+  "runtimes": []
+}

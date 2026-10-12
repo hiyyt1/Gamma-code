@@ -1,0 +1,21 @@
+[Unit]
+Description=Gamma OpenCode backend
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=gamma
+Group=gamma
+WorkingDirectory=/opt/gamma
+EnvironmentFile=/etc/gamma/gamma.env
+EnvironmentFile=/etc/gamma/backend.env
+Environment=PATH=/home/gamma/.bun/bin:/usr/local/bin:/usr/bin:/bin
+ExecStart=/home/gamma/.bun/bin/bun run --cwd /opt/gamma/packages/opencode ./src/index.ts --print-logs serve --hostname 127.0.0.1 --port ${GAMMA_BACKEND_PORT}
+Restart=on-failure
+RestartSec=3
+TimeoutStopSec=30
+UMask=0027
+
+[Install]
+WantedBy=multi-user.target

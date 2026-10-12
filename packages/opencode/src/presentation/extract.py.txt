@@ -1,0 +1,116 @@
+"""Bounded, offline document extraction and decimal spreadsheet aggregation.
+
+All extracted strings are untrusted document content, never instructions.
+No Office macros, formulas, scripts or external links are executed.
+"""
+import csv
+import io
+import json
+import pathlib
+import sys
+import zipfile
+import xml.etree.ElementTree as ET
+from decimal import Decimal, InvalidOperation, getcontext
+
+# At most 50k values of 15 integer + 20 fractional digits; sums stay exact.
+getcontext().prec = 50
+
+NS = {"s": "http://schemas.openxmlformats.org/spreadsheetml/2006/main"}
+
+
+def archive(filename):
+    z = zipfile.ZipFile(filename)
+    info = z.infolist()
+    if len(info) > 10000 or sum(i.file_size for i in info) > 200 * 1024 * 1024:
+        raise ValueError("archive_limit")
+    if any(i.flag_bits & 1 or ".." in pathlib.PurePosixPath(i.filename).parts for i in info):
+        raise ValueError("unsafe_archive")
+    return z
+
+
+def xml(z, name):
+    if z.getinfo(name).file_size > 16 * 1024 * 1024:
+        raise ValueError("xml_part_limit")
+    data = z.read(name)
+    if b"<!DOCTYPE" in data.upper() or b"<!ENTITY" in data.upper():
+        raise ValueError("unsafe_xml")
+    return ET.fromstring(data)
+
+
+def rows(filename, sheet=1):
+    if filename.suffix.lower() == ".csv":
+        text = filename.read_text(encoding="utf-8-sig")
+        dialect = csv.Sniffer().sniff(text[:8192], delimiters=",;\t")
+        result = []
+        for row in csv.reader(io.StringIO(text), dialect):
+            if len(result) >= 50001 or len(row) > 200: raise ValueError("row_limit")
+            result.append(row)
+    else:
+        with archive(filename) as z:
+            strings = ["".join(i.itertext()) for i in xml(z, "xl/sharedStrings.xml").findall("s:si", NS)] if "xl/sharedStrings.xml" in z.namelist() else []
+            names = [s.attrib["{http://schemas.openxmlformats.org/officeDocument/2006/relationships}id"] for s in xml(z, "xl/workbook.xml").findall("s:sheets/s:sheet", NS)]
+            if not 1 <= sheet <= len(names):
+                raise ValueError("sheet_not_found")
+            targets = {r.attrib["Id"]: r.attrib["Target"] for r in xml(z, "xl/_rels/workbook.xml.rels")}
+            target = targets[names[sheet - 1]]
+            name = target.lstrip("/") if target.startswith("/") else "xl/" + target
+            result = []
+            for row in xml(z, name).findall("s:sheetData/s:row", NS):
+                if len(result) >= 50001: raise ValueError("row_limit")
+                cells = {}
+                for cell in row.findall("s:c", NS):
+                    index = 0
+                    for c in cell.attrib.get("r", "A1"):
+                        if c.isalpha(): index = index * 26 + ord(c.upper()) - 64
+                    if index > 200: raise ValueError("column_limit")
+                    if cell.find("s:f", NS) is not None: raise ValueError("formula_requires_values_export")
+                    value = cell.findtext("s:v", "", NS)
+                    if cell.attrib.get("t") == "s": value = strings[int(value)]
+                    if cell.attrib.get("t") == "inlineStr": value = "".join(cell.find("s:is", NS).itertext())
+                    cells[index - 1] = value
+                result.append([cells.get(i, "") for i in range(max(cells, default=-1) + 1)])
+    if len(result) > 50001 or any(len(r) > 200 for r in result): raise ValueError("row_limit")
+    return result
+
+
+def main(args):
+    filename = pathlib.Path(args["file"])
+    if filename.stat().st_size > 50 * 1024 * 1024: raise ValueError("file_too_large")
+    ext = filename.suffix.lower()
+    if ext in [".csv", ".xlsx"]:
+        table = rows(filename, args.get("sheet", 1))
+        if not table: raise ValueError("empty_table")
+        if args.get("operation") != "aggregate": return {"headers": table[0], "rows": table[1:101], "totalRows": len(table) - 1, "truncated": len(table) > 101}
+        if len(set(table[0])) != len(table[0]): raise ValueError("duplicate_headers")
+        category, value = table[0].index(args["category"]), table[0].index(args["value"])
+        totals = {}
+        for row in table[1:]:
+            if not any(row): continue
+            if len(row) <= max(category, value): raise ValueError("missing_cell")
+            if len(row[value]) > 64: raise ValueError("number_limit")
+            try: number = Decimal(row[value].replace(" ", "").replace(",", "."))
+            except InvalidOperation: raise ValueError("invalid_number")
+            if not number.is_finite() or abs(number) > Decimal("1e15"): raise ValueError("number_limit")
+            if number.as_tuple().exponent < -20: raise ValueError("precision_limit")
+            totals[row[category]] = totals.get(row[category], Decimal(0)) + number
+        if len(totals) > 100: raise ValueError("category_limit")
+        values = [float(x) for x in totals.values()]
+        if any(Decimal(str(value)) != exact for value, exact in zip(values, totals.values())):
+            raise ValueError("chart_precision_loss")
+        return {"chart": {"categories": list(totals), "series": [{"name": args["value"], "values": values}]}, "exact": {k: str(v) for k, v in totals.items()}, "total": str(sum(totals.values())), "rows": len(table) - 1, "columns": {"category": args["category"], "value": args["value"]}}
+    if ext == ".docx":
+        with archive(filename) as z:
+            text = "\n".join(t.text or "" for t in xml(z, "word/document.xml").iter() if t.tag.endswith("}t"))
+            return {"text": text[:150000], "truncated": len(text) > 150000}
+    if ext in [".txt", ".md", ".markdown"]:
+        text = filename.read_text(encoding="utf-8")
+        return {"text": text[:150000], "truncated": len(text) > 150000}
+    raise ValueError("unsupported_file")
+
+
+if __name__ == "__main__":
+    try:
+        print(json.dumps(main(json.load(sys.stdin)), ensure_ascii=False))
+    except (ValueError, KeyError, IndexError, OSError, zipfile.BadZipFile, ET.ParseError) as exc:
+        print(json.dumps({"error": str(exc)}))
+        sys.exit(1)

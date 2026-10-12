@@ -8,7 +8,7 @@ import { type Platform, PlatformProvider } from "@/context/platform"
 import { createBrowserDraftStore } from "@/utils/draft-store"
 import { dict as en } from "@/i18n/en"
 import { dict as zh } from "@/i18n/zh"
-import { authFromToken } from "@/utils/server"
+import { GammaAuthGate } from "@/context/gamma-auth"
 import pkg from "../package.json"
 import { ServerConnection } from "./context/server"
 
@@ -70,7 +70,7 @@ const notify: Platform["notify"] = async (title, description, onClick) => {
 
   const notification = new Notification(title, {
     body: description ?? "",
-    icon: "/oreshnik.svg",
+    icon: "/gamma.svg",
   })
 
   notification.onclick = () => {
@@ -101,12 +101,6 @@ const getCurrentUrl = () => {
   if (import.meta.env.DEV)
     return `http://${import.meta.env.VITE_OPENCODE_SERVER_HOST ?? "localhost"}:${import.meta.env.VITE_OPENCODE_SERVER_PORT ?? "4096"}`
   return location.origin
-}
-
-const getDefaultUrl = () => {
-  const lsDefault = readDefaultServerUrl()
-  if (lsDefault) return lsDefault
-  return getCurrentUrl()
 }
 
 const clearAuthToken = () => {
@@ -151,26 +145,26 @@ if (import.meta.env.VITE_SENTRY_DSN) {
 
 if (root instanceof HTMLElement) {
   void loadInitialLocale().then((locale) => {
-    const auth = authFromToken(new URLSearchParams(location.search).get("auth_token"))
     clearAuthToken()
     const server: ServerConnection.Http = {
       type: "http",
-      authToken: !!auth,
+      authToken: false,
       http: {
         url: getCurrentUrl(),
-        ...auth,
       },
     }
     render(
       () => (
         <PlatformProvider value={platform}>
           <AppBaseProviders locale={locale}>
-            <AppInterface
-              defaultServer={ServerConnection.Key.make(getDefaultUrl())}
-              canonicalLocalServer={ServerConnection.key(server)}
-              servers={[server]}
-              disableHealthCheck
-            />
+            <GammaAuthGate>
+              <AppInterface
+                defaultServer={ServerConnection.key(server)}
+                canonicalLocalServer={ServerConnection.key(server)}
+                servers={[server]}
+                disableHealthCheck
+              />
+            </GammaAuthGate>
           </AppBaseProviders>
         </PlatformProvider>
       ),

@@ -114,6 +114,7 @@ function makeMcp(instructions: MCP.ServerInstructions[] = []) {
     MCP.Service,
     MCP.Service.of({
       status: () => Effect.succeed({}),
+      refreshProfile: () => Effect.succeed({}),
       clients: () => Effect.succeed({}),
       instructions: () => Effect.succeed(instructions),
       tools: () => Effect.succeed({}),
@@ -438,7 +439,7 @@ const boot = Effect.fn("test.boot")(function* (input?: { title?: string }) {
   const run = yield* SessionRunState.Service
   const sessions = yield* Session.Service
   yield* config.get()
-  const chat = yield* sessions.create(input ?? { title: "Pinned" })
+  const chat = yield* sessions.create({ agent: "build", ...input, title: input?.title ?? "Pinned" })
   return { prompt, run, sessions, chat }
 })
 
@@ -450,7 +451,7 @@ noLLMServer.instance(
     Effect.gen(function* () {
       const prompt = yield* SessionPrompt.Service
       const sessions = yield* Session.Service
-      const chat = yield* sessions.create({ title: "Pinned" })
+      const chat = yield* sessions.create({ agent: "build", title: "Pinned" })
       yield* seed(chat.id, { finish: "stop" })
 
       const result = yield* prompt.loop({ sessionID: chat.id })
@@ -466,7 +467,7 @@ noLLMServer.instance(
     Effect.gen(function* () {
       const prompt = yield* SessionPrompt.Service
       const sessions = yield* Session.Service
-      const chat = yield* sessions.create({ title: "Pinned" })
+      const chat = yield* sessions.create({ agent: "build", title: "Pinned" })
       const userID = MessageID.make("msg_z_user")
       const assistantID = MessageID.make("msg_a_assistant")
       yield* sessions.updateMessage({
@@ -505,7 +506,7 @@ it.instance("loop exits without an LLM request for interrupted orphan tool calls
     const { llm } = yield* useServerConfig(providerCfg)
     const prompt = yield* SessionPrompt.Service
     const sessions = yield* Session.Service
-    const chat = yield* sessions.create({ title: "Pinned" })
+    const chat = yield* sessions.create({ agent: "build", title: "Pinned" })
     const seeded = yield* seed(chat.id, { finish: "stop" })
     yield* sessions.updatePart({
       id: PartID.ascending(),
@@ -535,6 +536,7 @@ it.instance("loop calls LLM and returns assistant message", () =>
     const prompt = yield* SessionPrompt.Service
     const sessions = yield* Session.Service
     const chat = yield* sessions.create({
+      agent: "build",
       title: "Pinned",
       permission: [{ permission: "*", pattern: "*", action: "allow" }],
     })
@@ -562,6 +564,7 @@ withMcpInstructions.instance(
       const prompt = yield* SessionPrompt.Service
       const sessions = yield* Session.Service
       const chat = yield* sessions.create({
+        agent: "build",
         title: "Pinned",
         permission: [{ permission: "*", pattern: "*", action: "allow" }],
       })
@@ -586,8 +589,8 @@ it.instance("legacy prompt emits message events without session.next events", ()
     const prompt = yield* SessionPrompt.Service
     const sessions = yield* Session.Service
     const chat = yield* sessions.create({
+      agent: "build",
       title: "Pinned",
-      agent: "plan",
       model: { providerID: ProviderV2.ID.make("old"), id: ModelV2.ID.make("old-model") },
     })
     const seen: string[] = []
@@ -634,7 +637,7 @@ it.instance("loop surfaces content-filter finishes as session errors", () =>
     const events = yield* EventV2Bridge.Service
     const prompt = yield* SessionPrompt.Service
     const sessions = yield* Session.Service
-    const chat = yield* sessions.create({ title: "Pinned" })
+    const chat = yield* sessions.create({ agent: "build", title: "Pinned" })
     const errors: NonNullable<SessionV1.Assistant["error"]>[] = []
     const expected = {
       name: "ContentFilterError",
@@ -682,7 +685,7 @@ it.instance("loop stops provider overflow instead of auto-compacting when disabl
     }))
     const prompt = yield* SessionPrompt.Service
     const sessions = yield* Session.Service
-    const chat = yield* sessions.create({ title: "Pinned" })
+    const chat = yield* sessions.create({ agent: "build", title: "Pinned" })
 
     yield* llm.error(413, { error: { message: "request entity too large" } })
     yield* prompt.prompt({
@@ -710,7 +713,7 @@ noLLMServer.instance.skip(
     Effect.gen(function* () {
       const prompt = yield* SessionPrompt.Service
       const sessions = yield* Session.Service
-      const chat = yield* sessions.create({ title: "Pinned" })
+      const chat = yield* sessions.create({ agent: "build", title: "Pinned" })
 
       yield* prompt.prompt({
         sessionID: chat.id,
@@ -760,6 +763,7 @@ it.instance("static loop returns assistant text through local provider", () =>
     const prompt = yield* SessionPrompt.Service
     const sessions = yield* Session.Service
     const session = yield* sessions.create({
+      agent: "build",
       title: "Prompt provider",
       permission: [{ permission: "*", pattern: "*", action: "allow" }],
     })
@@ -787,6 +791,7 @@ it.instance("static loop consumes queued replies across turns", () =>
     const prompt = yield* SessionPrompt.Service
     const sessions = yield* Session.Service
     const session = yield* sessions.create({
+      agent: "build",
       title: "Prompt provider turns",
       permission: [{ permission: "*", pattern: "*", action: "allow" }],
     })
@@ -828,6 +833,7 @@ it.instance("loop continues when finish is tool-calls", () =>
     const prompt = yield* SessionPrompt.Service
     const sessions = yield* Session.Service
     const session = yield* sessions.create({
+      agent: "build",
       title: "Pinned",
       permission: [{ permission: "*", pattern: "*", action: "allow" }],
     })
@@ -856,6 +862,7 @@ it.instance("loop continues when finish is unknown", () =>
     const prompt = yield* SessionPrompt.Service
     const sessions = yield* Session.Service
     const session = yield* sessions.create({
+      agent: "build",
       title: "Pinned",
       permission: [{ permission: "*", pattern: "*", action: "allow" }],
     })
@@ -884,6 +891,7 @@ it.instance("glob tool keeps instance context during prompt runs", () =>
     const prompt = yield* SessionPrompt.Service
     const sessions = yield* Session.Service
     const session = yield* sessions.create({
+      agent: "build",
       title: "Glob context",
       permission: [{ permission: "*", pattern: "*", action: "allow" }],
     })
@@ -923,6 +931,7 @@ it.instance("loop continues when finish is stop but assistant has tool parts", (
     const prompt = yield* SessionPrompt.Service
     const sessions = yield* Session.Service
     const session = yield* sessions.create({
+      agent: "build",
       title: "Pinned",
       permission: [{ permission: "*", pattern: "*", action: "allow" }],
     })
@@ -957,7 +966,7 @@ it.instance("failed subtask preserves metadata on error tool state", () =>
     }))
     const prompt = yield* SessionPrompt.Service
     const sessions = yield* Session.Service
-    const chat = yield* sessions.create({ title: "Pinned" })
+    const chat = yield* sessions.create({ agent: "build", title: "Pinned" })
     yield* llm.tool("task", {
       description: "inspect bug",
       prompt: "look into the cache key path",
@@ -995,6 +1004,7 @@ it.instance("subtask child inherits parent session external_directory allow", ()
     const prompt = yield* SessionPrompt.Service
     const sessions = yield* Session.Service
     const chat = yield* sessions.create({
+      agent: "build",
       title: "Parent",
       permission: [{ permission: "external_directory", pattern: "/tmp/allowed/*", action: "allow" }],
     })
@@ -1020,7 +1030,7 @@ noLLMServer.instance("prompt tools replace previous prompt tool rules", () =>
   Effect.gen(function* () {
     const prompt = yield* SessionPrompt.Service
     const sessions = yield* Session.Service
-    const session = yield* sessions.create({ title: "Prompt tools" })
+    const session = yield* sessions.create({ agent: "build", title: "Prompt tools" })
 
     yield* prompt.prompt({
       sessionID: session.id,
@@ -1050,7 +1060,7 @@ it.instance(
       const { llm } = yield* useServerConfig(providerCfg)
       const prompt = yield* SessionPrompt.Service
       const sessions = yield* Session.Service
-      const chat = yield* sessions.create({ title: "Pinned" })
+      const chat = yield* sessions.create({ agent: "build", title: "Pinned" })
       yield* llm.hang
       const msg = yield* user(chat.id, "hello")
       yield* addSubtask(chat.id, msg.id)
@@ -1086,6 +1096,7 @@ it.instance(
       const prompt = yield* SessionPrompt.Service
       const sessions = yield* Session.Service
       const chat = yield* sessions.create({
+        agent: "build",
         title: "Pinned",
         permission: [{ permission: "*", pattern: "*", action: "allow" }],
       })
@@ -1133,7 +1144,7 @@ it.instance(
 
       yield* llm.hang
 
-      const chat = yield* sessions.create({})
+      const chat = yield* sessions.create({ agent: "build" })
       yield* user(chat.id, "hi")
 
       const fiber = yield* prompt.loop({ sessionID: chat.id }).pipe(Effect.forkChild)
@@ -1153,7 +1164,7 @@ it.instance("cancel interrupts loop and resolves with an assistant message", () 
     const { llm } = yield* useServerConfig(providerCfg)
     const prompt = yield* SessionPrompt.Service
     const sessions = yield* Session.Service
-    const chat = yield* sessions.create({ title: "Pinned" })
+    const chat = yield* sessions.create({ agent: "build", title: "Pinned" })
     yield* seed(chat.id)
 
     yield* llm.hang
@@ -1177,7 +1188,7 @@ it.instance("cancel records MessageAbortedError on interrupted process", () =>
     const { llm } = yield* useServerConfig(providerCfg)
     const prompt = yield* SessionPrompt.Service
     const sessions = yield* Session.Service
-    const chat = yield* sessions.create({ title: "Pinned" })
+    const chat = yield* sessions.create({ agent: "build", title: "Pinned" })
     yield* llm.hang
     yield* user(chat.id, "hello")
 
@@ -1209,7 +1220,7 @@ raceNoLLMServer.instance(
 
       const prompt = yield* SessionPrompt.Service
       const sessions = yield* Session.Service
-      const chat = yield* sessions.create({ title: "Processor creation race" })
+      const chat = yield* sessions.create({ agent: "build", title: "Processor creation race" })
 
       yield* prompt.prompt({
         sessionID: chat.id,
@@ -1340,7 +1351,7 @@ it.instance(
       const prompt = yield* SessionPrompt.Service
       const sessions = yield* Session.Service
       const status = yield* SessionStatus.Service
-      const chat = yield* sessions.create({ title: "Pinned" })
+      const chat = yield* sessions.create({ agent: "build", title: "Pinned" })
       yield* llm.hang
       const msg = yield* user(chat.id, "hello")
       yield* addSubtask(chat.id, msg.id)
@@ -1374,7 +1385,7 @@ it.instance(
       const { llm } = yield* useServerConfig(providerCfg)
       const prompt = yield* SessionPrompt.Service
       const sessions = yield* Session.Service
-      const chat = yield* sessions.create({ title: "Pinned" })
+      const chat = yield* sessions.create({ agent: "build", title: "Pinned" })
       yield* llm.hang
       yield* user(chat.id, "hello")
 
@@ -1417,7 +1428,7 @@ it.instance("concurrent loop callers all receive same error result", () =>
     const { llm } = yield* useServerConfig(providerCfg)
     const prompt = yield* SessionPrompt.Service
     const sessions = yield* Session.Service
-    const chat = yield* sessions.create({ title: "Pinned" })
+    const chat = yield* sessions.create({ agent: "build", title: "Pinned" })
 
     yield* llm.fail("boom")
     yield* user(chat.id, "hello")
@@ -1436,7 +1447,7 @@ it.instance("prompt submitted during an active run is included in the next LLM i
     const gate = yield* Deferred.make<void>()
     const prompt = yield* SessionPrompt.Service
     const sessions = yield* Session.Service
-    const chat = yield* sessions.create({ title: "Pinned" })
+    const chat = yield* sessions.create({ agent: "build", title: "Pinned" })
 
     yield* llm.hold("first", deferredAsPromise(gate))
     yield* llm.text("second")
@@ -1504,7 +1515,7 @@ it.instance("assertNotBusy fails with BusyError when loop running", () =>
     const sessions = yield* Session.Service
     yield* llm.hang
 
-    const chat = yield* sessions.create({})
+    const chat = yield* sessions.create({ agent: "build" })
     yield* user(chat.id, "hi")
 
     const fiber = yield* prompt.loop({ sessionID: chat.id }).pipe(Effect.forkChild)
@@ -1528,7 +1539,7 @@ noLLMServer.instance("assertNotBusy succeeds when idle", () =>
     const run = yield* SessionRunState.Service
     const sessions = yield* Session.Service
 
-    const chat = yield* sessions.create({})
+    const chat = yield* sessions.create({ agent: "build" })
     const exit = yield* run.assertNotBusy(chat.id).pipe(Effect.exit)
     expect(Exit.isSuccess(exit)).toBe(true)
   }),
@@ -1541,7 +1552,7 @@ it.instance("shell rejects with BusyError when loop running", () =>
     const { llm } = yield* useServerConfig(providerCfg)
     const prompt = yield* SessionPrompt.Service
     const sessions = yield* Session.Service
-    const chat = yield* sessions.create({ title: "Pinned" })
+    const chat = yield* sessions.create({ agent: "build", title: "Pinned" })
     yield* llm.hang
     yield* user(chat.id, "hi")
 
@@ -1743,6 +1754,7 @@ it.instance(
       const prompt = yield* SessionPrompt.Service
       const sessions = yield* Session.Service
       const chat = yield* sessions.create({
+        agent: "build",
         title: "Pinned",
         permission: [{ permission: "*", pattern: "*", action: "allow" }],
       })
@@ -1780,6 +1792,7 @@ it.instance(
       const prompt = yield* SessionPrompt.Service
       const sessions = yield* Session.Service
       const chat = yield* sessions.create({
+        agent: "build",
         title: "Pinned",
         permission: [{ permission: "*", pattern: "*", action: "allow" }],
       })
@@ -1936,6 +1949,7 @@ unix(
       const prompt = yield* SessionPrompt.Service
       const sessions = yield* Session.Service
       const chat = yield* sessions.create({
+        agent: "build",
         title: "Interrupted bash truncation",
         permission: [{ permission: "*", pattern: "*", action: "allow" }],
       })
@@ -2067,7 +2081,7 @@ noLLMServer.instance(
 
       const prompt = yield* SessionPrompt.Service
       const sessions = yield* Session.Service
-      const chat = yield* sessions.create({ title: "Abort Test" })
+      const chat = yield* sessions.create({ agent: "build", title: "Abort Test" })
 
       const testFile = path.join(dir, "test.txt")
       yield* writeText(testFile, "hello world")
@@ -2105,7 +2119,7 @@ noLLMServer.instance(
 
       const prompt = yield* SessionPrompt.Service
       const sessions = yield* Session.Service
-      const chat = yield* sessions.create({ title: "Abort Test" })
+      const chat = yield* sessions.create({ agent: "build", title: "Abort Test" })
 
       const fiber = yield* prompt
         .prompt({
@@ -2137,7 +2151,7 @@ noLLMServer.instance(
       const { directory: dir } = yield* TestInstance
       const prompt = yield* SessionPrompt.Service
       const sessions = yield* Session.Service
-      const session = yield* sessions.create({})
+      const session = yield* sessions.create({ agent: "build" })
 
       const missing = path.join(dir, "does-not-exist.ts")
       const msg = yield* prompt.prompt({
@@ -2173,7 +2187,7 @@ noLLMServer.instance(
       const { directory: dir } = yield* TestInstance
       const prompt = yield* SessionPrompt.Service
       const sessions = yield* Session.Service
-      const session = yield* sessions.create({})
+      const session = yield* sessions.create({ agent: "build" })
 
       const missing = path.join(dir, "still-missing.ts")
       const msg = yield* prompt.prompt({
@@ -2219,7 +2233,7 @@ noLLMServer.instance(
 
       const prompt = yield* SessionPrompt.Service
       const sessions = yield* Session.Service
-      const session = yield* sessions.create({})
+      const session = yield* sessions.create({ agent: "build" })
       const parts = yield* prompt.resolvePromptParts("Read @file#name.txt")
       const fileParts = parts.filter((part) => part.type === "file")
 
@@ -2252,7 +2266,7 @@ it.instance("does not loop empty assistant turns for a simple reply", () =>
     const { llm } = yield* useServerConfig(providerCfg)
     const prompt = yield* SessionPrompt.Service
     const sessions = yield* Session.Service
-    const session = yield* sessions.create({ title: "Prompt regression" })
+    const session = yield* sessions.create({ agent: "build", title: "Prompt regression" })
 
     yield* llm.text("packages/opencode/src/session/processor.ts")
 
@@ -2276,7 +2290,7 @@ it.instance("records aborted errors when prompt is cancelled mid-stream", () =>
     const { llm } = yield* useServerConfig(providerCfg)
     const prompt = yield* SessionPrompt.Service
     const sessions = yield* Session.Service
-    const session = yield* sessions.create({ title: "Prompt cancel regression" })
+    const session = yield* sessions.create({ agent: "build", title: "Prompt cancel regression" })
 
     yield* llm.hang
 
@@ -2318,7 +2332,7 @@ noLLMServer.instance(
     Effect.gen(function* () {
       const prompt = yield* SessionPrompt.Service
       const sessions = yield* Session.Service
-      const session = yield* sessions.create({})
+      const session = yield* sessions.create({ agent: "build" })
 
       const other = yield* prompt.prompt({
         sessionID: session.id,
@@ -2389,7 +2403,7 @@ noLLMServer.instance(
     Effect.gen(function* () {
       const prompt = yield* SessionPrompt.Service
       const sessions = yield* Session.Service
-      const session = yield* sessions.create({})
+      const session = yield* sessions.create({ agent: "nonexistent-agent-xyz" })
       const exit = yield* prompt
         .prompt({
           sessionID: session.id,
@@ -2418,7 +2432,7 @@ noLLMServer.instance(
     Effect.gen(function* () {
       const prompt = yield* SessionPrompt.Service
       const sessions = yield* Session.Service
-      const session = yield* sessions.create({})
+      const session = yield* sessions.create({ agent: "nonexistent-agent-xyz" })
       const exit = yield* prompt
         .prompt({
           sessionID: session.id,
@@ -2446,7 +2460,7 @@ noLLMServer.instance(
     Effect.gen(function* () {
       const prompt = yield* SessionPrompt.Service
       const sessions = yield* Session.Service
-      const session = yield* sessions.create({})
+      const session = yield* sessions.create({ agent: "build" })
       const exit = yield* prompt
         .command({
           sessionID: session.id,

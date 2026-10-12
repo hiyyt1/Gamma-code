@@ -1,0 +1,302 @@
+{
+  "id": "ai-agent-skills",
+  "name": "AI Agent Skills",
+  "source": "https://github.com/julweber/ai_agent_skills",
+  "author": "julweber",
+  "category": "development",
+  "description": "Готовые инструкции для задач AI-агентов.",
+  "revision": "abee46cd364c938d448c8ca0176cd2f923fac03b",
+  "license": "MIT",
+  "skills": [
+    {
+      "name": "ai-agent-skills-assistant",
+      "description": "Expert assistant for the AI Agent Skills repository. Helps install skills, agents, and extensions; provides guidance on available capabilities by gathering information from installed directories.",
+      "path": "skills/ai-agent-skills-assistant/SKILL.md",
+      "sha256": "857068ead1d817a73ebe4f2e5a21e3b61f21ad8b3495b718377a3b738d033959"
+    },
+    {
+      "name": "ansible",
+      "description": "Ansible automation reference for playbooks, roles, inventory, variables, and modules.\nIncludes Proxmox VE and Docker integration via community.general and community.docker collections.\nUse when writing playbooks, troubleshooting Ansible runs, or designing automation workflows.\nTriggers: ansible, playbook, inventory, role, task, handler, vars, jinja2, galaxy, proxmox_kvm, proxmox_lxc, docker_container, docker_compose.\n",
+      "path": "skills/ansible/SKILL.md",
+      "sha256": "33418164abe9e288d47390b765839f25985bdb563b419bb16fef0f9d60eae93d"
+    },
+    {
+      "name": "caveman",
+      "description": "Ultra-compressed communication mode. Cuts token usage ~75% by speaking like caveman while keeping full technical accuracy. Supports intensity levels: lite, full (default), ultra, wenyan-lite, wenyan-full, wenyan-ultra. Use when user says \"caveman mode\", \"talk like caveman\", \"use caveman\", \"less tokens\", \"be brief\", or invokes /caveman. Also auto-triggers when token efficiency is requested.\n",
+      "path": "skills/caveman/SKILL.md",
+      "sha256": "09ebdef35a85d058f8eba04c6a3d91079ac8dabc3d45d265694f128c808f7648"
+    },
+    {
+      "name": "claude-cli",
+      "description": "Expert control of the `claude` CLI (Claude Code). Use when running Claude Code interactively or non-interactively, managing sessions, configuring MCP servers, managing plugins, handling authentication, or piping prompts through claude for scripting.",
+      "path": "skills/claude-cli/SKILL.md",
+      "sha256": "b5a49f805319d7a68d1170e8f8a3e9df1e4de333448e50e54640be8c544ad66e"
+    },
+    {
+      "name": "code-doctor",
+      "description": "Diagnose structural problems in any codebase — god classes, circular dependencies, complexity violations, SOLID anti-patterns. Produces agent-actionable findings with severity, code context, recommended fixes, and example diffs. Offers to start subagents to fix issues.",
+      "path": "skills/code-doctor/SKILL.md",
+      "sha256": "9bb3bb48baf355730552b52d1c71a696db17a1271c5652aad665fffc80ea2b26"
+    },
+    {
+      "name": "code-summarizer",
+      "description": "Scouts and summarizes codebases from local directories or GitHub/GitLab URLs. Extracts architecture, core concepts, key features, problems & solutions, and domain knowledge. Use when a developer wants to quickly understand a new codebase, extract knowledge from a repository, or get a structured overview of a project before working in it.",
+      "path": "skills/code-summarizer/SKILL.md",
+      "sha256": "fd7b215e49653c26acc5645791c78092c8abad0ea5aba3a5bd3cd62b46e6147b"
+    },
+    {
+      "name": "codex-cli",
+      "description": "Expert control of Codex CLI tooling including exec, review, login/logout, and MCP server management. Covers all commands, flags, options, configuration profiles, sandbox modes, and usage patterns for working with the Codex AI coding agent from command line.",
+      "path": "skills/codex-cli/SKILL.md",
+      "sha256": "3edfcacbd5bdd26c14322754a6f96dc8aac4c06234886c4db72ccd13e57a952b"
+    },
+    {
+      "name": "concourse-ci",
+      "description": "Use when working with ANY Concourse CI task: writing pipelines, configuring resources, building images with oci-build-task, troubleshooting failing jobs, migrating from legacy patterns, or optimizing CI/CD. Triggers on: Concourse, pipeline, fly CLI, resource type, oci-build-task, set_pipeline, concourse.yml.",
+      "path": "skills/concourse-ci/SKILL.md",
+      "sha256": "dc55cd3838ada0ed290439f736b90d4ae2db15518a16ae625272aa26063282b9"
+    },
+    {
+      "name": "dev-brainstorming",
+      "description": "A specialized strategic partner for software evolution, capable of generating architectural ideas, feature extensions, refactoring strategies, and innovation roadmaps based on codebase context.",
+      "path": "skills/dev-brainstorming/SKILL.md",
+      "sha256": "cb098353724c64e7acd06878940ab7bbae5b802a5a2159d9c5674b5e46a3dd51"
+    },
+    {
+      "name": "docker-cli",
+      "description": "Expert Docker CLI reference — containers, images, buildx, compose, networking, volumes, security, multi-platform builds, and troubleshooting. Use this when working with docker containers. Triggers on: docker, container, image, volume, network, compose, Dockerfile, build, pull, push, registry, docker-compose, K8s migration, k3d, kind.\n",
+      "path": "skills/docker-cli/SKILL.md",
+      "sha256": "608560bf165731aa305fc0b15cdfa298a6626fa97db03cf601f7bc064500ebeb"
+    },
+    {
+      "name": "file-organizer",
+      "description": "Intelligently organizes your files and folders across your computer by understanding context, finding duplicates, suggesting better structures, and automating cleanup tasks. Reduces cognitive load and keeps your digital workspace tidy without manual effort.",
+      "path": "skills/file-organizer/SKILL.md",
+      "sha256": "96be370e7a0e5d01d6abbccb6c1ea3129c17d3cb99cc3c1b6dcdbfe9ea588fb2"
+    },
+    {
+      "name": "frontend-web-developer",
+      "description": "Expert frontend developer for Next.js 15/16 App Router, React 19, and Tailwind CSS v4. Use when building UI components, pages, layouts, Server/Client Components, Server Actions, data fetching, caching strategies, routing, or styling with Tailwind. Triggers on any Next.js, React, or Tailwind task.",
+      "path": "skills/frontend-web-developer/SKILL.md",
+      "sha256": "bf4d627e64227dbf39473295c6358528f734cf0f4a3302e098937240d297e661"
+    },
+    {
+      "name": "github-actions-cicd",
+      "description": "Expert implementation and optimization of GitHub Actions CI/CD pipelines. Use when designing workflows, debugging pipeline failures, optimizing build times, or implementing best practices for continuous integration and deployment.",
+      "path": "skills/github-actions-cicd/SKILL.md",
+      "sha256": "7a7133679356df583d922c27617e1e4bf6d57d271ab7f20282340db0dae58c63"
+    },
+    {
+      "name": "github-cli",
+      "description": "Expert help with GitHub CLI (gh) for managing pull requests, issues, repositories, workflows, and releases. Use this when working with GitHub operations from the command line.",
+      "path": "skills/github-cli/SKILL.md",
+      "sha256": "62cde5dc566ba4dc02aebb50ebc46e9945f60dfeccc172ed9565d0ba765b3af2"
+    },
+    {
+      "name": "gitlab-ci-cd",
+      "description": "Expert design, generation, validation, optimization, and troubleshooting of GitLab CI/CD pipelines. Use when creating .gitlab-ci.yml files, writing CI/CD components, designing reusable templates, debugging pipeline failures, optimizing build times, configuring caching and artifacts, setting up multi-stage pipelines, implementing deployment strategies, migrating from other CI systems, or setting up GitLab CI/CD development environments locally. Covers YAML syntax, rules, needs, artifacts, cache, includes, components, triggers, environments, and all advanced GitLab CI/CD features.",
+      "path": "skills/gitlab-ci-cd/SKILL.md",
+      "sha256": "39829fc526bd93d7c87a82337832a99b00747d8d3f54afee73b8fb3b8071636b"
+    },
+    {
+      "name": "grill-me",
+      "description": "Interview the user relentlessly about a plan or design until reaching shared understanding, resolving each branch of the decision tree. Use when user wants to stress-test a plan, get grilled on their design, or mentions \"grill me\".",
+      "path": "skills/grill-me/SKILL.md",
+      "sha256": "5db4048fab25d4878eaf650737b20b2240385500015cdd4b4ccb74d0dfb3c4e1"
+    },
+    {
+      "name": "gtd-assistant",
+      "description": "A GTD-style productivity assistant that combines open loop collection with intelligent brainstorming to generate actionable next steps, priorities, and refinement suggestions for your Obsidian vault.",
+      "path": "skills/gtd-assistant/SKILL.md",
+      "sha256": "7098faab11706702037dfb9e168dbe6279273c4610288f23b1f17d2d0843bf00"
+    },
+    {
+      "name": "herdr-cli",
+      "description": "Expert guide for herdr, the terminal workspace manager for AI coding agents.",
+      "path": "skills/herdr-cli/SKILL.md",
+      "sha256": "f954f4fd15d49360351b08f2e7313cf52ed7fdda7e33d7b25a1b31e4d6b6c7e1"
+    },
+    {
+      "name": "hf-cli",
+      "description": "Use the `hf` CLI tool to interact with Hugging Face Hub — downloading models/datasets, uploading files, managing repos, running jobs, and managing authentication and cache. Use when the user wants to work with Hugging Face Hub from the command line.",
+      "path": "skills/hf-cli/SKILL.md",
+      "sha256": "3e515713e23a8c68d7a831e7f38f30e1f483577a20c90ccc496676eb4a74b5ff"
+    },
+    {
+      "name": "karpathy-guidelines",
+      "description": "Behavioral guidelines to reduce common LLM coding mistakes. Use when writing, reviewing, or refactoring code to avoid overcomplication, make surgical changes, surface assumptions, and define verifiable success criteria.",
+      "path": "skills/karpathy-guidelines/SKILL.md",
+      "sha256": "33deac5b92dbc4f8671aac32fe71fada55d85ab826661627aa6313683a8f5017"
+    },
+    {
+      "name": "list-large-files",
+      "description": "Lists the top N largest files in a given directory and its subdirectories. Uses Python to traverse directories and calculate file sizes.",
+      "path": "skills/list-large-files/SKILL.md",
+      "sha256": "127faa5c5c83443c1381db1add9a976a2e1866d38e67a20142346c511754cafd"
+    },
+    {
+      "name": "list-most-intensive-processes",
+      "description": "Lists the top N most intensive processes running on the system based on CPU time and memory usage. Uses Python to gather process information from the operating system.",
+      "path": "skills/list-most-intensive-processes/SKILL.md",
+      "sha256": "105fda9fd38b1e703314dd574cab3168c3e54e9161ef58adad57184145109d8a"
+    },
+    {
+      "name": "llama-cpp",
+      "description": "Expert helper for llama.cpp tooling including llama-server and llama-cli. Manages local LLM inference with GPU acceleration, model loading from Hugging Face/Docker Hub, and fine-tuned generation parameters. Use when running or configuring local LLM servers via llama-server, executing prompts with llama-cli, or optimizing model performance.",
+      "path": "skills/llama-cpp/SKILL.md",
+      "sha256": "6541b63b9f5322ede14cef159fc7d4d5609dd40b8a3570dd50d8727a4f3f4989"
+    },
+    {
+      "name": "llm-wiki",
+      "description": "Manage LLM Wikis in an Obsidian vault. Supports ingest (files, directories, URLs), health checks/healing, querying wiki content, creating new wikis via guided wizard, listing all wikis, and schema gap review. Follows the LLM Wiki Spec: three-layer architecture (raw sources, wiki knowledge base, SCHEMA.md), strict taxonomy adherence, proactive page creation, automatic wikilinking, and self-correcting quality gates. Uses obsidian CLI for all vault operations. Load obsidian-cli skill first.",
+      "path": "skills/llm-wiki/SKILL.md",
+      "sha256": "adb3c30a1f97693b497bba60966ba5fe479e1b4417e67e0fa2c713f1e359ec1e"
+    },
+    {
+      "name": "mermaid",
+      "description": "Guide for creating mermaid diagrams. This skill should be used when users want to create a mermaid diagram (or update an existing diagram).",
+      "path": "skills/mermaid/SKILL.md",
+      "sha256": "d06cc71b49b035189d191a4ee1996d121f823be45db06a93cdb66ea67bff1106"
+    },
+    {
+      "name": "morning-ritual",
+      "description": "Use when starting your workday with a structured Obsidian task briefing - automatically loads obsidian-cli and obsidian-markdown skills to parse vault tasks, surface urgent/due items, and identify 1-5 MIT focus tasks. Triggers on \"Good morning\", \"Morning briefing\", \"Daily Kickoff\", \"What should I work on today\"",
+      "path": "skills/morning-ritual/SKILL.md",
+      "sha256": "522e1b43e8c93ace6f9df46eb3c706a216fa5cb8e419366c576c10248dba2814"
+    },
+    {
+      "name": "obsidian-master",
+      "description": "Controls Obsidian vault via CLI. Performs file operations (read/create/edit/move/delete), searches vault content, analyzes links/backlinks, manages properties and metadata, queries bases, handles tasks, retrieves history versions, and manages plugins/themes. Use when working with Obsidian notes, managing your vault, searching for content, tracking connections between notes, or administering vault settings.",
+      "path": "skills/obsidian-master/SKILL.md",
+      "sha256": "d72312cec29a96106d8968b4104a1e7016083307fc0c61792138100f4ac272dc"
+    },
+    {
+      "name": "obsidian-open-loops-collector",
+      "description": "Collects and presents all open loops from the Obsidian vault for GTD-style reflection. Aggregates open tasks from 00-Tasks/, dangling thoughts (notes containing TODO/idea/later/?), and stub notes (< 10 lines). Use when the user asks for an open loops review, GTD sweep, what's unfinished, or wants to clear their mental backlog.",
+      "path": "skills/obsidian-open-loops-collector/SKILL.md",
+      "sha256": "bf46aed635536127eedcc8b94af7780404d239cd05cd92dedc2940ea892c37a6"
+    },
+    {
+      "name": "opencode-agent-creator",
+      "description": "Expert guide for creating, configuring, and managing Opencode Agents. Use this skill when the user wants to create a new agent or modify an existing one. Only works for opencode agents.",
+      "path": "skills/opencode-agent-creator/SKILL.md",
+      "sha256": "533f1b6943e7f7e0a685f941ca464b688617f79cc34d992eaaca57a62453320a"
+    },
+    {
+      "name": "opencode-cli",
+      "description": "Expert control of opencode via the command line. Use when running opencode TUI, headless server, web UI, or the `run` non-interactive mode; managing sessions, providers, agents, MCP servers, models, stats, import/export, GitHub integration, debugging, database tools, upgrades, or shell completions.",
+      "path": "skills/opencode-cli/SKILL.md",
+      "sha256": "480d3e5768b5f9bc16407dabbbc806ffdc1f9d23ecf6cab9c6c944054eb86756"
+    },
+    {
+      "name": "pi-cli",
+      "description": "Expert control of the pi coding agent CLI. Use when the user wants to launch pi sessions, manage extensions/packages, switch models, configure tools, export sessions, resume conversations, or script pi non-interactively. Covers all flags, commands, environment variables, and usage patterns.",
+      "path": "skills/pi-cli/SKILL.md",
+      "sha256": "6cc9370e3d61552cceec8a7fb82c8c9bc2d0a1340ec2d1daa3e93071e99154ed"
+    },
+    {
+      "name": "pi-subagents-master",
+      "description": "Expert guide for creating, running, and managing pi subagent configurations and multi-agent pipelines. Provides templates, examples, and step-by-step instructions for defining agent specifications and workflows using the pi-subagents extension.",
+      "path": "skills/pi-subagents-master/SKILL.md",
+      "sha256": "5b6eb7da468ffc1d80ff49ab73f4947d3e62b82acd5bbf3d026e07907dfa1cb7"
+    },
+    {
+      "name": "planka-development-flow",
+      "description": "Orchestrate the Planka-based AI development workflow — create tickets, dispatch them to agentic implementer/reviewer sessions, and track them through the board (Inbox → Ready → Claimed → In Progress → Ready for Review → In AI Review → Human Review → Done/Rejected). Use when the user says \"dispatch the board\", \"run the planka flow\", \"create a ticket\", \"planka status\", works on Planka tickets, or asks about the AI ticket pipeline. The classical dispatcher script does all deterministic work; agents only implement and review.",
+      "path": "skills/planka-development-flow/SKILL.md",
+      "sha256": "507e4f5d00d9d5d5f06cec6c896e769e2057c6981feffb3c086e8a453efa7d5d"
+    },
+    {
+      "name": "plnk-cli",
+      "description": "Use this skill when the user wants to inspect or manage Planka projects, boards, lists, cards, tasks, comments, labels, custom fields (field groups, fields, card field values), attachments, memberships, users, or authentication with the plnk CLI.",
+      "path": "skills/plnk-cli/SKILL.md",
+      "sha256": "3eeef31f04d34811ce39238a2cc6dac079f7644b340c662613e8f53b40a73e1c"
+    },
+    {
+      "name": "ponytail",
+      "description": "Forces the laziest solution that actually works, simplest, shortest, most minimal. Channels a senior dev who has seen everything: question whether the task needs to exist at all (YAGNI), reach for the standard library before custom code, native platform features before dependencies, one line before fifty. Supports intensity levels: lite, full (default), ultra. Use on ANY coding task: writing, adding, refactoring, fixing, reviewing, or designing code, and choosing libraries or dependencies. Also use whenever the user says \"ponytail\", \"be lazy\", \"lazy mode\", \"simplest solution\", \"minimal solution\", \"yagni\", \"do less\", or \"shortest path\", or complains about over-engineering, bloat, boilerplate, or unnecessary dependencies. Do NOT use for non-coding requests (general knowledge, prose, translation, summaries, recipes).\n",
+      "path": "skills/ponytail/SKILL.md",
+      "sha256": "75842fcb29102c472b8f38fcd3b08f2fc0f66bd5f34d1eeca431f6a680eef088"
+    },
+    {
+      "name": "product-prd-brainstorming",
+      "description": "Guides users through a structured brainstorming session to create complete Product Requirements Documents with mermaid system architecture diagrams",
+      "path": "skills/product-prd-brainstorming/SKILL.md",
+      "sha256": "fecfc5b483c9707fe8c6f7dbba022dffd984d48930ca8711d43274ec0f3ddd18"
+    },
+    {
+      "name": "python-api-developer",
+      "description": "Write well written python API code using uv, FastAPI and SQLModel following best practices",
+      "path": "skills/python-api-developer/SKILL.md",
+      "sha256": "df3e664beee099c350490bc27f3a65ef21c88cc8a2df933aa01a29895a97f664"
+    },
+    {
+      "name": "ralph-prd-converter",
+      "description": "Convert PRDs to prd.json format for the Ralph autonomous agent system. Use when you have an existing PRD and need to convert it to Ralph's JSON format. Triggers on: convert this prd, turn this into ralph format, create prd.json from this, ralph json.",
+      "path": "skills/ralph-prd-converter/SKILL.md",
+      "sha256": "37dc064bd1c0812a4a9b99e8ab362b453ab67fd8f7dfaf4526b936a068a9e677"
+    },
+    {
+      "name": "ralph-prd-generator",
+      "description": "Generate a Product Requirements Document (PRD) for a new feature. Use when planning a feature, starting a new project, or when asked to create a PRD. Triggers on: create a prd, write prd for, plan this feature, requirements for, spec out.",
+      "path": "skills/ralph-prd-generator/SKILL.md",
+      "sha256": "fb15d160c90bc536e347152e3d6ed2ec4c443e02242c3d3b5630c32ee3415a01"
+    },
+    {
+      "name": "rest-testsuite-skill",
+      "description": "Use when organizing, fixing and writing tests/spec for REST api applications - organizing testsuite directory and file structure, generating test files for CRUD operations",
+      "path": "skills/rest-testssuite/SKILL.md",
+      "sha256": "44b0817a9535c7e61930465484ef8ba69bedcdacbdf7611498d65a47faf208b1"
+    },
+    {
+      "name": "skill-loader",
+      "description": "Use when discovering skills from custom local skill collections stored in specific directories. Activates on /skill-loader, load skills, discover skills, or skill collection queries.",
+      "path": "skills/skill-loader/SKILL.md",
+      "sha256": "718daaa000deb526e68c69bb52ec010d87f813fb21626edb7fa9dfc82811c444"
+    },
+    {
+      "name": "design-taste-frontend",
+      "description": "Anti-slop frontend skill for landing pages, portfolios, and redesigns. The agent reads the brief, infers the right design direction, and ships interfaces that do not look templated. Real design systems when applicable, audit-first on redesigns, strict pre-flight check. Use this skill when designing websites.",
+      "path": "skills/taste/SKILL.md",
+      "sha256": "344c0b1eace675b9180547f3dd24f075d94fb3c18133f78c483167c308a4257e"
+    },
+    {
+      "name": "terraform",
+      "description": "Use when working with Terraform or OpenTofu - creating modules, writing tests (native test framework, Terratest), setting up CI/CD pipelines, reviewing configurations, choosing between testing approaches, debugging state issues, implementing security scanning (trivy, checkov), or making infrastructure-as-code architecture decisions",
+      "path": "skills/terraform/SKILL.md",
+      "sha256": "ed1ce520f5f265a9cba05abc12b38e7630b646e7d38e8996ddea3a232e979fad"
+    },
+    {
+      "name": "tmux-coder",
+      "description": "Spawn, monitor, and manage coding agents in tmux windows. Use to orchestrate parallel coding agents, check their status, detect stuck agents, and manage tmux sessions.",
+      "path": "skills/tmux-coder/SKILL.md",
+      "sha256": "7a5a07ef4efb0ee1f4ce07dd86848b4f8822294fe846ea5e0636c555b47fc2ff"
+    },
+    {
+      "name": "tmux-specialist",
+      "description": "Complete tmux expertise: session/window/pane management, scripting, automation, copy mode, configuration, plugins, agent steering, and all advanced features. Use when working with tmux in any capacity.",
+      "path": "skills/tmux-specialist/SKILL.md",
+      "sha256": "90474c8df757af658d35f04333d4483845c0dd725110f235e1ffb8b078e13476"
+    },
+    {
+      "name": "trello-cli",
+      "description": "Power shell user for Trello via CLI. Execute trello commands, parse JSON output, manage boards/cards/lists programmatically.",
+      "path": "skills/trello-cli/SKILL.md",
+      "sha256": "255e06a2eda9dfa09c167e04405354b4d756aee38ce3630d33f9ae1c02b494ca"
+    },
+    {
+      "name": "uv",
+      "description": "Use `uv` instead of pip/python/venv. Run scripts with `uv run script.py`, add deps with `uv add`, use inline script metadata for standalone scripts.",
+      "path": "skills/uv/SKILL.md",
+      "sha256": "0a996cd52a1e5d8bc0e35b72c222041dc3ff14d503583f09b6c4822b3ff3b476"
+    }
+  ],
+  "dependencies": [
+    "Claude/Codex/Pi/OpenCode CLI для соответствующих skills",
+    "Docker, Terraform, Ansible, tmux, uv и сервисные credentials по сценарию"
+  ],
+  "compatibility": "needs-configuration",
+  "reason": "Часть навыков предназначена для управления другими агентными CLI, инфраструктурой и внешними сервисами. Runtime и credentials не настроены; запуск полного пакета не проверен.",
+  "enabledByDefault": false,
+  "runtimes": []
+}

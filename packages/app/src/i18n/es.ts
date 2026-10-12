@@ -1,8 +1,8 @@
 import { PRODUCT_ENGLISH } from "./product"
 export const dict = {
   ...PRODUCT_ENGLISH,
-  "app.name": "Oreshnik",
-  "desktop.menu.app": "Oreshnik",
+  "app.name": "Gamma",
+  "desktop.menu.app": "Gamma",
   "desktop.menu.file": "Archivo",
   "desktop.menu.edit": "Editar",
   "desktop.menu.view": "Ver",
@@ -244,7 +244,7 @@ export const dict = {
   "provider.connect.status.waiting": "Esperando autorización...",
   "provider.connect.status.failed": "Autorización fallida: {{error}}",
   "provider.connect.apiKey.description":
-    "Introduce tu clave API de {{provider}} para conectar tu cuenta y usar modelos de {{provider}} en Oreshnik.",
+    "Introduce tu clave API de {{provider}} para conectar tu cuenta y usar modelos de {{provider}} en Gamma.",
   "provider.connect.apiKey.label": "Clave API de {{provider}}",
   "provider.connect.apiKey.placeholder": "Clave API",
   "provider.connect.apiKey.required": "La clave API es obligatoria",
@@ -258,7 +258,7 @@ export const dict = {
   "provider.connect.oauth.code.visit.prefix": "Visita ",
   "provider.connect.oauth.code.visit.link": "este enlace",
   "provider.connect.oauth.code.visit.suffix":
-    " para obtener tu código de autorización para conectar tu cuenta y usar modelos de {{provider}} en Oreshnik.",
+    " para obtener tu código de autorización para conectar tu cuenta y usar modelos de {{provider}} en Gamma.",
   "provider.connect.oauth.code.label": "Código de autorización {{method}}",
   "provider.connect.oauth.code.placeholder": "Código de autorización",
   "provider.connect.oauth.code.required": "El código de autorización es obligatorio",
@@ -266,7 +266,7 @@ export const dict = {
   "provider.connect.oauth.auto.visit.prefix": "Visita ",
   "provider.connect.oauth.auto.visit.link": "este enlace",
   "provider.connect.oauth.auto.visit.suffix":
-    " e introduce el código a continuación para conectar tu cuenta y usar modelos de {{provider}} en Oreshnik.",
+    " e introduce el código a continuación para conectar tu cuenta y usar modelos de {{provider}} en Gamma.",
   "provider.connect.oauth.auto.confirmationCode": "Código de confirmación",
   "provider.connect.toast.connected.title": "{{provider}} conectado",
   "provider.connect.toast.connected.description": "Los modelos de {{provider}} ahora están disponibles para usar.",
@@ -549,7 +549,7 @@ export const dict = {
   "help.tabs.title": "Presentamos las pestañas",
   "help.tabs.description": "Organiza tu trabajo y las sesiones activas con pestañas",
   "help.tabs.date": "14 de julio",
-  "help.tabs.introduction": "Oreshnik Desktop ahora se organiza en torno a pestañas.",
+  "help.tabs.introduction": "Gamma Desktop ahora se organiza en torno a pestañas.",
   "help.tabs.sessions":
     "Inicia una nueva sesión en una pestaña o abre una sesión existente de cualquiera de tus proyectos. Abre una pestaña nueva cuando empieces algo nuevo y ciérrala cuando termines.",
   "help.tabs.organize":
@@ -675,7 +675,7 @@ export const dict = {
   "toast.session.listFailed.title": "Fallo al cargar sesiones para {{project}}",
 
   "toast.update.title": "Actualización disponible",
-  "toast.update.description": "Una nueva versión de Oreshnik ({{version}}) está disponible para instalar.",
+  "toast.update.description": "Una nueva versión de Gamma ({{version}}) está disponible para instalar.",
   "toast.update.action.installRestart": "Instalar y reiniciar",
   "toast.update.action.notYet": "Todavía no",
 
@@ -900,7 +900,7 @@ export const dict = {
   "sidebar.empty.title": "No hay proyectos abiertos",
   "sidebar.empty.description": "Abre un proyecto para empezar",
 
-  "app.name.desktop": "Oreshnik Desktop",
+  "app.name.desktop": "Gamma Desktop",
 
   "settings.section.desktop": "Escritorio",
   "settings.section.server": "Servidor",
@@ -919,17 +919,17 @@ export const dict = {
   "settings.general.section.display": "Pantalla",
 
   "settings.general.row.language.title": "Idioma",
-  "settings.general.row.language.description": "Cambiar el idioma de visualización para Oreshnik",
+  "settings.general.row.language.description": "Cambiar el idioma de visualización para Gamma",
   "settings.general.row.shell.title": "Shell del terminal",
   "settings.general.row.shell.description": "Shell que usan el terminal y las herramientas del agente",
   "settings.general.row.shell.autoDefault": "Automático (predeterminado)",
   "settings.general.row.shell.terminalOnly": "solo en el terminal",
   "settings.general.row.appearance.title": "Apariencia",
-  "settings.general.row.appearance.description": "Personaliza cómo se ve Oreshnik en tu dispositivo",
+  "settings.general.row.appearance.description": "Personaliza cómo se ve Gamma en tu dispositivo",
   "settings.general.row.colorScheme.title": "Esquema de color",
-  "settings.general.row.colorScheme.description": "Elige si Oreshnik sigue el tema del sistema, claro u oscuro",
+  "settings.general.row.colorScheme.description": "Elige si Gamma sigue el tema del sistema, claro u oscuro",
   "settings.general.row.theme.title": "Tema",
-  "settings.general.row.theme.description": "Personaliza el tema de Oreshnik.",
+  "settings.general.row.theme.description": "Personaliza el tema de Gamma.",
   "settings.general.row.font.title": "Fuente de código",
   "settings.general.row.font.description": "Personaliza la fuente usada en bloques de código",
   "settings.general.row.terminalFont.title": "Fuente del terminal",
@@ -988,7 +988,7 @@ export const dict = {
     'Mostrar ventanas emergentes de "Novedades" después de las actualizaciones',
 
   "settings.updates.row.startup.title": "Buscar actualizaciones al iniciar",
-  "settings.updates.row.startup.description": "Buscar actualizaciones automáticamente cuando se inicia Oreshnik",
+  "settings.updates.row.startup.description": "Buscar actualizaciones automáticamente cuando se inicia Gamma",
   "settings.updates.row.check.title": "Buscar actualizaciones",
   "settings.updates.row.check.description": "Buscar actualizaciones manualmente e instalarlas si hay alguna",
   "settings.updates.action.checkNow": "Buscar ahora",
@@ -996,7 +996,7 @@ export const dict = {
   "settings.updates.action.downloading": "Descargando...",
   "settings.updates.action.installing": "Instalando...",
   "settings.updates.toast.latest.title": "Estás al día",
-  "settings.updates.toast.latest.description": "Estás usando la última versión de Oreshnik.",
+  "settings.updates.toast.latest.description": "Estás usando la última versión de Gamma.",
   "sound.option.none": "Ninguno",
   "sound.option.alert01": "Alerta 01",
   "sound.option.alert02": "Alerta 02",
@@ -1265,4 +1265,6 @@ export const dict = {
   "error.childStore.persistedProjectIconCreateFailed": "Error al crear icono de proyecto persistente",
   "error.childStore.storeCreateFailed": "Error al crear almacén",
   "terminal.connectionLost.abnormalClose": "WebSocket cerrado anormalmente: {{code}}",
+  // English fallback pending locale review; retain the count placeholder.
+  "workspace.files.count.many": "{{count}} files",
 }

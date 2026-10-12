@@ -388,6 +388,125 @@ describe("session HttpApi", () => {
     { git: true, config: { formatter: false, lsp: false } },
   )
 
+  it.instance(
+    "rejects agent replacement through Legacy and V2 HTTP before admission",
+    () =>
+      Effect.gen(function* () {
+        const test = yield* TestInstance
+        const session = yield* createSession()
+        expect(session.agent).toBe("gamma")
+        const headers = { "x-opencode-directory": test.directory, "content-type": "application/json" }
+        for (const [route, body] of [
+          [SessionPaths.prompt, { parts: [{ type: "text", text: "must not run" }] }],
+          [SessionPaths.promptAsync, { parts: [{ type: "text", text: "must not enqueue" }] }],
+          [SessionPaths.command, { command: "missing", arguments: "" }],
+          [SessionPaths.shell, { command: "exit 1" }],
+        ] as const) {
+          const response = yield* request(pathFor(route, { sessionID: session.id }), {
+            method: "POST",
+            headers,
+            body: JSON.stringify({ ...body, agent: "build" }),
+          })
+          expect(response.status).toBe(400)
+        }
+        const replaced = yield* request(`/api/session/${session.id}/agent`, {
+          method: "POST",
+          headers,
+          body: JSON.stringify({ agent: "build" }),
+        })
+        expect(replaced.status).toBe(409)
+        expect(yield* replaced.json).toMatchObject({ message: "session_agent_locked" })
+        const same = yield* request(`/api/session/${session.id}/agent`, {
+          method: "POST",
+          headers,
+          body: JSON.stringify({ agent: "gamma" }),
+        })
+        expect(same.status).toBe(204)
+        expect(yield* Session.use.messages({ sessionID: session.id })).toEqual([])
+        expect((yield* Session.use.get(session.id)).agent).toBe("gamma")
+      }),
+    { git: true, config: { formatter: false, lsp: false } },
+  )
+
+  it.live(
+    "V2 executes Gamma, 1C and Bitrix with isolated profile tools in one directory",
+    () =>
+      Effect.gen(function* () {
+        const llm = yield* TestLLMServer
+        const previous = process.env.GAMMA_BITRIX24_DOCS_DISABLED
+        const credential = process.env.SESSION_AGENT_TEST_KEY
+        process.env.SESSION_AGENT_TEST_KEY = "test-key"
+        process.env.GAMMA_BITRIX24_DOCS_DISABLED = "1"
+        yield* Effect.addFinalizer(() =>
+          Effect.sync(() => {
+            if (previous === undefined) delete process.env.GAMMA_BITRIX24_DOCS_DISABLED
+            if (previous !== undefined) process.env.GAMMA_BITRIX24_DOCS_DISABLED = previous
+            if (credential === undefined) delete process.env.SESSION_AGENT_TEST_KEY
+            if (credential !== undefined) process.env.SESSION_AGENT_TEST_KEY = credential
+          }),
+        )
+        const config = testProviderConfig(llm.url)
+        const directory = yield* tmpdirScoped({
+          git: true,
+          config: {
+            ...config,
+            provider: { test: { ...config.provider.test, env: ["SESSION_AGENT_TEST_KEY"] } },
+          },
+        })
+        const sessions = yield* Effect.forEach(["gamma", "gamma-1c-developer", "gamma-bitrix24-developer"], (agent) =>
+          createSession({
+            agent,
+            model: { id: ModelV2.ID.make("test-model"), providerID: ProviderV2.ID.make("test") },
+          }).pipe(provideInstanceEffect(directory)),
+        )
+        yield* llm.toolMatch(
+          (hit) => JSON.stringify(hit.body).includes("gamma-b24_connection_status"),
+          "gamma-b24_connection_status",
+          {},
+        )
+        yield* llm.text("gamma done")
+        yield* llm.text("1c done")
+        yield* llm.text("bitrix done")
+        yield* Effect.forEach(
+          sessions,
+          (session) =>
+            Effect.gen(function* () {
+              const response = yield* request(`/api/session/${session.id}/prompt`, {
+                method: "POST",
+                headers: { "x-opencode-directory": directory, "content-type": "application/json" },
+                body: JSON.stringify({ prompt: { text: "Describe your role briefly" } }),
+              })
+              expect(response.status).toBe(200)
+            }),
+          { concurrency: "unbounded" },
+        )
+        yield* llm.wait(4).pipe(Effect.timeout("30 seconds"))
+        const inputs = yield* llm.inputs
+        expect(inputs).toHaveLength(4)
+        const serialized = inputs.map((input) => JSON.stringify(input))
+        expect(serialized.filter((input) => input.includes("Ты Gamma"))).toHaveLength(1)
+        expect(serialized.filter((input) => input.includes("1c-development:bsp"))).toHaveLength(1)
+        expect(serialized.filter((input) => input.includes("gamma-b24_connection_status"))).toHaveLength(2)
+        expect(serialized.some((input) => input.includes('"role":"tool"') && input.includes("gamma-b24"))).toBe(true)
+        for (const session of sessions) {
+          yield* pollWithTimeout(
+            requestJson<{ data: SessionMessage.Message[] }>(`/api/session/${session.id}/message`, {
+              headers: { "x-opencode-directory": directory },
+            }).pipe(
+              Effect.map(({ data }) =>
+                data.some(
+                  (message) => message.type === "assistant" && message.content.some((part) => part.type === "text"),
+                ),
+              ),
+            ),
+            "V2 profile did not produce an assistant message",
+            "10 seconds",
+          )
+        }
+      }).pipe(Effect.provide(TestLLMServer.layer), Effect.provide(AppNodeBuilder.build(CrossSpawnSpawner.node))),
+    60000,
+  )
+
   it.live("uses the persisted session directory for prompt requests", () =>
     Effect.gen(function* () {
       const llm = yield* TestLLMServer
@@ -396,7 +515,7 @@ describe("session HttpApi", () => {
       const config = testProviderConfig(llm.url)
       const sessionDirectory = yield* tmpdirScoped({ git: true, config })
       const requestDirectory = yield* tmpdirScoped({ git: true, config })
-      const session = yield* createSession({ title: "directory regression" }).pipe(
+      const session = yield* createSession({ title: "directory regression", agent: "build" }).pipe(
         provideInstanceEffect(sessionDirectory),
       )
 

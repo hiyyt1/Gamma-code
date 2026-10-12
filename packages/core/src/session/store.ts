@@ -10,6 +10,7 @@ import { SessionMessage } from "./message"
 import { SessionSchema } from "./schema"
 import { SessionMessageTable, SessionTable } from "./sql"
 import { fromRow } from "./info"
+import { SessionAgent } from "./agent"
 
 export interface Interface {
   readonly get: (sessionID: SessionSchema.ID) => Effect.Effect<SessionSchema.Info | undefined>
@@ -34,6 +35,14 @@ const layer = Layer.effect(
     return Service.of({
       get: Effect.fn("SessionStore.get")(function* (sessionID) {
         const row = yield* db.select().from(SessionTable).where(eq(SessionTable.id, sessionID)).get().pipe(Effect.orDie)
+        if (row && !row.agent) {
+          const binding = yield* SessionAgent.load(sessionID).pipe(
+            Effect.provideService(Database.Service, { db }),
+            Effect.exit,
+          )
+          // Ambiguous sessions remain readable; execution requires a known binding.
+          if (binding._tag === "Success") return fromRow({ ...row, agent: binding.value.agent })
+        }
         return row ? fromRow(row) : undefined
       }),
       context: Effect.fn("SessionStore.context")(function* (sessionID) {

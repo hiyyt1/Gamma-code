@@ -196,4 +196,8 @@ export const dict: Record<string, string> = {
   "ui.question.multiHint": "लागू हुने सबै उत्तरहरू चयन गर्नुहोस्",
   "ui.question.singleHint": "एउटा जवाफ चयन गर्नुहोस्",
   "ui.question.custom.placeholder": "आफ्नो उत्तर टाइप गर्नुहोस्...",
+  // Explicit English fallback pending locale review.
+  "ui.sessionTurn.status.waitingProvider": "Waiting for provider",
+  "ui.sessionTurn.status.generating": "Model is generating a response",
+  "ui.sessionTurn.error.provider": "Provider error. You can send your message again.",
 }

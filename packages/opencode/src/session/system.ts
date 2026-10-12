@@ -24,6 +24,7 @@ import { LocationServiceMap, locationServiceMapLayer } from "@opencode-ai/core/l
 import { Reference } from "@opencode-ai/core/reference"
 import { MCP } from "@/mcp"
 import { PermissionV1 } from "@opencode-ai/core/v1/permission"
+import { KnowledgeStore } from "@/server/knowledge-store"
 
 export function provider(model: Provider.Model) {
   if (model.api.id.includes("muse")) {
@@ -68,10 +69,14 @@ const layer = Layer.effect(
     return Service.of({
       environment: Effect.fn("SystemPrompt.environment")(function* (model: Provider.Model) {
         const ctx = yield* InstanceState.context
+        const knowledge = yield* Effect.tryPromise(() => KnowledgeStore.context(ctx.directory)).pipe(
+          Effect.catch((error) => Effect.logWarning("Knowledge context unavailable", error).pipe(Effect.as(undefined))),
+        )
         const references = yield* Effect.gen(function* () {
           return (yield* (yield* Reference.Service).list()).filter((reference) => reference.description !== undefined)
         }).pipe(Effect.provide(locations.get(Location.Ref.make({ directory: AbsolutePath.make(ctx.directory) }))))
         return [
+          knowledge,
           [
             `You are powered by the model named ${model.api.id}. The exact model ID is ${model.providerID}/${model.api.id}`,
             `Here is some useful information about the environment you are running in:`,

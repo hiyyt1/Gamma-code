@@ -1,0 +1,688 @@
+[
+  {
+    "file": "packages/protocol/src/groups/provider.ts",
+    "line": 10,
+    "method": "get",
+    "name": "provider.list",
+    "path": "/api/provider"
+  },
+  {
+    "file": "packages/protocol/src/groups/provider.ts",
+    "line": 25,
+    "method": "get",
+    "name": "provider.get",
+    "path": "/api/provider/:providerID"
+  },
+  {
+    "file": "packages/protocol/src/groups/fs.ts",
+    "line": 22,
+    "method": "get",
+    "name": "fs.read",
+    "path": "/api/fs/read/*"
+  },
+  {
+    "file": "packages/protocol/src/groups/fs.ts",
+    "line": 36,
+    "method": "get",
+    "name": "fs.list",
+    "path": "/api/fs/list"
+  },
+  {
+    "file": "packages/protocol/src/groups/fs.ts",
+    "line": 50,
+    "method": "get",
+    "name": "fs.find",
+    "path": "/api/fs/find"
+  },
+  {
+    "file": "packages/protocol/src/groups/location.ts",
+    "line": 30,
+    "method": "get",
+    "name": "location.get",
+    "path": "/api/location"
+  },
+  {
+    "file": "packages/protocol/src/groups/question.ts",
+    "line": 20,
+    "method": "get",
+    "name": "question.request.list",
+    "path": "/api/question/request"
+  },
+  {
+    "file": "packages/protocol/src/groups/question.ts",
+    "line": 37,
+    "method": "get",
+    "name": "session.question.list",
+    "path": "/api/session/:sessionID/question"
+  },
+  {
+    "file": "packages/protocol/src/groups/question.ts",
+    "line": 52,
+    "method": "post",
+    "name": "session.question.reply",
+    "path": "/api/session/:sessionID/question/:requestID/reply"
+  },
+  {
+    "file": "packages/protocol/src/groups/question.ts",
+    "line": 68,
+    "method": "post",
+    "name": "session.question.reject",
+    "path": "/api/session/:sessionID/question/:requestID/reject"
+  },
+  {
+    "file": "packages/protocol/src/groups/command.ts",
+    "line": 9,
+    "method": "get",
+    "name": "command.list",
+    "path": "/api/command"
+  },
+  {
+    "file": "packages/protocol/src/groups/integration.ts",
+    "line": 12,
+    "method": "get",
+    "name": "integration.list",
+    "path": "/api/integration"
+  },
+  {
+    "file": "packages/protocol/src/groups/integration.ts",
+    "line": 26,
+    "method": "get",
+    "name": "integration.get",
+    "path": "/api/integration/:integrationID"
+  },
+  {
+    "file": "packages/protocol/src/groups/integration.ts",
+    "line": 41,
+    "method": "post",
+    "name": "integration.connect.key",
+    "path": "/api/integration/:integrationID/connect/key"
+  },
+  {
+    "file": "packages/protocol/src/groups/integration.ts",
+    "line": 61,
+    "method": "post",
+    "name": "integration.connect.oauth",
+    "path": "/api/integration/:integrationID/connect/oauth"
+  },
+  {
+    "file": "packages/protocol/src/groups/integration.ts",
+    "line": 82,
+    "method": "get",
+    "name": "integration.attempt.status",
+    "path": "/api/integration/attempt/:attemptID"
+  },
+  {
+    "file": "packages/protocol/src/groups/integration.ts",
+    "line": 97,
+    "method": "post",
+    "name": "integration.attempt.complete",
+    "path": "/api/integration/attempt/:attemptID/complete"
+  },
+  {
+    "file": "packages/protocol/src/groups/integration.ts",
+    "line": 114,
+    "method": "delete",
+    "name": "integration.attempt.cancel",
+    "path": "/api/integration/attempt/:attemptID"
+  },
+  {
+    "file": "packages/protocol/src/groups/permission.ts",
+    "line": 23,
+    "method": "get",
+    "name": "permission.request.list",
+    "path": "/api/permission/request"
+  },
+  {
+    "file": "packages/protocol/src/groups/permission.ts",
+    "line": 37,
+    "method": "get",
+    "name": "permission.saved.list",
+    "path": "/api/permission/saved"
+  },
+  {
+    "file": "packages/protocol/src/groups/permission.ts",
+    "line": 49,
+    "method": "delete",
+    "name": "permission.saved.remove",
+    "path": "/api/permission/saved/:id"
+  },
+  {
+    "file": "packages/protocol/src/groups/permission.ts",
+    "line": 63,
+    "method": "post",
+    "name": "session.permission.create",
+    "path": "/api/session/:sessionID/permission"
+  },
+  {
+    "file": "packages/protocol/src/groups/permission.ts",
+    "line": 89,
+    "method": "get",
+    "name": "session.permission.list",
+    "path": "/api/session/:sessionID/permission"
+  },
+  {
+    "file": "packages/protocol/src/groups/permission.ts",
+    "line": 104,
+    "method": "get",
+    "name": "session.permission.get",
+    "path": "/api/session/:sessionID/permission/:requestID"
+  },
+  {
+    "file": "packages/protocol/src/groups/permission.ts",
+    "line": 119,
+    "method": "post",
+    "name": "session.permission.reply",
+    "path": "/api/session/:sessionID/permission/:requestID/reply"
+  },
+  {
+    "file": "packages/protocol/src/groups/reference.ts",
+    "line": 9,
+    "method": "get",
+    "name": "reference.list",
+    "path": "/api/reference"
+  },
+  {
+    "file": "packages/protocol/src/groups/skill.ts",
+    "line": 9,
+    "method": "get",
+    "name": "skill.list",
+    "path": "/api/skill"
+  },
+  {
+    "file": "packages/protocol/src/groups/credential.ts",
+    "line": 8,
+    "method": "patch",
+    "name": "credential.update",
+    "path": "/api/credential/:credentialID"
+  },
+  {
+    "file": "packages/protocol/src/groups/credential.ts",
+    "line": 24,
+    "method": "delete",
+    "name": "credential.remove",
+    "path": "/api/credential/:credentialID"
+  },
+  {
+    "file": "packages/protocol/src/groups/message.ts",
+    "line": 26,
+    "method": "get",
+    "name": "session.messages",
+    "path": "/api/session/:sessionID/message"
+  },
+  {
+    "file": "packages/protocol/src/groups/event.ts",
+    "line": 35,
+    "method": "get",
+    "name": "event.subscribe",
+    "path": "/api/event"
+  },
+  {
+    "file": "packages/protocol/src/groups/pty.ts",
+    "line": 23,
+    "method": "get",
+    "name": "pty.list",
+    "path": "/api/pty"
+  },
+  {
+    "file": "packages/protocol/src/groups/pty.ts",
+    "line": 37,
+    "method": "post",
+    "name": "pty.create",
+    "path": "/api/pty"
+  },
+  {
+    "file": "packages/protocol/src/groups/pty.ts",
+    "line": 52,
+    "method": "get",
+    "name": "pty.get",
+    "path": "/api/pty/:ptyID"
+  },
+  {
+    "file": "packages/protocol/src/groups/pty.ts",
+    "line": 68,
+    "method": "put",
+    "name": "pty.update",
+    "path": "/api/pty/:ptyID"
+  },
+  {
+    "file": "packages/protocol/src/groups/pty.ts",
+    "line": 85,
+    "method": "delete",
+    "name": "pty.remove",
+    "path": "/api/pty/:ptyID"
+  },
+  {
+    "file": "packages/protocol/src/groups/pty.ts",
+    "line": 101,
+    "method": "post",
+    "name": "pty.connectToken",
+    "path": "/api/pty/:ptyID/connect-token"
+  },
+  {
+    "file": "packages/protocol/src/groups/pty.ts",
+    "line": 119,
+    "method": "get",
+    "name": "pty.connect",
+    "path": "/api/pty/:ptyID/connect"
+  },
+  {
+    "file": "packages/protocol/src/groups/health.ts",
+    "line": 5,
+    "method": "get",
+    "name": "health.get",
+    "path": "/api/health"
+  },
+  {
+    "file": "packages/protocol/src/groups/agent.ts",
+    "line": 8,
+    "method": "get",
+    "name": "agent.list",
+    "path": "/api/agent"
+  },
+  {
+    "file": "packages/protocol/src/groups/model.ts",
+    "line": 10,
+    "method": "get",
+    "name": "model.list",
+    "path": "/api/model"
+  },
+  {
+    "file": "packages/protocol/src/groups/session.ts",
+    "line": 109,
+    "method": "get",
+    "name": "session.list",
+    "path": "/api/session"
+  },
+  {
+    "file": "packages/protocol/src/groups/session.ts",
+    "line": 129,
+    "method": "post",
+    "name": "session.create",
+    "path": "/api/session"
+  },
+  {
+    "file": "packages/protocol/src/groups/session.ts",
+    "line": 146,
+    "method": "get",
+    "name": "session.active",
+    "path": "/api/session/active"
+  },
+  {
+    "file": "packages/protocol/src/groups/session.ts",
+    "line": 158,
+    "method": "get",
+    "name": "session.get",
+    "path": "/api/session/:sessionID"
+  },
+  {
+    "file": "packages/protocol/src/groups/session.ts",
+    "line": 173,
+    "method": "post",
+    "name": "session.switchAgent",
+    "path": "/api/session/:sessionID/agent"
+  },
+  {
+    "file": "packages/protocol/src/groups/session.ts",
+    "line": 189,
+    "method": "post",
+    "name": "session.switchModel",
+    "path": "/api/session/:sessionID/model"
+  },
+  {
+    "file": "packages/protocol/src/groups/session.ts",
+    "line": 205,
+    "method": "post",
+    "name": "session.prompt",
+    "path": "/api/session/:sessionID/prompt"
+  },
+  {
+    "file": "packages/protocol/src/groups/session.ts",
+    "line": 226,
+    "method": "post",
+    "name": "session.compact",
+    "path": "/api/session/:sessionID/compact"
+  },
+  {
+    "file": "packages/protocol/src/groups/session.ts",
+    "line": 241,
+    "method": "post",
+    "name": "session.wait",
+    "path": "/api/session/:sessionID/wait"
+  },
+  {
+    "file": "packages/protocol/src/groups/session.ts",
+    "line": 256,
+    "method": "post",
+    "name": "session.revert.stage",
+    "path": "/api/session/:sessionID/revert/stage"
+  },
+  {
+    "file": "packages/protocol/src/groups/session.ts",
+    "line": 272,
+    "method": "post",
+    "name": "session.revert.clear",
+    "path": "/api/session/:sessionID/revert/clear"
+  },
+  {
+    "file": "packages/protocol/src/groups/session.ts",
+    "line": 281,
+    "method": "post",
+    "name": "session.revert.commit",
+    "path": "/api/session/:sessionID/revert/commit"
+  },
+  {
+    "file": "packages/protocol/src/groups/session.ts",
+    "line": 292,
+    "method": "get",
+    "name": "session.context",
+    "path": "/api/session/:sessionID/context"
+  },
+  {
+    "file": "packages/protocol/src/groups/session.ts",
+    "line": 307,
+    "method": "get",
+    "name": "session.history",
+    "path": "/api/session/:sessionID/history"
+  },
+  {
+    "file": "packages/protocol/src/groups/session.ts",
+    "line": 327,
+    "method": "get",
+    "name": "session.events",
+    "path": "/api/session/:sessionID/event"
+  },
+  {
+    "file": "packages/protocol/src/groups/session.ts",
+    "line": 345,
+    "method": "post",
+    "name": "session.interrupt",
+    "path": "/api/session/:sessionID/interrupt"
+  },
+  {
+    "file": "packages/protocol/src/groups/session.ts",
+    "line": 360,
+    "method": "get",
+    "name": "session.message",
+    "path": "/api/session/:sessionID/message/:messageID"
+  },
+  {
+    "file": "packages/opencode/src/server/routes/instance/httpapi/groups/project-copy.ts",
+    "line": 15,
+    "method": "post",
+    "name": "generateName",
+    "path": "/experimental/project/:projectID/copy/generate-name"
+  },
+  {
+    "file": "packages/opencode/src/server/routes/instance/httpapi/agent-market.ts",
+    "line": 28,
+    "method": "post",
+    "name": "help",
+    "path": "/product/help/session"
+  },
+  {
+    "file": "packages/opencode/src/server/routes/instance/httpapi/agent-market.ts",
+    "line": 30,
+    "method": "get",
+    "name": "catalog",
+    "path": "/product/agent-market/agents"
+  },
+  {
+    "file": "packages/opencode/src/server/routes/instance/httpapi/agent-market.ts",
+    "line": 36,
+    "method": "get",
+    "name": "detail",
+    "path": "/product/agent-market/agents/:id"
+  },
+  {
+    "file": "packages/opencode/src/server/routes/instance/httpapi/agent-market.ts",
+    "line": 43,
+    "method": "get",
+    "name": "selection",
+    "path": "/product/projects/:project/active-agent"
+  },
+  {
+    "file": "packages/opencode/src/server/routes/instance/httpapi/agent-market.ts",
+    "line": 50,
+    "method": "post",
+    "name": "check",
+    "path": "/product/projects/:project/agent-check"
+  },
+  {
+    "file": "packages/opencode/src/server/routes/instance/httpapi/agent-market.ts",
+    "line": 58,
+    "method": "post",
+    "name": "apply",
+    "path": "/product/projects/:project/sessions"
+  },
+  {
+    "file": "packages/opencode/src/server/routes/instance/httpapi/workspace-files.ts",
+    "line": 24,
+    "method": "post",
+    "name": "discardEmptySession",
+    "path": "/product/session/:sessionID/discard-empty"
+  },
+  {
+    "file": "packages/opencode/src/server/routes/instance/httpapi/workspace-files.ts",
+    "line": 30,
+    "method": "post",
+    "name": "upload",
+    "path": "/product/session/:sessionID/files"
+  },
+  {
+    "file": "packages/opencode/src/server/routes/instance/httpapi/workspace-files.ts",
+    "line": 37,
+    "method": "get",
+    "name": "projects",
+    "path": "/product/projects"
+  },
+  {
+    "file": "packages/opencode/src/server/routes/instance/httpapi/workspace-files.ts",
+    "line": 43,
+    "method": "post",
+    "name": "createProject",
+    "path": "/product/projects"
+  },
+  {
+    "file": "packages/opencode/src/server/routes/instance/httpapi/workspace-files.ts",
+    "line": 50,
+    "method": "get",
+    "name": "files",
+    "path": "/product/session/:sessionID/files"
+  },
+  {
+    "file": "packages/opencode/src/server/routes/instance/httpapi/workspace-files.ts",
+    "line": 66,
+    "method": "get",
+    "name": "download",
+    "path": "/product/session/:sessionID/download"
+  },
+  {
+    "file": "packages/opencode/src/server/routes/instance/httpapi/workspace-files.ts",
+    "line": 73,
+    "method": "get",
+    "name": "content",
+    "path": "/product/session/:sessionID/content"
+  },
+  {
+    "file": "packages/opencode/src/server/routes/instance/httpapi/workspace-files.ts",
+    "line": 86,
+    "method": "get",
+    "name": "find",
+    "path": "/product/session/:sessionID/find"
+  },
+  {
+    "file": "packages/opencode/src/server/routes/instance/httpapi/skill-market.ts",
+    "line": 24,
+    "method": "get",
+    "name": "packages",
+    "path": "/product/skill-market/packages"
+  },
+  {
+    "file": "packages/opencode/src/server/routes/instance/httpapi/skill-market.ts",
+    "line": 30,
+    "method": "get",
+    "name": "package",
+    "path": "/product/skill-market/packages/:id"
+  },
+  {
+    "file": "packages/opencode/src/server/routes/instance/httpapi/skill-market.ts",
+    "line": 37,
+    "method": "get",
+    "name": "selection",
+    "path": "/product/projects/:project/skills"
+  },
+  {
+    "file": "packages/opencode/src/server/routes/instance/httpapi/skill-market.ts",
+    "line": 44,
+    "method": "post",
+    "name": "set",
+    "path": "/product/projects/:project/skills/:id"
+  },
+  {
+    "file": "packages/opencode/src/server/routes/instance/httpapi/bitrix24.ts",
+    "line": 25,
+    "method": "get",
+    "name": "status",
+    "path": "/product/projects/:project/bitrix24"
+  },
+  {
+    "file": "packages/opencode/src/server/routes/instance/httpapi/bitrix24.ts",
+    "line": 34,
+    "method": "post",
+    "name": "connect",
+    "path": "/product/projects/:project/bitrix24/connect"
+  },
+  {
+    "file": "packages/opencode/src/server/routes/instance/httpapi/bitrix24.ts",
+    "line": 41,
+    "method": "post",
+    "name": "disconnect",
+    "path": "/product/projects/:project/bitrix24/disconnect"
+  },
+  {
+    "file": "packages/opencode/src/server/routes/instance/httpapi/bitrix24.ts",
+    "line": 48,
+    "method": "post",
+    "name": "check",
+    "path": "/product/projects/:project/bitrix24/check"
+  },
+  {
+    "file": "packages/opencode/src/server/routes/instance/httpapi/bitrix24.ts",
+    "line": 55,
+    "method": "post",
+    "name": "approve",
+    "path": "/product/projects/:project/bitrix24/plans/:plan"
+  },
+  {
+    "file": "packages/opencode/src/server/routes/instance/httpapi/knowledge.ts",
+    "line": 21,
+    "method": "get",
+    "name": "verify",
+    "path": "/product/knowledge/verify"
+  },
+  {
+    "file": "packages/opencode/src/server/routes/instance/httpapi/knowledge.ts",
+    "line": 26,
+    "method": "get",
+    "name": "state",
+    "path": "/product/knowledge"
+  },
+  {
+    "file": "packages/opencode/src/server/routes/instance/httpapi/knowledge.ts",
+    "line": 28,
+    "method": "post",
+    "name": "publish",
+    "path": "/product/knowledge/publish"
+  },
+  {
+    "file": "packages/opencode/src/server/routes/instance/httpapi/knowledge.ts",
+    "line": 35,
+    "method": "post",
+    "name": "blob",
+    "path": "/product/knowledge/blob/:hash"
+  },
+  {
+    "file": "packages/opencode/src/server/routes/instance/httpapi/knowledge.ts",
+    "line": 42,
+    "method": "get",
+    "name": "original",
+    "path": "/product/knowledge/original"
+  },
+  {
+    "file": "packages/opencode/src/server/routes/instance/httpapi/knowledge.ts",
+    "line": 49,
+    "method": "get",
+    "name": "projects",
+    "path": "/product/knowledge/projects"
+  },
+  {
+    "file": "packages/opencode/src/server/routes/instance/httpapi/knowledge.ts",
+    "line": 55,
+    "method": "post",
+    "name": "connect",
+    "path": "/product/knowledge/projects"
+  },
+  {
+    "file": "packages/opencode/src/server/routes/instance/httpapi/site-preview.ts",
+    "line": 19,
+    "method": "get",
+    "name": "list",
+    "path": "/product/session/:sessionID/preview"
+  },
+  {
+    "file": "packages/opencode/src/server/routes/instance/httpapi/site-preview.ts",
+    "line": 35,
+    "method": "post",
+    "name": "start",
+    "path": "/product/session/:sessionID/preview/start"
+  },
+  {
+    "file": "packages/opencode/src/server/routes/instance/httpapi/site-preview.ts",
+    "line": 43,
+    "method": "post",
+    "name": "renew",
+    "path": "/product/session/:sessionID/preview/renew"
+  },
+  {
+    "file": "packages/opencode/src/server/routes/instance/httpapi/site-preview.ts",
+    "line": 51,
+    "method": "post",
+    "name": "stop",
+    "path": "/product/session/:sessionID/preview/stop"
+  },
+  {
+    "file": "packages/opencode/src/server/routes/instance/httpapi/wildberries.ts",
+    "line": 25,
+    "method": "get",
+    "name": "status",
+    "path": "/product/projects/:project/wildberries"
+  },
+  {
+    "file": "packages/opencode/src/server/routes/instance/httpapi/wildberries.ts",
+    "line": 34,
+    "method": "post",
+    "name": "connect",
+    "path": "/product/projects/:project/wildberries/connect"
+  },
+  {
+    "file": "packages/opencode/src/server/routes/instance/httpapi/wildberries.ts",
+    "line": 41,
+    "method": "post",
+    "name": "disconnect",
+    "path": "/product/projects/:project/wildberries/disconnect"
+  },
+  {
+    "file": "packages/opencode/src/server/routes/instance/httpapi/wildberries.ts",
+    "line": 48,
+    "method": "post",
+    "name": "check",
+    "path": "/product/projects/:project/wildberries/check"
+  },
+  {
+    "file": "packages/opencode/src/server/routes/instance/httpapi/wildberries.ts",
+    "line": 55,
+    "method": "post",
+    "name": "approve",
+    "path": "/product/projects/:project/wildberries/plans/:plan"
+  }
+]

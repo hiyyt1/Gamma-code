@@ -1,3 +1,28 @@
+# Gamma
+
+Gamma is an AI development workspace built on OpenCode. It provides project management, agent chat sessions, and workspace files in a web interface.
+
+## Run Gamma locally
+
+Use Bun 1.3.14 from the repository root:
+
+```bash
+bun install
+bun run dev:gamma
+```
+
+The web app runs at `http://localhost:4456`, with the backend at `http://127.0.0.1:4108`. Development data is stored in `~/.local/share/gamma-dev` by default. Override these settings with `GAMMA_DEV_WEB_PORT`, `GAMMA_DEV_SERVER_PORT`, and `GAMMA_DEV_DATA_ROOT`; `GAMMA_WORKSPACES_ROOT` overrides the workspace directory.
+
+## Deployment
+
+Build the web app with `bun run --cwd packages/app build`. Deployment templates are in `deploy/gamma.env.example`, `deploy/gamma-backend.service`, and `deploy/gamma-web.service`. The web service runs `deploy/web.ts` to serve the build and proxy API requests.
+
+The templates use the `gamma` service account, `/opt/gamma` for the application, `/etc/gamma/gamma.env` for configuration, `/var/lib/gamma` for data, and `/home/gamma/workspaces` for projects. Existing installations must migrate their service account, paths, environment variables, and data before using these templates; renaming the source files does not migrate a running installation.
+
+OpenCode package names, imports, APIs, and `OPENCODE_*` settings remain unchanged. The upstream documentation follows.
+
+---
+
 <p align="center">
   <a href="https://opencode.ai">
     <picture>

@@ -27,6 +27,7 @@ import { createFileViewCache } from "./file/view-cache"
 import { useServerSDK } from "./server-sdk"
 import { SessionRouteKey, SessionStateKey } from "@/utils/server-scope"
 import { createFileTreeStore } from "./file/tree-store"
+import { visibleWorkspaceNode } from "./file/visibility"
 import { invalidateFromWatcher } from "./file/watcher"
 import {
   selectionFromLines,
@@ -71,6 +72,8 @@ export const { use: useFile, provider: FileProvider } = createSimpleContext({
       SessionStateKey.from(serverSDK().scope, SessionRouteKey.fromRoute(base64Encode(sdk().directory), params.id)),
     )
 
+    const [preview, setPreview] = createStore({ path: "", request: 0 })
+
     const inflight = new Map<string, Promise<void>>()
     const [store, setStore] = createStore<{
       file: Record<string, FileState>
@@ -86,6 +89,10 @@ export const { use: useFile, provider: FileProvider } = createSimpleContext({
           ? productRequest<FileNode[]>(
               serverSDK().server.http,
               `session/${encodeURIComponent(params.id)}/files?path=${encodeURIComponent(dir)}`,
+            ).then((nodes) =>
+              nodes
+                .filter(visibleWorkspaceNode)
+                .sort((a, b) => (a.type !== b.type ? (a.type === "directory" ? -1 : 1) : a.name.localeCompare(b.name))),
             )
           : Promise.resolve([]),
       onError: (message) => {
@@ -226,18 +233,43 @@ export const { use: useFile, provider: FileProvider } = createSimpleContext({
           )
         : Promise.resolve([])
 
+    // Coalesce a burst of filesystem events into one reload per affected path.
+    const dirtyFiles = new Set<string>()
+    const dirtyDirs = new Set<string>()
+    let watcherTimer: ReturnType<typeof setTimeout> | undefined
+    const schedule = () => {
+      if (watcherTimer) return
+      watcherTimer = setTimeout(() => {
+        watcherTimer = undefined
+        const files = [...dirtyFiles]
+        const dirs = [...dirtyDirs]
+        dirtyFiles.clear()
+        dirtyDirs.clear()
+        files.forEach((file) => void load(file, { force: true }))
+        dirs.forEach((dir) => void tree.listDir(dir, { force: true }))
+      }, 120)
+    }
+    createEffect(() => {
+      scope()
+      dirtyFiles.clear()
+      dirtyDirs.clear()
+      clearTimeout(watcherTimer)
+      watcherTimer = undefined
+    })
     const stop = sdk().event.listen((e) => {
       invalidateFromWatcher(e.details, {
         normalize: path.normalize,
         hasFile: (file) => Boolean(store.file[file]),
         isOpen: (file) => tabs.all().some((tab) => path.pathFromTab(tab) === file),
         loadFile: (file) => {
-          void load(file, { force: true })
+          dirtyFiles.add(file)
+          schedule()
         },
         node: tree.node,
         isDirLoaded: tree.isLoaded,
         refreshDir: (dir) => {
-          void tree.listDir(dir, { force: true })
+          dirtyDirs.add(dir)
+          schedule()
         },
       })
     })
@@ -268,10 +300,13 @@ export const { use: useFile, provider: FileProvider } = createSimpleContext({
 
     onCleanup(() => {
       stop()
+      clearTimeout(watcherTimer)
       viewCache.clear()
     })
 
     return {
+      preview,
+      openPreview: (input: string) => setPreview({ path: path.normalize(input), request: preview.request + 1 }),
       ready: () => view().ready(),
       normalize: path.normalize,
       tab: path.tab,

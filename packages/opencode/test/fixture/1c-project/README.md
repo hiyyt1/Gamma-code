@@ -1,0 +1,1 @@
+Synthetic Gamma 1C source fixture (MIT). No infobase or commercial platform files. Generated with the pinned Desko77 Python source generators. Tests copy this directory before modifying it. Configuration.xml is a Designer XML scaffold; acceptance by a real 1C platform is not claimed.

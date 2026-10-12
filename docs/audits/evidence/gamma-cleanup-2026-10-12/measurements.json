@@ -1,0 +1,25 @@
+{
+  "ui": {
+    "files": 8,
+    "bytes": 84589,
+    "text_lines": 2023
+  },
+  "docs": {
+    "files": 24,
+    "bytes": 1512611,
+    "text_lines": 38690
+  },
+  "lock_unchanged": true,
+  "bundle": {
+    "before": {
+      ".js": 31935950,
+      ".css": 585563,
+      ".map": 58920857
+    },
+    "after": {
+      ".js": 31935950,
+      ".css": 585407,
+      ".map": 58919981
+    }
+  }
+}

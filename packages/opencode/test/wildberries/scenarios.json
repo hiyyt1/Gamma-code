@@ -1,0 +1,72 @@
+[
+  {
+    "kind": "sale",
+    "id": "previous",
+    "nmID": 1,
+    "vendorCode": "001",
+    "date": "2026-09-01",
+    "quantity": 10,
+    "revenue": 1000
+  },
+  {
+    "kind": "sale",
+    "id": "current",
+    "nmID": 1,
+    "vendorCode": "001",
+    "date": "2026-09-15",
+    "quantity": 8,
+    "revenue": 800,
+    "commission": 80,
+    "logistics": 40
+  },
+  {
+    "kind": "return",
+    "id": "return",
+    "nmID": 1,
+    "date": "2026-09-16",
+    "quantity": 1,
+    "revenue": 100,
+    "resalable": true,
+    "logistics": 10
+  },
+  {
+    "kind": "ad",
+    "nmID": 1,
+    "campaign": "campaign1",
+    "date": "2026-09-15",
+    "advertising": 70,
+    "attributed_revenue": 350
+  },
+  {
+    "kind": "order",
+    "nmID": 1,
+    "date": "2026-09-15",
+    "revenue": 9000
+  },
+  {
+    "kind": "payout",
+    "nmID": 1,
+    "date": "2026-09-15",
+    "revenue": 8000
+  },
+  {
+    "kind": "stock",
+    "nmID": 1,
+    "date": "2026-09-28",
+    "stock": 2
+  },
+  {
+    "kind": "card",
+    "nmID": 1,
+    "title": "",
+    "description": "",
+    "brand": "Brand"
+  },
+  {
+    "kind": "sale",
+    "nmID": 2,
+    "date": "2026-09-15",
+    "quantity": 1,
+    "revenue": 0
+  }
+]

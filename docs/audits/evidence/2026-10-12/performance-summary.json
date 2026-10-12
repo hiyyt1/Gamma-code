@@ -1,0 +1,47 @@
+[
+  {
+    "messages": 2,
+    "loadMs": 416.91665199999994,
+    "samples": 20,
+    "chunkToDOMMedianMs": 2.0,
+    "chunkToDOMMaxMs": 3,
+    "chunkToRAFMedianMs": 9.600000000034925,
+    "chunkToRAFMaxMs": 17.29999999993015,
+    "streamLongTasks": [],
+    "domNodes": 748,
+    "mountedRows": 4,
+    "JSHeapMiB": 16.85729217529297,
+    "mainThreadTaskMs": 197.788,
+    "fixtureSSERequests": 22
+  },
+  {
+    "messages": 100,
+    "loadMs": 412.3910249999999,
+    "samples": 20,
+    "chunkToDOMMedianMs": 4.0499999999883585,
+    "chunkToDOMMaxMs": 5.900000000023283,
+    "chunkToRAFMedianMs": 12.049999999988358,
+    "chunkToRAFMaxMs": 20.400000000023283,
+    "streamLongTasks": [],
+    "domNodes": 1618,
+    "mountedRows": 22,
+    "JSHeapMiB": 18.09415054321289,
+    "mainThreadTaskMs": 257.5919999999999,
+    "fixtureSSERequests": 22
+  },
+  {
+    "messages": 500,
+    "loadMs": 614.5586060000005,
+    "samples": 20,
+    "chunkToDOMMedianMs": 9.949999999953434,
+    "chunkToDOMMaxMs": 16.5,
+    "chunkToRAFMedianMs": 17.750000000058208,
+    "chunkToRAFMaxMs": 31.199999999953434,
+    "streamLongTasks": [],
+    "domNodes": 1532,
+    "mountedRows": 22,
+    "JSHeapMiB": 41.55405807495117,
+    "mainThreadTaskMs": 354.90600000000006,
+    "fixtureSSERequests": 23
+  }
+]

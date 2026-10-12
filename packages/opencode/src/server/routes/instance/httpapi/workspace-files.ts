@@ -3,6 +3,8 @@ import { HttpServerRequest, HttpServerResponse } from "effect/unstable/http"
 import { HttpApi, HttpApiBuilder, HttpApiEndpoint, HttpApiGroup } from "effect/unstable/httpapi"
 import { Session } from "@/session/session"
 import { SessionID } from "@/session/schema"
+import { InstanceStore } from "@/project/instance-store"
+import { InstanceRef } from "@/effect/instance-ref"
 import { ProductProjects } from "@/server/product-projects"
 import { WorkspaceUpload } from "@/server/workspace-upload"
 import { Authorization } from "./middleware/authorization"
@@ -18,6 +20,12 @@ class UploadError extends Schema.TaggedErrorClass<UploadError>()(
 // Product-only surface: not part of the OpenCode SDK or provider/tool APIs.
 const Api = HttpApi.make("workspaceFiles").add(
   HttpApiGroup.make("workspaceFiles")
+    .add(
+      HttpApiEndpoint.post("discardEmptySession", "/product/session/:sessionID/discard-empty", {
+        params: { sessionID: SessionID },
+        success: Schema.Struct({ removed: Schema.Boolean }),
+      }),
+    )
     .add(
       HttpApiEndpoint.post("upload", "/product/session/:sessionID/files", {
         params: { sessionID: SessionID },
@@ -55,6 +63,13 @@ const Api = HttpApi.make("workspaceFiles").add(
       }),
     )
     .add(
+      HttpApiEndpoint.get("download", "/product/session/:sessionID/download", {
+        params: { sessionID: SessionID },
+        query: { path: Schema.String },
+        error: UploadError,
+      }),
+    )
+    .add(
       HttpApiEndpoint.get("content", "/product/session/:sessionID/content", {
         params: { sessionID: SessionID },
         query: { path: Schema.String },
@@ -81,11 +96,12 @@ const Api = HttpApi.make("workspaceFiles").add(
 const handlers = HttpApiBuilder.group(Api, "workspaceFiles", (group) =>
   Effect.gen(function* () {
     const sessions = yield* Session.Service
+    const instances = yield* InstanceStore.Service
     const operation = <T>(run: () => Promise<T>) =>
       Effect.tryPromise({ try: run, catch: (error) => error }).pipe(
         Effect.tapError((error) =>
           Effect.logError("product filesystem operation failed", {
-            root: process.env.ORESHNIK_WORKSPACES_ROOT ?? "/home/oreshnik/workspaces",
+            root: process.env.GAMMA_WORKSPACES_ROOT ?? "/home/gamma/workspaces",
             error,
           }),
         ),
@@ -98,13 +114,25 @@ const handlers = HttpApiBuilder.group(Api, "workspaceFiles", (group) =>
                   : error instanceof Error && "code" in error && ["EACCES", "EPERM"].includes(String(error.code))
                     ? "permission_denied"
                     : error instanceof Error &&
-                        ["invalid_name", "invalid_path", "invalid_root", "unsupported_platform"].includes(error.message)
+                        ["invalid_name", "invalid_path", "invalid_root", "unsupported_platform", "too_large"].includes(
+                          error.message,
+                        )
                       ? error.message
                       : "unavailable",
             }),
         ),
       )
     return group
+      .handle("discardEmptySession", (ctx) =>
+        Effect.gen(function* () {
+          const session = yield* sessions.get(ctx.params.sessionID)
+          const instance = yield* instances.load({ directory: session.directory })
+          return yield* sessions.discardEmpty(session.id).pipe(Effect.provideService(InstanceRef, instance))
+        }).pipe(
+          Effect.catchTag("NotFoundError", () => Effect.succeed(true)),
+          Effect.map((removed) => ({ removed })),
+        ),
+      )
       .handle("find", (ctx) =>
         sessions.get(ctx.params.sessionID).pipe(
           Effect.mapError(() => new UploadError({ code: "session_missing" })),
@@ -126,6 +154,14 @@ const handlers = HttpApiBuilder.group(Api, "workspaceFiles", (group) =>
           Effect.mapError(() => new UploadError({ code: "session_missing" })),
           Effect.flatMap((session) => operation(() => ProductProjects.content(session.directory, ctx.query.path))),
         ),
+      )
+      .handleRaw("download", (ctx) =>
+        Effect.gen(function* () {
+          const session = yield* sessions.get(ctx.params.sessionID).pipe(Effect.mapError(() => new UploadError({ code: "session_missing" })))
+          const bytes = yield* operation(() => ProductProjects.download(session.directory, ctx.query.path))
+          const filename = ctx.query.path.split("/").at(-1) ?? "download"
+          return HttpServerResponse.uint8Array(bytes, { contentType: "application/octet-stream", headers: { "content-disposition": `attachment; filename*=UTF-8''${encodeURIComponent(filename)}`, "x-content-type-options": "nosniff", "cache-control": "no-store" } })
+        }),
       )
       .handleRaw("upload", (ctx) =>
         Effect.gen(function* () {

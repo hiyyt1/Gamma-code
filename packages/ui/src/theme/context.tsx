@@ -89,8 +89,8 @@ function normalize(id: string | null | undefined) {
 }
 
 function read(key: string) {
-  if (typeof localStorage !== "object") return null
   try {
+    if (typeof localStorage !== "object") return null
     return localStorage.getItem(key)
   } catch {
     return null
@@ -98,15 +98,15 @@ function read(key: string) {
 }
 
 function write(key: string, value: string) {
-  if (typeof localStorage !== "object") return
   try {
+    if (typeof localStorage !== "object") return
     localStorage.setItem(key, value)
   } catch {}
 }
 
 function drop(key: string) {
-  if (typeof localStorage !== "object") return
   try {
+    if (typeof localStorage !== "object") return
     localStorage.removeItem(key)
   } catch {}
 }
@@ -174,9 +174,44 @@ function cacheThemeVariants(theme: DesktopTheme, themeId: string) {
 export const { use: useTheme, provider: ThemeProvider } = createSimpleContext({
   name: "Theme",
   init: (props: {
+    lightOnly?: boolean
     defaultTheme?: string
     onThemeApplied?: (theme: DesktopTheme, mode: "light" | "dark", scheme: ColorScheme) => void
   }) => {
+    if (props.lightOnly) {
+      const persist = () => {
+        write(STORAGE_KEYS.THEME_ID, "oc-2")
+        write(STORAGE_KEYS.COLOR_SCHEME, "light")
+        clear()
+      }
+      persist()
+      applyThemeCss(oc2Theme, "oc-2", "light")
+      document.documentElement.style.colorScheme = "only light"
+      props.onThemeApplied?.(oc2Theme, "light", "light")
+      onMount(() => {
+        // An older tab may still write dark/system or cached custom CSS.
+        makeEventListener(window, "storage", (event) => {
+          if (event.key !== null && !Object.values(STORAGE_KEYS).some((key) => key === event.key)) return
+          persist()
+        })
+      })
+      return {
+        themeId: () => "oc-2",
+        colorScheme: (): ColorScheme => "light",
+        mode: (): "light" | "dark" => "light",
+        ids: () => ["oc-2"],
+        name: (_id: string) => oc2Theme.name,
+        loadThemes: () => Promise.resolve({ "oc-2": oc2Theme }),
+        themes: (): Record<string, DesktopTheme> => ({ "oc-2": oc2Theme }),
+        setTheme: (_id: string) => persist(),
+        setColorScheme: (_scheme: ColorScheme) => persist(),
+        registerTheme: (_theme: DesktopTheme) => {},
+        previewTheme: (_id: string) => {},
+        previewColorScheme: (_scheme: ColorScheme) => {},
+        commitPreview: persist,
+        cancelPreview: () => {},
+      }
+    }
     const themeId = normalize(read(STORAGE_KEYS.THEME_ID) ?? props.defaultTheme) ?? "oc-2"
     const colorScheme = (read(STORAGE_KEYS.COLOR_SCHEME) as ColorScheme | null) ?? "system"
     const mode = colorScheme === "system" ? getSystemMode() : colorScheme

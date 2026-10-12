@@ -39,7 +39,18 @@ const parser = createMarkdownParser(async (code, language) => {
   const name = language in bundledLanguages ? language : "text"
   if (!instance.getLoadedLanguages().includes(name))
     await instance.loadLanguage(bundledLanguages[name as BundledLanguage])
-  return instance.codeToHtml(code, { lang: name as BundledLanguage, theme: "OpenCode", tabindex: false })
+  return instance.codeToHtml(code, {
+    lang: name as BundledLanguage,
+    theme: "OpenCode",
+    tabindex: false,
+    transformers: [
+      {
+        code(node) {
+          node.properties.class = `language-${name}`
+        },
+      },
+    ],
+  })
 })
 
 self.onmessage = (event: MessageEvent<MarkdownWorkerRequest>) => {

@@ -38,10 +38,17 @@ const layer = Layer.effect(
         const runners = new Map<SessionID, Runner.Runner<SessionV1.WithParts>>()
         yield* Effect.addFinalizer(
           Effect.fnUntraced(function* () {
-            yield* Effect.forEach(runners.values(), (runner) => runner.cancel, {
-              concurrency: "unbounded",
-              discard: true,
-            })
+            yield* Effect.forEach(
+              runners.entries(),
+              ([sessionID, runner]) =>
+                Effect.logInfo("session execution interrupted", { sessionID, reason: "instance_disposed" }).pipe(
+                  Effect.andThen(runner.cancel),
+                ),
+              {
+                concurrency: "unbounded",
+                discard: true,
+              },
+            )
             runners.clear()
           }),
         )
@@ -82,6 +89,7 @@ const layer = Layer.effect(
         yield* status.set(sessionID, { type: "idle" })
         return
       }
+      yield* Effect.logInfo("session execution interrupted", { sessionID, reason: "user_cancelled" })
       yield* existing.cancel
     })
 

@@ -136,6 +136,13 @@ export const TaskTool = Tool.define(
       const session = params.task_id
         ? yield* sessions.get(SessionID.make(params.task_id)).pipe(Effect.catchCause(() => Effect.succeed(undefined)))
         : undefined
+      if (
+        next.options.gammaAgent &&
+        session &&
+        (session.directory !== parent.directory || session.parentID !== parent.id || session.agent !== next.name)
+      ) {
+        return yield* Effect.fail(new Error("Task session does not belong to this project's active team"))
+      }
       const childPermission = deriveSubagentSessionPermission({
         parentSessionPermission: parent.permission ?? [],
         subagent: next,

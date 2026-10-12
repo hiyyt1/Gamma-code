@@ -1,0 +1,1203 @@
+{
+  "mode": "production frontend + gamma-light fixture with persistent synthetic SSE; NOT backend/model execution",
+  "reports": [
+    {
+      "protocol": "v1",
+      "requests": [
+        {
+          "stage": "home",
+          "url": "/",
+          "method": "GET",
+          "type": "document"
+        },
+        {
+          "stage": "home",
+          "url": "/oc-theme-preload.js?v=gamma-light-1",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "stage": "home",
+          "url": "/assets/index-BS_WLSAz.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "stage": "home",
+          "url": "/assets/index-H8uMcXmx.css",
+          "method": "GET",
+          "type": "stylesheet"
+        },
+        {
+          "stage": "home",
+          "url": "/assets/ru-CiLjiN7U.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "stage": "home",
+          "url": "/assets/ru-C73T3SzZ.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "stage": "home",
+          "url": "/auth/session",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "home",
+          "url": "/global/health",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "home",
+          "url": "/product/projects",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "home",
+          "url": "/api/health",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "home",
+          "url": "/assets/Inter.ttf",
+          "method": "GET",
+          "type": "font"
+        },
+        {
+          "stage": "home",
+          "url": "/api/session?limit=5000&order=desc",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "home",
+          "url": "/global/config",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "home",
+          "url": "/provider",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "home",
+          "url": "/path",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "home",
+          "url": "/session/status",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "home",
+          "url": "/project",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "home",
+          "url": "/global/event",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "home",
+          "url": "/session/ses_gamma_light",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "home",
+          "url": "/session/ses_gamma_light/message?limit=20",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "home",
+          "url": "/global/health",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "home",
+          "url": "/assets/markdown.worker-CKi4JhdB.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "stage": "home",
+          "url": "/assets/wasm-CG6Dc4jp.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "stage": "home",
+          "url": "/assets/typescript-BqvgUolh.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "stage": "agents",
+          "url": "/product/agent-market/agents",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "agents",
+          "url": "/market/agents-hero.png",
+          "method": "GET",
+          "type": "image"
+        },
+        {
+          "stage": "knowledge",
+          "url": "/product/knowledge",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/product/knowledge",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/lsp?directory=%2Fgamma%2Flight-project",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/project/proj_gamma_light?directory=%2Fgamma%2Flight-project",
+          "method": "PATCH",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/session/ses_gamma_light",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/agent?directory=%2Fgamma%2Flight-project",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/provider",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/provider?directory=%2Fgamma%2Flight-project",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/path?directory=%2Fgamma%2Flight-project",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/provider?directory=%2Fgamma%2Flight-project",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/api/reference?directory=%2Fgamma%2Flight-project&location%5Bdirectory%5D=%2Fgamma%2Flight-project",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/mcp?directory=%2Fgamma%2Flight-project",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/experimental/resource?directory=%2Fgamma%2Flight-project",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/product/agent-market/agents",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/product/agent-market/agents",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/session?directory=%2Fgamma%2Flight-project&roots=true&limit=55",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/agent?directory=%2Fgamma%2Flight-project",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/config?directory=%2Fgamma%2Flight-project",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/session/status?directory=%2Fgamma%2Flight-project",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/vcs?directory=%2Fgamma%2Flight-project",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/command?directory=%2Fgamma%2Flight-project",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/permission?directory=%2Fgamma%2Flight-project",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/question?directory=%2Fgamma%2Flight-project",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/product/knowledge/projects",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/assets/sprite-CMBzwCGs.svg",
+          "method": "GET",
+          "type": "other"
+        },
+        {
+          "stage": "chat",
+          "url": "/product/session/ses_gamma_light/preview",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/product/session/ses_gamma_light/files?path=",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/assets/sprite-Fb-TFjRY.svg",
+          "method": "GET",
+          "type": "other"
+        },
+        {
+          "stage": "home-return",
+          "url": "/product/session/ses_gamma_light/discard-empty",
+          "method": "POST",
+          "type": "fetch"
+        },
+        {
+          "stage": "home-return",
+          "url": "/api/health",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "home-return",
+          "url": "/global/health",
+          "method": "GET",
+          "type": "fetch"
+        }
+      ],
+      "errors": [],
+      "workers": [
+        {
+          "stage": "home",
+          "url": "/assets/markdown.worker-CKi4JhdB.js"
+        }
+      ],
+      "samples": [
+        {
+          "stage": "home",
+          "url": "/",
+          "dom": {
+            "documents": 4,
+            "nodes": 808,
+            "jsEventListeners": 87
+          },
+          "metrics": [
+            {
+              "name": "ScriptDuration",
+              "value": 0.072345
+            },
+            {
+              "name": "TaskDuration",
+              "value": 0.215039
+            },
+            {
+              "name": "JSHeapUsedSize",
+              "value": 8393436
+            }
+          ]
+        },
+        {
+          "stage": "agents",
+          "url": "/agents",
+          "dom": {
+            "documents": 4,
+            "nodes": 1070,
+            "jsEventListeners": 90
+          },
+          "metrics": [
+            {
+              "name": "ScriptDuration",
+              "value": 0.07364
+            },
+            {
+              "name": "TaskDuration",
+              "value": 0.241354
+            },
+            {
+              "name": "JSHeapUsedSize",
+              "value": 9133708
+            }
+          ]
+        },
+        {
+          "stage": "knowledge",
+          "url": "/knowledge",
+          "dom": {
+            "documents": 4,
+            "nodes": 1588,
+            "jsEventListeners": 115
+          },
+          "metrics": [
+            {
+              "name": "ScriptDuration",
+              "value": 0.074641
+            },
+            {
+              "name": "TaskDuration",
+              "value": 0.280245
+            },
+            {
+              "name": "JSHeapUsedSize",
+              "value": 9979928
+            }
+          ]
+        },
+        {
+          "stage": "projects",
+          "url": "/",
+          "dom": {
+            "documents": 4,
+            "nodes": 1635,
+            "jsEventListeners": 121
+          },
+          "metrics": [
+            {
+              "name": "ScriptDuration",
+              "value": 0.075135
+            },
+            {
+              "name": "TaskDuration",
+              "value": 0.295404
+            },
+            {
+              "name": "JSHeapUsedSize",
+              "value": 10423840
+            }
+          ]
+        },
+        {
+          "stage": "chat",
+          "url": "/server/aHR0cDovLzEyNy4wLjAuMTo0NjQ1Nw/session/ses_gamma_light",
+          "dom": {
+            "documents": 5,
+            "nodes": 11815,
+            "jsEventListeners": 190
+          },
+          "metrics": [
+            {
+              "name": "ScriptDuration",
+              "value": 0.080665
+            },
+            {
+              "name": "TaskDuration",
+              "value": 0.44111
+            },
+            {
+              "name": "JSHeapUsedSize",
+              "value": 11943624
+            }
+          ]
+        },
+        {
+          "stage": "home-return",
+          "url": "/",
+          "dom": {
+            "documents": 5,
+            "nodes": 11858,
+            "jsEventListeners": 221
+          },
+          "metrics": [
+            {
+              "name": "ScriptDuration",
+              "value": 0.081814
+            },
+            {
+              "name": "TaskDuration",
+              "value": 0.458264
+            },
+            {
+              "name": "JSHeapUsedSize",
+              "value": 12979048
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "protocol": "v2",
+      "requests": [
+        {
+          "stage": "home",
+          "url": "/",
+          "method": "GET",
+          "type": "document"
+        },
+        {
+          "stage": "home",
+          "url": "/oc-theme-preload.js?v=gamma-light-1",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "stage": "home",
+          "url": "/assets/index-BS_WLSAz.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "stage": "home",
+          "url": "/assets/index-H8uMcXmx.css",
+          "method": "GET",
+          "type": "stylesheet"
+        },
+        {
+          "stage": "home",
+          "url": "/assets/ru-CiLjiN7U.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "stage": "home",
+          "url": "/assets/ru-C73T3SzZ.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "stage": "home",
+          "url": "/auth/session",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "home",
+          "url": "/global/health",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "home",
+          "url": "/product/projects",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "home",
+          "url": "/api/health",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "home",
+          "url": "/assets/Inter.ttf",
+          "method": "GET",
+          "type": "font"
+        },
+        {
+          "stage": "home",
+          "url": "/api/session?limit=5000&order=desc",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "home",
+          "url": "/api/health",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "home",
+          "url": "/api/event",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "home",
+          "url": "/api/session/ses_gamma_light",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "home",
+          "url": "/api/session/active",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "home",
+          "url": "/api/session/ses_gamma_light/message?limit=20&order=desc",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "home",
+          "url": "/api/project",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "home",
+          "url": "/api/provider",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "home",
+          "url": "/api/model",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "home",
+          "url": "/api/model/default",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "home",
+          "url": "/assets/markdown.worker-CKi4JhdB.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "stage": "home",
+          "url": "/assets/wasm-CG6Dc4jp.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "stage": "home",
+          "url": "/assets/typescript-BqvgUolh.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "stage": "home",
+          "url": "/api/provider",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "home",
+          "url": "/api/model",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "home",
+          "url": "/api/model/default",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "agents",
+          "url": "/product/agent-market/agents",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "agents",
+          "url": "/market/agents-hero.png",
+          "method": "GET",
+          "type": "image"
+        },
+        {
+          "stage": "agents",
+          "url": "/api/provider",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "agents",
+          "url": "/api/model",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "agents",
+          "url": "/api/model/default",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "knowledge",
+          "url": "/product/knowledge",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "projects",
+          "url": "/api/provider",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "projects",
+          "url": "/api/model",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "projects",
+          "url": "/api/model/default",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/product/knowledge",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/api/session/ses_gamma_light",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/api/agent?location%5Bdirectory%5D=%2Fgamma%2Flight-project",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/api/provider",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/api/model",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/api/model/default",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/api/provider?location%5Bdirectory%5D=%2Fgamma%2Flight-project",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/api/model?location%5Bdirectory%5D=%2Fgamma%2Flight-project",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/api/model/default?location%5Bdirectory%5D=%2Fgamma%2Flight-project",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/lsp?directory=%2Fgamma%2Flight-project",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/api/provider?location%5Bdirectory%5D=%2Fgamma%2Flight-project",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/api/model?location%5Bdirectory%5D=%2Fgamma%2Flight-project",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/api/model/default?location%5Bdirectory%5D=%2Fgamma%2Flight-project",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/api/reference?location%5Bdirectory%5D=%2Fgamma%2Flight-project",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/api/mcp?location%5Bdirectory%5D=%2Fgamma%2Flight-project",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/api/mcp/resource?location%5Bdirectory%5D=%2Fgamma%2Flight-project",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/product/agent-market/agents",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/product/agent-market/agents",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/api/session?limit=55&order=desc&parentID=null&directory=%2Fgamma%2Flight-project",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/api/agent?location%5Bdirectory%5D=%2Fgamma%2Flight-project",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/api/command?location%5Bdirectory%5D=%2Fgamma%2Flight-project",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/api/permission/request?location%5Bdirectory%5D=%2Fgamma%2Flight-project",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/api/question/request?location%5Bdirectory%5D=%2Fgamma%2Flight-project",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/product/knowledge/projects",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/api/provider",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/api/model",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/api/model/default",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/api/provider?location%5Bdirectory%5D=%2Fgamma%2Flight-project",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/api/model?location%5Bdirectory%5D=%2Fgamma%2Flight-project",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/api/model/default?location%5Bdirectory%5D=%2Fgamma%2Flight-project",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/api/provider?location%5Bdirectory%5D=%2Fgamma%2Flight-project",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/api/model?location%5Bdirectory%5D=%2Fgamma%2Flight-project",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/api/model/default?location%5Bdirectory%5D=%2Fgamma%2Flight-project",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/api/health",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/api/provider",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/api/model",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/api/model/default",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/api/provider?location%5Bdirectory%5D=%2Fgamma%2Flight-project",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/api/model?location%5Bdirectory%5D=%2Fgamma%2Flight-project",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/api/model/default?location%5Bdirectory%5D=%2Fgamma%2Flight-project",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/api/provider?location%5Bdirectory%5D=%2Fgamma%2Flight-project",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/api/model?location%5Bdirectory%5D=%2Fgamma%2Flight-project",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/api/model/default?location%5Bdirectory%5D=%2Fgamma%2Flight-project",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/api/provider",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/api/model",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/api/model/default",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/api/provider?location%5Bdirectory%5D=%2Fgamma%2Flight-project",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/api/model?location%5Bdirectory%5D=%2Fgamma%2Flight-project",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/api/model/default?location%5Bdirectory%5D=%2Fgamma%2Flight-project",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/api/provider?location%5Bdirectory%5D=%2Fgamma%2Flight-project",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/api/model?location%5Bdirectory%5D=%2Fgamma%2Flight-project",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/api/model/default?location%5Bdirectory%5D=%2Fgamma%2Flight-project",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/product/session/ses_gamma_light/preview",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/product/session/ses_gamma_light/files?path=",
+          "method": "GET",
+          "type": "fetch"
+        },
+        {
+          "stage": "chat",
+          "url": "/assets/sprite-Fb-TFjRY.svg",
+          "method": "GET",
+          "type": "other"
+        },
+        {
+          "stage": "home-return",
+          "url": "/product/session/ses_gamma_light/discard-empty",
+          "method": "POST",
+          "type": "fetch"
+        }
+      ],
+      "errors": [],
+      "workers": [
+        {
+          "stage": "home",
+          "url": "/assets/markdown.worker-CKi4JhdB.js"
+        }
+      ],
+      "samples": [
+        {
+          "stage": "home",
+          "url": "/",
+          "dom": {
+            "documents": 5,
+            "nodes": 858,
+            "jsEventListeners": 91
+          },
+          "metrics": [
+            {
+              "name": "ScriptDuration",
+              "value": 0.068323
+            },
+            {
+              "name": "TaskDuration",
+              "value": 0.171865
+            },
+            {
+              "name": "JSHeapUsedSize",
+              "value": 8969844
+            }
+          ]
+        },
+        {
+          "stage": "agents",
+          "url": "/agents",
+          "dom": {
+            "documents": 5,
+            "nodes": 1120,
+            "jsEventListeners": 94
+          },
+          "metrics": [
+            {
+              "name": "ScriptDuration",
+              "value": 0.0699
+            },
+            {
+              "name": "TaskDuration",
+              "value": 0.196586
+            },
+            {
+              "name": "JSHeapUsedSize",
+              "value": 9749628
+            }
+          ]
+        },
+        {
+          "stage": "knowledge",
+          "url": "/knowledge",
+          "dom": {
+            "documents": 5,
+            "nodes": 1638,
+            "jsEventListeners": 119
+          },
+          "metrics": [
+            {
+              "name": "ScriptDuration",
+              "value": 0.070714
+            },
+            {
+              "name": "TaskDuration",
+              "value": 0.221823
+            },
+            {
+              "name": "JSHeapUsedSize",
+              "value": 10579720
+            }
+          ]
+        },
+        {
+          "stage": "projects",
+          "url": "/",
+          "dom": {
+            "documents": 5,
+            "nodes": 1685,
+            "jsEventListeners": 125
+          },
+          "metrics": [
+            {
+              "name": "ScriptDuration",
+              "value": 0.071518
+            },
+            {
+              "name": "TaskDuration",
+              "value": 0.236651
+            },
+            {
+              "name": "JSHeapUsedSize",
+              "value": 11077200
+            }
+          ]
+        },
+        {
+          "stage": "chat",
+          "url": "/server/aHR0cDovLzEyNy4wLjAuMTo0NjQ1Nw/session/ses_gamma_light",
+          "dom": {
+            "documents": 4,
+            "nodes": 11214,
+            "jsEventListeners": 198
+          },
+          "metrics": [
+            {
+              "name": "ScriptDuration",
+              "value": 0.079705
+            },
+            {
+              "name": "TaskDuration",
+              "value": 0.398467
+            },
+            {
+              "name": "JSHeapUsedSize",
+              "value": 13749732
+            }
+          ]
+        },
+        {
+          "stage": "home-return",
+          "url": "/",
+          "dom": {
+            "documents": 4,
+            "nodes": 11257,
+            "jsEventListeners": 229
+          },
+          "metrics": [
+            {
+              "name": "ScriptDuration",
+              "value": 0.080371
+            },
+            {
+              "name": "TaskDuration",
+              "value": 0.414603
+            },
+            {
+              "name": "JSHeapUsedSize",
+              "value": 14745324
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

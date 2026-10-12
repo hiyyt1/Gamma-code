@@ -1,3 +1,4 @@
+import { PromptAgentControl } from "./prompt-agent-control"
 import { useFilteredList } from "@opencode-ai/ui/hooks"
 import { useSpring } from "@opencode-ai/ui/motion-spring"
 import {
@@ -25,7 +26,6 @@ import {
   AgentPart,
   FileAttachmentPart,
 } from "@/context/prompt"
-import { useLayout } from "@/context/layout"
 import { useSDK } from "@/context/sdk"
 import { useSync } from "@/context/sync"
 import { useComments } from "@/context/comments"
@@ -120,7 +120,6 @@ export const PromptInput: Component<PromptInputProps> = (props) => {
   const sync = useSync()
   const files = useFile()
   const prompt = props.state ?? usePrompt()
-  const layout = useLayout()
   const comments = useComments()
   const dialog = useDialog()
   const command = useCommand()
@@ -185,15 +184,6 @@ export const PromptInput: Component<PromptInputProps> = (props) => {
     normalizeTab: (tab) => (tab.startsWith("file://") ? files.tab(tab) : tab),
   }).activeFileTab
 
-  const commentInReview = (path: string) => {
-    const sessionID = props.controls.session.id
-    if (!sessionID) return false
-
-    const diffs = sync().data.session_diff[sessionID]
-    if (!diffs) return false
-    return diffs.some((diff) => diff.file === path)
-  }
-
   const openComment = (item: { path: string; commentID?: string; commentOrigin?: "review" | "file" }) => {
     if (!item.commentID) return
 
@@ -217,20 +207,7 @@ export const PromptInput: Component<PromptInputProps> = (props) => {
       schedule(attempts)
     }
 
-    const wantsReview = item.commentOrigin === "review" || (item.commentOrigin !== "file" && commentInReview(item.path))
-    if (wantsReview) {
-      if (!props.controls.session.reviewPanel.opened()) props.controls.session.reviewPanel.open()
-      layout.fileTree.setTab("changes")
-      tabs().setActive("review")
-      queueCommentFocus()
-      return
-    }
-
-    if (!props.controls.session.reviewPanel.opened()) props.controls.session.reviewPanel.open()
-    layout.fileTree.setTab("all")
-    const tab = files.tab(item.path)
-    void tabs().open(tab)
-    tabs().setActive(tab)
+    files.openPreview(item.path)
     void Promise.resolve(files.load(item.path)).finally(() => queueCommentFocus())
   }
 
@@ -1417,8 +1394,6 @@ export const PromptInput: Component<PromptInputProps> = (props) => {
     event.preventDefault()
   }
 
-  const agentsLoading = () => props.controls.agents.loading
-  const agentsShouldFadeIn = createMemo<boolean>((prev) => prev ?? agentsLoading())
   const providersLoading = () => props.controls.model.loading
   const providersShouldFadeIn = createMemo<boolean>((prev) => prev ?? providersLoading())
 
@@ -1646,34 +1621,7 @@ export const PromptInput: Component<PromptInputProps> = (props) => {
                 </Button>
               </div>
               <div class="flex items-center gap-1.5 min-w-0 flex-1 h-7">
-                <Show when={!agentsLoading()}>
-                  <div
-                    data-component="prompt-agent-control"
-                    classList={{ "animate-in fade-in duration-300": agentsShouldFadeIn() }}
-                  >
-                    <TooltipKeybind
-                      placement="top"
-                      gutter={4}
-                      title={language.t("command.agent.cycle")}
-                      keybind={command.keybind("agent.cycle")}
-                    >
-                      <Select
-                        size="normal"
-                        options={props.controls.agents.options}
-                        current={props.controls.agents.current}
-                        onSelect={(value) => {
-                          props.controls.agents.select(value)
-                          restoreFocus()
-                        }}
-                        class="capitalize max-w-[160px] text-text-base"
-                        valueClass="truncate text-13-regular text-text-base"
-                        triggerStyle={control()}
-                        triggerProps={{ "data-action": "prompt-agent" }}
-                        variant="ghost"
-                      />
-                    </TooltipKeybind>
-                  </div>
-                </Show>
+                <PromptAgentControl agents={props.controls.agents} sessionID={props.controls.session.id} />
                 <Show when={!providersLoading()}>
                   <Show when={store.mode !== "shell"}>
                     <div

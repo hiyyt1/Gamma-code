@@ -1,0 +1,13 @@
+{
+  "isolatedState": "/tmp/gamma-predeploy-runtime-al6j2tv6",
+  "systemd": false,
+  "paidLLM": false,
+  "project": true,
+  "session": true,
+  "appliedAgent": "ses_ecef5f5ddffe4iWF27sFYrn4G8",
+  "specialistPermissionRules": 28,
+  "frontend": true,
+  "authenticatedHealth": true,
+  "sse": true,
+  "logoutRevocation": true
+}

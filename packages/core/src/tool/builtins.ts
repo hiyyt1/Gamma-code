@@ -10,6 +10,7 @@ import { GrepTool } from "./grep"
 import { QuestionTool } from "./question"
 import { ReadTool } from "./read"
 import { SkillTool } from "./skill"
+import { GammaHelpTool } from "./gamma-help"
 import { TodoWriteTool } from "./todowrite"
 import { WebFetchTool } from "./webfetch"
 import { WebSearchTool } from "./websearch"
@@ -32,6 +33,7 @@ export const node = makeLocationNode({
   name: "built-in-tools",
   layer: Layer.empty,
   deps: [
+    GammaHelpTool.node,
     ApplyPatchTool.node,
     BashTool.node,
     EditTool.node,

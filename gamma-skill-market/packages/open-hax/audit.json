@@ -1,0 +1,1498 @@
+{
+  "source": {
+    "id": "open-hax",
+    "revision": "d91bad1eda762044c6416d31f93bc7566b530043",
+    "source": "https://github.com/open-hax/opencode-skills",
+    "license": "MIT",
+    "archiveSha256": "8c718b5282d939a33110ddf1cf993c3a99c98f45801099813220fc8907664d5c",
+    "rejected": []
+  },
+  "discoveredFiles": 125,
+  "invalidFrontmatter": [
+    ".opencode/skills/kanban-state-backlog/SKILL.md",
+    ".opencode/skills/kanban-state-document/SKILL.md",
+    ".opencode/skills/kanban-state-done/SKILL.md",
+    ".opencode/skills/kanban-state-icebox/SKILL.md",
+    ".opencode/skills/kanban-state-in-progress/SKILL.md",
+    ".opencode/skills/kanban-state-review/SKILL.md",
+    ".opencode/skills/kanban-state-todo/SKILL.md",
+    ".opencode/skills/spec-authoring/SKILL.md",
+    ".opencode/skills/update-task-status/SKILL.md",
+    ".opencode/skills/validate-accepted-to-breakdown/SKILL.md",
+    ".opencode/skills/validate-accepted-to-icebox/SKILL.md",
+    ".opencode/skills/validate-blocked-to-breakdown/SKILL.md",
+    ".opencode/skills/validate-breakdown-to-blocked/SKILL.md",
+    ".opencode/skills/validate-breakdown-to-icebox/SKILL.md",
+    ".opencode/skills/validate-breakdown-to-ready/SKILL.md",
+    ".opencode/skills/validate-breakdown-to-rejected/SKILL.md",
+    ".opencode/skills/validate-document-to-done/SKILL.md",
+    ".opencode/skills/validate-document-to-in_review/SKILL.md",
+    ".opencode/skills/validate-icebox-to-incoming/SKILL.md",
+    ".opencode/skills/validate-in_progress-to-breakdown/SKILL.md",
+    ".opencode/skills/validate-in_progress-to-in_review/SKILL.md",
+    ".opencode/skills/validate-in_progress-to-todo/SKILL.md",
+    ".opencode/skills/validate-in_review-to-breakdown/SKILL.md",
+    ".opencode/skills/validate-in_review-to-in_progress/SKILL.md",
+    ".opencode/skills/validate-in_review-to-testing/SKILL.md",
+    ".opencode/skills/validate-in_review-to-todo/SKILL.md",
+    ".opencode/skills/validate-incoming-to-accepted/SKILL.md",
+    ".opencode/skills/validate-incoming-to-icebox/SKILL.md",
+    ".opencode/skills/validate-incoming-to-rejected/SKILL.md",
+    ".opencode/skills/validate-ready-to-breakdown/SKILL.md",
+    ".opencode/skills/validate-ready-to-todo/SKILL.md",
+    ".opencode/skills/validate-rejected-to-icebox/SKILL.md",
+    ".opencode/skills/validate-task-status/SKILL.md",
+    ".opencode/skills/validate-testing-to-document/SKILL.md",
+    ".opencode/skills/validate-testing-to-in_progress/SKILL.md",
+    ".opencode/skills/validate-testing-to-in_review/SKILL.md",
+    ".opencode/skills/validate-todo-to-breakdown/SKILL.md",
+    ".opencode/skills/validate-todo-to-in_progress/SKILL.md",
+    ".opencode/skills/work-on-accepted-task/SKILL.md",
+    ".opencode/skills/work-on-blocked-task/SKILL.md",
+    ".opencode/skills/work-on-breakdown-task/SKILL.md",
+    ".opencode/skills/work-on-document-task/SKILL.md",
+    ".opencode/skills/work-on-done-task/SKILL.md",
+    ".opencode/skills/work-on-icebox-task/SKILL.md",
+    ".opencode/skills/work-on-in_progress-task/SKILL.md",
+    ".opencode/skills/work-on-in_review-task/SKILL.md",
+    ".opencode/skills/work-on-incoming-task/SKILL.md",
+    ".opencode/skills/work-on-ready-task/SKILL.md",
+    ".opencode/skills/work-on-rejected-task/SKILL.md",
+    ".opencode/skills/work-on-testing-task/SKILL.md",
+    ".opencode/skills/work-on-todo-task/SKILL.md"
+  ],
+  "duplicateNames": [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+  ],
+  "findings": [
+    {
+      "path": ".github/workflows/code-review-comments-discord.yml",
+      "line": 23,
+      "kind": "sensitive",
+      "text": "          github-token: ${{ secrets.GITHUB_TOKEN }}"
+    },
+    {
+      "path": ".github/workflows/eta-mu-review-gate.yml",
+      "line": 34,
+      "kind": "dependencies",
+      "text": "      - name: Setup Node.js"
+    },
+    {
+      "path": ".github/workflows/eta-mu-review-gate.yml",
+      "line": 35,
+      "kind": "dependencies",
+      "text": "        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020"
+    },
+    {
+      "path": ".github/workflows/eta-mu-review-gate.yml",
+      "line": 37,
+      "kind": "dependencies",
+      "text": "          node-version: 22"
+    },
+    {
+      "path": ".github/workflows/eta-mu-review-gate.yml",
+      "line": 46,
+      "kind": "sensitive",
+      "text": "          GITHUB_TOKEN: ${{ github.token }}"
+    },
+    {
+      "path": ".github/workflows/eta-mu.yml",
+      "line": 47,
+      "kind": "sensitive",
+      "text": "      - name: Create eta-mu app token"
+    },
+    {
+      "path": ".github/workflows/eta-mu.yml",
+      "line": 50,
+      "kind": "sensitive",
+      "text": "        uses: actions/create-github-app-token@d72941d797fd3113feb6b93fd0dec494b13a2547"
+    },
+    {
+      "path": ".github/workflows/eta-mu.yml",
+      "line": 60,
+      "kind": "dependencies",
+      "text": "      - name: Setup Node.js"
+    },
+    {
+      "path": ".github/workflows/eta-mu.yml",
+      "line": 61,
+      "kind": "dependencies",
+      "text": "        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020"
+    },
+    {
+      "path": ".github/workflows/eta-mu.yml",
+      "line": 63,
+      "kind": "dependencies",
+      "text": "          node-version: 22"
+    },
+    {
+      "path": ".github/workflows/eta-mu.yml",
+      "line": 90,
+      "kind": "sensitive",
+      "text": "          GITHUB_TOKEN: ${{ steps.eta_mu_token.outputs.token != '' && steps.eta_mu_token.outputs.token || github.token }}"
+    },
+    {
+      "path": ".github/workflows/github-events-discord.yml",
+      "line": 46,
+      "kind": "sensitive",
+      "text": "          github-token: ${{ secrets.GITHUB_TOKEN }}"
+    },
+    {
+      "path": ".github/workflows/opencode-code-review.yml",
+      "line": 19,
+      "kind": "sensitive",
+      "text": "      id-token: write"
+    },
+    {
+      "path": ".github/workflows/opencode-code-review.yml",
+      "line": 57,
+      "kind": "sensitive",
+      "text": "          github-token: ${{ secrets.GITHUB_TOKEN }}"
+    },
+    {
+      "path": ".github/workflows/opencode-issue-agent.yml",
+      "line": 20,
+      "kind": "sensitive",
+      "text": "      id-token: write"
+    },
+    {
+      "path": ".github/workflows/opencode-issue-agent.yml",
+      "line": 56,
+      "kind": "sensitive",
+      "text": "            - Do not make broad rewrites, dependency churn, secret changes, or destructive changes."
+    },
+    {
+      "path": ".github/workflows/opencode-issue-agent.yml",
+      "line": 65,
+      "kind": "sensitive",
+      "text": "      id-token: write"
+    },
+    {
+      "path": ".github/workflows/opencode-issue-agent.yml",
+      "line": 93,
+      "kind": "dependencies",
+      "text": "            - Use the GitHub API or gh CLI with GITHUB_TOKEN to inspect open issues, excluding pull requests."
+    },
+    {
+      "path": ".github/workflows/opencode-issue-agent.yml",
+      "line": 105,
+      "kind": "sensitive",
+      "text": "            - Do not make broad rewrites, dependency churn, secret changes, or destructive changes."
+    },
+    {
+      "path": ".opencode/skills/clojure-syntax-rescue/SKILL.md",
+      "line": 9,
+      "kind": "sensitive",
+      "text": "To efficiently fix \"Unmatched delimiter\", \"Unexpected EOF\", and \"Invalid token\" errors in Clojure files without falling into a guessing loop."
+    },
+    {
+      "path": ".opencode/skills/create-pm2-clj-config/SKILL.md",
+      "line": 47,
+      "kind": "dependencies",
+      "text": "   :interpreter \"node\""
+    },
+    {
+      "path": ".opencode/skills/create-pm2-clj-config/SKILL.md",
+      "line": 61,
+      "kind": "dependencies",
+      "text": "   :script \"node\""
+    },
+    {
+      "path": ".opencode/skills/create-pm2-clj-config/SKILL.md",
+      "line": 77,
+      "kind": "dependencies",
+      "text": "- `:interpreter_args` - Node.js flags"
+    },
+    {
+      "path": ".opencode/skills/create-pm2-clj-config/SKILL.md",
+      "line": 78,
+      "kind": "dependencies",
+      "text": "- `:node_args` - Alternative for Node.js flags"
+    },
+    {
+      "path": ".opencode/skills/create-pm2-clj-config/SKILL.md",
+      "line": 100,
+      "kind": "dependencies",
+      "text": "- Use `:interpreter` for Node.js, leave empty for scripts like `pnpm`"
+    },
+    {
+      "path": ".opencode/skills/create-pm2-clj-config/SKILL.md",
+      "line": 115,
+      "kind": "dependencies",
+      "text": "   :interpreter \"node\""
+    },
+    {
+      "path": ".opencode/skills/create-pm2-clj-config/SKILL.md",
+      "line": 126,
+      "kind": "dependencies",
+      "text": "   :script \"node\""
+    },
+    {
+      "path": ".opencode/skills/create-pm2-clj-config/SKILL.md",
+      "line": 129,
+      "kind": "dependencies",
+      "text": "   :interpreter \"node\""
+    },
+    {
+      "path": ".opencode/skills/create-pm2-clj-config/SKILL.md",
+      "line": 146,
+      "kind": "dependencies",
+      "text": "   :interpreter \"node\""
+    },
+    {
+      "path": ".opencode/skills/create-pm2-ecosystem/SKILL.md",
+      "line": 52,
+      "kind": "dependencies",
+      "text": "  {:script \"node\""
+    },
+    {
+      "path": ".opencode/skills/create-pm2-ecosystem/SKILL.md",
+      "line": 92,
+      "kind": "dependencies",
+      "text": "npx shadow-cljs release clobber"
+    },
+    {
+      "path": ".opencode/skills/create-pm2-ecosystem/SKILL.md",
+      "line": 107,
+      "kind": "dependencies",
+      "text": "| `:script` | Executable to run (node, bun, clojure, etc.) |"
+    },
+    {
+      "path": ".opencode/skills/create-pm2-ecosystem/SKILL.md",
+      "line": 139,
+      "kind": "dependencies",
+      "text": "## Example: Node.js Service"
+    },
+    {
+      "path": ".opencode/skills/create-pm2-ecosystem/SKILL.md",
+      "line": 146,
+      "kind": "dependencies",
+      "text": "  {:script \"node\""
+    },
+    {
+      "path": ".opencode/skills/create-pm2-ecosystem/SKILL.md",
+      "line": 206,
+      "kind": "dependencies",
+      "text": "           :script \"node\""
+    },
+    {
+      "path": ".opencode/skills/devsecops-free-auth/SKILL.md",
+      "line": 56,
+      "kind": "dependencies",
+      "text": "   - **AWS Cognito**"
+    },
+    {
+      "path": ".opencode/skills/devsecops-free-auth/SKILL.md",
+      "line": 93,
+      "kind": "dependencies",
+      "text": "     - AWS SNS, Twilio Verify"
+    },
+    {
+      "path": ".opencode/skills/devsecops-free-auth/SKILL.md",
+      "line": 142,
+      "kind": "sensitive",
+      "text": "6. **Inventory Secrets/Token Management**"
+    },
+    {
+      "path": ".opencode/skills/devsecops-free-auth/SKILL.md",
+      "line": 159,
+      "kind": "dependencies",
+      "text": "- Cognito free tier excellent for AWS integrations"
+    },
+    {
+      "path": ".opencode/skills/devsecops-free-cicd/SKILL.md",
+      "line": 68,
+      "kind": "dependencies",
+      "text": "   - **AWS CodeBuild**"
+    },
+    {
+      "path": ".opencode/skills/devsecops-free-cicd/SKILL.md",
+      "line": 78,
+      "kind": "dependencies",
+      "text": "     - Docker/ npm/ Maven/ NuGet registries"
+    },
+    {
+      "path": ".opencode/skills/devsecops-free-cicd/SKILL.md",
+      "line": 82,
+      "kind": "dependencies",
+      "text": "     - Integrated Docker registry"
+    },
+    {
+      "path": ".opencode/skills/devsecops-free-cicd/SKILL.md",
+      "line": 88,
+      "kind": "dependencies",
+      "text": "   - **Docker Hub**"
+    },
+    {
+      "path": ".opencode/skills/devsecops-free-cloud/SKILL.md",
+      "line": 13,
+      "kind": "dependencies",
+      "text": "- Comparing free tiers across GCP, AWS, Azure, Oracle Cloud, IBM Cloud"
+    },
+    {
+      "path": ".opencode/skills/devsecops-free-cloud/SKILL.md",
+      "line": 37,
+      "kind": "dependencies",
+      "text": "   - **Amazon Web Services (AWS)**"
+    },
+    {
+      "path": ".opencode/skills/devsecops-free-cloud/SKILL.md",
+      "line": 90,
+      "kind": "dependencies",
+      "text": "- AWS/Azure free tiers expire after 12 months"
+    },
+    {
+      "path": ".opencode/skills/devsecops-free-discovery/SKILL.md",
+      "line": 28,
+      "kind": "dependencies",
+      "text": "   - Major Cloud Providers (GCP, AWS, Azure, Oracle, IBM)"
+    },
+    {
+      "path": ".opencode/skills/devsecops-free-dns/SKILL.md",
+      "line": 72,
+      "kind": "dependencies",
+      "text": "     - Free CDN for npm/GitHub"
+    },
+    {
+      "path": ".opencode/skills/devsecops-free-dns/SKILL.md",
+      "line": 110,
+      "kind": "dependencies",
+      "text": "   - **AWS Shield Standard**"
+    },
+    {
+      "path": ".opencode/skills/devsecops-free-dns/SKILL.md",
+      "line": 111,
+      "kind": "dependencies",
+      "text": "     - Free for AWS customers"
+    },
+    {
+      "path": ".opencode/skills/devsecops-free-dns/SKILL.md",
+      "line": 125,
+      "kind": "dependencies",
+      "text": "   - **AWS WAF**"
+    },
+    {
+      "path": ".opencode/skills/devsecops-free-security/SKILL.md",
+      "line": 49,
+      "kind": "dependencies",
+      "text": "   - **Bandit (Python)**"
+    },
+    {
+      "path": ".opencode/skills/devsecops-free-security/SKILL.md",
+      "line": 53,
+      "kind": "dependencies",
+      "text": "   - **Safety (Python)**"
+    },
+    {
+      "path": ".opencode/skills/devsecops-free-security/SKILL.md",
+      "line": 92,
+      "kind": "dependencies",
+      "text": "   - **AWS Secrets Manager**"
+    },
+    {
+      "path": ".opencode/skills/devsecops-free-security/SKILL.md",
+      "line": 141,
+      "kind": "dependencies",
+      "text": "   - **Docker Scout (via Docker Hub)**"
+    },
+    {
+      "path": ".opencode/skills/devsecops-free-security/SKILL.md",
+      "line": 143,
+      "kind": "dependencies",
+      "text": "     - Integrated with Docker Hub"
+    },
+    {
+      "path": ".opencode/skills/devsecops-free-storage/SKILL.md",
+      "line": 30,
+      "kind": "dependencies",
+      "text": "   - **AWS S3**"
+    },
+    {
+      "path": ".opencode/skills/devsecops-free-storage/SKILL.md",
+      "line": 97,
+      "kind": "dependencies",
+      "text": "   - **AWS EBS**"
+    },
+    {
+      "path": ".opencode/skills/docker-compose-control/SKILL.md",
+      "line": 2,
+      "kind": "dependencies",
+      "text": "name: docker-compose-control"
+    },
+    {
+      "path": ".opencode/skills/docker-compose-control/SKILL.md",
+      "line": 3,
+      "kind": "dependencies",
+      "text": "description: \"Start, stop, restart, inspect, and follow logs for Docker Compose-managed local stacks\""
+    },
+    {
+      "path": ".opencode/skills/docker-compose-control/SKILL.md",
+      "line": 9,
+      "kind": "dependencies",
+      "text": "# docker-compose-control"
+    },
+    {
+      "path": ".opencode/skills/docker-compose-control/SKILL.md",
+      "line": 11,
+      "kind": "dependencies",
+      "text": "Use this skill when the task requires managing a local stack with `docker compose`"
+    },
+    {
+      "path": ".opencode/skills/docker-compose-control/SKILL.md",
+      "line": 17,
+      "kind": "dependencies",
+      "text": "- The user asks to start, stop, restart, rebuild, or inspect a Docker Compose stack"
+    },
+    {
+      "path": ".opencode/skills/docker-compose-control/SKILL.md",
+      "line": 18,
+      "kind": "dependencies",
+      "text": "- A repo already has `docker-compose.yml`, `compose.yml`, or environment-specific compose files"
+    },
+    {
+      "path": ".opencode/skills/docker-compose-control/SKILL.md",
+      "line": 20,
+      "kind": "dependencies",
+      "text": "- You need `docker compose up`, `down`, `restart`, `ps`, `logs`, or `exec`"
+    },
+    {
+      "path": ".opencode/skills/docker-compose-control/SKILL.md",
+      "line": 20,
+      "kind": "sensitive",
+      "text": "- You need `docker compose up`, `down`, `restart`, `ps`, `logs`, or `exec`"
+    },
+    {
+      "path": ".opencode/skills/docker-compose-control/SKILL.md",
+      "line": 21,
+      "kind": "dependencies",
+      "text": "- The user explicitly wants Docker Compose instead of PM2"
+    },
+    {
+      "path": ".opencode/skills/docker-compose-control/SKILL.md",
+      "line": 26,
+      "kind": "dependencies",
+      "text": "- The task is about managing one-off standalone `docker run` containers"
+    },
+    {
+      "path": ".opencode/skills/docker-compose-control/SKILL.md",
+      "line": 32,
+      "kind": "dependencies",
+      "text": "If a service stack is already defined in Docker Compose, manage it with `docker compose`"
+    },
+    {
+      "path": ".opencode/skills/docker-compose-control/SKILL.md",
+      "line": 35,
+      "kind": "dependencies",
+      "text": "Use PM2 with Docker only when PM2 runs *inside a container image* to supervise multiple"
+    },
+    {
+      "path": ".opencode/skills/docker-compose-control/SKILL.md",
+      "line": 40,
+      "kind": "dependencies",
+      "text": "- Compose file path(s), for example `deploy/docker-compose.dev.yml`"
+    },
+    {
+      "path": ".opencode/skills/docker-compose-control/SKILL.md",
+      "line": 42,
+      "kind": "sensitive",
+      "text": "- Desired action: `up`, `down`, `restart`, `ps`, `logs`, `build`, `exec`"
+    },
+    {
+      "path": ".opencode/skills/docker-compose-control/SKILL.md",
+      "line": 51,
+      "kind": "dependencies",
+      "text": "docker compose -f <compose-file> up -d"
+    },
+    {
+      "path": ".opencode/skills/docker-compose-control/SKILL.md",
+      "line": 52,
+      "kind": "dependencies",
+      "text": "docker compose -f <compose-file> up -d --build"
+    },
+    {
+      "path": ".opencode/skills/docker-compose-control/SKILL.md",
+      "line": 58,
+      "kind": "dependencies",
+      "text": "docker compose -f <compose-file> down"
+    },
+    {
+      "path": ".opencode/skills/docker-compose-control/SKILL.md",
+      "line": 64,
+      "kind": "dependencies",
+      "text": "docker compose -f <compose-file> restart"
+    },
+    {
+      "path": ".opencode/skills/docker-compose-control/SKILL.md",
+      "line": 65,
+      "kind": "dependencies",
+      "text": "docker compose -f <compose-file> restart <service>"
+    },
+    {
+      "path": ".opencode/skills/docker-compose-control/SKILL.md",
+      "line": 71,
+      "kind": "dependencies",
+      "text": "docker compose -f <compose-file> ps"
+    },
+    {
+      "path": ".opencode/skills/docker-compose-control/SKILL.md",
+      "line": 72,
+      "kind": "dependencies",
+      "text": "docker compose -f <compose-file> config"
+    },
+    {
+      "path": ".opencode/skills/docker-compose-control/SKILL.md",
+      "line": 78,
+      "kind": "dependencies",
+      "text": "docker compose -f <compose-file> logs --tail=200"
+    },
+    {
+      "path": ".opencode/skills/docker-compose-control/SKILL.md",
+      "line": 79,
+      "kind": "dependencies",
+      "text": "docker compose -f <compose-file> logs -f <service>"
+    },
+    {
+      "path": ".opencode/skills/docker-compose-control/SKILL.md",
+      "line": 85,
+      "kind": "dependencies",
+      "text": "docker compose -f <compose-file> exec <service> <command>"
+    },
+    {
+      "path": ".opencode/skills/docker-compose-control/SKILL.md",
+      "line": 85,
+      "kind": "sensitive",
+      "text": "docker compose -f <compose-file> exec <service> <command>"
+    },
+    {
+      "path": ".opencode/skills/docker-compose-control/SKILL.md",
+      "line": 86,
+      "kind": "dependencies",
+      "text": "docker compose -f <compose-file> run --rm <service> <command>"
+    },
+    {
+      "path": ".opencode/skills/docker-compose-control/SKILL.md",
+      "line": 93,
+      "kind": "dependencies",
+      "text": "3. Start or refresh with `docker compose ... up -d --build` when code or images changed."
+    },
+    {
+      "path": ".opencode/skills/docker-compose-control/SKILL.md",
+      "line": 94,
+      "kind": "dependencies",
+      "text": "4. Confirm health with `docker compose ... ps`."
+    },
+    {
+      "path": ".opencode/skills/docker-compose-control/SKILL.md",
+      "line": 95,
+      "kind": "dependencies",
+      "text": "5. Inspect logs with `docker compose ... logs --tail=200` if behavior is unclear."
+    },
+    {
+      "path": ".opencode/skills/docker-compose-control/SKILL.md",
+      "line": 96,
+      "kind": "dependencies",
+      "text": "6. Use `docker compose ... down` only when the user wants the stack stopped/removed."
+    },
+    {
+      "path": ".opencode/skills/docker-compose-control/SKILL.md",
+      "line": 103,
+      "kind": "dependencies",
+      "text": "docker network inspect my-app-network >/dev/null 2>&1 || docker network create my-app-network"
+    },
+    {
+      "path": ".opencode/skills/docker-compose-control/SKILL.md",
+      "line": 104,
+      "kind": "dependencies",
+      "text": "docker compose -f docker-compose.yml up -d --build"
+    },
+    {
+      "path": ".opencode/skills/docker-compose-control/SKILL.md",
+      "line": 105,
+      "kind": "dependencies",
+      "text": "docker compose -f docker-compose.yml ps"
+    },
+    {
+      "path": ".opencode/skills/docker-compose-control/SKILL.md",
+      "line": 111,
+      "kind": "dependencies",
+      "text": "docker compose -f docker-compose.dev.yml up -d"
+    },
+    {
+      "path": ".opencode/skills/docker-compose-control/SKILL.md",
+      "line": 112,
+      "kind": "dependencies",
+      "text": "docker compose -f docker-compose.dev.yml ps"
+    },
+    {
+      "path": ".opencode/skills/docker-compose-control/SKILL.md",
+      "line": 117,
+      "kind": "dependencies",
+      "text": "- Prefer `docker compose ps` and `logs` before assuming a service is healthy"
+    },
+    {
+      "path": ".opencode/skills/docker-compose-control/SKILL.md",
+      "line": 118,
+      "kind": "dependencies",
+      "text": "- Avoid mixing PM2 and Docker Compose for the same outer process lifecycle"
+    },
+    {
+      "path": ".opencode/skills/find-skills/SKILL.md",
+      "line": 23,
+      "kind": "dependencies",
+      "text": "The Skills CLI (`npx skills`) is the package manager for the open agent skills ecosystem. Skills are modular packages that extend agent capabilities with specialized knowledge, workflows, and tools."
+    },
+    {
+      "path": ".opencode/skills/find-skills/SKILL.md",
+      "line": 27,
+      "kind": "dependencies",
+      "text": "- `npx skills find [query]` - Search for skills interactively or by keyword"
+    },
+    {
+      "path": ".opencode/skills/find-skills/SKILL.md",
+      "line": 28,
+      "kind": "dependencies",
+      "text": "- `npx skills add <package>` - Install a skill from GitHub or other sources"
+    },
+    {
+      "path": ".opencode/skills/find-skills/SKILL.md",
+      "line": 29,
+      "kind": "dependencies",
+      "text": "- `npx skills check` - Check for skill updates"
+    },
+    {
+      "path": ".opencode/skills/find-skills/SKILL.md",
+      "line": 30,
+      "kind": "dependencies",
+      "text": "- `npx skills update` - Update all installed skills"
+    },
+    {
+      "path": ".opencode/skills/find-skills/SKILL.md",
+      "line": 49,
+      "kind": "dependencies",
+      "text": "npx skills find [query]"
+    },
+    {
+      "path": ".opencode/skills/find-skills/SKILL.md",
+      "line": 54,
+      "kind": "dependencies",
+      "text": "- User asks \"how do I make my React app faster?\" → `npx skills find react performance`"
+    },
+    {
+      "path": ".opencode/skills/find-skills/SKILL.md",
+      "line": 55,
+      "kind": "dependencies",
+      "text": "- User asks \"can you help me with PR reviews?\" → `npx skills find pr review`"
+    },
+    {
+      "path": ".opencode/skills/find-skills/SKILL.md",
+      "line": 56,
+      "kind": "dependencies",
+      "text": "- User asks \"I need to create a changelog\" → `npx skills find changelog`"
+    },
+    {
+      "path": ".opencode/skills/find-skills/SKILL.md",
+      "line": 61,
+      "kind": "dependencies",
+      "text": "Install with npx skills add <owner/repo@skill>"
+    },
+    {
+      "path": ".opencode/skills/find-skills/SKILL.md",
+      "line": 82,
+      "kind": "dependencies",
+      "text": "npx skills add vercel-labs/agent-skills@vercel-react-best-practices"
+    },
+    {
+      "path": ".opencode/skills/find-skills/SKILL.md",
+      "line": 92,
+      "kind": "dependencies",
+      "text": "npx skills add <owner/repo@skill> -g -y"
+    },
+    {
+      "path": ".opencode/skills/find-skills/SKILL.md",
+      "line": 104,
+      "kind": "dependencies",
+      "text": "| Testing         | testing, jest, playwright, e2e           |"
+    },
+    {
+      "path": ".opencode/skills/find-skills/SKILL.md",
+      "line": 105,
+      "kind": "dependencies",
+      "text": "| DevOps          | deploy, docker, kubernetes, ci-cd        |"
+    },
+    {
+      "path": ".opencode/skills/find-skills/SKILL.md",
+      "line": 115,
+      "kind": "runtime",
+      "text": "3. **Check popular sources**: Many skills come from `vercel-labs/agent-skills` or `ComposioHQ/awesome-claude-skills`"
+    },
+    {
+      "path": ".opencode/skills/find-skills/SKILL.md",
+      "line": 123,
+      "kind": "dependencies",
+      "text": "3. Suggest the user could create their own skill with `npx skills init`"
+    },
+    {
+      "path": ".opencode/skills/find-skills/SKILL.md",
+      "line": 132,
+      "kind": "dependencies",
+      "text": "npx skills init my-xyz-skill"
+    },
+    {
+      "path": ".opencode/skills/giga-workflow/SKILL.md",
+      "line": 37,
+      "kind": "dependencies",
+      "text": "   - Script detects package manager (bun/pnpm/yarn/npm)"
+    },
+    {
+      "path": ".opencode/skills/giga-workflow/SKILL.md",
+      "line": 91,
+      "kind": "runtime",
+      "text": "bun run src/giga/run-submodule.ts orgs/moofone/codex-ts-sdk lint"
+    },
+    {
+      "path": ".opencode/skills/github-integration/SKILL.md",
+      "line": 24,
+      "kind": "sensitive",
+      "text": "- GitHub token (required for most operations)"
+    },
+    {
+      "path": ".opencode/skills/github-integration/SKILL.md",
+      "line": 29,
+      "kind": "dependencies",
+      "text": "3. **Run GitHub CLI**: Use `gh` command with repository context"
+    },
+    {
+      "path": ".opencode/skills/github-integration/SKILL.md",
+      "line": 38,
+      "kind": "sensitive",
+      "text": "- **Token Required**: Most operations require `GITHUB_TOKEN` environment variable"
+    },
+    {
+      "path": ".opencode/skills/github-integration/SKILL.md",
+      "line": 39,
+      "kind": "sensitive",
+      "text": "- **Scope**: Token must have `repo` scope for PRs and issues"
+    },
+    {
+      "path": ".opencode/skills/github-integration/SKILL.md",
+      "line": 40,
+      "kind": "dependencies",
+      "text": "- **Repository Context**: Always specify repo for `gh` commands"
+    },
+    {
+      "path": ".opencode/skills/github-integration/SKILL.md",
+      "line": 49,
+      "kind": "sensitive",
+      "text": "GITHUB_TOKEN=<token> pnpm issues:project"
+    },
+    {
+      "path": ".opencode/skills/github-integration/SKILL.md",
+      "line": 52,
+      "kind": "sensitive",
+      "text": "GITHUB_TOKEN=<token> pnpm issues:project -- --clean"
+    },
+    {
+      "path": ".opencode/skills/github-integration/SKILL.md",
+      "line": 55,
+      "kind": "sensitive",
+      "text": "GITHUB_TOKEN=<token> pnpm issues:project -- --type issues"
+    },
+    {
+      "path": ".opencode/skills/github-integration/SKILL.md",
+      "line": 58,
+      "kind": "sensitive",
+      "text": "GITHUB_TOKEN=<token> pnpm issues:project -- --type prs --state open"
+    },
+    {
+      "path": ".opencode/skills/github-integration/SKILL.md",
+      "line": 61,
+      "kind": "sensitive",
+      "text": "GITHUB_TOKEN=<token> pnpm issues:project -- --repo riatzukiza/promethean"
+    },
+    {
+      "path": ".opencode/skills/github-integration/SKILL.md",
+      "line": 75,
+      "kind": "dependencies",
+      "text": "GITHUB_TOKEN=<token> gh issue list --repo owner/repo --state open"
+    },
+    {
+      "path": ".opencode/skills/github-integration/SKILL.md",
+      "line": 75,
+      "kind": "sensitive",
+      "text": "GITHUB_TOKEN=<token> gh issue list --repo owner/repo --state open"
+    },
+    {
+      "path": ".opencode/skills/github-integration/SKILL.md",
+      "line": 78,
+      "kind": "dependencies",
+      "text": "GITHUB_TOKEN=<token> gh pr create --repo owner/repo --title \"PR Title\" --body \"PR description\""
+    },
+    {
+      "path": ".opencode/skills/github-integration/SKILL.md",
+      "line": 78,
+      "kind": "sensitive",
+      "text": "GITHUB_TOKEN=<token> gh pr create --repo owner/repo --title \"PR Title\" --body \"PR description\""
+    },
+    {
+      "path": ".opencode/skills/github-integration/SKILL.md",
+      "line": 81,
+      "kind": "dependencies",
+      "text": "GITHUB_TOKEN=<token> gh pr list --repo owner/repo --state open"
+    },
+    {
+      "path": ".opencode/skills/github-integration/SKILL.md",
+      "line": 81,
+      "kind": "sensitive",
+      "text": "GITHUB_TOKEN=<token> gh pr list --repo owner/repo --state open"
+    },
+    {
+      "path": ".opencode/skills/github-integration/SKILL.md",
+      "line": 84,
+      "kind": "dependencies",
+      "text": "GITHUB_TOKEN=<token> gh repo view owner/repo"
+    },
+    {
+      "path": ".opencode/skills/github-integration/SKILL.md",
+      "line": 84,
+      "kind": "sensitive",
+      "text": "GITHUB_TOKEN=<token> gh repo view owner/repo"
+    },
+    {
+      "path": ".opencode/skills/github-integration/SKILL.md",
+      "line": 94,
+      "kind": "sensitive",
+      "text": "- **Token Required**: Most operations require `GITHUB_TOKEN` environment variable"
+    },
+    {
+      "path": ".opencode/skills/github-integration/SKILL.md",
+      "line": 95,
+      "kind": "sensitive",
+      "text": "- **Scope**: Token must have `repo` scope for PRs and issues"
+    },
+    {
+      "path": ".opencode/skills/github-integration/SKILL.md",
+      "line": 101,
+      "kind": "sensitive",
+      "text": "- **Missing Token**: Exits with error if `GITHUB_TOKEN` not set"
+    },
+    {
+      "path": ".opencode/skills/mcp-server-integration/SKILL.md",
+      "line": 6,
+      "kind": "runtime",
+      "text": "# Skill: MCP Server Integration"
+    },
+    {
+      "path": ".opencode/skills/mcp-server-integration/SKILL.md",
+      "line": 12,
+      "kind": "runtime",
+      "text": "- You add a new MCP server to the workspace."
+    },
+    {
+      "path": ".opencode/skills/mcp-server-integration/SKILL.md",
+      "line": 13,
+      "kind": "runtime",
+      "text": "- You configure MCP server connections or authentication."
+    },
+    {
+      "path": ".opencode/skills/mcp-server-integration/SKILL.md",
+      "line": 14,
+      "kind": "runtime",
+      "text": "- The request mentions MCP tools or MCP server integration."
+    },
+    {
+      "path": ".opencode/skills/mcp-server-integration/SKILL.md",
+      "line": 18,
+      "kind": "runtime",
+      "text": "- You only need to modify an existing MCP server implementation."
+    },
+    {
+      "path": ".opencode/skills/mcp-server-integration/SKILL.md",
+      "line": 21,
+      "kind": "runtime",
+      "text": "- MCP server details and capabilities."
+    },
+    {
+      "path": ".opencode/skills/mcp-server-integration/SKILL.md",
+      "line": 30,
+      "kind": "runtime",
+      "text": "5. Update docs or examples for the new MCP server."
+    },
+    {
+      "path": ".opencode/skills/mcp-server-integration/SKILL.md",
+      "line": 33,
+      "kind": "runtime",
+      "text": "- Configured MCP server connection."
+    },
+    {
+      "path": ".opencode/skills/opencode-agent-file-generator/AGENTS.md",
+      "line": 15,
+      "kind": "runtime",
+      "text": "Create or revise skills so they are reusable, scoped, and load correctly in OpenCode and Codex"
+    },
+    {
+      "path": ".opencode/skills/opencode-agent-file-generator/SKILL.md",
+      "line": 19,
+      "kind": "dependencies",
+      "text": "The skill relies on two Python scripts in `scripts/`:"
+    },
+    {
+      "path": ".opencode/skills/opencode-agent-file-generator/SKILL.md",
+      "line": 38,
+      "kind": "dependencies",
+      "text": "python3 .opencode/skills/opencode-agent-file-generator/scripts/analyze_skills.py"
+    },
+    {
+      "path": ".opencode/skills/opencode-agent-file-generator/SKILL.md",
+      "line": 41,
+      "kind": "dependencies",
+      "text": "python3 .opencode/skills/opencode-agent-file-generator/scripts/generate_agents.py"
+    },
+    {
+      "path": ".opencode/skills/opencode-agents-skills/SKILL.md",
+      "line": 31,
+      "kind": "dependencies",
+      "text": "| Browser automation | `playwright` or `dev-browser` | \"browser\", \"test website\", \"fill form\", \"screenshot\", \"navigate\" |"
+    },
+    {
+      "path": ".opencode/skills/opencode-skill-creation/SKILL.md",
+      "line": 29,
+      "kind": "runtime",
+      "text": "  - Claude-compatible (project): `.claude/skills/<name>/SKILL.md`"
+    },
+    {
+      "path": ".opencode/skills/opencode-skill-creation/SKILL.md",
+      "line": 30,
+      "kind": "runtime",
+      "text": "  - Claude-compatible (global): `~/.claude/skills/<name>/SKILL.md`"
+    },
+    {
+      "path": ".opencode/skills/opencode-skill-creation/SKILL.md",
+      "line": 96,
+      "kind": "runtime",
+      "text": "3. Create the canonical skill at `~/.agents/skills/<name>/SKILL.md` so Codex can load it."
+    },
+    {
+      "path": ".opencode/skills/opencode-tools-mcp/SKILL.md",
+      "line": 13,
+      "kind": "runtime",
+      "text": "- You update MCP server configuration or ACP support."
+    },
+    {
+      "path": ".opencode/skills/opencode-tools-mcp/SKILL.md",
+      "line": 33,
+      "kind": "runtime",
+      "text": "- OpenCode MCP server docs: https://opencode.ai/docs/mcp-servers/"
+    },
+    {
+      "path": ".opencode/skills/pm2-process-management/SKILL.md",
+      "line": 28,
+      "kind": "dependencies",
+      "text": "2. **Compilation**: `npx shadow-cljs release clobber` compiles to `.clobber/index.cjs`"
+    },
+    {
+      "path": ".opencode/skills/pm2-process-management/SKILL.md",
+      "line": 53,
+      "kind": "dependencies",
+      "text": "npx shadow-cljs release clobber"
+    },
+    {
+      "path": ".opencode/skills/pm2-process-management/SKILL.md",
+      "line": 123,
+      "kind": "dependencies",
+      "text": "npx shadow-cljs release clobber"
+    },
+    {
+      "path": ".opencode/skills/pm2-process-management/SKILL.md",
+      "line": 168,
+      "kind": "dependencies",
+      "text": "- `pm2-clj` CLI → Use `npx shadow-cljs release clobber`"
+    },
+    {
+      "path": ".opencode/skills/pm2-process-management/SKILL.md",
+      "line": 172,
+      "kind": "dependencies",
+      "text": "- Always compile with `npx shadow-cljs release clobber` before starting"
+    },
+    {
+      "path": ".opencode/skills/release-watcher/SKILL.md",
+      "line": 3,
+      "kind": "runtime",
+      "text": "description: \"Monitor upstream releases for OpenAI codex and SST opencode repositories, detect changes, and create GitHub issues for release impact analysis\""
+    },
+    {
+      "path": ".opencode/skills/release-watcher/SKILL.md",
+      "line": 9,
+      "kind": "runtime",
+      "text": "Monitor upstream releases for OpenAI `codex` and SST `opencode` repositories, detect changes, and create GitHub issues for release impact analysis."
+    },
+    {
+      "path": ".opencode/skills/release-watcher/SKILL.md",
+      "line": 19,
+      "kind": "runtime",
+      "text": "- The change is unrelated to codex or opencode releases"
+    },
+    {
+      "path": ".opencode/skills/release-watcher/SKILL.md",
+      "line": 23,
+      "kind": "runtime",
+      "text": "- Upstream repository (codex or opencode)"
+    },
+    {
+      "path": ".opencode/skills/release-watcher/SKILL.md",
+      "line": 25,
+      "kind": "sensitive",
+      "text": "- GitHub token for issue creation"
+    },
+    {
+      "path": ".opencode/skills/release-watcher/SKILL.md",
+      "line": 31,
+      "kind": "runtime",
+      "text": "4. **Create Issues**: Creates GitHub issues labeled `codex-release-watch`"
+    },
+    {
+      "path": ".opencode/skills/release-watcher/SKILL.md",
+      "line": 51,
+      "kind": "runtime",
+      "text": "# Poll codex releases"
+    },
+    {
+      "path": ".opencode/skills/release-watcher/SKILL.md",
+      "line": 52,
+      "kind": "runtime",
+      "text": "bun run scripts/codex-release-monitor.mjs --repo openai/codex --tag latest"
+    },
+    {
+      "path": ".opencode/skills/release-watcher/SKILL.md",
+      "line": 55,
+      "kind": "runtime",
+      "text": "bun run scripts/codex-release-monitor.mjs --repo sst/opencode --tag latest"
+    },
+    {
+      "path": ".opencode/skills/release-watcher/SKILL.md",
+      "line": 58,
+      "kind": "runtime",
+      "text": "bun run scripts/codex-release-monitor.mjs --repo openai/codex --tag v0.1.0"
+    },
+    {
+      "path": ".opencode/skills/release-watcher/SKILL.md",
+      "line": 68,
+      "kind": "runtime",
+      "text": "bun run scripts/codex-release-monitor.mjs --repo openai/codex --tag latest"
+    },
+    {
+      "path": ".opencode/skills/release-watcher/SKILL.md",
+      "line": 72,
+      "kind": "runtime",
+      "text": "- Release monitor script: `scripts/codex-release-monitor.mjs`"
+    },
+    {
+      "path": ".opencode/skills/release-watcher/SKILL.md",
+      "line": 74,
+      "kind": "runtime",
+      "text": "- Release watch workflow: `.github/workflows/codex-release-watch.yml`"
+    },
+    {
+      "path": ".opencode/skills/release-watcher/SKILL.md",
+      "line": 81,
+      "kind": "runtime",
+      "text": "- **Labeling**: Issues are labeled `codex-release-watch`"
+    },
+    {
+      "path": ".opencode/skills/release-watcher/SKILL.md",
+      "line": 83,
+      "kind": "runtime",
+      "text": "- **Optional Model**: `RELEASE_WATCH_MODEL` repo var selects model (defaults to `openai/gpt-5-codex-high`)"
+    },
+    {
+      "path": ".opencode/skills/release-watcher/SKILL.md",
+      "line": 108,
+      "kind": "runtime",
+      "text": "- **OpenAI Codex**: `openai/codex` (rust-v* tags)"
+    },
+    {
+      "path": ".opencode/skills/release-watcher/SKILL.md",
+      "line": 115,
+      "kind": "runtime",
+      "text": "codex-release-watch/      # Issues created for potential problems"
+    },
+    {
+      "path": ".opencode/skills/release-watcher/SKILL.md",
+      "line": 122,
+      "kind": "sensitive",
+      "text": "- **Missing Token**: Exits with error if `OPENCODE_API_KEY` not set"
+    },
+    {
+      "path": ".opencode/skills/shadow-cljs-debug/SKILL.md",
+      "line": 28,
+      "kind": "dependencies",
+      "text": "   - Read `package.json`. Is the npm package installed?"
+    },
+    {
+      "path": ".opencode/skills/shadow-cljs-debug/SKILL.md",
+      "line": 30,
+      "kind": "sensitive",
+      "text": "   - If behavior is weird or inconsistent, delete the cache: `rm -rf .shadow-cljs .cpcache`."
+    },
+    {
+      "path": ".opencode/skills/shadow-cljs-debug/SKILL.md",
+      "line": 33,
+      "kind": "dependencies",
+      "text": "   - **npm**: Ensure you use `(:require [\"package-name\" :as pkg])` for npm packages."
+    },
+    {
+      "path": ".opencode/skills/shadow-cljs-debug/SKILL.md",
+      "line": 37,
+      "kind": "dependencies",
+      "text": "   - Run `npx shadow-cljs compile <build-id>` (or `release` for production)."
+    },
+    {
+      "path": ".opencode/skills/shadow-cljs-debug/SKILL.md",
+      "line": 44,
+      "kind": "dependencies",
+      "text": "- **Tip**: Shadow-CLJS relies heavily on `package.json` for JS deps. If an npm import fails, check `node_modules` first (`workspace-dependency-check`)."
+    },
+    {
+      "path": ".opencode/skills/skill-authoring/SKILL.md",
+      "line": 3,
+      "kind": "runtime",
+      "text": "description: \"Create or revise skills so they are reusable, scoped, and load correctly in OpenCode and Codex\""
+    },
+    {
+      "path": ".opencode/skills/skill-authoring/SKILL.md",
+      "line": 9,
+      "kind": "runtime",
+      "text": "Create or revise repo skills so they are reusable, scoped, and load correctly in OpenCode and Codex."
+    },
+    {
+      "path": ".opencode/skills/skill-authoring/SKILL.md",
+      "line": 83,
+      "kind": "runtime",
+      "text": "  - claude"
+    },
+    {
+      "path": ".opencode/skills/testing-bun/SKILL.md",
+      "line": 18,
+      "kind": "dependencies",
+      "text": "- Project uses Node.js without Bun"
+    },
+    {
+      "path": ".opencode/skills/testing-bun/SKILL.md",
+      "line": 19,
+      "kind": "dependencies",
+      "text": "- Need specific Node.js testing features"
+    },
+    {
+      "path": ".opencode/skills/testing-clojure-cljs/SKILL.md",
+      "line": 37,
+      "kind": "dependencies",
+      "text": "          :node-test {:target :node-test"
+    },
+    {
+      "path": ".opencode/skills/testing-clojure-cljs/SKILL.md",
+      "line": 38,
+      "kind": "dependencies",
+      "text": "                      :output-to \"target/test/node-test.js\""
+    },
+    {
+      "path": ".opencode/skills/testing-clojure-cljs/SKILL.md",
+      "line": 47,
+      "kind": "dependencies",
+      "text": "    \"test:cljs\": \"shadow-cljs compile node-test && node target/test/node-test.js\","
+    },
+    {
+      "path": ".opencode/skills/testing-clojure-cljs/SKILL.md",
+      "line": 48,
+      "kind": "dependencies",
+      "text": "    \"test:browser\": \"shadow-cljs compile test && npx http-server target/test -p 8080\","
+    },
+    {
+      "path": ".opencode/skills/testing-clojure-cljs/SKILL.md",
+      "line": 204,
+      "kind": "dependencies",
+      "text": "# Compile for Node.js"
+    },
+    {
+      "path": ".opencode/skills/testing-clojure-cljs/SKILL.md",
+      "line": 205,
+      "kind": "dependencies",
+      "text": "shadow-cljs compile node-test"
+    },
+    {
+      "path": ".opencode/skills/testing-clojure-cljs/SKILL.md",
+      "line": 226,
+      "kind": "dependencies",
+      "text": "shadow-cljs compile node-test"
+    },
+    {
+      "path": ".opencode/skills/testing-clojure-cljs/SKILL.md",
+      "line": 229,
+      "kind": "dependencies",
+      "text": "node target/test/node-test.js"
+    },
+    {
+      "path": ".opencode/skills/testing-clojure-cljs/SKILL.md",
+      "line": 293,
+      "kind": "dependencies",
+      "text": "| `shadow-cljs compile node-test` | Compile for Node.js |"
+    },
+    {
+      "path": ".opencode/skills/testing-e2e/SKILL.md",
+      "line": 44,
+      "kind": "dependencies",
+      "text": "import { chromium } from 'playwright';"
+    },
+    {
+      "path": ".opencode/skills/testing-e2e/SKILL.md",
+      "line": 402,
+      "kind": "dependencies",
+      "text": "- Browser automation setup with Playwright"
+    },
+    {
+      "path": ".opencode/skills/testing-e2e/SKILL.md",
+      "line": 408,
+      "kind": "dependencies",
+      "text": "- Playwright: https://playwright.dev/"
+    },
+    {
+      "path": ".opencode/skills/testing-integration/SKILL.md",
+      "line": 105,
+      "kind": "dependencies",
+      "text": "### Docker/Test Containers"
+    },
+    {
+      "path": ".opencode/skills/testing-integration/SKILL.md",
+      "line": 391,
+      "kind": "dependencies",
+      "text": "- Test containers: https://github.com/testcontainers/testcontainers-node"
+    },
+    {
+      "path": ".opencode/skills/testing-nx/SKILL.md",
+      "line": 165,
+      "kind": "dependencies",
+      "text": "      - name: Setup Node"
+    },
+    {
+      "path": ".opencode/skills/testing-nx/SKILL.md",
+      "line": 166,
+      "kind": "dependencies",
+      "text": "        uses: actions/setup-node@v4"
+    },
+    {
+      "path": ".opencode/skills/testing-nx/SKILL.md",
+      "line": 168,
+      "kind": "dependencies",
+      "text": "          node-version: 20"
+    },
+    {
+      "path": ".opencode/skills/testing-nx/SKILL.md",
+      "line": 191,
+      "kind": "dependencies",
+      "text": "  image: node:20"
+    },
+    {
+      "path": ".opencode/skills/testing-nx/SKILL.md",
+      "line": 193,
+      "kind": "dependencies",
+      "text": "    - npm ci"
+    },
+    {
+      "path": ".opencode/skills/testing-nx/SKILL.md",
+      "line": 194,
+      "kind": "dependencies",
+      "text": "    - npx nx affected --target=test --base=main"
+    },
+    {
+      "path": ".opencode/skills/testing-nx/SKILL.md",
+      "line": 320,
+      "kind": "dependencies",
+      "text": "npm i -g nx"
+    },
+    {
+      "path": ".opencode/skills/testing-typescript-ava/SKILL.md",
+      "line": 297,
+      "kind": "dependencies",
+      "text": "    'ts-node/register'"
+    },
+    {
+      "path": ".opencode/skills/testing-typescript-vitest/SKILL.md",
+      "line": 57,
+      "kind": "dependencies",
+      "text": "    environment: 'node',"
+    },
+    {
+      "path": ".opencode/skills/webring-site/SKILL.md",
+      "line": 3,
+      "kind": "sensitive",
+      "text": "description: \"Research the live ussyco.de ring, build a distinct single-page site in this workspace, preview it locally, and optionally register it with an API key from the environment\""
+    },
+    {
+      "path": ".opencode/skills/webring-site/SKILL.md",
+      "line": 35,
+      "kind": "sensitive",
+      "text": "- Never commit, hardcode, or echo the literal API key into tracked files."
+    },
+    {
+      "path": ".opencode/skills/webring-site/SKILL.md",
+      "line": 41,
+      "kind": "runtime",
+      "text": "   - Use `agent-browser`, `webfetch`, or a research subagent to capture tone, structure, palette, typography, and recurring content devices."
+    },
+    {
+      "path": ".opencode/skills/webring-site/SKILL.md",
+      "line": 71,
+      "kind": "dependencies",
+      "text": "     - `curl` returns the expected HTML."
+    },
+    {
+      "path": ".opencode/skills/webring-site/SKILL.md",
+      "line": 77,
+      "kind": "sensitive",
+      "text": "   - Read the API key from `USSYCO_DE_API_KEY`."
+    },
+    {
+      "path": ".opencode/skills/webring-site/SKILL.md",
+      "line": 78,
+      "kind": "sensitive",
+      "text": "   - Do not persist the secret in repo files, screenshots, logs, or commit messages."
+    },
+    {
+      "path": ".opencode/skills/webring-site/SKILL.md",
+      "line": 86,
+      "kind": "dependencies",
+      "text": "curl -X POST https://ussyco.de/api/admin/members \\"
+    },
+    {
+      "path": ".opencode/skills/webring-site/SKILL.md",
+      "line": 88,
+      "kind": "sensitive",
+      "text": "  -H \"X-Api-Key: $USSYCO_DE_API_KEY\" \\"
+    },
+    {
+      "path": "README.md",
+      "line": 17,
+      "kind": "dependencies",
+      "text": "| `devsecops-free-cloud` | Free IaaS/PaaS compute (GCP, AWS, Azure, Oracle, IBM, Cloudflare) |"
+    },
+    {
+      "path": "docs/agent-workflows.md",
+      "line": 7,
+      "kind": "sensitive",
+      "text": "GitHub events are mirrored to Discord through `.github/workflows/github-events-discord.yml` using the `DISCORD_REVIEW_WEBHOOK_URL` secret."
+    },
+    {
+      "path": "docs/eta-mu-contract-grammar.md",
+      "line": 31,
+      "kind": "sensitive",
+      "text": "The assistant recognizes *mode operators* (single-token switches). These change how responses are shaped."
+    },
+    {
+      "path": "specs/edn-skill-graph-contracts-v1.md",
+      "line": 35,
+      "kind": "sensitive",
+      "text": "- Syntax is **EDN list-forms** (no reader-eval; data-only)."
+    },
+    {
+      "path": "specs/edn-skill-graph-contracts-v1.md",
+      "line": 76,
+      "kind": "dependencies",
+      "text": "## 2) Skill contract (node)"
+    },
+    {
+      "path": "specs/edn-skill-graph-contracts-v1.md",
+      "line": 122,
+      "kind": "sensitive",
+      "text": "- State/token naming is inconsistent:"
+    },
+    {
+      "path": "specs/kanban-fsm-contract-v1.md",
+      "line": 36,
+      "kind": "sensitive",
+      "text": "2. Provide **canonical internal state identifiers** plus **surface token aliases** (to absorb `in_progress` vs `in-progress`, `in_review` vs `review`, etc.)."
+    },
+    {
+      "path": "specs/kanban-fsm-contract-v1.md",
+      "line": 73,
+      "kind": "sensitive",
+      "text": "- one preferred frontmatter token string"
+    },
+    {
+      "path": "specs/kanban-fsm-contract-v1.md",
+      "line": 302,
+      "kind": "sensitive",
+      "text": "  (must \"State token normalizes to a declared :kanban.state/*\")"
+    },
+    {
+      "path": "specs/kanban-fsm-contract-v1.md",
+      "line": 311,
+      "kind": "sensitive",
+      "text": "Define token normalization and legacy field rules."
+    },
+    {
+      "path": "specs/kanban-fsm-contract-v1.md",
+      "line": 321,
+      "kind": "sensitive",
+      "text": "  (token-aliases"
+    },
+    {
+      "path": "specs/kanban-fsm-contract-v1.md",
+      "line": 351,
+      "kind": "sensitive",
+      "text": "- `backlog` is an alias token for `ready`."
+    },
+    {
+      "path": "specs/kanban-fsm-contract-v1.md",
+      "line": 352,
+      "kind": "sensitive",
+      "text": "- `triage` is an alias token for `breakdown`."
+    }
+  ]
+}

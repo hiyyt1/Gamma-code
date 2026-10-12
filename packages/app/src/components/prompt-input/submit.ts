@@ -3,7 +3,8 @@ import { showToast } from "@/utils/toast"
 import { base64Encode } from "@opencode-ai/core/util/encode"
 import { Binary } from "@opencode-ai/core/util/binary"
 import { useNavigate, useParams, useSearchParams } from "@solidjs/router"
-import { batch, startTransition, type Accessor } from "solid-js"
+import { batch, createEffect, untrack, startTransition, type Accessor } from "solid-js"
+import { useOnboarding } from "@/context/onboarding"
 import { useTabs } from "@/context/tabs"
 import { useServerSync, type ServerSync } from "@/context/server-sync"
 import { useLanguage } from "@/context/language"
@@ -23,6 +24,7 @@ import { createPromptSubmissionState } from "./submission-state"
 import { normalizeSessionInfo } from "@/utils/session"
 import { Event } from "@opencode-ai/schema/event"
 import { blobDataUrl } from "@/utils/draft-store"
+import { withSessionInput } from "@/utils/empty-session"
 
 type PendingPrompt = {
   abort: AbortController
@@ -55,7 +57,11 @@ const draftText = (prompt: Prompt) => prompt.map((part) => ("content" in part ? 
 
 const draftImages = (prompt: Prompt) => prompt.filter((part): part is ImageAttachmentPart => part.type === "image")
 
-export async function sendFollowupDraft(input: FollowupSendInput) {
+export function sendFollowupDraft(input: FollowupSendInput) {
+  return withSessionInput(input.draft.sessionID, () => sendDraft(input))
+}
+
+async function sendDraft(input: FollowupSendInput) {
   const text = draftText(input.draft.prompt)
   const images = draftImages(input.draft.prompt)
   const setBusy = () => {
@@ -245,6 +251,23 @@ export function createPromptSubmit(input: PromptSubmitInput) {
   const [search] = useSearchParams<{ draftId?: string }>()
   const tabs = useTabs()
   const pendingKey = (sessionID: string) => ScopedKey.from(sdk().scope, sessionID)
+  const onboarding = useOnboarding()
+
+  createEffect(() => {
+    const sessionID = params.id
+    const server = sdk().scope
+    const handoff = onboarding.pending(server)
+    if (!handoff || handoff.sessionID !== sessionID || !onboarding.ready() || !prompt.ready()) return
+    if (input.info()?.id !== sessionID || !local.model.ready() || !local.session.ready()) return
+    if (!(input.model ?? local.model).current() || !local.agent.current()) {
+      if (sync().data.status !== "complete") return
+    }
+    untrack(() => {
+      prompt.set([{ type: "text", content: handoff.text, start: 0, end: handoff.text.length }], handoff.text.length)
+      if (!onboarding.claim(server, sessionID)) return
+      void withSessionInput(sessionID, () => submit(new window.Event("submit")))
+    })
+  })
 
   const errorMessage = (err: unknown) => {
     if (err && typeof err === "object" && "message" in err && typeof err.message === "string") return err.message
@@ -315,7 +338,7 @@ export function createPromptSubmit(input: PromptSubmitInput) {
     })
   }
 
-  const handleSubmit = async (event: Event) => {
+  const submit = async (event: Event) => {
     event.preventDefault()
 
     const target = prompt.capture()
@@ -491,7 +514,7 @@ export function createPromptSubmit(input: PromptSubmitInput) {
     if (mode === "shell") {
       clearInput()
       const eventID = Event.ID.create()
-      sdk()
+      await sdk()
         .api.session.shell({
           sessionID: session.id,
           id: eventID,
@@ -517,7 +540,7 @@ export function createPromptSubmit(input: PromptSubmitInput) {
         clearInput()
         const messageID = Identifier.ascending("message")
         serverSync().session.set("session_status", session.id, { type: "busy" })
-        sdk()
+        await sdk()
           .api.session.command({
             sessionID: session.id,
             id: messageID,
@@ -616,7 +639,7 @@ export function createPromptSubmit(input: PromptSubmitInput) {
       return true
     }
 
-    void sendFollowupDraft({
+    await sendFollowupDraft({
       api: sdk().api.session,
       sync: sync(),
       serverSync: serverSync(),
@@ -640,6 +663,9 @@ export function createPromptSubmit(input: PromptSubmitInput) {
 
   return {
     abort,
-    handleSubmit,
+    handleSubmit: (event: Event) => {
+      const sessionID = input.info()?.id
+      return sessionID ? withSessionInput(sessionID, () => submit(event)) : submit(event)
+    },
   }
 }

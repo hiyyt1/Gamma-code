@@ -1,0 +1,977 @@
+[
+  {
+    "manifest": "package.json",
+    "dependency": "@aws-sdk/client-s3",
+    "otherConsumers": []
+  },
+  {
+    "manifest": "package.json",
+    "dependency": "heap-snapshot-toolkit",
+    "otherConsumers": []
+  },
+  {
+    "manifest": "package.json",
+    "dependency": "typescript",
+    "otherConsumers": [
+      {
+        "manifest": "packages/codemode/package.json",
+        "count": 1
+      },
+      {
+        "manifest": "packages/opencode/package.json",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "manifest": "packages/core/package.json",
+    "dependency": "@opencode-ai/effect-sqlite-node",
+    "otherConsumers": []
+  },
+  {
+    "manifest": "packages/core/package.json",
+    "dependency": "ignore",
+    "otherConsumers": [
+      {
+        "manifest": "packages/opencode/package.json",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "manifest": "packages/core/package.json",
+    "dependency": "semver",
+    "otherConsumers": [
+      {
+        "manifest": "packages/script/package.json",
+        "count": 1
+      },
+      {
+        "manifest": "packages/opencode/package.json",
+        "count": 3
+      }
+    ]
+  },
+  {
+    "manifest": "packages/cli/package.json",
+    "dependency": "@opentui/core",
+    "otherConsumers": [
+      {
+        "manifest": "package.json",
+        "count": 1
+      },
+      {
+        "manifest": "packages/tui/package.json",
+        "count": 58
+      },
+      {
+        "manifest": "packages/plugin/package.json",
+        "count": 2
+      },
+      {
+        "manifest": "packages/opencode/package.json",
+        "count": 19
+      }
+    ]
+  },
+  {
+    "manifest": "packages/cli/package.json",
+    "dependency": "@parcel/watcher",
+    "otherConsumers": [
+      {
+        "manifest": "packages/core/package.json",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "manifest": "packages/cli/package.json",
+    "dependency": "solid-js",
+    "otherConsumers": [
+      {
+        "manifest": "packages/session-ui/package.json",
+        "count": 65
+      },
+      {
+        "manifest": "packages/tui/package.json",
+        "count": 124
+      },
+      {
+        "manifest": "packages/stats/app/package.json",
+        "count": 25
+      },
+      {
+        "manifest": "packages/ui/package.json",
+        "count": 150
+      },
+      {
+        "manifest": "packages/desktop/package.json",
+        "count": 5
+      },
+      {
+        "manifest": "packages/console/support/package.json",
+        "count": 4
+      },
+      {
+        "manifest": "packages/enterprise/package.json",
+        "count": 7
+      },
+      {
+        "manifest": "packages/storybook/package.json",
+        "count": 9
+      },
+      {
+        "manifest": "packages/app/package.json",
+        "count": 358
+      },
+      {
+        "manifest": "packages/console/app/package.json",
+        "count": 76
+      },
+      {
+        "manifest": "packages/web/package.json",
+        "count": 14
+      },
+      {
+        "manifest": "packages/opencode/package.json",
+        "count": 14
+      }
+    ]
+  },
+  {
+    "manifest": "packages/session-ui/package.json",
+    "dependency": "@shikijs/transformers",
+    "otherConsumers": []
+  },
+  {
+    "manifest": "packages/session-ui/package.json",
+    "dependency": "@solid-primitives/bounds",
+    "otherConsumers": []
+  },
+  {
+    "manifest": "packages/session-ui/package.json",
+    "dependency": "@solidjs/meta",
+    "otherConsumers": [
+      {
+        "manifest": "packages/stats/app/package.json",
+        "count": 11
+      },
+      {
+        "manifest": "packages/ui/package.json",
+        "count": 1
+      },
+      {
+        "manifest": "packages/console/support/package.json",
+        "count": 3
+      },
+      {
+        "manifest": "packages/storybook/package.json",
+        "count": 1
+      },
+      {
+        "manifest": "packages/enterprise/package.json",
+        "count": 2
+      },
+      {
+        "manifest": "packages/console/app/package.json",
+        "count": 18
+      },
+      {
+        "manifest": "packages/app/package.json",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "manifest": "packages/session-ui/package.json",
+    "dependency": "fuzzysort",
+    "otherConsumers": [
+      {
+        "manifest": "packages/core/package.json",
+        "count": 1
+      },
+      {
+        "manifest": "packages/tui/package.json",
+        "count": 3
+      },
+      {
+        "manifest": "packages/ui/package.json",
+        "count": 1
+      },
+      {
+        "manifest": "packages/app/package.json",
+        "count": 5
+      },
+      {
+        "manifest": "packages/opencode/package.json",
+        "count": 3
+      }
+    ]
+  },
+  {
+    "manifest": "packages/session-ui/package.json",
+    "dependency": "luxon",
+    "otherConsumers": [
+      {
+        "manifest": "packages/enterprise/package.json",
+        "count": 1
+      },
+      {
+        "manifest": "packages/app/package.json",
+        "count": 5
+      },
+      {
+        "manifest": "packages/web/package.json",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "manifest": "packages/session-ui/package.json",
+    "dependency": "remeda",
+    "otherConsumers": [
+      {
+        "manifest": "packages/tui/package.json",
+        "count": 6
+      },
+      {
+        "manifest": "packages/ui/package.json",
+        "count": 2
+      },
+      {
+        "manifest": "packages/app/package.json",
+        "count": 2
+      },
+      {
+        "manifest": "packages/opencode/package.json",
+        "count": 13
+      }
+    ]
+  },
+  {
+    "manifest": "packages/session-ui/package.json",
+    "dependency": "solid-list",
+    "otherConsumers": [
+      {
+        "manifest": "packages/ui/package.json",
+        "count": 1
+      },
+      {
+        "manifest": "packages/console/app/package.json",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "manifest": "packages/ui/package.json",
+    "dependency": "@shikijs/transformers",
+    "otherConsumers": []
+  },
+  {
+    "manifest": "packages/ui/package.json",
+    "dependency": "@solid-primitives/bounds",
+    "otherConsumers": []
+  },
+  {
+    "manifest": "packages/ui/package.json",
+    "dependency": "@solid-primitives/media",
+    "otherConsumers": [
+      {
+        "manifest": "packages/session-ui/package.json",
+        "count": 1
+      },
+      {
+        "manifest": "packages/app/package.json",
+        "count": 6
+      }
+    ]
+  },
+  {
+    "manifest": "packages/ui/package.json",
+    "dependency": "@shikijs/stream",
+    "otherConsumers": [
+      {
+        "manifest": "packages/session-ui/package.json",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "manifest": "packages/ui/package.json",
+    "dependency": "diff",
+    "otherConsumers": [
+      {
+        "manifest": "packages/session-ui/package.json",
+        "count": 1
+      },
+      {
+        "manifest": "packages/core/package.json",
+        "count": 2
+      },
+      {
+        "manifest": "packages/tui/package.json",
+        "count": 1
+      },
+      {
+        "manifest": "packages/web/package.json",
+        "count": 1
+      },
+      {
+        "manifest": "packages/opencode/package.json",
+        "count": 8
+      }
+    ]
+  },
+  {
+    "manifest": "packages/ui/package.json",
+    "dependency": "dompurify",
+    "otherConsumers": [
+      {
+        "manifest": "packages/session-ui/package.json",
+        "count": 1
+      },
+      {
+        "manifest": "packages/app/package.json",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "manifest": "packages/ui/package.json",
+    "dependency": "luxon",
+    "otherConsumers": [
+      {
+        "manifest": "packages/enterprise/package.json",
+        "count": 1
+      },
+      {
+        "manifest": "packages/app/package.json",
+        "count": 5
+      },
+      {
+        "manifest": "packages/web/package.json",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "manifest": "packages/ui/package.json",
+    "dependency": "morphdom",
+    "otherConsumers": [
+      {
+        "manifest": "packages/session-ui/package.json",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "manifest": "packages/ui/package.json",
+    "dependency": "motion-dom",
+    "otherConsumers": []
+  },
+  {
+    "manifest": "packages/ui/package.json",
+    "dependency": "motion-utils",
+    "otherConsumers": []
+  },
+  {
+    "manifest": "packages/ui/package.json",
+    "dependency": "remend",
+    "otherConsumers": [
+      {
+        "manifest": "packages/session-ui/package.json",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "manifest": "packages/ui/package.json",
+    "dependency": "strip-ansi",
+    "otherConsumers": [
+      {
+        "manifest": "packages/tui/package.json",
+        "count": 2
+      },
+      {
+        "manifest": "packages/session-ui/package.json",
+        "count": 1
+      },
+      {
+        "manifest": "packages/opencode/package.json",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "manifest": "packages/http-recorder/package.json",
+    "dependency": "@effect/platform-node-shared",
+    "otherConsumers": []
+  },
+  {
+    "manifest": "packages/console/mail/package.json",
+    "dependency": "@jsx-email/cli",
+    "otherConsumers": []
+  },
+  {
+    "manifest": "packages/console/mail/package.json",
+    "dependency": "@tsconfig/bun",
+    "otherConsumers": []
+  },
+  {
+    "manifest": "packages/console/mail/package.json",
+    "dependency": "@types/react",
+    "otherConsumers": []
+  },
+  {
+    "manifest": "packages/console/mail/package.json",
+    "dependency": "solid-js",
+    "otherConsumers": [
+      {
+        "manifest": "packages/session-ui/package.json",
+        "count": 65
+      },
+      {
+        "manifest": "packages/tui/package.json",
+        "count": 124
+      },
+      {
+        "manifest": "packages/stats/app/package.json",
+        "count": 25
+      },
+      {
+        "manifest": "packages/ui/package.json",
+        "count": 150
+      },
+      {
+        "manifest": "packages/desktop/package.json",
+        "count": 5
+      },
+      {
+        "manifest": "packages/console/support/package.json",
+        "count": 4
+      },
+      {
+        "manifest": "packages/enterprise/package.json",
+        "count": 7
+      },
+      {
+        "manifest": "packages/storybook/package.json",
+        "count": 9
+      },
+      {
+        "manifest": "packages/app/package.json",
+        "count": 358
+      },
+      {
+        "manifest": "packages/console/app/package.json",
+        "count": 76
+      },
+      {
+        "manifest": "packages/web/package.json",
+        "count": 14
+      },
+      {
+        "manifest": "packages/opencode/package.json",
+        "count": 14
+      }
+    ]
+  },
+  {
+    "manifest": "packages/console/support/package.json",
+    "dependency": "@cloudflare/vite-plugin",
+    "otherConsumers": []
+  },
+  {
+    "manifest": "packages/enterprise/package.json",
+    "dependency": "@pierre/diffs",
+    "otherConsumers": [
+      {
+        "manifest": "packages/session-ui/package.json",
+        "count": 19
+      },
+      {
+        "manifest": "packages/ui/package.json",
+        "count": 5
+      }
+    ]
+  },
+  {
+    "manifest": "packages/enterprise/package.json",
+    "dependency": "@hono/standard-validator",
+    "otherConsumers": []
+  },
+  {
+    "manifest": "packages/console/function/package.json",
+    "dependency": "@ai-sdk/anthropic",
+    "otherConsumers": [
+      {
+        "manifest": "packages/core/package.json",
+        "count": 1
+      },
+      {
+        "manifest": "packages/opencode/package.json",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "manifest": "packages/console/function/package.json",
+    "dependency": "@ai-sdk/openai",
+    "otherConsumers": [
+      {
+        "manifest": "packages/core/package.json",
+        "count": 1
+      },
+      {
+        "manifest": "packages/opencode/package.json",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "manifest": "packages/console/function/package.json",
+    "dependency": "@ai-sdk/openai-compatible",
+    "otherConsumers": [
+      {
+        "manifest": "packages/core/package.json",
+        "count": 3
+      },
+      {
+        "manifest": "packages/opencode/package.json",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "manifest": "packages/console/function/package.json",
+    "dependency": "ai",
+    "otherConsumers": [
+      {
+        "manifest": "packages/opencode/package.json",
+        "count": 27
+      }
+    ]
+  },
+  {
+    "manifest": "packages/console/app/package.json",
+    "dependency": "@cloudflare/vite-plugin",
+    "otherConsumers": []
+  },
+  {
+    "manifest": "packages/console/app/package.json",
+    "dependency": "@jsx-email/render",
+    "otherConsumers": [
+      {
+        "manifest": "packages/console/core/package.json",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "manifest": "packages/console/app/package.json",
+    "dependency": "@opencode-ai/console-mail",
+    "otherConsumers": [
+      {
+        "manifest": "packages/console/core/package.json",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "manifest": "packages/console/app/package.json",
+    "dependency": "@stripe/stripe-js",
+    "otherConsumers": []
+  },
+  {
+    "manifest": "packages/console/app/package.json",
+    "dependency": "solid-stripe",
+    "otherConsumers": []
+  },
+  {
+    "manifest": "packages/app/package.json",
+    "dependency": "@shikijs/transformers",
+    "otherConsumers": []
+  },
+  {
+    "manifest": "packages/app/package.json",
+    "dependency": "@solid-primitives/active-element",
+    "otherConsumers": []
+  },
+  {
+    "manifest": "packages/app/package.json",
+    "dependency": "@solid-primitives/audio",
+    "otherConsumers": []
+  },
+  {
+    "manifest": "packages/app/package.json",
+    "dependency": "@solid-primitives/scheduled",
+    "otherConsumers": []
+  },
+  {
+    "manifest": "packages/app/package.json",
+    "dependency": "@solid-primitives/scroll",
+    "otherConsumers": []
+  },
+  {
+    "manifest": "packages/app/package.json",
+    "dependency": "@solid-primitives/timer",
+    "otherConsumers": []
+  },
+  {
+    "manifest": "packages/app/package.json",
+    "dependency": "@solid-primitives/websocket",
+    "otherConsumers": []
+  },
+  {
+    "manifest": "packages/app/package.json",
+    "dependency": "diff",
+    "otherConsumers": [
+      {
+        "manifest": "packages/session-ui/package.json",
+        "count": 1
+      },
+      {
+        "manifest": "packages/core/package.json",
+        "count": 2
+      },
+      {
+        "manifest": "packages/tui/package.json",
+        "count": 1
+      },
+      {
+        "manifest": "packages/web/package.json",
+        "count": 1
+      },
+      {
+        "manifest": "packages/opencode/package.json",
+        "count": 8
+      }
+    ]
+  },
+  {
+    "manifest": "packages/app/package.json",
+    "dependency": "marked-shiki",
+    "otherConsumers": [
+      {
+        "manifest": "packages/ui/package.json",
+        "count": 1
+      },
+      {
+        "manifest": "packages/web/package.json",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "manifest": "packages/app/package.json",
+    "dependency": "shiki",
+    "otherConsumers": [
+      {
+        "manifest": "packages/session-ui/package.json",
+        "count": 2
+      },
+      {
+        "manifest": "packages/ui/package.json",
+        "count": 1
+      },
+      {
+        "manifest": "packages/web/package.json",
+        "count": 3
+      }
+    ]
+  },
+  {
+    "manifest": "packages/app/package.json",
+    "dependency": "solid-list",
+    "otherConsumers": [
+      {
+        "manifest": "packages/ui/package.json",
+        "count": 1
+      },
+      {
+        "manifest": "packages/console/app/package.json",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "manifest": "packages/app/package.json",
+    "dependency": "tailwindcss",
+    "otherConsumers": []
+  },
+  {
+    "manifest": "packages/console/core/package.json",
+    "dependency": "@aws-sdk/client-sts",
+    "otherConsumers": []
+  },
+  {
+    "manifest": "packages/console/core/package.json",
+    "dependency": "postgres",
+    "otherConsumers": []
+  },
+  {
+    "manifest": "packages/web/package.json",
+    "dependency": "@fontsource/ibm-plex-mono",
+    "otherConsumers": []
+  },
+  {
+    "manifest": "packages/web/package.json",
+    "dependency": "@shikijs/transformers",
+    "otherConsumers": []
+  },
+  {
+    "manifest": "packages/web/package.json",
+    "dependency": "@types/luxon",
+    "otherConsumers": []
+  },
+  {
+    "manifest": "packages/web/package.json",
+    "dependency": "ai",
+    "otherConsumers": [
+      {
+        "manifest": "packages/opencode/package.json",
+        "count": 27
+      }
+    ]
+  },
+  {
+    "manifest": "packages/web/package.json",
+    "dependency": "js-base64",
+    "otherConsumers": [
+      {
+        "manifest": "packages/enterprise/package.json",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "manifest": "packages/web/package.json",
+    "dependency": "remeda",
+    "otherConsumers": [
+      {
+        "manifest": "packages/tui/package.json",
+        "count": 6
+      },
+      {
+        "manifest": "packages/ui/package.json",
+        "count": 2
+      },
+      {
+        "manifest": "packages/app/package.json",
+        "count": 2
+      },
+      {
+        "manifest": "packages/opencode/package.json",
+        "count": 13
+      }
+    ]
+  },
+  {
+    "manifest": "packages/opencode/package.json",
+    "dependency": "@ff-labs/fff-bun",
+    "otherConsumers": [
+      {
+        "manifest": "packages/core/package.json",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "manifest": "packages/opencode/package.json",
+    "dependency": "@gitlab/opencode-gitlab-auth",
+    "otherConsumers": []
+  },
+  {
+    "manifest": "packages/opencode/package.json",
+    "dependency": "@openauthjs/openauth",
+    "otherConsumers": [
+      {
+        "manifest": "packages/console/function/package.json",
+        "count": 7
+      },
+      {
+        "manifest": "packages/console/app/package.json",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "manifest": "packages/opencode/package.json",
+    "dependency": "@opentelemetry/api",
+    "otherConsumers": [
+      {
+        "manifest": "packages/core/package.json",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "manifest": "packages/opencode/package.json",
+    "dependency": "@opentelemetry/context-async-hooks",
+    "otherConsumers": [
+      {
+        "manifest": "packages/core/package.json",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "manifest": "packages/opencode/package.json",
+    "dependency": "@opentelemetry/exporter-trace-otlp-http",
+    "otherConsumers": [
+      {
+        "manifest": "packages/core/package.json",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "manifest": "packages/opencode/package.json",
+    "dependency": "@opentelemetry/sdk-trace-base",
+    "otherConsumers": [
+      {
+        "manifest": "packages/core/package.json",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "manifest": "packages/opencode/package.json",
+    "dependency": "@opentelemetry/sdk-trace-node",
+    "otherConsumers": []
+  },
+  {
+    "manifest": "packages/opencode/package.json",
+    "dependency": "@parcel/watcher",
+    "otherConsumers": [
+      {
+        "manifest": "packages/core/package.json",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "manifest": "packages/opencode/package.json",
+    "dependency": "@pierre/diffs",
+    "otherConsumers": [
+      {
+        "manifest": "packages/session-ui/package.json",
+        "count": 19
+      },
+      {
+        "manifest": "packages/ui/package.json",
+        "count": 5
+      }
+    ]
+  },
+  {
+    "manifest": "packages/opencode/package.json",
+    "dependency": "@solid-primitives/event-bus",
+    "otherConsumers": [
+      {
+        "manifest": "packages/app/package.json",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "manifest": "packages/opencode/package.json",
+    "dependency": "@solid-primitives/scheduled",
+    "otherConsumers": []
+  },
+  {
+    "manifest": "packages/opencode/package.json",
+    "dependency": "@standard-schema/spec",
+    "otherConsumers": []
+  },
+  {
+    "manifest": "packages/opencode/package.json",
+    "dependency": "@types/ws",
+    "otherConsumers": []
+  },
+  {
+    "manifest": "packages/opencode/package.json",
+    "dependency": "@zip.js/zip.js",
+    "otherConsumers": [
+      {
+        "manifest": "packages/desktop/package.json",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "manifest": "packages/opencode/package.json",
+    "dependency": "chokidar",
+    "otherConsumers": []
+  },
+  {
+    "manifest": "packages/opencode/package.json",
+    "dependency": "glob",
+    "otherConsumers": [
+      {
+        "manifest": "packages/core/package.json",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "manifest": "packages/opencode/package.json",
+    "dependency": "immer",
+    "otherConsumers": [
+      {
+        "manifest": "packages/core/package.json",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "manifest": "packages/opencode/package.json",
+    "dependency": "minimatch",
+    "otherConsumers": [
+      {
+        "manifest": "packages/core/package.json",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "manifest": "packages/opencode/package.json",
+    "dependency": "opentui-spinner",
+    "otherConsumers": [
+      {
+        "manifest": "packages/tui/package.json",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "manifest": "packages/opencode/package.json",
+    "dependency": "partial-json",
+    "otherConsumers": []
+  },
+  {
+    "manifest": "packages/opencode/package.json",
+    "dependency": "playwright",
+    "otherConsumers": []
+  },
+  {
+    "manifest": "packages/opencode/package.json",
+    "dependency": "tree-sitter-bash",
+    "otherConsumers": []
+  },
+  {
+    "manifest": "packages/opencode/package.json",
+    "dependency": "tree-sitter-powershell",
+    "otherConsumers": []
+  },
+  {
+    "manifest": "packages/opencode/package.json",
+    "dependency": "xdg-basedir",
+    "otherConsumers": [
+      {
+        "manifest": "packages/core/package.json",
+        "count": 1
+      }
+    ]
+  }
+]

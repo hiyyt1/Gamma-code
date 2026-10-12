@@ -21,7 +21,7 @@ test("fixed-root New chat flow preserves sessions and scopes files, previews and
     if (message.type() === "error") errors.push(message.text())
   })
   const panel = page.getByRole("complementary", { name: "Workspace", exact: true })
-  const sidebar = page.locator('[data-component="oreshnik-sidebar"]')
+  const sidebar = page.locator('[data-component="gamma-sidebar"]')
   const dialog = page.getByRole("dialog")
   const create = async (name: string, existing = false) => {
     await sidebar.getByRole("button", { name: "New chat", exact: true }).click()
@@ -114,7 +114,7 @@ test("fixed-root New chat flow preserves sessions and scopes files, previews and
       expect(invalid.status()).toBe(400)
     }
     expect((await request.post(`${baseURL}/product/projects`, { data: { name: names[0] } })).status()).toBe(400)
-    await page.getByRole("link", { name: "Oreshnik", exact: true }).click()
+    await page.getByRole("link", { name: "Gamma", exact: true }).click()
     await sidebar.getByRole("button", { name: names[0], exact: true }).click()
     await expect(panel.getByRole("button", { name: "a.txt", exact: true })).toBeVisible()
     await expect(dialog).toHaveCount(0)

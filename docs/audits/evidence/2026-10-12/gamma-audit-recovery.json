@@ -1,0 +1,7 @@
+{
+  "startingConnections": 2,
+  "connections": 11,
+  "refetchesBeforeReload": 0,
+  "visibleBeforeReload": false,
+  "visibleAfterReload": true
+}

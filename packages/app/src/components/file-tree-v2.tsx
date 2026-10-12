@@ -83,6 +83,7 @@ const FileTreeNodeV2 = (
       data-path={local.node.path}
       data-selected={local.node.path === local.active ? "" : undefined}
       data-ignored={local.node.ignored ? "" : undefined}
+      title={local.node.path}
       classList={{
         ...local.classList,
         [local.class ?? ""]: !!local.class,
@@ -128,6 +129,7 @@ export default function FileTreeV2(props: {
   allowed?: readonly string[]
   kinds?: ReadonlyMap<string, Kind>
   draggable?: boolean
+  folderIcons?: boolean
   onFileClick?: (file: FileNode) => void
   onFileDoubleClick?: (file: FileNode) => void
 }) {
@@ -287,6 +289,9 @@ export default function FileTreeV2(props: {
                         >
                           <Icon name="chevron-down" />
                         </div>
+                        <Show when={props.folderIcons}>
+                          <FileIcon node={row().node} class="size-4 shrink-0" />
+                        </Show>
                       </FileTreeNodeV2>
                     </Show>
                   )}

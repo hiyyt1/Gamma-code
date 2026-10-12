@@ -7,7 +7,7 @@ import { commandPaletteOptions, useCommand, type CommandOption } from "@/context
 import { useFile } from "@/context/file"
 import { useGlobal } from "@/context/global"
 import { useLanguage } from "@/context/language"
-import { useLayout, type LocalProject } from "@/context/layout"
+import { type LocalProject } from "@/context/layout"
 import { ServerConnection } from "@/context/server"
 import { useServerSDK } from "@/context/server-sdk"
 import { useTabs } from "@/context/tabs"
@@ -64,17 +64,10 @@ export function createCommandPaletteFileEntry(path: string, category: string): C
 
 export function createCommandPaletteFileOpener(onOpenFile?: (path: string) => void) {
   const file = useFile()
-  const layout = useLayout()
-  const { tabs, view } = useSessionLayout()
 
   return (path: string) => {
-    const value = file.tab(path)
-    void tabs().open(value)
-    void file.load(path)
-    if (!view().reviewPanel.opened()) view().reviewPanel.open()
-    layout.fileTree.setTab("all")
+    file.openPreview(path)
     onOpenFile?.(path)
-    tabs().setActive(value)
   }
 }
 

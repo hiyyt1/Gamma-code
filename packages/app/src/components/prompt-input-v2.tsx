@@ -1,3 +1,4 @@
+import { PromptAgentControl } from "./prompt-agent-control"
 import { ImagePreview } from "@opencode-ai/ui/image-preview"
 import { useDialog } from "@opencode-ai/ui/context/dialog"
 import { ProviderIcon } from "@opencode-ai/ui/provider-icon"
@@ -18,7 +19,6 @@ import { selectionFromLines, type SelectedLineRange, useFile } from "@/context/f
 import { useComments } from "@/context/comments"
 import { useCommand } from "@/context/command"
 import { useLanguage } from "@/context/language"
-import { useLayout } from "@/context/layout"
 import { usePermission } from "@/context/permission"
 import { type ImageAttachmentPart, usePrompt } from "@/context/prompt"
 import { usePlatform } from "@/context/platform"
@@ -41,6 +41,7 @@ export type PromptInputV2ComposerProps = {
 
 export type PromptInputV2ControllerProps = Omit<PromptInputProps, "class" | "submission">
 export type PromptInputV2ComposerController = PromptInputV2Interaction & {
+  readonly controls: PromptInputProps["controls"]
   readonly model: PromptInputProps["controls"]["model"]
 }
 
@@ -59,19 +60,25 @@ export function PromptInputV2Composer(props: PromptInputV2ComposerProps) {
         attachKeybind={command.keybindParts("file.attach")}
         attachShortcut={command.keybind("file.attach")}
         modelControl={
-          <PromptInputV2ModelControl
-            loading={props.controller.model.loading}
-            paid={props.controller.model.paid}
-            title={language.t("command.model.choose")}
-            keybind={command.keybindParts("model.choose")}
-            model={props.controller.model.selection}
-            providerID={props.controller.model.selection.current()?.provider?.id}
-            modelName={props.controller.model.selection.current()?.name ?? language.t("dialog.model.select.title")}
-            onClose={props.controller.restoreFocus}
-            onUnpaidClick={() =>
-              dialog.show(() => <DialogSelectModelUnpaidV2 model={props.controller.model.selection} />)
-            }
-          />
+          <>
+            <PromptAgentControl
+              agents={props.controller.controls.agents}
+              sessionID={props.controller.controls.session.id}
+            />
+            <PromptInputV2ModelControl
+              loading={props.controller.model.loading}
+              paid={props.controller.model.paid}
+              title={language.t("command.model.choose")}
+              keybind={command.keybindParts("model.choose")}
+              model={props.controller.model.selection}
+              providerID={props.controller.model.selection.current()?.provider?.id}
+              modelName={props.controller.model.selection.current()?.name ?? language.t("dialog.model.select.title")}
+              onClose={props.controller.restoreFocus}
+              onUnpaidClick={() =>
+                dialog.show(() => <DialogSelectModelUnpaidV2 model={props.controller.model.selection} />)
+              }
+            />
+          </>
         }
       />
     </div>
@@ -82,7 +89,6 @@ export function usePromptInputV2Controller(props: PromptInputV2ControllerProps):
   const sdk = useSDK()
   const sync = useSync()
   const files = useFile()
-  const layout = useLayout()
   const comments = useComments()
   const dialog = useDialog()
   const command = useCommand()
@@ -350,7 +356,7 @@ export function usePromptInputV2Controller(props: PromptInputV2ControllerProps):
       dialog.show(() => <ImagePreview src={attachment.blob.url} alt={attachment.filename} />),
     openContext(key) {
       const item = controller.contextItem(key)
-      if (item) openComment(item, props, sync, layout, files, comments)
+      if (item) openComment(item, files, comments)
     },
     onEditor(element) {
       editor = element as HTMLDivElement
@@ -384,16 +390,6 @@ export function usePromptInputV2Controller(props: PromptInputV2ControllerProps):
     },
     view: {
       placeholder: designPlaceholder,
-      get agent() {
-        return props.controls.agents.visible && props.controls.agents.options.length > 0
-          ? {
-              options: () => props.controls.agents.options.map((name) => ({ id: name, label: name })),
-              current: () => props.controls.agents.current,
-              onSelect: (value: string) => props.controls.agents.select(value),
-              keybind: () => command.keybindParts("agent.cycle"),
-            }
-          : undefined
-      },
       variant: {
         options: () => variants().map((value) => ({ id: value, label: value })),
         current: () => props.controls.model.selection.variant.current() ?? "default",
@@ -408,6 +404,7 @@ export function usePromptInputV2Controller(props: PromptInputV2ControllerProps):
       },
     },
   })
+  Object.defineProperty(controller, "controls", { get: () => props.controls })
   Object.defineProperty(controller, "model", { get: () => props.controls.model })
 
   command.register("prompt-input", () => [
@@ -552,9 +549,6 @@ function PromptInputV2ModelControl(props: {
 
 function openComment(
   item: { path: string; commentID?: string; commentOrigin?: "review" | "file" },
-  props: PromptInputV2ControllerProps,
-  sync: ReturnType<typeof useSync>,
-  layout: ReturnType<typeof useLayout>,
   files: ReturnType<typeof useFile>,
   comments: ReturnType<typeof useComments>,
 ) {
@@ -571,19 +565,6 @@ function openComment(
       })
     })
   }
-  const diffs = props.controls.session.id ? sync().data.session_diff[props.controls.session.id] : undefined
-  const review =
-    item.commentOrigin === "review" || (item.commentOrigin !== "file" && diffs?.some((diff) => diff.file === item.path))
-  if (!props.controls.session.reviewPanel.opened()) props.controls.session.reviewPanel.open()
-  if (review) {
-    layout.fileTree.setTab("changes")
-    props.controls.session.tabs.setActive("review")
-    queueFocus()
-    return
-  }
-  layout.fileTree.setTab("all")
-  const tab = files.tab(item.path)
-  void props.controls.session.tabs.open(tab)
-  props.controls.session.tabs.setActive(tab)
+  files.openPreview(item.path)
   void Promise.resolve(files.load(item.path)).finally(() => queueFocus())
 }

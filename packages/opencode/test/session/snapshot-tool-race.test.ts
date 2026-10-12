@@ -36,6 +36,7 @@ const mcp = Layer.succeed(
   MCP.Service,
   MCP.Service.of({
     status: () => Effect.succeed({}),
+    refreshProfile: () => Effect.succeed({}),
     clients: () => Effect.succeed({}),
     instructions: () => Effect.succeed([]),
     tools: () => Effect.succeed({}),
@@ -131,6 +132,7 @@ it.live("tool execution produces non-empty session diff (snapshot race)", () =>
       const summary = yield* SessionSummary.Service
 
       const session = yield* sessions.create({
+        agent: "build",
         title: "snapshot race test",
         permission: [{ permission: "*", pattern: "*", action: "allow" }],
       })

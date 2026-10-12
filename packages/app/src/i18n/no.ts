@@ -4,8 +4,8 @@ type Keys = keyof typeof en
 
 export const dict = {
   ...PRODUCT_ENGLISH,
-  "app.name": "Oreshnik",
-  "desktop.menu.app": "Oreshnik",
+  "app.name": "Gamma",
+  "desktop.menu.app": "Gamma",
   "desktop.menu.file": "Arkiv",
   "desktop.menu.edit": "Rediger",
   "desktop.menu.view": "Vis",
@@ -242,7 +242,7 @@ export const dict = {
   "provider.connect.status.waiting": "Venter på autorisering...",
   "provider.connect.status.failed": "Autorisering mislyktes: {{error}}",
   "provider.connect.apiKey.description":
-    "Skriv inn API-nøkkelen din for {{provider}} for å koble til kontoen din og bruke {{provider}}-modeller i Oreshnik.",
+    "Skriv inn API-nøkkelen din for {{provider}} for å koble til kontoen din og bruke {{provider}}-modeller i Gamma.",
   "provider.connect.apiKey.label": "{{provider}}-API-nøkkel",
   "provider.connect.apiKey.placeholder": "API-nøkkel",
   "provider.connect.apiKey.required": "API-nøkkel er påkrevd",
@@ -256,7 +256,7 @@ export const dict = {
   "provider.connect.oauth.code.visit.prefix": "Besøk ",
   "provider.connect.oauth.code.visit.link": "denne lenken",
   "provider.connect.oauth.code.visit.suffix":
-    " for å hente autorisasjonskoden din for å koble til kontoen din og bruke {{provider}}-modeller i Oreshnik.",
+    " for å hente autorisasjonskoden din for å koble til kontoen din og bruke {{provider}}-modeller i Gamma.",
   "provider.connect.oauth.code.label": "{{method}}-autorisasjonskode",
   "provider.connect.oauth.code.placeholder": "Autorisasjonskode",
   "provider.connect.oauth.code.required": "Autorisasjonskode er påkrevd",
@@ -264,7 +264,7 @@ export const dict = {
   "provider.connect.oauth.auto.visit.prefix": "Besøk ",
   "provider.connect.oauth.auto.visit.link": "denne lenken",
   "provider.connect.oauth.auto.visit.suffix":
-    " og skriv inn koden nedenfor for å koble til kontoen din og bruke {{provider}}-modeller i Oreshnik.",
+    " og skriv inn koden nedenfor for å koble til kontoen din og bruke {{provider}}-modeller i Gamma.",
   "provider.connect.oauth.auto.confirmationCode": "Bekreftelseskode",
   "provider.connect.toast.connected.title": "{{provider}} tilkoblet",
   "provider.connect.toast.connected.description": "{{provider}}-modeller er nå tilgjengelige.",
@@ -577,7 +577,7 @@ export const dict = {
   "toast.session.listFailed.title": "Kunne ikke laste sesjoner for {{project}}",
 
   "toast.update.title": "Oppdatering tilgjengelig",
-  "toast.update.description": "En ny versjon av Oreshnik ({{version}}) er nå tilgjengelig for installasjon.",
+  "toast.update.description": "En ny versjon av Gamma ({{version}}) er nå tilgjengelig for installasjon.",
   "toast.update.action.installRestart": "Installer og start på nytt",
   "toast.update.action.notYet": "Ikke nå",
 
@@ -758,7 +758,7 @@ export const dict = {
   "sidebar.project.viewAllSessions": "Vis alle sesjoner",
   "sidebar.project.clearNotifications": "Fjern varsler",
 
-  "app.name.desktop": "Oreshnik Desktop",
+  "app.name.desktop": "Gamma Desktop",
 
   "settings.section.desktop": "Skrivebord",
   "settings.section.server": "Server",
@@ -776,14 +776,14 @@ export const dict = {
   "settings.general.section.display": "Skjerm",
 
   "settings.general.row.language.title": "Språk",
-  "settings.general.row.language.description": "Endre visningsspråket for Oreshnik",
+  "settings.general.row.language.description": "Endre visningsspråket for Gamma",
   "settings.general.row.appearance.title": "Utseende",
-  "settings.general.row.appearance.description": "Tilpass hvordan Oreshnik ser ut på enheten din",
+  "settings.general.row.appearance.description": "Tilpass hvordan Gamma ser ut på enheten din",
   "settings.general.row.colorScheme.title": "Fargevalg",
   "settings.general.row.colorScheme.description":
-    "Velg om Oreshnik skal følge systeminnstillingen eller bruke lyst eller mørkt tema",
+    "Velg om Gamma skal følge systeminnstillingen eller bruke lyst eller mørkt tema",
   "settings.general.row.theme.title": "Tema",
-  "settings.general.row.theme.description": "Tilpass temaet i Oreshnik.",
+  "settings.general.row.theme.description": "Tilpass temaet i Gamma.",
   "settings.general.row.font.title": "Kodefont",
   "settings.general.row.font.description": "Tilpass skrifttypen som brukes i kodeblokker",
   "settings.general.row.terminalFont.title": "Terminalskrift",
@@ -810,13 +810,13 @@ export const dict = {
   "settings.general.row.releaseNotes.description": 'Vis "Hva er nytt"-vinduer etter oppdateringer',
 
   "settings.updates.row.startup.title": "Se etter oppdateringer ved oppstart",
-  "settings.updates.row.startup.description": "Se automatisk etter oppdateringer når Oreshnik starter",
+  "settings.updates.row.startup.description": "Se automatisk etter oppdateringer når Gamma starter",
   "settings.updates.row.check.title": "Se etter oppdateringer",
   "settings.updates.row.check.description": "Se etter oppdateringer manuelt og installer hvis tilgjengelig",
   "settings.updates.action.checkNow": "Sjekk nå",
   "settings.updates.action.checking": "Sjekker...",
   "settings.updates.toast.latest.title": "OpenCode er oppdatert",
-  "settings.updates.toast.latest.description": "Du bruker den nyeste versjonen av Oreshnik.",
+  "settings.updates.toast.latest.description": "Du bruker den nyeste versjonen av Gamma.",
   "sound.option.none": "Ingen",
   "sound.option.alert01": "Varsel 01",
   "sound.option.alert02": "Varsel 02",
@@ -1176,7 +1176,7 @@ export const dict = {
   "help.tabs.title": "Vi introduserer faner",
   "help.tabs.description": "Organiser arbeidet og de aktive sesjonene dine med faner",
   "help.tabs.date": "14. juli",
-  "help.tabs.introduction": "Oreshnik Desktop er nå bygget rundt faner.",
+  "help.tabs.introduction": "Gamma Desktop er nå bygget rundt faner.",
   "help.tabs.sessions":
     "Start en ny sesjon i en fane, eller åpne en eksisterende sesjon fra et av prosjektene dine. Åpne en ny fane når du skal begynne på noe nytt, og lukk den når du er ferdig.",
   "help.tabs.organize":

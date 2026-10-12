@@ -1,6 +1,7 @@
 import { createSimpleContext } from "@opencode-ai/ui/context"
 import { base64Encode } from "@opencode-ai/core/util/encode"
-import { useParams } from "@solidjs/router"
+import { useTabs } from "./tabs"
+import { useParams, useSearchParams } from "@solidjs/router"
 import { batch, createEffect, createMemo, startTransition } from "solid-js"
 import { createStore } from "solid-js/store"
 import { useModels } from "@/context/models"
@@ -13,6 +14,7 @@ import { cycleModelVariant, getConfiguredAgentVariant, resolveModelVariant } fro
 import { useSDK } from "./sdk"
 import { useSync } from "./sync"
 import { useServerSDK } from "./server-sdk"
+import { useServerSync } from "./server-sync"
 import { ScopedKey, type ServerScope } from "@/utils/server-scope"
 
 export type ModelKey = { providerID: string; modelID: string; variant?: string }
@@ -60,9 +62,12 @@ export const { use: useLocal, provider: LocalProvider } = createSimpleContext({
   name: "Local",
   init: () => {
     const params = useParams()
+    const [search] = useSearchParams<{ draftId?: string }>()
+    const tabs = useTabs()
     const sdk = useSDK()
     const sync = useSync()
     const serverSDK = useServerSDK()
+    const serverSync = useServerSync()
     const providers = useProviders(() => sdk().directory)
     const models = useModels()
     const settings = useSettings()
@@ -93,7 +98,7 @@ export const { use: useLocal, provider: LocalProvider } = createSimpleContext({
         variant?: string | null
       }
     }>({
-      current: list()[0]?.name,
+      current: "gamma",
       draft: undefined,
       last: undefined,
     })
@@ -181,17 +186,21 @@ export const { use: useLocal, provider: LocalProvider } = createSimpleContext({
 
     const agent = {
       list,
-      visible: agentsVisible,
+      visible: () => !id() && agentsVisible(),
       current() {
-        return pickAgent(agentsVisible() ? (scope()?.agent ?? store.current) : "build")
+        const session = id() ? serverSync().session.data.info[id()!] : undefined
+        if (id()) return sync().data.agent.find((agent) => agent.name === session?.agent)
+        return pickAgent(search.draftId ? (tabs.draft(search.draftId).agent ?? "gamma") : (scope()?.agent ?? "gamma"))
       },
       set(name: string | undefined) {
-        const item = pickAgent(name)
+        if (id()) return
+        const item = list().find((item) => item.name === name)
         if (!item) {
           setStore("current", undefined)
           return
         }
 
+        if (search.draftId) tabs.updateDraft(search.draftId, { agent: item.name })
         batch(() => {
           setStore("current", item.name)
           setStore("last", {

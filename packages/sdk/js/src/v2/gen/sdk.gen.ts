@@ -5539,7 +5539,7 @@ export class Session3 extends HeyApiClient {
   /**
    * Switch session agent
    *
-   * Switch the agent used by subsequent provider turns.
+   * Verify the fixed session agent. Changing it requires a new session.
    */
   public switchAgent<ThrowOnError extends boolean = false>(
     parameters: {

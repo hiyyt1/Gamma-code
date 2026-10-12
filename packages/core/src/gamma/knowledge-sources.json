@@ -1,0 +1,21 @@
+{
+  "reviewed": "2026-10-10",
+  "sources": {
+    "packages/app/src/components/gamma-shell.tsx": "4b96500f31371cf28236f11b6539747e8ee6d25d68c42a5e251aa50dc32c00c1",
+    "packages/app/src/components/workspace-file-preview.tsx": "2089191377d19f35bcc95569efaeb98aee1e6144912806da754722d739b5ecd9",
+    "packages/app/src/components/workspace-files.tsx": "869e16a3e98a80ae335eedcd3bb31d838084e40fb6c57d0d6e2da23fcf266707",
+    "packages/app/src/pages/home/home-controller.ts": "163c620f8324199015179ec6f0c3710a3a13a01b32f0c951391ee03d1448788b",
+    "packages/app/src/utils/empty-session.ts": "f04d181539c1c5bb8b54d859ab3ddfaa4c96019a6377c36453c0f690dd3087e9",
+    "packages/core/src/agent-market.ts": "7c0be14c985989f0979361bb2ec75e134f52905405ec151f5a2de51f74f0f415",
+    "packages/opencode/src/agent/agent.ts": "007eb9d66b35b19aa0c22c82d49551c21e252dc2218a131b4455a73bb0d61276",
+    "packages/opencode/src/mcp/index.ts": "ed869a35fa1d1bb27ebe25ab994a25182a5c9f97e717361cef8e20d9726734ed",
+    "packages/opencode/src/permission/index.ts": "a37c0cc426c8b4ff191e70c6cd9b49e333f6104a6981f38944c1a1f0765cefb0",
+    "packages/opencode/src/presentation/service.ts": "de19964b19a38579a37e0c20761acf30c76b24030812c9b7721f7fa46d77d7c2",
+    "packages/opencode/src/provider/provider.ts": "9fb8958a521bbc5a70e5e6d4ecb130149115fe891fb78bca0ae73a966b9f547a",
+    "packages/opencode/src/server/product-projects.ts": "ba42bf50fff7602937552451224124ab373e0c31e5fba76c8e6e3588bae5174c",
+    "packages/opencode/src/server/routes/instance/httpapi/agent-market.ts": "a0589a7c68a314c23d6b0a5715b2fb1c78fc6fdc0df5d9b367bbc040edf29d53",
+    "packages/opencode/src/skill/index.ts": "86f819e534b1eb5587c709835c28a4adc80057d9e64fcbe8fdc6684dfb9bbf9f",
+    "packages/opencode/src/tool/registry.ts": "26320477a6db7202251ad7dc5e9f86ed2bf1eb474cf4451c40aa43fc59e3462b",
+    "packages/opencode/src/tool/task.ts": "de138536142b6d1b5795e7860b9c0bc729c0b7219c5bda769a44600aacec46fb"
+  }
+}

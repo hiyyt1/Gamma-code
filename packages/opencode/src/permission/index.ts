@@ -22,10 +22,24 @@ interface PendingEntry {
 
 interface State {
   pending: Map<PermissionV1.ID, PendingEntry>
-  approved: PermissionV1.Rule[]
+  approved: Map<string, PermissionV1.Rule[]>
 }
 
 export function evaluate(permission: string, pattern: string, ...rulesets: PermissionV1.Ruleset[]): PermissionV1.Rule {
+  const rules = rulesets.flat()
+  if (rules.some((rule) => rule.permission === "__gamma_boundary__")) {
+    const groups = policyGroups(rules)
+    const matches = groups
+      .filter((group) =>
+        group.some((rule) => Wildcard.match(permission, rule.permission) && Wildcard.match(pattern, rule.pattern)),
+      )
+      .map((group) => evaluate(permission, pattern, group))
+    return (
+      matches.find((rule) => rule.action === "deny") ??
+      matches.find((rule) => rule.action === "ask") ??
+      matches[0] ?? { permission, pattern, action: "ask" }
+    )
+  }
   return (
     rulesets
       .flat()
@@ -35,6 +49,18 @@ export function evaluate(permission: string, pattern: string, ...rulesets: Permi
       pattern: "*",
     }
   )
+}
+
+function policyGroups(rules: PermissionV1.Ruleset) {
+  const groups: PermissionV1.Rule[][] = [[]]
+  for (const rule of rules) {
+    if (rule.permission === "__gamma_boundary__") {
+      groups.push([])
+      continue
+    }
+    groups[groups.length - 1].push(rule)
+  }
+  return groups
 }
 
 export class Service extends Context.Service<Service, Interface>()("@opencode/Permission") {}
@@ -48,7 +74,7 @@ const layer = Layer.effect(
         void ctx
         const state = {
           pending: new Map<PermissionV1.ID, PendingEntry>(),
-          approved: [],
+          approved: new Map<string, PermissionV1.Rule[]>(),
         }
 
         yield* Effect.addFinalizer(() =>
@@ -70,7 +96,7 @@ const layer = Layer.effect(
       let needsAsk = false
 
       for (const pattern of request.patterns) {
-        const rule = evaluate(request.permission, pattern, ruleset, approved)
+        const rule = evaluate(request.permission, pattern, ruleset, approved.get(request.sessionID) ?? [])
         yield* Effect.logInfo("evaluated", { permission: request.permission, pattern, action: rule })
         if (rule.action === "deny") {
           return yield* new PermissionV1.DeniedError({
@@ -142,8 +168,10 @@ const layer = Layer.effect(
       yield* Deferred.succeed(existing.deferred, undefined)
       if (input.reply === "once") return
 
+      const remembered = approved.get(existing.info.sessionID) ?? []
+      approved.set(existing.info.sessionID, remembered)
       for (const pattern of existing.info.always) {
-        approved.push({
+        remembered.push({
           permission: existing.info.permission,
           pattern,
           action: "allow",
@@ -153,7 +181,7 @@ const layer = Layer.effect(
       for (const [id, item] of pending.entries()) {
         if (item.info.sessionID !== existing.info.sessionID) continue
         const ok = item.info.patterns.every(
-          (pattern) => evaluate(item.info.permission, pattern, approved).action === "allow",
+          (pattern) => evaluate(item.info.permission, pattern, remembered).action === "allow",
         )
         if (!ok) continue
         pending.delete(id)
@@ -197,6 +225,18 @@ export function fromConfig(permission: ConfigPermissionV1.Info) {
   return ruleset
 }
 
+// Boundaries preserve independent policy layers even when session permissions
+// or remembered approvals are appended later. The strictest decision wins.
+export function intersect(...rulesets: PermissionV1.Ruleset[]): PermissionV1.Rule[] {
+  return rulesets
+    .filter((rules) => rules.length)
+    .flatMap((rules) => [
+      { permission: "__gamma_boundary__", pattern: "*", action: "deny" as const },
+      ...rules,
+      { permission: "__gamma_boundary__", pattern: "*", action: "deny" as const },
+    ])
+}
+
 export function merge(...rulesets: PermissionV1.Ruleset[]): PermissionV1.Rule[] {
   return rulesets.flat()
 }
@@ -207,6 +247,11 @@ export function disabled(tools: string[], ruleset: PermissionV1.Ruleset): Set<st
   return new Set(
     tools.filter((tool) => {
       const permission = edits.includes(tool) ? "edit" : reads.includes(tool) ? "read" : tool
+      if (ruleset.some((rule) => rule.permission === "__gamma_boundary__"))
+        return policyGroups(ruleset).some((group) => {
+          const rule = group.findLast((rule) => Wildcard.match(permission, rule.permission))
+          return rule?.pattern === "*" && rule.action === "deny"
+        })
       const rule = ruleset.findLast((rule) => Wildcard.match(permission, rule.permission))
       return rule?.pattern === "*" && rule.action === "deny"
     }),

@@ -1,0 +1,38 @@
+[
+  {
+    "path": "packages/app/src/pages/agent-market.tsx",
+    "sha256": "60ee209953fd6e14994364344d336100a1f0897d379c63da0a10c96a689551ff"
+  },
+  {
+    "path": "packages/app/src/components/gamma-shell.tsx",
+    "sha256": "18933448ed7b526c8a497863d05c3f0e4311280eb5696da36baacbf89e163f15"
+  },
+  {
+    "path": "packages/app/src/components/project-knowledge.tsx",
+    "sha256": "a6e9eca4a3e9f87b6223c8e8d967417838af4a113c1240fc3bf803d714229fc7"
+  },
+  {
+    "path": "packages/app/src/components/prompt-agent-control.tsx",
+    "sha256": "f9b4e4da50e94e7a10e67259ee203158a73e7db36a45b4cd7346e448dbd5eb46"
+  },
+  {
+    "path": "packages/app/src/components/knowledge-graph.tsx",
+    "sha256": "8903da995875ceb7c95364df9cfb21051d5abba69c4a6c81a500fd40878c05ff"
+  },
+  {
+    "path": "patches/three@0.186.1.patch",
+    "sha256": "0e7ef70f7ae6acdab325346de9ee7021e470672c7401885dfb514d6d23526f32"
+  },
+  {
+    "path": "package.json",
+    "sha256": "7312bd0ac5c5f89d561f12c8b64f6a86315df8f1a7efb4236b53464244c4e9ac"
+  },
+  {
+    "path": "bun.lock",
+    "sha256": "d6dcd3e16e23683b34ed71404ea50f24020fdab8319887f7347f8960d69fff04"
+  },
+  {
+    "path": "packages/app/e2e/performance/navigation/navigation.spec.ts",
+    "sha256": "3ae501bbda7b2934fa37477b0f56a8986c1de6fc4057ee2730db0e788c3c7992"
+  }
+]

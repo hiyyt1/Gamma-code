@@ -1,0 +1,69 @@
+{
+  "id": "presentation-creation",
+  "revision": "05360198cd174e166aaf5b6d7cad05ee73b53a74",
+  "skills": [
+    {
+      "name": "pptagent",
+      "description": "Создание и исправление редактируемых презентаций из HTML по циклу PPTAgent в Gamma.",
+      "path": "skills/pptagent/SKILL.md",
+      "sha256": "62cbc537b62d6961264e14e84899db4317f25f69ec2870136d5e8ad117a28edb"
+    },
+    {
+      "name": "presentation-planning",
+      "description": "Аудитория, цель, доказательства и план презентации; выбор маршрута создания или редактирования.",
+      "path": "skills/presentation-planning/SKILL.md",
+      "sha256": "529cb421d7b369199ec58c8ae122156b0258979966398f7c978d8bf7da52ed0c"
+    },
+    {
+      "name": "presentation-storytelling",
+      "description": "Повествование для коммерческих, инвестиционных, стратегических и обучающих презентаций.",
+      "path": "skills/presentation-storytelling/SKILL.md",
+      "sha256": "6392ed36df60c0e37cf079490ffdd0a6566f46eb36555c1f6bc4912a74bfb2e5"
+    },
+    {
+      "name": "presentation-design",
+      "description": "Композиция, типографика и шесть гибких визуальных направлений для презентаций.",
+      "path": "skills/presentation-design/SKILL.md",
+      "sha256": "522221827205ee3d808b00d3c45f6384d2ba7c663be7a7a78bd4f2e5bd35c046"
+    },
+    {
+      "name": "presentation-data",
+      "description": "Проверяемая аналитика CSV/XLSX, точные суммы и нативные диаграммы PowerPoint.",
+      "path": "skills/presentation-data/SKILL.md",
+      "sha256": "6911e39343a16bccb0dfa1e1530769d34012f72cffe155c5942e95ce458ae5b6"
+    },
+    {
+      "name": "presentation-branding",
+      "description": "Извлечение фирменного стиля из PPTX и сохранение шаблонов, шрифтов и мастер-слайдов.",
+      "path": "skills/presentation-branding/SKILL.md",
+      "sha256": "2048a6e2523801b2af6ddc8fdc2363a80dfb390c9f7d6445fa214dfb6c6544cf"
+    },
+    {
+      "name": "presentation-pptx-editing",
+      "description": "Точечные изменения текста, изображений, геометрии и диаграмм PPTX через office-kit.",
+      "path": "skills/presentation-pptx-editing/SKILL.md",
+      "sha256": "d5a9655349d215902400a10d815d95a5ebbeba7be614165e652d077d529d43c9"
+    },
+    {
+      "name": "presentation-visual-qa",
+      "description": "Визуальная проверка реального PPTX, исправления и проверяемая финализация.",
+      "path": "skills/presentation-visual-qa/SKILL.md",
+      "sha256": "eee3fdf70522079344a6e7e72a4bb1ff6ed3d4b843019206d6c7153f7b7a694d"
+    }
+  ],
+  "files": {
+    "dependency-licenses.json": "18cb44617870c3ee8891ed35938ef6c11b8b1e14ca9d06037883a0c3b6080fe3",
+    "LICENSE-PPTAgent": "e1faa9265adfb5feb24c4be691b5c39b559dec4f0414d9ec3a1157cf94faaf8b",
+    "sources.json": "a472a421e7c4622ad1997a01d179a6fad3a95c1a179c4db7e93dfdb4ccb9486e",
+    "skills/presentation-data/SKILL.md": "6911e39343a16bccb0dfa1e1530769d34012f72cffe155c5942e95ce458ae5b6",
+    "skills/presentation-pptx-editing/SKILL.md": "d5a9655349d215902400a10d815d95a5ebbeba7be614165e652d077d529d43c9",
+    "skills/presentation-planning/SKILL.md": "529cb421d7b369199ec58c8ae122156b0258979966398f7c978d8bf7da52ed0c",
+    "skills/presentation-storytelling/SKILL.md": "6392ed36df60c0e37cf079490ffdd0a6566f46eb36555c1f6bc4912a74bfb2e5",
+    "skills/presentation-branding/SKILL.md": "2048a6e2523801b2af6ddc8fdc2363a80dfb390c9f7d6445fa214dfb6c6544cf",
+    "skills/presentation-visual-qa/SKILL.md": "eee3fdf70522079344a6e7e72a4bb1ff6ed3d4b843019206d6c7153f7b7a694d",
+    "skills/pptagent/SKILL.md": "62cbc537b62d6961264e14e84899db4317f25f69ec2870136d5e8ad117a28edb",
+    "skills/presentation-design/SKILL.md": "522221827205ee3d808b00d3c45f6384d2ba7c663be7a7a78bd4f2e5bd35c046",
+    "skills/presentation-planning/references/outline.md": "ef660b307fdd75d81de0a4991e02baf11343055af6203442d6f39534c21792b0",
+    "skills/pptagent/references/html.md": "b491b2fb2db778cb915d64118d6c58ae2d481a69c6154b17f56952af01c79523"
+  }
+}

@@ -17,6 +17,8 @@ on:
 
 jobs:
   close:
+    # Upstream automation is not enabled for Gamma forks.
+    if: ${{ github.repository == 'anomalyco/opencode' }}
     runs-on: ubuntu-latest
     timeout-minutes: 240
     permissions:

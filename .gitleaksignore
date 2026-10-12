@@ -1,5 +1,34 @@
-# Fake secret-looking strings used by HTTP recorder redaction tests.
-afa57acfda894e0ebf3c637dd710310b705c0a2f:packages/http-recorder/test/record-replay.test.ts:generic-api-key:69
-afa57acfda894e0ebf3c637dd710310b705c0a2f:packages/http-recorder/test/record-replay.test.ts:generic-api-key:92
-afa57acfda894e0ebf3c637dd710310b705c0a2f:packages/http-recorder/test/record-replay.test.ts:generic-api-key:146
-afa57acfda894e0ebf3c637dd710310b705c0a2f:packages/http-recorder/test/record-replay.test.ts:gcp-api-key:71
+# Exact reviewed false positives for staged Gitleaks scans.
+# These entries cover file hashes, public client IDs, source identifiers,
+# documentation examples, and deliberately fake test credentials only.
+gamma-agent-market/bundles/1c-development/manifest.json:generic-api-key:425
+gamma-agent-market/bundles/1c-development/manifest.json:generic-api-key:426
+gamma-skill-market/packages/microsoft/audit.json:generic-api-key:123682
+gamma-skill-market/packages/microsoft/audit.json:generic-api-key:64462
+gamma-skill-market/packages/wshobson-agents/audit.json:generic-api-key:25068
+packages/app/e2e/performance/timeline-stability/context-matrix.spec.ts:generic-api-key:136
+packages/app/src/pages/layout.tsx:generic-api-key:965
+packages/app/src/pages/layout.tsx:generic-api-key:972
+packages/console/app/package.json:generic-api-key:9
+packages/console/app/src/i18n/ar.ts:generic-api-key:374
+packages/console/app/src/i18n/br.ts:generic-api-key:383
+packages/console/app/src/i18n/da.ts:generic-api-key:379
+packages/console/app/src/i18n/de.ts:generic-api-key:381
+packages/console/app/src/i18n/en.ts:generic-api-key:379
+packages/console/app/src/i18n/es.ts:generic-api-key:384
+packages/console/app/src/i18n/fr.ts:generic-api-key:384
+packages/console/app/src/i18n/it.ts:generic-api-key:380
+packages/console/app/src/i18n/no.ts:generic-api-key:379
+packages/console/app/src/i18n/pl.ts:generic-api-key:381
+packages/console/app/src/i18n/ru.ts:generic-api-key:385
+packages/console/app/src/i18n/th.ts:generic-api-key:377
+packages/console/app/src/i18n/uk.ts:generic-api-key:379
+packages/http-recorder/test/record-replay.test.ts:gcp-api-key:138
+packages/http-recorder/test/record-replay.test.ts:generic-api-key:136
+packages/http-recorder/test/record-replay.test.ts:generic-api-key:159
+packages/http-recorder/test/record-replay.test.ts:generic-api-key:628
+packages/opencode/src/plugin/digitalocean.ts:generic-api-key:8
+packages/opencode/test/bitrix24/portal.test.ts:generic-api-key:93
+packages/opencode/test/wildberries/mcp.test.ts:generic-api-key:67
+packages/sdk/js/src/v2/gen/sdk.gen.ts:generic-api-key:5370
+packages/session-ui/src/components/tool-count-summary.tsx:generic-api-key:6

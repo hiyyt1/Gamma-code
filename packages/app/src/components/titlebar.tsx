@@ -386,7 +386,7 @@ export function Titlebar(props: {
 
             return (
               <div
-                class="oreshnik-titlebar-navigation h-full flex-1 overflow-hidden flex flex-row items-center gap-1.5 px-2 md:pr-3"
+                class="gamma-titlebar-navigation h-full flex-1 overflow-hidden flex flex-row items-center gap-1.5 px-2 md:pr-3"
                 classList={{
                   "pt-2": !bottom(),
                   "pb-2": bottom(),
@@ -394,7 +394,7 @@ export function Titlebar(props: {
                   "md:pl-4": !macTrafficLights(),
                 }}
               >
-                <ProductBrand class="oreshnik-titlebar-brand" />
+                <ProductBrand class="gamma-titlebar-brand" />
                 <ChannelIndicator debugTools={props.debugTools} />
                 <Show when={windows() || linux()}>
                   <WindowsAppMenu command={command} platform={platform} variant="v2" />
@@ -625,7 +625,7 @@ type TitlebarV2RightState = {
 function TitlebarV2Right(props: { state: TitlebarV2RightState }) {
   return (
     <div
-      data-slot="oreshnik-page-controls"
+      data-slot="gamma-page-controls"
       class="relative z-20 flex shrink-0 items-center justify-end gap-0 overflow-visible"
     >
       <Show when={props.state.update.visible}>

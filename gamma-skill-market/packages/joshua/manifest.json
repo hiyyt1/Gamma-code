@@ -1,0 +1,176 @@
+{
+  "id": "joshua",
+  "name": "Joshua Agent Skills",
+  "source": "https://github.com/joshuadavidthomas/agent-skills",
+  "author": "joshuadavidthomas",
+  "category": "development",
+  "description": "Коллекция навыков для разработчиков.",
+  "revision": "516dee7a422b90937b2958d11c03694154ab9c09",
+  "license": "MIT",
+  "skills": [
+    {
+      "name": "coding-standards",
+      "description": "Use when reviewing code quality, asking whether a refactor or design is good, looking for code smells, or evaluating architecture tradeoffs. Identifies shallow interfaces, invalid state models, unclear boundaries, hidden effects, weak failure contracts, over-mocking, over-abstraction, compatibility glue, and clean-looking code that preserves bad models.",
+      "path": "coding-standards/SKILL.md",
+      "sha256": "5988235deb58e83fb5e8e96ce84bf6b0d36d9eb8276da37901f7ea5b53c21fb6"
+    },
+    {
+      "name": "coolify-compose",
+      "description": "Convert Docker Compose files to Coolify templates. Use when creating Coolify services, converting docker-compose.yml for Coolify deployment, working with SERVICE_URL/SERVICE_PASSWORD magic variables, or troubleshooting Coolify compose errors.",
+      "path": "coolify-compose/SKILL.md",
+      "sha256": "835a30dcba610c5a18a7ba8de95a9c0ba56c0fddbc4d092d06ae242e35126c66"
+    },
+    {
+      "name": "crafting-effective-readmes",
+      "description": "Use when writing or improving README files. Not all READMEs are the same — provides templates and guidance matched to your audience and project type.",
+      "path": "crafting-effective-readmes/SKILL.md",
+      "sha256": "638b271fdc148249ed8896dbdcf15f9067a8d64ba7d2d82ec3e86f8d82831b51"
+    },
+    {
+      "name": "diataxis",
+      "description": "Structure, classify, and write documentation using the Diátaxis framework. Use when writing docs, README files, guides, tutorials, how-to guides, API references, or organizing documentation architecture. Also use when asked to improve documentation, restructure docs, decide what type of doc to write, or classify existing content. Covers tutorials, how-to guides, reference, and explanation.",
+      "path": "diataxis/SKILL.md",
+      "sha256": "153627195edaeec68de6eb019e9fbed5baaf70975aa1a959d54856ed5c22e060"
+    },
+    {
+      "name": "english-please",
+      "description": "Dude, come on. You write at the density of your own thinking and leave the reader to unpack it. Apply whenever explaining anything to a human — not just end-of-run summaries, every message.",
+      "path": "english-please/SKILL.md",
+      "sha256": "c7a5730ea4766b4665d114e6e00cf670f8b6705fce03d36cb064ddbf701bbf1c"
+    },
+    {
+      "name": "feature-planning-artifacts",
+      "description": "Use when creating or iterating staged planning artifacts for a complex feature: design discussion, structure outline, final executor plan, or supporting research/research questions. Also use when designing before coding, breaking work into vertical slices, or deepening a high-value roadmap item, NNN improve plan, architecture candidate, or HumanLayer-style task.",
+      "path": "feature-planning-artifacts/SKILL.md",
+      "sha256": "994bf431a40cdbdfe4e0f817094e2c26d71ab4076fa31ca1c716e1dbcd5d5ed5"
+    },
+    {
+      "name": "frontend-design-principles",
+      "description": "Use when building or reviewing frontend UI — dashboards, admin panels, landing pages, marketing sites, web apps. Drives domain-specific design decisions (typography, color world, layout, CSS token naming, depth and spacing systems) instead of generic AI defaults; routes to app.md (product/data UIs) or marketing.md (public/creative pages) by context.",
+      "path": "frontend-design-principles/SKILL.md",
+      "sha256": "e870439c3787996eb571ef6769e9387cc71e675c37ce0bc578d8fd11d8aa198c"
+    },
+    {
+      "name": "grug-brained-dev",
+      "description": "Use when reviewing PRs, simplifying over-engineered code, judging architecture, or renaming unclear concepts — inline fake helpers, delete meatless ceremony, rename lying names, merge over-split files, reject premature abstraction, say no to speculative config/modes/layers, then end with the smallest safe next change. Triggers when code is too fancy, too abstract, too clever, too many files/helpers/layers, or too well-factored but painful to change. Embody Grug brain: complexity very bad, small words, no consultant speak, no hard pivot to opposite dogma.",
+      "path": "grug-brained-dev/SKILL.md",
+      "sha256": "9a540bd05a673580917d44d740522ecb0e21617ab702385e757d5b7666d42d2c"
+    },
+    {
+      "name": "html-artifacts",
+      "description": "Use when the user asks to create, generate, visualize, or turn material into a standalone HTML artifact, self-contained or single-file .html report, interactive explainer, interactive illustration or visualization, visual walkthrough or handoff, or HTML presentation or slide deck. Handles source-grounded codebase and architecture, feature, PR or diff, implementation recap, incident timeline, option comparison, causal, and data-report explanations. Not for prose-only analysis or reviews, production web apps or dashboards, websites, HTML email, or ordinary frontend/UI implementation.",
+      "path": "html-artifacts/SKILL.md",
+      "sha256": "e9a635525f302157b0b3ac8b339c27bb457c977fbaa966c22fa5ca8eca95e710"
+    },
+    {
+      "name": "improve",
+      "description": "Survey a codebase as a senior advisor and turn the highest-value findings into implementation plans for other agents to execute — strictly read-only on source code, never implements anything itself. Use when asked to audit a codebase, find improvement opportunities (bugs, security, performance, test coverage, tech debt, architecture, migrations, DX), suggest features or roadmap direction, or generate handoff plans for another agent to implement.",
+      "path": "improve/SKILL.md",
+      "sha256": "8ac71d8a05cd91fc1c2033309f53fbd4309a870413101a910de928687dce2f7e"
+    },
+    {
+      "name": "improving-prompts",
+      "description": "Use when optimizing CLAUDE.md, AGENTS.md, custom commands, or skill files — diagnose the concrete failure first, then apply current documented Anthropic best practices (explicit instructions, context/motivation, examples, output and verbosity control, thinking/effort, CLAUDE.md size and skill-description rules) instead of inventing improvements. Triggers when a prompt isn't followed, a skill won't activate, CLAUDE.md is too long or ignored, or migrating prompts to current Claude models.",
+      "path": "improving-prompts/SKILL.md",
+      "sha256": "5b38c681c5f3ac2b55e9ea2f4564014338ebb5864c89066344b046d3326245a0"
+    },
+    {
+      "name": "jj",
+      "description": "Jujutsu (jj) — the Git-compatible version control system. Activate ONLY when a .jj/ directory is present in the project or when jj/jujutsu is explicitly mentioned. Do NOT activate for plain git repos without .jj/. Use for any VCS operations in jj-managed projects: commit, push, pull, branch, bookmark, rebase, squash, merge, diff, log, status, working copy, change ID, revset, fileset, template, configuration, workspaces.",
+      "path": "jj/SKILL.md",
+      "sha256": "a39b2d546e1b088ae0d4038b0727b820ec09dd0103290f8ab39cccab92fb50d5"
+    },
+    {
+      "name": "reducing-entropy",
+      "description": "Use when evaluating designs, reviewing code, or refactoring - measures success by total code in the final codebase, not effort to get there. Bias toward deletion.",
+      "path": "reducing-entropy/SKILL.md",
+      "sha256": "227438f347b69408f36e6f9e626864b7480e641a70417dcaa9069916133f7421"
+    },
+    {
+      "name": "researching-codebases",
+      "description": "Use when answering complex questions about a codebase that require exploring multiple areas or understanding how components connect - coordinates parallel sub-agents to locate, analyze, and synthesize findings",
+      "path": "researching-codebases/SKILL.md",
+      "sha256": "cf8ca2b6e039c94db4750e72c23770d1568da8a3de2b7a1f35ff88d3ccb55aab"
+    },
+    {
+      "name": "roadmap-to-improve-plans",
+      "description": "Use when turning a roadmap, repo priorities, architecture priorities, chosen opportunities, accepted feature outlines/plans, or “roadmap to plans” request into grouped improvement plan batches for future executors. Writes README.md indexes, 001-*.md/NNN-style plans, optional memo-*.md files, verification gates, drift checks, STOP conditions, rejected approaches, and executor handoff notes.",
+      "path": "roadmap-to-improve-plans/SKILL.md",
+      "sha256": "67c2ffb07fe36ca274f483d088485b1d7f6270abfca45ca1da8a19b2cd463399"
+    },
+    {
+      "name": "roadmap",
+      "description": "Build evidence-backed software/product roadmaps from repo state, tickets, ideas, audit findings, or user goals — prioritize and sequence work across Now/Next/Later, milestones, dependencies, risks, and handoffs. Use when asked for a roadmap, feature roadmap, technical roadmap, release plan, milestone plan, backlog prioritization, sequencing, what to build next, or to turn improve/ideate/brainstorm/design-discussion outputs into an execution sequence. Not for implementing code or writing PR-level plans.",
+      "path": "roadmap/SKILL.md",
+      "sha256": "d50ae4636302bb16255648814a7c5c45122b7652be1dde81ab7888fc92479621"
+    },
+    {
+      "name": "rust",
+      "description": "Mental-model reset for Rust. Use when writing or reviewing Rust code to shift from \"it compiles\" to \"thinks in Rust.\" Triggers on Rust code review, \"is this idiomatic\", borrow-checker errors, API design, domain modeling, ownership, lifetimes, errors, traits, async/Tokio, unsafe, serde, FFI, tests, performance, Cargo structure, .rs files, Cargo.toml, rustc diagnostics, clippy findings, Result/Option, thiserror vs anyhow, newtype, typestate, enum vs trait, dyn Trait, Send/Sync, Pin, Miri, PyO3, napi-rs, cxx, UniFFI, wasm-bindgen, serde attributes, or feature unification.\n",
+      "path": "rust/SKILL.md",
+      "sha256": "c1f6492cfb19fd63ceaa973b3c01054977a665026cc1536a41cb19877379e982"
+    },
+    {
+      "name": "salsa",
+      "description": "Mental-model reset for Salsa, the incremental computation framework for Rust. Use when building or reviewing Salsa databases, tracked functions, input/ tracked/interned structs, query pipelines, accumulators, cancellation, durability, LSP integration, memory management, cycles, or production Salsa architecture. Triggers on #[salsa::db], #[salsa::input], #[salsa::tracked], #[salsa::interned], #[salsa::accumulator], salsa::Storage, memoization, revisions, backdating, red-green algorithm, WillExecute, DidValidateMemoizedValue, Cancelled, returns(ref), no_eq, lru, cycle_fn, cycle_result, durability, or salsa::Event.\n",
+      "path": "salsa/SKILL.md",
+      "sha256": "95d5c79b48941c4f25e7463b151e0553079f5f68667e0bf833fc98c2fda95d5d"
+    },
+    {
+      "name": "skill-authoring",
+      "description": "Use when authoring, creating, refining, or troubleshooting agent skills — scaffold SKILL.md and frontmatter, write and optimize the trigger description, structure the body with progressive disclosure, validate structure, and test or debug activation. Also when building a new skill from scratch, when a skill won't trigger, loads incorrectly, or the agent ignores it entirely. Use when a skill misbehaved in the current session and needs adjustment based on learnings.",
+      "path": "skill-authoring/SKILL.md",
+      "sha256": "6395bf74575ccfa47c313bf91e604d35963536a134a97cfaa648dc7b5cc51e2e"
+    },
+    {
+      "name": "strategic-roadmap",
+      "description": "Use when a user asks “what should I work on in this repo?”, “what’s worth doing next?”, repo audit, tech-debt priorities, architecture priorities, old-plan reconciliation, or repo-grounded opportunity discovery. Produces .agents/ROADMAP.md with generated opportunities, user-seeded ideas, Now/Next/Later sequencing, rejected/not-now items, and next-artifact recommendations. Not for standard product/release roadmaps; if multiple repos are requested, create one roadmap per repo.",
+      "path": "strategic-roadmap/SKILL.md",
+      "sha256": "ab1863fc41c1eda696528477bb9cf0936310213c8caafb3e3e268e063af3be96"
+    },
+    {
+      "name": "svelte5",
+      "description": "Reviews Svelte components for idiomatic patterns, identifies anti-patterns carried over from React/Vue/Svelte 4, and suggests Svelte 5 refactorings. Use when writing or reviewing Svelte components, asking \"is this idiomatic\", \"Svelte way\", doing Svelte 5 migration, or encountering smells like: effect assigns state, prop copied to $state, global store by default, $bindable everywhere, clickable div, createEventDispatcher, export let, on:click, slot-shaped APIs, lifecycle-driven code, imperative DOM wiring, immutable-update ceremony, context value replacement, shadcn-svelte form structure, Field.* components, bits-ui form controls, or component APIs that hide ownership. This is the general-purpose entry point for Svelte component review; delegates to sveltekit for routes/load/actions/server concerns and to focused references for details.\n",
+      "path": "svelte5/SKILL.md",
+      "sha256": "cf8ec3b219b102baaa870910fa80c64e37df632c5793ee1b056340b87c15ba71"
+    },
+    {
+      "name": "sveltekit",
+      "description": "Mental-model reset for SvelteKit apps. Use when writing or reviewing routes, layouts, load functions, form actions, remote functions, hooks, auth, cookies, endpoints, redirects, errors, SSR, progressive enhancement, or app-level data flow. Triggers on SvelteKit, +page, +layout, +server, +page.server.ts, +layout.server.ts, hooks.server.ts, load, actions, fail(), redirect(), error(), cookies, locals, route groups, protected routes, sessions, form actions, enhance, remote functions, command(), query(), form(), getRequestEvent(), SSR, hydration, and serialization. Use svelte5 for component-level runes, snippets, accessibility, actions, transitions, and component API review.\n",
+      "path": "sveltekit/SKILL.md",
+      "sha256": "ce74ef63ee3d3bdda8e8337f19dd845af215320fac5017a95e54ba86ee225d27"
+    },
+    {
+      "name": "writing-cli-skills",
+      "description": "Use when authoring an agent skill that wraps a command-line tool — covers hands-on tool exploration, required vs. recommended sections, installation/usage structure, trigger-rich descriptions, task-grouped commands, progressive disclosure, and a pre-publish checklist. Triggers for CLI / command-line / terminal / shell-command tools and binary wrappers; for review, run the Checklist section.",
+      "path": "writing-cli-skills/SKILL.md",
+      "sha256": "c2a6b4450e170df1c3949d89c0211abf005ad9a525dbcd52407c4dfeb4363aa6"
+    },
+    {
+      "name": "writing-error-messages",
+      "description": "Use when writing, reviewing, or rewriting user-facing error messages, validation messages, form errors, empty/error states, auth errors, failure notifications, retry/support copy, CLI errors, or API errors humans will read. Helps make errors specific, actionable, non-blaming, accessible, and safe without leaking sensitive details.",
+      "path": "writing-error-messages/SKILL.md",
+      "sha256": "6e4f6b093abd11257c698a677b9204fb984330a6379dd2425156217d3d38d7b9"
+    },
+    {
+      "name": "writing-plans",
+      "description": "Write self-contained implementation plan files that a fresh, possibly weaker executor can run without the author's context — splitting work into PR-sized plans, with verification gates, STOP conditions, and a memo protocol for design forks. Use when asked to write/create a plan, turn a decided design or ticket into plans, or when another skill hands off plan-writing. Not for deciding what to build or executing plans.",
+      "path": "writing-plans/SKILL.md",
+      "sha256": "8846f7d51be6eb18734baddcbd5a7bd3a5f6b069529ed15884153c9b0dbf6e10"
+    },
+    {
+      "name": "writing",
+      "description": "General prose doctrine for anything a human will read — clear, concrete, free of ready-made phrases. Use when writing or editing documentation, explanations, summaries, commit messages, reports, or any other prose.",
+      "path": "writing/SKILL.md",
+      "sha256": "0569d9e053dca923a72c7d051321e4e9ad4401e765e2631312c290f6708831b7"
+    }
+  ],
+  "dependencies": [
+    "jj 0.36+ для jj skill",
+    "Rust/Cargo и Coolify/Docker для соответствующих сценариев"
+  ],
+  "compatibility": "needs-configuration",
+  "reason": "Инструкции читаются OpenCode, но набор включает jj, Rust/Salsa и Coolify workflows. Их runtime и связанные сервисы не проверены. Есть отдельные лицензии вложенных материалов.",
+  "enabledByDefault": false,
+  "runtimes": []
+}

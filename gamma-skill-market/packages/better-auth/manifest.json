@@ -1,0 +1,55 @@
+{
+  "id": "better-auth",
+  "name": "Better Auth Skills",
+  "source": "https://github.com/better-auth/skills",
+  "author": "better-auth",
+  "category": "security",
+  "description": "Аутентификация и интеграция Better Auth.",
+  "revision": "20c9e88a5c007461a703f1c213572b073196113e",
+  "license": null,
+  "skills": [
+    {
+      "name": "better-auth-best-practices",
+      "description": "Configure Better Auth server and client, set up database adapters, manage sessions, add plugins, and handle environment variables. Use when users mention Better Auth, betterauth, auth.ts, or need to set up TypeScript authentication with email/password, OAuth, or plugin configuration.",
+      "path": "better-auth/best-practices/SKILL.md",
+      "sha256": "a5337f186300d187fea2c8f7af339e091afdd130d36c070d0a2dcb8ca04dd413"
+    },
+    {
+      "name": "create-auth",
+      "description": "Scaffold and implement authentication in TypeScript/JavaScript apps using Better Auth. Detect frameworks, configure database adapters, set up route handlers, add OAuth providers, and create auth UI pages. Use when users want to add login, sign-up, or authentication to a new or existing project with Better Auth.",
+      "path": "better-auth/create-auth/SKILL.md",
+      "sha256": "e3f24141de734690c803c577cc30f19aa0b7a6e408def0d0de7f8e1b6780c5fc"
+    },
+    {
+      "name": "email-and-password-best-practices",
+      "description": "Configure email verification, implement password reset flows, set password policies, and customise hashing algorithms for Better Auth email/password authentication. Use when users need to set up login, sign-in, sign-up, credential authentication, or password security with Better Auth.",
+      "path": "better-auth/emailAndPassword/SKILL.md",
+      "sha256": "70591495def0161b5adec5c697dd7740b75e80b16526654beff51f5611098e0a"
+    },
+    {
+      "name": "organization-best-practices",
+      "description": "Configure multi-tenant organizations, manage members and invitations, define custom roles and permissions, set up teams, and implement RBAC using Better Auth's organization plugin. Use when users need org setup, team management, member roles, access control, or the Better Auth organization plugin.",
+      "path": "better-auth/organization/SKILL.md",
+      "sha256": "d0450769aab02fbddfddca5c17257dca451233ac8ae7c6b395fa6a3bad104d27"
+    },
+    {
+      "name": "two-factor-authentication-best-practices",
+      "description": "Configure TOTP authenticator apps, send OTP codes via email/SMS, manage backup codes, handle trusted devices, and implement 2FA sign-in flows using Better Auth's twoFactor plugin. Use when users need MFA, multi-factor authentication, authenticator setup, or login security with Better Auth.",
+      "path": "better-auth/twoFactor/SKILL.md",
+      "sha256": "a9d80a07fcedb8298277356f8dcc2ea4f1bddfc8341075edee675f886ea57d5b"
+    },
+    {
+      "name": "better-auth-security-best-practices",
+      "description": "Configure rate limiting, manage auth secrets, set up CSRF protection, define trusted origins, secure sessions and cookies, encrypt OAuth tokens, track IP addresses, and implement audit logging for Better Auth. Use when users need to secure their auth setup, prevent brute force attacks, or harden a Better Auth deployment.",
+      "path": "security/SKILL.md",
+      "sha256": "042f01c76b63b436c71797c8a1b84470c5b6e0c7cd2400aa0928f733da96facf"
+    }
+  ],
+  "dependencies": [
+    "Better Auth и зависимости приложения"
+  ],
+  "compatibility": "unsupported",
+  "reason": "В закреплённой версии отсутствует файл лицензии. Публичный GitHub-репозиторий сам по себе не даёт права распространять исходники в SaaS.",
+  "enabledByDefault": false,
+  "runtimes": []
+}

@@ -1,3 +1,4 @@
+import { ProjectKnowledge } from "./project-knowledge"
 import { ButtonV2 } from "@opencode-ai/ui/v2/button-v2"
 import { Dialog, DialogBody, DialogFooter, DialogHeader, DialogTitle } from "@opencode-ai/ui/v2/dialog-v2"
 import { DividerV2 } from "@opencode-ai/ui/v2/divider-v2"
@@ -141,6 +142,7 @@ export function DialogEditProjectV2(props: { project: LocalProject; server: Serv
               onInput={(event) => model.setStore("startup", event.currentTarget.value)}
             />
           </Field>
+          <ProjectKnowledge server={props.server.http} directory={props.project.worktree} />
         </DialogBody>
         <DialogFooter>
           <ButtonV2 type="button" variant="neutral" disabled={model.save.isPending} onClick={model.close}>

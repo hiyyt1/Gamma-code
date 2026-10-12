@@ -1,0 +1,161 @@
+{
+  "superpowers": {
+    "compatibility": "verified",
+    "reason": "Проверен Superpowers v4.3.1 для рабочего backend Gamma V1: 14 навыков загружаются штатным skill tool. Добавлено соответствие инструментов; upstream plugin и hooks не запускаются. В этой версии Gamma V2 нет инструмента task/subagent, поэтому пакет в V2 не подключается. Необязательные сценарии GitHub и диаграмм требуют настройки; полное выполнение всех workflows не проверялось.",
+    "dependencies": [
+      "Git и инструменты тестирования текущего проекта — для рабочих процессов разработки",
+      "Необязательно: авторизованный gh CLI для GitHub PR; Node.js и Graphviz dot для render-graphs.js. В окружении проверки gh и dot отсутствуют; эти сценарии не проверены и недоступны без настройки.",
+      "Gamma V1 со штатным task (subagent_type: general). В V2 этой версии отсутствует инструмент делегирования — пакет недоступен."
+    ]
+  },
+  "wshobson-agents": {
+    "compatibility": "needs-adaptation",
+    "reason": "Набор содержит Claude Agent Teams, именованные subagents и PreToolUse hooks. Gamma не регистрирует эти runtime-компоненты при подключении SKILL.md. Нужен отдельный аудит и перенос workflows.",
+    "dependencies": [
+      "Claude Code Agent Teams / hooks",
+      "CLI, SDK и тестовые инструменты зависят от навыка; облачные учётные данные не настроены"
+    ]
+  },
+  "ui-ux-pro-max": {
+    "compatibility": "needs-adaptation",
+    "reason": "Найдены дубли в .claude и cli/assets. Инструкции используют CLAUDE_PLUGIN_ROOT; Python-поиск, ресурсы дизайна и sibling paths требуют адаптации и отдельного тестирования.",
+    "dependencies": [
+      "Python 3; локальные CSV-ресурсы поиска",
+      "Node.js и внешние инструменты для отдельных дизайн-сценариев"
+    ]
+  },
+  "addy-agent-skills": {
+    "compatibility": "needs-configuration",
+    "reason": "Frontmatter читается OpenCode. browser-testing-with-devtools требует Chrome DevTools MCP, который не настроен и не проверен. Общие references сохранены в исходном архиве.",
+    "dependencies": [
+      "Chrome DevTools MCP и браузер",
+      "Git и инструменты сборки/тестирования проекта"
+    ]
+  },
+  "softaworks": {
+    "compatibility": "needs-adaptation",
+    "reason": "Исходные skills дублируются в dist/plugins. Часть инструкций требует Codex, Gemini, Datadog/Jira и Claude plugin/commands. Полный пакет не готов для Gamma.",
+    "dependencies": [
+      "Codex/Gemini CLI; Datadog/Jira credentials для соответствующих навыков",
+      "Дополнительные Python/Node-зависимости скриптов не установлены"
+    ]
+  },
+  "polip": {
+    "compatibility": "needs-configuration",
+    "reason": "Навыки дублируются в skills и .opencode/skills; каталог дедуплицирован по имени. Atlassian skill требует подключённый MCP и авторизацию. Полное выполнение workflows не проверено.",
+    "dependencies": [
+      "Atlassian MCP и авторизация Jira/Confluence",
+      "Языковые SDK, Docker/Kubernetes и облачные CLI зависят от сценария"
+    ]
+  },
+  "composio": {
+    "compatibility": "unsupported",
+    "reason": "В закреплённой версии не найдена лицензия, разрешающая распространение пакета. Исходники не включены в поставку Gamma.",
+    "dependencies": [
+      "Composio и внешние интеграции; авторизация зависит от навыка"
+    ]
+  },
+  "joshua": {
+    "compatibility": "needs-configuration",
+    "reason": "Инструкции читаются OpenCode, но набор включает jj, Rust/Salsa и Coolify workflows. Их runtime и связанные сервисы не проверены. Есть отдельные лицензии вложенных материалов.",
+    "dependencies": [
+      "jj 0.36+ для jj skill",
+      "Rust/Cargo и Coolify/Docker для соответствующих сценариев"
+    ]
+  },
+  "sentry-engineering": {
+    "compatibility": "needs-adaptation",
+    "reason": "Есть Claude settings audit и привязки к именованным skills, GitHub и внутренним практикам Sentry. security-review содержит отдельную атрибуцию OWASP. Нужен перенос и проверка полного пакета.",
+    "dependencies": [
+      "GitHub CLI и авторизация для PR-workflows",
+      "Claude Code settings и отдельные внутренние workflows не поддержаны автоматически"
+    ]
+  },
+  "better-auth": {
+    "compatibility": "unsupported",
+    "reason": "В закреплённой версии отсутствует файл лицензии. Публичный GitHub-репозиторий сам по себе не даёт права распространять исходники в SaaS.",
+    "dependencies": [
+      "Better Auth и зависимости приложения"
+    ]
+  },
+  "agent-collection": {
+    "compatibility": "needs-configuration",
+    "reason": "Большая коллекция содержит Atlassian MCP, языковые SDK и внешние сервисы. Разбор frontmatter успешен; runtime-совместимость полного пакета не проверена.",
+    "dependencies": [
+      "Atlassian MCP; браузерные и облачные инструменты",
+      "Runtime-зависимости выбираются отдельно для каждого skill"
+    ]
+  },
+  "garden": {
+    "compatibility": "needs-configuration",
+    "reason": "Навыки изображений, базы знаний и видеопрезентаций требуют внешних API, браузера и скриптов. Ключи и изолированное окружение для исполнения не настроены.",
+    "dependencies": [
+      "API генерации изображений и ключ доступа",
+      "Python/Node.js и браузерные инструменты; ресурсы для retrieval и видео"
+    ]
+  },
+  "sentry-ai": {
+    "compatibility": "needs-configuration",
+    "reason": "Найдены текущие и legacy skills. Диагностика требует Sentry MCP и доступа к организации; интеграционные сценарии без них не проверены.",
+    "dependencies": [
+      "Sentry MCP и авторизация организации",
+      "SDK Sentry для выбранного языка / платформы"
+    ]
+  },
+  "anthropic": {
+    "compatibility": "unsupported",
+    "reason": "Смешанные лицензии: ряд навыков Apache-2.0, но docx/pdf/pptx/xlsx имеют отдельные условия Anthropic с запретом распространения вне Services. Пакет целиком не поставляется; разрешённые части требуют отдельного состава и аудита.",
+    "dependencies": [
+      "Зависимости Python/Node.js и офисные инструменты зависят от skill"
+    ],
+    "license": "Mixed: Apache-2.0 / Anthropic proprietary"
+  },
+  "expo": {
+    "compatibility": "needs-adaptation",
+    "reason": "В репозитории есть навыки для Expo и служебные Claude evaluation skills с вызовами claude CLI. Нужно отделить распространяемый runtime-набор и проверить Expo workflows.",
+    "dependencies": [
+      "Node.js, Expo/EAS CLI и авторизация EAS",
+      "Мобильные SDK/эмуляторы для платформенных проверок"
+    ]
+  },
+  "cloudflare": {
+    "compatibility": "needs-configuration",
+    "reason": "Skills разбираются OpenCode, но выполнение требует Cloudflare account, Wrangler и отдельных MCP/CLI. Эти зависимости не настроены; развёртывание не проверено.",
+    "dependencies": [
+      "Node.js и Wrangler CLI",
+      "Cloudflare account / API token с ограниченными правами; дополнительные MCP по сценарию"
+    ]
+  },
+  "microsoft": {
+    "compatibility": "needs-adaptation",
+    "reason": "В архиве есть aliases через symlinks, повторные имена и frontmatter, не принимаемый loader. Azure/M365 workflows требуют внешних runtime. Пакет не включается без адаптации и аудита прав.",
+    "dependencies": [
+      "Azure CLI, Azure/M365 credentials и MCP",
+      "Python/.NET/Java/Node SDK по выбранному навыку"
+    ]
+  },
+  "trail-of-bits": {
+    "compatibility": "needs-configuration",
+    "reason": "Лицензия CC-BY-SA-4.0 сохранена с исходниками; изменение материалов потребует сохранения её условий. Навыки зависят от security CLI, контейнеров и Claude hooks. Runtime не проверен, подключение заблокировано.",
+    "dependencies": [
+      "Semgrep, CodeQL, Slither, fuzzers и компиляторы по сценарию",
+      "Изолированное окружение; некоторые workflows требуют Docker/Claude hooks"
+    ]
+  },
+  "open-hax": {
+    "compatibility": "needs-adaptation",
+    "reason": "Часть SKILL.md не содержит пригодного frontmatter. Есть привязки к конкретному monorepo, PM2, Docker и управлению OpenCode. Нужна адаптация путей и аудит доступа к процессам.",
+    "dependencies": [
+      "Bun/Node.js; PM2, Docker, Clojure и Nx для соответствующих навыков",
+      "MCP и конфигурация конкретного workspace"
+    ]
+  },
+  "ai-agent-skills": {
+    "compatibility": "needs-configuration",
+    "reason": "Часть навыков предназначена для управления другими агентными CLI, инфраструктурой и внешними сервисами. Runtime и credentials не настроены; запуск полного пакета не проверен.",
+    "dependencies": [
+      "Claude/Codex/Pi/OpenCode CLI для соответствующих skills",
+      "Docker, Terraform, Ansible, tmux, uv и сервисные credentials по сценарию"
+    ]
+  }
+}

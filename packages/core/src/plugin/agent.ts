@@ -7,6 +7,7 @@ import { AgentV2 } from "../agent"
 import { Global } from "../global"
 import { Location } from "../location"
 import { PermissionV2 } from "../permission"
+import { gammaPrompt, guidePrompt, guideSkills } from "../gamma/system"
 
 const TRUNCATION_GLOB = path.join(Global.Path.data, "tool-output", "*")
 const BUILD_SYSTEM =
@@ -118,15 +119,27 @@ export const Plugin = define({
     ]
 
     yield* ctx.agent.transform((draft) => {
-      draft.update(AgentV2.defaultID, (item) => {
-        item.description = "The default agent. Executes tools based on configured permissions."
-        item.system ??= BUILD_SYSTEM
+      for (const id of ["gamma", "build"])
+        draft.update(AgentV2.ID.make(id), (item) => {
+          item.description = "The default agent. Executes tools based on configured permissions."
+          item.system ??= id === "gamma" ? gammaPrompt : BUILD_SYSTEM
+          item.mode = "primary"
+          item.permissions.push(
+            ...PermissionV2.merge(defaults, [
+              { action: "question", resource: "*", effect: "allow" },
+              { action: "plan_enter", resource: "*", effect: "allow" },
+            ]),
+          )
+        })
+      draft.update(AgentV2.ID.make("gamma-guide"), (item) => {
+        item.description = "Gamma Guide — product help"
+        item.system = guidePrompt
         item.mode = "primary"
         item.permissions.push(
-          ...PermissionV2.merge(defaults, [
-            { action: "question", resource: "*", effect: "allow" },
-            { action: "plan_enter", resource: "*", effect: "allow" },
-          ]),
+          { action: "*", resource: "*", effect: "deny" },
+          { action: "question", resource: "*", effect: "allow" },
+          { action: "gamma_help", resource: "*", effect: "allow" },
+          ...guideSkills.map((skill) => ({ action: "skill", resource: skill.name, effect: "allow" as const })),
         )
       })
 

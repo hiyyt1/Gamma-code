@@ -11,6 +11,7 @@ export interface AutoScrollOptions {
 }
 
 export function createAutoScroll(options: AutoScrollOptions) {
+  let lastTop = 0
   let settling = false
   let settleTimer: ReturnType<typeof setTimeout> | undefined
   let autoTimer: ReturnType<typeof setTimeout> | undefined
@@ -119,12 +120,15 @@ export function createAutoScroll(options: AutoScrollOptions) {
     const target = e.target instanceof Element ? e.target : undefined
     const nested = target?.closest("[data-scrollable]")
     if (el && nested && nested !== el) return
+    lastTop = el?.scrollTop ?? 0
     stop()
   }
 
   const handleScroll = () => {
     const el = store.scrollRef
     if (!el) return
+    const direction = el.scrollTop - lastTop
+    lastTop = el.scrollTop
 
     if (!canScroll(el)) {
       if (store.userScrolled) setStore("userScrolled", false)
@@ -132,7 +136,10 @@ export function createAutoScroll(options: AutoScrollOptions) {
     }
 
     if (distanceFromBottom(el) < threshold()) {
-      if (store.userScrolled) setStore("userScrolled", false)
+      // Near-bottom is an entry threshold while scrolling down, not permission
+      // to undo an upward wheel/touch/keyboard gesture in the same frame.
+      if (direction < 0) stop()
+      if (store.userScrolled && direction > 0) setStore("userScrolled", false)
       return
     }
 
@@ -221,9 +228,15 @@ export function createAutoScroll(options: AutoScrollOptions) {
   })
 
   return {
-    scrollRef: (el: HTMLElement | undefined) => setStore("scrollRef", el),
+    scrollRef: (el: HTMLElement | undefined) => {
+      lastTop = el?.scrollTop ?? 0
+      setStore("scrollRef", el)
+    },
     contentRef: (el: HTMLElement | undefined) => setStore("contentRef", el),
     handleScroll,
+    syncScroll: () => {
+      lastTop = store.scrollRef?.scrollTop ?? 0
+    },
     handleInteraction,
     pause: stop,
     resume: () => {

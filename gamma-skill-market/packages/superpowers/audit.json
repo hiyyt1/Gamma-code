@@ -1,0 +1,5271 @@
+{
+  "source": {
+    "id": "superpowers",
+    "revision": "d2d6cf485286ca9af69b84557e4da4c1d83a58e0",
+    "source": "https://github.com/obra/superpowers",
+    "license": "MIT",
+    "archiveSha256": "e5550851dd8e84e0357f87ad4b719d175020e1bdadc08e4192c04510ad56c006",
+    "rejected": []
+  },
+  "discoveredFiles": 14,
+  "invalidFrontmatter": [],
+  "duplicateNames": [],
+  "findings": [
+    {
+      "path": ".claude-plugin/marketplace.json",
+      "line": 11,
+      "kind": "runtime",
+      "text": "      \"description\": \"Core skills library for Claude Code: TDD, debugging, collaboration patterns, and proven techniques\","
+    },
+    {
+      "path": ".claude-plugin/plugin.json",
+      "line": 3,
+      "kind": "runtime",
+      "text": "  \"description\": \"Core skills library for Claude Code: TDD, debugging, collaboration patterns, and proven techniques\","
+    },
+    {
+      "path": ".codex/INSTALL.md",
+      "line": 1,
+      "kind": "runtime",
+      "text": "# Installing Superpowers for Codex"
+    },
+    {
+      "path": ".codex/INSTALL.md",
+      "line": 3,
+      "kind": "runtime",
+      "text": "Enable superpowers skills in Codex via native skill discovery. Just clone and symlink."
+    },
+    {
+      "path": ".codex/INSTALL.md",
+      "line": 13,
+      "kind": "runtime",
+      "text": "   git clone https://github.com/obra/superpowers.git ~/.codex/superpowers"
+    },
+    {
+      "path": ".codex/INSTALL.md",
+      "line": 19,
+      "kind": "runtime",
+      "text": "   ln -s ~/.codex/superpowers/skills ~/.agents/skills/superpowers"
+    },
+    {
+      "path": ".codex/INSTALL.md",
+      "line": 25,
+      "kind": "runtime",
+      "text": "   cmd /c mklink /J \"$env:USERPROFILE\\.agents\\skills\\superpowers\" \"$env:USERPROFILE\\.codex\\superpowers\\skills\""
+    },
+    {
+      "path": ".codex/INSTALL.md",
+      "line": 28,
+      "kind": "runtime",
+      "text": "3. **Restart Codex** (quit and relaunch the CLI) to discover the skills."
+    },
+    {
+      "path": ".codex/INSTALL.md",
+      "line": 36,
+      "kind": "runtime",
+      "text": "   cd ~/.codex/superpowers && git pull"
+    },
+    {
+      "path": ".codex/INSTALL.md",
+      "line": 41,
+      "kind": "runtime",
+      "text": "3. **Remove the old bootstrap block** from `~/.codex/AGENTS.md` — any block referencing `superpowers-codex bootstrap` is no longer needed."
+    },
+    {
+      "path": ".codex/INSTALL.md",
+      "line": 43,
+      "kind": "runtime",
+      "text": "4. **Restart Codex.**"
+    },
+    {
+      "path": ".codex/INSTALL.md",
+      "line": 56,
+      "kind": "runtime",
+      "text": "cd ~/.codex/superpowers && git pull"
+    },
+    {
+      "path": ".codex/INSTALL.md",
+      "line": 67,
+      "kind": "runtime",
+      "text": "Optionally delete the clone: `rm -rf ~/.codex/superpowers`."
+    },
+    {
+      "path": ".codex/INSTALL.md",
+      "line": 67,
+      "kind": "sensitive",
+      "text": "Optionally delete the clone: `rm -rf ~/.codex/superpowers`."
+    },
+    {
+      "path": ".cursor-plugin/plugin.json",
+      "line": 17,
+      "kind": "runtime",
+      "text": "  \"hooks\": \"./hooks/hooks.json\""
+    },
+    {
+      "path": ".opencode/INSTALL.md",
+      "line": 22,
+      "kind": "sensitive",
+      "text": "rm -f ~/.config/opencode/plugins/superpowers.js"
+    },
+    {
+      "path": ".opencode/INSTALL.md",
+      "line": 32,
+      "kind": "sensitive",
+      "text": "rm -rf ~/.config/opencode/skills/superpowers"
+    },
+    {
+      "path": ".opencode/INSTALL.md",
+      "line": 110,
+      "kind": "runtime",
+      "text": "When skills reference Claude Code tools:"
+    },
+    {
+      "path": ".opencode/INSTALL.md",
+      "line": 111,
+      "kind": "runtime",
+      "text": "- `TodoWrite` → `update_plan`"
+    },
+    {
+      "path": ".opencode/plugins/superpowers.js",
+      "line": 66,
+      "kind": "runtime",
+      "text": "- \\`TodoWrite\\` → \\`update_plan\\`"
+    },
+    {
+      "path": ".opencode/plugins/superpowers.js",
+      "line": 67,
+      "kind": "runtime",
+      "text": "- \\`Task\\` tool with subagents → Use OpenCode's subagent system (@mention)"
+    },
+    {
+      "path": "README.md",
+      "line": 13,
+      "kind": "runtime",
+      "text": "Next up, once you say \"go\", it launches a *subagent-driven-development* process, having agents work through each engineering task, inspecting and reviewing their work, and continuing forward. It's not uncommon for Claude to be able to work autonomously for a couple hours at a time without deviating "
+    },
+    {
+      "path": "README.md",
+      "line": 29,
+      "kind": "runtime",
+      "text": "**Note:** Installation differs by platform. Claude Code or Cursor have built-in plugin marketplaces. Codex and OpenCode require manual setup."
+    },
+    {
+      "path": "README.md",
+      "line": 32,
+      "kind": "runtime",
+      "text": "### Claude Code (via Plugin Marketplace)"
+    },
+    {
+      "path": "README.md",
+      "line": 34,
+      "kind": "runtime",
+      "text": "In Claude Code, register the marketplace first:"
+    },
+    {
+      "path": "README.md",
+      "line": 54,
+      "kind": "runtime",
+      "text": "### Codex"
+    },
+    {
+      "path": "README.md",
+      "line": 56,
+      "kind": "runtime",
+      "text": "Tell Codex:"
+    },
+    {
+      "path": "README.md",
+      "line": 59,
+      "kind": "runtime",
+      "text": "Fetch and follow instructions from https://raw.githubusercontent.com/obra/superpowers/refs/heads/main/.codex/INSTALL.md"
+    },
+    {
+      "path": "README.md",
+      "line": 62,
+      "kind": "runtime",
+      "text": "**Detailed docs:** [docs/README.codex.md](docs/README.codex.md)"
+    },
+    {
+      "path": "README.md",
+      "line": 86,
+      "kind": "runtime",
+      "text": "4. **subagent-driven-development** or **executing-plans** - Activates with plan. Dispatches fresh subagent per task with two-stage review (spec compliance, then code quality), or executes in batches with human checkpoints."
+    },
+    {
+      "path": "README.md",
+      "line": 111,
+      "kind": "runtime",
+      "text": "- **dispatching-parallel-agents** - Concurrent subagent workflows"
+    },
+    {
+      "path": "README.md",
+      "line": 116,
+      "kind": "runtime",
+      "text": "- **subagent-driven-development** - Fast iteration with two-stage review (spec compliance, then code quality)"
+    },
+    {
+      "path": "README.md",
+      "line": 129,
+      "kind": "runtime",
+      "text": "Read more: [Superpowers for Claude Code](https://blog.fsck.com/2025/10/09/superpowers/)"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 9,
+      "kind": "runtime",
+      "text": "Superpowers now works with Cursor's plugin system. Includes a `.cursor-plugin/plugin.json` manifest and Cursor-specific installation instructions in the README. The SessionStart hook output now includes an `additional_context` field alongside the existing `hookSpecificOutput.additionalContext` for C"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 13,
+      "kind": "runtime",
+      "text": "**Windows: Restored polyglot wrapper for reliable hook execution (#518, #504, #491, #487, #466, #440)**"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 15,
+      "kind": "runtime",
+      "text": "Claude Code's `.sh` auto-detection on Windows was prepending `bash` to the hook command, breaking execution. The fix:"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 18,
+      "kind": "runtime",
+      "text": "- Restored `run-hook.cmd` polyglot wrapper with multi-location bash discovery (standard Git for Windows paths, then PATH fallback)"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 20,
+      "kind": "sensitive",
+      "text": "- On Unix, the wrapper runs the script directly via `exec bash`"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 27,
+      "kind": "runtime",
+      "text": "This fix should dramatically improve superpowers skills compliance and should reduce the chances of Claude entering its native plan mode unintentionally."
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 43,
+      "kind": "runtime",
+      "text": "Added an `EnterPlanMode` intercept to the skill flow graph. When the model is about to enter Claude's native plan mode, it checks whether brainstorming has happened and routes through the brainstorming skill instead. Plan mode is never entered."
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 47,
+      "kind": "runtime",
+      "text": "**SessionStart hook now runs synchronously**"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 49,
+      "kind": "runtime",
+      "text": "Changed `async: true` to `async: false` in hooks.json. When async, the hook could fail to complete before the model's first turn, meaning using-superpowers instructions weren't in context for the first message."
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 55,
+      "kind": "runtime",
+      "text": "**Codex: Replaced bootstrap CLI with native skill discovery**"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 57,
+      "kind": "runtime",
+      "text": "The `superpowers-codex` bootstrap CLI, Windows `.cmd` wrapper, and related bootstrap content file have been removed. Codex now uses native skill discovery via `~/.agents/skills/superpowers/` symlink, so the old `use_skill`/`find_skills` CLI tools are no longer needed."
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 59,
+      "kind": "runtime",
+      "text": "Installation is now just clone + symlink (documented in INSTALL.md). No Node.js dependency required. The old `~/.codex/skills/` path is deprecated."
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 59,
+      "kind": "dependencies",
+      "text": "Installation is now just clone + symlink (documented in INSTALL.md). No Node.js dependency required. The old `~/.codex/skills/` path is deprecated."
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 63,
+      "kind": "runtime",
+      "text": "**Windows: Fixed Claude Code 2.1.x hook execution (#331)**"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 65,
+      "kind": "runtime",
+      "text": "Claude Code 2.1.x changed how hooks execute on Windows: it now auto-detects `.sh` files in commands and prepends `bash`. This broke the polyglot wrapper pattern because `bash \"run-hook.cmd\" session-start.sh` tries to execute the `.cmd` file as a bash script."
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 67,
+      "kind": "runtime",
+      "text": "Fix: hooks.json now calls session-start.sh directly. Claude Code 2.1.x handles the bash invocation automatically. Also added .gitattributes to enforce LF line endings for shell scripts (fixes CRLF issues on Windows checkout)."
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 69,
+      "kind": "runtime",
+      "text": "**Windows: SessionStart hook runs async to prevent terminal freeze (#404, #413, #414, #419)**"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 71,
+      "kind": "runtime",
+      "text": "The synchronous SessionStart hook blocked the TUI from entering raw mode on Windows, freezing all keyboard input. Running the hook async prevents the freeze while still injecting superpowers context."
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 77,
+      "kind": "runtime",
+      "text": "**Codex: Fixed Windows/PowerShell invocation (#285, #243)**"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 79,
+      "kind": "runtime",
+      "text": "- Windows doesn't respect shebangs, so directly invoking the extensionless `superpowers-codex` script triggered an \"Open with\" dialog. All invocations now prefixed with `node`."
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 79,
+      "kind": "dependencies",
+      "text": "- Windows doesn't respect shebangs, so directly invoking the extensionless `superpowers-codex` script triggered an \"Open with\" dialog. All invocations now prefixed with `node`."
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 80,
+      "kind": "dependencies",
+      "text": "- Fixed `~/` path expansion on Windows — PowerShell doesn't expand `~` when passed as an argument to `node`. Changed to `$HOME` which expands correctly in both bash and PowerShell."
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 82,
+      "kind": "runtime",
+      "text": "**Codex: Fixed path resolution in installer**"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 86,
+      "kind": "runtime",
+      "text": "**Codex: Fixed stale skills path in writing-skills**"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 88,
+      "kind": "runtime",
+      "text": "Updated `~/.codex/skills/` reference (deprecated) to `~/.agents/skills/` for native discovery."
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 94,
+      "kind": "runtime",
+      "text": "Added `using-git-worktrees` as a required skill for both `subagent-driven-development` and `executing-plans`. Implementation workflows now explicitly require setting up an isolated worktree before starting work, preventing accidental work directly on main."
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 102,
+      "kind": "runtime",
+      "text": "Removed `/help` command check and specific slash command list from verification steps. Skills are primarily invoked by describing what you want to do, not by running specific commands."
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 104,
+      "kind": "runtime",
+      "text": "**Codex: Clarified subagent tool mapping in bootstrap**"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 106,
+      "kind": "runtime",
+      "text": "Improved documentation of how Codex tools map to Claude Code equivalents for subagent workflows."
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 110,
+      "kind": "runtime",
+      "text": "- Added worktree requirement test for subagent-driven-development"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 151,
+      "kind": "runtime",
+      "text": "The previous bootstrap injection method using `session.prompt({ noReply: true })` caused OpenCode to reset the selected agent to \"build\" on first message. Now uses `experimental.chat.system.transform` hook which modifies the system prompt directly without side effects."
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 159,
+      "kind": "runtime",
+      "text": "**Claude Code: Fixed Windows hook execution for Claude Code 2.1.x**"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 161,
+      "kind": "runtime",
+      "text": "Claude Code 2.1.x changed how hooks execute on Windows: it now auto-detects `.sh` files in commands and prepends `bash `. This broke the polyglot wrapper pattern because `bash \"run-hook.cmd\" session-start.sh` tries to execute the .cmd file as a bash script."
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 163,
+      "kind": "runtime",
+      "text": "Fix: hooks.json now calls session-start.sh directly. Claude Code 2.1.x handles the bash invocation automatically. Also added .gitattributes to enforce LF line endings for shell scripts (fixes CRLF issues on Windows checkout)."
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 173,
+      "kind": "runtime",
+      "text": "Addressed a failure mode where Claude would skip invoking a skill even when the user explicitly requested it by name (e.g., \"subagent-driven-development, please\"). Claude would think \"I know what that means\" and start working directly instead of loading the skill."
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 177,
+      "kind": "runtime",
+      "text": "- Added \"BEFORE any response or action\" - the original wording only mentioned \"response\" but Claude would sometimes take action without responding first"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 183,
+      "kind": "runtime",
+      "text": "New test suite in `tests/explicit-skill-requests/` that verifies Claude correctly invokes skills when users request them by name. Includes single-turn and multi-turn test scenarios."
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 191,
+      "kind": "runtime",
+      "text": "Added `disable-model-invocation: true` to all three slash commands (`/brainstorm`, `/execute-plan`, `/write-plan`). Claude can no longer invoke these commands via the Skill tool—they're restricted to manual user invocation only."
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 193,
+      "kind": "runtime",
+      "text": "The underlying skills (`superpowers:brainstorming`, `superpowers:executing-plans`, `superpowers:writing-plans`) remain available for Claude to invoke autonomously. This change prevents confusion when Claude would invoke a command that just redirects to a skill anyway."
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 199,
+      "kind": "runtime",
+      "text": "**Clarified how to access skills in Claude Code**"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 201,
+      "kind": "runtime",
+      "text": "Fixed a confusing pattern where Claude would invoke a skill via the Skill tool, then try to Read the skill file separately. The `using-superpowers` skill now explicitly states that the Skill tool loads skill content directly—no need to read files."
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 219,
+      "kind": "runtime",
+      "text": "**Two-stage code review in subagent-driven-development**"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 221,
+      "kind": "runtime",
+      "text": "Subagent workflows now use two separate review stages after each task:"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 229,
+      "kind": "runtime",
+      "text": "Other subagent workflow improvements:"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 233,
+      "kind": "runtime",
+      "text": "- Plan read once at start, extracted to TodoWrite"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 235,
+      "kind": "runtime",
+      "text": "New prompt templates in `skills/subagent-driven-development/`:"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 263,
+      "kind": "runtime",
+      "text": "`tests/claude-code/` - Integration tests using `claude -p` for headless testing. Verifies skill usage via session transcript (JSONL) analysis. Includes `analyze-token-usage.py` for cost tracking."
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 263,
+      "kind": "sensitive",
+      "text": "`tests/claude-code/` - Integration tests using `claude -p` for headless testing. Verifies skill usage via session transcript (JSONL) analysis. Includes `analyze-token-usage.py` for cost tracking."
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 265,
+      "kind": "runtime",
+      "text": "`tests/subagent-driven-dev/` - End-to-end workflow validation with two complete test projects:"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 267,
+      "kind": "dependencies",
+      "text": "- `svelte-todo/` - CRUD app with localStorage and Playwright (12 tasks)"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 271,
+      "kind": "dependencies",
+      "text": "**DOT flowcharts as executable specifications**"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 273,
+      "kind": "dependencies",
+      "text": "Rewrote key skills using DOT/GraphViz flowcharts as the authoritative process definition. Prose becomes supporting content."
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 275,
+      "kind": "runtime",
+      "text": "**The Description Trap** (documented in `writing-skills`): Discovered that skill descriptions override flowchart content when descriptions contain workflow summaries. Claude follows the short description instead of reading the detailed flowchart. Fix: descriptions must be trigger-only (\"Use when X\")"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 295,
+      "kind": "dependencies",
+      "text": "- **render-graphs.js** - Tool to extract DOT diagrams from skills and render to SVG"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 297,
+      "kind": "runtime",
+      "text": "- **docs/testing.md** - Guide to testing skills with Claude Code integration tests"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 305,
+      "kind": "runtime",
+      "text": "- **Linux Compatibility**: Fixed polyglot hook wrapper (`run-hook.cmd`) to use POSIX-compliant syntax"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 316,
+      "kind": "runtime",
+      "text": "- **OpenCode Bootstrap Refactor**: Switched from `chat.message` hook to `session.created` event for bootstrap injection"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 331,
+      "kind": "runtime",
+      "text": "  - Automatic context injection via chat.message hook"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 335,
+      "kind": "runtime",
+      "text": "  - Shared core module (`lib/skills-core.js`) for code reuse with Codex"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 337,
+      "kind": "runtime",
+      "text": "  - Platform-specific documentation (`docs/README.opencode.md`, `docs/README.codex.md`)"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 341,
+      "kind": "runtime",
+      "text": "- **Refactored Codex Implementation**: Now uses shared `lib/skills-core.js` ES module"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 342,
+      "kind": "runtime",
+      "text": "  - Eliminates code duplication between Codex and OpenCode"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 344,
+      "kind": "runtime",
+      "text": "  - Codex successfully loads ES modules via Node.js interop"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 344,
+      "kind": "dependencies",
+      "text": "  - Codex successfully loads ES modules via Node.js interop"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 375,
+      "kind": "runtime",
+      "text": "- Clarified `writing-skills` guidance so it points to the correct agent-specific personal skill directories (`~/.claude/skills` for Claude Code, `~/.codex/skills` for Codex)."
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 381,
+      "kind": "runtime",
+      "text": "**Experimental Codex Support**"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 382,
+      "kind": "runtime",
+      "text": "- Added unified `superpowers-codex` script with bootstrap/use-skill/find-skills commands"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 383,
+      "kind": "dependencies",
+      "text": "- Cross-platform Node.js implementation (works on Windows, macOS, Linux)"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 388,
+      "kind": "runtime",
+      "text": "- Tool mapping for Codex: TodoWrite→update_plan, subagents→manual fallback, etc."
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 390,
+      "kind": "runtime",
+      "text": "- Complete installation guide and bootstrap instructions specific to Codex"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 392,
+      "kind": "runtime",
+      "text": "**Key differences from Claude Code integration:**"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 394,
+      "kind": "runtime",
+      "text": "- Tool substitution system for Codex-specific equivalents"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 395,
+      "kind": "runtime",
+      "text": "- Simplified subagent handling (manual work instead of delegation)"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 399,
+      "kind": "runtime",
+      "text": "- `.codex/INSTALL.md` - Installation guide for Codex users"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 400,
+      "kind": "runtime",
+      "text": "- `.codex/superpowers-bootstrap.md` - Bootstrap instructions with Codex adaptations"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 401,
+      "kind": "runtime",
+      "text": "- `.codex/superpowers-codex` - Unified Node.js executable with all functionality"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 401,
+      "kind": "dependencies",
+      "text": "- `.codex/superpowers-codex` - Unified Node.js executable with all functionality"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 403,
+      "kind": "runtime",
+      "text": "**Note:** Codex support is experimental. The integration provides core superpowers functionality but may require refinement based on user feedback."
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 415,
+      "kind": "runtime",
+      "text": "The Skill tool is the proper mechanism for invoking skills in Claude Code. This update corrects the bootstrap instructions to guide agents toward the correct tool."
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 456,
+      "kind": "runtime",
+      "text": "- Updated: `skills/subagent-driven-development/SKILL.md` - References to `superpowers:code-reviewer`"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 467,
+      "kind": "runtime",
+      "text": "- Tested with subagent to verify compliance under time pressure"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 476,
+      "kind": "runtime",
+      "text": "- Files updated: brainstorming, executing-plans, subagent-driven-development, systematic-debugging, testing-skills-with-subagents, writing-plans, writing-skills"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 489,
+      "kind": "runtime",
+      "text": "- **Fixed command syntax in README** (#44) - Updated all command references to use correct namespaced syntax (`/superpowers:brainstorm` instead of `/brainstorm`). Plugin-provided commands are automatically namespaced by Claude Code to avoid conflicts between plugins."
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 530,
+      "kind": "runtime",
+      "text": "- Added workflow checklists Claude can copy and track"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 566,
+      "kind": "runtime",
+      "text": "- **Fixed session-start hook execution in plugin context** (#8, PR #9) - The hook was failing silently with \"Plugin hook error\" preventing skills context from loading. Fixed by:"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 567,
+      "kind": "runtime",
+      "text": "  - Using `${BASH_SOURCE[0]:-$0}` fallback when BASH_SOURCE is unbound in Claude Code's execution context"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 580,
+      "kind": "runtime",
+      "text": "Beyond infrastructure, this release adds nine new skills focused on problem-solving, research, and architecture. We rewrote the core **using-skills** documentation with imperative tone and clearer structure, making it easier for Claude to understand when and how to use skills. **find-skills** now ou"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 593,
+      "kind": "dependencies",
+      "text": "- **Forking:** During setup, you'll be offered the option to fork the skills repo (if `gh` is installed)"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 608,
+      "kind": "runtime",
+      "text": "- **setup-personal-superpowers hook** - Replaced by initialize-skills.sh"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 654,
+      "kind": "sensitive",
+      "text": "- Added token efficiency section (word count targets)"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 655,
+      "kind": "runtime",
+      "text": "- Improved CSO (Claude Search Optimization) guidance"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 678,
+      "kind": "runtime",
+      "text": "**Session Start Hook**"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 694,
+      "kind": "runtime",
+      "text": "- Fixed path references throughout hooks and commands"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 717,
+      "kind": "runtime",
+      "text": "- `.claude-plugin/marketplace.json` - Local testing config"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 722,
+      "kind": "runtime",
+      "text": "- `hooks/setup-personal-superpowers.sh` - Obsolete"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 725,
+      "kind": "runtime",
+      "text": "- `hooks/session-start.sh` - Use skills from ~/.config/superpowers/skills"
+    },
+    {
+      "path": "RELEASE-NOTES.md",
+      "line": 744,
+      "kind": "runtime",
+      "text": "# In Claude Code"
+    },
+    {
+      "path": "docs/README.codex.md",
+      "line": 1,
+      "kind": "runtime",
+      "text": "# Superpowers for Codex"
+    },
+    {
+      "path": "docs/README.codex.md",
+      "line": 3,
+      "kind": "runtime",
+      "text": "Guide for using Superpowers with OpenAI Codex via native skill discovery."
+    },
+    {
+      "path": "docs/README.codex.md",
+      "line": 7,
+      "kind": "runtime",
+      "text": "Tell Codex:"
+    },
+    {
+      "path": "docs/README.codex.md",
+      "line": 10,
+      "kind": "runtime",
+      "text": "Fetch and follow instructions from https://raw.githubusercontent.com/obra/superpowers/refs/heads/main/.codex/INSTALL.md"
+    },
+    {
+      "path": "docs/README.codex.md",
+      "line": 17,
+      "kind": "runtime",
+      "text": "- OpenAI Codex CLI"
+    },
+    {
+      "path": "docs/README.codex.md",
+      "line": 24,
+      "kind": "runtime",
+      "text": "   git clone https://github.com/obra/superpowers.git ~/.codex/superpowers"
+    },
+    {
+      "path": "docs/README.codex.md",
+      "line": 30,
+      "kind": "runtime",
+      "text": "   ln -s ~/.codex/superpowers/skills ~/.agents/skills/superpowers"
+    },
+    {
+      "path": "docs/README.codex.md",
+      "line": 33,
+      "kind": "runtime",
+      "text": "3. Restart Codex."
+    },
+    {
+      "path": "docs/README.codex.md",
+      "line": 41,
+      "kind": "runtime",
+      "text": "cmd /c mklink /J \"$env:USERPROFILE\\.agents\\skills\\superpowers\" \"$env:USERPROFILE\\.codex\\superpowers\\skills\""
+    },
+    {
+      "path": "docs/README.codex.md",
+      "line": 46,
+      "kind": "runtime",
+      "text": "Codex has native skill discovery — it scans `~/.agents/skills/` at startup, parses SKILL.md frontmatter, and loads skills on demand. Superpowers skills are made visible through a single symlink:"
+    },
+    {
+      "path": "docs/README.codex.md",
+      "line": 49,
+      "kind": "runtime",
+      "text": "~/.agents/skills/superpowers/ → ~/.codex/superpowers/skills/"
+    },
+    {
+      "path": "docs/README.codex.md",
+      "line": 56,
+      "kind": "runtime",
+      "text": "Skills are discovered automatically. Codex activates them when:"
+    },
+    {
+      "path": "docs/README.codex.md",
+      "line": 59,
+      "kind": "runtime",
+      "text": "- The `using-superpowers` skill directs Codex to use one"
+    },
+    {
+      "path": "docs/README.codex.md",
+      "line": 82,
+      "kind": "runtime",
+      "text": "The `description` field is how Codex decides when to activate a skill automatically — write it as a clear trigger condition."
+    },
+    {
+      "path": "docs/README.codex.md",
+      "line": 87,
+      "kind": "runtime",
+      "text": "cd ~/.codex/superpowers && git pull"
+    },
+    {
+      "path": "docs/README.codex.md",
+      "line": 103,
+      "kind": "runtime",
+      "text": "Optionally delete the clone: `rm -rf ~/.codex/superpowers` (Windows: `Remove-Item -Recurse -Force \"$env:USERPROFILE\\.codex\\superpowers\"`)."
+    },
+    {
+      "path": "docs/README.codex.md",
+      "line": 103,
+      "kind": "sensitive",
+      "text": "Optionally delete the clone: `rm -rf ~/.codex/superpowers` (Windows: `Remove-Item -Recurse -Force \"$env:USERPROFILE\\.codex\\superpowers\"`)."
+    },
+    {
+      "path": "docs/README.codex.md",
+      "line": 110,
+      "kind": "runtime",
+      "text": "2. Check skills exist: `ls ~/.codex/superpowers/skills`"
+    },
+    {
+      "path": "docs/README.codex.md",
+      "line": 111,
+      "kind": "runtime",
+      "text": "3. Restart Codex — skills are discovered at startup"
+    },
+    {
+      "path": "docs/README.opencode.md",
+      "line": 34,
+      "kind": "sensitive",
+      "text": "rm -f ~/.config/opencode/plugins/superpowers.js"
+    },
+    {
+      "path": "docs/README.opencode.md",
+      "line": 35,
+      "kind": "sensitive",
+      "text": "rm -rf ~/.config/opencode/skills/superpowers"
+    },
+    {
+      "path": "docs/README.opencode.md",
+      "line": 125,
+      "kind": "sensitive",
+      "text": "rm -f ~/.config/opencode/plugins/superpowers.js 2>/dev/null"
+    },
+    {
+      "path": "docs/README.opencode.md",
+      "line": 126,
+      "kind": "sensitive",
+      "text": "rm -rf ~/.config/opencode/skills/superpowers 2>/dev/null"
+    },
+    {
+      "path": "docs/README.opencode.md",
+      "line": 242,
+      "kind": "runtime",
+      "text": "The plugin automatically injects superpowers context via the `experimental.chat.system.transform` hook. This adds the \"using-superpowers\" skill content to the system prompt on every request."
+    },
+    {
+      "path": "docs/README.opencode.md",
+      "line": 250,
+      "kind": "runtime",
+      "text": "Skills written for Claude Code are automatically adapted for OpenCode. The bootstrap provides mapping instructions:"
+    },
+    {
+      "path": "docs/README.opencode.md",
+      "line": 252,
+      "kind": "runtime",
+      "text": "- `TodoWrite` → `update_plan`"
+    },
+    {
+      "path": "docs/README.opencode.md",
+      "line": 264,
+      "kind": "runtime",
+      "text": "- `experimental.chat.system.transform` hook for bootstrap injection"
+    },
+    {
+      "path": "docs/README.opencode.md",
+      "line": 306,
+      "kind": "runtime",
+      "text": "2. Check OpenCode version supports `experimental.chat.system.transform` hook"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-design.md",
+      "line": 9,
+      "kind": "runtime",
+      "text": "Add full superpowers support for OpenCode.ai using a native OpenCode plugin architecture that shares core functionality with the existing Codex implementation."
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-design.md",
+      "line": 13,
+      "kind": "runtime",
+      "text": "OpenCode.ai is a coding agent similar to Claude Code and Codex. Previous attempts to port superpowers to OpenCode (PR #93, PR #116) used file-copying approaches. This design takes a different approach: building a native OpenCode plugin using their JavaScript/TypeScript plugin system while sharing co"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-design.md",
+      "line": 17,
+      "kind": "runtime",
+      "text": "- **Claude Code**: Native Anthropic plugin system + file-based skills"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-design.md",
+      "line": 18,
+      "kind": "runtime",
+      "text": "- **Codex**: No plugin system → bootstrap markdown + CLI script"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-design.md",
+      "line": 19,
+      "kind": "runtime",
+      "text": "- **OpenCode**: JavaScript/TypeScript plugins with event hooks and custom tools API"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-design.md",
+      "line": 34,
+      "kind": "runtime",
+      "text": "   - Used by both Codex and OpenCode implementations"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-design.md",
+      "line": 37,
+      "kind": "runtime",
+      "text": "   - Codex: CLI script (`.codex/superpowers-codex`)"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-design.md",
+      "line": 46,
+      "kind": "runtime",
+      "text": "Extract common functionality from `.codex/superpowers-codex` into shared module:"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-design.md",
+      "line": 76,
+      "kind": "runtime",
+      "text": "Loads a specific skill's content into the conversation (equivalent to Claude's Skill tool)."
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-design.md",
+      "line": 119,
+      "kind": "runtime",
+      "text": "### Session Startup Hook"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-design.md",
+      "line": 135,
+      "kind": "runtime",
+      "text": "   - `TodoWrite` → `update_plan`"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-design.md",
+      "line": 136,
+      "kind": "runtime",
+      "text": "   - `Task` with subagents → Use OpenCode subagent system (@mention)"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-design.md",
+      "line": 204,
+      "kind": "runtime",
+      "text": "├── .codex/"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-design.md",
+      "line": 205,
+      "kind": "runtime",
+      "text": "│   ├── superpowers-codex        # UPDATED: Use skills-core"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-design.md",
+      "line": 220,
+      "kind": "runtime",
+      "text": "   - Extract frontmatter parsing from `.codex/superpowers-codex`"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-design.md",
+      "line": 225,
+      "kind": "runtime",
+      "text": "2. Update `.codex/superpowers-codex` to use shared core"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-design.md",
+      "line": 230,
+      "kind": "runtime",
+      "text": "3. Test Codex implementation still works"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-design.md",
+      "line": 241,
+      "kind": "runtime",
+      "text": "   - Implement session.started hook"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-design.md",
+      "line": 259,
+      "kind": "runtime",
+      "text": "4. Test both Codex and OpenCode work correctly"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-design.md",
+      "line": 272,
+      "kind": "runtime",
+      "text": "   - Phase 1: Refactor shared core + update Codex"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-design.md",
+      "line": 273,
+      "kind": "runtime",
+      "text": "   - Verify Codex still works before moving on"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-design.md",
+      "line": 280,
+      "kind": "runtime",
+      "text": "   - Test both Codex and OpenCode side-by-side"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 3,
+      "kind": "runtime",
+      "text": "> **For Claude:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task."
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 5,
+      "kind": "runtime",
+      "text": "**Goal:** Add full superpowers support for OpenCode.ai with a native JavaScript plugin that shares core functionality with the existing Codex implementation."
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 7,
+      "kind": "runtime",
+      "text": "**Architecture:** Extract common skill discovery/parsing logic into `lib/skills-core.js`, refactor Codex to use it, then build OpenCode plugin using their native plugin API with custom tools and session hooks."
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 9,
+      "kind": "dependencies",
+      "text": "**Tech Stack:** Node.js, JavaScript, OpenCode Plugin API, Git worktrees"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 19,
+      "kind": "runtime",
+      "text": "- Reference: `.codex/superpowers-codex` (lines 40-74)"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 24,
+      "kind": "dependencies",
+      "text": "#!/usr/bin/env node"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 101,
+      "kind": "runtime",
+      "text": "- Reference: `.codex/superpowers-codex` (lines 97-136)"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 167,
+      "kind": "dependencies",
+      "text": "Run: `node -c lib/skills-core.js`"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 183,
+      "kind": "runtime",
+      "text": "- Reference: `.codex/superpowers-codex` (lines 212-280)"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 246,
+      "kind": "dependencies",
+      "text": "Run: `node -c lib/skills-core.js`"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 262,
+      "kind": "runtime",
+      "text": "- Reference: `.codex/superpowers-codex` (lines 16-38)"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 319,
+      "kind": "dependencies",
+      "text": "Run: `node -c lib/skills-core.js`"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 331,
+      "kind": "runtime",
+      "text": "## Phase 2: Refactor Codex to Use Shared Core"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 333,
+      "kind": "runtime",
+      "text": "### Task 5: Update Codex to Import Shared Core"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 336,
+      "kind": "runtime",
+      "text": "- Modify: `.codex/superpowers-codex` (add import at top)"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 348,
+      "kind": "runtime",
+      "text": "Run: `node -c .codex/superpowers-codex`"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 348,
+      "kind": "dependencies",
+      "text": "Run: `node -c .codex/superpowers-codex`"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 354,
+      "kind": "runtime",
+      "text": "git add .codex/superpowers-codex"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 355,
+      "kind": "runtime",
+      "text": "git commit -m \"refactor: import shared skills core in codex\""
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 363,
+      "kind": "runtime",
+      "text": "- Modify: `.codex/superpowers-codex` (lines 40-74)"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 377,
+      "kind": "runtime",
+      "text": "Run: `.codex/superpowers-codex find-skills | head -20`"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 383,
+      "kind": "runtime",
+      "text": "git add .codex/superpowers-codex"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 384,
+      "kind": "runtime",
+      "text": "git commit -m \"refactor: use shared extractFrontmatter in codex\""
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 392,
+      "kind": "runtime",
+      "text": "- Modify: `.codex/superpowers-codex` (lines 97-136, approximately)"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 404,
+      "kind": "runtime",
+      "text": "Run: `.codex/superpowers-codex find-skills | head -20`"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 410,
+      "kind": "runtime",
+      "text": "git add .codex/superpowers-codex"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 411,
+      "kind": "runtime",
+      "text": "git commit -m \"refactor: use shared findSkillsInDir in codex\""
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 419,
+      "kind": "runtime",
+      "text": "- Modify: `.codex/superpowers-codex` (lines 16-38, approximately)"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 431,
+      "kind": "runtime",
+      "text": "Run: `.codex/superpowers-codex bootstrap | head -50`"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 437,
+      "kind": "runtime",
+      "text": "git add .codex/superpowers-codex"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 438,
+      "kind": "runtime",
+      "text": "git commit -m \"refactor: use shared checkForUpdates in codex\""
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 457,
+      "kind": "dependencies",
+      "text": "#!/usr/bin/env node"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 480,
+      "kind": "runtime",
+      "text": "    // Custom tools and hooks will go here"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 561,
+      "kind": "runtime",
+      "text": "          // Format output similar to Claude Code's Skill tool"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 577,
+      "kind": "dependencies",
+      "text": "Run: `node -c .opencode/plugin/superpowers.js`"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 643,
+      "kind": "dependencies",
+      "text": "Run: `node -c .opencode/plugin/superpowers.js`"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 655,
+      "kind": "runtime",
+      "text": "### Task 12: Implement Session Start Hook"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 660,
+      "kind": "runtime",
+      "text": "**Step 1: Add session.started hook**"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 704,
+      "kind": "runtime",
+      "text": "- \\`TodoWrite\\` → \\`update_plan\\` (your planning/task tracking tool)"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 705,
+      "kind": "runtime",
+      "text": "- \\`Task\\` tool with subagents → Use OpenCode's subagent system (@mention syntax or automatic dispatch)"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 746,
+      "kind": "dependencies",
+      "text": "Run: `node -c .opencode/plugin/superpowers.js`"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 753,
+      "kind": "runtime",
+      "text": "git commit -m \"feat: implement session.started hook for opencode\""
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 773,
+      "kind": "dependencies",
+      "text": "- Node.js installed"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 863,
+      "kind": "dependencies",
+      "text": "3. Verify Node.js is installed: `node --version`"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 873,
+      "kind": "runtime",
+      "text": "When a skill references a Claude Code tool you don't have:"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 874,
+      "kind": "runtime",
+      "text": "- `TodoWrite` → use `update_plan`"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 906,
+      "kind": "runtime",
+      "text": "Find the section about supported platforms (search for \"Codex\" in the file), and add after it:"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 958,
+      "kind": "runtime",
+      "text": "- **Refactored Codex Implementation**: Now uses shared `lib/skills-core.js` module"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 959,
+      "kind": "runtime",
+      "text": "  - Eliminates code duplication between Codex and OpenCode"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 982,
+      "kind": "runtime",
+      "text": "### Task 16: Test Codex Still Works"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 985,
+      "kind": "runtime",
+      "text": "- Test: `.codex/superpowers-codex`"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 989,
+      "kind": "runtime",
+      "text": "Run: `.codex/superpowers-codex find-skills | head -20`"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 994,
+      "kind": "runtime",
+      "text": "Run: `.codex/superpowers-codex use-skill superpowers:brainstorming | head -20`"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 999,
+      "kind": "runtime",
+      "text": "Run: `.codex/superpowers-codex bootstrap | head -30`"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 1061,
+      "kind": "runtime",
+      "text": "- Files modified: `.codex/superpowers-codex`, `README.md`, `RELEASE-NOTES.md`"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 1062,
+      "kind": "runtime",
+      "text": "- Testing performed: Codex commands verified"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 1084,
+      "kind": "runtime",
+      "text": "7. **Test tool mapping**: Verify TodoWrite → update_plan mapping works"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 1089,
+      "kind": "runtime",
+      "text": "- [ ] `.codex/superpowers-codex` refactored to use shared core"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 1090,
+      "kind": "runtime",
+      "text": "- [ ] Codex commands still work (find-skills, use-skill, bootstrap)"
+    },
+    {
+      "path": "docs/plans/2025-11-22-opencode-support-implementation.md",
+      "line": 1091,
+      "kind": "runtime",
+      "text": "- [ ] `.opencode/plugin/superpowers.js` created with tools and hooks"
+    },
+    {
+      "path": "docs/plans/2025-11-28-skills-improvements-from-user-feedback.md",
+      "line": 5,
+      "kind": "runtime",
+      "text": "**Source:** Two Claude instances using superpowers in real development scenarios"
+    },
+    {
+      "path": "docs/plans/2025-11-28-skills-improvements-from-user-feedback.md",
+      "line": 11,
+      "kind": "runtime",
+      "text": "Two Claude instances provided detailed feedback from actual development sessions. Their feedback reveals **systematic gaps** in current skills that allowed preventable bugs to ship despite following the skills."
+    },
+    {
+      "path": "docs/plans/2025-11-28-skills-improvements-from-user-feedback.md",
+      "line": 30,
+      "kind": "runtime",
+      "text": "- Subagent tested \"OpenAI integration\""
+    },
+    {
+      "path": "docs/plans/2025-11-28-skills-improvements-from-user-feedback.md",
+      "line": 34,
+      "kind": "runtime",
+      "text": "- **BUT** response contained `\"model\": \"claude-sonnet-4-20250514\"` - was actually using Anthropic"
+    },
+    {
+      "path": "docs/plans/2025-11-28-skills-improvements-from-user-feedback.md",
+      "line": 65,
+      "kind": "runtime",
+      "text": "### Problem 3: Context Bloat in Subagent Prompts"
+    },
+    {
+      "path": "docs/plans/2025-11-28-skills-improvements-from-user-feedback.md",
+      "line": 68,
+      "kind": "runtime",
+      "text": "- Standard approach: give subagent full plan file to read"
+    },
+    {
+      "path": "docs/plans/2025-11-28-skills-improvements-from-user-feedback.md",
+      "line": 98,
+      "kind": "dependencies",
+      "text": "- Traced to line 99: `strings.Join(metadata.Entrypoint, \" \")` creating invalid Docker syntax"
+    },
+    {
+      "path": "docs/plans/2025-11-28-skills-improvements-from-user-feedback.md",
+      "line": 143,
+      "kind": "runtime",
+      "text": "- Code reviewer subagent dispatched"
+    },
+    {
+      "path": "docs/plans/2025-11-28-skills-improvements-from-user-feedback.md",
+      "line": 235,
+      "kind": "runtime",
+      "text": "### 2. subagent-driven-development: Add Process Hygiene for E2E Tests"
+    },
+    {
+      "path": "docs/plans/2025-11-28-skills-improvements-from-user-feedback.md",
+      "line": 250,
+      "kind": "runtime",
+      "text": "**Before dispatching E2E test subagent, include cleanup in prompt:**"
+    },
+    {
+      "path": "docs/plans/2025-11-28-skills-improvements-from-user-feedback.md",
+      "line": 270,
+      "kind": "dependencies",
+      "text": "- Kill any existing servers: pkill -f 'node.*server.js' 2>/dev/null || true"
+    },
+    {
+      "path": "docs/plans/2025-11-28-skills-improvements-from-user-feedback.md",
+      "line": 275,
+      "kind": "dependencies",
+      "text": "- Verify: pgrep -f 'node.*server.js' || echo 'Cleanup verified'\""
+    },
+    {
+      "path": "docs/plans/2025-11-28-skills-improvements-from-user-feedback.md",
+      "line": 293,
+      "kind": "runtime",
+      "text": "### 3. subagent-driven-development: Add Lean Context Option"
+    },
+    {
+      "path": "docs/plans/2025-11-28-skills-improvements-from-user-feedback.md",
+      "line": 295,
+      "kind": "runtime",
+      "text": "**Modify Step 2: Execute Task with Subagent**"
+    },
+    {
+      "path": "docs/plans/2025-11-28-skills-improvements-from-user-feedback.md",
+      "line": 351,
+      "kind": "sensitive",
+      "text": "Reduces token usage, increases focus, faster completion when appropriate."
+    },
+    {
+      "path": "docs/plans/2025-11-28-skills-improvements-from-user-feedback.md",
+      "line": 355,
+      "kind": "runtime",
+      "text": "### 4. subagent-driven-development: Add Self-Reflection Step"
+    },
+    {
+      "path": "docs/plans/2025-11-28-skills-improvements-from-user-feedback.md",
+      "line": 357,
+      "kind": "runtime",
+      "text": "**Modify Step 2: Execute Task with Subagent**"
+    },
+    {
+      "path": "docs/plans/2025-11-28-skills-improvements-from-user-feedback.md",
+      "line": 502,
+      "kind": "runtime",
+      "text": "### 7. subagent-driven-development: Require Skills Reading for Test Subagents"
+    },
+    {
+      "path": "docs/plans/2025-11-28-skills-improvements-from-user-feedback.md",
+      "line": 528,
+      "kind": "runtime",
+      "text": "### 8. subagent-driven-development: Allow Implementer to Fix Self-Identified Issues"
+    },
+    {
+      "path": "docs/plans/2025-11-28-skills-improvements-from-user-feedback.md",
+      "line": 534,
+      "kind": "runtime",
+      "text": "Subagent reports back with summary of work."
+    },
+    {
+      "path": "docs/plans/2025-11-28-skills-improvements-from-user-feedback.md",
+      "line": 539,
+      "kind": "runtime",
+      "text": "Subagent performs self-reflection, then:"
+    },
+    {
+      "path": "docs/plans/2025-11-28-skills-improvements-from-user-feedback.md",
+      "line": 584,
+      "kind": "runtime",
+      "text": "4. **subagent-driven-development: Process hygiene**"
+    },
+    {
+      "path": "docs/plans/2025-11-28-skills-improvements-from-user-feedback.md",
+      "line": 587,
+      "kind": "runtime",
+      "text": "   - File: `skills/subagent-driven-development/SKILL.md`"
+    },
+    {
+      "path": "docs/plans/2025-11-28-skills-improvements-from-user-feedback.md",
+      "line": 589,
+      "kind": "runtime",
+      "text": "5. **subagent-driven-development: Self-reflection**"
+    },
+    {
+      "path": "docs/plans/2025-11-28-skills-improvements-from-user-feedback.md",
+      "line": 592,
+      "kind": "runtime",
+      "text": "   - File: `skills/subagent-driven-development/SKILL.md`"
+    },
+    {
+      "path": "docs/plans/2025-11-28-skills-improvements-from-user-feedback.md",
+      "line": 594,
+      "kind": "runtime",
+      "text": "6. **subagent-driven-development: Skills reading requirement**"
+    },
+    {
+      "path": "docs/plans/2025-11-28-skills-improvements-from-user-feedback.md",
+      "line": 597,
+      "kind": "runtime",
+      "text": "   - File: `skills/subagent-driven-development/SKILL.md`"
+    },
+    {
+      "path": "docs/plans/2025-11-28-skills-improvements-from-user-feedback.md",
+      "line": 601,
+      "kind": "runtime",
+      "text": "7. **subagent-driven-development: Lean context option**"
+    },
+    {
+      "path": "docs/plans/2025-11-28-skills-improvements-from-user-feedback.md",
+      "line": 604,
+      "kind": "runtime",
+      "text": "   - File: `skills/subagent-driven-development/SKILL.md`"
+    },
+    {
+      "path": "docs/plans/2025-11-28-skills-improvements-from-user-feedback.md",
+      "line": 606,
+      "kind": "runtime",
+      "text": "8. **subagent-driven-development: Allow implementer to fix**"
+    },
+    {
+      "path": "docs/plans/2025-11-28-skills-improvements-from-user-feedback.md",
+      "line": 609,
+      "kind": "runtime",
+      "text": "   - File: `skills/subagent-driven-development/SKILL.md`"
+    },
+    {
+      "path": "docs/plans/2025-11-28-skills-improvements-from-user-feedback.md",
+      "line": 626,
+      "kind": "runtime",
+      "text": "   - Should this be in subagent-driven-development or a separate skill?"
+    },
+    {
+      "path": "docs/plans/2025-11-28-skills-improvements-from-user-feedback.md",
+      "line": 658,
+      "kind": "runtime",
+      "text": "   - Subagent reports reference skill gate functions"
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 3,
+      "kind": "runtime",
+      "text": "This document describes how to test Superpowers skills, particularly the integration tests for complex skills like `subagent-driven-development`."
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 7,
+      "kind": "runtime",
+      "text": "Testing skills that involve subagents, workflows, and complex interactions requires running actual Claude Code sessions in headless mode and verifying their behavior through session transcripts."
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 13,
+      "kind": "runtime",
+      "text": "├── claude-code/"
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 15,
+      "kind": "runtime",
+      "text": "│   ├── test-subagent-driven-development-integration.sh"
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 16,
+      "kind": "sensitive",
+      "text": "│   ├── analyze-token-usage.py             # Token analysis tool"
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 24,
+      "kind": "runtime",
+      "text": "Integration tests execute real Claude Code sessions with actual skills:"
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 27,
+      "kind": "runtime",
+      "text": "# Run the subagent-driven-development integration test"
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 28,
+      "kind": "runtime",
+      "text": "cd tests/claude-code"
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 29,
+      "kind": "runtime",
+      "text": "./test-subagent-driven-development-integration.sh"
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 37,
+      "kind": "runtime",
+      "text": "- Claude Code must be installed and available as `claude` command"
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 38,
+      "kind": "runtime",
+      "text": "- Local dev marketplace must be enabled: `\"superpowers@superpowers-dev\": true` in `~/.claude/settings.json`"
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 40,
+      "kind": "runtime",
+      "text": "## Integration Test: subagent-driven-development"
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 44,
+      "kind": "runtime",
+      "text": "The integration test verifies the `subagent-driven-development` skill correctly:"
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 55,
+      "kind": "dependencies",
+      "text": "1. **Setup**: Creates a temporary Node.js project with a minimal implementation plan"
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 56,
+      "kind": "runtime",
+      "text": "2. **Execution**: Runs Claude Code in headless mode with the skill"
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 59,
+      "kind": "runtime",
+      "text": "   - Subagents were dispatched (Task tool)"
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 60,
+      "kind": "runtime",
+      "text": "   - TodoWrite was used for tracking"
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 64,
+      "kind": "runtime",
+      "text": "4. **Token Analysis**: Shows token usage breakdown by subagent"
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 64,
+      "kind": "sensitive",
+      "text": "4. **Token Analysis**: Shows token usage breakdown by subagent"
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 70,
+      "kind": "runtime",
+      "text": " Integration Test: subagent-driven-development"
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 78,
+      "kind": "runtime",
+      "text": "  [PASS] subagent-driven-development skill was invoked"
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 84,
+      "kind": "runtime",
+      "text": "  [PASS] TodoWrite used 5 time(s)"
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 100,
+      "kind": "sensitive",
+      "text": " Token Usage Analysis"
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 137,
+      "kind": "sensitive",
+      "text": "## Token Analysis Tool"
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 141,
+      "kind": "runtime",
+      "text": "Analyze token usage from any Claude Code session:"
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 141,
+      "kind": "sensitive",
+      "text": "Analyze token usage from any Claude Code session:"
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 144,
+      "kind": "runtime",
+      "text": "python3 tests/claude-code/analyze-token-usage.py ~/.claude/projects/<project-dir>/<session-id>.jsonl"
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 144,
+      "kind": "dependencies",
+      "text": "python3 tests/claude-code/analyze-token-usage.py ~/.claude/projects/<project-dir>/<session-id>.jsonl"
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 144,
+      "kind": "sensitive",
+      "text": "python3 tests/claude-code/analyze-token-usage.py ~/.claude/projects/<project-dir>/<session-id>.jsonl"
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 149,
+      "kind": "runtime",
+      "text": "Session transcripts are stored in `~/.claude/projects/` with the working directory path encoded:"
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 153,
+      "kind": "runtime",
+      "text": "SESSION_DIR=\"$HOME/.claude/projects/-Users-jesse-Documents-GitHub-superpowers-superpowers\""
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 161,
+      "kind": "runtime",
+      "text": "- **Main session usage**: Token usage by the coordinator (you or main Claude instance)"
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 161,
+      "kind": "sensitive",
+      "text": "- **Main session usage**: Token usage by the coordinator (you or main Claude instance)"
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 162,
+      "kind": "runtime",
+      "text": "- **Per-subagent breakdown**: Each Task invocation with:"
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 169,
+      "kind": "sensitive",
+      "text": "- **Totals**: Overall token usage and cost estimate"
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 175,
+      "kind": "runtime",
+      "text": "- **Similar costs per subagent**: Expected - each gets similar task complexity"
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 176,
+      "kind": "runtime",
+      "text": "- **Cost per task**: Typical range is $0.05-$0.15 per subagent depending on task"
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 186,
+      "kind": "runtime",
+      "text": "2. Check `~/.claude/settings.json` has `\"superpowers@superpowers-dev\": true` in `enabledPlugins`"
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 191,
+      "kind": "runtime",
+      "text": "**Problem**: Claude blocked from writing files or accessing directories"
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 203,
+      "kind": "runtime",
+      "text": "1. Increase timeout: `timeout 1800 claude ...` (30 minutes)"
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 205,
+      "kind": "runtime",
+      "text": "3. Review subagent task complexity"
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 212,
+      "kind": "runtime",
+      "text": "1. Check the correct project directory in `~/.claude/projects/`"
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 213,
+      "kind": "runtime",
+      "text": "2. Use `find ~/.claude/projects -name \"*.jsonl\" -mmin -60` to find recent sessions"
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 234,
+      "kind": "runtime",
+      "text": "# Run Claude with skill"
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 236,
+      "kind": "runtime",
+      "text": "cd \"$SCRIPT_DIR/../..\" && timeout 1800 claude -p \"$PROMPT\" \\"
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 244,
+      "kind": "runtime",
+      "text": "SESSION_DIR=\"$HOME/.claude/projects/$WORKING_DIR_ESCAPED\""
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 252,
+      "kind": "sensitive",
+      "text": "# Show token analysis"
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 253,
+      "kind": "dependencies",
+      "text": "python3 \"$SCRIPT_DIR/analyze-token-usage.py\" \"$SESSION_FILE\""
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 253,
+      "kind": "sensitive",
+      "text": "python3 \"$SCRIPT_DIR/analyze-token-usage.py\" \"$SESSION_FILE\""
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 262,
+      "kind": "sensitive",
+      "text": "5. **Show token usage**: Always include token analysis for cost visibility"
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 303,
+      "kind": "runtime",
+      "text": "The `agentId` field links to subagent sessions, and the `usage` field contains token usage for that specific subagent invocation."
+    },
+    {
+      "path": "docs/testing.md",
+      "line": 303,
+      "kind": "sensitive",
+      "text": "The `agentId` field links to subagent sessions, and the `usage` field contains token usage for that specific subagent invocation."
+    },
+    {
+      "path": "docs/windows/polyglot-hooks.md",
+      "line": 1,
+      "kind": "runtime",
+      "text": "# Cross-Platform Polyglot Hooks for Claude Code"
+    },
+    {
+      "path": "docs/windows/polyglot-hooks.md",
+      "line": 3,
+      "kind": "runtime",
+      "text": "Claude Code plugins need hooks that work on Windows, macOS, and Linux. This document explains the polyglot wrapper technique that makes this possible."
+    },
+    {
+      "path": "docs/windows/polyglot-hooks.md",
+      "line": 7,
+      "kind": "runtime",
+      "text": "Claude Code runs hook commands through the system's default shell:"
+    },
+    {
+      "path": "docs/windows/polyglot-hooks.md",
+      "line": 25,
+      "kind": "runtime",
+      "text": "\"C:\\Program Files\\Git\\bin\\bash.exe\" -l -c \"\\\"$(cygpath -u \\\"$CLAUDE_PLUGIN_ROOT\\\")/hooks/session-start.sh\\\"\""
+    },
+    {
+      "path": "docs/windows/polyglot-hooks.md",
+      "line": 30,
+      "kind": "runtime",
+      "text": "\"${CLAUDE_PLUGIN_ROOT}/hooks/session-start.sh\""
+    },
+    {
+      "path": "docs/windows/polyglot-hooks.md",
+      "line": 55,
+      "kind": "runtime",
+      "text": "hooks/"
+    },
+    {
+      "path": "docs/windows/polyglot-hooks.md",
+      "line": 56,
+      "kind": "runtime",
+      "text": "├── hooks.json           # Points to the .cmd wrapper"
+    },
+    {
+      "path": "docs/windows/polyglot-hooks.md",
+      "line": 58,
+      "kind": "runtime",
+      "text": "└── session-start.sh     # Actual hook logic (bash script)"
+    },
+    {
+      "path": "docs/windows/polyglot-hooks.md",
+      "line": 61,
+      "kind": "runtime",
+      "text": "### hooks.json"
+    },
+    {
+      "path": "docs/windows/polyglot-hooks.md",
+      "line": 65,
+      "kind": "runtime",
+      "text": "  \"hooks\": {"
+    },
+    {
+      "path": "docs/windows/polyglot-hooks.md",
+      "line": 69,
+      "kind": "runtime",
+      "text": "        \"hooks\": ["
+    },
+    {
+      "path": "docs/windows/polyglot-hooks.md",
+      "line": 72,
+      "kind": "runtime",
+      "text": "            \"command\": \"\\\"${CLAUDE_PLUGIN_ROOT}/hooks/session-start.cmd\\\"\""
+    },
+    {
+      "path": "docs/windows/polyglot-hooks.md",
+      "line": 92,
+      "kind": "sensitive",
+      "text": "- The `.cmd` file must have execute permission (`chmod +x`)"
+    },
+    {
+      "path": "docs/windows/polyglot-hooks.md",
+      "line": 94,
+      "kind": "runtime",
+      "text": "## Writing Cross-Platform Hook Scripts"
+    },
+    {
+      "path": "docs/windows/polyglot-hooks.md",
+      "line": 96,
+      "kind": "runtime",
+      "text": "Your actual hook logic goes in the `.sh` file. To ensure it works on Windows (via Git Bash):"
+    },
+    {
+      "path": "docs/windows/polyglot-hooks.md",
+      "line": 138,
+      "kind": "runtime",
+      "text": "For plugins with multiple hooks, you can create a generic wrapper that takes the script name as an argument:"
+    },
+    {
+      "path": "docs/windows/polyglot-hooks.md",
+      "line": 140,
+      "kind": "runtime",
+      "text": "### run-hook.cmd"
+    },
+    {
+      "path": "docs/windows/polyglot-hooks.md",
+      "line": 157,
+      "kind": "runtime",
+      "text": "### hooks.json using the reusable wrapper"
+    },
+    {
+      "path": "docs/windows/polyglot-hooks.md",
+      "line": 160,
+      "kind": "runtime",
+      "text": "  \"hooks\": {"
+    },
+    {
+      "path": "docs/windows/polyglot-hooks.md",
+      "line": 164,
+      "kind": "runtime",
+      "text": "        \"hooks\": ["
+    },
+    {
+      "path": "docs/windows/polyglot-hooks.md",
+      "line": 167,
+      "kind": "runtime",
+      "text": "            \"command\": \"\\\"${CLAUDE_PLUGIN_ROOT}/hooks/run-hook.cmd\\\" session-start.sh\""
+    },
+    {
+      "path": "docs/windows/polyglot-hooks.md",
+      "line": 175,
+      "kind": "runtime",
+      "text": "        \"hooks\": ["
+    },
+    {
+      "path": "docs/windows/polyglot-hooks.md",
+      "line": 178,
+      "kind": "runtime",
+      "text": "            \"command\": \"\\\"${CLAUDE_PLUGIN_ROOT}/hooks/run-hook.cmd\\\" validate-bash.sh\""
+    },
+    {
+      "path": "docs/windows/polyglot-hooks.md",
+      "line": 196,
+      "kind": "runtime",
+      "text": "`${CLAUDE_PLUGIN_ROOT}` expanded to a Windows path ending with backslash, then `/hooks/...` was appended. Use `cygpath` to convert the entire path."
+    },
+    {
+      "path": "docs/windows/polyglot-hooks.md",
+      "line": 199,
+      "kind": "runtime",
+      "text": "The hooks.json is pointing directly to the `.sh` file. Point to the `.cmd` wrapper instead."
+    },
+    {
+      "path": "docs/windows/polyglot-hooks.md",
+      "line": 201,
+      "kind": "runtime",
+      "text": "### Works in terminal but not as hook"
+    },
+    {
+      "path": "docs/windows/polyglot-hooks.md",
+      "line": 202,
+      "kind": "runtime",
+      "text": "Claude Code may run hooks differently. Test by simulating the hook environment:"
+    },
+    {
+      "path": "docs/windows/polyglot-hooks.md",
+      "line": 205,
+      "kind": "runtime",
+      "text": "cmd /c \"C:\\path\\to\\plugin\\hooks\\session-start.cmd\""
+    },
+    {
+      "path": "docs/windows/polyglot-hooks.md",
+      "line": 210,
+      "kind": "runtime",
+      "text": "- [anthropics/claude-code#9758](https://github.com/anthropics/claude-code/issues/9758) - .sh scripts open in editor on Windows"
+    },
+    {
+      "path": "docs/windows/polyglot-hooks.md",
+      "line": 211,
+      "kind": "runtime",
+      "text": "- [anthropics/claude-code#3417](https://github.com/anthropics/claude-code/issues/3417) - Hooks don't work on Windows"
+    },
+    {
+      "path": "docs/windows/polyglot-hooks.md",
+      "line": 212,
+      "kind": "runtime",
+      "text": "- [anthropics/claude-code#6023](https://github.com/anthropics/claude-code/issues/6023) - CLAUDE_PROJECT_DIR not found"
+    },
+    {
+      "path": "hooks/hooks.json",
+      "line": 2,
+      "kind": "runtime",
+      "text": "  \"hooks\": {"
+    },
+    {
+      "path": "hooks/hooks.json",
+      "line": 6,
+      "kind": "runtime",
+      "text": "        \"hooks\": ["
+    },
+    {
+      "path": "hooks/hooks.json",
+      "line": 9,
+      "kind": "runtime",
+      "text": "            \"command\": \"'${CLAUDE_PLUGIN_ROOT}/hooks/run-hook.cmd' session-start\","
+    },
+    {
+      "path": "skills/brainstorming/SKILL.md",
+      "line": 35,
+      "kind": "dependencies",
+      "text": "```dot"
+    },
+    {
+      "path": "skills/dispatching-parallel-agents/SKILL.md",
+      "line": 16,
+      "kind": "dependencies",
+      "text": "```dot"
+    },
+    {
+      "path": "skills/dispatching-parallel-agents/SKILL.md",
+      "line": 67,
+      "kind": "runtime",
+      "text": "// In Claude Code / AI environment"
+    },
+    {
+      "path": "skills/executing-plans/SKILL.md",
+      "line": 22,
+      "kind": "runtime",
+      "text": "4. If no concerns: Create TodoWrite and proceed"
+    },
+    {
+      "path": "skills/finishing-a-development-branch/SKILL.md",
+      "line": 24,
+      "kind": "dependencies",
+      "text": "npm test / cargo test / pytest / go test ./..."
+    },
+    {
+      "path": "skills/finishing-a-development-branch/SKILL.md",
+      "line": 96,
+      "kind": "dependencies",
+      "text": "gh pr create --title \"<title>\" --body \"$(cat <<'EOF'"
+    },
+    {
+      "path": "skills/finishing-a-development-branch/SKILL.md",
+      "line": 196,
+      "kind": "runtime",
+      "text": "- **subagent-driven-development** (Step 7) - After all tasks complete"
+    },
+    {
+      "path": "skills/receiving-code-review/SKILL.md",
+      "line": 30,
+      "kind": "runtime",
+      "text": "- \"You're absolutely right!\" (explicit CLAUDE.md violation)"
+    },
+    {
+      "path": "skills/receiving-code-review/SKILL.md",
+      "line": 205,
+      "kind": "dependencies",
+      "text": "When replying to inline review comments on GitHub, reply in the comment thread (`gh api repos/{owner}/{repo}/pulls/{pr}/comments/{id}/replies`), not as a top-level PR comment."
+    },
+    {
+      "path": "skills/requesting-code-review/SKILL.md",
+      "line": 8,
+      "kind": "runtime",
+      "text": "Dispatch superpowers:code-reviewer subagent to catch issues before they cascade."
+    },
+    {
+      "path": "skills/requesting-code-review/SKILL.md",
+      "line": 15,
+      "kind": "runtime",
+      "text": "- After each task in subagent-driven development"
+    },
+    {
+      "path": "skills/requesting-code-review/SKILL.md",
+      "line": 32,
+      "kind": "runtime",
+      "text": "**2. Dispatch code-reviewer subagent:**"
+    },
+    {
+      "path": "skills/requesting-code-review/SKILL.md",
+      "line": 34,
+      "kind": "runtime",
+      "text": "Use Task tool with superpowers:code-reviewer type, fill template at `code-reviewer.md`"
+    },
+    {
+      "path": "skills/requesting-code-review/SKILL.md",
+      "line": 59,
+      "kind": "runtime",
+      "text": "[Dispatch superpowers:code-reviewer subagent]"
+    },
+    {
+      "path": "skills/requesting-code-review/SKILL.md",
+      "line": 66,
+      "kind": "runtime",
+      "text": "[Subagent returns]:"
+    },
+    {
+      "path": "skills/requesting-code-review/SKILL.md",
+      "line": 79,
+      "kind": "runtime",
+      "text": "**Subagent-Driven Development:**"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 2,
+      "kind": "runtime",
+      "text": "name: subagent-driven-development"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 6,
+      "kind": "runtime",
+      "text": "# Subagent-Driven Development"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 8,
+      "kind": "runtime",
+      "text": "Execute plan by dispatching fresh subagent per task, with two-stage review after each: spec compliance review first, then code quality review."
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 10,
+      "kind": "runtime",
+      "text": "**Core principle:** Fresh subagent per task + two-stage review (spec then quality) = high quality, fast iteration"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 14,
+      "kind": "dependencies",
+      "text": "```dot"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 19,
+      "kind": "runtime",
+      "text": "    \"subagent-driven-development\" [shape=box];"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 27,
+      "kind": "runtime",
+      "text": "    \"Stay in this session?\" -> \"subagent-driven-development\" [label=\"yes\"];"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 34,
+      "kind": "runtime",
+      "text": "- Fresh subagent per task (no context pollution)"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 40,
+      "kind": "dependencies",
+      "text": "```dot"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 46,
+      "kind": "runtime",
+      "text": "        \"Dispatch implementer subagent (./implementer-prompt.md)\" [shape=box];"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 47,
+      "kind": "runtime",
+      "text": "        \"Implementer subagent asks questions?\" [shape=diamond];"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 49,
+      "kind": "runtime",
+      "text": "        \"Implementer subagent implements, tests, commits, self-reviews\" [shape=box];"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 50,
+      "kind": "runtime",
+      "text": "        \"Dispatch spec reviewer subagent (./spec-reviewer-prompt.md)\" [shape=box];"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 51,
+      "kind": "runtime",
+      "text": "        \"Spec reviewer subagent confirms code matches spec?\" [shape=diamond];"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 52,
+      "kind": "runtime",
+      "text": "        \"Implementer subagent fixes spec gaps\" [shape=box];"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 53,
+      "kind": "runtime",
+      "text": "        \"Dispatch code quality reviewer subagent (./code-quality-reviewer-prompt.md)\" [shape=box];"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 54,
+      "kind": "runtime",
+      "text": "        \"Code quality reviewer subagent approves?\" [shape=diamond];"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 55,
+      "kind": "runtime",
+      "text": "        \"Implementer subagent fixes quality issues\" [shape=box];"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 56,
+      "kind": "runtime",
+      "text": "        \"Mark task complete in TodoWrite\" [shape=box];"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 59,
+      "kind": "runtime",
+      "text": "    \"Read plan, extract all tasks with full text, note context, create TodoWrite\" [shape=box];"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 61,
+      "kind": "runtime",
+      "text": "    \"Dispatch final code reviewer subagent for entire implementation\" [shape=box];"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 64,
+      "kind": "runtime",
+      "text": "    \"Read plan, extract all tasks with full text, note context, create TodoWrite\" -> \"Dispatch implementer subagent (./implementer-prompt.md)\";"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 65,
+      "kind": "runtime",
+      "text": "    \"Dispatch implementer subagent (./implementer-prompt.md)\" -> \"Implementer subagent asks questions?\";"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 66,
+      "kind": "runtime",
+      "text": "    \"Implementer subagent asks questions?\" -> \"Answer questions, provide context\" [label=\"yes\"];"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 67,
+      "kind": "runtime",
+      "text": "    \"Answer questions, provide context\" -> \"Dispatch implementer subagent (./implementer-prompt.md)\";"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 68,
+      "kind": "runtime",
+      "text": "    \"Implementer subagent asks questions?\" -> \"Implementer subagent implements, tests, commits, self-reviews\" [label=\"no\"];"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 69,
+      "kind": "runtime",
+      "text": "    \"Implementer subagent implements, tests, commits, self-reviews\" -> \"Dispatch spec reviewer subagent (./spec-reviewer-prompt.md)\";"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 70,
+      "kind": "runtime",
+      "text": "    \"Dispatch spec reviewer subagent (./spec-reviewer-prompt.md)\" -> \"Spec reviewer subagent confirms code matches spec?\";"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 71,
+      "kind": "runtime",
+      "text": "    \"Spec reviewer subagent confirms code matches spec?\" -> \"Implementer subagent fixes spec gaps\" [label=\"no\"];"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 72,
+      "kind": "runtime",
+      "text": "    \"Implementer subagent fixes spec gaps\" -> \"Dispatch spec reviewer subagent (./spec-reviewer-prompt.md)\" [label=\"re-review\"];"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 73,
+      "kind": "runtime",
+      "text": "    \"Spec reviewer subagent confirms code matches spec?\" -> \"Dispatch code quality reviewer subagent (./code-quality-reviewer-prompt.md)\" [label=\"yes\"];"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 74,
+      "kind": "runtime",
+      "text": "    \"Dispatch code quality reviewer subagent (./code-quality-reviewer-prompt.md)\" -> \"Code quality reviewer subagent approves?\";"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 75,
+      "kind": "runtime",
+      "text": "    \"Code quality reviewer subagent approves?\" -> \"Implementer subagent fixes quality issues\" [label=\"no\"];"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 76,
+      "kind": "runtime",
+      "text": "    \"Implementer subagent fixes quality issues\" -> \"Dispatch code quality reviewer subagent (./code-quality-reviewer-prompt.md)\" [label=\"re-review\"];"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 77,
+      "kind": "runtime",
+      "text": "    \"Code quality reviewer subagent approves?\" -> \"Mark task complete in TodoWrite\" [label=\"yes\"];"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 78,
+      "kind": "runtime",
+      "text": "    \"Mark task complete in TodoWrite\" -> \"More tasks remain?\";"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 79,
+      "kind": "runtime",
+      "text": "    \"More tasks remain?\" -> \"Dispatch implementer subagent (./implementer-prompt.md)\" [label=\"yes\"];"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 80,
+      "kind": "runtime",
+      "text": "    \"More tasks remain?\" -> \"Dispatch final code reviewer subagent for entire implementation\" [label=\"no\"];"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 81,
+      "kind": "runtime",
+      "text": "    \"Dispatch final code reviewer subagent for entire implementation\" -> \"Use superpowers:finishing-a-development-branch\";"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 87,
+      "kind": "runtime",
+      "text": "- `./implementer-prompt.md` - Dispatch implementer subagent"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 88,
+      "kind": "runtime",
+      "text": "- `./spec-reviewer-prompt.md` - Dispatch spec compliance reviewer subagent"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 89,
+      "kind": "runtime",
+      "text": "- `./code-quality-reviewer-prompt.md` - Dispatch code quality reviewer subagent"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 94,
+      "kind": "runtime",
+      "text": "You: I'm using Subagent-Driven Development to execute this plan."
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 98,
+      "kind": "runtime",
+      "text": "[Create TodoWrite with all tasks]"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 100,
+      "kind": "runtime",
+      "text": "Task 1: Hook installation script"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 103,
+      "kind": "runtime",
+      "text": "[Dispatch implementation subagent with full task text + context]"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 105,
+      "kind": "runtime",
+      "text": "Implementer: \"Before I begin - should the hook be installed at user or system level?\""
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 107,
+      "kind": "runtime",
+      "text": "You: \"User level (~/.config/superpowers/hooks/)\""
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 111,
+      "kind": "runtime",
+      "text": "  - Implemented install-hook command"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 127,
+      "kind": "runtime",
+      "text": "[Dispatch implementation subagent with full task text + context]"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 173,
+      "kind": "runtime",
+      "text": "- Subagent can ask questions (before AND during work)"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 183,
+      "kind": "runtime",
+      "text": "- Subagent gets complete information upfront"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 194,
+      "kind": "runtime",
+      "text": "- More subagent invocations (implementer + 2 reviewers per task)"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 206,
+      "kind": "runtime",
+      "text": "- Make subagent read plan file (provide full text instead)"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 207,
+      "kind": "runtime",
+      "text": "- Skip scene-setting context (subagent needs to understand where task fits)"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 208,
+      "kind": "runtime",
+      "text": "- Ignore subagent questions (answer before letting them proceed)"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 215,
+      "kind": "runtime",
+      "text": "**If subagent asks questions:**"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 221,
+      "kind": "runtime",
+      "text": "- Implementer (same subagent) fixes them"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 226,
+      "kind": "runtime",
+      "text": "**If subagent fails task:**"
+    },
+    {
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "line": 227,
+      "kind": "runtime",
+      "text": "- Dispatch fix subagent with specific instructions"
+    },
+    {
+      "path": "skills/subagent-driven-development/code-quality-reviewer-prompt.md",
+      "line": 3,
+      "kind": "runtime",
+      "text": "Use this template when dispatching a code quality reviewer subagent."
+    },
+    {
+      "path": "skills/subagent-driven-development/code-quality-reviewer-prompt.md",
+      "line": 10,
+      "kind": "runtime",
+      "text": "Task tool (superpowers:code-reviewer):"
+    },
+    {
+      "path": "skills/subagent-driven-development/implementer-prompt.md",
+      "line": 1,
+      "kind": "runtime",
+      "text": "# Implementer Subagent Prompt Template"
+    },
+    {
+      "path": "skills/subagent-driven-development/implementer-prompt.md",
+      "line": 3,
+      "kind": "runtime",
+      "text": "Use this template when dispatching an implementer subagent."
+    },
+    {
+      "path": "skills/subagent-driven-development/implementer-prompt.md",
+      "line": 6,
+      "kind": "runtime",
+      "text": "Task tool (general-purpose):"
+    },
+    {
+      "path": "skills/subagent-driven-development/implementer-prompt.md",
+      "line": 13,
+      "kind": "runtime",
+      "text": "    [FULL TEXT of task from plan - paste it here, don't make subagent read file]"
+    },
+    {
+      "path": "skills/subagent-driven-development/spec-reviewer-prompt.md",
+      "line": 3,
+      "kind": "runtime",
+      "text": "Use this template when dispatching a spec compliance reviewer subagent."
+    },
+    {
+      "path": "skills/subagent-driven-development/spec-reviewer-prompt.md",
+      "line": 8,
+      "kind": "runtime",
+      "text": "Task tool (general-purpose):"
+    },
+    {
+      "path": "skills/systematic-debugging/CREATION-LOG.md",
+      "line": 7,
+      "kind": "runtime",
+      "text": "Extracted debugging framework from `/Users/jesse/.claude/CLAUDE.md`:"
+    },
+    {
+      "path": "skills/systematic-debugging/CREATION-LOG.md",
+      "line": 102,
+      "kind": "runtime",
+      "text": "**Most important bulletproofing:** Anti-patterns section showing exact shortcuts that feel justified in the moment. When Claude thinks \"I'll just add this one quick fix\", seeing that exact pattern listed as wrong creates cognitive friction."
+    },
+    {
+      "path": "skills/systematic-debugging/condition-based-waiting.md",
+      "line": 11,
+      "kind": "dependencies",
+      "text": "```dot"
+    },
+    {
+      "path": "skills/systematic-debugging/find-polluter.sh",
+      "line": 42,
+      "kind": "dependencies",
+      "text": "  npm test \"$TEST_FILE\" > /dev/null 2>&1 || true"
+    },
+    {
+      "path": "skills/systematic-debugging/find-polluter.sh",
+      "line": 55,
+      "kind": "dependencies",
+      "text": "    echo \"  npm test $TEST_FILE    # Run just this test\""
+    },
+    {
+      "path": "skills/systematic-debugging/root-cause-tracing.md",
+      "line": 11,
+      "kind": "dependencies",
+      "text": "```dot"
+    },
+    {
+      "path": "skills/systematic-debugging/root-cause-tracing.md",
+      "line": 89,
+      "kind": "dependencies",
+      "text": "npm test 2>&1 | grep 'DEBUG git init'"
+    },
+    {
+      "path": "skills/systematic-debugging/root-cause-tracing.md",
+      "line": 132,
+      "kind": "dependencies",
+      "text": "```dot"
+    },
+    {
+      "path": "skills/systematic-debugging/test-pressure-3.md",
+      "line": 16,
+      "kind": "sensitive",
+      "text": "**Senior engineer:** \"Found it. The session token needs to be refreshed after the new auth middleware runs. I'll add a refresh call here [points at line 147].\""
+    },
+    {
+      "path": "skills/systematic-debugging/test-pressure-3.md",
+      "line": 24,
+      "kind": "sensitive",
+      "text": "**You:** \"Maybe 30-45 minutes to trace through the middleware and understand the token lifecycle.\""
+    },
+    {
+      "path": "skills/test-driven-development/SKILL.md",
+      "line": 49,
+      "kind": "dependencies",
+      "text": "```dot"
+    },
+    {
+      "path": "skills/test-driven-development/SKILL.md",
+      "line": 118,
+      "kind": "dependencies",
+      "text": "npm test path/to/test.test.ts"
+    },
+    {
+      "path": "skills/test-driven-development/SKILL.md",
+      "line": 173,
+      "kind": "dependencies",
+      "text": "npm test path/to/test.test.ts"
+    },
+    {
+      "path": "skills/test-driven-development/SKILL.md",
+      "line": 304,
+      "kind": "dependencies",
+      "text": "$ npm test"
+    },
+    {
+      "path": "skills/test-driven-development/SKILL.md",
+      "line": 320,
+      "kind": "dependencies",
+      "text": "$ npm test"
+    },
+    {
+      "path": "skills/using-git-worktrees/SKILL.md",
+      "line": 30,
+      "kind": "runtime",
+      "text": "### 2. Check CLAUDE.md"
+    },
+    {
+      "path": "skills/using-git-worktrees/SKILL.md",
+      "line": 33,
+      "kind": "runtime",
+      "text": "grep -i \"worktree.*director\" CLAUDE.md 2>/dev/null"
+    },
+    {
+      "path": "skills/using-git-worktrees/SKILL.md",
+      "line": 40,
+      "kind": "runtime",
+      "text": "If no directory exists and no CLAUDE.md preference:"
+    },
+    {
+      "path": "skills/using-git-worktrees/SKILL.md",
+      "line": 106,
+      "kind": "dependencies",
+      "text": "# Node.js"
+    },
+    {
+      "path": "skills/using-git-worktrees/SKILL.md",
+      "line": 107,
+      "kind": "dependencies",
+      "text": "if [ -f package.json ]; then npm install; fi"
+    },
+    {
+      "path": "skills/using-git-worktrees/SKILL.md",
+      "line": 112,
+      "kind": "dependencies",
+      "text": "# Python"
+    },
+    {
+      "path": "skills/using-git-worktrees/SKILL.md",
+      "line": 113,
+      "kind": "dependencies",
+      "text": "if [ -f requirements.txt ]; then pip install -r requirements.txt; fi"
+    },
+    {
+      "path": "skills/using-git-worktrees/SKILL.md",
+      "line": 126,
+      "kind": "dependencies",
+      "text": "npm test"
+    },
+    {
+      "path": "skills/using-git-worktrees/SKILL.md",
+      "line": 151,
+      "kind": "runtime",
+      "text": "| Neither exists | Check CLAUDE.md → Ask user |"
+    },
+    {
+      "path": "skills/using-git-worktrees/SKILL.md",
+      "line": 166,
+      "kind": "runtime",
+      "text": "- **Fix:** Follow priority: existing > CLAUDE.md > ask"
+    },
+    {
+      "path": "skills/using-git-worktrees/SKILL.md",
+      "line": 186,
+      "kind": "dependencies",
+      "text": "[Run npm install]"
+    },
+    {
+      "path": "skills/using-git-worktrees/SKILL.md",
+      "line": 187,
+      "kind": "dependencies",
+      "text": "[Run npm test - 47 passing]"
+    },
+    {
+      "path": "skills/using-git-worktrees/SKILL.md",
+      "line": 201,
+      "kind": "runtime",
+      "text": "- Skip CLAUDE.md check"
+    },
+    {
+      "path": "skills/using-git-worktrees/SKILL.md",
+      "line": 204,
+      "kind": "runtime",
+      "text": "- Follow directory priority: existing > CLAUDE.md > ask"
+    },
+    {
+      "path": "skills/using-git-worktrees/SKILL.md",
+      "line": 213,
+      "kind": "runtime",
+      "text": "- **subagent-driven-development** - REQUIRED before executing any tasks"
+    },
+    {
+      "path": "skills/using-superpowers/SKILL.md",
+      "line": 16,
+      "kind": "runtime",
+      "text": "**In Claude Code:** Use the `Skill` tool. When you invoke a skill, its content is loaded and presented to you—follow it directly. Never use the Read tool on skill files."
+    },
+    {
+      "path": "skills/using-superpowers/SKILL.md",
+      "line": 26,
+      "kind": "dependencies",
+      "text": "```dot"
+    },
+    {
+      "path": "skills/using-superpowers/SKILL.md",
+      "line": 36,
+      "kind": "runtime",
+      "text": "    \"Create TodoWrite todo per item\" [shape=box];"
+    },
+    {
+      "path": "skills/using-superpowers/SKILL.md",
+      "line": 50,
+      "kind": "runtime",
+      "text": "    \"Has checklist?\" -> \"Create TodoWrite todo per item\" [label=\"yes\"];"
+    },
+    {
+      "path": "skills/using-superpowers/SKILL.md",
+      "line": 52,
+      "kind": "runtime",
+      "text": "    \"Create TodoWrite todo per item\" -> \"Follow skill exactly\";"
+    },
+    {
+      "path": "skills/writing-plans/SKILL.md",
+      "line": 36,
+      "kind": "runtime",
+      "text": "> **For Claude:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task."
+    },
+    {
+      "path": "skills/writing-plans/SKILL.md",
+      "line": 59,
+      "kind": "dependencies",
+      "text": "```python"
+    },
+    {
+      "path": "skills/writing-plans/SKILL.md",
+      "line": 72,
+      "kind": "dependencies",
+      "text": "```python"
+    },
+    {
+      "path": "skills/writing-plans/SKILL.md",
+      "line": 103,
+      "kind": "runtime",
+      "text": "**1. Subagent-Driven (this session)** - I dispatch fresh subagent per task, review between tasks, fast iteration"
+    },
+    {
+      "path": "skills/writing-plans/SKILL.md",
+      "line": 109,
+      "kind": "runtime",
+      "text": "**If Subagent-Driven chosen:**"
+    },
+    {
+      "path": "skills/writing-plans/SKILL.md",
+      "line": 110,
+      "kind": "runtime",
+      "text": "- **REQUIRED SUB-SKILL:** Use superpowers:subagent-driven-development"
+    },
+    {
+      "path": "skills/writing-plans/SKILL.md",
+      "line": 112,
+      "kind": "runtime",
+      "text": "- Fresh subagent per task + code review"
+    },
+    {
+      "path": "skills/writing-skills/SKILL.md",
+      "line": 12,
+      "kind": "runtime",
+      "text": "**Personal skills live in agent-specific directories (`~/.claude/skills` for Claude Code, `~/.agents/skills/` for Codex)** "
+    },
+    {
+      "path": "skills/writing-skills/SKILL.md",
+      "line": 24,
+      "kind": "runtime",
+      "text": "A **skill** is a reference guide for proven techniques, patterns, or tools. Skills help future Claude instances find and apply effective approaches."
+    },
+    {
+      "path": "skills/writing-skills/SKILL.md",
+      "line": 34,
+      "kind": "runtime",
+      "text": "| **Test case** | Pressure scenario with subagent |"
+    },
+    {
+      "path": "skills/writing-skills/SKILL.md",
+      "line": 58,
+      "kind": "runtime",
+      "text": "- Project-specific conventions (put in CLAUDE.md)"
+    },
+    {
+      "path": "skills/writing-skills/SKILL.md",
+      "line": 140,
+      "kind": "runtime",
+      "text": "## Claude Search Optimization (CSO)"
+    },
+    {
+      "path": "skills/writing-skills/SKILL.md",
+      "line": 142,
+      "kind": "runtime",
+      "text": "**Critical for discovery:** Future Claude needs to FIND your skill"
+    },
+    {
+      "path": "skills/writing-skills/SKILL.md",
+      "line": 146,
+      "kind": "runtime",
+      "text": "**Purpose:** Claude reads description to decide which skills to load for a given task. Make it answer: \"Should I read this skill right now?\""
+    },
+    {
+      "path": "skills/writing-skills/SKILL.md",
+      "line": 154,
+      "kind": "runtime",
+      "text": "**Why this matters:** Testing revealed that when a description summarizes the skill's workflow, Claude may follow the description instead of reading the full skill content. A description saying \"code review between tasks\" caused Claude to do ONE review, even though the skill's flowchart clearly show"
+    },
+    {
+      "path": "skills/writing-skills/SKILL.md",
+      "line": 156,
+      "kind": "runtime",
+      "text": "When the description was changed to just \"Use when executing implementation plans with independent tasks\" (no workflow summary), Claude correctly read the flowchart and followed the two-stage review process."
+    },
+    {
+      "path": "skills/writing-skills/SKILL.md",
+      "line": 158,
+      "kind": "runtime",
+      "text": "**The trap:** Descriptions that summarize workflow create a shortcut Claude will take. The skill body becomes documentation Claude skips."
+    },
+    {
+      "path": "skills/writing-skills/SKILL.md",
+      "line": 161,
+      "kind": "runtime",
+      "text": "# ❌ BAD: Summarizes workflow - Claude may follow this instead of reading skill"
+    },
+    {
+      "path": "skills/writing-skills/SKILL.md",
+      "line": 162,
+      "kind": "runtime",
+      "text": "description: Use when executing plans - dispatches subagent per task with code review between tasks"
+    },
+    {
+      "path": "skills/writing-skills/SKILL.md",
+      "line": 201,
+      "kind": "runtime",
+      "text": "Use words Claude would search for:"
+    },
+    {
+      "path": "skills/writing-skills/SKILL.md",
+      "line": 202,
+      "kind": "runtime",
+      "text": "- Error messages: \"Hook timed out\", \"ENOTEMPTY\", \"race condition\""
+    },
+    {
+      "path": "skills/writing-skills/SKILL.md",
+      "line": 213,
+      "kind": "sensitive",
+      "text": "### 4. Token Efficiency (Critical)"
+    },
+    {
+      "path": "skills/writing-skills/SKILL.md",
+      "line": 215,
+      "kind": "sensitive",
+      "text": "**Problem:** getting-started and frequently-referenced skills load into EVERY conversation. Every token counts."
+    },
+    {
+      "path": "skills/writing-skills/SKILL.md",
+      "line": 236,
+      "kind": "runtime",
+      "text": "When searching, dispatch subagent with template..."
+    },
+    {
+      "path": "skills/writing-skills/SKILL.md",
+      "line": 248,
+      "kind": "runtime",
+      "text": "[Dispatch subagent with search query: \"React Router authentication error handling 401\"]"
+    },
+    {
+      "path": "skills/writing-skills/SKILL.md",
+      "line": 253,
+      "kind": "runtime",
+      "text": "[Dispatch subagent → synthesis]"
+    },
+    {
+      "path": "skills/writing-skills/SKILL.md",
+      "line": 292,
+      "kind": "dependencies",
+      "text": "```dot"
+    },
+    {
+      "path": "skills/writing-skills/SKILL.md",
+      "line": 316,
+      "kind": "dependencies",
+      "text": "See @graphviz-conventions.dot for graphviz style rules."
+    },
+    {
+      "path": "skills/writing-skills/SKILL.md",
+      "line": 330,
+      "kind": "dependencies",
+      "text": "- System debugging → Shell/Python"
+    },
+    {
+      "path": "skills/writing-skills/SKILL.md",
+      "line": 331,
+      "kind": "dependencies",
+      "text": "- Data processing → Python"
+    },
+    {
+      "path": "skills/writing-skills/SKILL.md",
+      "line": 539,
+      "kind": "runtime",
+      "text": "Run pressure scenario with subagent WITHOUT the skill. Document exact behavior:"
+    },
+    {
+      "path": "skills/writing-skills/SKILL.md",
+      "line": 573,
+      "kind": "dependencies",
+      "text": "```dot"
+    },
+    {
+      "path": "skills/writing-skills/SKILL.md",
+      "line": 598,
+      "kind": "runtime",
+      "text": "**IMPORTANT: Use TodoWrite to create todos for EACH checklist item below.**"
+    },
+    {
+      "path": "skills/writing-skills/SKILL.md",
+      "line": 637,
+      "kind": "runtime",
+      "text": "How future Claude finds your skill:"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 3,
+      "kind": "runtime",
+      "text": "> Learn how to write effective Skills that Claude can discover and use successfully."
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 5,
+      "kind": "runtime",
+      "text": "Good Skills are concise, well-structured, and tested with real usage. This guide provides practical authoring decisions to help you write Skills that Claude can discover and use effectively."
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 13,
+      "kind": "runtime",
+      "text": "The [context window](https://platform.claude.com/docs/en/build-with-claude/context-windows) is a public good. Your Skill shares the context window with everything else Claude needs to know, including:"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 20,
+      "kind": "runtime",
+      "text": "Not every token in your Skill has an immediate cost. At startup, only the metadata (name and description) from all Skills is pre-loaded. Claude reads SKILL.md only when the Skill becomes relevant, and reads additional files only as needed. However, being concise in SKILL.md still matters: once Claud"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 20,
+      "kind": "sensitive",
+      "text": "Not every token in your Skill has an immediate cost. At startup, only the metadata (name and description) from all Skills is pre-loaded. Claude reads SKILL.md only when the Skill becomes relevant, and reads additional files only as needed. However, being concise in SKILL.md still matters: once Claud"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 22,
+      "kind": "runtime",
+      "text": "**Default assumption**: Claude is already very smart"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 24,
+      "kind": "runtime",
+      "text": "Only add context Claude doesn't already have. Challenge each piece of information:"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 26,
+      "kind": "runtime",
+      "text": "* \"Does Claude really need this explanation?\""
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 27,
+      "kind": "runtime",
+      "text": "* \"Can I assume Claude knows this?\""
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 28,
+      "kind": "sensitive",
+      "text": "* \"Does this paragraph justify its token cost?\""
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 37,
+      "kind": "dependencies",
+      "text": "```python"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 54,
+      "kind": "dependencies",
+      "text": "First, you'll need to install it using pip. Then you can use the code below..."
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 57,
+      "kind": "runtime",
+      "text": "The concise version assumes Claude knows what PDFs are and how libraries work."
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 97,
+      "kind": "dependencies",
+      "text": "```python"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 121,
+      "kind": "dependencies",
+      "text": "python scripts/migrate.py --verify --backup"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 127,
+      "kind": "runtime",
+      "text": "**Analogy**: Think of Claude as a robot exploring a path:"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 130,
+      "kind": "runtime",
+      "text": "* **Open field with no hazards**: Many paths lead to success. Give general direction and trust Claude to find the best route (high freedom). Example: code reviews where context determines the best approach."
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 138,
+      "kind": "runtime",
+      "text": "* **Claude Haiku** (fast, economical): Does the Skill provide enough guidance?"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 139,
+      "kind": "runtime",
+      "text": "* **Claude Sonnet** (balanced): Is the Skill clear and efficient?"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 140,
+      "kind": "runtime",
+      "text": "* **Claude Opus** (powerful reasoning): Does the Skill avoid over-explaining?"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 199,
+      "kind": "runtime",
+      "text": "Each Skill has exactly one description field. The description is critical for skill selection: Claude uses it to choose the right Skill from potentially 100+ available Skills. Your description must provide enough detail for Claude to know when to select this Skill, while the rest of SKILL.md provide"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 237,
+      "kind": "runtime",
+      "text": "SKILL.md serves as an overview that points Claude to detailed materials as needed, like a table of contents in an onboarding guide. For an explanation of how progressive disclosure works, see [How Skills work](/en/docs/agents-and-tools/agent-skills/overview#how-skills-work) in the overview."
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 249,
+      "kind": "runtime",
+      "text": "<img src=\"https://mintcdn.com/anthropic-claude-docs/4Bny2bjzuGBK7o00/images/agent-skills-simple-file.png?fit=max&auto=format&n=4Bny2bjzuGBK7o00&q=85&s=87782ff239b297d9a9e8e1b72ed72db9\" alt=\"Simple SKILL.md file showing YAML frontmatter and markdown body\" data-og-width=\"2048\" width=\"2048\" data-og-hei"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 251,
+      "kind": "runtime",
+      "text": "As your Skill grows, you can bundle additional content that Claude loads only when needed:"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 253,
+      "kind": "runtime",
+      "text": "<img src=\"https://mintcdn.com/anthropic-claude-docs/4Bny2bjzuGBK7o00/images/agent-skills-bundling-content.png?fit=max&auto=format&n=4Bny2bjzuGBK7o00&q=85&s=a5e0aa41e3d53985a7e3e43668a33ea3\" alt=\"Bundling additional reference files like reference.md and forms.md.\" data-og-width=\"2048\" width=\"2048\" da"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 282,
+      "kind": "dependencies",
+      "text": "```python"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 295,
+      "kind": "runtime",
+      "text": "Claude loads FORMS.md, REFERENCE.md, or EXAMPLES.md only when needed."
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 299,
+      "kind": "runtime",
+      "text": "For Skills with multiple domains, organize content by domain to avoid loading irrelevant context. When a user asks about sales metrics, Claude only needs to read sales-related schemas, not finance or marketing data. This keeps token usage low and context focused."
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 299,
+      "kind": "sensitive",
+      "text": "For Skills with multiple domains, organize content by domain to avoid loading irrelevant context. When a user asks about sales metrics, Claude only needs to read sales-related schemas, not finance or marketing data. This keeps token usage low and context focused."
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 351,
+      "kind": "runtime",
+      "text": "Claude reads REDLINING.md or OOXML.md only when the user needs those features."
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 355,
+      "kind": "runtime",
+      "text": "Claude may partially read files when they're referenced from other referenced files. When encountering nested references, Claude might use commands like `head -100` to preview content rather than reading entire files, resulting in incomplete information."
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 357,
+      "kind": "runtime",
+      "text": "**Keep references one level deep from SKILL.md**. All reference files should link directly from SKILL.md to ensure Claude reads complete files when needed."
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 385,
+      "kind": "runtime",
+      "text": "For reference files longer than 100 lines, include a table of contents at the top. This ensures Claude can see the full scope of available information even when previewing with partial reads."
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 406,
+      "kind": "runtime",
+      "text": "Claude can then read the complete file or jump to specific sections as needed."
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 414,
+      "kind": "runtime",
+      "text": "Break complex operations into clear, sequential steps. For particularly complex workflows, provide a checklist that Claude can copy into its response and check off as it progresses."
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 476,
+      "kind": "dependencies",
+      "text": "Run: `python scripts/analyze_form.py input.pdf`"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 486,
+      "kind": "dependencies",
+      "text": "Run: `python scripts/validate_fields.py fields.json`"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 492,
+      "kind": "dependencies",
+      "text": "Run: `python scripts/fill_form.py input.pdf fields.json output.pdf`"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 496,
+      "kind": "dependencies",
+      "text": "Run: `python scripts/verify_output.py output.pdf`"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 501,
+      "kind": "runtime",
+      "text": "Clear steps prevent Claude from skipping critical validation. The checklist helps both Claude and you track progress through multi-step workflows."
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 527,
+      "kind": "runtime",
+      "text": "This shows the validation loop pattern using reference documents instead of scripts. The \"validator\" is STYLE\\_GUIDE.md, and Claude performs the check by reading and comparing."
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 535,
+      "kind": "dependencies",
+      "text": "2. **Validate immediately**: `python ooxml/scripts/validate.py unpacked_dir/`"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 541,
+      "kind": "dependencies",
+      "text": "5. Rebuild: `python ooxml/scripts/pack.py unpacked_dir/ output.docx`"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 596,
+      "kind": "runtime",
+      "text": "Consistency helps Claude understand and follow instructions."
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 666,
+      "kind": "sensitive",
+      "text": "Add login endpoint and token validation middleware"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 691,
+      "kind": "runtime",
+      "text": "Examples help Claude understand the desired style and level of detail more clearly than descriptions alone."
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 695,
+      "kind": "runtime",
+      "text": "Guide Claude through decision points:"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 718,
+      "kind": "runtime",
+      "text": "  If workflows become large or complicated with many steps, consider pushing them into separate files and tell Claude to read the appropriate file based on the task at hand."
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 729,
+      "kind": "runtime",
+      "text": "1. **Identify gaps**: Run Claude on representative tasks without a Skill. Document specific failures or missing context"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 731,
+      "kind": "runtime",
+      "text": "3. **Establish baseline**: Measure Claude's performance without the Skill"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 756,
+      "kind": "runtime",
+      "text": "### Develop Skills iteratively with Claude"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 758,
+      "kind": "runtime",
+      "text": "The most effective Skill development process involves Claude itself. Work with one instance of Claude (\"Claude A\") to create a Skill that will be used by other instances (\"Claude B\"). Claude A helps you design and refine instructions, while Claude B tests them in real tasks. This works because Claud"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 762,
+      "kind": "runtime",
+      "text": "1. **Complete a task without a Skill**: Work through a problem with Claude A using normal prompting. As you work, you'll naturally provide context, explain preferences, and share procedural knowledge. Notice what information you repeatedly provide."
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 768,
+      "kind": "runtime",
+      "text": "3. **Ask Claude A to create a Skill**: \"Create a Skill that captures this BigQuery analysis pattern we just used. Include the table schemas, naming conventions, and the rule about filtering test accounts.\""
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 771,
+      "kind": "runtime",
+      "text": "     Claude models understand the Skill format and structure natively. You don't need special system prompts or a \"writing skills\" skill to get Claude to help create Skills. Simply ask Claude to create a Skill and it will generate properly structured SKILL.md content with appropriate frontmatter and"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 774,
+      "kind": "runtime",
+      "text": "4. **Review for conciseness**: Check that Claude A hasn't added unnecessary explanations. Ask: \"Remove the explanation about what win rate means - Claude already knows that.\""
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 776,
+      "kind": "runtime",
+      "text": "5. **Improve information architecture**: Ask Claude A to organize the content more effectively. For example: \"Organize this so the table schema is in a separate reference file. We might add more tables later.\""
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 778,
+      "kind": "runtime",
+      "text": "6. **Test on similar tasks**: Use the Skill with Claude B (a fresh instance with the Skill loaded) on related use cases. Observe whether Claude B finds the right information, applies rules correctly, and handles the task successfully."
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 780,
+      "kind": "runtime",
+      "text": "7. **Iterate based on observation**: If Claude B struggles or misses something, return to Claude A with specifics: \"When Claude used this Skill, it forgot to filter by date for Q4. Should we add a section about date filtering patterns?\""
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 786,
+      "kind": "runtime",
+      "text": "* **Working with Claude A** (the expert who helps refine the Skill)"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 787,
+      "kind": "runtime",
+      "text": "* **Testing with Claude B** (the agent using the Skill to perform real work)"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 788,
+      "kind": "runtime",
+      "text": "* **Observing Claude B's behavior** and bringing insights back to Claude A"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 790,
+      "kind": "runtime",
+      "text": "1. **Use the Skill in real workflows**: Give Claude B (with the Skill loaded) actual tasks, not test scenarios"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 792,
+      "kind": "runtime",
+      "text": "2. **Observe Claude B's behavior**: Note where it struggles, succeeds, or makes unexpected choices"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 794,
+      "kind": "runtime",
+      "text": "   **Example observation**: \"When I asked Claude B for a regional sales report, it wrote the query but forgot to filter out test accounts, even though the Skill mentions this rule.\""
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 796,
+      "kind": "runtime",
+      "text": "3. **Return to Claude A for improvements**: Share the current SKILL.md and describe what you observed. Ask: \"I noticed Claude B forgot to filter test accounts when I asked for a regional report. The Skill mentions filtering, but maybe it's not prominent enough?\""
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 798,
+      "kind": "runtime",
+      "text": "4. **Review Claude A's suggestions**: Claude A might suggest reorganizing to make rules more prominent, using stronger language like \"MUST filter\" instead of \"always filter\", or restructuring the workflow section."
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 800,
+      "kind": "runtime",
+      "text": "5. **Apply and test changes**: Update the Skill with Claude A's refinements, then test again with Claude B on similar requests"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 810,
+      "kind": "runtime",
+      "text": "**Why this approach works**: Claude A understands agent needs, you provide domain expertise, Claude B reveals gaps through real usage, and iterative refinement improves Skills based on observed behavior rather than assumptions."
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 812,
+      "kind": "runtime",
+      "text": "### Observe how Claude navigates Skills"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 814,
+      "kind": "runtime",
+      "text": "As you iterate on Skills, pay attention to how Claude actually uses them in practice. Watch for:"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 816,
+      "kind": "runtime",
+      "text": "* **Unexpected exploration paths**: Does Claude read files in an order you didn't anticipate? This might indicate your structure isn't as intuitive as you thought"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 817,
+      "kind": "runtime",
+      "text": "* **Missed connections**: Does Claude fail to follow references to important files? Your links might need to be more explicit or prominent"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 818,
+      "kind": "runtime",
+      "text": "* **Overreliance on certain sections**: If Claude repeatedly reads the same file, consider whether that content should be in the main SKILL.md instead"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 819,
+      "kind": "runtime",
+      "text": "* **Ignored content**: If Claude never accesses a bundled file, it might be unnecessary or poorly signaled in the main instructions"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 821,
+      "kind": "runtime",
+      "text": "Iterate based on these observations rather than assumptions. The 'name' and 'description' in your Skill's metadata are particularly critical. Claude uses these when deciding whether to trigger the Skill in response to the current task. Make sure they clearly describe what the Skill does and when it "
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 844,
+      "kind": "dependencies",
+      "text": "```python"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 857,
+      "kind": "runtime",
+      "text": "When writing scripts for Skills, handle error conditions rather than punting to Claude."
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 861,
+      "kind": "dependencies",
+      "text": "```python  theme={null}"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 879,
+      "kind": "runtime",
+      "text": "**Bad example: Punt to Claude**:"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 881,
+      "kind": "dependencies",
+      "text": "```python  theme={null}"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 883,
+      "kind": "runtime",
+      "text": "    # Just fail and let Claude figure it out"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 887,
+      "kind": "runtime",
+      "text": "Configuration parameters should also be justified and documented to avoid \"voodoo constants\" (Ousterhout's law). If you don't know the right value, how will Claude determine it?"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 891,
+      "kind": "dependencies",
+      "text": "```python  theme={null}"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 903,
+      "kind": "dependencies",
+      "text": "```python  theme={null}"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 910,
+      "kind": "runtime",
+      "text": "Even if Claude could write a script, pre-made scripts offer advantages:"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 919,
+      "kind": "runtime",
+      "text": "<img src=\"https://mintcdn.com/anthropic-claude-docs/4Bny2bjzuGBK7o00/images/agent-skills-executable-scripts.png?fit=max&auto=format&n=4Bny2bjzuGBK7o00&q=85&s=4bbc45f2c2e0bee9f2f0d5da669bad00\" alt=\"Bundling executable scripts alongside instruction files\" data-og-width=\"2048\" width=\"2048\" data-og-heig"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 921,
+      "kind": "runtime",
+      "text": "The diagram above shows how executable scripts work alongside instruction files. The instruction file (forms.md) references the script, and Claude can execute it without loading its contents into context."
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 923,
+      "kind": "runtime",
+      "text": "**Important distinction**: Make clear in your instructions whether Claude should:"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 938,
+      "kind": "dependencies",
+      "text": "python scripts/analyze_form.py input.pdf > fields.json"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 952,
+      "kind": "dependencies",
+      "text": "python scripts/validate_boxes.py fields.json"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 959,
+      "kind": "dependencies",
+      "text": "python scripts/fill_form.py input.pdf fields.json output.pdf"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 965,
+      "kind": "runtime",
+      "text": "When inputs can be rendered as images, have Claude analyze them:"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 972,
+      "kind": "dependencies",
+      "text": "   python scripts/pdf_to_images.py form.pdf"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 976,
+      "kind": "runtime",
+      "text": "3. Claude can see field locations and types visually"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 983,
+      "kind": "runtime",
+      "text": "Claude's vision capabilities help understand layouts and structures."
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 987,
+      "kind": "runtime",
+      "text": "When Claude performs complex, open-ended tasks, it can make mistakes. The \"plan-validate-execute\" pattern catches errors early by having Claude first create a plan in a structured format, then validate that plan with a script before executing it."
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 989,
+      "kind": "runtime",
+      "text": "**Example**: Imagine asking Claude to update 50 form fields in a PDF based on a spreadsheet. Without validation, Claude might reference non-existent fields, create conflicting values, miss required fields, or apply updates incorrectly."
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 997,
+      "kind": "runtime",
+      "text": "* **Reversible planning**: Claude can iterate on the plan without touching originals"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 1002,
+      "kind": "runtime",
+      "text": "**Implementation tip**: Make validation scripts verbose with specific error messages like \"Field 'signature\\_date' not found. Available fields: customer\\_name, order\\_total, signature\\_date\\_signed\" to help Claude fix issues."
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 1008,
+      "kind": "runtime",
+      "text": "* **claude.ai**: Can install packages from npm and PyPI and pull from GitHub repositories"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 1008,
+      "kind": "dependencies",
+      "text": "* **claude.ai**: Can install packages from npm and PyPI and pull from GitHub repositories"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 1019,
+      "kind": "runtime",
+      "text": "**How Claude accesses Skills:**"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 1022,
+      "kind": "runtime",
+      "text": "2. **Files read on-demand**: Claude uses bash Read tools to access SKILL.md and other files from the filesystem when needed"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 1026,
+      "kind": "runtime",
+      "text": "* **File paths matter**: Claude navigates your skill directory like a filesystem. Use forward slashes (`reference/guide.md`), not backslashes"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 1032,
+      "kind": "runtime",
+      "text": "* **Prefer scripts for deterministic operations**: Write `validate_form.py` rather than asking Claude to generate validation code"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 1036,
+      "kind": "runtime",
+      "text": "* **Test file access patterns**: Verify Claude can navigate your directory structure by testing with real requests"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 1049,
+      "kind": "runtime",
+      "text": "When the user asks about revenue, Claude reads SKILL.md, sees the reference to `reference/finance.md`, and invokes bash to read just that file. The sales.md and product.md files remain on the filesystem, consuming zero context tokens until needed. This filesystem-based model is what enables progress"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 1068,
+      "kind": "runtime",
+      "text": "* `BigQuery` and `GitHub` are MCP server names"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 1071,
+      "kind": "runtime",
+      "text": "Without the server prefix, Claude may fail to locate the tool, especially when multiple MCP servers are available."
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 1082,
+      "kind": "dependencies",
+      "text": "\"Install required package: `pip install pypdf`"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 1085,
+      "kind": "dependencies",
+      "text": "```python"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 1097,
+      "kind": "sensitive",
+      "text": "### Token budgets"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 1120,
+      "kind": "runtime",
+      "text": "* [ ] Scripts solve problems rather than punt to Claude"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 1143,
+      "kind": "runtime",
+      "text": "  <Card title=\"Use Skills in Claude Code\" icon=\"terminal\" href=\"/en/docs/claude-code/skills\">"
+    },
+    {
+      "path": "skills/writing-skills/anthropic-best-practices.md",
+      "line": 1144,
+      "kind": "runtime",
+      "text": "    Create and manage Skills in Claude Code"
+    },
+    {
+      "path": "skills/writing-skills/examples/CLAUDE_MD_TESTING.md",
+      "line": 1,
+      "kind": "runtime",
+      "text": "# Testing CLAUDE.md Skills Documentation"
+    },
+    {
+      "path": "skills/writing-skills/examples/CLAUDE_MD_TESTING.md",
+      "line": 16,
+      "kind": "runtime",
+      "text": "B) Check ~/.claude/skills/debugging/ first (2 min check + 5 min fix = 7 min)"
+    },
+    {
+      "path": "skills/writing-skills/examples/CLAUDE_MD_TESTING.md",
+      "line": 34,
+      "kind": "runtime",
+      "text": "A) Check ~/.claude/skills/testing/ for async testing skill"
+    },
+    {
+      "path": "skills/writing-skills/examples/CLAUDE_MD_TESTING.md",
+      "line": 46,
+      "kind": "runtime",
+      "text": "A) Check ~/.claude/skills/ for validation patterns (1-2 min)"
+    },
+    {
+      "path": "skills/writing-skills/examples/CLAUDE_MD_TESTING.md",
+      "line": 60,
+      "kind": "runtime",
+      "text": "A) Check ~/.claude/skills/coding/ for refactoring guidance"
+    },
+    {
+      "path": "skills/writing-skills/examples/CLAUDE_MD_TESTING.md",
+      "line": 67,
+      "kind": "runtime",
+      "text": "No mention of skills in CLAUDE.md at all."
+    },
+    {
+      "path": "skills/writing-skills/examples/CLAUDE_MD_TESTING.md",
+      "line": 73,
+      "kind": "runtime",
+      "text": "You have access to skills at `~/.claude/skills/`. Consider"
+    },
+    {
+      "path": "skills/writing-skills/examples/CLAUDE_MD_TESTING.md",
+      "line": 81,
+      "kind": "runtime",
+      "text": "Before working on any task, check `~/.claude/skills/` for"
+    },
+    {
+      "path": "skills/writing-skills/examples/CLAUDE_MD_TESTING.md",
+      "line": 84,
+      "kind": "runtime",
+      "text": "Browse: `ls ~/.claude/skills/`"
+    },
+    {
+      "path": "skills/writing-skills/examples/CLAUDE_MD_TESTING.md",
+      "line": 85,
+      "kind": "runtime",
+      "text": "Search: `grep -r \"keyword\" ~/.claude/skills/`"
+    },
+    {
+      "path": "skills/writing-skills/examples/CLAUDE_MD_TESTING.md",
+      "line": 88,
+      "kind": "runtime",
+      "text": "### Variant C: Claude.AI Emphatic Style"
+    },
+    {
+      "path": "skills/writing-skills/examples/CLAUDE_MD_TESTING.md",
+      "line": 92,
+      "kind": "runtime",
+      "text": "is at `~/.claude/skills/`."
+    },
+    {
+      "path": "skills/writing-skills/examples/CLAUDE_MD_TESTING.md",
+      "line": 94,
+      "kind": "runtime",
+      "text": "Browse categories: `ls ~/.claude/skills/`"
+    },
+    {
+      "path": "skills/writing-skills/examples/CLAUDE_MD_TESTING.md",
+      "line": 95,
+      "kind": "runtime",
+      "text": "Search: `grep -r \"keyword\" ~/.claude/skills/ --include=\"SKILL.md\"`"
+    },
+    {
+      "path": "skills/writing-skills/examples/CLAUDE_MD_TESTING.md",
+      "line": 101,
+      "kind": "runtime",
+      "text": "Claude might think it knows how to approach tasks, but the skills"
+    },
+    {
+      "path": "skills/writing-skills/examples/CLAUDE_MD_TESTING.md",
+      "line": 107,
+      "kind": "runtime",
+      "text": "1. Starting work? Check: `ls ~/.claude/skills/[category]/`"
+    },
+    {
+      "path": "skills/writing-skills/examples/CLAUDE_MD_TESTING.md",
+      "line": 122,
+      "kind": "runtime",
+      "text": "   - Browse: `ls ~/.claude/skills/`"
+    },
+    {
+      "path": "skills/writing-skills/examples/CLAUDE_MD_TESTING.md",
+      "line": 123,
+      "kind": "runtime",
+      "text": "   - Search: `grep -r \"symptom\" ~/.claude/skills/`"
+    },
+    {
+      "path": "skills/writing-skills/examples/CLAUDE_MD_TESTING.md",
+      "line": 184,
+      "kind": "runtime",
+      "text": "1. Create subagent test harness"
+    },
+    {
+      "path": "skills/writing-skills/persuasion-principles.md",
+      "line": 36,
+      "kind": "runtime",
+      "text": "- Use tracking: TodoWrite for checklists"
+    },
+    {
+      "path": "skills/writing-skills/persuasion-principles.md",
+      "line": 83,
+      "kind": "runtime",
+      "text": "✅ Checklists without TodoWrite tracking = steps get skipped. Every time."
+    },
+    {
+      "path": "skills/writing-skills/persuasion-principles.md",
+      "line": 84,
+      "kind": "runtime",
+      "text": "❌ Some people find TodoWrite helpful for checklists."
+    },
+    {
+      "path": "skills/writing-skills/render-graphs.js",
+      "line": 1,
+      "kind": "dependencies",
+      "text": "#!/usr/bin/env node"
+    },
+    {
+      "path": "skills/writing-skills/render-graphs.js",
+      "line": 10,
+      "kind": "dependencies",
+      "text": " * Extracts all ```dot blocks from SKILL.md and renders to SVG."
+    },
+    {
+      "path": "skills/writing-skills/render-graphs.js",
+      "line": 13,
+      "kind": "dependencies",
+      "text": " * Requires: graphviz (dot) installed on system"
+    },
+    {
+      "path": "skills/writing-skills/render-graphs.js",
+      "line": 22,
+      "kind": "dependencies",
+      "text": "  const regex = /```dot\\n([\\s\\S]*?)```/g;"
+    },
+    {
+      "path": "skills/writing-skills/render-graphs.js",
+      "line": 25,
+      "kind": "sensitive",
+      "text": "  while ((match = regex.exec(markdown)) !== null) {"
+    },
+    {
+      "path": "skills/writing-skills/render-graphs.js",
+      "line": 72,
+      "kind": "dependencies",
+      "text": "    return execSync('dot -Tsvg', {"
+    },
+    {
+      "path": "skills/writing-skills/render-graphs.js",
+      "line": 78,
+      "kind": "dependencies",
+      "text": "    console.error('Error running dot:', err.message);"
+    },
+    {
+      "path": "skills/writing-skills/render-graphs.js",
+      "line": 96,
+      "kind": "runtime",
+      "text": "    console.error('  ./render-graphs.js ../subagent-driven-development');"
+    },
+    {
+      "path": "skills/writing-skills/render-graphs.js",
+      "line": 97,
+      "kind": "runtime",
+      "text": "    console.error('  ./render-graphs.js ../subagent-driven-development --combine');"
+    },
+    {
+      "path": "skills/writing-skills/render-graphs.js",
+      "line": 110,
+      "kind": "dependencies",
+      "text": "  // Check if dot is available"
+    },
+    {
+      "path": "skills/writing-skills/render-graphs.js",
+      "line": 112,
+      "kind": "dependencies",
+      "text": "    execSync('which dot', { encoding: 'utf-8' });"
+    },
+    {
+      "path": "skills/writing-skills/render-graphs.js",
+      "line": 114,
+      "kind": "dependencies",
+      "text": "    console.error('Error: graphviz (dot) not found. Install with:');"
+    },
+    {
+      "path": "skills/writing-skills/render-graphs.js",
+      "line": 124,
+      "kind": "dependencies",
+      "text": "    console.log('No ```dot blocks found in', skillFile);"
+    },
+    {
+      "path": "skills/writing-skills/render-graphs.js",
+      "line": 144,
+      "kind": "dependencies",
+      "text": "      // Also write the dot source for debugging"
+    },
+    {
+      "path": "skills/writing-skills/render-graphs.js",
+      "line": 145,
+      "kind": "dependencies",
+      "text": "      const dotPath = path.join(outputDir, `${skillName}_combined.dot`);"
+    },
+    {
+      "path": "skills/writing-skills/render-graphs.js",
+      "line": 147,
+      "kind": "dependencies",
+      "text": "      console.log(`  Source: ${skillName}_combined.dot`);"
+    },
+    {
+      "path": "skills/writing-skills/testing-skills-with-subagents.md",
+      "line": 15,
+      "kind": "runtime",
+      "text": "**Complete worked example:** See examples/CLAUDE_MD_TESTING.md for a full test campaign testing CLAUDE.md documentation variants."
+    },
+    {
+      "path": "tests/claude-code/README.md",
+      "line": 1,
+      "kind": "runtime",
+      "text": "# Claude Code Skills Tests"
+    },
+    {
+      "path": "tests/claude-code/README.md",
+      "line": 3,
+      "kind": "runtime",
+      "text": "Automated tests for superpowers skills using Claude Code CLI."
+    },
+    {
+      "path": "tests/claude-code/README.md",
+      "line": 7,
+      "kind": "runtime",
+      "text": "This test suite verifies that skills are loaded correctly and Claude follows them as expected. Tests invoke Claude Code in headless mode (`claude -p`) and verify the behavior."
+    },
+    {
+      "path": "tests/claude-code/README.md",
+      "line": 11,
+      "kind": "runtime",
+      "text": "- Claude Code CLI installed and in PATH (`claude --version` should work)"
+    },
+    {
+      "path": "tests/claude-code/README.md",
+      "line": 28,
+      "kind": "runtime",
+      "text": "./run-skill-tests.sh --test test-subagent-driven-development.sh"
+    },
+    {
+      "path": "tests/claude-code/README.md",
+      "line": 45,
+      "kind": "runtime",
+      "text": "- `run_claude \"prompt\" [timeout]` - Run Claude with prompt"
+    },
+    {
+      "path": "tests/claude-code/README.md",
+      "line": 57,
+      "kind": "runtime",
+      "text": "2. Runs Claude Code with specific prompts"
+    },
+    {
+      "path": "tests/claude-code/README.md",
+      "line": 72,
+      "kind": "runtime",
+      "text": "# Ask Claude about the skill"
+    },
+    {
+      "path": "tests/claude-code/README.md",
+      "line": 85,
+      "kind": "runtime",
+      "text": "#### test-subagent-driven-development.sh"
+    },
+    {
+      "path": "tests/claude-code/README.md",
+      "line": 97,
+      "kind": "runtime",
+      "text": "#### test-subagent-driven-development-integration.sh"
+    },
+    {
+      "path": "tests/claude-code/README.md",
+      "line": 99,
+      "kind": "dependencies",
+      "text": "- Creates real test project with Node.js setup"
+    },
+    {
+      "path": "tests/claude-code/README.md",
+      "line": 101,
+      "kind": "runtime",
+      "text": "- Executes plan using subagent-driven-development"
+    },
+    {
+      "path": "tests/claude-code/README.md",
+      "line": 104,
+      "kind": "runtime",
+      "text": "  - Full task text provided in subagent prompts"
+    },
+    {
+      "path": "tests/claude-code/README.md",
+      "line": 124,
+      "kind": "sensitive",
+      "text": "5. Make executable: `chmod +x test-<skill-name>.sh`"
+    },
+    {
+      "path": "tests/claude-code/README.md",
+      "line": 129,
+      "kind": "runtime",
+      "text": "- Claude Code may take time to respond"
+    },
+    {
+      "path": "tests/claude-code/README.md",
+      "line": 135,
+      "kind": "runtime",
+      "text": "With `--verbose`, you'll see full Claude output:"
+    },
+    {
+      "path": "tests/claude-code/README.md",
+      "line": 137,
+      "kind": "runtime",
+      "text": "./run-skill-tests.sh --verbose --test test-subagent-driven-development.sh"
+    },
+    {
+      "path": "tests/claude-code/analyze-token-usage.py",
+      "line": 1,
+      "kind": "dependencies",
+      "text": "#!/usr/bin/env python3"
+    },
+    {
+      "path": "tests/claude-code/analyze-token-usage.py",
+      "line": 3,
+      "kind": "runtime",
+      "text": "Analyze token usage from Claude Code session transcripts."
+    },
+    {
+      "path": "tests/claude-code/analyze-token-usage.py",
+      "line": 3,
+      "kind": "sensitive",
+      "text": "Analyze token usage from Claude Code session transcripts."
+    },
+    {
+      "path": "tests/claude-code/analyze-token-usage.py",
+      "line": 13,
+      "kind": "sensitive",
+      "text": "    \"\"\"Analyze a session file and return token usage broken down by agent.\"\"\""
+    },
+    {
+      "path": "tests/claude-code/analyze-token-usage.py",
+      "line": 22,
+      "kind": "runtime",
+      "text": "    # Track usage per subagent"
+    },
+    {
+      "path": "tests/claude-code/analyze-token-usage.py",
+      "line": 46,
+      "kind": "runtime",
+      "text": "                # Subagent tool results"
+    },
+    {
+      "path": "tests/claude-code/analyze-token-usage.py",
+      "line": 73,
+      "kind": "sensitive",
+      "text": "    \"\"\"Format token count with thousands separators.\"\"\""
+    },
+    {
+      "path": "tests/claude-code/analyze-token-usage.py",
+      "line": 85,
+      "kind": "sensitive",
+      "text": "        print(\"Usage: analyze-token-usage.py <session-file.jsonl>\")"
+    },
+    {
+      "path": "tests/claude-code/analyze-token-usage.py",
+      "line": 98,
+      "kind": "sensitive",
+      "text": "    print(\"TOKEN USAGE ANALYSIS\")"
+    },
+    {
+      "path": "tests/claude-code/run-skill-tests.sh",
+      "line": 2,
+      "kind": "runtime",
+      "text": "# Test runner for Claude Code skills"
+    },
+    {
+      "path": "tests/claude-code/run-skill-tests.sh",
+      "line": 3,
+      "kind": "runtime",
+      "text": "# Tests skills by invoking Claude Code CLI and verifying behavior"
+    },
+    {
+      "path": "tests/claude-code/run-skill-tests.sh",
+      "line": 10,
+      "kind": "runtime",
+      "text": "echo \" Claude Code Skills Test Suite\""
+    },
+    {
+      "path": "tests/claude-code/run-skill-tests.sh",
+      "line": 15,
+      "kind": "runtime",
+      "text": "echo \"Claude version: $(claude --version 2>/dev/null || echo 'not found')\""
+    },
+    {
+      "path": "tests/claude-code/run-skill-tests.sh",
+      "line": 18,
+      "kind": "runtime",
+      "text": "# Check if Claude Code is available"
+    },
+    {
+      "path": "tests/claude-code/run-skill-tests.sh",
+      "line": 19,
+      "kind": "runtime",
+      "text": "if ! command -v claude &> /dev/null; then"
+    },
+    {
+      "path": "tests/claude-code/run-skill-tests.sh",
+      "line": 20,
+      "kind": "runtime",
+      "text": "    echo \"ERROR: Claude Code CLI not found\""
+    },
+    {
+      "path": "tests/claude-code/run-skill-tests.sh",
+      "line": 21,
+      "kind": "runtime",
+      "text": "    echo \"Install Claude Code first: https://code.claude.com\""
+    },
+    {
+      "path": "tests/claude-code/run-skill-tests.sh",
+      "line": 60,
+      "kind": "runtime",
+      "text": "            echo \"  test-subagent-driven-development.sh  Test skill loading and requirements\""
+    },
+    {
+      "path": "tests/claude-code/run-skill-tests.sh",
+      "line": 63,
+      "kind": "runtime",
+      "text": "            echo \"  test-subagent-driven-development-integration.sh  Full workflow execution\""
+    },
+    {
+      "path": "tests/claude-code/run-skill-tests.sh",
+      "line": 76,
+      "kind": "runtime",
+      "text": "    \"test-subagent-driven-development.sh\""
+    },
+    {
+      "path": "tests/claude-code/run-skill-tests.sh",
+      "line": 81,
+      "kind": "runtime",
+      "text": "    \"test-subagent-driven-development-integration.sh\""
+    },
+    {
+      "path": "tests/claude-code/run-skill-tests.sh",
+      "line": 115,
+      "kind": "sensitive",
+      "text": "        chmod +x \"$test_path\""
+    },
+    {
+      "path": "tests/claude-code/test-helpers.sh",
+      "line": 2,
+      "kind": "runtime",
+      "text": "# Helper functions for Claude Code skill tests"
+    },
+    {
+      "path": "tests/claude-code/test-helpers.sh",
+      "line": 4,
+      "kind": "runtime",
+      "text": "# Run Claude Code with a prompt and capture output"
+    },
+    {
+      "path": "tests/claude-code/test-helpers.sh",
+      "line": 13,
+      "kind": "runtime",
+      "text": "    local cmd=\"claude -p \\\"$prompt\\\"\""
+    },
+    {
+      "path": "tests/claude-code/test-helpers.sh",
+      "line": 18,
+      "kind": "runtime",
+      "text": "    # Run Claude in headless mode with timeout"
+    },
+    {
+      "path": "tests/claude-code/test-helpers.sh",
+      "line": 21,
+      "kind": "sensitive",
+      "text": "        rm -f \"$output_file\""
+    },
+    {
+      "path": "tests/claude-code/test-helpers.sh",
+      "line": 26,
+      "kind": "sensitive",
+      "text": "        rm -f \"$output_file\""
+    },
+    {
+      "path": "tests/claude-code/test-helpers.sh",
+      "line": 137,
+      "kind": "sensitive",
+      "text": "        rm -rf \"$test_dir\""
+    },
+    {
+      "path": "tests/claude-code/test-helpers.sh",
+      "line": 168,
+      "kind": "dependencies",
+      "text": "**Verification:** `npm test`"
+    },
+    {
+      "path": "tests/claude-code/test-helpers.sh",
+      "line": 188,
+      "kind": "dependencies",
+      "text": "**Verification:** `npm test`"
+    },
+    {
+      "path": "tests/claude-code/test-subagent-driven-development-integration.sh",
+      "line": 2,
+      "kind": "runtime",
+      "text": "# Integration Test: subagent-driven-development workflow"
+    },
+    {
+      "path": "tests/claude-code/test-subagent-driven-development-integration.sh",
+      "line": 10,
+      "kind": "runtime",
+      "text": "echo \" Integration Test: subagent-driven-development\""
+    },
+    {
+      "path": "tests/claude-code/test-subagent-driven-development-integration.sh",
+      "line": 31,
+      "kind": "dependencies",
+      "text": "# Set up minimal Node.js project"
+    },
+    {
+      "path": "tests/claude-code/test-subagent-driven-development-integration.sh",
+      "line": 40,
+      "kind": "dependencies",
+      "text": "    \"test\": \"node --test\""
+    },
+    {
+      "path": "tests/claude-code/test-subagent-driven-development-integration.sh",
+      "line": 51,
+      "kind": "runtime",
+      "text": "This is a minimal plan to test the subagent-driven-development workflow."
+    },
+    {
+      "path": "tests/claude-code/test-subagent-driven-development-integration.sh",
+      "line": 77,
+      "kind": "dependencies",
+      "text": "**Verification:** `npm test`"
+    },
+    {
+      "path": "tests/claude-code/test-subagent-driven-development-integration.sh",
+      "line": 104,
+      "kind": "dependencies",
+      "text": "**Verification:** `npm test`"
+    },
+    {
+      "path": "tests/claude-code/test-subagent-driven-development-integration.sh",
+      "line": 118,
+      "kind": "runtime",
+      "text": "# Run Claude with subagent-driven-development"
+    },
+    {
+      "path": "tests/claude-code/test-subagent-driven-development-integration.sh",
+      "line": 120,
+      "kind": "runtime",
+      "text": "OUTPUT_FILE=\"$TEST_PROJECT/claude-output.txt\""
+    },
+    {
+      "path": "tests/claude-code/test-subagent-driven-development-integration.sh",
+      "line": 124,
+      "kind": "runtime",
+      "text": "I want you to execute the implementation plan at docs/plans/implementation-plan.md using the subagent-driven-development skill."
+    },
+    {
+      "path": "tests/claude-code/test-subagent-driven-development-integration.sh",
+      "line": 139,
+      "kind": "runtime",
+      "text": "PROMPT=\"Change to directory $TEST_PROJECT and then execute the implementation plan at docs/plans/implementation-plan.md using the subagent-driven-development skill."
+    },
+    {
+      "path": "tests/claude-code/test-subagent-driven-development-integration.sh",
+      "line": 150,
+      "kind": "runtime",
+      "text": "echo \"Running Claude (output will be shown below and saved to $OUTPUT_FILE)...\""
+    },
+    {
+      "path": "tests/claude-code/test-subagent-driven-development-integration.sh",
+      "line": 152,
+      "kind": "runtime",
+      "text": "cd \"$SCRIPT_DIR/../..\" && timeout 1800 claude -p \"$PROMPT\" --allowed-tools=all --add-dir \"$TEST_PROJECT\" --permission-mode bypassPermissions 2>&1 | tee \"$OUTPUT_FILE\" || {"
+    },
+    {
+      "path": "tests/claude-code/test-subagent-driven-development-integration.sh",
+      "line": 165,
+      "kind": "runtime",
+      "text": "# Session files are in ~/.claude/projects/-<working-dir>/<session-id>.jsonl"
+    },
+    {
+      "path": "tests/claude-code/test-subagent-driven-development-integration.sh",
+      "line": 167,
+      "kind": "runtime",
+      "text": "SESSION_DIR=\"$HOME/.claude/projects/$WORKING_DIR_ESCAPED\""
+    },
+    {
+      "path": "tests/claude-code/test-subagent-driven-development-integration.sh",
+      "line": 189,
+      "kind": "runtime",
+      "text": "if grep -q '\"name\":\"Skill\".*\"skill\":\"superpowers:subagent-driven-development\"' \"$SESSION_FILE\"; then"
+    },
+    {
+      "path": "tests/claude-code/test-subagent-driven-development-integration.sh",
+      "line": 190,
+      "kind": "runtime",
+      "text": "    echo \"  [PASS] subagent-driven-development skill was invoked\""
+    },
+    {
+      "path": "tests/claude-code/test-subagent-driven-development-integration.sh",
+      "line": 197,
+      "kind": "runtime",
+      "text": "# Test 2: Subagents were used (Task tool)"
+    },
+    {
+      "path": "tests/claude-code/test-subagent-driven-development-integration.sh",
+      "line": 203,
+      "kind": "runtime",
+      "text": "    echo \"  [FAIL] Only $task_count subagent(s) dispatched (expected >= 2)\""
+    },
+    {
+      "path": "tests/claude-code/test-subagent-driven-development-integration.sh",
+      "line": 208,
+      "kind": "runtime",
+      "text": "# Test 3: TodoWrite was used for tracking"
+    },
+    {
+      "path": "tests/claude-code/test-subagent-driven-development-integration.sh",
+      "line": 210,
+      "kind": "runtime",
+      "text": "todo_count=$(grep -c '\"name\":\"TodoWrite\"' \"$SESSION_FILE\" || echo \"0\")"
+    },
+    {
+      "path": "tests/claude-code/test-subagent-driven-development-integration.sh",
+      "line": 212,
+      "kind": "runtime",
+      "text": "    echo \"  [PASS] TodoWrite used $todo_count time(s) for task tracking\""
+    },
+    {
+      "path": "tests/claude-code/test-subagent-driven-development-integration.sh",
+      "line": 214,
+      "kind": "runtime",
+      "text": "    echo \"  [FAIL] TodoWrite not used\""
+    },
+    {
+      "path": "tests/claude-code/test-subagent-driven-development-integration.sh",
+      "line": 250,
+      "kind": "dependencies",
+      "text": "if cd \"$TEST_PROJECT\" && npm test > test-output.txt 2>&1; then"
+    },
+    {
+      "path": "tests/claude-code/test-subagent-driven-development-integration.sh",
+      "line": 280,
+      "kind": "sensitive",
+      "text": "# Token Usage Analysis"
+    },
+    {
+      "path": "tests/claude-code/test-subagent-driven-development-integration.sh",
+      "line": 282,
+      "kind": "sensitive",
+      "text": "echo \" Token Usage Analysis\""
+    },
+    {
+      "path": "tests/claude-code/test-subagent-driven-development-integration.sh",
+      "line": 285,
+      "kind": "dependencies",
+      "text": "python3 \"$SCRIPT_DIR/analyze-token-usage.py\" \"$SESSION_FILE\""
+    },
+    {
+      "path": "tests/claude-code/test-subagent-driven-development-integration.sh",
+      "line": 285,
+      "kind": "sensitive",
+      "text": "python3 \"$SCRIPT_DIR/analyze-token-usage.py\" \"$SESSION_FILE\""
+    },
+    {
+      "path": "tests/claude-code/test-subagent-driven-development-integration.sh",
+      "line": 298,
+      "kind": "runtime",
+      "text": "    echo \"The subagent-driven-development skill correctly:\""
+    },
+    {
+      "path": "tests/claude-code/test-subagent-driven-development.sh",
+      "line": 2,
+      "kind": "runtime",
+      "text": "# Test: subagent-driven-development skill"
+    },
+    {
+      "path": "tests/claude-code/test-subagent-driven-development.sh",
+      "line": 9,
+      "kind": "runtime",
+      "text": "echo \"=== Test: subagent-driven-development skill ===\""
+    },
+    {
+      "path": "tests/claude-code/test-subagent-driven-development.sh",
+      "line": 15,
+      "kind": "runtime",
+      "text": "output=$(run_claude \"What is the subagent-driven-development skill? Describe its key steps briefly.\" 30)"
+    },
+    {
+      "path": "tests/claude-code/test-subagent-driven-development.sh",
+      "line": 17,
+      "kind": "runtime",
+      "text": "if assert_contains \"$output\" \"subagent-driven-development\\|Subagent-Driven Development\\|Subagent Driven\" \"Skill is recognized\"; then"
+    },
+    {
+      "path": "tests/claude-code/test-subagent-driven-development.sh",
+      "line": 34,
+      "kind": "runtime",
+      "text": "output=$(run_claude \"In the subagent-driven-development skill, what comes first: spec compliance review or code quality review? Be specific about the order.\" 30)"
+    },
+    {
+      "path": "tests/claude-code/test-subagent-driven-development.sh",
+      "line": 47,
+      "kind": "runtime",
+      "text": "output=$(run_claude \"Does the subagent-driven-development skill require implementers to do self-review? What should they check?\" 30)"
+    },
+    {
+      "path": "tests/claude-code/test-subagent-driven-development.sh",
+      "line": 66,
+      "kind": "runtime",
+      "text": "output=$(run_claude \"In subagent-driven-development, how many times should the controller read the plan file? When does this happen?\" 30)"
+    },
+    {
+      "path": "tests/claude-code/test-subagent-driven-development.sh",
+      "line": 85,
+      "kind": "runtime",
+      "text": "output=$(run_claude \"What is the spec compliance reviewer's attitude toward the implementer's report in subagent-driven-development?\" 30)"
+    },
+    {
+      "path": "tests/claude-code/test-subagent-driven-development.sh",
+      "line": 104,
+      "kind": "runtime",
+      "text": "output=$(run_claude \"In subagent-driven-development, what happens if a reviewer finds issues? Is it a one-time review or a loop?\" 30)"
+    },
+    {
+      "path": "tests/claude-code/test-subagent-driven-development.sh",
+      "line": 123,
+      "kind": "runtime",
+      "text": "output=$(run_claude \"In subagent-driven-development, how does the controller provide task information to the implementer subagent? Does it make them read a file or provide it directly?\" 30)"
+    },
+    {
+      "path": "tests/claude-code/test-subagent-driven-development.sh",
+      "line": 131,
+      "kind": "runtime",
+      "text": "if assert_not_contains \"$output\" \"read.*file\\|open.*file\" \"Doesn't make subagent read file\"; then"
+    },
+    {
+      "path": "tests/claude-code/test-subagent-driven-development.sh",
+      "line": 142,
+      "kind": "runtime",
+      "text": "output=$(run_claude \"What workflow skills are required before using subagent-driven-development? List any prerequisites or required skills.\" 30)"
+    },
+    {
+      "path": "tests/claude-code/test-subagent-driven-development.sh",
+      "line": 155,
+      "kind": "runtime",
+      "text": "output=$(run_claude \"In subagent-driven-development, is it okay to start implementation directly on the main branch?\" 30)"
+    },
+    {
+      "path": "tests/claude-code/test-subagent-driven-development.sh",
+      "line": 165,
+      "kind": "runtime",
+      "text": "echo \"=== All subagent-driven-development skill tests passed ===\""
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-all.sh",
+      "line": 17,
+      "kind": "runtime",
+      "text": "# Test: subagent-driven-development, please"
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-all.sh",
+      "line": 18,
+      "kind": "runtime",
+      "text": "echo \">>> Test 1: subagent-driven-development-please\""
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-all.sh",
+      "line": 19,
+      "kind": "runtime",
+      "text": "if \"$SCRIPT_DIR/run-test.sh\" \"subagent-driven-development\" \"$PROMPTS_DIR/subagent-driven-development-please.txt\"; then"
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-all.sh",
+      "line": 21,
+      "kind": "runtime",
+      "text": "    RESULTS=\"$RESULTS\\nPASS: subagent-driven-development-please\""
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-all.sh",
+      "line": 24,
+      "kind": "runtime",
+      "text": "    RESULTS=\"$RESULTS\\nFAIL: subagent-driven-development-please\""
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-all.sh",
+      "line": 52,
+      "kind": "runtime",
+      "text": "if \"$SCRIPT_DIR/run-test.sh\" \"subagent-driven-development\" \"$PROMPTS_DIR/mid-conversation-execute-plan.txt\"; then"
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-claude-describes-sdd.sh",
+      "line": 2,
+      "kind": "runtime",
+      "text": "# Test where Claude explicitly describes subagent-driven-development before user requests it"
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-claude-describes-sdd.sh",
+      "line": 11,
+      "kind": "runtime",
+      "text": "OUTPUT_DIR=\"/tmp/superpowers-tests/${TIMESTAMP}/explicit-skill-requests/claude-describes\""
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-claude-describes-sdd.sh",
+      "line": 17,
+      "kind": "runtime",
+      "text": "echo \"=== Test: Claude Describes SDD First ===\""
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-claude-describes-sdd.sh",
+      "line": 37,
+      "kind": "runtime",
+      "text": "# Turn 1: Have Claude describe execution options including SDD"
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-claude-describes-sdd.sh",
+      "line": 38,
+      "kind": "runtime",
+      "text": "echo \">>> Turn 1: Ask Claude to describe execution options...\""
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-claude-describes-sdd.sh",
+      "line": 39,
+      "kind": "runtime",
+      "text": "claude -p \"I have a plan at docs/plans/auth-system.md. Tell me about my options for executing it, including what subagent-driven-development means and how it works.\" \\"
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-claude-describes-sdd.sh",
+      "line": 48,
+      "kind": "runtime",
+      "text": "# Turn 2: THE CRITICAL TEST - now that Claude has explained it"
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-claude-describes-sdd.sh",
+      "line": 49,
+      "kind": "runtime",
+      "text": "echo \">>> Turn 2: Request subagent-driven-development...\""
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-claude-describes-sdd.sh",
+      "line": 51,
+      "kind": "runtime",
+      "text": "claude -p \"subagent-driven-development, please\" \\"
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-claude-describes-sdd.sh",
+      "line": 64,
+      "kind": "runtime",
+      "text": "# Check Turn 1 to see if Claude described SDD"
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-claude-describes-sdd.sh",
+      "line": 65,
+      "kind": "runtime",
+      "text": "echo \"Turn 1 - Claude's description of options (excerpt):\""
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-claude-describes-sdd.sh",
+      "line": 72,
+      "kind": "runtime",
+      "text": "SKILL_PATTERN='\"skill\":\"([^\"]*:)?subagent-driven-development\"'"
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-claude-describes-sdd.sh",
+      "line": 74,
+      "kind": "runtime",
+      "text": "    echo \"PASS: Skill was triggered after Claude described it\""
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-claude-describes-sdd.sh",
+      "line": 77,
+      "kind": "runtime",
+      "text": "    echo \"FAIL: Skill was NOT triggered (Claude may have thought it already knew)\""
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-extended-multiturn-test.sh",
+      "line": 26,
+      "kind": "runtime",
+      "text": "claude -p \"I want to add user authentication to my app. Help me think through this.\" \\"
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-extended-multiturn-test.sh",
+      "line": 36,
+      "kind": "runtime",
+      "text": "claude -p \"Let's use JWT tokens with 24-hour expiry. Email/password registration.\" \\"
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-extended-multiturn-test.sh",
+      "line": 47,
+      "kind": "runtime",
+      "text": "claude -p \"Great, write this up as an implementation plan.\" \\"
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-extended-multiturn-test.sh",
+      "line": 58,
+      "kind": "runtime",
+      "text": "claude -p \"The plan looks good. What are my options for executing it?\" \\"
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-extended-multiturn-test.sh",
+      "line": 68,
+      "kind": "runtime",
+      "text": "echo \">>> Turn 5: Requesting subagent-driven-development...\""
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-extended-multiturn-test.sh",
+      "line": 70,
+      "kind": "runtime",
+      "text": "claude -p \"subagent-driven-development, please\" \\"
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-extended-multiturn-test.sh",
+      "line": 83,
+      "kind": "runtime",
+      "text": "SKILL_PATTERN='\"skill\":\"([^\"]*:)?subagent-driven-development\"'"
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-haiku-test.sh",
+      "line": 2,
+      "kind": "runtime",
+      "text": "# Test with haiku model and user's CLAUDE.md"
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-haiku-test.sh",
+      "line": 16,
+      "kind": "runtime",
+      "text": "mkdir -p \"$PROJECT_DIR/.claude\""
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-haiku-test.sh",
+      "line": 18,
+      "kind": "runtime",
+      "text": "echo \"=== Haiku Model Test with User CLAUDE.md ===\""
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-haiku-test.sh",
+      "line": 25,
+      "kind": "runtime",
+      "text": "# Copy user's CLAUDE.md to simulate real environment"
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-haiku-test.sh",
+      "line": 26,
+      "kind": "runtime",
+      "text": "if [ -f \"$HOME/.claude/CLAUDE.md\" ]; then"
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-haiku-test.sh",
+      "line": 27,
+      "kind": "runtime",
+      "text": "    cp \"$HOME/.claude/CLAUDE.md\" \"$PROJECT_DIR/.claude/CLAUDE.md\""
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-haiku-test.sh",
+      "line": 28,
+      "kind": "runtime",
+      "text": "    echo \"Copied user CLAUDE.md\""
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-haiku-test.sh",
+      "line": 30,
+      "kind": "runtime",
+      "text": "    echo \"No user CLAUDE.md found, proceeding without\""
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-haiku-test.sh",
+      "line": 54,
+      "kind": "runtime",
+      "text": "claude -p \"I want to add user authentication to my app. Help me think through this.\" \\"
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-haiku-test.sh",
+      "line": 65,
+      "kind": "runtime",
+      "text": "claude -p \"Let's use JWT tokens with 24-hour expiry. Email/password registration.\" \\"
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-haiku-test.sh",
+      "line": 77,
+      "kind": "runtime",
+      "text": "claude -p \"Great, write this up as an implementation plan.\" \\"
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-haiku-test.sh",
+      "line": 89,
+      "kind": "runtime",
+      "text": "claude -p \"The plan looks good. What are my options for executing it?\" \\"
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-haiku-test.sh",
+      "line": 100,
+      "kind": "runtime",
+      "text": "echo \">>> Turn 5: Requesting subagent-driven-development...\""
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-haiku-test.sh",
+      "line": 102,
+      "kind": "runtime",
+      "text": "claude -p \"subagent-driven-development, please\" \\"
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-haiku-test.sh",
+      "line": 116,
+      "kind": "runtime",
+      "text": "SKILL_PATTERN='\"skill\":\"([^\"]*:)?subagent-driven-development\"'"
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-multiturn-test.sh",
+      "line": 6,
+      "kind": "runtime",
+      "text": "# where Claude skips skill invocation after extended conversation"
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-multiturn-test.sh",
+      "line": 49,
+      "kind": "runtime",
+      "text": "claude -p \"I need to implement an authentication system. Let's plan this out. The requirements are: user registration with email/password, JWT tokens, and protected routes.\" \\"
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-multiturn-test.sh",
+      "line": 62,
+      "kind": "runtime",
+      "text": "claude -p \"Good analysis. I've already written the plan to docs/plans/auth-system.md. Now I'm ready to implement. What are my options for execution?\" \\"
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-multiturn-test.sh",
+      "line": 73,
+      "kind": "runtime",
+      "text": "# Turn 3: The critical test - ask for subagent-driven-development"
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-multiturn-test.sh",
+      "line": 74,
+      "kind": "runtime",
+      "text": "echo \">>> Turn 3: Requesting subagent-driven-development...\""
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-multiturn-test.sh",
+      "line": 76,
+      "kind": "runtime",
+      "text": "claude -p \"subagent-driven-development, please\" \\"
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-multiturn-test.sh",
+      "line": 90,
+      "kind": "runtime",
+      "text": "SKILL_PATTERN='\"skill\":\"([^\"]*:)?subagent-driven-development\"'"
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-multiturn-test.sh",
+      "line": 92,
+      "kind": "runtime",
+      "text": "    echo \"PASS: Skill 'subagent-driven-development' was triggered in Turn 3\""
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-multiturn-test.sh",
+      "line": 95,
+      "kind": "runtime",
+      "text": "    echo \"FAIL: Skill 'subagent-driven-development' was NOT triggered in Turn 3\""
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-multiturn-test.sh",
+      "line": 112,
+      "kind": "runtime",
+      "text": "        grep -v '\"name\":\"TodoWrite\"' || true)"
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-test.sh",
+      "line": 5,
+      "kind": "runtime",
+      "text": "# Tests whether Claude invokes a skill when the user explicitly requests it by name"
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-test.sh",
+      "line": 18,
+      "kind": "runtime",
+      "text": "    echo \"Example: $0 subagent-driven-development ./prompts/subagent-driven-development-please.txt\""
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-test.sh",
+      "line": 62,
+      "kind": "runtime",
+      "text": "# Run Claude with isolated environment"
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-test.sh",
+      "line": 63,
+      "kind": "runtime",
+      "text": "LOG_FILE=\"$OUTPUT_DIR/claude-output.json\""
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-test.sh",
+      "line": 67,
+      "kind": "runtime",
+      "text": "echo \"Running claude -p with explicit skill request...\""
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-test.sh",
+      "line": 71,
+      "kind": "runtime",
+      "text": "timeout 300 claude -p \"$PROMPT\" \\"
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-test.sh",
+      "line": 97,
+      "kind": "runtime",
+      "text": "# Check if Claude took action BEFORE invoking the skill (the failure mode)"
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-test.sh",
+      "line": 102,
+      "kind": "runtime",
+      "text": "# This detects the failure mode where Claude starts doing work without loading the skill"
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-test.sh",
+      "line": 106,
+      "kind": "runtime",
+      "text": "    # Filter out system messages, TodoWrite (planning is ok), and other non-action tools"
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-test.sh",
+      "line": 110,
+      "kind": "runtime",
+      "text": "        grep -v '\"name\":\"TodoWrite\"' || true)"
+    },
+    {
+      "path": "tests/explicit-skill-requests/run-test.sh",
+      "line": 115,
+      "kind": "runtime",
+      "text": "        echo \"This indicates Claude started working before loading the requested skill.\""
+    },
+    {
+      "path": "tests/opencode/run-tests.sh",
+      "line": 103,
+      "kind": "sensitive",
+      "text": "        chmod +x \"$test_path\""
+    },
+    {
+      "path": "tests/opencode/setup.sh",
+      "line": 67,
+      "kind": "sensitive",
+      "text": "        rm -rf \"$TEST_HOME\""
+    },
+    {
+      "path": "tests/opencode/test-plugin-loading.sh",
+      "line": 64,
+      "kind": "dependencies",
+      "text": "if node --check \"$plugin_file\" 2>/dev/null; then"
+    },
+    {
+      "path": "tests/opencode/test-skills-core.sh",
+      "line": 3,
+      "kind": "dependencies",
+      "text": "# Tests the skills-core.js library functions directly via Node.js"
+    },
+    {
+      "path": "tests/opencode/test-skills-core.sh",
+      "line": 33,
+      "kind": "dependencies",
+      "text": "# Run Node.js test using inline function (avoids ESM path resolution issues in test env)"
+    },
+    {
+      "path": "tests/opencode/test-skills-core.sh",
+      "line": 34,
+      "kind": "dependencies",
+      "text": "result=$(node -e \""
+    },
+    {
+      "path": "tests/opencode/test-skills-core.sh",
+      "line": 90,
+      "kind": "dependencies",
+      "text": "result=$(node -e \""
+    },
+    {
+      "path": "tests/opencode/test-skills-core.sh",
+      "line": 167,
+      "kind": "dependencies",
+      "text": "result=$(node -e \""
+    },
+    {
+      "path": "tests/opencode/test-skills-core.sh",
+      "line": 281,
+      "kind": "dependencies",
+      "text": "result=$(node -e \""
+    },
+    {
+      "path": "tests/opencode/test-skills-core.sh",
+      "line": 381,
+      "kind": "dependencies",
+      "text": "result=$(node -e \""
+    },
+    {
+      "path": "tests/skill-triggering/run-test.sh",
+      "line": 5,
+      "kind": "runtime",
+      "text": "# Tests whether Claude triggers a skill based on a natural prompt"
+    },
+    {
+      "path": "tests/skill-triggering/run-test.sh",
+      "line": 42,
+      "kind": "runtime",
+      "text": "# Run Claude"
+    },
+    {
+      "path": "tests/skill-triggering/run-test.sh",
+      "line": 43,
+      "kind": "runtime",
+      "text": "LOG_FILE=\"$OUTPUT_DIR/claude-output.json\""
+    },
+    {
+      "path": "tests/skill-triggering/run-test.sh",
+      "line": 47,
+      "kind": "runtime",
+      "text": "echo \"Running claude -p with naive prompt...\""
+    },
+    {
+      "path": "tests/skill-triggering/run-test.sh",
+      "line": 48,
+      "kind": "runtime",
+      "text": "timeout 300 claude -p \"$PROMPT\" \\"
+    },
+    {
+      "path": "tests/subagent-driven-dev/go-fractals/plan.md",
+      "line": 3,
+      "kind": "runtime",
+      "text": "Execute this plan using the `superpowers:subagent-driven-development` skill."
+    },
+    {
+      "path": "tests/subagent-driven-dev/go-fractals/scaffold.sh",
+      "line": 21,
+      "kind": "runtime",
+      "text": "# Create .claude settings to allow reads/writes in this directory"
+    },
+    {
+      "path": "tests/subagent-driven-dev/go-fractals/scaffold.sh",
+      "line": 22,
+      "kind": "runtime",
+      "text": "mkdir -p .claude"
+    },
+    {
+      "path": "tests/subagent-driven-dev/go-fractals/scaffold.sh",
+      "line": 23,
+      "kind": "runtime",
+      "text": "cat > .claude/settings.local.json << 'SETTINGS'"
+    },
+    {
+      "path": "tests/subagent-driven-dev/go-fractals/scaffold.sh",
+      "line": 45,
+      "kind": "runtime",
+      "text": "echo \"  claude -p \\\"Execute this plan using superpowers:subagent-driven-development. Plan: $TARGET_DIR/plan.md\\\" --plugin-dir /path/to/superpowers\""
+    },
+    {
+      "path": "tests/subagent-driven-dev/run-test.sh",
+      "line": 2,
+      "kind": "runtime",
+      "text": "# Run a subagent-driven-development test"
+    },
+    {
+      "path": "tests/subagent-driven-dev/run-test.sh",
+      "line": 46,
+      "kind": "runtime",
+      "text": "OUTPUT_BASE=\"/tmp/superpowers-tests/$TIMESTAMP/subagent-driven-development\""
+    },
+    {
+      "path": "tests/subagent-driven-dev/run-test.sh",
+      "line": 50,
+      "kind": "runtime",
+      "text": "echo \"=== Subagent-Driven Development Test ===\""
+    },
+    {
+      "path": "tests/subagent-driven-dev/run-test.sh",
+      "line": 63,
+      "kind": "runtime",
+      "text": "PROMPT=\"Execute this plan using superpowers:subagent-driven-development. The plan is at: $PLAN_PATH\""
+    },
+    {
+      "path": "tests/subagent-driven-dev/run-test.sh",
+      "line": 65,
+      "kind": "runtime",
+      "text": "# Run Claude with JSON output for token tracking"
+    },
+    {
+      "path": "tests/subagent-driven-dev/run-test.sh",
+      "line": 65,
+      "kind": "sensitive",
+      "text": "# Run Claude with JSON output for token tracking"
+    },
+    {
+      "path": "tests/subagent-driven-dev/run-test.sh",
+      "line": 66,
+      "kind": "runtime",
+      "text": "LOG_FILE=\"$OUTPUT_DIR/claude-output.json\""
+    },
+    {
+      "path": "tests/subagent-driven-dev/run-test.sh",
+      "line": 67,
+      "kind": "runtime",
+      "text": "echo \">>> Running Claude...\""
+    },
+    {
+      "path": "tests/subagent-driven-dev/run-test.sh",
+      "line": 72,
+      "kind": "runtime",
+      "text": "# Run claude and capture output"
+    },
+    {
+      "path": "tests/subagent-driven-dev/run-test.sh",
+      "line": 73,
+      "kind": "sensitive",
+      "text": "# Using stream-json to get token usage stats"
+    },
+    {
+      "path": "tests/subagent-driven-dev/run-test.sh",
+      "line": 76,
+      "kind": "runtime",
+      "text": "claude -p \"$PROMPT\" \\"
+    },
+    {
+      "path": "tests/subagent-driven-dev/run-test.sh",
+      "line": 87,
+      "kind": "runtime",
+      "text": "echo \"Claude log: $LOG_FILE\""
+    },
+    {
+      "path": "tests/subagent-driven-dev/run-test.sh",
+      "line": 90,
+      "kind": "sensitive",
+      "text": "# Show token usage if available"
+    },
+    {
+      "path": "tests/subagent-driven-dev/run-test.sh",
+      "line": 92,
+      "kind": "sensitive",
+      "text": "  echo \">>> Token usage:\""
+    },
+    {
+      "path": "tests/subagent-driven-dev/run-test.sh",
+      "line": 100,
+      "kind": "runtime",
+      "text": "echo \"2. Review Claude's log: less $LOG_FILE\""
+    },
+    {
+      "path": "tests/subagent-driven-dev/run-test.sh",
+      "line": 105,
+      "kind": "dependencies",
+      "text": "  echo \"   cd $OUTPUT_DIR/project && npm test && npx playwright test\""
+    },
+    {
+      "path": "tests/subagent-driven-dev/svelte-todo/plan.md",
+      "line": 3,
+      "kind": "runtime",
+      "text": "Execute this plan using the `superpowers:subagent-driven-development` skill."
+    },
+    {
+      "path": "tests/subagent-driven-dev/svelte-todo/plan.md",
+      "line": 16,
+      "kind": "dependencies",
+      "text": "- Run `npm create vite@latest . -- --template svelte-ts`"
+    },
+    {
+      "path": "tests/subagent-driven-dev/svelte-todo/plan.md",
+      "line": 17,
+      "kind": "dependencies",
+      "text": "- Install dependencies with `npm install`"
+    },
+    {
+      "path": "tests/subagent-driven-dev/svelte-todo/plan.md",
+      "line": 22,
+      "kind": "dependencies",
+      "text": "- `npm run dev` starts server"
+    },
+    {
+      "path": "tests/subagent-driven-dev/svelte-todo/plan.md",
+      "line": 24,
+      "kind": "dependencies",
+      "text": "- `npm run build` succeeds"
+    },
+    {
+      "path": "tests/subagent-driven-dev/svelte-todo/plan.md",
+      "line": 40,
+      "kind": "dependencies",
+      "text": "- Tests pass: `npm run test` (install vitest if needed)"
+    },
+    {
+      "path": "tests/subagent-driven-dev/svelte-todo/plan.md",
+      "line": 190,
+      "kind": "dependencies",
+      "text": "Add Playwright tests for full user flows."
+    },
+    {
+      "path": "tests/subagent-driven-dev/svelte-todo/plan.md",
+      "line": 193,
+      "kind": "dependencies",
+      "text": "- Install Playwright: `npm init playwright@latest`"
+    },
+    {
+      "path": "tests/subagent-driven-dev/svelte-todo/plan.md",
+      "line": 204,
+      "kind": "dependencies",
+      "text": "- `npx playwright test` passes"
+    },
+    {
+      "path": "tests/subagent-driven-dev/svelte-todo/plan.md",
+      "line": 215,
+      "kind": "dependencies",
+      "text": "  - Setup: `npm install`"
+    },
+    {
+      "path": "tests/subagent-driven-dev/svelte-todo/plan.md",
+      "line": 216,
+      "kind": "dependencies",
+      "text": "  - Development: `npm run dev`"
+    },
+    {
+      "path": "tests/subagent-driven-dev/svelte-todo/plan.md",
+      "line": 217,
+      "kind": "dependencies",
+      "text": "  - Testing: `npm test` and `npx playwright test`"
+    },
+    {
+      "path": "tests/subagent-driven-dev/svelte-todo/plan.md",
+      "line": 218,
+      "kind": "dependencies",
+      "text": "  - Build: `npm run build`"
+    },
+    {
+      "path": "tests/subagent-driven-dev/svelte-todo/scaffold.sh",
+      "line": 21,
+      "kind": "runtime",
+      "text": "# Create .claude settings to allow reads/writes in this directory"
+    },
+    {
+      "path": "tests/subagent-driven-dev/svelte-todo/scaffold.sh",
+      "line": 22,
+      "kind": "runtime",
+      "text": "mkdir -p .claude"
+    },
+    {
+      "path": "tests/subagent-driven-dev/svelte-todo/scaffold.sh",
+      "line": 23,
+      "kind": "runtime",
+      "text": "cat > .claude/settings.local.json << 'SETTINGS'"
+    },
+    {
+      "path": "tests/subagent-driven-dev/svelte-todo/scaffold.sh",
+      "line": 30,
+      "kind": "dependencies",
+      "text": "      \"Bash(npm:*)\","
+    },
+    {
+      "path": "tests/subagent-driven-dev/svelte-todo/scaffold.sh",
+      "line": 31,
+      "kind": "dependencies",
+      "text": "      \"Bash(npx:*)\","
+    },
+    {
+      "path": "tests/subagent-driven-dev/svelte-todo/scaffold.sh",
+      "line": 46,
+      "kind": "runtime",
+      "text": "echo \"  claude -p \\\"Execute this plan using superpowers:subagent-driven-development. Plan: $TARGET_DIR/plan.md\\\" --plugin-dir /path/to/superpowers\""
+    }
+  ]
+}

@@ -1,8 +1,8 @@
 import { PRODUCT_ENGLISH } from "./product"
 export const dict = {
   ...PRODUCT_ENGLISH,
-  "app.name": "Oreshnik",
-  "desktop.menu.app": "Oreshnik",
+  "app.name": "Gamma",
+  "desktop.menu.app": "Gamma",
   "desktop.menu.file": "Berkas",
   "desktop.menu.edit": "Sunting",
   "desktop.menu.view": "Tampilan",
@@ -244,7 +244,7 @@ export const dict = {
   "provider.connect.status.waiting": "Menunggu otorisasi...",
   "provider.connect.status.failed": "Otorisasi gagal: {{error}}",
   "provider.connect.apiKey.description":
-    "Masukkan kunci API {{provider}} untuk menghubungkan akun Anda dan gunakan model {{provider}} di Oreshnik.",
+    "Masukkan kunci API {{provider}} untuk menghubungkan akun Anda dan gunakan model {{provider}} di Gamma.",
   "provider.connect.apiKey.label": "Kunci API {{provider}}",
   "provider.connect.apiKey.placeholder": "Kunci API",
   "provider.connect.apiKey.required": "Kunci API diperlukan",
@@ -258,7 +258,7 @@ export const dict = {
   "provider.connect.oauth.code.visit.prefix": "Kunjungi ",
   "provider.connect.oauth.code.visit.link": "tautan ini",
   "provider.connect.oauth.code.visit.suffix":
-    " untuk mendapatkan kode otorisasi guna menghubungkan akun Anda dan menggunakan model {{provider}} di Oreshnik.",
+    " untuk mendapatkan kode otorisasi guna menghubungkan akun Anda dan menggunakan model {{provider}} di Gamma.",
   "provider.connect.oauth.code.label": "Kode otorisasi {{method}}",
   "provider.connect.oauth.code.placeholder": "Kode otorisasi",
   "provider.connect.oauth.code.required": "Kode otorisasi diperlukan",
@@ -266,7 +266,7 @@ export const dict = {
   "provider.connect.oauth.auto.visit.prefix": "Kunjungi ",
   "provider.connect.oauth.auto.visit.link": "tautan ini",
   "provider.connect.oauth.auto.visit.suffix":
-    " dan masukkan kode di bawah untuk menghubungkan akun dan menggunakan model {{provider}} di Oreshnik.",
+    " dan masukkan kode di bawah untuk menghubungkan akun dan menggunakan model {{provider}} di Gamma.",
   "provider.connect.oauth.auto.confirmationCode": "Kode konfirmasi",
   "provider.connect.toast.connected.title": "{{provider}} terhubung",
   "provider.connect.toast.connected.description": "Model {{provider}} sekarang tersedia untuk digunakan.",
@@ -554,7 +554,7 @@ export const dict = {
   "help.tabs.title": "Memperkenalkan Tab",
   "help.tabs.description": "Atur pekerjaan dan sesi aktif Anda dengan tab",
   "help.tabs.date": "14 Juli",
-  "help.tabs.introduction": "Oreshnik Desktop kini dirancang dengan tab sebagai pusatnya.",
+  "help.tabs.introduction": "Gamma Desktop kini dirancang dengan tab sebagai pusatnya.",
   "help.tabs.sessions":
     "Mulai sesi baru di tab, atau buka sesi yang sudah ada dari proyek Anda. Buka tab baru saat Anda memulai sesuatu yang baru, lalu tutup setelah selesai.",
   "help.tabs.organize":
@@ -683,7 +683,7 @@ export const dict = {
   "toast.project.reloadFailed.title": "Gagal memuat ulang {{project}}",
 
   "toast.update.title": "Pembaruan tersedia",
-  "toast.update.description": "Versi baru Oreshnik ({{version}}) sekarang tersedia untuk diinstal.",
+  "toast.update.description": "Versi baru Gamma ({{version}}) sekarang tersedia untuk diinstal.",
   "toast.update.action.installRestart": "Instal dan mulai ulang",
   "toast.update.action.notYet": "Nanti saja",
 
@@ -988,7 +988,7 @@ export const dict = {
   "debugBar.direction.ltr": "LTR",
   "debugBar.direction.rtl": "RTL",
 
-  "app.name.desktop": "Oreshnik Desktop",
+  "app.name.desktop": "Gamma Desktop",
 
   "settings.section.desktop": "Desktop",
   "settings.section.server": "Server",
@@ -1007,17 +1007,17 @@ export const dict = {
   "settings.general.section.display": "Tampilan",
 
   "settings.general.row.language.title": "Bahasa",
-  "settings.general.row.language.description": "Ubah bahasa tampilan untuk Oreshnik",
+  "settings.general.row.language.description": "Ubah bahasa tampilan untuk Gamma",
   "settings.general.row.shell.title": "Shell terminal",
   "settings.general.row.shell.description": "Shell yang digunakan oleh terminal dan alat agen",
   "settings.general.row.shell.autoDefault": "Otomatis (Bawaan)",
   "settings.general.row.shell.terminalOnly": "hanya terminal",
   "settings.general.row.appearance.title": "Tampilan",
-  "settings.general.row.appearance.description": "Sesuaikan tampilan Oreshnik di perangkat Anda",
+  "settings.general.row.appearance.description": "Sesuaikan tampilan Gamma di perangkat Anda",
   "settings.general.row.colorScheme.title": "Skema warna",
-  "settings.general.row.colorScheme.description": "Pilih apakah Oreshnik mengikuti tema sistem, terang, atau gelap",
+  "settings.general.row.colorScheme.description": "Pilih apakah Gamma mengikuti tema sistem, terang, atau gelap",
   "settings.general.row.theme.title": "Tema",
-  "settings.general.row.theme.description": "Sesuaikan tema Oreshnik.",
+  "settings.general.row.theme.description": "Sesuaikan tema Gamma.",
   "settings.general.row.font.title": "Font kode",
   "settings.general.row.font.description": "Sesuaikan font yang digunakan di blok kode",
   "settings.general.row.terminalFont.title": "Font terminal",
@@ -1073,7 +1073,7 @@ export const dict = {
   "settings.general.row.releaseNotes.description": "Tampilkan pop-up Apa yang Baru setelah pembaruan",
 
   "settings.updates.row.startup.title": "Periksa pembaruan saat dimulai",
-  "settings.updates.row.startup.description": "Secara otomatis memeriksa pembaruan saat Oreshnik diluncurkan",
+  "settings.updates.row.startup.description": "Secara otomatis memeriksa pembaruan saat Gamma diluncurkan",
   "settings.updates.row.check.title": "Periksa pembaruan",
   "settings.updates.row.check.description": "Periksa pembaruan secara manual dan instal jika tersedia",
   "settings.updates.action.checkNow": "Periksa sekarang",
@@ -1081,7 +1081,7 @@ export const dict = {
   "settings.updates.action.downloading": "Mengunduh...",
   "settings.updates.action.installing": "Menginstal...",
   "settings.updates.toast.latest.title": "Versi Anda sudah terbaru",
-  "settings.updates.toast.latest.description": "Anda menjalankan versi terbaru Oreshnik.",
+  "settings.updates.toast.latest.description": "Anda menjalankan versi terbaru Gamma.",
   "sound.option.none": "Tidak ada",
   "sound.option.alert01": "Peringatan 01",
   "sound.option.alert02": "Peringatan 02",

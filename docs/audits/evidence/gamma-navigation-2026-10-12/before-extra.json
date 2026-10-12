@@ -1,0 +1,203 @@
+{
+  "config": {
+    "configFile": "/home/nikita/menti/mvp_platform/packages/app/e2e/performance/navigation/playwright.config.ts",
+    "rootDir": "/home/nikita/menti/mvp_platform/packages/app/e2e/performance/navigation",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/tmp/gamma-navigation-before-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/home/nikita/menti/mvp_platform/packages/app/e2e/performance/navigation",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 180000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "line",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "/tmp/gamma-navigation-before-report.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.59.1",
+    "workers": 1,
+    "webServer": {
+      "command": "bun run serve -- --host 127.0.0.1 --port 4520 --strictPort --outDir /tmp/gamma-navigation-before",
+      "url": "http://127.0.0.1:4520",
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "navigation.spec.ts",
+      "file": "navigation.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "graph lifecycle",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 15465,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T14:56:40.489Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "graph",
+                      "contentType": "application/json",
+                      "body": "eyJpbml0aWFsIjp7ImRvY3VtZW50cyI6Mywibm9kZXMiOjI5NDIsImpzRXZlbnRMaXN0ZW5lcnMiOjExN30sImFmdGVyIjp7ImRvY3VtZW50cyI6Miwibm9kZXMiOjMwMzksImpzRXZlbnRMaXN0ZW5lcnMiOjEwM30sImN5Y2xlcyI6W3siZG9jdW1lbnRzIjoyLCJub2RlcyI6MzgwMSwianNFdmVudExpc3RlbmVycyI6MTIwfSx7ImRvY3VtZW50cyI6Miwibm9kZXMiOjQ1MjUsImpzRXZlbnRMaXN0ZW5lcnMiOjEzNn0seyJkb2N1bWVudHMiOjIsIm5vZGVzIjo1MjQ5LCJqc0V2ZW50TGlzdGVuZXJzIjoxNTJ9LHsiZG9jdW1lbnRzIjoyLCJub2RlcyI6NTk5MiwianNFdmVudExpc3RlbmVycyI6MTY4fSx7ImRvY3VtZW50cyI6Miwibm9kZXMiOjY3MTYsImpzRXZlbnRMaXN0ZW5lcnMiOjE4NH0seyJkb2N1bWVudHMiOjIsIm5vZGVzIjo3NDQwLCJqc0V2ZW50TGlzdGVuZXJzIjoyMDB9LHsiZG9jdW1lbnRzIjoyLCJub2RlcyI6ODE2NCwianNFdmVudExpc3RlbmVycyI6MjE2fSx7ImRvY3VtZW50cyI6Miwibm9kZXMiOjg4ODgsImpzRXZlbnRMaXN0ZW5lcnMiOjIzMn0seyJkb2N1bWVudHMiOjIsIm5vZGVzIjo5NjEyLCJqc0V2ZW50TGlzdGVuZXJzIjoyNDh9LHsiZG9jdW1lbnRzIjoyLCJub2RlcyI6MTAzMzYsImpzRXZlbnRMaXN0ZW5lcnMiOjI2NH1dfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5d2868f7d23420c27cca-54d2114c1a05332d2808",
+          "file": "navigation.spec.ts",
+          "line": 277,
+          "column": 1
+        },
+        {
+          "title": "chat v2 independent of knowledge",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8352,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T14:56:55.996Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "pending-chat",
+                      "contentType": "application/json",
+                      "body": "eyJlbmRwb2ludCI6Imtub3dsZWRnZSIsInVybCI6Imh0dHA6Ly8xMjcuMC4wLjE6NDUyMC8iLCJob21lVmlzaWJsZSI6ZmFsc2UsInByb21wdFZpc2libGUiOmZhbHNlfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5d2868f7d23420c27cca-64db6cc1fdcb76f0881e",
+          "file": "navigation.spec.ts",
+          "line": 309,
+          "column": 5
+        },
+        {
+          "title": "chat v2 independent of agent-market/agents",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8427,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T14:57:04.355Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "pending-chat",
+                      "contentType": "application/json",
+                      "body": "eyJlbmRwb2ludCI6ImFnZW50LW1hcmtldC9hZ2VudHMiLCJ1cmwiOiJodHRwOi8vMTI3LjAuMC4xOjQ1MjAvIiwiaG9tZVZpc2libGUiOmZhbHNlLCJwcm9tcHRWaXNpYmxlIjpmYWxzZX0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5d2868f7d23420c27cca-00cea92654e471c3cd82",
+          "file": "navigation.spec.ts",
+          "line": 309,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-12T14:56:39.777Z",
+    "duration": 33041.037,
+    "expected": 3,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

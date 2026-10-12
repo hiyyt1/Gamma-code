@@ -1,0 +1,572 @@
+{
+  "mode": "isolated real backend; empty database; no providers; external browser requests blocked",
+  "requests": [
+    {
+      "stage": "home",
+      "url": "/",
+      "method": "GET",
+      "type": "document",
+      "time": 1791821522479
+    },
+    {
+      "stage": "home",
+      "url": "/oc-theme-preload.js?v=gamma-light-1",
+      "method": "GET",
+      "type": "script",
+      "time": 1791821522485
+    },
+    {
+      "stage": "home",
+      "url": "/assets/index-BS_WLSAz.js",
+      "method": "GET",
+      "type": "script",
+      "time": 1791821522485
+    },
+    {
+      "stage": "home",
+      "url": "/assets/index-H8uMcXmx.css",
+      "method": "GET",
+      "type": "stylesheet",
+      "time": 1791821522485
+    },
+    {
+      "stage": "home",
+      "url": "/assets/ru-CiLjiN7U.js",
+      "method": "GET",
+      "type": "script",
+      "time": 1791821522684
+    },
+    {
+      "stage": "home",
+      "url": "/assets/ru-C73T3SzZ.js",
+      "method": "GET",
+      "type": "script",
+      "time": 1791821522684
+    },
+    {
+      "stage": "home",
+      "url": "/auth/session",
+      "method": "GET",
+      "type": "fetch",
+      "time": 1791821522708
+    },
+    {
+      "stage": "home",
+      "url": "/global/health",
+      "method": "GET",
+      "type": "fetch",
+      "time": 1791821522805
+    },
+    {
+      "stage": "home",
+      "url": "/product/projects",
+      "method": "GET",
+      "type": "fetch",
+      "time": 1791821522806
+    },
+    {
+      "stage": "home",
+      "url": "/api/health",
+      "method": "GET",
+      "type": "fetch",
+      "time": 1791821522806
+    },
+    {
+      "stage": "home",
+      "url": "/assets/Inter.ttf",
+      "method": "GET",
+      "type": "font",
+      "time": 1791821522806
+    },
+    {
+      "stage": "home",
+      "url": "/api/session?limit=5000&order=desc",
+      "method": "GET",
+      "type": "fetch",
+      "time": 1791821522807
+    },
+    {
+      "stage": "home",
+      "url": "/global/config",
+      "method": "GET",
+      "type": "fetch",
+      "time": 1791821522814
+    },
+    {
+      "stage": "home",
+      "url": "/provider",
+      "method": "GET",
+      "type": "fetch",
+      "time": 1791821522814
+    },
+    {
+      "stage": "home",
+      "url": "/path",
+      "method": "GET",
+      "type": "fetch",
+      "time": 1791821522815
+    },
+    {
+      "stage": "home",
+      "url": "/session/status",
+      "method": "GET",
+      "type": "fetch",
+      "time": 1791821522815
+    },
+    {
+      "stage": "home",
+      "url": "/project",
+      "method": "GET",
+      "type": "fetch",
+      "time": 1791821522815
+    },
+    {
+      "stage": "home",
+      "url": "/global/event",
+      "method": "GET",
+      "type": "fetch",
+      "time": 1791821522816
+    },
+    {
+      "stage": "agents",
+      "url": "/product/agent-market/agents",
+      "method": "GET",
+      "type": "fetch",
+      "time": 1791821525354
+    },
+    {
+      "stage": "agents",
+      "url": "/market/agents-hero.png",
+      "method": "GET",
+      "type": "image",
+      "time": 1791821525358
+    },
+    {
+      "stage": "knowledge",
+      "url": "/product/knowledge",
+      "method": "GET",
+      "type": "fetch",
+      "time": 1791821527905
+    },
+    {
+      "stage": "home-return",
+      "url": "/api/health",
+      "method": "GET",
+      "type": "fetch",
+      "time": 1791821532770
+    },
+    {
+      "stage": "idle-home-35s",
+      "url": "/api/health",
+      "method": "GET",
+      "type": "fetch",
+      "time": 1791821542770
+    },
+    {
+      "stage": "idle-home-35s",
+      "url": "/auth/session",
+      "method": "GET",
+      "type": "fetch",
+      "time": 1791821552709
+    },
+    {
+      "stage": "idle-home-35s",
+      "url": "/api/health",
+      "method": "GET",
+      "type": "fetch",
+      "time": 1791821552770
+    },
+    {
+      "stage": "idle-home-35s",
+      "url": "/api/health",
+      "method": "GET",
+      "type": "fetch",
+      "time": 1791821562770
+    }
+  ],
+  "responses": [
+    {
+      "stage": "home",
+      "url": "/",
+      "status": 200
+    },
+    {
+      "stage": "home",
+      "url": "/assets/index-H8uMcXmx.css",
+      "status": 200
+    },
+    {
+      "stage": "home",
+      "url": "/oc-theme-preload.js?v=gamma-light-1",
+      "status": 200
+    },
+    {
+      "stage": "home",
+      "url": "/assets/index-BS_WLSAz.js",
+      "status": 200
+    },
+    {
+      "stage": "home",
+      "url": "/assets/ru-C73T3SzZ.js",
+      "status": 200
+    },
+    {
+      "stage": "home",
+      "url": "/assets/ru-CiLjiN7U.js",
+      "status": 200
+    },
+    {
+      "stage": "home",
+      "url": "/auth/session",
+      "status": 200
+    },
+    {
+      "stage": "home",
+      "url": "/global/health",
+      "status": 200
+    },
+    {
+      "stage": "home",
+      "url": "/assets/Inter.ttf",
+      "status": 200
+    },
+    {
+      "stage": "home",
+      "url": "/api/session?limit=5000&order=desc",
+      "status": 200
+    },
+    {
+      "stage": "home",
+      "url": "/api/health",
+      "status": 200
+    },
+    {
+      "stage": "home",
+      "url": "/product/projects",
+      "status": 200
+    },
+    {
+      "stage": "home",
+      "url": "/global/config",
+      "status": 200
+    },
+    {
+      "stage": "home",
+      "url": "/path",
+      "status": 200
+    },
+    {
+      "stage": "home",
+      "url": "/session/status",
+      "status": 200
+    },
+    {
+      "stage": "home",
+      "url": "/provider",
+      "status": 200
+    },
+    {
+      "stage": "home",
+      "url": "/project",
+      "status": 200
+    },
+    {
+      "stage": "home",
+      "url": "/global/event",
+      "status": 200
+    },
+    {
+      "stage": "agents",
+      "url": "/market/agents-hero.png",
+      "status": 200
+    },
+    {
+      "stage": "agents",
+      "url": "/product/agent-market/agents",
+      "status": 200
+    },
+    {
+      "stage": "knowledge",
+      "url": "/product/knowledge",
+      "status": 200
+    },
+    {
+      "stage": "home-return",
+      "url": "/api/health",
+      "status": 200
+    },
+    {
+      "stage": "idle-home-35s",
+      "url": "/api/health",
+      "status": 200
+    },
+    {
+      "stage": "idle-home-35s",
+      "url": "/auth/session",
+      "status": 200
+    },
+    {
+      "stage": "idle-home-35s",
+      "url": "/api/health",
+      "status": 200
+    },
+    {
+      "stage": "idle-home-35s",
+      "url": "/api/health",
+      "status": 200
+    }
+  ],
+  "errors": [],
+  "workers": [],
+  "samples": [
+    {
+      "stage": "home",
+      "url": "/",
+      "metrics": [
+        {
+          "name": "JSEventListeners",
+          "value": 89
+        },
+        {
+          "name": "Nodes",
+          "value": 834
+        },
+        {
+          "name": "ScriptDuration",
+          "value": 0.137742
+        },
+        {
+          "name": "TaskDuration",
+          "value": 0.292804
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 9334300
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 14827520
+        }
+      ],
+      "dom": {
+        "documents": 2,
+        "nodes": 834,
+        "jsEventListeners": 89
+      },
+      "links": [
+        {
+          "href": "/",
+          "text": "Gamma"
+        },
+        {
+          "href": "/agents",
+          "text": "Готовые агентыГотовые решения"
+        },
+        {
+          "href": "/knowledge",
+          "text": "База знанийВаши материалы и связи"
+        }
+      ]
+    },
+    {
+      "stage": "agents",
+      "url": "/agents",
+      "metrics": [
+        {
+          "name": "JSEventListeners",
+          "value": 105
+        },
+        {
+          "name": "Nodes",
+          "value": 1687
+        },
+        {
+          "name": "ScriptDuration",
+          "value": 0.139627
+        },
+        {
+          "name": "TaskDuration",
+          "value": 0.337327
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 11299016
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 15917056
+        }
+      ],
+      "dom": {
+        "documents": 2,
+        "nodes": 1687,
+        "jsEventListeners": 105
+      },
+      "links": [
+        {
+          "href": "/",
+          "text": "Gamma"
+        },
+        {
+          "href": "/agents",
+          "text": "Готовые агентыГотовые решения"
+        },
+        {
+          "href": "/knowledge",
+          "text": "База знанийВаши материалы и связи"
+        },
+        {
+          "href": "#agents-all-title",
+          "text": "Смотреть все →"
+        }
+      ]
+    },
+    {
+      "stage": "knowledge",
+      "url": "/knowledge",
+      "metrics": [
+        {
+          "name": "JSEventListeners",
+          "value": 130
+        },
+        {
+          "name": "Nodes",
+          "value": 2205
+        },
+        {
+          "name": "ScriptDuration",
+          "value": 0.140432
+        },
+        {
+          "name": "TaskDuration",
+          "value": 0.375509
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 12255180
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 15917056
+        }
+      ],
+      "dom": {
+        "documents": 2,
+        "nodes": 2205,
+        "jsEventListeners": 130
+      },
+      "links": [
+        {
+          "href": "/",
+          "text": "Gamma"
+        },
+        {
+          "href": "/agents",
+          "text": "Готовые агентыГотовые решения"
+        },
+        {
+          "href": "/knowledge",
+          "text": "База знанийВаши материалы и связи"
+        }
+      ]
+    },
+    {
+      "stage": "home-return",
+      "url": "/",
+      "metrics": [
+        {
+          "name": "JSEventListeners",
+          "value": 136
+        },
+        {
+          "name": "Nodes",
+          "value": 2313
+        },
+        {
+          "name": "ScriptDuration",
+          "value": 0.141395
+        },
+        {
+          "name": "TaskDuration",
+          "value": 0.394934
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 12831556
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 16179200
+        }
+      ],
+      "dom": {
+        "documents": 2,
+        "nodes": 2313,
+        "jsEventListeners": 136
+      },
+      "links": [
+        {
+          "href": "/",
+          "text": "Gamma"
+        },
+        {
+          "href": "/agents",
+          "text": "Готовые агентыГотовые решения"
+        },
+        {
+          "href": "/knowledge",
+          "text": "База знанийВаши материалы и связи"
+        }
+      ]
+    },
+    {
+      "stage": "idle-home-35s",
+      "url": "/",
+      "metrics": [
+        {
+          "name": "JSEventListeners",
+          "value": 98
+        },
+        {
+          "name": "Nodes",
+          "value": 1075
+        },
+        {
+          "name": "ScriptDuration",
+          "value": 0.143215
+        },
+        {
+          "name": "TaskDuration",
+          "value": 0.412662
+        },
+        {
+          "name": "JSHeapUsedSize",
+          "value": 10148580
+        },
+        {
+          "name": "JSHeapTotalSize",
+          "value": 11722752
+        }
+      ],
+      "dom": {
+        "documents": 2,
+        "nodes": 1075,
+        "jsEventListeners": 98
+      },
+      "links": [
+        {
+          "href": "/",
+          "text": "Gamma"
+        },
+        {
+          "href": "/agents",
+          "text": "Готовые агентыГотовые решения"
+        },
+        {
+          "href": "/knowledge",
+          "text": "База знанийВаши материалы и связи"
+        }
+      ]
+    }
+  ]
+}

@@ -1076,18 +1076,31 @@ describe("ACP service sessions", () => {
     expect(select(updated, "effort")?.currentValue).toBe("high")
   })
 
-  it("switches mode and returns the updated mode current value", async () => {
+  it("rejects mode replacement and retains the fixed agent", async () => {
     const { service } = makeService()
     const session = await Effect.runPromise(service.newSession({ cwd: "/workspace", mcpServers: [] }))
     const updated = await Effect.runPromise(
-      service.setSessionConfigOption({
-        sessionId: session.sessionId,
-        configId: "mode",
-        value: "plan",
-      }),
+      service
+        .setSessionConfigOption({
+          sessionId: session.sessionId,
+          configId: "mode",
+          value: "plan",
+        })
+        .pipe(Effect.exit),
     )
 
-    expect(select(updated, "mode")?.currentValue).toBe("plan")
+    expect(updated._tag).toBe("Failure")
+    expect(
+      (
+        await Effect.runPromise(
+          service.setSessionMode({ sessionId: session.sessionId, modeId: "plan" }).pipe(Effect.exit),
+        )
+      )._tag,
+    ).toBe("Failure")
+    const same = await Effect.runPromise(
+      service.setSessionConfigOption({ sessionId: session.sessionId, configId: "mode", value: "build" }),
+    )
+    expect(select(same, "mode")?.currentValue).toBe("build")
   })
 
   it("maps invalid model effort mode and config id to invalid params", async () => {
@@ -1312,7 +1325,7 @@ describe("ACP service sessions", () => {
       service.setSessionConfigOption({
         sessionId: session.sessionId,
         configId: "mode",
-        value: "plan",
+        value: "build",
       }),
     )
 
@@ -1330,7 +1343,7 @@ describe("ACP service sessions", () => {
         model: { providerID, modelID },
         variant: "high",
         parts: [{ type: "text", text: "hello" }],
-        agent: "plan",
+        agent: "build",
         directory: "/workspace",
       },
     ])

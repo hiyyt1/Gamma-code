@@ -1,4 +1,5 @@
 import { describe, expect } from "bun:test"
+import { adjust } from "effect/testing/TestClock"
 import {
   LLMClient,
   LLMError,
@@ -300,6 +301,7 @@ const insertSession = (id: SessionV2.ID) =>
         id,
         project_id: Project.ID.global,
         slug: id,
+        agent: "build",
         directory: "/project",
         title: "test",
         version: "test",
@@ -793,7 +795,7 @@ describe("SessionRunnerLLM", () => {
     }),
   )
 
-  it.effect("uses the configured default agent system for omitted-agent sessions", () =>
+  it.effect("does not replace a session agent when the configured default changes", () =>
     Effect.gen(function* () {
       yield* setup
       const agent = yield* AgentV2.Service
@@ -815,8 +817,8 @@ describe("SessionRunnerLLM", () => {
       response = fragmentFixture("text", "text-reviewer", ["Done"]).completeEvents
       yield* session.resume(sessionID)
 
-      expect(requests.at(-1)?.system.map((part) => part.text)).toEqual(["Reviewer instructions", "Initial context"])
-      expect((yield* session.messages({ sessionID }))[0]).toMatchObject({ type: "assistant", agent: "reviewer" })
+      expect(requests.at(-1)?.system.map((part) => part.text)).toEqual(["Build agent instructions", "Initial context"])
+      expect((yield* session.messages({ sessionID }))[0]).toMatchObject({ type: "assistant", agent: "build" })
     }),
   )
 
@@ -3245,6 +3247,56 @@ describe("SessionRunnerLLM", () => {
         { type: "user", text: "Fail raw stream durably" },
         { type: "assistant", finish: "error", error: { type: "unknown", message: "Provider unavailable" } },
       ])
+    }),
+  )
+
+  it.effect("bounds a silent provider turn, persists its error and releases execution ownership", () =>
+    Effect.gen(function* () {
+      yield* setup
+      const session = yield* SessionV2.Service
+      const execution = yield* SessionExecution.Service
+      const started = yield* Deferred.make<void>()
+      yield* session.prompt({ sessionID, prompt: Prompt.make({ text: "Wait for provider" }), resume: false })
+      responseStream = Stream.unwrap(Deferred.succeed(started, undefined).pipe(Effect.as(Stream.never)))
+      const running = yield* session.resume(sessionID).pipe(Effect.exit, Effect.forkChild)
+      yield* Deferred.await(started)
+      yield* adjust("13 minutes")
+      const result = yield* Fiber.join(running)
+      expect(result._tag).toBe("Failure")
+      expect((yield* execution.active).has(sessionID)).toBe(false)
+      yield* replaySessionProjection(sessionID)
+      const context = yield* session.context(sessionID)
+      expect(context.at(-1)).toMatchObject({ type: "assistant", finish: "error" })
+      expect(JSON.stringify(context.at(-1))).toContain("including retries")
+      yield* session.prompt({ sessionID, prompt: Prompt.make({ text: "Try again" }), resume: false })
+      yield* session.resume(sessionID)
+      expect((yield* execution.active).has(sessionID)).toBe(false)
+    }),
+  )
+
+  it.effect("bounds a stalled V2 stream after reasoning without truncating active generation", () =>
+    Effect.gen(function* () {
+      yield* setup
+      const session = yield* SessionV2.Service
+      const execution = yield* SessionExecution.Service
+      const started = yield* Deferred.make<void>()
+      yield* session.prompt({ sessionID, prompt: Prompt.make({ text: "Reason first" }), resume: false })
+      responseStream = Stream.fromIterable(fragmentFixture("reasoning", "reason", ["Considering"]).partialEvents).pipe(
+        Stream.concat(Stream.unwrap(Deferred.succeed(started, undefined).pipe(Effect.as(Stream.never)))),
+      )
+      const running = yield* session.resume(sessionID).pipe(Effect.exit, Effect.forkChild)
+      yield* Deferred.await(started)
+      yield* adjust("6 minutes")
+      expect((yield* Fiber.join(running))._tag).toBe("Failure")
+      expect((yield* execution.active).has(sessionID)).toBe(false)
+      yield* replaySessionProjection(sessionID)
+      const context = yield* session.context(sessionID)
+      expect(context.at(-1)).toMatchObject({
+        type: "assistant",
+        finish: "error",
+        content: [{ type: "reasoning", text: "Considering" }],
+      })
+      expect(JSON.stringify(context.at(-1))).toContain("stopped sending events")
     }),
   )
 

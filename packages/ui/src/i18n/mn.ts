@@ -194,4 +194,8 @@ export const dict = {
   "ui.question.multiHint": "Холбогдох бүх хариултыг сонгоно уу",
   "ui.question.singleHint": "Нэг хариултыг сонгоно уу",
   "ui.question.custom.placeholder": "Хариугаа бичнэ үү...",
+  // Explicit English fallback pending locale review.
+  "ui.sessionTurn.status.waitingProvider": "Waiting for provider",
+  "ui.sessionTurn.status.generating": "Model is generating a response",
+  "ui.sessionTurn.error.provider": "Provider error. You can send your message again.",
 }

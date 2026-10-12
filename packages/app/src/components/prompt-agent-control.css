@@ -1,0 +1,63 @@
+[data-action="prompt-agent"]:enabled {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: #f7f6fa;
+  border-color: #d8d3e3;
+  color: #494650;
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease;
+
+  [data-component="icon"] {
+    color: #625d6e;
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  &:hover {
+    background-color: #f0edf6;
+    border-color: #b9adcf;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-action="prompt-agent"]:enabled::after {
+    content: "";
+    position: absolute;
+    inset: -50% auto -50% -40%;
+    width: 30%;
+    z-index: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgb(169 145 209 / 24%) 28%,
+      rgb(255 255 255 / 85%) 50%,
+      rgb(189 167 221 / 24%) 72%,
+      transparent
+    );
+    transform: translateX(0) skewX(-20deg);
+    animation: prompt-agent-shimmer 5s linear infinite;
+  }
+}
+
+@keyframes prompt-agent-shimmer {
+  0% {
+    transform: translateX(0) skewX(-20deg);
+    opacity: 0;
+  }
+  3%,
+  21% {
+    opacity: 1;
+  }
+  24%,
+  100% {
+    transform: translateX(500%) skewX(-20deg);
+    opacity: 0;
+  }
+}

@@ -1,0 +1,259 @@
+.agent-market .skill-market-hero {
+  background-image: url("/market/agents-hero.png");
+}
+.agent-market-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin: 18px 0;
+}
+.agent-market .skill-market-categories {
+  margin: 0;
+}
+.agent-market-tabs {
+  display: flex;
+  gap: 4px;
+  padding: 3px;
+  border: 1px solid var(--market-border);
+  border-radius: 9px;
+  margin-left: 0;
+}
+.agent-market-tabs button {
+  padding: 7px 12px;
+  font-size: 12px;
+  color: var(--market-muted);
+  border-radius: 6px;
+  cursor: pointer;
+}
+.agent-market-tabs button[aria-selected="true"] {
+  background: #f0ecff;
+  color: #6243d9;
+}
+.agent-market-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+.agent-market-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid var(--market-border);
+  border-radius: 12px;
+  background: #fff;
+  transition:
+    border-color 150ms,
+    box-shadow 150ms;
+}
+.agent-market-card:hover {
+  border-color: #cbbdf8;
+  box-shadow: 0 4px 16px #32236808;
+}
+.agent-market-card-copy {
+  min-width: 0;
+  flex: 1;
+}
+.agent-market-card h3 {
+  font-size: 15px;
+  line-height: 1.4;
+  font-weight: 650;
+  letter-spacing: -0.3px;
+  margin-bottom: 5px;
+}
+.agent-market-card p {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--market-muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.agent-market-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 10px;
+}
+.agent-market-tags > span {
+  font-size: 10px;
+  line-height: 1.4;
+  padding: 3px 6px;
+  border-radius: 5px;
+  background: #f4f1ff;
+  color: #7462b1;
+}
+.agent-market-tags .agent-market-unavailable {
+  background: #fff6ed;
+  color: #986636;
+}
+.agent-market-card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 4px;
+}
+.agent-market-secondary {
+  font-size: 11px;
+  color: var(--market-muted);
+  padding: 7px 0;
+  cursor: pointer;
+}
+.agent-market-secondary:hover {
+  color: var(--market-accent);
+}
+.agent-market-card-actions .skill-market-toggle {
+  padding-inline: 10px;
+}
+.agent-market-art {
+  --art-color: #8560ee;
+  --art-light: #eee7ff;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: var(--art-light);
+  color: var(--art-color);
+}
+.agent-market-art-tile {
+  display: grid;
+  place-items: center;
+}
+.agent-market-art-tile [data-component="icon"] {
+  width: 26px;
+  height: 26px;
+  color: inherit;
+}
+.agent-market-art[data-agent="webapp-developer"] {
+  --art-color: #e89655;
+  --art-light: #fff0e0;
+}
+.agent-market-art[data-agent="telegram-developer"] {
+  --art-color: #609cce;
+  --art-light: #e6f5ff;
+}
+.agent-market-art[data-agent="backend-developer"] {
+  --art-color: #6678d2;
+  --art-light: #e9edff;
+}
+.agent-market-art[data-category="design"] {
+  --art-color: #be83ac;
+  --art-light: #fbeaf5;
+}
+.agent-market-art[data-category="security"] {
+  --art-color: #5a9f8f;
+  --art-light: #e4f5ed;
+}
+.agent-market-art[data-category="testing"] {
+  --art-color: #689db0;
+  --art-light: #e9f5f7;
+}
+.agent-market-art[data-category="automation"] {
+  --art-color: #bc975c;
+  --art-light: #faf0dc;
+}
+.agent-market-art[data-category="data"] {
+  --art-color: #8274ca;
+  --art-light: #eeecff;
+}
+
+.agent-market-actions {
+  display: flex;
+  gap: 20px;
+  justify-content: flex-end;
+}
+.agent-market button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.agent-market .skill-market-skeleton {
+  min-height: 240px;
+}
+.agent-market-featured-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  gap: 8px;
+  text-align: start;
+  padding: 14px 14px 42px;
+  border: 1px solid var(--market-border);
+  border-radius: 10px;
+  background: #fff;
+  cursor: pointer;
+}
+.agent-market-featured-card:hover {
+  border-color: #cbbdf8;
+  background: #fdfbff;
+}
+.agent-market-featured-card strong {
+  font-size: 13px;
+  line-height: 1.4;
+}
+.agent-market-featured-card p {
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--market-muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.market-featured-arrow {
+  position: absolute;
+  bottom: 10px;
+  right: 12px;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #f3efff;
+  color: var(--market-accent);
+  font-size: 20px;
+}
+
+@media (max-width: 1250px) {
+  .agent-market-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (max-width: 1000px) {
+  .agent-market-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 700px) {
+  .agent-market-list {
+    grid-template-columns: 1fr;
+  }
+  .agent-market-tabs {
+    margin-left: 0;
+  }
+  .agent-market-card h3 {
+    font-size: 16px;
+  }
+  .agent-market-card p {
+    font-size: 13px;
+  }
+  .agent-market-card-actions button {
+    min-height: 40px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .agent-market-card {
+    transition: none;
+  }
+}
+
+@media (min-width: 701px) and (max-width: 1100px) {
+  .agent-market .skill-market-hero {
+    background-image:
+      linear-gradient(90deg, #f2efff 0%, #f2efffe6 48%, transparent 78%), url("/market/agents-hero.png");
+  }
+}

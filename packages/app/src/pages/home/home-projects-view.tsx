@@ -72,7 +72,7 @@ export function HomeProjectsView(props: HomeProjectsViewProps) {
   }
   return (
     <aside
-      data-component="oreshnik-sidebar"
+      data-component="gamma-sidebar"
       class={`
         mt-6 flex min-h-0 min-w-0 flex-col gap-4 overflow-hidden
         lg:sticky lg:top-14 lg:mt-14 lg:h-[calc(100cqh-56px)] lg:self-start lg:pt-[52px]
@@ -83,7 +83,7 @@ export function HomeProjectsView(props: HomeProjectsViewProps) {
         props.onWheel(event)
       }}
     >
-      <A href="/" class="oreshnik-home-link" aria-label={props.language.t("app.name")}>
+      <A href="/" class="gamma-home-link" aria-label={props.language.t("app.name")}>
         <ProductBrand />
       </A>
       {props.action}
@@ -155,7 +155,7 @@ export function HomeProjectsView(props: HomeProjectsViewProps) {
       </ScrollView>
       {props.recent}
       <HomeUtilityNav
-        class="oreshnik-sidebar-utility mb-8 mt-4 hidden shrink-0 lg:flex"
+        class="gamma-sidebar-utility mb-8 mt-4 hidden shrink-0 lg:flex"
         onOpenSettings={props.onOpenSettings}
         onOpenHelp={props.onOpenHelp}
         language={props.language}

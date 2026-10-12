@@ -9,6 +9,7 @@ import { Provider } from "@/provider/provider"
 import { InstanceState } from "@/effect/instance-state"
 import { MessageID, PartID } from "../session/schema"
 import EXIT_DESCRIPTION from "./plan-exit.txt"
+import { Agent } from "@/agent/agent"
 
 export const Parameters = Schema.Struct({})
 
@@ -18,6 +19,7 @@ export const PlanExitTool = Tool.define(
     const session = yield* Session.Service
     const question = yield* Question.Service
     const provider = yield* Provider.Service
+    const agents = yield* Agent.Service
 
     return {
       description: EXIT_DESCRIPTION,
@@ -26,16 +28,25 @@ export const PlanExitTool = Tool.define(
         Effect.gen(function* () {
           const instance = yield* InstanceState.context
           const info = yield* session.get(ctx.sessionID)
+          if (info.agent)
+            return {
+              title: "Agent fixed to session",
+              output:
+                "This session keeps its selected agent. Start a new session with an implementation agent and reference this plan to proceed.",
+              metadata: {},
+            }
           const plan = path.relative(instance.worktree, Session.plan(info, instance))
+          const preferred = yield* agents.defaultAgent()
+          const target = preferred === "plan" || preferred === "gamma-guide" ? "gamma" : preferred
           const answers = yield* question.ask({
             sessionID: ctx.sessionID,
             questions: [
               {
-                question: `Plan at ${plan} is complete. Would you like to switch to the build agent and start implementing?`,
-                header: "Build Agent",
+                question: `Plan at ${plan} is complete. Would you like to switch to ${target} and start implementing?`,
+                header: target,
                 custom: false,
                 options: [
-                  { label: "Yes", description: "Switch to build agent and start implementing the plan" },
+                  { label: "Yes", description: `Switch to ${target} and start implementing the plan` },
                   { label: "No", description: "Stay with plan agent to continue refining the plan" },
                 ],
               },
@@ -55,7 +66,7 @@ export const PlanExitTool = Tool.define(
             sessionID: ctx.sessionID,
             role: "user",
             time: { created: Date.now() },
-            agent: "build",
+            agent: target,
             model,
           }
           yield* session.updateMessage(msg)
@@ -69,8 +80,8 @@ export const PlanExitTool = Tool.define(
           } satisfies SessionV1.TextPart)
 
           return {
-            title: "Switching to build agent",
-            output: "User approved switching to build agent. Wait for further instructions.",
+            title: `Switching to ${target}`,
+            output: `User approved switching to ${target}. Wait for further instructions.`,
             metadata: {},
           }
         }).pipe(Effect.orDie),

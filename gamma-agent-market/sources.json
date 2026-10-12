@@ -1,0 +1,28 @@
+[
+  {
+    "repository": "https://github.com/wshobson/agents",
+    "commit": "46891e7e60da0e52baf1050b7b6391b64e84c6d9",
+    "licenseFiles": [
+      "LICENSE"
+    ]
+  },
+  {
+    "repository": "https://github.com/VoltAgent/awesome-claude-code-subagents",
+    "commit": "721e9734670bfaf7283194e234ebb88e94c82dcd",
+    "licenseFiles": [
+      "LICENSE"
+    ]
+  },
+  {
+    "repository": "https://github.com/msitarzewski/agency-agents",
+    "commit": "f99f6aa910a442b0197b768ce0ea7751e35e2060",
+    "licenseFiles": [
+      "LICENSE"
+    ]
+  },
+  {
+    "repository": "https://github.com/contains-studio/agents",
+    "commit": "a5a480c324cac64b9c569bca0b2f297d517240cb",
+    "licenseFiles": []
+  }
+]

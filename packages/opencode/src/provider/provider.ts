@@ -1786,6 +1786,8 @@ const layer = Layer.effect(
       try {
         const provider = s.providers[model.providerID]
         const options = { ...provider.options }
+        // Reasoning models may legitimately spend several minutes before sending headers.
+        if (options.headerTimeout === undefined && model.capabilities.reasoning) options.headerTimeout = 12 * 60_000
 
         if (
           model.providerID === "google-vertex" &&

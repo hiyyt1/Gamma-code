@@ -1,0 +1,434 @@
+[
+  {
+    "from": "packages/llm/package.json",
+    "to": "@opencode-ai/schema",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/llm/package.json",
+    "to": "@opencode-ai/http-recorder",
+    "type": "devDependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/core/package.json",
+    "to": "@opencode-ai/effect-drizzle-sqlite",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/core/package.json",
+    "to": "@opencode-ai/effect-sqlite-node",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/core/package.json",
+    "to": "@opencode-ai/llm",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/core/package.json",
+    "to": "@opencode-ai/schema",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/core/package.json",
+    "to": "@opencode-ai/plugin",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/core/package.json",
+    "to": "@opencode-ai/http-recorder",
+    "type": "devDependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/protocol/package.json",
+    "to": "@opencode-ai/schema",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/cli/package.json",
+    "to": "@opencode-ai/core",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/cli/package.json",
+    "to": "@opencode-ai/sdk",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/cli/package.json",
+    "to": "@opencode-ai/server",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/cli/package.json",
+    "to": "@opencode-ai/tui",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/cli/package.json",
+    "to": "@opencode-ai/script",
+    "type": "devDependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/session-ui/package.json",
+    "to": "@opencode-ai/client",
+    "type": "dependencies",
+    "version": "file:../app/vendor/opencode-ai-client-1.17.13-v2.tgz"
+  },
+  {
+    "from": "packages/session-ui/package.json",
+    "to": "@opencode-ai/core",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/session-ui/package.json",
+    "to": "@opencode-ai/sdk",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/session-ui/package.json",
+    "to": "@opencode-ai/ui",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/slack/package.json",
+    "to": "@opencode-ai/sdk",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/tui/package.json",
+    "to": "@opencode-ai/core",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/tui/package.json",
+    "to": "@opencode-ai/plugin",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/tui/package.json",
+    "to": "@opencode-ai/sdk",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/tui/package.json",
+    "to": "@opencode-ai/ui",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/stats/server/package.json",
+    "to": "@opencode-ai/stats-core",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/sdk-next/package.json",
+    "to": "@opencode-ai/client",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/sdk-next/package.json",
+    "to": "@opencode-ai/core",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/sdk-next/package.json",
+    "to": "@opencode-ai/server",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/server/package.json",
+    "to": "@opencode-ai/core",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/server/package.json",
+    "to": "@opencode-ai/protocol",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/stats/app/package.json",
+    "to": "@opencode-ai/stats-core",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/stats/app/package.json",
+    "to": "@opencode-ai/ui",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/client/package.json",
+    "to": "@opencode-ai/schema",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/client/package.json",
+    "to": "@opencode-ai/protocol",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/client/package.json",
+    "to": "@opencode-ai/core",
+    "type": "devDependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/client/package.json",
+    "to": "@opencode-ai/httpapi-codegen",
+    "type": "devDependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/client/package.json",
+    "to": "@opencode-ai/server",
+    "type": "devDependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/desktop/package.json",
+    "to": "@opencode-ai/app",
+    "type": "devDependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/desktop/package.json",
+    "to": "@opencode-ai/ui",
+    "type": "devDependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/console/support/package.json",
+    "to": "@opencode-ai/console-core",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/enterprise/package.json",
+    "to": "@opencode-ai/core",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/enterprise/package.json",
+    "to": "@opencode-ai/session-ui",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/enterprise/package.json",
+    "to": "@opencode-ai/ui",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/console/function/package.json",
+    "to": "@opencode-ai/console-core",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/console/function/package.json",
+    "to": "@opencode-ai/console-resource",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/console/app/package.json",
+    "to": "@opencode-ai/console-core",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/console/app/package.json",
+    "to": "@opencode-ai/console-mail",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/console/app/package.json",
+    "to": "@opencode-ai/console-resource",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/console/app/package.json",
+    "to": "@opencode-ai/ui",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/storybook/package.json",
+    "to": "@opencode-ai/session-ui",
+    "type": "devDependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/storybook/package.json",
+    "to": "@opencode-ai/ui",
+    "type": "devDependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/app/package.json",
+    "to": "@opencode-ai/client",
+    "type": "dependencies",
+    "version": "file:vendor/opencode-ai-client-1.17.13-v2.tgz"
+  },
+  {
+    "from": "packages/app/package.json",
+    "to": "@opencode-ai/core",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/app/package.json",
+    "to": "@opencode-ai/schema",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/app/package.json",
+    "to": "@opencode-ai/sdk",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/app/package.json",
+    "to": "@opencode-ai/session-ui",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/app/package.json",
+    "to": "@opencode-ai/ui",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/console/core/package.json",
+    "to": "@opencode-ai/console-mail",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/console/core/package.json",
+    "to": "@opencode-ai/console-resource",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/plugin/package.json",
+    "to": "@opencode-ai/sdk",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/web/package.json",
+    "to": "opencode",
+    "type": "devDependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/opencode/package.json",
+    "to": "@opencode-ai/codemode",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/opencode/package.json",
+    "to": "@opencode-ai/llm",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/opencode/package.json",
+    "to": "@opencode-ai/plugin",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/opencode/package.json",
+    "to": "@opencode-ai/protocol",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/opencode/package.json",
+    "to": "@opencode-ai/schema",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/opencode/package.json",
+    "to": "@opencode-ai/script",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/opencode/package.json",
+    "to": "@opencode-ai/sdk",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/opencode/package.json",
+    "to": "@opencode-ai/server",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/opencode/package.json",
+    "to": "@opencode-ai/tui",
+    "type": "dependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/opencode/package.json",
+    "to": "@opencode-ai/core",
+    "type": "devDependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/opencode/package.json",
+    "to": "@opencode-ai/http-recorder",
+    "type": "devDependencies",
+    "version": "workspace:*"
+  },
+  {
+    "from": "packages/opencode/package.json",
+    "to": "@opencode-ai/script",
+    "type": "devDependencies",
+    "version": "workspace:*"
+  }
+]

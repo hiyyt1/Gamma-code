@@ -1,0 +1,168 @@
+TARGET 275706 visited 65272
+synthetic (GC roots) 3 detached 0
+ -> element 29
+synthetic C++ Persistent roots 68900 detached 0
+ -> internal static AbortSignal *blink::AbortSignal::timeout(ScriptState *, uint64_t)@../../third_party/blink/renderer/core/dom/abort_signal.cc:164
+native InternalNode 10002 detached 0
+ -> element 1
+native InternalNode 41854 detached 0
+ -> element 3
+native InternalNode 66226 detached 0
+ -> element 1
+native Modulator 2518 detached 0
+ -> element 4
+native InternalNode 2524 detached 0
+ -> element 1
+native InternalNode 2526 detached 0
+ -> element 12
+native JSModuleScript 8308 detached 0
+ -> element 2
+hidden system / SourceTextModule 106129 detached 0
+ -> hidden 5
+object Generator 524291 detached 0
+ -> internal context
+object system / Context 143833 detached 0
+ -> context Rn
+object hn 573923 detached 0
+ -> property _listeners
+object Object 648281 detached 0
+ -> property dispose
+object Array 648283 detached 0
+ -> element 10
+closure R 648031 detached 0
+ -> internal context
+object system / Context 685147 detached 0
+ -> context s
+native WebGL2RenderingContext 87559 detached 0
+ -> element 11
+native <canvas data-engine="three.js r186" width="826" height="458" style="display: block; width: 826px; height: 458px; touch-action: none;"> 87565 detached 2
+ -> element 7
+native <div class="scene-container" style="position: relative; width: 826px; height: 458px;"> 87597 detached 2
+ -> element 8
+native <div> 87599 detached 2
+ -> element 7
+native <div style="position: relative;"> 87603 detached 2
+ -> element 7
+native <div class="kb-webgl" aria-busy="false"> 89041 detached 2
+ -> element 8
+native <div class="kb-map"> 90321 detached 2
+ -> element 7
+native <div class="kb-main"> 90323 detached 2
+ -> element 7
+native <div class="kb-content"> 90325 detached 2
+ -> element 7
+native <div class="kb-inner"> 91901 detached 2
+ -> element 7
+native <section class="kb-page"> 91903 detached 2
+TARGET 281082 visited 65272
+synthetic (GC roots) 3 detached 0
+ -> element 29
+synthetic C++ Persistent roots 68900 detached 0
+ -> internal static AbortSignal *blink::AbortSignal::timeout(ScriptState *, uint64_t)@../../third_party/blink/renderer/core/dom/abort_signal.cc:164
+native InternalNode 10002 detached 0
+ -> element 1
+native InternalNode 41854 detached 0
+ -> element 3
+native InternalNode 66226 detached 0
+ -> element 1
+native Modulator 2518 detached 0
+ -> element 4
+native InternalNode 2524 detached 0
+ -> element 1
+native InternalNode 2526 detached 0
+ -> element 12
+native JSModuleScript 8308 detached 0
+ -> element 2
+hidden system / SourceTextModule 106129 detached 0
+ -> hidden 5
+object Generator 524291 detached 0
+ -> internal context
+object system / Context 143833 detached 0
+ -> context Rn
+object hn 573923 detached 0
+ -> property _listeners
+object Object 648281 detached 0
+ -> property dispose
+object Array 648283 detached 0
+ -> element 9
+closure R 648029 detached 0
+ -> internal context
+object system / Context 659227 detached 0
+ -> context s
+native WebGL2RenderingContext 88877 detached 0
+ -> element 11
+native <canvas data-engine="three.js r186" width="826" height="458" style="display: block; width: 826px; height: 458px; touch-action: none;"> 88887 detached 2
+ -> element 7
+native <div class="scene-container" style="position: relative; width: 826px; height: 458px;"> 88915 detached 2
+ -> element 8
+native <div> 87425 detached 2
+ -> element 7
+native <div style="position: relative;"> 88921 detached 2
+ -> element 7
+native <div class="kb-webgl" aria-busy="false"> 88017 detached 2
+ -> element 8
+native <div class="kb-map"> 91881 detached 2
+ -> element 7
+native <div class="kb-main"> 91883 detached 2
+ -> element 7
+native <div class="kb-content"> 91885 detached 2
+ -> element 7
+native <div class="kb-inner"> 93669 detached 2
+ -> element 7
+native <section class="kb-page"> 93695 detached 2
+TARGET 288042 visited 65272
+synthetic (GC roots) 3 detached 0
+ -> element 29
+synthetic C++ Persistent roots 68900 detached 0
+ -> internal static AbortSignal *blink::AbortSignal::timeout(ScriptState *, uint64_t)@../../third_party/blink/renderer/core/dom/abort_signal.cc:164
+native InternalNode 10002 detached 0
+ -> element 1
+native InternalNode 41854 detached 0
+ -> element 3
+native InternalNode 66226 detached 0
+ -> element 1
+native Modulator 2518 detached 0
+ -> element 4
+native InternalNode 2524 detached 0
+ -> element 1
+native InternalNode 2526 detached 0
+ -> element 12
+native JSModuleScript 8308 detached 0
+ -> element 2
+hidden system / SourceTextModule 106129 detached 0
+ -> hidden 5
+object Generator 524291 detached 0
+ -> internal context
+object system / Context 143833 detached 0
+ -> context Rn
+object hn 573923 detached 0
+ -> property _listeners
+object Object 648281 detached 0
+ -> property dispose
+object Array 648283 detached 0
+ -> element 8
+closure R 469253 detached 0
+ -> internal context
+object system / Context 469227 detached 0
+ -> context s
+native WebGL2RenderingContext 90249 detached 0
+ -> element 11
+native <canvas data-engine="three.js r186" width="826" height="458" style="display: block; width: 826px; height: 458px; touch-action: none;"> 90259 detached 2
+ -> element 7
+native <div class="scene-container" style="position: relative; width: 826px; height: 458px;"> 90287 detached 2
+ -> element 8
+native <div> 90289 detached 2
+ -> element 7
+native <div style="position: relative;"> 90293 detached 2
+ -> element 7
+native <div class="kb-webgl" aria-busy="false"> 89415 detached 2
+ -> element 8
+native <div class="kb-map"> 93737 detached 2
+ -> element 7
+native <div class="kb-main"> 93791 detached 2
+ -> element 7
+native <div class="kb-content"> 93793 detached 2
+ -> element 7
+native <div class="kb-inner"> 95993 detached 2
+ -> element 7
+native <section class="kb-page"> 96015 detached 2

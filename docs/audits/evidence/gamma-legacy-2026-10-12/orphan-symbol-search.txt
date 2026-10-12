@@ -1,0 +1,10 @@
+packages/app/src/pages/session/v2/review-panel-v2.tsx:57:export function ReviewPanelV2(props: ReviewPanelV2Props) {
+packages/app/src/pages/session/review-tab.tsx:47:export function SessionReviewTab(props: SessionReviewTabProps) {
+packages/app/src/pages/session/session-side-panel.tsx:68:export function SessionSidePanel(props: {
+packages/app/src/pages/product-placeholder.tsx:3:export function ProductPlaceholder(props: { kind: "agents" | "skills" }) {
+packages/app/src/components/dialog-select-directory.tsx:53:export function DialogSelectDirectory(props: DialogSelectDirectoryProps) {
+packages/app/src/app.tsx:73:import { ProductPlaceholder } from "@/pages/product-placeholder"
+packages/app/src/app.tsx:249:function LayoutCompatibility(props: ParentProps) {
+packages/app/src/pages/home/home-projects.tsx:6:export function HomeProjects(props: {
+packages/app/src/pages/skill-market.tsx:32:export default function SkillMarketPage() {
+packages/app/src/pages/home/home-sessions.tsx:6:export function HomeSessions(props: {

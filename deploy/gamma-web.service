@@ -1,0 +1,21 @@
+[Unit]
+Description=Gamma production frontend and streaming proxy
+After=network-online.target gamma-backend.service
+Wants=gamma-backend.service
+
+[Service]
+Type=simple
+User=gamma
+Group=gamma
+WorkingDirectory=/opt/gamma
+EnvironmentFile=/etc/gamma/gamma.env
+EnvironmentFile=/etc/gamma/backend.env
+Environment=PATH=/home/gamma/.bun/bin:/usr/local/bin:/usr/bin:/bin
+ExecStart=/home/gamma/.bun/bin/bun run /opt/gamma/deploy/web.ts
+Restart=on-failure
+RestartSec=3
+TimeoutStopSec=30
+UMask=0027
+
+[Install]
+WantedBy=multi-user.target

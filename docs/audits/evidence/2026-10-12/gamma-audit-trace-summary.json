@@ -1,0 +1,912 @@
+{
+  "events": 24037,
+  "timing": {
+    "FunctionCall": {
+      "count": 2231,
+      "totalMs": 352.0969999999993,
+      "maxMs": 16.778
+    },
+    "Layout": {
+      "count": 174,
+      "totalMs": 111.536,
+      "maxMs": 21.668
+    },
+    "UpdateLayoutTree": {
+      "count": 216,
+      "totalMs": 50.42999999999997,
+      "maxMs": 8.5
+    },
+    "Paint": {
+      "count": 112,
+      "totalMs": 19.91300000000001,
+      "maxMs": 0.913
+    },
+    "MinorGC": {
+      "count": 38,
+      "totalMs": 23.532,
+      "maxMs": 2.358
+    },
+    "MajorGC": {
+      "count": 5,
+      "totalMs": 9.552000000000001,
+      "maxMs": 3.103
+    }
+  },
+  "sampleLeaders": [
+    {
+      "count": 35278,
+      "frame": {
+        "codeType": "other",
+        "functionName": "(idle)",
+        "scriptId": 0
+      }
+    },
+    {
+      "count": 34886,
+      "frame": {
+        "codeType": "other",
+        "functionName": "(idle)",
+        "scriptId": 0
+      }
+    },
+    {
+      "count": 34825,
+      "frame": {
+        "codeType": "other",
+        "functionName": "(idle)",
+        "scriptId": 0
+      }
+    },
+    {
+      "count": 32485,
+      "frame": {
+        "codeType": "other",
+        "functionName": "(idle)",
+        "scriptId": 0
+      }
+    },
+    {
+      "count": 2890,
+      "frame": {
+        "codeType": "other",
+        "functionName": "(program)",
+        "scriptId": 0
+      }
+    },
+    {
+      "count": 270,
+      "frame": {
+        "codeType": "JS",
+        "columnNumber": 6209,
+        "functionName": "o",
+        "lineNumber": 726,
+        "scriptId": 7,
+        "url": "http://127.0.0.1:4517/assets/index-QQsK-04R.js"
+      },
+      "original": {
+        "source": "../../../home/nikita/menti/mvp_platform/packages/sdk/js/src/v2/gen/client/client.gen.ts",
+        "line": 68,
+        "column": 37,
+        "name": null
+      }
+    },
+    {
+      "count": 175,
+      "frame": {
+        "codeType": "other",
+        "functionName": "(garbage collector)",
+        "scriptId": 0
+      }
+    },
+    {
+      "count": 173,
+      "frame": {
+        "codeType": "JS",
+        "columnNumber": 55427,
+        "functionName": "qn",
+        "lineNumber": 1520,
+        "scriptId": 7,
+        "url": "http://127.0.0.1:4517/assets/index-QQsK-04R.js"
+      },
+      "original": {
+        "source": "../../../home/nikita/menti/mvp_platform/packages/app/src/pages/session.tsx",
+        "line": 748,
+        "column": 29,
+        "name": "el"
+      }
+    },
+    {
+      "count": 169,
+      "frame": {
+        "codeType": "JS",
+        "columnNumber": 0,
+        "functionName": "",
+        "lineNumber": 0,
+        "scriptId": 19,
+        "url": "http://127.0.0.1:4517/assets/wasm-CG6Dc4jp.js"
+      },
+      "original": {
+        "source": "../../../home/nikita/menti/mvp_platform/node_modules/.bun/@shikijs+engine-oniguruma@4.2.0/node_modules/@shikijs/engine-oniguruma/dist/wasm-inlined.mjs",
+        "line": 1,
+        "column": 0,
+        "name": null
+      }
+    },
+    {
+      "count": 163,
+      "frame": {
+        "codeType": "JS",
+        "columnNumber": 0,
+        "functionName": "",
+        "lineNumber": 0,
+        "scriptId": 4,
+        "url": "http://127.0.0.1:4517/assets/wasm-CG6Dc4jp.js"
+      },
+      "original": {
+        "source": "../../../home/nikita/menti/mvp_platform/node_modules/.bun/@shikijs+engine-oniguruma@4.2.0/node_modules/@shikijs/engine-oniguruma/dist/wasm-inlined.mjs",
+        "line": 1,
+        "column": 0,
+        "name": null
+      }
+    },
+    {
+      "count": 162,
+      "frame": {
+        "codeType": "JS",
+        "columnNumber": 90844,
+        "functionName": "C",
+        "lineNumber": 1456,
+        "scriptId": 7,
+        "url": "http://127.0.0.1:4517/assets/index-QQsK-04R.js"
+      },
+      "original": {
+        "source": "../../../home/nikita/menti/mvp_platform/packages/ui/src/components/scroll-view.tsx",
+        "line": 173,
+        "column": 22,
+        "name": "updateThumb"
+      }
+    },
+    {
+      "count": 162,
+      "frame": {
+        "codeType": "JS",
+        "columnNumber": 58485,
+        "functionName": "Ube",
+        "lineNumber": 726,
+        "scriptId": 7,
+        "url": "http://127.0.0.1:4517/assets/index-QQsK-04R.js"
+      },
+      "original": {
+        "source": "../../../home/nikita/menti/mvp_platform/packages/sdk/js/src/v2/client.ts",
+        "line": 18,
+        "column": 9,
+        "name": "rewrite"
+      }
+    },
+    {
+      "count": 161,
+      "frame": {
+        "codeType": "JS",
+        "columnNumber": 0,
+        "functionName": "",
+        "lineNumber": 0,
+        "scriptId": 4,
+        "url": "http://127.0.0.1:4517/assets/wasm-CG6Dc4jp.js"
+      },
+      "original": {
+        "source": "../../../home/nikita/menti/mvp_platform/node_modules/.bun/@shikijs+engine-oniguruma@4.2.0/node_modules/@shikijs/engine-oniguruma/dist/wasm-inlined.mjs",
+        "line": 1,
+        "column": 0,
+        "name": null
+      }
+    },
+    {
+      "count": 116,
+      "frame": {
+        "codeType": "wasm",
+        "columnNumber": 5215,
+        "functionName": "wasm-function[25]",
+        "lineNumber": 0,
+        "scriptId": 5,
+        "url": "wasm://wasm/001c7aca"
+      }
+    },
+    {
+      "count": 111,
+      "frame": {
+        "codeType": "JS",
+        "columnNumber": 60869,
+        "functionName": "FC",
+        "lineNumber": 703,
+        "scriptId": 7,
+        "url": "http://127.0.0.1:4517/assets/index-QQsK-04R.js"
+      },
+      "original": {
+        "source": "../../../home/nikita/menti/mvp_platform/node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/internal/equal.js",
+        "line": 2,
+        "column": 32,
+        "name": "obj"
+      }
+    },
+    {
+      "count": 108,
+      "frame": {
+        "codeType": "JS",
+        "columnNumber": 19,
+        "functionName": "window.fetch",
+        "lineNumber": 17,
+        "scriptId": 4
+      }
+    },
+    {
+      "count": 108,
+      "frame": {
+        "codeType": "JS",
+        "columnNumber": 0,
+        "functionName": "",
+        "lineNumber": 0,
+        "scriptId": 4,
+        "url": "http://127.0.0.1:4517/assets/wasm-CG6Dc4jp.js"
+      },
+      "original": {
+        "source": "../../../home/nikita/menti/mvp_platform/node_modules/.bun/@shikijs+engine-oniguruma@4.2.0/node_modules/@shikijs/engine-oniguruma/dist/wasm-inlined.mjs",
+        "line": 1,
+        "column": 0,
+        "name": null
+      }
+    },
+    {
+      "count": 106,
+      "frame": {
+        "codeType": "JS",
+        "columnNumber": 13729,
+        "functionName": "Ce",
+        "lineNumber": 1518,
+        "scriptId": 7,
+        "url": "http://127.0.0.1:4517/assets/index-QQsK-04R.js"
+      },
+      "original": {
+        "source": "../../../home/nikita/menti/mvp_platform/packages/app/src/pages/session/timeline/message-timeline.tsx",
+        "line": 493,
+        "column": 22,
+        "name": "scrollToEnd"
+      }
+    },
+    {
+      "count": 82,
+      "frame": {
+        "codeType": "wasm",
+        "columnNumber": 5215,
+        "functionName": "wasm-function[25]",
+        "lineNumber": 0,
+        "scriptId": 5,
+        "url": "wasm://wasm/001c7aca"
+      }
+    },
+    {
+      "count": 80,
+      "frame": {
+        "codeType": "JS",
+        "columnNumber": 64300,
+        "functionName": "Sfe",
+        "lineNumber": 703,
+        "scriptId": 7,
+        "url": "http://127.0.0.1:4517/assets/index-QQsK-04R.js"
+      },
+      "original": {
+        "source": "../../../home/nikita/menti/mvp_platform/node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/Equal.js",
+        "line": 131,
+        "column": 9,
+        "name": "withCache"
+      }
+    },
+    {
+      "count": 72,
+      "frame": {
+        "codeType": "JS",
+        "columnNumber": 162584,
+        "functionName": "wi",
+        "lineNumber": 1456,
+        "scriptId": 7,
+        "url": "http://127.0.0.1:4517/assets/index-QQsK-04R.js"
+      },
+      "original": {
+        "source": "../../../home/nikita/menti/mvp_platform/node_modules/.bun/dompurify@3.3.1/node_modules/dompurify/dist/purify.es.mjs",
+        "line": 838,
+        "column": 24,
+        "name": null
+      }
+    },
+    {
+      "count": 70,
+      "frame": {
+        "codeType": "JS",
+        "columnNumber": 9673,
+        "functionName": "Pc",
+        "lineNumber": 1,
+        "scriptId": 7,
+        "url": "http://127.0.0.1:4517/assets/index-QQsK-04R.js"
+      },
+      "original": {
+        "source": "../../../home/nikita/menti/mvp_platform/node_modules/.bun/solid-js@1.9.10/node_modules/solid-js/dist/solid.js",
+        "line": 922,
+        "column": 9,
+        "name": "cleanNode"
+      }
+    },
+    {
+      "count": 69,
+      "frame": {
+        "codeType": "JS",
+        "columnNumber": 13729,
+        "functionName": "Ce",
+        "lineNumber": 1518,
+        "scriptId": 7,
+        "url": "http://127.0.0.1:4517/assets/index-QQsK-04R.js"
+      },
+      "original": {
+        "source": "../../../home/nikita/menti/mvp_platform/packages/app/src/pages/session/timeline/message-timeline.tsx",
+        "line": 493,
+        "column": 22,
+        "name": "scrollToEnd"
+      }
+    },
+    {
+      "count": 56,
+      "frame": {
+        "codeType": "JS",
+        "columnNumber": 49143,
+        "functionName": "",
+        "lineNumber": 720,
+        "scriptId": 7,
+        "url": "http://127.0.0.1:4517/assets/index-QQsK-04R.js"
+      },
+      "original": {
+        "source": "../../../home/nikita/menti/mvp_platform/packages/sdk/js/src/v2/gen/core/serverSentEvents.gen.ts",
+        "line": 95,
+        "column": 23,
+        "name": null
+      }
+    },
+    {
+      "count": 56,
+      "frame": {
+        "codeType": "JS",
+        "columnNumber": 16727,
+        "functionName": "AOe",
+        "lineNumber": 1485,
+        "scriptId": 7,
+        "url": "http://127.0.0.1:4517/assets/index-QQsK-04R.js"
+      },
+      "original": {
+        "source": "../../../home/nikita/menti/mvp_platform/node_modules/.bun/@tanstack+virtual-core@3.17.3/node_modules/@tanstack/virtual-core/dist/esm/index.js",
+        "line": 152,
+        "column": 30,
+        "name": null
+      }
+    },
+    {
+      "count": 56,
+      "frame": {
+        "codeType": "JS",
+        "columnNumber": 60869,
+        "functionName": "FC",
+        "lineNumber": 703,
+        "scriptId": 7,
+        "url": "http://127.0.0.1:4517/assets/index-QQsK-04R.js"
+      },
+      "original": {
+        "source": "../../../home/nikita/menti/mvp_platform/node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/internal/equal.js",
+        "line": 2,
+        "column": 32,
+        "name": "obj"
+      }
+    },
+    {
+      "count": 51,
+      "frame": {
+        "codeType": "JS",
+        "columnNumber": 61598,
+        "functionName": "ei",
+        "lineNumber": 703,
+        "scriptId": 7,
+        "url": "http://127.0.0.1:4517/assets/index-QQsK-04R.js"
+      },
+      "original": {
+        "source": "../../../home/nikita/menti/mvp_platform/node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/Hash.js",
+        "line": 72,
+        "column": 20,
+        "name": "self"
+      }
+    },
+    {
+      "count": 48,
+      "frame": {
+        "codeType": "JS",
+        "columnNumber": 0,
+        "functionName": "",
+        "lineNumber": 0,
+        "scriptId": 7,
+        "url": "http://127.0.0.1:4517/assets/index-QQsK-04R.js"
+      },
+      "original": {
+        "source": null,
+        "line": null,
+        "column": null,
+        "name": null
+      }
+    },
+    {
+      "count": 47,
+      "frame": {
+        "codeType": "JS",
+        "columnNumber": 7783,
+        "functionName": "onRequest",
+        "lineNumber": 726,
+        "scriptId": 7,
+        "url": "http://127.0.0.1:4517/assets/index-QQsK-04R.js"
+      },
+      "original": {
+        "source": "../../../home/nikita/menti/mvp_platform/packages/sdk/js/src/v2/gen/client/client.gen.ts",
+        "line": 244,
+        "column": 17,
+        "name": null
+      }
+    },
+    {
+      "count": 42,
+      "frame": {
+        "codeType": "JS",
+        "functionName": "fetch",
+        "scriptId": 0
+      }
+    },
+    {
+      "count": 36,
+      "frame": {
+        "codeType": "JS",
+        "columnNumber": 73259,
+        "functionName": "zR",
+        "lineNumber": 1,
+        "scriptId": 7,
+        "url": "http://127.0.0.1:4517/assets/index-QQsK-04R.js"
+      },
+      "original": {
+        "source": "../../../home/nikita/menti/mvp_platform/node_modules/.bun/@kobalte+core@0.13.11+95b571dd5236cc92/node_modules/@kobalte/core/dist/chunk/LR7LBJN3.jsx",
+        "line": 60,
+        "column": 9,
+        "name": "getDefaultLocale"
+      }
+    },
+    {
+      "count": 32,
+      "frame": {
+        "codeType": "JS",
+        "columnNumber": 22380,
+        "functionName": "n",
+        "lineNumber": 1517,
+        "scriptId": 7,
+        "url": "http://127.0.0.1:4517/assets/index-QQsK-04R.js"
+      },
+      "original": {
+        "source": "../../../home/nikita/menti/mvp_platform/packages/app/src/pages/session/timeline/rows.ts",
+        "line": 102,
+        "column": 18,
+        "name": "constructMessageRows"
+      }
+    },
+    {
+      "count": 30,
+      "frame": {
+        "codeType": "JS",
+        "columnNumber": 20139,
+        "functionName": "LGe",
+        "lineNumber": 1517,
+        "scriptId": 7,
+        "url": "http://127.0.0.1:4517/assets/index-QQsK-04R.js"
+      },
+      "original": {
+        "source": "../../../home/nikita/menti/mvp_platform/packages/app/src/pages/session/timeline/row-reconciliation.ts",
+        "line": 6,
+        "column": 16,
+        "name": "reuseTimelineRows"
+      }
+    },
+    {
+      "count": 29,
+      "frame": {
+        "codeType": "JS",
+        "columnNumber": 5480,
+        "functionName": "get",
+        "lineNumber": 684,
+        "scriptId": 7,
+        "url": "http://127.0.0.1:4517/assets/index-QQsK-04R.js"
+      },
+      "original": {
+        "source": "../../../home/nikita/menti/mvp_platform/node_modules/.bun/solid-js@1.9.10/node_modules/solid-js/store/dist/store.js",
+        "line": 88,
+        "column": 2,
+        "name": null
+      }
+    },
+    {
+      "count": 29,
+      "frame": {
+        "codeType": "wasm",
+        "columnNumber": 5215,
+        "functionName": "wasm-function[25]",
+        "lineNumber": 0,
+        "scriptId": 5,
+        "url": "wasm://wasm/001c7aca"
+      }
+    },
+    {
+      "count": 28,
+      "frame": {
+        "codeType": "JS",
+        "columnNumber": 9673,
+        "functionName": "Pc",
+        "lineNumber": 1,
+        "scriptId": 7,
+        "url": "http://127.0.0.1:4517/assets/index-QQsK-04R.js"
+      },
+      "original": {
+        "source": "../../../home/nikita/menti/mvp_platform/node_modules/.bun/solid-js@1.9.10/node_modules/solid-js/dist/solid.js",
+        "line": 922,
+        "column": 9,
+        "name": "cleanNode"
+      }
+    },
+    {
+      "count": 28,
+      "frame": {
+        "codeType": "JS",
+        "columnNumber": 58024,
+        "functionName": "",
+        "lineNumber": 1485,
+        "scriptId": 7,
+        "url": "http://127.0.0.1:4517/assets/index-QQsK-04R.js"
+      },
+      "original": {
+        "source": "../../../home/nikita/menti/mvp_platform/packages/app/src/utils/site-results.ts",
+        "line": 98,
+        "column": 7,
+        "name": "message"
+      }
+    },
+    {
+      "count": 28,
+      "frame": {
+        "codeType": "JS",
+        "columnNumber": 7406,
+        "functionName": "",
+        "lineNumber": 1370,
+        "scriptId": 7,
+        "url": "http://127.0.0.1:4517/assets/index-QQsK-04R.js"
+      },
+      "original": {
+        "source": "../../../home/nikita/menti/mvp_platform/node_modules/.bun/solid-sonner@0.3.1+95b571dd5236cc92/node_modules/solid-sonner/dist/index.jsx",
+        "line": 493,
+        "column": 11,
+        "name": null
+      }
+    },
+    {
+      "count": 27,
+      "frame": {
+        "codeType": "JS",
+        "columnNumber": 5480,
+        "functionName": "get",
+        "lineNumber": 684,
+        "scriptId": 7,
+        "url": "http://127.0.0.1:4517/assets/index-QQsK-04R.js"
+      },
+      "original": {
+        "source": "../../../home/nikita/menti/mvp_platform/node_modules/.bun/solid-js@1.9.10/node_modules/solid-js/store/dist/store.js",
+        "line": 88,
+        "column": 2,
+        "name": null
+      }
+    },
+    {
+      "count": 27,
+      "frame": {
+        "codeType": "wasm",
+        "columnNumber": 5215,
+        "functionName": "wasm-function[25]",
+        "lineNumber": 0,
+        "scriptId": 5,
+        "url": "wasm://wasm/001c7aca"
+      }
+    },
+    {
+      "count": 27,
+      "frame": {
+        "codeType": "JS",
+        "columnNumber": 9241,
+        "functionName": "ew",
+        "lineNumber": 1,
+        "scriptId": 7,
+        "url": "http://127.0.0.1:4517/assets/index-QQsK-04R.js"
+      },
+      "original": {
+        "source": "../../../home/nikita/menti/mvp_platform/node_modules/.bun/solid-js@1.9.10/node_modules/solid-js/dist/solid.js",
+        "line": 898,
+        "column": 9,
+        "name": "lookUpstream"
+      }
+    },
+    {
+      "count": 26,
+      "frame": {
+        "codeType": "JS",
+        "columnNumber": 110826,
+        "functionName": "scrollRef",
+        "lineNumber": 1456,
+        "scriptId": 7,
+        "url": "http://127.0.0.1:4517/assets/index-QQsK-04R.js"
+      },
+      "original": {
+        "source": "../../../home/nikita/menti/mvp_platform/packages/ui/src/hooks/create-auto-scroll.tsx",
+        "line": 231,
+        "column": 16,
+        "name": "el"
+      }
+    },
+    {
+      "count": 26,
+      "frame": {
+        "codeType": "JS",
+        "columnNumber": 9673,
+        "functionName": "Pc",
+        "lineNumber": 1,
+        "scriptId": 7,
+        "url": "http://127.0.0.1:4517/assets/index-QQsK-04R.js"
+      },
+      "original": {
+        "source": "../../../home/nikita/menti/mvp_platform/node_modules/.bun/solid-js@1.9.10/node_modules/solid-js/dist/solid.js",
+        "line": 922,
+        "column": 9,
+        "name": "cleanNode"
+      }
+    },
+    {
+      "count": 26,
+      "frame": {
+        "codeType": "other",
+        "functionName": "(program)",
+        "scriptId": 0
+      }
+    },
+    {
+      "count": 26,
+      "frame": {
+        "codeType": "wasm",
+        "columnNumber": 5215,
+        "functionName": "wasm-function[25]",
+        "lineNumber": 0,
+        "scriptId": 5,
+        "url": "wasm://wasm/001c7aca"
+      }
+    },
+    {
+      "count": 25,
+      "frame": {
+        "codeType": "JS",
+        "columnNumber": 4684,
+        "functionName": "kye",
+        "lineNumber": 726,
+        "scriptId": 7,
+        "url": "http://127.0.0.1:4517/assets/index-QQsK-04R.js"
+      },
+      "original": {
+        "source": "../../../home/nikita/menti/mvp_platform/packages/sdk/js/src/v2/gen/client/utils.gen.ts",
+        "line": 167,
+        "column": 24,
+        "name": "headers"
+      }
+    },
+    {
+      "count": 25,
+      "frame": {
+        "codeType": "other",
+        "functionName": "(garbage collector)",
+        "scriptId": 0
+      }
+    },
+    {
+      "count": 24,
+      "frame": {
+        "codeType": "JS",
+        "columnNumber": 57480,
+        "functionName": "T7e",
+        "lineNumber": 1485,
+        "scriptId": 7,
+        "url": "http://127.0.0.1:4517/assets/index-QQsK-04R.js"
+      },
+      "original": {
+        "source": "../../../home/nikita/menti/mvp_platform/packages/app/src/utils/site-results.ts",
+        "line": 65,
+        "column": 16,
+        "name": "siteResults"
+      }
+    },
+    {
+      "count": 24,
+      "frame": {
+        "codeType": "JS",
+        "columnNumber": 5480,
+        "functionName": "get",
+        "lineNumber": 684,
+        "scriptId": 7,
+        "url": "http://127.0.0.1:4517/assets/index-QQsK-04R.js"
+      },
+      "original": {
+        "source": "../../../home/nikita/menti/mvp_platform/node_modules/.bun/solid-js@1.9.10/node_modules/solid-js/store/dist/store.js",
+        "line": 88,
+        "column": 2,
+        "name": null
+      }
+    },
+    {
+      "count": 24,
+      "frame": {
+        "codeType": "JS",
+        "columnNumber": 20543,
+        "functionName": "",
+        "lineNumber": 1517,
+        "scriptId": 7,
+        "url": "http://127.0.0.1:4517/assets/index-QQsK-04R.js"
+      },
+      "original": {
+        "source": "../../../home/nikita/menti/mvp_platform/packages/app/src/pages/session/timeline/row-reconciliation.ts",
+        "line": 21,
+        "column": 24,
+        "name": null
+      }
+    },
+    {
+      "count": 23,
+      "frame": {
+        "codeType": "wasm",
+        "columnNumber": 5215,
+        "functionName": "wasm-function[25]",
+        "lineNumber": 0,
+        "scriptId": 5,
+        "url": "wasm://wasm/001c7aca"
+      }
+    },
+    {
+      "count": 23,
+      "frame": {
+        "codeType": "wasm",
+        "columnNumber": 5215,
+        "functionName": "wasm-function[25]",
+        "lineNumber": 0,
+        "scriptId": 5,
+        "url": "wasm://wasm/001c7aca"
+      }
+    },
+    {
+      "count": 23,
+      "frame": {
+        "codeType": "JS",
+        "functionName": "fetch",
+        "scriptId": 0
+      }
+    },
+    {
+      "count": 22,
+      "frame": {
+        "codeType": "JS",
+        "columnNumber": 90844,
+        "functionName": "C",
+        "lineNumber": 1456,
+        "scriptId": 7,
+        "url": "http://127.0.0.1:4517/assets/index-QQsK-04R.js"
+      },
+      "original": {
+        "source": "../../../home/nikita/menti/mvp_platform/packages/ui/src/components/scroll-view.tsx",
+        "line": 173,
+        "column": 22,
+        "name": "updateThumb"
+      }
+    },
+    {
+      "count": 22,
+      "frame": {
+        "codeType": "JS",
+        "columnNumber": 5500,
+        "functionName": "Q7",
+        "lineNumber": 1,
+        "scriptId": 7,
+        "url": "http://127.0.0.1:4517/assets/index-QQsK-04R.js"
+      },
+      "original": {
+        "source": "../../../home/nikita/menti/mvp_platform/node_modules/.bun/solid-js@1.9.10/node_modules/solid-js/dist/solid.js",
+        "line": 610,
+        "column": 9,
+        "name": "readSignal"
+      }
+    },
+    {
+      "count": 22,
+      "frame": {
+        "codeType": "JS",
+        "columnNumber": 63498,
+        "functionName": "kfe",
+        "lineNumber": 703,
+        "scriptId": 7,
+        "url": "http://127.0.0.1:4517/assets/index-QQsK-04R.js"
+      },
+      "original": {
+        "source": "../../../home/nikita/menti/mvp_platform/node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/Equal.js",
+        "line": 67,
+        "column": 9,
+        "name": "withVisitedTracking"
+      }
+    },
+    {
+      "count": 21,
+      "frame": {
+        "codeType": "JS",
+        "columnNumber": 7420,
+        "functionName": "b9e",
+        "lineNumber": 1486,
+        "scriptId": 7,
+        "url": "http://127.0.0.1:4517/assets/index-QQsK-04R.js"
+      },
+      "original": {
+        "source": "../../../home/nikita/menti/mvp_platform/packages/session-ui/src/components/markdown.tsx",
+        "line": 589,
+        "column": 9,
+        "name": "updateBlock"
+      }
+    },
+    {
+      "count": 21,
+      "frame": {
+        "codeType": "wasm",
+        "columnNumber": 5215,
+        "functionName": "wasm-function[25]",
+        "lineNumber": 0,
+        "scriptId": 5,
+        "url": "wasm://wasm/001c7aca"
+      }
+    },
+    {
+      "count": 20,
+      "frame": {
+        "codeType": "JS",
+        "columnNumber": 57480,
+        "functionName": "T7e",
+        "lineNumber": 1485,
+        "scriptId": 7,
+        "url": "http://127.0.0.1:4517/assets/index-QQsK-04R.js"
+      },
+      "original": {
+        "source": "../../../home/nikita/menti/mvp_platform/packages/app/src/utils/site-results.ts",
+        "line": 65,
+        "column": 16,
+        "name": "siteResults"
+      }
+    },
+    {
+      "count": 20,
+      "frame": {
+        "codeType": "JS",
+        "columnNumber": 5480,
+        "functionName": "get",
+        "lineNumber": 684,
+        "scriptId": 7,
+        "url": "http://127.0.0.1:4517/assets/index-QQsK-04R.js"
+      },
+      "original": {
+        "source": "../../../home/nikita/menti/mvp_platform/node_modules/.bun/solid-js@1.9.10/node_modules/solid-js/store/dist/store.js",
+        "line": 88,
+        "column": 2,
+        "name": null
+      }
+    }
+  ]
+}

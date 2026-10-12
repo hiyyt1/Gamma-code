@@ -1,0 +1,22 @@
+TARGET 277440 visited 52863
+synthetic (GC roots) 3 detached 0
+ -> element 29
+synthetic C++ Persistent roots 22668 detached 0
+ -> internal blink::ThreadState::ThreadState(v8::Platform *)@../../third_party/blink/renderer/platform/heap/thread_state.cc:171
+native Pending activities 10120 detached 0
+ -> element 1
+native InternalNode 840 detached 0
+ -> element 2
+native Worker 92373 detached 0
+ -> property onmessageerror
+closure  140447 detached 0
+ -> internal context
+object system / Context 140431 detached 0
+ -> internal previous
+object system / Context 146355 detached 0
+ -> context LQe
+closure  194605 detached 0
+ -> internal context
+object system / Context 361865 detached 0
+ -> context i
+native <section class="kb-page"> 92481 detached 2

@@ -1,0 +1,9 @@
+{
+  "name": "@gamma/gateway",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "bun test",
+    "typecheck": "tsgo --noEmit -p tsconfig.json"
+  }
+}

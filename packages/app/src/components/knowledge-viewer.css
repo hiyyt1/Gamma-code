@@ -1,0 +1,177 @@
+.kb-dialog.kb-viewer {
+  width: min(1200px, calc(100vw - 48px));
+  max-width: none;
+  height: min(900px, calc(100dvh - 48px));
+  max-height: none;
+  padding: 0;
+  overflow: hidden;
+  background: #faf8fd;
+}
+.kb-dialog.kb-viewer[open] {
+  display: flex;
+  flex-direction: column;
+}
+.kb-dialog.kb-viewer header {
+  padding: 22px 28px 16px;
+  margin: 0;
+  gap: 20px;
+  flex-shrink: 0;
+}
+.kb-dialog.kb-viewer header > div {
+  min-width: 0;
+}
+.kb-dialog.kb-viewer header small {
+  color: #8a769f;
+}
+.kb-dialog.kb-viewer h2 {
+  font-size: 23px;
+  line-height: 1.3;
+  margin: 4px 0 8px;
+  overflow-wrap: anywhere;
+}
+.kb-viewer-meta {
+  font-size: 12px;
+  color: #81758d;
+  overflow-wrap: anywhere;
+}
+.kb-dialog.kb-viewer button,
+.kb-viewer-actions a {
+  padding: 8px 13px;
+  border: 1px solid #e4dcef;
+  border-radius: 9px;
+  background: white;
+  color: #574365;
+  cursor: pointer;
+  font-size: 13px;
+  text-decoration: none;
+}
+.kb-dialog.kb-viewer button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.kb-dialog.kb-viewer button:focus-visible,
+.kb-dialog.kb-viewer a:focus-visible {
+  outline: 2px solid #9161c4;
+  outline-offset: 2px;
+}
+.kb-dialog.kb-viewer header > button {
+  min-width: 40px;
+  min-height: 40px;
+}
+.kb-viewer-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0 28px 18px;
+  border-bottom: 1px solid #e4dcef;
+}
+.kb-viewer-body {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  background: white;
+  user-select: text;
+}
+.kb-viewer-body > p,
+.kb-pdf > p {
+  padding: 20px 28px;
+}
+.kb-dialog.kb-viewer p {
+  font-size: 14px;
+  color: #71627f;
+}
+.kb-dialog.kb-viewer .kb-viewer-notice {
+  padding: 12px 28px;
+  margin: 0;
+  background: #fff3dd;
+  color: #78521f;
+}
+.kb-document-frame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: white;
+}
+.kb-dialog.kb-viewer .kb-viewer-text {
+  margin: 0;
+  max-height: none;
+  padding: 28px;
+  font: 14px/1.7 monospace;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.kb-source-card {
+  padding: 36px;
+  max-width: 800px;
+  margin: auto;
+  overflow-wrap: anywhere;
+}
+.kb-source-card h3 {
+  font-size: 24px;
+}
+.kb-pdf {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.kb-pdf-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+  border-bottom: 1px solid #e4dcef;
+}
+.kb-viewer .kb-pdf-toolbar label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 13px;
+}
+.kb-pdf-toolbar input {
+  width: 65px;
+  padding: 6px;
+  border: 1px solid #e4dcef;
+  border-radius: 6px;
+}
+.kb-pdf-surface {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: 20px;
+  background: #eeeaf3;
+}
+.kb-pdf-surface canvas {
+  display: block;
+  margin: 0 auto;
+  background: white;
+  box-shadow: 0 3px 18px #21113520;
+}
+@media (max-width: 640px) {
+  .kb-dialog.kb-viewer {
+    width: 100vw;
+    height: 100dvh;
+    border-radius: 0;
+    border: 0;
+  }
+  .kb-dialog.kb-viewer header {
+    padding: 16px;
+    gap: 8px;
+  }
+  .kb-dialog.kb-viewer h2 {
+    font-size: 18px;
+  }
+  .kb-viewer-actions {
+    padding: 0 16px 12px;
+  }
+  .kb-dialog.kb-viewer button,
+  .kb-viewer-actions a {
+    min-height: 40px;
+  }
+  .kb-pdf-toolbar {
+    gap: 5px;
+  }
+}

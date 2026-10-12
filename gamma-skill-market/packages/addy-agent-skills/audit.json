@@ -1,0 +1,5229 @@
+{
+  "source": {
+    "id": "addy-agent-skills",
+    "revision": "1401c8b8030e023baeebb31781a6653fe8e93026",
+    "source": "https://github.com/addyosmani/agent-skills",
+    "license": "MIT",
+    "archiveSha256": "73bfc14933bb18e2492dea9dc9ac8b87e0772e6674a1073de69f962c2347cb66",
+    "rejected": [
+      {
+        "path": "agent-skills-1401c8b8030e023baeebb31781a6653fe8e93026/.opencode/skills",
+        "target": "../skills/",
+        "reason": "Non-regular entry omitted"
+      }
+    ]
+  },
+  "discoveredFiles": 25,
+  "invalidFrontmatter": [],
+  "duplicateNames": [],
+  "findings": [
+    {
+      "path": ".claude-plugin/marketplace.json",
+      "line": 2,
+      "kind": "runtime",
+      "text": "  \"$schema\": \"https://json.schemastore.org/claude-code-marketplace.json\","
+    },
+    {
+      "path": ".claude-plugin/plugin.json",
+      "line": 11,
+      "kind": "runtime",
+      "text": "  \"commands\": [\"./.claude/commands\", \"./commands\"],"
+    },
+    {
+      "path": ".claude/commands/code-simplify.md",
+      "line": 9,
+      "kind": "runtime",
+      "text": "1. Read CLAUDE.md and study project conventions"
+    },
+    {
+      "path": ".claude/commands/constraints.md",
+      "line": 25,
+      "kind": "runtime",
+      "text": "6. **Point the agent at it.** Add a line to CLAUDE.md telling agents to read CONSTRAINTS.md and never weaken it to make a change pass."
+    },
+    {
+      "path": ".claude/commands/ship.md",
+      "line": 13,
+      "kind": "runtime",
+      "text": "In Claude Code, each call passes `subagent_type` matching the persona's `name` field:"
+    },
+    {
+      "path": ".claude/commands/ship.md",
+      "line": 21,
+      "kind": "runtime",
+      "text": "Constraints (from Claude Code's subagent model):"
+    },
+    {
+      "path": ".claude/commands/ship.md",
+      "line": 23,
+      "kind": "runtime",
+      "text": "- Each subagent gets its own context window and returns only its report to this main session."
+    },
+    {
+      "path": ".claude/commands/ship.md",
+      "line": 24,
+      "kind": "runtime",
+      "text": "- If you need teammates that talk to each other instead of just reporting back, use Claude Code Agent Teams and reference these personas as teammate types (see `references/orchestration-patterns.md`)."
+    },
+    {
+      "path": ".claude/commands/ship.md",
+      "line": 26,
+      "kind": "runtime",
+      "text": "**Persona resolution.** If you've defined your own `code-reviewer`, `security-auditor`, or `test-engineer` in `.claude/agents/` or `~/.claude/agents/`, those take precedence over this plugin's versions — `/ship` picks up your customizations automatically. This is intentional: plugin subagents sit at"
+    },
+    {
+      "path": ".claude/commands/webperf.md",
+      "line": 10,
+      "kind": "dependencies",
+      "text": "- A Lighthouse JSON report file (e.g. `npx lighthouse <url> --output json --output-path ./report.json`, or `npx -p chrome-devtools-mcp chrome-devtools lighthouse_audit --output-format=json` from the Chrome DevTools MCP CLI)"
+    },
+    {
+      "path": ".claude/commands/webperf.md",
+      "line": 14,
+      "kind": "runtime",
+      "text": "- A live URL plus the `chrome-devtools` MCP server configured in the harness (the agent can capture metrics directly via `lighthouse_audit` and `performance_*` tools)"
+    },
+    {
+      "path": ".claude/commands/webperf.md",
+      "line": 15,
+      "kind": "dependencies",
+      "text": "- The Chrome DevTools MCP CLI invoked locally (via `npx -p chrome-devtools-mcp chrome-devtools <tool>` or after `npm i -g chrome-devtools-mcp`) — the user runs commands like `chrome-devtools lighthouse_audit --output-format=json` and passes the JSON output to the agent"
+    },
+    {
+      "path": ".claude/commands/webperf.md",
+      "line": 21,
+      "kind": "runtime",
+      "text": "Spawn the `web-performance-auditor` subagent. Pass it explicitly:"
+    },
+    {
+      "path": ".claude/commands/webperf.md",
+      "line": 28,
+      "kind": "runtime",
+      "text": "The subagent returns a scorecard (only populated with sourced values), a ranked list of findings, positive observations, and proactive recommendations."
+    },
+    {
+      "path": ".claude/rules/skills-contributing.md",
+      "line": 11,
+      "kind": "dependencies",
+      "text": "- Run the pre-flight checks in [CONTRIBUTING.md](../../CONTRIBUTING.md#before-proposing-a-new-skill): search the catalog, check open PRs (`gh pr list --state open`), and justify the gap."
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/skill-gap.yml",
+      "line": 51,
+      "kind": "dependencies",
+      "text": "      placeholder: e.g. the verification checklist said to run `npm test`"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/skill-gap.yml",
+      "line": 69,
+      "kind": "dependencies",
+      "text": "      placeholder: e.g. agent insisted on npm scripts in a Maven repo; no package.json exists"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/skill-gap.yml",
+      "line": 78,
+      "kind": "dependencies",
+      "text": "      placeholder: e.g. pointed the agent at `./mvnw test` and ignored the npm checklist"
+    },
+    {
+      "path": ".github/workflows/test-plugin-install.yml",
+      "line": 17,
+      "kind": "dependencies",
+      "text": "      - name: Set up Node.js"
+    },
+    {
+      "path": ".github/workflows/test-plugin-install.yml",
+      "line": 18,
+      "kind": "dependencies",
+      "text": "        uses: actions/setup-node@v6"
+    },
+    {
+      "path": ".github/workflows/test-plugin-install.yml",
+      "line": 20,
+      "kind": "dependencies",
+      "text": "          node-version: '24'"
+    },
+    {
+      "path": ".github/workflows/test-plugin-install.yml",
+      "line": 23,
+      "kind": "dependencies",
+      "text": "        run: node scripts/validate-skills.js"
+    },
+    {
+      "path": ".github/workflows/test-plugin-install.yml",
+      "line": 26,
+      "kind": "dependencies",
+      "text": "        run: node --test scripts/lib/skill-lint-test.js"
+    },
+    {
+      "path": ".github/workflows/test-plugin-install.yml",
+      "line": 29,
+      "kind": "dependencies",
+      "text": "        run: node scripts/validate-versions.js"
+    },
+    {
+      "path": ".github/workflows/test-plugin-install.yml",
+      "line": 32,
+      "kind": "dependencies",
+      "text": "        run: node --test scripts/validate-versions-test.js"
+    },
+    {
+      "path": ".github/workflows/test-plugin-install.yml",
+      "line": 34,
+      "kind": "sensitive",
+      "text": "      - name: Test skill eval runner"
+    },
+    {
+      "path": ".github/workflows/test-plugin-install.yml",
+      "line": 35,
+      "kind": "dependencies",
+      "text": "        run: node --test scripts/run-evals-test.js"
+    },
+    {
+      "path": ".github/workflows/test-plugin-install.yml",
+      "line": 38,
+      "kind": "dependencies",
+      "text": "        run: node scripts/run-evals.js --min-rank1 95"
+    },
+    {
+      "path": ".github/workflows/test-plugin-install.yml",
+      "line": 41,
+      "kind": "dependencies",
+      "text": "        run: node scripts/validate-reference-links.js"
+    },
+    {
+      "path": ".github/workflows/test-plugin-install.yml",
+      "line": 44,
+      "kind": "dependencies",
+      "text": "        run: node --test scripts/validate-reference-links-test.js"
+    },
+    {
+      "path": ".github/workflows/test-plugin-install.yml",
+      "line": 47,
+      "kind": "dependencies",
+      "text": "        run: node --test scripts/floor-guard-reference-test.js"
+    },
+    {
+      "path": ".github/workflows/test-plugin-install.yml",
+      "line": 49,
+      "kind": "runtime",
+      "text": "      - name: Test session-start hook payload"
+    },
+    {
+      "path": ".github/workflows/test-plugin-install.yml",
+      "line": 50,
+      "kind": "runtime",
+      "text": "        run: bash hooks/session-start-test.sh"
+    },
+    {
+      "path": ".github/workflows/test-plugin-install.yml",
+      "line": 58,
+      "kind": "dependencies",
+      "text": "      - name: Set up Node.js"
+    },
+    {
+      "path": ".github/workflows/test-plugin-install.yml",
+      "line": 59,
+      "kind": "dependencies",
+      "text": "        uses: actions/setup-node@v6"
+    },
+    {
+      "path": ".github/workflows/test-plugin-install.yml",
+      "line": 61,
+      "kind": "dependencies",
+      "text": "          node-version: '24'"
+    },
+    {
+      "path": ".github/workflows/test-plugin-install.yml",
+      "line": 64,
+      "kind": "dependencies",
+      "text": "        run: node scripts/validate-commands.js"
+    },
+    {
+      "path": ".github/workflows/test-plugin-install.yml",
+      "line": 67,
+      "kind": "dependencies",
+      "text": "        run: node --test scripts/validate-commands-test.js"
+    },
+    {
+      "path": ".github/workflows/test-plugin-install.yml",
+      "line": 70,
+      "kind": "dependencies",
+      "text": "        run: node scripts/validate-artifact-paths.js"
+    },
+    {
+      "path": ".github/workflows/test-plugin-install.yml",
+      "line": 73,
+      "kind": "dependencies",
+      "text": "        run: node --test scripts/validate-artifact-paths-test.js"
+    },
+    {
+      "path": ".github/workflows/test-plugin-install.yml",
+      "line": 88,
+      "kind": "dependencies",
+      "text": "      - name: Set up Node.js"
+    },
+    {
+      "path": ".github/workflows/test-plugin-install.yml",
+      "line": 89,
+      "kind": "dependencies",
+      "text": "        uses: actions/setup-node@v6"
+    },
+    {
+      "path": ".github/workflows/test-plugin-install.yml",
+      "line": 91,
+      "kind": "dependencies",
+      "text": "          node-version: '24'"
+    },
+    {
+      "path": ".github/workflows/test-plugin-install.yml",
+      "line": 93,
+      "kind": "sensitive",
+      "text": "      - name: Test validators and eval runner"
+    },
+    {
+      "path": ".github/workflows/test-plugin-install.yml",
+      "line": 95,
+      "kind": "dependencies",
+      "text": "          node --test"
+    },
+    {
+      "path": ".github/workflows/test-plugin-install.yml",
+      "line": 105,
+      "kind": "dependencies",
+      "text": "        run: node scripts/validate-skills.js"
+    },
+    {
+      "path": ".github/workflows/test-plugin-install.yml",
+      "line": 108,
+      "kind": "dependencies",
+      "text": "        run: node scripts/validate-versions.js"
+    },
+    {
+      "path": ".github/workflows/test-plugin-install.yml",
+      "line": 111,
+      "kind": "dependencies",
+      "text": "        run: node scripts/validate-reference-links.js"
+    },
+    {
+      "path": ".github/workflows/test-plugin-install.yml",
+      "line": 114,
+      "kind": "dependencies",
+      "text": "        run: node scripts/validate-commands.js"
+    },
+    {
+      "path": ".github/workflows/test-plugin-install.yml",
+      "line": 117,
+      "kind": "dependencies",
+      "text": "        run: node scripts/validate-artifact-paths.js"
+    },
+    {
+      "path": ".github/workflows/test-plugin-install.yml",
+      "line": 120,
+      "kind": "dependencies",
+      "text": "        run: node scripts/run-evals.js --min-rank1 95"
+    },
+    {
+      "path": ".github/workflows/test-plugin-install.yml",
+      "line": 122,
+      "kind": "runtime",
+      "text": "  test-hooks:"
+    },
+    {
+      "path": ".github/workflows/test-plugin-install.yml",
+      "line": 123,
+      "kind": "runtime",
+      "text": "    name: Hook regression tests"
+    },
+    {
+      "path": ".github/workflows/test-plugin-install.yml",
+      "line": 128,
+      "kind": "runtime",
+      "text": "      - name: Test sdd-cache hooks (stubbed curl, no network)"
+    },
+    {
+      "path": ".github/workflows/test-plugin-install.yml",
+      "line": 128,
+      "kind": "dependencies",
+      "text": "      - name: Test sdd-cache hooks (stubbed curl, no network)"
+    },
+    {
+      "path": ".github/workflows/test-plugin-install.yml",
+      "line": 129,
+      "kind": "runtime",
+      "text": "        run: bash hooks/sdd-cache-test.sh"
+    },
+    {
+      "path": ".github/workflows/test-plugin-install.yml",
+      "line": 131,
+      "kind": "runtime",
+      "text": "      - name: Test simplify-ignore hook"
+    },
+    {
+      "path": ".github/workflows/test-plugin-install.yml",
+      "line": 132,
+      "kind": "runtime",
+      "text": "        run: bash hooks/simplify-ignore-test.sh"
+    },
+    {
+      "path": ".github/workflows/test-plugin-install.yml",
+      "line": 141,
+      "kind": "runtime",
+      "text": "      - name: Install Claude Code"
+    },
+    {
+      "path": ".github/workflows/test-plugin-install.yml",
+      "line": 142,
+      "kind": "runtime",
+      "text": "        run: npm install -g @anthropic-ai/claude-code"
+    },
+    {
+      "path": ".github/workflows/test-plugin-install.yml",
+      "line": 142,
+      "kind": "dependencies",
+      "text": "        run: npm install -g @anthropic-ai/claude-code"
+    },
+    {
+      "path": ".github/workflows/test-plugin-install.yml",
+      "line": 145,
+      "kind": "runtime",
+      "text": "        run: claude plugin validate ."
+    },
+    {
+      "path": ".github/workflows/test-plugin-install.yml",
+      "line": 154,
+      "kind": "runtime",
+      "text": "      - name: Install Claude Code"
+    },
+    {
+      "path": ".github/workflows/test-plugin-install.yml",
+      "line": 155,
+      "kind": "runtime",
+      "text": "        run: npm install -g @anthropic-ai/claude-code"
+    },
+    {
+      "path": ".github/workflows/test-plugin-install.yml",
+      "line": 155,
+      "kind": "dependencies",
+      "text": "        run: npm install -g @anthropic-ai/claude-code"
+    },
+    {
+      "path": ".github/workflows/test-plugin-install.yml",
+      "line": 161,
+      "kind": "runtime",
+      "text": "        run: claude plugin marketplace add ./"
+    },
+    {
+      "path": ".github/workflows/test-plugin-install.yml",
+      "line": 164,
+      "kind": "runtime",
+      "text": "        run: claude plugin marketplace list"
+    },
+    {
+      "path": ".github/workflows/test-plugin-install.yml",
+      "line": 167,
+      "kind": "runtime",
+      "text": "        run: claude plugin install agent-skills@addy-agent-skills --scope user"
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 3,
+      "kind": "runtime",
+      "text": "This file provides guidance to AI coding agents (Claude Code, Cursor, Copilot, Antigravity, etc.) when working with code in this repository."
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 9,
+      "kind": "runtime",
+      "text": "A collection of skills for Claude.ai and Claude Code for senior software engineers. Skills are packaged instructions and scripts that extend Claude and your coding agents capabilities."
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 68,
+      "kind": "runtime",
+      "text": "This ensures OpenCode behaves similarly to Claude Code with full workflow enforcement."
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 76,
+      "kind": "runtime",
+      "text": "- **Slash commands** (`.claude/commands/*.md`) — user-facing entry points. The *when*. The orchestration layer."
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 78,
+      "kind": "runtime",
+      "text": "Composition rule: **the user (or a slash command) is the orchestrator. Personas do not invoke other personas.** A persona may invoke skills."
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 84,
+      "kind": "runtime",
+      "text": "**Claude Code interop:** the personas in `agents/` work as Claude Code subagents (auto-discovered from this plugin's `agents/` directory) and as Agent Teams teammates (referenced by name when spawning). Two platform constraints align with our rules: subagents cannot spawn other subagents, and teams "
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 88,
+      "kind": "dependencies",
+      "text": "> **Before you start:** run the pre-flight checks in [CONTRIBUTING.md](CONTRIBUTING.md#before-proposing-a-new-skill), search the catalog, check open PRs (`gh pr list --state open`), confirm the idea fits [docs/skill-anatomy.md](docs/skill-anatomy.md), and justify the gap in your PR description. Most"
+    },
+    {
+      "path": "CLAUDE.md",
+      "line": 12,
+      "kind": "runtime",
+      "text": "hooks/        → Session lifecycle hooks"
+    },
+    {
+      "path": "CLAUDE.md",
+      "line": 13,
+      "kind": "runtime",
+      "text": ".claude/commands/ → Slash commands (/spec, /plan, /build, /test, /review, /code-simplify, /ship; plus /webperf specialist audit)"
+    },
+    {
+      "path": "CLAUDE.md",
+      "line": 15,
+      "kind": "sensitive",
+      "text": "evals/        → Skill eval cases + framework (see evals/README.md)"
+    },
+    {
+      "path": "CLAUDE.md",
+      "line": 43,
+      "kind": "dependencies",
+      "text": "- `npm test` — Not applicable (this is a documentation project)"
+    },
+    {
+      "path": "CLAUDE.md",
+      "line": 45,
+      "kind": "dependencies",
+      "text": "- Evals: `node scripts/run-evals.js` — trigger/routing evals for every skill (CI); `--behavioral <skill>` for graded runs"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "line": 14,
+      "kind": "dependencies",
+      "text": "2. **Check open PRs.** Run `gh pr list --state open` (or browse the PRs tab) and look for proposals on the same topic. Clusters of near-duplicate skills already exist; don't add to them."
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "line": 15,
+      "kind": "sensitive",
+      "text": "3. **Check rejected proposals.** Search the [skill-change rejection ledger](evals/skill-impact.md) for earlier proposals that overlap with your idea and review their eval evidence before repeating the work."
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "line": 44,
+      "kind": "sensitive",
+      "text": "- An eval case file at `evals/cases/<skill-name>.json` — at least 3 positive triggers, 2 negative triggers (with `owner` where possible), and 1 behavioral eval. Execution evals must be backed by real files under `evals/fixtures/`; conversation-shaped skills may use a reviewer-gated `kind: \"dialogue\""
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "line": 67,
+      "kind": "sensitive",
+      "text": "Before proposing a change, search the [skill-change rejection ledger](evals/skill-impact.md) for previous attempts affecting the same skill and review their eval evidence."
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "line": 73,
+      "kind": "sensitive",
+      "text": "If a skill or description change is rejected based on eval results, add one row to the ledger with the date, affected skill, concise attempted change, before-to-after rank-1 score, and rejected PR link and outcome. Land that ledger-only update separately on the default branch; do not leave it only o"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "line": 85,
+      "kind": "runtime",
+      "text": "`AGENTS.md` and `CLAUDE.md` at the repo root configure agents working on the [`addyosmani/agent-skills`](https://github.com/addyosmani/agent-skills) repository itself. When writing setup guides or docs, do not instruct users to copy these files into their own projects or into a global agent configur"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "line": 91,
+      "kind": "runtime",
+      "text": "## Testing Hooks"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "line": 93,
+      "kind": "runtime",
+      "text": "The session-start script (`hooks/session-start.sh`) injects the `using-agent-skills` meta-skill when wired into a host's `SessionStart` hook. The Claude Code plugin does not register it — Claude Code routes skills natively, and always-on injection would create two routers for the same task (see [doc"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "line": 97,
+      "kind": "runtime",
+      "text": "- `hooks/session-start.sh`"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "line": 98,
+      "kind": "runtime",
+      "text": "- `skills/using-agent-skills/SKILL.md` (the meta-skill content embedded by the hook)"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "line": 101,
+      "kind": "runtime",
+      "text": "bash hooks/session-start-test.sh"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "line": 108,
+      "kind": "runtime",
+      "text": "The hook still emits the same `hookSpecificOutput` envelope when `jq` isn't on `PATH`, with `additionalContext` explaining that `jq` is required. To exercise that branch locally, strip `jq`'s directory from `PATH` for the test invocation:"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "line": 113,
+      "kind": "runtime",
+      "text": "  bash hooks/session-start-test.sh"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "line": 118,
+      "kind": "runtime",
+      "text": "The hook's `command -v jq` check fails under the stripped `PATH`, the jq-missing fallback runs, and the test asserts the `jq is required` guidance in `additionalContext` instead of the meta-skill body."
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "line": 129,
+      "kind": "dependencies",
+      "text": "(for example, it assumed `npm test` in a Maven or Gradle repo), use the"
+    },
+    {
+      "path": "README.md",
+      "line": 46,
+      "kind": "runtime",
+      "text": "**Fastest path — any agent, one command.** The open [skills CLI](https://github.com/vercel-labs/skills) installs into 70+ agents (Claude Code, Cursor, Codex, Copilot, Cline, and more):"
+    },
+    {
+      "path": "README.md",
+      "line": 49,
+      "kind": "dependencies",
+      "text": "npx skills add addyosmani/agent-skills            # install all 25 skills"
+    },
+    {
+      "path": "README.md",
+      "line": 50,
+      "kind": "dependencies",
+      "text": "npx skills add addyosmani/agent-skills --list     # browse before installing"
+    },
+    {
+      "path": "README.md",
+      "line": 56,
+      "kind": "dependencies",
+      "text": "npx skills add addyosmani/agent-skills --skill code-review-and-quality   # five-axis review before merge"
+    },
+    {
+      "path": "README.md",
+      "line": 57,
+      "kind": "dependencies",
+      "text": "npx skills add addyosmani/agent-skills --skill interview-me              # requirements interrogation, one question at a time"
+    },
+    {
+      "path": "README.md",
+      "line": 58,
+      "kind": "dependencies",
+      "text": "npx skills add addyosmani/agent-skills --skill test-driven-development   # red-green-refactor, enforced"
+    },
+    {
+      "path": "README.md",
+      "line": 61,
+      "kind": "dependencies",
+      "text": "> **Installing one skill?** A per-skill `npx` install copies only"
+    },
+    {
+      "path": "README.md",
+      "line": 71,
+      "kind": "runtime",
+      "text": "<summary><b>Claude Code (recommended)</b></summary>"
+    },
+    {
+      "path": "README.md",
+      "line": 95,
+      "kind": "runtime",
+      "text": "claude --plugin-dir /path/to/agent-skills"
+    },
+    {
+      "path": "README.md",
+      "line": 177,
+      "kind": "runtime",
+      "text": "<summary><b>Codex</b></summary>"
+    },
+    {
+      "path": "README.md",
+      "line": 179,
+      "kind": "runtime",
+      "text": "Install as a native Codex plugin (Codex CLI v0.122+):"
+    },
+    {
+      "path": "README.md",
+      "line": 182,
+      "kind": "runtime",
+      "text": "codex plugin marketplace add addyosmani/agent-skills"
+    },
+    {
+      "path": "README.md",
+      "line": 183,
+      "kind": "runtime",
+      "text": "codex plugin add agent-skills@agent-skills"
+    },
+    {
+      "path": "README.md",
+      "line": 186,
+      "kind": "runtime",
+      "text": "The first command registers the marketplace; the second installs the plugin. Codex reads the root `skills/` directory directly through `.codex-plugin/plugin.json`. Once installed, invoke skills in chat using `@` (e.g., `@spec-driven-development`). See [docs/codex-setup.md](docs/codex-setup.md) for l"
+    },
+    {
+      "path": "README.md",
+      "line": 346,
+      "kind": "sensitive",
+      "text": "- **Progressive disclosure.** The `SKILL.md` is the entry point. Supporting references load only when needed, keeping token usage minimal."
+    },
+    {
+      "path": "README.md",
+      "line": 358,
+      "kind": "runtime",
+      "text": "| Claude Code adapter | `.claude/commands/` (9 commands), `.claude-plugin/`, `hooks/` | Slash-command wrappers, marketplace metadata, and lifecycle hooks |"
+    },
+    {
+      "path": "README.md",
+      "line": 361,
+      "kind": "runtime",
+      "text": "| Codex adapter | `.codex-plugin/`, `.agents/plugins/` | Codex plugin metadata and marketplace registration; Codex consumes `skills/` directly |"
+    },
+    {
+      "path": "agents/security-auditor.md",
+      "line": 49,
+      "kind": "sensitive",
+      "text": "- Is model output treated as untrusted (never into `eval`, SQL, shell, `innerHTML`, file paths)?"
+    },
+    {
+      "path": "agents/security-auditor.md",
+      "line": 53,
+      "kind": "sensitive",
+      "text": "- Are token, rate, and recursion limits set (unbounded consumption)?"
+    },
+    {
+      "path": "agents/security-auditor.md",
+      "line": 112,
+      "kind": "runtime",
+      "text": "- **Do not invoke from another persona.** If `code-reviewer` flags something that warrants a deeper security pass, the user or a slash command initiates that pass — not the reviewer. See [docs/agents.md](../docs/agents.md)."
+    },
+    {
+      "path": "agents/test-engineer.md",
+      "line": 95,
+      "kind": "runtime",
+      "text": "- **Do not invoke from another persona.** Recommendations to add tests belong in your report; the user or a slash command decides when to act on them. See [docs/agents.md](../docs/agents.md)."
+    },
+    {
+      "path": "agents/web-performance-auditor.md",
+      "line": 20,
+      "kind": "dependencies",
+      "text": "- **Lighthouse JSON report**: parse directly. Sources include `npx lighthouse <url> --output json`, `npx -p chrome-devtools-mcp chrome-devtools lighthouse_audit --output-format=json` (Chrome DevTools MCP CLI, no install required), or the `lighthouseResult` object from a PageSpeed Insights API respon"
+    },
+    {
+      "path": "agents/web-performance-auditor.md",
+      "line": 24,
+      "kind": "runtime",
+      "text": "- **Live capture via Chrome DevTools MCP server**: when the MCP server is configured in the harness, capture metrics directly using `lighthouse_audit`, `performance_start_trace` / `performance_stop_trace`, and `performance_analyze_insight` instead of asking the user to paste artifacts."
+    },
+    {
+      "path": "agents/web-performance-auditor.md",
+      "line": 25,
+      "kind": "runtime",
+      "text": "- **Chrome DevTools MCP CLI** (`chrome-devtools` command): when there's no MCP server in the harness, ask the user to invoke the CLI directly. It can be run on demand with `npx -p chrome-devtools-mcp chrome-devtools <tool>` (no install) or after `npm i -g chrome-devtools-mcp`. Example: `chrome-devto"
+    },
+    {
+      "path": "agents/web-performance-auditor.md",
+      "line": 25,
+      "kind": "dependencies",
+      "text": "- **Chrome DevTools MCP CLI** (`chrome-devtools` command): when there's no MCP server in the harness, ask the user to invoke the CLI directly. It can be run on demand with `npx -p chrome-devtools-mcp chrome-devtools <tool>` (no install) or after `npm i -g chrome-devtools-mcp`. Example: `chrome-devto"
+    },
+    {
+      "path": "agents/web-performance-auditor.md",
+      "line": 36,
+      "kind": "runtime",
+      "text": "| Live trace, LCP attribution, INP attribution, layout shift attribution | Chrome DevTools MCP server (`performance_*`, `lighthouse_audit`) | `chrome-devtools` MCP server configured in the harness (see `skills/browser-testing-with-devtools`) |"
+    },
+    {
+      "path": "agents/web-performance-auditor.md",
+      "line": 37,
+      "kind": "dependencies",
+      "text": "| Manual terminal capture (Lighthouse, trace, screenshot) | Chrome DevTools MCP CLI (e.g. `chrome-devtools lighthouse_audit --output-format=json`) | `npx -p chrome-devtools-mcp chrome-devtools <tool>` or `npm i -g chrome-devtools-mcp` (CLI is independent of the harness) |"
+    },
+    {
+      "path": "agents/web-performance-auditor.md",
+      "line": 184,
+      "kind": "runtime",
+      "text": "- **Do not invoke from another persona.** If `code-reviewer` flags a performance concern that warrants a deeper pass, surface that recommendation in the report; the user or a slash command initiates the deeper pass. See [docs/agents.md](../docs/agents.md)."
+    },
+    {
+      "path": "docs/adoption-guide.md",
+      "line": 30,
+      "kind": "dependencies",
+      "text": "1. Install the pack (`npx skills add addyosmani/agent-skills`, or the native integration for your tool, see [getting-started.md](getting-started.md))."
+    },
+    {
+      "path": "docs/adoption-guide.md",
+      "line": 32,
+      "kind": "runtime",
+      "text": "3. Add a short project rules file (`CLAUDE.md`, `.cursorrules`, etc.) with your stack, commands, and boundaries, `context-engineering` describes what belongs there."
+    },
+    {
+      "path": "docs/advanced-per-agent-configuration.md",
+      "line": 3,
+      "kind": "runtime",
+      "text": "Skills in this repository are intentionally portable. Every `SKILL.md` keeps its frontmatter limited to the fields the [Agent Skills specification](https://agentskills.io) defines, so the same file works across Claude Code, Cursor, Gemini CLI, Antigravity, and any other spec-conformant client."
+    },
+    {
+      "path": "docs/advanced-per-agent-configuration.md",
+      "line": 22,
+      "kind": "runtime",
+      "text": "| Runtime orchestration | subagent definitions, turn limits, tool allowlists | A separate per-agent adapter file (see each agent below) |"
+    },
+    {
+      "path": "docs/advanced-per-agent-configuration.md",
+      "line": 24,
+      "kind": "runtime",
+      "text": "## Claude Code"
+    },
+    {
+      "path": "docs/advanced-per-agent-configuration.md",
+      "line": 26,
+      "kind": "runtime",
+      "text": "Claude Code reads `name` and `description` for discovery. Custom commands and skills share the same frontmatter, so the `context` and `allowed-tools` fields below work in both `.claude/commands/*.md` and `.claude/skills/*/SKILL.md`."
+    },
+    {
+      "path": "docs/advanced-per-agent-configuration.md",
+      "line": 28,
+      "kind": "runtime",
+      "text": "- **`context: fork`** runs a command or skill in an isolated subagent context instead of the active conversation. This gives context isolation, repeatable execution from a clean state, execution tokens spent in the fork rather than the main session, and a cleaner handoff where only the result surfac"
+    },
+    {
+      "path": "docs/advanced-per-agent-configuration.md",
+      "line": 30,
+      "kind": "runtime",
+      "text": "- **`disallowed-tools`** is the field that actually restricts: it removes the listed tools from the available pool while the skill is active, which is what least-privilege needs for passive stages such as review or audit. The restriction also clears on your next message. Note it is a Claude Code fie"
+    },
+    {
+      "path": "docs/advanced-per-agent-configuration.md",
+      "line": 32,
+      "kind": "runtime",
+      "text": "These are Claude Code conventions. Keep the shared, published `SKILL.md` limited to spec fields; apply these runtime controls in your own local command or skill copies instead."
+    },
+    {
+      "path": "docs/advanced-per-agent-configuration.md",
+      "line": 38,
+      "kind": "runtime",
+      "text": "- **Subagent definitions** live in `.gemini/agents/*.md`, which are distinct from skills. Their schema is `kind` (`local` or `remote`), `model`, `temperature`, `max_turns`, and `tools`. Note that this is a subagent schema, not a skill schema: the two should not be merged into one `SKILL.md`."
+    },
+    {
+      "path": "docs/advanced-per-agent-configuration.md",
+      "line": 40,
+      "kind": "runtime",
+      "text": "- **Tool restrictions** enforce least-privilege per subagent, which also trims unused tool schemas from the prompt."
+    },
+    {
+      "path": "docs/advanced-per-agent-configuration.md",
+      "line": 64,
+      "kind": "runtime",
+      "text": "- For orchestration-style fields, it emits the separate adapter files an agent expects, for example `.gemini/agents/*.md` subagent definitions, leaving `SKILL.md` untouched."
+    },
+    {
+      "path": "docs/agents.md",
+      "line": 3,
+      "kind": "runtime",
+      "text": "Specialist personas that play a single role with a single perspective. Each persona is a Markdown file consumed as a system prompt by your harness (Claude Code, Cursor, Copilot, etc.)."
+    },
+    {
+      "path": "docs/agents.md",
+      "line": 22,
+      "kind": "runtime",
+      "text": "The user (or a slash command) is the orchestrator. **Personas do not call other personas.** Skills are mandatory hops inside a persona's workflow."
+    },
+    {
+      "path": "docs/agents.md",
+      "line": 34,
+      "kind": "runtime",
+      "text": "### Slash command (single persona behind it)"
+    },
+    {
+      "path": "docs/agents.md",
+      "line": 41,
+      "kind": "runtime",
+      "text": "### Slash command (orchestrator — fan-out)"
+    },
+    {
+      "path": "docs/agents.md",
+      "line": 54,
+      "kind": "runtime",
+      "text": "         ├── Yes → Slash command with parallel fan-out (e.g. /ship)"
+    },
+    {
+      "path": "docs/agents.md",
+      "line": 95,
+      "kind": "sensitive",
+      "text": "- Adds two paraphrasing hops → information loss + 2× token cost"
+    },
+    {
+      "path": "docs/agents.md",
+      "line": 102,
+      "kind": "runtime",
+      "text": "2. **Personas do not invoke other personas.** Composition is the job of slash commands or the user. On Claude Code this is also a hard platform constraint — *\"subagents cannot spawn other subagents\"* — so the rule is enforced for you."
+    },
+    {
+      "path": "docs/agents.md",
+      "line": 106,
+      "kind": "runtime",
+      "text": "## Claude Code interop"
+    },
+    {
+      "path": "docs/agents.md",
+      "line": 108,
+      "kind": "runtime",
+      "text": "The personas in this repo are designed to work as Claude Code subagents and as Agent Teams teammates without modification:"
+    },
+    {
+      "path": "docs/agents.md",
+      "line": 115,
+      "kind": "runtime",
+      "text": "Plugin agents do not support `hooks`, `mcpServers`, or `permissionMode` frontmatter — those fields are silently ignored. Avoid relying on them when authoring new personas here."
+    },
+    {
+      "path": "docs/antigravity-setup.md",
+      "line": 98,
+      "kind": "runtime",
+      "text": "The plugin registers reusable subagent definitions from the `agents/` directory:"
+    },
+    {
+      "path": "docs/codex-setup.md",
+      "line": 1,
+      "kind": "runtime",
+      "text": "# Using agent-skills with Codex"
+    },
+    {
+      "path": "docs/codex-setup.md",
+      "line": 3,
+      "kind": "runtime",
+      "text": "This repository is also a [Codex plugin](https://developers.openai.com/codex/plugins/build). The same root-level `skills/` directory used by Claude Code is consumed by Codex, so no files are copied or duplicated."
+    },
+    {
+      "path": "docs/codex-setup.md",
+      "line": 8,
+      "kind": "runtime",
+      "text": "codex plugin marketplace add addyosmani/agent-skills"
+    },
+    {
+      "path": "docs/codex-setup.md",
+      "line": 9,
+      "kind": "runtime",
+      "text": "codex plugin add agent-skills@agent-skills"
+    },
+    {
+      "path": "docs/codex-setup.md",
+      "line": 12,
+      "kind": "runtime",
+      "text": "> Requires Codex CLI v0.122 or later. On older releases the command was `codex marketplace add`. See the [Codex CLI docs](https://developers.openai.com/codex/cli)."
+    },
+    {
+      "path": "docs/codex-setup.md",
+      "line": 14,
+      "kind": "runtime",
+      "text": "The first command registers this repository as the `agent-skills` marketplace. The second command installs and enables the `agent-skills` plugin from that marketplace. Start a new Codex session after installation so the skills are discovered."
+    },
+    {
+      "path": "docs/codex-setup.md",
+      "line": 19,
+      "kind": "runtime",
+      "text": "codex plugin marketplace add /path/to/your/clone"
+    },
+    {
+      "path": "docs/codex-setup.md",
+      "line": 20,
+      "kind": "runtime",
+      "text": "codex plugin add agent-skills@agent-skills"
+    },
+    {
+      "path": "docs/codex-setup.md",
+      "line": 25,
+      "kind": "runtime",
+      "text": "After install, invoke a skill in Codex chat with `@` (e.g. `@spec-driven-development`) or just describe the task and let Codex pick the right skill. All 25 skills under `skills/` are available."
+    },
+    {
+      "path": "docs/codex-setup.md",
+      "line": 27,
+      "kind": "runtime",
+      "text": "[Codex uses progressive disclosure](https://developers.openai.com/codex/skills): it starts with each skill's `name` and `description`, chooses skills on demand, then loads the full `SKILL.md` only when selected. Do not also paste `using-agent-skills/SKILL.md` into `AGENTS.md`, a system prompt, or ot"
+    },
+    {
+      "path": "docs/codex-setup.md",
+      "line": 31,
+      "kind": "runtime",
+      "text": "- `.codex-plugin/plugin.json` — Codex plugin manifest at the repo root. Points `skills` at `./skills/` and provides the metadata required by Codex."
+    },
+    {
+      "path": "docs/codex-setup.md",
+      "line": 33,
+      "kind": "runtime",
+      "text": "- `skills/<name>/SKILL.md` — unchanged. Codex and Claude Code share the same `name` + `description` frontmatter format, so one file serves both platforms."
+    },
+    {
+      "path": "docs/codex-setup.md",
+      "line": 35,
+      "kind": "runtime",
+      "text": "Slash commands in `.claude/commands/` and personas in `agents/` stay Claude Code-specific. The `SessionStart` script under `hooks/` is a standalone helper for hosts without native skill routing and is not wired by either plugin. On Codex, invoke the underlying skill directly instead of the slash com"
+    },
+    {
+      "path": "docs/comparison.md",
+      "line": 11,
+      "kind": "runtime",
+      "text": "> **TL;DR** — They optimize for different moments. **agent-skills** organizes the *whole product lifecycle* (Define, Plan, Build, Verify, Review, Ship) with review personas, anti-rationalization guards, and an in-repo eval framework that checks the skills actually route and behave. **Superpowers** l"
+    },
+    {
+      "path": "docs/comparison.md",
+      "line": 11,
+      "kind": "sensitive",
+      "text": "> **TL;DR** — They optimize for different moments. **agent-skills** organizes the *whole product lifecycle* (Define, Plan, Build, Verify, Review, Ship) with review personas, anti-rationalization guards, and an in-repo eval framework that checks the skills actually route and behave. **Superpowers** l"
+    },
+    {
+      "path": "docs/comparison.md",
+      "line": 19,
+      "kind": "runtime",
+      "text": "| **Core idea** | Encode the full senior-engineering lifecycle as skills | A complete development *methodology* built on composable skills | One expert's Claude Code workflow, open-sourced and evolving |"
+    },
+    {
+      "path": "docs/comparison.md",
+      "line": 23,
+      "kind": "runtime",
+      "text": "| **Entry points** | Slash commands mapped 1:1 to phases (`/spec` `/plan` `/build` `/test` `/review` `/code-simplify` `/ship`, plus `/webperf`), with a `/build auto` full-plan mode | Skill-chained pipeline (`brainstorming`, `writing-plans`, `subagent-driven-development`) | Slash commands (`/grill-me"
+    },
+    {
+      "path": "docs/comparison.md",
+      "line": 24,
+      "kind": "runtime",
+      "text": "| **Distinctive mechanisms** | Anti-rationalization tables and Red Flags in every skill; parallel review **personas** in `/ship`; reference checklists; a **three-tier eval framework** in CI | Subagent-driven development with a task reviewer (spec + quality) and a fix loop; git-worktree isolation; sk"
+    },
+    {
+      "path": "docs/comparison.md",
+      "line": 24,
+      "kind": "sensitive",
+      "text": "| **Distinctive mechanisms** | Anti-rationalization tables and Red Flags in every skill; parallel review **personas** in `/ship`; reference checklists; a **three-tier eval framework** in CI | Subagent-driven development with a task reviewer (spec + quality) and a fix loop; git-worktree isolation; sk"
+    },
+    {
+      "path": "docs/comparison.md",
+      "line": 25,
+      "kind": "sensitive",
+      "text": "| **Quality measurement** | Trigger, routing, and behavioral evals run against the catalog (in-repo, some in CI) | Pressure-testing methodology is core to its philosophy; the eval suite itself now lives in a separate repo | None shipped in-repo |"
+    },
+    {
+      "path": "docs/comparison.md",
+      "line": 26,
+      "kind": "runtime",
+      "text": "| **Tooling reach** | Claude Code, Cursor, Gemini CLI, Antigravity, OpenCode, Windsurf, Copilot, Kiro, Codex, Command Code, plus the `npx skills` CLI | One of the widest and most actively churned surfaces: Claude Code, Codex, Cursor, Copilot CLI, OpenCode, Kimi, Factory Droid, Antigravity, Pi | Clau"
+    },
+    {
+      "path": "docs/comparison.md",
+      "line": 26,
+      "kind": "dependencies",
+      "text": "| **Tooling reach** | Claude Code, Cursor, Gemini CLI, Antigravity, OpenCode, Windsurf, Copilot, Kiro, Codex, Command Code, plus the `npx skills` CLI | One of the widest and most actively churned surfaces: Claude Code, Codex, Cursor, Copilot CLI, OpenCode, Kimi, Factory Droid, Antigravity, Pi | Clau"
+    },
+    {
+      "path": "docs/comparison.md",
+      "line": 27,
+      "kind": "sensitive",
+      "text": "| **Governance** | Actively reviews and merges community contributions; every skill ships an eval | Largely solo-authored; a substantial backlog of unmerged community PRs | Solo-authored, self-merged, developed openly in public |"
+    },
+    {
+      "path": "docs/comparison.md",
+      "line": 38,
+      "kind": "runtime",
+      "text": "A full software-development *methodology* built on composable skills. It bets on **autonomy and upfront reasoning**. A session runs a deliberately linear pipeline: Socratic brainstorming that writes a dated spec and permits exactly one handoff, detailed plans written to be executable by \"an enthusia"
+    },
+    {
+      "path": "docs/comparison.md",
+      "line": 46,
+      "kind": "runtime",
+      "text": "Matt open-sourced the Claude Code skills he actually uses, and the collection has grown into a broad, opinionated toolbox organized in public, complete with visible `in-progress/` and `deprecated/` directories that model the discipline the skills preach. The center of gravity is not TDD, it is **gri"
+    },
+    {
+      "path": "docs/comparison.md",
+      "line": 48,
+      "kind": "runtime",
+      "text": "Its strengths are authenticity and sharpness: this is how one very good engineer ships, not a committee's idea of a framework, and the requirements-grilling loop is genuinely excellent. The trade-offs: it is Claude Code first in practice (other agents surface reliability rough edges), there are no i"
+    },
+    {
+      "path": "docs/comparison.md",
+      "line": 56,
+      "kind": "sensitive",
+      "text": "What is newer, and the current point of difference: a **three-tier eval framework** lives in the repo. Tier 1 checks structure, Tier 2 checks that each skill's description carries the vocabulary users actually say and that no two skills collide on routing (deterministic, runs in CI), and Tier 3 grad"
+    },
+    {
+      "path": "docs/comparison.md",
+      "line": 62,
+      "kind": "runtime",
+      "text": "Om Mishra ran a controlled experiment, same model, same repo, same prompt in Claude Code, changing only the skill framework, and wrote it up:"
+    },
+    {
+      "path": "docs/comparison.md",
+      "line": 70,
+      "kind": "sensitive",
+      "text": "- Token efficiency was effectively identical; both replanned once."
+    },
+    {
+      "path": "docs/comparison.md",
+      "line": 83,
+      "kind": "runtime",
+      "text": "- **A big, ambiguous chunk you want to hand off and walk away from?** Superpowers. Its pipeline and subagent review are built to run for a long time and hand back a result that has already been reviewed against the spec."
+    },
+    {
+      "path": "docs/comparison.md",
+      "line": 93,
+      "kind": "runtime",
+      "text": "- **Platform spread**: agent-skills and Superpowers both run almost everywhere; Pocock is happiest on Claude Code."
+    },
+    {
+      "path": "docs/comparison.md",
+      "line": 99,
+      "kind": "runtime",
+      "text": "- *\"Refactor a gnarly subsystem overnight and review it in the morning.\"* Superpowers: hand it the plan, let subagent-driven development and the task reviewer run."
+    },
+    {
+      "path": "docs/copilot-cli-setup.md",
+      "line": 40,
+      "kind": "runtime",
+      "text": "The root `plugin.json` is the manifest Copilot CLI reads — it takes precedence over `.claude-plugin/plugin.json`, which belongs to Claude Code. That root manifest declares only a name, version and description, so component paths fall back to their defaults:"
+    },
+    {
+      "path": "docs/copilot-cli-setup.md",
+      "line": 43,
+      "kind": "runtime",
+      "text": "- **Lifecycle commands — not available.** The root manifest has no `commands` field, so nothing registers `/spec`, `/plan`, `/build`, `/test`, `/review` or `/ship`. Those files live in `.claude/commands/` and are Claude Code commands."
+    },
+    {
+      "path": "docs/copilot-setup.md",
+      "line": 5,
+      "kind": "runtime",
+      "text": "**What an install actually gives you:** the skills. Each installed skill becomes a slash command named after its frontmatter `name` — `/spec-driven-development`, `/test-driven-development`, and so on. `npx skills add addyosmani/agent-skills` and the manual copy below both install skills only. Neithe"
+    },
+    {
+      "path": "docs/copilot-setup.md",
+      "line": 5,
+      "kind": "dependencies",
+      "text": "**What an install actually gives you:** the skills. Each installed skill becomes a slash command named after its frontmatter `name` — `/spec-driven-development`, `/test-driven-development`, and so on. `npx skills add addyosmani/agent-skills` and the manual copy below both install skills only. Neithe"
+    },
+    {
+      "path": "docs/copilot-setup.md",
+      "line": 11,
+      "kind": "runtime",
+      "text": "Copilot supports creating agent skills using a `.github/skills`, `.claude/skills`, or `.agents/skills` directory in your repository."
+    },
+    {
+      "path": "docs/copilot-setup.md",
+      "line": 66,
+      "kind": "dependencies",
+      "text": "- Run `npm test` after every change"
+    },
+    {
+      "path": "docs/copilot-setup.md",
+      "line": 111,
+      "kind": "runtime",
+      "text": "VS Code's extension-host local agents support [prompt files](https://code.visualstudio.com/docs/agent-customization/prompt-files) at `.github/prompts/<name>.prompt.md`, and each becomes a `/<name>` slash command. The Agent Host does **not** use prompt files — there, use the skill names above."
+    },
+    {
+      "path": "docs/copilot-setup.md",
+      "line": 113,
+      "kind": "runtime",
+      "text": "An alias is a thin shortcut to one skill, nothing more. These aliases do not implement the orchestration in this repo's Claude Code commands — `/build auto`'s single-approval plan-and-implement pass and `/ship`'s parallel persona fan-out. Reproducing that on Copilot is its own piece of work, not som"
+    },
+    {
+      "path": "docs/copilot-setup.md",
+      "line": 144,
+      "kind": "runtime",
+      "text": "Write the body yourself, or take it from this table, rather than copying `.claude/commands/*.md` verbatim: those files reference skills as `agent-skills:<name>`, a Claude Code plugin namespace that means nothing to Copilot."
+    },
+    {
+      "path": "docs/copilot-setup.md",
+      "line": 150,
+      "kind": "runtime",
+      "text": "1. **Check where the skills landed.** Each one needs its own directory containing a `SKILL.md`. The project-level paths this guide uses are `.github/skills/`, `.claude/skills/` and `.agents/skills/` — but an installer run with a global/user flag writes outside the workspace instead (`~/.agents/skill"
+    },
+    {
+      "path": "docs/copilot-setup.md",
+      "line": 151,
+      "kind": "runtime",
+      "text": "2. **Check the frontmatter.** `name` must be present and valid — it *is* the slash command. A skill whose frontmatter opts out of user invocation won't appear."
+    },
+    {
+      "path": "docs/cursor-setup.md",
+      "line": 22,
+      "kind": "dependencies",
+      "text": "- **Rules** — concise, stable (“use conventional commits”, “type-annotate public Python APIs”). Prefer one concern per file; avoid large pasted guides."
+    },
+    {
+      "path": "docs/developer-onboarding.md",
+      "line": 3,
+      "kind": "sensitive",
+      "text": "This guide is for people working **on** the agent-skills repository itself: contributing skills, fixing docs, improving the eval harness. If you want to *use* the skills in your own projects, you're looking for [getting-started.md](getting-started.md) instead."
+    },
+    {
+      "path": "docs/developer-onboarding.md",
+      "line": 5,
+      "kind": "sensitive",
+      "text": "It's a guided tour, not a rulebook. The rules live in [CONTRIBUTING.md](../CONTRIBUTING.md) (contribution workflow), [skill-anatomy.md](skill-anatomy.md) (skill format), and [evals/README.md](../evals/README.md) (eval framework); this document tells you when to read each one and how the pieces fit."
+    },
+    {
+      "path": "docs/developer-onboarding.md",
+      "line": 17,
+      "kind": "runtime",
+      "text": "| **Commands** | `.claude/commands/`, `.gemini/commands/`, `commands/` | User-facing entry points; the orchestration layer | *When* |"
+    },
+    {
+      "path": "docs/developer-onboarding.md",
+      "line": 23,
+      "kind": "runtime",
+      "text": "- **The user (or a slash command) is the orchestrator.** Personas never invoke other personas; the only endorsed multi-persona pattern is parallel fan-out with a merge step (see [references/orchestration-patterns.md](../references/orchestration-patterns.md))."
+    },
+    {
+      "path": "docs/developer-onboarding.md",
+      "line": 26,
+      "kind": "runtime",
+      "text": "One scope caveat that trips people up: `AGENTS.md` and `CLAUDE.md` at the repo root configure agents working on *this repo*. They are not reusable assets and setup guides must never tell users to copy them into their own projects; the reusable assets are the skills."
+    },
+    {
+      "path": "docs/developer-onboarding.md",
+      "line": 28,
+      "kind": "runtime",
+      "text": "Note that commands exist in three parallel directories (Claude Code, Gemini CLI, Antigravity). Touch one and CI checks parity across all of them, see §3."
+    },
+    {
+      "path": "docs/developer-onboarding.md",
+      "line": 37,
+      "kind": "dependencies",
+      "text": "There's no build step and no `package.json`; validators are plain Node scripts. You need:"
+    },
+    {
+      "path": "docs/developer-onboarding.md",
+      "line": 39,
+      "kind": "dependencies",
+      "text": "- **Node 20+** (what CI runs) for the `scripts/` validators"
+    },
+    {
+      "path": "docs/developer-onboarding.md",
+      "line": 40,
+      "kind": "runtime",
+      "text": "- **bash** (+ `jq` recommended) for the hook regression test"
+    },
+    {
+      "path": "docs/developer-onboarding.md",
+      "line": 41,
+      "kind": "dependencies",
+      "text": "- **`gh` CLI** for the duplicate-PR check before proposing a skill"
+    },
+    {
+      "path": "docs/developer-onboarding.md",
+      "line": 42,
+      "kind": "runtime",
+      "text": "- **Claude Code** only if you want to run Tier 3 behavioral evals locally"
+    },
+    {
+      "path": "docs/developer-onboarding.md",
+      "line": 47,
+      "kind": "runtime",
+      "text": "claude --plugin-dir /path/to/agent-skills"
+    },
+    {
+      "path": "docs/developer-onboarding.md",
+      "line": 56,
+      "kind": "dependencies",
+      "text": "node scripts/validate-skills.js"
+    },
+    {
+      "path": "docs/developer-onboarding.md",
+      "line": 59,
+      "kind": "dependencies",
+      "text": "node scripts/validate-commands.js"
+    },
+    {
+      "path": "docs/developer-onboarding.md",
+      "line": 62,
+      "kind": "dependencies",
+      "text": "node scripts/run-evals.js"
+    },
+    {
+      "path": "docs/developer-onboarding.md",
+      "line": 65,
+      "kind": "dependencies",
+      "text": "node scripts/run-evals.js --behavioral <skill-name> --dry-run"
+    },
+    {
+      "path": "docs/developer-onboarding.md",
+      "line": 67,
+      "kind": "runtime",
+      "text": "# Hook regression test, required if you touch hooks/session-start.sh"
+    },
+    {
+      "path": "docs/developer-onboarding.md",
+      "line": 69,
+      "kind": "runtime",
+      "text": "bash hooks/session-start-test.sh"
+    },
+    {
+      "path": "docs/developer-onboarding.md",
+      "line": 72,
+      "kind": "sensitive",
+      "text": "The three eval tiers are worth understanding even if you never touch the harness, because a red Tier 2 usually means *fix your skill's description*, not the eval: Tier 2 is a lexical approximation of routing (stemmed TF-IDF over descriptions), and its two target failure modes are a description missi"
+    },
+    {
+      "path": "docs/developer-onboarding.md",
+      "line": 81,
+      "kind": "dependencies",
+      "text": "2. If you changed the frontmatter `description`, expect Tier 2 effects; run `node scripts/run-evals.js` and check the skill's trigger prompts still rank."
+    },
+    {
+      "path": "docs/developer-onboarding.md",
+      "line": 86,
+      "kind": "dependencies",
+      "text": "The catalog already covers most of the lifecycle, so the burden of proof is on the gap. Before writing anything, run the pre-flight checks in [CONTRIBUTING.md](../CONTRIBUTING.md#before-proposing-a-new-skill): search the catalog, check open PRs (`gh pr list --state open`; near-duplicate clusters alr"
+    },
+    {
+      "path": "docs/developer-onboarding.md",
+      "line": 88,
+      "kind": "sensitive",
+      "text": "A new skill ships as a set, not a single file: the `skills/<kebab-case-name>/SKILL.md`, a matching `evals/cases/<name>.json`, and a `scripts/` directory only when it ships runnable helpers (reference material goes in `references/`, never inside the skill). The exact frontmatter rules, the section an"
+    },
+    {
+      "path": "docs/developer-onboarding.md",
+      "line": 90,
+      "kind": "sensitive",
+      "text": "One point worth internalizing rather than looking up: when writing trigger prompts, paraphrase how users actually talk; copying the description into the prompts games the eval and tells you nothing."
+    },
+    {
+      "path": "docs/developer-onboarding.md",
+      "line": 95,
+      "kind": "sensitive",
+      "text": "- Changes to `scripts/run-evals.js` or the eval schema should stay compatible with skill-creator's `evals.json` schema (adopted verbatim for the behavioral tier; that compatibility is a feature, not an accident)."
+    },
+    {
+      "path": "docs/developer-onboarding.md",
+      "line": 96,
+      "kind": "runtime",
+      "text": "- Anything touching the session-start hook or the meta-skill it embeds requires the hook regression test (§3)."
+    },
+    {
+      "path": "docs/developer-onboarding.md",
+      "line": 100,
+      "kind": "dependencies",
+      "text": "- [ ] Tier 1 green: `node scripts/validate-skills.js`"
+    },
+    {
+      "path": "docs/developer-onboarding.md",
+      "line": 101,
+      "kind": "dependencies",
+      "text": "- [ ] Tier 2 green: `node scripts/run-evals.js`"
+    },
+    {
+      "path": "docs/developer-onboarding.md",
+      "line": 102,
+      "kind": "dependencies",
+      "text": "- [ ] Command parity green if you touched any command directory: `node scripts/validate-commands.js`"
+    },
+    {
+      "path": "docs/developer-onboarding.md",
+      "line": 103,
+      "kind": "runtime",
+      "text": "- [ ] Hook test green if you touched `hooks/` or `using-agent-skills`"
+    },
+    {
+      "path": "docs/developer-onboarding.md",
+      "line": 104,
+      "kind": "sensitive",
+      "text": "- [ ] New skill → eval case file present with the minimum trigger/behavioral counts"
+    },
+    {
+      "path": "docs/gemini-cli-setup.md",
+      "line": 92,
+      "kind": "runtime",
+      "text": "### Session Hooks"
+    },
+    {
+      "path": "docs/gemini-cli-setup.md",
+      "line": 94,
+      "kind": "runtime",
+      "text": "Gemini CLI supports session lifecycle hooks. You can use these to automatically inject context or run validation scripts at the start of a session."
+    },
+    {
+      "path": "docs/gemini-cli-setup.md",
+      "line": 96,
+      "kind": "runtime",
+      "text": "To replicate the `agent-skills` experience from other tools, you can configure a `SessionStart` hook that reminds you of the available skills or loads a meta-skill. `hooks/session-start.sh` in this repo is a ready-made script for that: it prints the `using-agent-skills` meta-skill as a standard `Ses"
+    },
+    {
+      "path": "docs/gemini-cli-setup.md",
+      "line": 131,
+      "kind": "runtime",
+      "text": "2. **Skill descriptions matter** — Each SKILL.md has a `description` field in its frontmatter that tells agents when to activate it. The descriptions in this repo are optimized for auto-discovery across all supported tools (Claude Code, Gemini CLI, etc.) by clearly stating both *what* the skill does"
+    },
+    {
+      "path": "docs/getting-started.md",
+      "line": 8,
+      "kind": "runtime",
+      "text": "copyable prompts for Claude Code, Codex, or any other agent."
+    },
+    {
+      "path": "docs/getting-started.md",
+      "line": 39,
+      "kind": "runtime",
+      "text": "**Rules file:** Add skill content to your project's rules file (CLAUDE.md, .cursorrules, etc.)."
+    },
+    {
+      "path": "docs/getting-started.md",
+      "line": 56,
+      "kind": "runtime",
+      "text": "Do not copy this repository's root `AGENTS.md` or `CLAUDE.md` into the project."
+    },
+    {
+      "path": "docs/getting-started.md",
+      "line": 126,
+      "kind": "runtime",
+      "text": "The `.claude/commands/` directory contains slash commands for Claude Code:"
+    },
+    {
+      "path": "docs/getting-started.md",
+      "line": 141,
+      "kind": "runtime",
+      "text": "> **Note:** When installed as a Claude Code plugin you may see a warning like"
+    },
+    {
+      "path": "docs/getting-started.md",
+      "line": 144,
+      "kind": "runtime",
+      "text": "> and is intentionally separate from `.claude/commands/`. All Claude Code slash"
+    },
+    {
+      "path": "docs/getting-started.md",
+      "line": 145,
+      "kind": "runtime",
+      "text": "> commands load correctly from `.claude/commands/`; the warning is cosmetic."
+    },
+    {
+      "path": "docs/getting-started.md",
+      "line": 163,
+      "kind": "dependencies",
+      "text": "If you install one skill with `npx skills add ... --skill <name>`, only the"
+    },
+    {
+      "path": "docs/getting-started.md",
+      "line": 196,
+      "kind": "dependencies",
+      "text": "This doesn't need the `/spec` and `/plan` wrappers — plain requests work in any agent, including a `npx skills add` install that only has the skills:"
+    },
+    {
+      "path": "docs/opencode-setup.md",
+      "line": 21,
+      "kind": "dependencies",
+      "text": "### Option 1: Install with `npx skills`"
+    },
+    {
+      "path": "docs/opencode-setup.md",
+      "line": 26,
+      "kind": "dependencies",
+      "text": "npx skills add addyosmani/agent-skills            # install selected skills"
+    },
+    {
+      "path": "docs/opencode-setup.md",
+      "line": 27,
+      "kind": "dependencies",
+      "text": "npx skills add addyosmani/agent-skills --list     # browse before installing"
+    },
+    {
+      "path": "docs/opencode-setup.md",
+      "line": 33,
+      "kind": "dependencies",
+      "text": "npx skills add addyosmani/agent-skills --skill spec-driven-development"
+    },
+    {
+      "path": "docs/opencode-setup.md",
+      "line": 36,
+      "kind": "runtime",
+      "text": "By default `npx skills` installs into a tool-specific directory (often `.claude/skills/` or a shared location). OpenCode will discover skills placed there because it reads `.claude/skills/<name>/SKILL.md` and the generic `.agents/skills/<name>/SKILL.md` paths."
+    },
+    {
+      "path": "docs/opencode-setup.md",
+      "line": 36,
+      "kind": "dependencies",
+      "text": "By default `npx skills` installs into a tool-specific directory (often `.claude/skills/` or a shared location). OpenCode will discover skills placed there because it reads `.claude/skills/<name>/SKILL.md` and the generic `.agents/skills/<name>/SKILL.md` paths."
+    },
+    {
+      "path": "docs/opencode-setup.md",
+      "line": 42,
+      "kind": "runtime",
+      "text": "cp -r .claude/skills/<skill-name> .opencode/skills/"
+    },
+    {
+      "path": "docs/opencode-setup.md",
+      "line": 81,
+      "kind": "runtime",
+      "text": "OpenCode also discovers skills placed in Claude-compatible or generic agent paths:"
+    },
+    {
+      "path": "docs/opencode-setup.md",
+      "line": 83,
+      "kind": "runtime",
+      "text": "- `.claude/skills/<name>/SKILL.md`"
+    },
+    {
+      "path": "docs/opencode-setup.md",
+      "line": 84,
+      "kind": "runtime",
+      "text": "- `~/.claude/skills/<name>/SKILL.md`"
+    },
+    {
+      "path": "docs/opencode-setup.md",
+      "line": 88,
+      "kind": "runtime",
+      "text": "If you already share skills across Claude Code and OpenCode, any of these locations work."
+    },
+    {
+      "path": "docs/opencode-setup.md",
+      "line": 92,
+      "kind": "runtime",
+      "text": "Copy the directories under `skills/` (for example `skills/spec-driven-development/`). Each directory must contain a `SKILL.md` file. Do not copy the repository's root `AGENTS.md` or `CLAUDE.md`; those files configure development of this repository itself."
+    },
+    {
+      "path": "docs/opencode-setup.md",
+      "line": 146,
+      "kind": "runtime",
+      "text": "- `.claude/skills/<name>/SKILL.md`"
+    },
+    {
+      "path": "docs/opencode-setup.md",
+      "line": 147,
+      "kind": "runtime",
+      "text": "- `~/.claude/skills/<name>/SKILL.md`"
+    },
+    {
+      "path": "docs/opencode-setup.md",
+      "line": 254,
+      "kind": "runtime",
+      "text": "1. Install the skills you need, either with `npx skills add addyosmani/agent-skills` or by copying them from a clone of this repository into `.opencode/skills/` (project), `~/.config/opencode/skills/` (global), or a cross-compatible path such as `.claude/skills/` / `.agents/skills/`."
+    },
+    {
+      "path": "docs/opencode-setup.md",
+      "line": 254,
+      "kind": "dependencies",
+      "text": "1. Install the skills you need, either with `npx skills add addyosmani/agent-skills` or by copying them from a clone of this repository into `.opencode/skills/` (project), `~/.config/opencode/skills/` (global), or a cross-compatible path such as `.claude/skills/` / `.agents/skills/`."
+    },
+    {
+      "path": "docs/skill-anatomy.md",
+      "line": 93,
+      "kind": "dependencies",
+      "text": "**Good:** \"Run `npm test` and verify all tests pass\""
+    },
+    {
+      "path": "docs/skill-anatomy.md",
+      "line": 124,
+      "kind": "runtime",
+      "text": "The tradeoff is portability: a whole-repo install (such as the Claude Code marketplace plugin) carries `references/` along, but a per-skill install that copies only `skills/<name>/` leaves the repo-root sibling behind, and those links resolve to nothing. That gap is tracked in [#361](https://github."
+    },
+    {
+      "path": "docs/skill-anatomy.md",
+      "line": 152,
+      "kind": "dependencies",
+      "text": "2. **Specific over general.** \"Run `npm test`\" beats \"verify the tests\"."
+    },
+    {
+      "path": "docs/skill-anatomy.md",
+      "line": 156,
+      "kind": "sensitive",
+      "text": "6. **Token-conscious.** Every section must justify its inclusion. If removing it wouldn't change agent behavior, remove it."
+    },
+    {
+      "path": "evals/README.md",
+      "line": 10,
+      "kind": "runtime",
+      "text": "- **Superpowers** (obra) tests skills with bash + `claude -p` + prompt fixtures and grader scripts. Our behavioral runner follows the same headless-`claude` pattern, with the grading rubric drawn from `expectations[]`."
+    },
+    {
+      "path": "evals/README.md",
+      "line": 22,
+      "kind": "sensitive",
+      "text": "Tier 2 is a **lexical approximation** of routing (stemmed TF-IDF over descriptions). It cannot judge semantics — that's Tier 3's job — but it catches the two failure modes that dominate real trigger bugs: a description missing the vocabulary users say (false negative), and an over-broad description "
+    },
+    {
+      "path": "evals/README.md",
+      "line": 28,
+      "kind": "dependencies",
+      "text": "node scripts/run-evals.js"
+    },
+    {
+      "path": "evals/README.md",
+      "line": 29,
+      "kind": "dependencies",
+      "text": "node scripts/run-evals.js --min-rank1 95  # enforce the current routing floor"
+    },
+    {
+      "path": "evals/README.md",
+      "line": 31,
+      "kind": "runtime",
+      "text": "# Tier 3 — behavioral, runs each eval through headless claude, then grades it"
+    },
+    {
+      "path": "evals/README.md",
+      "line": 31,
+      "kind": "sensitive",
+      "text": "# Tier 3 — behavioral, runs each eval through headless claude, then grades it"
+    },
+    {
+      "path": "evals/README.md",
+      "line": 32,
+      "kind": "dependencies",
+      "text": "node scripts/run-evals.js --behavioral test-driven-development            # spends tokens"
+    },
+    {
+      "path": "evals/README.md",
+      "line": 33,
+      "kind": "dependencies",
+      "text": "node scripts/run-evals.js --behavioral test-driven-development --dry-run  # prints the plan only"
+    },
+    {
+      "path": "evals/README.md",
+      "line": 36,
+      "kind": "sensitive",
+      "text": "Tier 3 supports two behavioral artifact kinds. `execution` is the default: each eval runs in a throwaway git repository, real project inputs from `files[]` are materialized out of `evals/fixtures/` and committed as the baseline, and the grader judges the full `--output-format stream-json --verbose` "
+    },
+    {
+      "path": "evals/README.md",
+      "line": 40,
+      "kind": "runtime",
+      "text": "## Plugin evals (Claude Code)"
+    },
+    {
+      "path": "evals/README.md",
+      "line": 42,
+      "kind": "runtime",
+      "text": "`claude plugin eval` (Claude Code 2.1.269 or later) loads the whole plugin, every skill at once, runs the cases under `evals/plugin/`, and scores each case with and without the plugin. It complements Tier 2 rather than replacing it: Tier 2 checks that a description carries the vocabulary users say; "
+    },
+    {
+      "path": "evals/README.md",
+      "line": 42,
+      "kind": "sensitive",
+      "text": "`claude plugin eval` (Claude Code 2.1.269 or later) loads the whole plugin, every skill at once, runs the cases under `evals/plugin/`, and scores each case with and without the plugin. It complements Tier 2 rather than replacing it: Tier 2 checks that a description carries the vocabulary users say; "
+    },
+    {
+      "path": "evals/README.md",
+      "line": 45,
+      "kind": "runtime",
+      "text": "claude plugin eval . --no-publish                                          # every case, both arms, 3 runs each"
+    },
+    {
+      "path": "evals/README.md",
+      "line": 45,
+      "kind": "sensitive",
+      "text": "claude plugin eval . --no-publish                                          # every case, both arms, 3 runs each"
+    },
+    {
+      "path": "evals/README.md",
+      "line": 46,
+      "kind": "runtime",
+      "text": "claude plugin eval . --case code-review-fires --runs 1 --ablation none     # one cheap iteration on one case"
+    },
+    {
+      "path": "evals/README.md",
+      "line": 46,
+      "kind": "sensitive",
+      "text": "claude plugin eval . --case code-review-fires --runs 1 --ablation none     # one cheap iteration on one case"
+    },
+    {
+      "path": "evals/README.md",
+      "line": 53,
+      "kind": "runtime",
+      "text": "What the first runs taught (Claude Code 2.1.278, claude-opus-5). Skill invocation is stochastic: the review skill fired in 5 of 7 runs on the phrasing the case uses, and test-driven-development fired in 2 of 7 runs on the test-first prompt, so read `Δ` and the report rather than the exit code, or pa"
+    },
+    {
+      "path": "evals/README.md",
+      "line": 55,
+      "kind": "sensitive",
+      "text": "## Eval case format"
+    },
+    {
+      "path": "evals/README.md",
+      "line": 93,
+      "kind": "sensitive",
+      "text": "**Writing good trigger prompts:** paraphrase how users actually talk; don't copy the description (that's gaming the eval). If a realistic prompt can't rank because the description lacks its vocabulary, that is a real finding — improve the description."
+    },
+    {
+      "path": "evals/README.md",
+      "line": 97,
+      "kind": "sensitive",
+      "text": "Every skill ships with an eval file. When you add `skills/<name>/`, add `evals/cases/<name>.json` with at least 3 positive triggers, 2 negative triggers, and 1 behavioral eval. Execution evals must be backed by `evals/fixtures/<name>/`; use `kind: \"dialogue\"` only when the skill's deliverable is gen"
+    },
+    {
+      "path": "evals/cases/ci-cd-and-automation.json",
+      "line": 32,
+      "kind": "dependencies",
+      "text": "      \"prompt\": \"Create a CI pipeline for a Node project: install, lint, test on every PR, and block merge on failure.\","
+    },
+    {
+      "path": "evals/cases/test-driven-development.json",
+      "line": 60,
+      "kind": "dependencies",
+      "text": "      \"expected_output\": \"A failing unittest written and shown failing first, a minimal implementation, and the full suite run with the repository's own Python test command\","
+    },
+    {
+      "path": "evals/cases/test-driven-development.json",
+      "line": 65,
+      "kind": "dependencies",
+      "text": "        \"The repository's stack (Python, unittest) is identified before any test command is chosen\","
+    },
+    {
+      "path": "evals/cases/test-driven-development.json",
+      "line": 66,
+      "kind": "dependencies",
+      "text": "        \"Tests are run with the repository's own command (python3 -m unittest), not npm test or another ecosystem's tool\","
+    },
+    {
+      "path": "evals/fixtures/browser-testing-with-devtools/README.md",
+      "line": 3,
+      "kind": "dependencies",
+      "text": "Run `node server.js`, open `http://127.0.0.1:4173`, enter an email, and submit"
+    },
+    {
+      "path": "evals/fixtures/browser-testing-with-devtools/server.js",
+      "line": 3,
+      "kind": "dependencies",
+      "text": "const fs = require('node:fs');"
+    },
+    {
+      "path": "evals/fixtures/browser-testing-with-devtools/server.js",
+      "line": 4,
+      "kind": "dependencies",
+      "text": "const http = require('node:http');"
+    },
+    {
+      "path": "evals/fixtures/browser-testing-with-devtools/server.js",
+      "line": 5,
+      "kind": "dependencies",
+      "text": "const path = require('node:path');"
+    },
+    {
+      "path": "evals/fixtures/ci-cd-and-automation/package.json",
+      "line": 5,
+      "kind": "dependencies",
+      "text": "    \"lint\": \"node --check src/slug.js\","
+    },
+    {
+      "path": "evals/fixtures/ci-cd-and-automation/package.json",
+      "line": 6,
+      "kind": "dependencies",
+      "text": "    \"test\": \"node --test\""
+    },
+    {
+      "path": "evals/fixtures/ci-cd-and-automation/test/slug.test.js",
+      "line": 3,
+      "kind": "dependencies",
+      "text": "const assert = require('node:assert/strict');"
+    },
+    {
+      "path": "evals/fixtures/ci-cd-and-automation/test/slug.test.js",
+      "line": 4,
+      "kind": "dependencies",
+      "text": "const test = require('node:test');"
+    },
+    {
+      "path": "evals/fixtures/code-simplification/config-parser.test.js",
+      "line": 3,
+      "kind": "dependencies",
+      "text": "const assert = require('node:assert/strict');"
+    },
+    {
+      "path": "evals/fixtures/code-simplification/config-parser.test.js",
+      "line": 4,
+      "kind": "dependencies",
+      "text": "const test = require('node:test');"
+    },
+    {
+      "path": "evals/fixtures/debugging-and-error-recovery/pagination.test.js",
+      "line": 3,
+      "kind": "dependencies",
+      "text": "const assert = require('node:assert/strict');"
+    },
+    {
+      "path": "evals/fixtures/debugging-and-error-recovery/pagination.test.js",
+      "line": 4,
+      "kind": "dependencies",
+      "text": "const test = require('node:test');"
+    },
+    {
+      "path": "evals/fixtures/deprecation-and-migration/api-inventory.md",
+      "line": 7,
+      "kind": "sensitive",
+      "text": "- Existing telemetry records API key, route, status, and response latency."
+    },
+    {
+      "path": "evals/fixtures/git-workflow-and-versioning/app.test.js",
+      "line": 3,
+      "kind": "dependencies",
+      "text": "const assert = require('node:assert/strict');"
+    },
+    {
+      "path": "evals/fixtures/git-workflow-and-versioning/app.test.js",
+      "line": 4,
+      "kind": "dependencies",
+      "text": "const test = require('node:test');"
+    },
+    {
+      "path": "evals/fixtures/incremental-implementation/reports.test.js",
+      "line": 3,
+      "kind": "dependencies",
+      "text": "const assert = require('node:assert/strict');"
+    },
+    {
+      "path": "evals/fixtures/incremental-implementation/reports.test.js",
+      "line": 4,
+      "kind": "dependencies",
+      "text": "const test = require('node:test');"
+    },
+    {
+      "path": "evals/fixtures/performance-optimization/benchmark.js",
+      "line": 3,
+      "kind": "dependencies",
+      "text": "const { performance } = require('node:perf_hooks');"
+    },
+    {
+      "path": "evals/fixtures/security-and-hardening/webhook.test.js",
+      "line": 3,
+      "kind": "dependencies",
+      "text": "const assert = require('node:assert/strict');"
+    },
+    {
+      "path": "evals/fixtures/security-and-hardening/webhook.test.js",
+      "line": 4,
+      "kind": "dependencies",
+      "text": "const test = require('node:test');"
+    },
+    {
+      "path": "evals/fixtures/security-and-hardening/webhook.test.js",
+      "line": 8,
+      "kind": "runtime",
+      "text": "  const result = await previewWebhook('https://example.com/hook', async () => ({"
+    },
+    {
+      "path": "evals/fixtures/source-driven-development/framework-task.md",
+      "line": 5,
+      "kind": "sensitive",
+      "text": "for proxy settings, secure cookies, session stores, and secret configuration."
+    },
+    {
+      "path": "evals/fixtures/test-driven-development-ecosystem/README.md",
+      "line": 3,
+      "kind": "dependencies",
+      "text": "Small Python ledger utilities. No dependencies beyond the standard library."
+    },
+    {
+      "path": "evals/fixtures/test-driven-development-ecosystem/README.md",
+      "line": 8,
+      "kind": "dependencies",
+      "text": "python3 -m unittest"
+    },
+    {
+      "path": "evals/fixtures/test-driven-development/README.md",
+      "line": 27,
+      "kind": "dependencies",
+      "text": "npm test"
+    },
+    {
+      "path": "evals/fixtures/test-driven-development/package.json",
+      "line": 7,
+      "kind": "dependencies",
+      "text": "    \"test\": \"node --test\""
+    },
+    {
+      "path": "evals/fixtures/test-driven-development/test/split.test.js",
+      "line": 3,
+      "kind": "dependencies",
+      "text": "const assert = require('node:assert/strict');"
+    },
+    {
+      "path": "evals/fixtures/test-driven-development/test/split.test.js",
+      "line": 4,
+      "kind": "dependencies",
+      "text": "const test = require('node:test');"
+    },
+    {
+      "path": "evals/skill-impact.md",
+      "line": 3,
+      "kind": "sensitive",
+      "text": "This append-only ledger records skill and description changes rejected on eval evidence so contributors can review prior attempts before proposing overlapping work. Add one concise row per rejected proposal; do not record accepted changes here."
+    },
+    {
+      "path": "hooks/SDD-CACHE.md",
+      "line": 1,
+      "kind": "runtime",
+      "text": "# sdd-cache hook"
+    },
+    {
+      "path": "hooks/SDD-CACHE.md",
+      "line": 9,
+      "kind": "runtime",
+      "text": "This hook caches fetched content on disk, but **revalidates with the origin server on every reuse** via HTTP `If-None-Match` / `If-Modified-Since`. Content is only served from cache when the server responds `304 Not Modified`, which is a fresh verification — not a memory read."
+    },
+    {
+      "path": "hooks/SDD-CACHE.md",
+      "line": 13,
+      "kind": "runtime",
+      "text": "1. Add hooks to `.claude/settings.json` (or `.claude/settings.local.json` for personal use):"
+    },
+    {
+      "path": "hooks/SDD-CACHE.md",
+      "line": 17,
+      "kind": "runtime",
+      "text": "  \"hooks\": {"
+    },
+    {
+      "path": "hooks/SDD-CACHE.md",
+      "line": 21,
+      "kind": "runtime",
+      "text": "        \"hooks\": ["
+    },
+    {
+      "path": "hooks/SDD-CACHE.md",
+      "line": 24,
+      "kind": "runtime",
+      "text": "            \"command\": \"bash \\\"${CLAUDE_PROJECT_DIR}/hooks/sdd-cache-pre.sh\\\"\","
+    },
+    {
+      "path": "hooks/SDD-CACHE.md",
+      "line": 33,
+      "kind": "runtime",
+      "text": "        \"hooks\": ["
+    },
+    {
+      "path": "hooks/SDD-CACHE.md",
+      "line": 36,
+      "kind": "runtime",
+      "text": "            \"command\": \"bash \\\"${CLAUDE_PROJECT_DIR}/hooks/sdd-cache-post.sh\\\"\","
+    },
+    {
+      "path": "hooks/SDD-CACHE.md",
+      "line": 47,
+      "kind": "runtime",
+      "text": "   `${CLAUDE_PROJECT_DIR}` resolves to the directory you launched Claude Code from. The snippet above works when the hooks live inside the same project. If you installed `agent-skills` elsewhere (e.g. as a shared plugin under `~/agent-skills`), replace `${CLAUDE_PROJECT_DIR}/hooks/...` with the abso"
+    },
+    {
+      "path": "hooks/SDD-CACHE.md",
+      "line": 49,
+      "kind": "runtime",
+      "text": "2. Make sure `.claude/sdd-cache/` is in your `.gitignore` (already included in this repo)."
+    },
+    {
+      "path": "hooks/SDD-CACHE.md",
+      "line": 61,
+      "kind": "runtime",
+      "text": "One cache entry per URL, stored as JSON in `.claude/sdd-cache/<sha>.json`:"
+    },
+    {
+      "path": "hooks/SDD-CACHE.md",
+      "line": 71,
+      "kind": "runtime",
+      "text": "- Entries without an `ETag` or `Last-Modified` header are never cached — without a validator, the hook cannot verify freshness later, and caching would mean trusting memory."
+    },
+    {
+      "path": "hooks/SDD-CACHE.md",
+      "line": 76,
+      "kind": "runtime",
+      "text": "- Cache hit: `WebFetch` is blocked via exit code 2. Claude Code delivers the hook's stderr payload back to the agent as a tool error — this is the intended signal for a cache hit, not a failure. The payload is prefixed with `[sdd-cache] Cache hit for <url>` and wraps the cached body between `----- B"
+    },
+    {
+      "path": "hooks/SDD-CACHE.md",
+      "line": 79,
+      "kind": "runtime",
+      "text": "The skill itself is unchanged. It continues to follow `DETECT → FETCH → IMPLEMENT → CITE`. The hook only changes what happens under the hood when `FETCH` runs."
+    },
+    {
+      "path": "hooks/SDD-CACHE.md",
+      "line": 93,
+      "kind": "runtime",
+      "text": "}' | bash hooks/sdd-cache-post.sh"
+    },
+    {
+      "path": "hooks/SDD-CACHE.md",
+      "line": 96,
+      "kind": "runtime",
+      "text": "ls .claude/sdd-cache/"
+    },
+    {
+      "path": "hooks/SDD-CACHE.md",
+      "line": 97,
+      "kind": "runtime",
+      "text": "cat .claude/sdd-cache/*.json | jq ."
+    },
+    {
+      "path": "hooks/SDD-CACHE.md",
+      "line": 105,
+      "kind": "runtime",
+      "text": "}' | bash hooks/sdd-cache-pre.sh"
+    },
+    {
+      "path": "hooks/SDD-CACHE.md",
+      "line": 111,
+      "kind": "runtime",
+      "text": "- First command creates one file under `.claude/sdd-cache/` (only if the server returned an `ETag` or `Last-Modified`)."
+    },
+    {
+      "path": "hooks/SDD-CACHE.md",
+      "line": 116,
+      "kind": "runtime",
+      "text": "1. Register the hooks in `.claude/settings.local.json` as shown above."
+    },
+    {
+      "path": "hooks/SDD-CACHE.md",
+      "line": 117,
+      "kind": "runtime",
+      "text": "2. Start a Claude Code session in this repo."
+    },
+    {
+      "path": "hooks/SDD-CACHE.md",
+      "line": 119,
+      "kind": "runtime",
+      "text": "4. Verify a file appears under `.claude/sdd-cache/`."
+    },
+    {
+      "path": "hooks/SDD-CACHE.md",
+      "line": 129,
+      "kind": "runtime",
+      "text": "ENTRY=.claude/sdd-cache/e49c9f378670cfbb1d7d871b6dee16d9.json"
+    },
+    {
+      "path": "hooks/SDD-CACHE.md",
+      "line": 135,
+      "kind": "runtime",
+      "text": "echo '{\"tool_input\":{\"url\":\"...\", \"prompt\":\"...\"}}' | bash hooks/sdd-cache-pre.sh"
+    },
+    {
+      "path": "hooks/SDD-CACHE.md",
+      "line": 141,
+      "kind": "runtime",
+      "text": "Both hooks write timestamped events to `.claude/sdd-cache/.debug.log` when debug mode is on. Enable it with either:"
+    },
+    {
+      "path": "hooks/SDD-CACHE.md",
+      "line": 145,
+      "kind": "runtime",
+      "text": "SDD_CACHE_DEBUG=1 claude"
+    },
+    {
+      "path": "hooks/SDD-CACHE.md",
+      "line": 148,
+      "kind": "runtime",
+      "text": "mkdir -p .claude/sdd-cache && touch .claude/sdd-cache/.debug"
+    },
+    {
+      "path": "hooks/SDD-CACHE.md",
+      "line": 149,
+      "kind": "runtime",
+      "text": "# …disable with: rm .claude/sdd-cache/.debug"
+    },
+    {
+      "path": "hooks/SDD-CACHE.md",
+      "line": 156,
+      "kind": "runtime",
+      "text": "- **Body is prompt-shaped.** A hit returns the earlier agent's reading of the page, with the original prompt surfaced so the current agent can decide whether it applies. If it doesn't, delete the file under `.claude/sdd-cache/` to force a re-fetch."
+    },
+    {
+      "path": "hooks/SDD-CACHE.md",
+      "line": 157,
+      "kind": "runtime",
+      "text": "- **Every cache write costs an extra HEAD.** Claude Code doesn't expose the response headers that `WebFetch` already received, so the post hook re-queries the origin to capture `ETag` / `Last-Modified`. One extra roundtrip per miss — the price of keeping this a pure hook with no core changes."
+    },
+    {
+      "path": "hooks/SDD-CACHE.md",
+      "line": 165,
+      "kind": "dependencies",
+      "text": "- `curl`"
+    },
+    {
+      "path": "hooks/SIMPLIFY-IGNORE.md",
+      "line": 1,
+      "kind": "runtime",
+      "text": "# simplify-ignore hook"
+    },
+    {
+      "path": "hooks/SIMPLIFY-IGNORE.md",
+      "line": 19,
+      "kind": "runtime",
+      "text": "2. Add hooks to `.claude/settings.json`:"
+    },
+    {
+      "path": "hooks/SIMPLIFY-IGNORE.md",
+      "line": 23,
+      "kind": "runtime",
+      "text": "  \"hooks\": {"
+    },
+    {
+      "path": "hooks/SIMPLIFY-IGNORE.md",
+      "line": 27,
+      "kind": "runtime",
+      "text": "        \"hooks\": [{ \"type\": \"command\", \"command\": \"bash \\\"${CLAUDE_PROJECT_DIR}/hooks/simplify-ignore.sh\\\"\" }]"
+    },
+    {
+      "path": "hooks/SIMPLIFY-IGNORE.md",
+      "line": 33,
+      "kind": "runtime",
+      "text": "        \"hooks\": [{ \"type\": \"command\", \"command\": \"bash \\\"${CLAUDE_PROJECT_DIR}/hooks/simplify-ignore.sh\\\"\" }]"
+    },
+    {
+      "path": "hooks/SIMPLIFY-IGNORE.md",
+      "line": 38,
+      "kind": "runtime",
+      "text": "        \"hooks\": [{ \"type\": \"command\", \"command\": \"bash \\\"${CLAUDE_PROJECT_DIR}/hooks/simplify-ignore.sh\\\"\" }]"
+    },
+    {
+      "path": "hooks/SIMPLIFY-IGNORE.md",
+      "line": 47,
+      "kind": "runtime",
+      "text": "> **Note:** The hook stores temporary backups in `.claude/.simplify-ignore-cache/`. Make sure this path is in your `.gitignore`."
+    },
+    {
+      "path": "hooks/SIMPLIFY-IGNORE.md",
+      "line": 51,
+      "kind": "runtime",
+      "text": "One script, three hook events:"
+    },
+    {
+      "path": "hooks/SIMPLIFY-IGNORE.md",
+      "line": 69,
+      "kind": "dependencies",
+      "text": "Any comment style works (`//`, `/*`, `#`, `<!--`). Multiple blocks per file and single-line blocks supported. Placeholders preserve the original comment syntax (e.g. `# BLOCK_xxx` for Python, `<!-- BLOCK_xxx -->` for HTML)."
+    },
+    {
+      "path": "hooks/SIMPLIFY-IGNORE.md",
+      "line": 73,
+      "kind": "runtime",
+      "text": "If Claude Code crashes without triggering the Stop hook, files on disk may still have `BLOCK_<hash>` placeholders. To restore manually:"
+    },
+    {
+      "path": "hooks/SIMPLIFY-IGNORE.md",
+      "line": 76,
+      "kind": "runtime",
+      "text": "echo '{}' | bash hooks/simplify-ignore.sh"
+    },
+    {
+      "path": "hooks/SIMPLIFY-IGNORE.md",
+      "line": 79,
+      "kind": "runtime",
+      "text": "Backups are stored in `.claude/.simplify-ignore-cache/` within your project directory."
+    },
+    {
+      "path": "hooks/SIMPLIFY-IGNORE.md",
+      "line": 85,
+      "kind": "runtime",
+      "text": "- **Fallback expansion is progressive, not exact.** If the model alters a placeholder's formatting (e.g. changes the reason text), the hook tries progressively simpler matches: full placeholder → prefix+hash+suffix → hash-only. The hash-only fallback may leave cosmetic debris (e.g. stray `:` or reas"
+    },
+    {
+      "path": "hooks/SIMPLIFY-IGNORE.md",
+      "line": 86,
+      "kind": "runtime",
+      "text": "- **A wholesale rewrite falls back to the backup.** If something replaces a filtered file's entire contents and removes every `BLOCK_<hash>` placeholder, the hook can no longer tell where the protected block belongs. At `Stop` it restores the backup and prints a warning; the rewrite is not lost but "
+    },
+    {
+      "path": "hooks/sdd-cache-post.sh",
+      "line": 2,
+      "kind": "runtime",
+      "text": "# sdd-cache-post.sh — PostToolUse hook for WebFetch."
+    },
+    {
+      "path": "hooks/sdd-cache-post.sh",
+      "line": 4,
+      "kind": "runtime",
+      "text": "# After WebFetch, stores the response body in .claude/sdd-cache/<sha>.json"
+    },
+    {
+      "path": "hooks/sdd-cache-post.sh",
+      "line": 6,
+      "kind": "runtime",
+      "text": "# pre hook can revalidate on the next fetch."
+    },
+    {
+      "path": "hooks/sdd-cache-post.sh",
+      "line": 12,
+      "kind": "dependencies",
+      "text": "# Dependencies: jq, curl, shasum (or sha256sum)."
+    },
+    {
+      "path": "hooks/sdd-cache-post.sh",
+      "line": 17,
+      "kind": "dependencies",
+      "text": "command -v curl >/dev/null 2>&1 || exit 0"
+    },
+    {
+      "path": "hooks/sdd-cache-post.sh",
+      "line": 23,
+      "kind": "runtime",
+      "text": "# file exists at .claude/sdd-cache/.debug. Toggle with `touch` / `rm`."
+    },
+    {
+      "path": "hooks/sdd-cache-post.sh",
+      "line": 25,
+      "kind": "runtime",
+      "text": "  local dir=\"${CLAUDE_PROJECT_DIR:-$PWD}/.claude/sdd-cache\""
+    },
+    {
+      "path": "hooks/sdd-cache-post.sh",
+      "line": 37,
+      "kind": "runtime",
+      "text": "# WebFetch tool_response shape (Claude Code as of 2026-04): an object with"
+    },
+    {
+      "path": "hooks/sdd-cache-post.sh",
+      "line": 66,
+      "kind": "runtime",
+      "text": "# Must match the pre hook: sha256(URL), first 32 hex chars."
+    },
+    {
+      "path": "hooks/sdd-cache-post.sh",
+      "line": 75,
+      "kind": "runtime",
+      "text": "CACHE_DIR=\"${CLAUDE_PROJECT_DIR:-$PWD}/.claude/sdd-cache\""
+    },
+    {
+      "path": "hooks/sdd-cache-post.sh",
+      "line": 82,
+      "kind": "dependencies",
+      "text": "HEAD_OUT=$(curl -sI -L --max-time 5 \"$URL\" 2>/dev/null | tr -d '\\r' || true)"
+    },
+    {
+      "path": "hooks/sdd-cache-post.sh",
+      "line": 111,
+      "kind": "sensitive",
+      "text": "  rm -f \"$CACHE_FILE\""
+    },
+    {
+      "path": "hooks/sdd-cache-post.sh",
+      "line": 131,
+      "kind": "sensitive",
+      "text": "  rm -f \"$TMP\""
+    },
+    {
+      "path": "hooks/sdd-cache-pre.sh",
+      "line": 2,
+      "kind": "runtime",
+      "text": "# sdd-cache-pre.sh — PreToolUse hook for WebFetch."
+    },
+    {
+      "path": "hooks/sdd-cache-pre.sh",
+      "line": 6,
+      "kind": "runtime",
+      "text": "# On hit, exits 2 and writes the cached body to stderr so Claude Code can"
+    },
+    {
+      "path": "hooks/sdd-cache-pre.sh",
+      "line": 16,
+      "kind": "dependencies",
+      "text": "# Dependencies: jq, curl, shasum (or sha256sum)."
+    },
+    {
+      "path": "hooks/sdd-cache-pre.sh",
+      "line": 22,
+      "kind": "dependencies",
+      "text": "command -v curl >/dev/null 2>&1 || exit 0"
+    },
+    {
+      "path": "hooks/sdd-cache-pre.sh",
+      "line": 28,
+      "kind": "runtime",
+      "text": "# file exists at .claude/sdd-cache/.debug. Toggle with `touch` / `rm`."
+    },
+    {
+      "path": "hooks/sdd-cache-pre.sh",
+      "line": 30,
+      "kind": "runtime",
+      "text": "  local dir=\"${CLAUDE_PROJECT_DIR:-$PWD}/.claude/sdd-cache\""
+    },
+    {
+      "path": "hooks/sdd-cache-pre.sh",
+      "line": 50,
+      "kind": "runtime",
+      "text": "CACHE_DIR=\"${CLAUDE_PROJECT_DIR:-$PWD}/.claude/sdd-cache\""
+    },
+    {
+      "path": "hooks/sdd-cache-pre.sh",
+      "line": 71,
+      "kind": "dependencies",
+      "text": "STATUS=$(curl -sI -o /dev/null -w \"%{http_code}\" \\"
+    },
+    {
+      "path": "hooks/sdd-cache-test.sh",
+      "line": 2,
+      "kind": "runtime",
+      "text": "# sdd-cache-test.sh — Tests for the sdd-cache pre/post WebFetch hooks"
+    },
+    {
+      "path": "hooks/sdd-cache-test.sh",
+      "line": 4,
+      "kind": "dependencies",
+      "text": "# No real network traffic: a deterministic curl stub is placed first on PATH."
+    },
+    {
+      "path": "hooks/sdd-cache-test.sh",
+      "line": 5,
+      "kind": "runtime",
+      "text": "#   CURL_STUB_STATUS  — printed when the hook probes a status code (pre hook,"
+    },
+    {
+      "path": "hooks/sdd-cache-test.sh",
+      "line": 7,
+      "kind": "runtime",
+      "text": "#   CURL_STUB_HEADERS — printed for header captures (post hook, no -w)"
+    },
+    {
+      "path": "hooks/sdd-cache-test.sh",
+      "line": 10,
+      "kind": "runtime",
+      "text": "# TTL hardening of the hooks (issue #295)."
+    },
+    {
+      "path": "hooks/sdd-cache-test.sh",
+      "line": 12,
+      "kind": "runtime",
+      "text": "# Run: bash hooks/sdd-cache-test.sh"
+    },
+    {
+      "path": "hooks/sdd-cache-test.sh",
+      "line": 18,
+      "kind": "sensitive",
+      "text": "trap 'rm -rf \"$TMPDIR\"' EXIT"
+    },
+    {
+      "path": "hooks/sdd-cache-test.sh",
+      "line": 20,
+      "kind": "runtime",
+      "text": "# The hooks require jq to do anything; without it they no-op by design."
+    },
+    {
+      "path": "hooks/sdd-cache-test.sh",
+      "line": 22,
+      "kind": "runtime",
+      "text": "  printf 'SKIP: jq not available; sdd-cache hooks no-op without it\\n'"
+    },
+    {
+      "path": "hooks/sdd-cache-test.sh",
+      "line": 26,
+      "kind": "dependencies",
+      "text": "# ── curl stub ─────────────────────────────────────────────────────────────"
+    },
+    {
+      "path": "hooks/sdd-cache-test.sh",
+      "line": 29,
+      "kind": "dependencies",
+      "text": "cat > \"$STUB_BIN/curl\" <<'EOF'"
+    },
+    {
+      "path": "hooks/sdd-cache-test.sh",
+      "line": 31,
+      "kind": "runtime",
+      "text": "# Deterministic curl replacement. -w present => status probe (pre hook),"
+    },
+    {
+      "path": "hooks/sdd-cache-test.sh",
+      "line": 31,
+      "kind": "dependencies",
+      "text": "# Deterministic curl replacement. -w present => status probe (pre hook),"
+    },
+    {
+      "path": "hooks/sdd-cache-test.sh",
+      "line": 32,
+      "kind": "runtime",
+      "text": "# otherwise header capture (post hook)."
+    },
+    {
+      "path": "hooks/sdd-cache-test.sh",
+      "line": 42,
+      "kind": "dependencies",
+      "text": "chmod +x \"$STUB_BIN/curl\""
+    },
+    {
+      "path": "hooks/sdd-cache-test.sh",
+      "line": 42,
+      "kind": "sensitive",
+      "text": "chmod +x \"$STUB_BIN/curl\""
+    },
+    {
+      "path": "hooks/sdd-cache-test.sh",
+      "line": 65,
+      "kind": "runtime",
+      "text": "# run_pre / run_post: invoke a hook with isolated project dir + stubbed curl."
+    },
+    {
+      "path": "hooks/sdd-cache-test.sh",
+      "line": 65,
+      "kind": "dependencies",
+      "text": "# run_pre / run_post: invoke a hook with isolated project dir + stubbed curl."
+    },
+    {
+      "path": "hooks/sdd-cache-test.sh",
+      "line": 75,
+      "kind": "runtime",
+      "text": "    bash \"hooks/$script\" 2>&1 >/dev/null) || RC=$?"
+    },
+    {
+      "path": "hooks/sdd-cache-test.sh",
+      "line": 82,
+      "kind": "runtime",
+      "text": "  local dir=\"$proj/.claude/sdd-cache\""
+    },
+    {
+      "path": "hooks/sdd-cache-test.sh",
+      "line": 144,
+      "kind": "runtime",
+      "text": "# Content with the shell-hostile shapes the hook promises to pass through:"
+    },
+    {
+      "path": "hooks/sdd-cache-test.sh",
+      "line": 170,
+      "kind": "runtime",
+      "text": "assert_eq \"no cache dir created\" \"0\" \"$([ -d \"$P/.claude/sdd-cache\" ] && echo 1 || echo 0)\""
+    },
+    {
+      "path": "hooks/sdd-cache-test.sh",
+      "line": 178,
+      "kind": "runtime",
+      "text": "assert_eq \"no cache dir created\" \"0\" \"$([ -d \"$P/.claude/sdd-cache\" ] && echo 1 || echo 0)\""
+    },
+    {
+      "path": "hooks/sdd-cache-test.sh",
+      "line": 188,
+      "kind": "runtime",
+      "text": "CF=\"$P/.claude/sdd-cache/$(hash_key \"$URL\").json\""
+    },
+    {
+      "path": "hooks/sdd-cache-test.sh",
+      "line": 203,
+      "kind": "runtime",
+      "text": "CF=\"$P/.claude/sdd-cache/$(hash_key \"$URL\").json\""
+    },
+    {
+      "path": "hooks/sdd-cache-test.sh",
+      "line": 210,
+      "kind": "runtime",
+      "text": "CF=\"$P/.claude/sdd-cache/$(hash_key \"$URL\").json\""
+    },
+    {
+      "path": "hooks/sdd-cache-test.sh",
+      "line": 227,
+      "kind": "runtime",
+      "text": "CF=\"$P/.claude/sdd-cache/$(hash_key \"$URL\").json\""
+    },
+    {
+      "path": "hooks/session-start-test.sh",
+      "line": 2,
+      "kind": "runtime",
+      "text": "# session-start-test.sh - Tests for the SessionStart hook JSON payload"
+    },
+    {
+      "path": "hooks/session-start-test.sh",
+      "line": 7,
+      "kind": "sensitive",
+      "text": "trap 'rm -f \"$tmp_payload\"' EXIT"
+    },
+    {
+      "path": "hooks/session-start-test.sh",
+      "line": 14,
+      "kind": "runtime",
+      "text": "payload=\"$(bash hooks/session-start.sh)\""
+    },
+    {
+      "path": "hooks/session-start-test.sh",
+      "line": 17,
+      "kind": "dependencies",
+      "text": "HAS_JQ=\"$has_jq\" PAYLOAD_PATH=\"$tmp_payload\" node <<'NODE'"
+    },
+    {
+      "path": "hooks/session-start-test.sh",
+      "line": 47,
+      "kind": "dependencies",
+      "text": "NODE"
+    },
+    {
+      "path": "hooks/session-start.sh",
+      "line": 2,
+      "kind": "runtime",
+      "text": "# agent-skills session start hook"
+    },
+    {
+      "path": "hooks/session-start.sh",
+      "line": 6,
+      "kind": "runtime",
+      "text": "# descriptions (Claude Code, Codex CLI) would run a second router on top of"
+    },
+    {
+      "path": "hooks/session-start.sh",
+      "line": 8,
+      "kind": "runtime",
+      "text": "# SessionStart hook only on hosts without native skill routing."
+    },
+    {
+      "path": "hooks/session-start.sh",
+      "line": 12,
+      "kind": "runtime",
+      "text": "# Hosts that validate hook output (Codex CLI, Claude Code) reject other shapes."
+    },
+    {
+      "path": "hooks/session-start.sh",
+      "line": 19,
+      "kind": "runtime",
+      "text": "  echo '{\"hookSpecificOutput\": {\"hookEventName\": \"SessionStart\", \"additionalContext\": \"agent-skills: jq is required for the session-start hook but was not found on PATH. Install jq (e.g. `brew install jq` or `apt-get install jq`) to enable meta-skill injection. Skills remain available individually.\""
+    },
+    {
+      "path": "hooks/simplify-ignore-test.sh",
+      "line": 2,
+      "kind": "runtime",
+      "text": "# simplify-ignore-test.sh — Tests for the simplify-ignore hook"
+    },
+    {
+      "path": "hooks/simplify-ignore-test.sh",
+      "line": 4,
+      "kind": "runtime",
+      "text": "# Exercises filter_file by extracting function definitions from the hook."
+    },
+    {
+      "path": "hooks/simplify-ignore-test.sh",
+      "line": 5,
+      "kind": "runtime",
+      "text": "# Run: bash hooks/simplify-ignore-test.sh"
+    },
+    {
+      "path": "hooks/simplify-ignore-test.sh",
+      "line": 11,
+      "kind": "sensitive",
+      "text": "trap 'rm -rf \"$TMPDIR\"' EXIT"
+    },
+    {
+      "path": "hooks/simplify-ignore-test.sh",
+      "line": 33,
+      "kind": "runtime",
+      "text": "# Extract filter_file from the hook script (line 59 \"filter_file()\" to line 142 closing brace)"
+    },
+    {
+      "path": "hooks/simplify-ignore-test.sh",
+      "line": 34,
+      "kind": "runtime",
+      "text": "eval \"$(sed -n '/^filter_file()/,/^}/p' hooks/simplify-ignore.sh)\""
+    },
+    {
+      "path": "hooks/simplify-ignore-test.sh",
+      "line": 34,
+      "kind": "sensitive",
+      "text": "eval \"$(sed -n '/^filter_file()/,/^}/p' hooks/simplify-ignore.sh)\""
+    },
+    {
+      "path": "hooks/simplify-ignore-test.sh",
+      "line": 51,
+      "kind": "sensitive",
+      "text": "rm -f \"$CACHE\"/*"
+    },
+    {
+      "path": "hooks/simplify-ignore-test.sh",
+      "line": 57,
+      "kind": "sensitive",
+      "text": "/* simplify-ignore-start */ const secret = 42; /* simplify-ignore-end */"
+    },
+    {
+      "path": "hooks/simplify-ignore-test.sh",
+      "line": 74,
+      "kind": "sensitive",
+      "text": "  \"/* simplify-ignore-start */ const secret = 42; /* simplify-ignore-end */\" \\"
+    },
+    {
+      "path": "hooks/simplify-ignore-test.sh",
+      "line": 79,
+      "kind": "sensitive",
+      "text": "rm -f \"$CACHE\"/*"
+    },
+    {
+      "path": "hooks/simplify-ignore-test.sh",
+      "line": 103,
+      "kind": "sensitive",
+      "text": "rm -f \"$CACHE\"/*"
+    },
+    {
+      "path": "hooks/simplify-ignore-test.sh",
+      "line": 130,
+      "kind": "sensitive",
+      "text": "rm -f \"$CACHE\"/*"
+    },
+    {
+      "path": "hooks/simplify-ignore-test.sh",
+      "line": 151,
+      "kind": "sensitive",
+      "text": "rm -f \"$CACHE\"/*"
+    },
+    {
+      "path": "hooks/simplify-ignore-test.sh",
+      "line": 167,
+      "kind": "sensitive",
+      "text": "rm -f \"$CACHE\"/*"
+    },
+    {
+      "path": "hooks/simplify-ignore-test.sh",
+      "line": 183,
+      "kind": "sensitive",
+      "text": "rm -f \"$CACHE\"/*"
+    },
+    {
+      "path": "hooks/simplify-ignore-test.sh",
+      "line": 200,
+      "kind": "sensitive",
+      "text": "rm -f \"$CACHE\"/*"
+    },
+    {
+      "path": "hooks/simplify-ignore-test.sh",
+      "line": 219,
+      "kind": "sensitive",
+      "text": "rm -f \"$CACHE\"/*"
+    },
+    {
+      "path": "hooks/simplify-ignore-test.sh",
+      "line": 226,
+      "kind": "sensitive",
+      "text": "<secret-component />"
+    },
+    {
+      "path": "hooks/simplify-ignore-test.sh",
+      "line": 241,
+      "kind": "runtime",
+      "text": "# Without jq the hook's guard exits before parsing input. Assert whichever"
+    },
+    {
+      "path": "hooks/simplify-ignore-test.sh",
+      "line": 243,
+      "kind": "runtime",
+      "text": "warning_out=$(echo 'NOT_JSON{{{' | bash hooks/simplify-ignore.sh 2>&1) || true"
+    },
+    {
+      "path": "hooks/simplify-ignore-test.sh",
+      "line": 254,
+      "kind": "runtime",
+      "text": "  printf '  SKIP: full lifecycle needs jq (the hook exits at its jq guard)\\n'"
+    },
+    {
+      "path": "hooks/simplify-ignore-test.sh",
+      "line": 257,
+      "kind": "sensitive",
+      "text": "  rm -rf \"$PROJ\""
+    },
+    {
+      "path": "hooks/simplify-ignore-test.sh",
+      "line": 258,
+      "kind": "runtime",
+      "text": "  mkdir -p \"$PROJ/.claude\""
+    },
+    {
+      "path": "hooks/simplify-ignore-test.sh",
+      "line": 267,
+      "kind": "runtime",
+      "text": "  hook_event() { printf '%s' \"$1\" | CLAUDE_PROJECT_DIR=\"$PROJ\" bash hooks/simplify-ignore.sh; }"
+    },
+    {
+      "path": "hooks/simplify-ignore-test.sh",
+      "line": 298,
+      "kind": "runtime",
+      "text": "  printf '  SKIP: full lifecycle needs jq (the hook exits at its jq guard)\\n'"
+    },
+    {
+      "path": "hooks/simplify-ignore-test.sh",
+      "line": 301,
+      "kind": "sensitive",
+      "text": "  rm -rf \"$PROJ\""
+    },
+    {
+      "path": "hooks/simplify-ignore-test.sh",
+      "line": 302,
+      "kind": "runtime",
+      "text": "  mkdir -p \"$PROJ/.claude\""
+    },
+    {
+      "path": "hooks/simplify-ignore-test.sh",
+      "line": 311,
+      "kind": "runtime",
+      "text": "  hook_event() { printf '%s' \"$1\" | CLAUDE_PROJECT_DIR=\"$PROJ\" bash hooks/simplify-ignore.sh; }"
+    },
+    {
+      "path": "hooks/simplify-ignore-test.sh",
+      "line": 322,
+      "kind": "runtime",
+      "text": "  PROJ_CACHE=\"$PROJ/.claude/.simplify-ignore-cache\""
+    },
+    {
+      "path": "hooks/simplify-ignore-test.sh",
+      "line": 338,
+      "kind": "runtime",
+      "text": "  printf '  SKIP: full lifecycle needs jq (the hook exits at its jq guard)\\n'"
+    },
+    {
+      "path": "hooks/simplify-ignore-test.sh",
+      "line": 341,
+      "kind": "sensitive",
+      "text": "  rm -rf \"$PROJ\""
+    },
+    {
+      "path": "hooks/simplify-ignore-test.sh",
+      "line": 342,
+      "kind": "runtime",
+      "text": "  mkdir -p \"$PROJ/.claude\""
+    },
+    {
+      "path": "hooks/simplify-ignore-test.sh",
+      "line": 351,
+      "kind": "runtime",
+      "text": "  hook_event() { printf '%s' \"$1\" | CLAUDE_PROJECT_DIR=\"$PROJ\" bash hooks/simplify-ignore.sh; }"
+    },
+    {
+      "path": "hooks/simplify-ignore-test.sh",
+      "line": 371,
+      "kind": "runtime",
+      "text": "# Run the hook end-to-end (Read → [Edit] → Stop) against an isolated"
+    },
+    {
+      "path": "hooks/simplify-ignore-test.sh",
+      "line": 373,
+      "kind": "runtime",
+      "text": "# These exercise the expand/restore half of the hook, which the"
+    },
+    {
+      "path": "hooks/simplify-ignore-test.sh",
+      "line": 387,
+      "kind": "runtime",
+      "text": "  printf '%s' \"$input\" | CLAUDE_PROJECT_DIR=\"$proj\" bash hooks/simplify-ignore.sh"
+    },
+    {
+      "path": "hooks/simplify-ignore-test.sh",
+      "line": 397,
+      "kind": "sensitive",
+      "text": "const secret = \"glob*chars? [and] \\\\backslashes\";"
+    },
+    {
+      "path": "hooks/simplify-ignore-test.sh",
+      "line": 409,
+      "kind": "sensitive",
+      "text": "assert_eq \"secret absent from disk after Read\" \"0\" \"$(grep -c 'secret' \"$RT\")\""
+    },
+    {
+      "path": "hooks/simplify-ignore-test.sh",
+      "line": 441,
+      "kind": "sensitive",
+      "text": "const secret = 42;"
+    },
+    {
+      "path": "hooks/simplify-ignore-test.sh",
+      "line": 453,
+      "kind": "sensitive",
+      "text": "assert_eq \"secret still absent from disk after Edit\" \"0\" \"$(grep -c 'secret' \"$RT\")\""
+    },
+    {
+      "path": "hooks/simplify-ignore-test.sh",
+      "line": 455,
+      "kind": "runtime",
+      "text": "BAK=$(ls \"$PROJ/.claude/.simplify-ignore-cache\"/*.bak 2>/dev/null | head -1)"
+    },
+    {
+      "path": "hooks/simplify-ignore-test.sh",
+      "line": 456,
+      "kind": "sensitive",
+      "text": "assert_eq \"backup holds real content\" \"1\" \"$(grep -c 'const secret = 42' \"${BAK:-/dev/null}\")\""
+    },
+    {
+      "path": "hooks/simplify-ignore-test.sh",
+      "line": 470,
+      "kind": "runtime",
+      "text": "  printf '\\nTests 14-16 skipped: jq not available (hook no-ops without it)\\n'"
+    },
+    {
+      "path": "hooks/simplify-ignore.sh",
+      "line": 2,
+      "kind": "runtime",
+      "text": "# simplify-ignore.sh — Hook for Read (PreToolUse), Edit|Write (PostToolUse), Stop"
+    },
+    {
+      "path": "hooks/simplify-ignore.sh",
+      "line": 13,
+      "kind": "runtime",
+      "text": "# holds the last state the hook itself saw."
+    },
+    {
+      "path": "hooks/simplify-ignore.sh",
+      "line": 31,
+      "kind": "runtime",
+      "text": "CACHE=\"${CLAUDE_PROJECT_DIR:-.}/.claude/.simplify-ignore-cache\""
+    },
+    {
+      "path": "hooks/simplify-ignore.sh",
+      "line": 34,
+      "kind": "runtime",
+      "text": "# Parse hook input — trap errors explicitly so set -e doesn't cause"
+    },
+    {
+      "path": "hooks/simplify-ignore.sh",
+      "line": 38,
+      "kind": "runtime",
+      "text": "  parse_error=\"failed to parse .tool_name from hook input\""
+    },
+    {
+      "path": "hooks/simplify-ignore.sh",
+      "line": 42,
+      "kind": "runtime",
+      "text": "  parse_error=\"failed to parse .tool_input.file_path from hook input\""
+    },
+    {
+      "path": "hooks/simplify-ignore.sh",
+      "line": 73,
+      "kind": "sensitive",
+      "text": "  rm -f \"$CACHE/${fid}\".block.* \"$CACHE/${fid}\".reason.* \"$CACHE/${fid}\".prefix.* \"$CACHE/${fid}\".suffix.*"
+    },
+    {
+      "path": "hooks/simplify-ignore.sh",
+      "line": 149,
+      "kind": "sensitive",
+      "text": "      cat \"${dest}.nnl\" > \"$dest\" && rm -f \"${dest}.nnl\""
+    },
+    {
+      "path": "hooks/simplify-ignore.sh",
+      "line": 161,
+      "kind": "sensitive",
+      "text": "  rm -f \"$dest\""
+    },
+    {
+      "path": "hooks/simplify-ignore.sh",
+      "line": 191,
+      "kind": "sensitive",
+      "text": "              # Last resort: match just the hash token"
+    },
+    {
+      "path": "hooks/simplify-ignore.sh",
+      "line": 205,
+      "kind": "sensitive",
+      "text": "      cat \"${dest}.nnl\" > \"$dest\" && rm -f \"${dest}.nnl\""
+    },
+    {
+      "path": "hooks/simplify-ignore.sh",
+      "line": 242,
+      "kind": "sensitive",
+      "text": "    [ -f \"$pathfile\" ] || { rm -f \"$bak\"; continue; }"
+    },
+    {
+      "path": "hooks/simplify-ignore.sh",
+      "line": 252,
+      "kind": "sensitive",
+      "text": "        rm -f \"$EXPANDED\""
+    },
+    {
+      "path": "hooks/simplify-ignore.sh",
+      "line": 264,
+      "kind": "sensitive",
+      "text": "      rm -f \"$bak\" \"$pathfile\" \"$CACHE/${fid}\".block.* \"$CACHE/${fid}\".reason.* \"$CACHE/${fid}\".prefix.* \"$CACHE/${fid}\".suffix.*"
+    },
+    {
+      "path": "hooks/simplify-ignore.sh",
+      "line": 270,
+      "kind": "sensitive",
+      "text": "      rm -f \"$pathfile\" \"$CACHE/${fid}\".block.* \"$CACHE/${fid}\".reason.* \"$CACHE/${fid}\".prefix.* \"$CACHE/${fid}\".suffix.*"
+    },
+    {
+      "path": "hooks/simplify-ignore.sh",
+      "line": 316,
+      "kind": "sensitive",
+      "text": "  rm -f \"$FILTERED\""
+    },
+    {
+      "path": "hooks/simplify-ignore.sh",
+      "line": 319,
+      "kind": "sensitive",
+      "text": "    rm -f \"$FILTERED\""
+    },
+    {
+      "path": "hooks/simplify-ignore.sh",
+      "line": 321,
+      "kind": "sensitive",
+      "text": "    rm -f \"$FILTERED\" \"$CACHE/${ID}.bak\" \"$CACHE/${ID}.path\""
+    },
+    {
+      "path": "hooks/simplify-ignore.sh",
+      "line": 338,
+      "kind": "sensitive",
+      "text": "  rm -f \"$EXPANDED\""
+    },
+    {
+      "path": "hooks/simplify-ignore.sh",
+      "line": 345,
+      "kind": "sensitive",
+      "text": "  rm -f \"$FILTERED\""
+    },
+    {
+      "path": "hooks/simplify-ignore.sh",
+      "line": 348,
+      "kind": "sensitive",
+      "text": "    rm -f \"$FILTERED\""
+    },
+    {
+      "path": "references/accessibility-checklist.md",
+      "line": 127,
+      "kind": "dependencies",
+      "text": "npx axe-core          # Programmatic accessibility testing"
+    },
+    {
+      "path": "references/accessibility-checklist.md",
+      "line": 128,
+      "kind": "dependencies",
+      "text": "npx pa11y             # CLI accessibility checker"
+    },
+    {
+      "path": "references/orchestration-patterns.md",
+      "line": 3,
+      "kind": "runtime",
+      "text": "Reference catalog of agent orchestration patterns this repo endorses, plus anti-patterns to avoid. Read this before adding a new slash command that coordinates multiple personas, or before introducing a new persona that \"wraps\" existing ones."
+    },
+    {
+      "path": "references/orchestration-patterns.md",
+      "line": 5,
+      "kind": "runtime",
+      "text": "The governing rule: **the user (or a slash command) is the orchestrator. Personas do not invoke other personas.** Skills are mandatory hops inside a persona's workflow."
+    },
+    {
+      "path": "references/orchestration-patterns.md",
+      "line": 30,
+      "kind": "runtime",
+      "text": "### 2. Single-persona slash command"
+    },
+    {
+      "path": "references/orchestration-patterns.md",
+      "line": 32,
+      "kind": "runtime",
+      "text": "A slash command that wraps one persona with the project's skills. Saves the user from re-explaining the workflow every time."
+    },
+    {
+      "path": "references/orchestration-patterns.md",
+      "line": 42,
+      "kind": "runtime",
+      "text": "**Cost:** same as direct invocation. The slash command is just a saved prompt."
+    },
+    {
+      "path": "references/orchestration-patterns.md",
+      "line": 44,
+      "kind": "runtime",
+      "text": "**Anti-signal:** if the slash command's body is mostly \"decide which persona to call,\" delete it and let the user call the persona directly."
+    },
+    {
+      "path": "references/orchestration-patterns.md",
+      "line": 92,
+      "kind": "sensitive",
+      "text": "**Why not automate it:** an LLM \"lifecycle orchestrator\" would (a) lose nuance between steps because it has to summarize for hand-off, (b) skip the human checkpoints that catch wrong-direction work early, and (c) double the token cost via paraphrasing turns."
+    },
+    {
+      "path": "references/orchestration-patterns.md",
+      "line": 113,
+      "kind": "runtime",
+      "text": "**On Claude Code, use the built-in `Explore` subagent** rather than defining a custom research persona. `Explore` runs on Haiku, is denied write/edit tools, and is purpose-built for this pattern. Define a custom research subagent only when `Explore` doesn't fit (e.g. you need a domain-specific syste"
+    },
+    {
+      "path": "references/orchestration-patterns.md",
+      "line": 117,
+      "kind": "runtime",
+      "text": "## Claude Code compatibility"
+    },
+    {
+      "path": "references/orchestration-patterns.md",
+      "line": 119,
+      "kind": "runtime",
+      "text": "This catalog is harness-agnostic, but most readers will run it on Claude Code. Here's how each pattern maps onto Claude Code's primitives — and where the platform enforces our rules for us."
+    },
+    {
+      "path": "references/orchestration-patterns.md",
+      "line": 123,
+      "kind": "runtime",
+      "text": "Plugin subagents go in `agents/` at the plugin root. This repo is a plugin (`.claude-plugin/plugin.json`), so `agents/code-reviewer.md`, `agents/security-auditor.md`, and `agents/test-engineer.md` are auto-discovered when the plugin is enabled. No path configuration needed."
+    },
+    {
+      "path": "references/orchestration-patterns.md",
+      "line": 127,
+      "kind": "runtime",
+      "text": "Claude Code has two parallelism primitives. Pattern 3 (parallel fan-out with merge) maps to **subagents**. If you need teammates that talk to each other, use **Agent Teams** instead."
+    },
+    {
+      "path": "references/orchestration-patterns.md",
+      "line": 132,
+      "kind": "runtime",
+      "text": "| Context | Own context window per subagent | Own context window per teammate |"
+    },
+    {
+      "path": "references/orchestration-patterns.md",
+      "line": 135,
+      "kind": "runtime",
+      "text": "| Cost | Lower | Higher — each teammate is a separate Claude instance |"
+    },
+    {
+      "path": "references/orchestration-patterns.md",
+      "line": 139,
+      "kind": "runtime",
+      "text": "One subtlety: the `skills` and `mcpServers` frontmatter fields in a persona are honored when it runs as a subagent but **ignored when it runs as a teammate** — teammates load skills and MCP servers from your project and user settings, the same as a regular session. If a persona depends on a specific"
+    },
+    {
+      "path": "references/orchestration-patterns.md",
+      "line": 143,
+      "kind": "runtime",
+      "text": "Two rules in this catalog aren't just convention — Claude Code enforces them:"
+    },
+    {
+      "path": "references/orchestration-patterns.md",
+      "line": 145,
+      "kind": "runtime",
+      "text": "- **\"Subagents cannot spawn other subagents\"** (verbatim from the docs). Anti-pattern B (persona-calls-persona) and Anti-pattern D (deep persona trees) cannot exist on Claude Code by construction."
+    },
+    {
+      "path": "references/orchestration-patterns.md",
+      "line": 152,
+      "kind": "runtime",
+      "text": "Before defining a custom subagent, check whether one of these covers the role:"
+    },
+    {
+      "path": "references/orchestration-patterns.md",
+      "line": 164,
+      "kind": "runtime",
+      "text": "Plugin subagents do **not** support the `hooks`, `mcpServers`, or `permissionMode` frontmatter fields — these are silently ignored. If a future persona needs any of those, the user must copy the file into `.claude/agents/` or `~/.claude/agents/` instead."
+    },
+    {
+      "path": "references/orchestration-patterns.md",
+      "line": 170,
+      "kind": "runtime",
+      "text": "In Claude Code, parallel fan-out (Pattern 3) requires issuing **multiple Agent tool calls in a single assistant turn**. Sequential turns serialize execution. `/ship` calls this out explicitly. Any new orchestrator command should do the same."
+    },
+    {
+      "path": "references/orchestration-patterns.md",
+      "line": 176,
+      "kind": "runtime",
+      "text": "This example shows when to reach for **Agent Teams** instead of `/ship`'s subagent fan-out. The two patterns look similar from a distance — both spawn the same three personas — but the value comes from a different place."
+    },
+    {
+      "path": "references/orchestration-patterns.md",
+      "line": 189,
+      "kind": "runtime",
+      "text": "A single agent will pick the first plausible theory and stop investigating. A `/ship`-style subagent fan-out would have each persona report independently — but their reports never meet, so nothing rules out the wrong theories."
+    },
+    {
+      "path": "references/orchestration-patterns.md",
+      "line": 205,
+      "kind": "runtime",
+      "text": "Agent Teams is experimental. In `~/.claude/settings.json`:"
+    },
+    {
+      "path": "references/orchestration-patterns.md",
+      "line": 215,
+      "kind": "runtime",
+      "text": "Requires Claude Code v2.1.32 or later. The personas in this repo are picked up automatically — no team-config files to author by hand."
+    },
+    {
+      "path": "references/orchestration-patterns.md",
+      "line": 269,
+      "kind": "runtime",
+      "text": "Do **not** rebuild this as a `/debug` slash command that fans out subagents. Subagents can't message each other — you'd lose the adversarial debate that makes the pattern work. If a workflow keeps coming up, document the trigger prompt above as a snippet rather than wrapping it in a slash command th"
+    },
+    {
+      "path": "references/orchestration-patterns.md",
+      "line": 276,
+      "kind": "runtime",
+      "text": "- Read-heavy research with a small digest → built-in `Explore` subagent."
+    },
+    {
+      "path": "references/orchestration-patterns.md",
+      "line": 294,
+      "kind": "sensitive",
+      "text": "- Adds two paraphrasing hops → information loss + roughly 2× token cost"
+    },
+    {
+      "path": "references/orchestration-patterns.md",
+      "line": 312,
+      "kind": "runtime",
+      "text": "**What to do instead:** have the calling persona *recommend* a follow-up audit in its report. The user or a slash command runs the second pass."
+    },
+    {
+      "path": "references/orchestration-patterns.md",
+      "line": 323,
+      "kind": "sensitive",
+      "text": "- Doubles token cost: orchestrator turn + sub-agent turn for every step"
+    },
+    {
+      "path": "references/orchestration-patterns.md",
+      "line": 339,
+      "kind": "runtime",
+      "text": "**What to do instead:** keep the orchestration depth at most 1 (slash command → personas). The merge happens in the main agent."
+    },
+    {
+      "path": "references/performance-checklist.md",
+      "line": 100,
+      "kind": "dependencies",
+      "text": "- [ ] No `Sort` node that a composite index could absorb"
+    },
+    {
+      "path": "references/performance-checklist.md",
+      "line": 195,
+      "kind": "dependencies",
+      "text": "npx lighthouse https://localhost:3000 --output json --output-path ./report.json"
+    },
+    {
+      "path": "references/performance-checklist.md",
+      "line": 198,
+      "kind": "dependencies",
+      "text": "npx webpack-bundle-analyzer stats.json"
+    },
+    {
+      "path": "references/performance-checklist.md",
+      "line": 200,
+      "kind": "dependencies",
+      "text": "npx vite-bundle-visualizer"
+    },
+    {
+      "path": "references/performance-checklist.md",
+      "line": 203,
+      "kind": "dependencies",
+      "text": "npx bundlesize"
+    },
+    {
+      "path": "references/security-checklist.md",
+      "line": 32,
+      "kind": "sensitive",
+      "text": "- [ ] No secrets in code (`git diff --cached | grep -i \"password\\|secret\\|api_key\\|token\"`)"
+    },
+    {
+      "path": "references/security-checklist.md",
+      "line": 74,
+      "kind": "dependencies",
+      "text": "import { realpath, readFile } from 'node:fs/promises';"
+    },
+    {
+      "path": "references/security-checklist.md",
+      "line": 75,
+      "kind": "dependencies",
+      "text": "import { resolve, relative, isAbsolute, join, sep } from 'node:path';"
+    },
+    {
+      "path": "references/security-checklist.md",
+      "line": 151,
+      "kind": "dependencies",
+      "text": "| npm (`package-lock.json` or `npm-shrinkwrap.json`) | `npm ci` | `npm audit` |"
+    },
+    {
+      "path": "references/security-checklist.md",
+      "line": 153,
+      "kind": "dependencies",
+      "text": "| Yarn 2+ | `yarn install --immutable` | `yarn npm audit -A -R` |"
+    },
+    {
+      "path": "references/security-checklist.md",
+      "line": 171,
+      "kind": "dependencies",
+      "text": "| npm without verified granular approvals | Bootstrap with `npm ci --ignore-scripts`, or persist `ignore-scripts=true` when project-wide blocking is intended. Keep scripts disabled or deliberately upgrade before allowing any reviewed dependency script. |"
+    },
+    {
+      "path": "references/security-checklist.md",
+      "line": 172,
+      "kind": "dependencies",
+      "text": "| npm 11.18.x (verified on 11.18.0) | Unreviewed dependency scripts run with a warning by default. Enforce `strict-allow-scripts=true` before a normal install, then use the workspace-unaware `npm install-scripts ls` from the installation boundary; keep approvals version-pinned and denials name-wide."
+    },
+    {
+      "path": "references/security-checklist.md",
+      "line": 173,
+      "kind": "dependencies",
+      "text": "| npm 12.x (verified on 12.0.1) | Unreviewed dependency scripts are skipped by default; `strict-allow-scripts=true` makes their presence fail the install before execution. Use the same `npm install-scripts` review and approval flow. |"
+    },
+    {
+      "path": "references/security-checklist.md",
+      "line": 182,
+      "kind": "dependencies",
+      "text": "Authoritative checks: [npm install-scripts](https://docs.npmjs.com/cli/v11/commands/npm-install-scripts/), [install policy](https://docs.npmjs.com/cli/v11/commands/npm-install/), and [CLI releases](https://github.com/npm/cli/releases); [pnpm approve-builds](https://pnpm.io/cli/approve-builds) and [b"
+    },
+    {
+      "path": "references/security-checklist.md",
+      "line": 187,
+      "kind": "dependencies",
+      "text": "- [ ] Forced audit remediation (`npm audit fix --force` or equivalent) is never automatic; remediation diffs and changelogs are reviewed"
+    },
+    {
+      "path": "references/security-checklist.md",
+      "line": 196,
+      "kind": "sensitive",
+      "text": "- [ ] Model output treated as untrusted — never into `eval`/SQL/shell/`innerHTML`/file paths"
+    },
+    {
+      "path": "references/security-checklist.md",
+      "line": 200,
+      "kind": "sensitive",
+      "text": "- [ ] Token, rate, and recursion/loop limits set (bound consumption)"
+    },
+    {
+      "path": "references/security-checklist.md",
+      "line": 227,
+      "kind": "dependencies",
+      "text": "| 6 | Vulnerable Components | The ecosystem's dependency audit (`npm audit`, `pip-audit`, ...), keep deps updated, minimal deps |"
+    },
+    {
+      "path": "references/testing-patterns.md",
+      "line": 3,
+      "kind": "dependencies",
+      "text": "Quick reference of JavaScript/TypeScript testing patterns — Jest, React Testing Library, Supertest, and Playwright — illustrating the universal principles from the `test-driven-development` skill. The principles (Arrange-Act-Assert, naming, mock discipline, anti-patterns) apply in any ecosystem; the"
+    },
+    {
+      "path": "references/testing-patterns.md",
+      "line": 13,
+      "kind": "dependencies",
+      "text": "- [E2E Testing (Playwright)](#e2e-testing-playwright)"
+    },
+    {
+      "path": "references/testing-patterns.md",
+      "line": 197,
+      "kind": "dependencies",
+      "text": "## E2E Testing (Playwright)"
+    },
+    {
+      "path": "references/testing-patterns.md",
+      "line": 200,
+      "kind": "dependencies",
+      "text": "import { test, expect } from '@playwright/test';"
+    },
+    {
+      "path": "scripts/floor-guard-reference-test.js",
+      "line": 1,
+      "kind": "dependencies",
+      "text": "#!/usr/bin/env node"
+    },
+    {
+      "path": "scripts/floor-guard-reference-test.js",
+      "line": 11,
+      "kind": "dependencies",
+      "text": "const assert = require('node:assert/strict');"
+    },
+    {
+      "path": "scripts/floor-guard-reference-test.js",
+      "line": 12,
+      "kind": "dependencies",
+      "text": "const fs = require('node:fs');"
+    },
+    {
+      "path": "scripts/floor-guard-reference-test.js",
+      "line": 13,
+      "kind": "dependencies",
+      "text": "const os = require('node:os');"
+    },
+    {
+      "path": "scripts/floor-guard-reference-test.js",
+      "line": 14,
+      "kind": "dependencies",
+      "text": "const path = require('node:path');"
+    },
+    {
+      "path": "scripts/floor-guard-reference-test.js",
+      "line": 15,
+      "kind": "dependencies",
+      "text": "const { spawnSync } = require('node:child_process');"
+    },
+    {
+      "path": "scripts/floor-guard-reference-test.js",
+      "line": 16,
+      "kind": "dependencies",
+      "text": "const { after, before, test } = require('node:test');"
+    },
+    {
+      "path": "scripts/lib/skill-lint-test.js",
+      "line": 1,
+      "kind": "dependencies",
+      "text": "#!/usr/bin/env node"
+    },
+    {
+      "path": "scripts/lib/skill-lint-test.js",
+      "line": 5,
+      "kind": "dependencies",
+      "text": "const assert = require('node:assert/strict');"
+    },
+    {
+      "path": "scripts/lib/skill-lint-test.js",
+      "line": 6,
+      "kind": "dependencies",
+      "text": "const { test } = require('node:test');"
+    },
+    {
+      "path": "scripts/lib/skill-lint-test.js",
+      "line": 8,
+      "kind": "dependencies",
+      "text": "const fs   = require('node:fs');"
+    },
+    {
+      "path": "scripts/lib/skill-lint-test.js",
+      "line": 9,
+      "kind": "dependencies",
+      "text": "const os   = require('node:os');"
+    },
+    {
+      "path": "scripts/lib/skill-lint-test.js",
+      "line": 10,
+      "kind": "dependencies",
+      "text": "const path = require('node:path');"
+    },
+    {
+      "path": "scripts/lib/skill-lint-test.js",
+      "line": 575,
+      "kind": "runtime",
+      "text": "    'model: claude-opus-5',"
+    },
+    {
+      "path": "scripts/lib/skill-lint.js",
+      "line": 335,
+      "kind": "sensitive",
+      "text": "    while ((m = pattern.exec(content)) !== null) {"
+    },
+    {
+      "path": "scripts/run-evals-test.js",
+      "line": 1,
+      "kind": "dependencies",
+      "text": "#!/usr/bin/env node"
+    },
+    {
+      "path": "scripts/run-evals-test.js",
+      "line": 5,
+      "kind": "dependencies",
+      "text": "const assert = require('node:assert/strict');"
+    },
+    {
+      "path": "scripts/run-evals-test.js",
+      "line": 6,
+      "kind": "dependencies",
+      "text": "const fs = require('node:fs');"
+    },
+    {
+      "path": "scripts/run-evals-test.js",
+      "line": 7,
+      "kind": "dependencies",
+      "text": "const os = require('node:os');"
+    },
+    {
+      "path": "scripts/run-evals-test.js",
+      "line": 8,
+      "kind": "dependencies",
+      "text": "const path = require('node:path');"
+    },
+    {
+      "path": "scripts/run-evals-test.js",
+      "line": 9,
+      "kind": "dependencies",
+      "text": "const { spawnSync } = require('node:child_process');"
+    },
+    {
+      "path": "scripts/run-evals-test.js",
+      "line": 10,
+      "kind": "dependencies",
+      "text": "const test = require('node:test');"
+    },
+    {
+      "path": "scripts/run-evals-test.js",
+      "line": 149,
+      "kind": "sensitive",
+      "text": "test('fails when a skill has no eval case file', () => {"
+    },
+    {
+      "path": "scripts/run-evals-test.js",
+      "line": 156,
+      "kind": "sensitive",
+      "text": "  assert.match(result.stdout, /no eval case file/);"
+    },
+    {
+      "path": "scripts/run-evals-test.js",
+      "line": 159,
+      "kind": "sensitive",
+      "text": "test('fails when an eval case is below the required minimums', () => {"
+    },
+    {
+      "path": "scripts/run-evals-test.js",
+      "line": 177,
+      "kind": "sensitive",
+      "text": "test('fails when a behavioral eval references a missing fixture', () => {"
+    },
+    {
+      "path": "scripts/run-evals-test.js",
+      "line": 242,
+      "kind": "sensitive",
+      "text": "test('rejects unknown behavioral eval kinds', () => {"
+    },
+    {
+      "path": "scripts/run-evals-test.js",
+      "line": 255,
+      "kind": "sensitive",
+      "text": "test('dry-runs a fixtureless dialogue eval', () => {"
+    },
+    {
+      "path": "scripts/run-evals-test.js",
+      "line": 440,
+      "kind": "sensitive",
+      "text": "    const base = path.join(dir, 'my-skill.eval-1');"
+    },
+    {
+      "path": "scripts/run-evals-test.js",
+      "line": 455,
+      "kind": "sensitive",
+      "text": "    const base = path.join(dir, 'my-skill.eval-1');"
+    },
+    {
+      "path": "scripts/run-evals-test.js",
+      "line": 469,
+      "kind": "sensitive",
+      "text": "    const base = path.join(dir, 'my-skill.eval-1');"
+    },
+    {
+      "path": "scripts/run-evals-test.js",
+      "line": 490,
+      "kind": "sensitive",
+      "text": "    const base = path.join(dir, 'my-skill.eval-1');"
+    },
+    {
+      "path": "scripts/run-evals-test.js",
+      "line": 509,
+      "kind": "sensitive",
+      "text": "    const base = path.join(dir, 'my-skill.eval-1');"
+    },
+    {
+      "path": "scripts/run-evals-test.js",
+      "line": 533,
+      "kind": "runtime",
+      "text": "    '{\"type\":\"system\",\"subtype\":\"init\",\"model\":\"claude-sonnet-4-6-20250514\",\"session_id\":\"abc\"}',"
+    },
+    {
+      "path": "scripts/run-evals-test.js",
+      "line": 538,
+      "kind": "runtime",
+      "text": "  assert.equal(extractExecutorModel(trace), 'claude-sonnet-4-6-20250514');"
+    },
+    {
+      "path": "scripts/run-evals-test.js",
+      "line": 559,
+      "kind": "runtime",
+      "text": "    '{\"type\":\"system\",\"subtype\":\"init\",\"model\":\"claude-opus-4-6\",\"session_id\":\"abc\"}',"
+    },
+    {
+      "path": "scripts/run-evals-test.js",
+      "line": 562,
+      "kind": "runtime",
+      "text": "  assert.equal(extractExecutorModel(trace), 'claude-opus-4-6');"
+    },
+    {
+      "path": "scripts/run-evals-test.js",
+      "line": 570,
+      "kind": "sensitive",
+      "text": "    const base = path.join(dir, 'my-skill.eval-1');"
+    },
+    {
+      "path": "scripts/run-evals-test.js",
+      "line": 576,
+      "kind": "runtime",
+      "text": "      executor_model: 'claude-sonnet-4-6-20250514',"
+    },
+    {
+      "path": "scripts/run-evals-test.js",
+      "line": 595,
+      "kind": "sensitive",
+      "text": "    const base = path.join(dir, 'my-skill.eval-1');"
+    },
+    {
+      "path": "scripts/run-evals-test.js",
+      "line": 619,
+      "kind": "sensitive",
+      "text": "    assert.equal(fs.existsSync(path.join(workspace, '.eval')), false);"
+    },
+    {
+      "path": "scripts/run-evals.js",
+      "line": 1,
+      "kind": "dependencies",
+      "text": "#!/usr/bin/env node"
+    },
+    {
+      "path": "scripts/run-evals.js",
+      "line": 3,
+      "kind": "sensitive",
+      "text": " * run-evals.js — skill eval runner for agent-skills."
+    },
+    {
+      "path": "scripts/run-evals.js",
+      "line": 20,
+      "kind": "dependencies",
+      "text": " *     node scripts/run-evals.js --behavioral <skill> [--dry-run]"
+    },
+    {
+      "path": "scripts/run-evals.js",
+      "line": 21,
+      "kind": "runtime",
+      "text": " *     Runs each behavioral eval through headless `claude` in a throwaway"
+    },
+    {
+      "path": "scripts/run-evals.js",
+      "line": 21,
+      "kind": "sensitive",
+      "text": " *     Runs each behavioral eval through headless `claude` in a throwaway"
+    },
+    {
+      "path": "scripts/run-evals.js",
+      "line": 128,
+      "kind": "dependencies",
+      "text": "  let dot = 0;"
+    },
+    {
+      "path": "scripts/run-evals.js",
+      "line": 134,
+      "kind": "dependencies",
+      "text": "    if (bw) dot += w * bw;"
+    },
+    {
+      "path": "scripts/run-evals.js",
+      "line": 138,
+      "kind": "dependencies",
+      "text": "  return dot / (Math.sqrt(na) * Math.sqrt(nb));"
+    },
+    {
+      "path": "scripts/run-evals.js",
+      "line": 215,
+      "kind": "sensitive",
+      "text": "      console.log(`  ✗  ${s.name}: no eval case file (evals/cases/${s.name}.json)`);"
+    },
+    {
+      "path": "scripts/run-evals.js",
+      "line": 254,
+      "kind": "sensitive",
+      "text": "        console.log(`  ✗  ${c.file}: eval id=${ev.id} does not match evals.json schema`);"
+    },
+    {
+      "path": "scripts/run-evals.js",
+      "line": 258,
+      "kind": "sensitive",
+      "text": "        console.log(`  ✗  ${c.file}: eval id=${ev.id} has unknown kind \"${kind}\"; use \"execution\" or \"dialogue\"`);"
+    },
+    {
+      "path": "scripts/run-evals.js",
+      "line": 262,
+      "kind": "sensitive",
+      "text": "        console.log(`  ✗  ${c.file}: eval id=${ev.id} needs a non-empty files[] fixture list`);"
+    },
+    {
+      "path": "scripts/run-evals.js",
+      "line": 265,
+      "kind": "sensitive",
+      "text": "        console.log(`  ✗  ${c.file}: eval id=${ev.id} files must be an array of fixture paths`);"
+    },
+    {
+      "path": "scripts/run-evals.js",
+      "line": 268,
+      "kind": "sensitive",
+      "text": "        console.log(`  ✗  ${c.file}: eval id=${ev.id} files must contain only string fixture paths`);"
+    },
+    {
+      "path": "scripts/run-evals.js",
+      "line": 276,
+      "kind": "sensitive",
+      "text": "            console.log(`  ✗  ${c.file}: eval id=${ev.id} has invalid fixture path \"${rel}\" — ${e.message}`);"
+    },
+    {
+      "path": "scripts/run-evals.js",
+      "line": 281,
+      "kind": "sensitive",
+      "text": "            console.log(`  ✗  ${c.file}: eval id=${ev.id} fixture not found: evals/fixtures/${rel}`);"
+    },
+    {
+      "path": "scripts/run-evals.js",
+      "line": 287,
+      "kind": "sensitive",
+      "text": "        console.log(`  ✗  ${c.file}: eval id=${ev.id} is still provisional; add real fixtures before trusting it`);"
+    },
+    {
+      "path": "scripts/run-evals.js",
+      "line": 386,
+      "kind": "runtime",
+      "text": "// ---------- tier 3 (opt-in, via claude -p) ----------"
+    },
+    {
+      "path": "scripts/run-evals.js",
+      "line": 389,
+      "kind": "sensitive",
+      "text": "  // Fresh throwaway project dir per eval; fixtures (if any) copied in so the"
+    },
+    {
+      "path": "scripts/run-evals.js",
+      "line": 391,
+      "kind": "sensitive",
+      "text": "  const workspace = fs.mkdtempSync(path.join(os.tmpdir(), 'agent-skills-eval-'));"
+    },
+    {
+      "path": "scripts/run-evals.js",
+      "line": 402,
+      "kind": "sensitive",
+      "text": "    setupDirs.add(path.join(fixtureRoot, '.eval'));"
+    },
+    {
+      "path": "scripts/run-evals.js",
+      "line": 415,
+      "kind": "sensitive",
+      "text": "  execFileSync('git', ['config', 'user.name', 'Skill Eval'], { cwd: workspace });"
+    },
+    {
+      "path": "scripts/run-evals.js",
+      "line": 416,
+      "kind": "sensitive",
+      "text": "  execFileSync('git', ['config', 'user.email', 'skill-eval@example.invalid'], { cwd: workspace });"
+    },
+    {
+      "path": "scripts/run-evals.js",
+      "line": 516,
+      "kind": "sensitive",
+      "text": "    console.error(`No eval case file for \"${skillName}\"`);"
+    },
+    {
+      "path": "scripts/run-evals.js",
+      "line": 533,
+      "kind": "sensitive",
+      "text": "      console.error(`eval ${ev.id} has unknown kind \"${kind}\"; run the deterministic eval gate first`);"
+    },
+    {
+      "path": "scripts/run-evals.js",
+      "line": 538,
+      "kind": "sensitive",
+      "text": "      console.error(`eval ${ev.id} has no fixtures; run the deterministic eval gate first`);"
+    },
+    {
+      "path": "scripts/run-evals.js",
+      "line": 546,
+      "kind": "runtime",
+      "text": "      console.log(`[dry-run] eval ${ev.id}: ${artifact}; claude -p --verbose --output-format stream-json --permission-mode acceptEdits --allowedTools ${EXECUTOR_TOOLS} --append-system-prompt <${skillName}/SKILL.md> < prompt-on-stdin`);"
+    },
+    {
+      "path": "scripts/run-evals.js",
+      "line": 546,
+      "kind": "sensitive",
+      "text": "      console.log(`[dry-run] eval ${ev.id}: ${artifact}; claude -p --verbose --output-format stream-json --permission-mode acceptEdits --allowedTools ${EXECUTOR_TOOLS} --append-system-prompt <${skillName}/SKILL.md> < prompt-on-stdin`);"
+    },
+    {
+      "path": "scripts/run-evals.js",
+      "line": 549,
+      "kind": "sensitive",
+      "text": "    const base = path.join(RESULTS_DIR, `${skillName}.eval-${ev.id}`);"
+    },
+    {
+      "path": "scripts/run-evals.js",
+      "line": 552,
+      "kind": "sensitive",
+      "text": "      ? fs.mkdtempSync(path.join(os.tmpdir(), 'agent-skills-dialogue-eval-'))"
+    },
+    {
+      "path": "scripts/run-evals.js",
+      "line": 554,
+      "kind": "sensitive",
+      "text": "    console.log(`eval ${ev.id}: executing ${kind} eval in ${workspace} ...`);"
+    },
+    {
+      "path": "scripts/run-evals.js",
+      "line": 563,
+      "kind": "runtime",
+      "text": "      'claude',"
+    },
+    {
+      "path": "scripts/run-evals.js",
+      "line": 588,
+      "kind": "runtime",
+      "text": "    const raw = execFileSync('claude', ['-p'], { input: graderPrompt, encoding: 'utf8', maxBuffer: 16 * 1024 * 1024, timeout: GRADER_TIMEOUT_MS });"
+    },
+    {
+      "path": "scripts/run-evals.js",
+      "line": 596,
+      "kind": "sensitive",
+      "text": "      console.log(`  ✗  eval ${ev.id}: grader returned invalid JSON — raw saved to ${path.relative(ROOT, base)}.grading.raw.txt`);"
+    },
+    {
+      "path": "scripts/run-evals.js",
+      "line": 600,
+      "kind": "sensitive",
+      "text": "    console.log(`eval ${ev.id}: ${grading.summary.passed}/${grading.summary.total} expectations passed -> ${path.relative(ROOT, base)}.grading.json`);"
+    },
+    {
+      "path": "scripts/validate-artifact-paths-test.js",
+      "line": 1,
+      "kind": "dependencies",
+      "text": "#!/usr/bin/env node"
+    },
+    {
+      "path": "scripts/validate-artifact-paths-test.js",
+      "line": 5,
+      "kind": "dependencies",
+      "text": "const assert = require('node:assert/strict');"
+    },
+    {
+      "path": "scripts/validate-artifact-paths-test.js",
+      "line": 6,
+      "kind": "dependencies",
+      "text": "const fs = require('node:fs');"
+    },
+    {
+      "path": "scripts/validate-artifact-paths-test.js",
+      "line": 7,
+      "kind": "dependencies",
+      "text": "const os = require('node:os');"
+    },
+    {
+      "path": "scripts/validate-artifact-paths-test.js",
+      "line": 8,
+      "kind": "dependencies",
+      "text": "const path = require('node:path');"
+    },
+    {
+      "path": "scripts/validate-artifact-paths-test.js",
+      "line": 9,
+      "kind": "dependencies",
+      "text": "const { spawnSync } = require('node:child_process');"
+    },
+    {
+      "path": "scripts/validate-artifact-paths-test.js",
+      "line": 10,
+      "kind": "dependencies",
+      "text": "const { afterEach, test } = require('node:test');"
+    },
+    {
+      "path": "scripts/validate-artifact-paths-test.js",
+      "line": 45,
+      "kind": "runtime",
+      "text": "  writeFile(root, '.claude/commands/spec.md', 'Save the spec as `SPEC.md` in the project root.\\n');"
+    },
+    {
+      "path": "scripts/validate-artifact-paths-test.js",
+      "line": 46,
+      "kind": "runtime",
+      "text": "  writeFile(root, '.claude/commands/plan.md', 'Save the plan to `tasks/plan.md` and task list to `tasks/todo.md`.\\n');"
+    },
+    {
+      "path": "scripts/validate-artifact-paths-test.js",
+      "line": 47,
+      "kind": "runtime",
+      "text": "  writeFile(root, '.claude/commands/build.md', 'Look for a spec at `SPEC.md`, `docs/SPEC.md`, or under `spec/`. Require `tasks/plan.md`.\\n');"
+    },
+    {
+      "path": "scripts/validate-artifact-paths-test.js",
+      "line": 60,
+      "kind": "runtime",
+      "text": "  writeFile(root, '.claude/commands/spec.md', 'Save the spec to `docs/features/[feature-name]/spec.md`.\\n');"
+    },
+    {
+      "path": "scripts/validate-artifact-paths-test.js",
+      "line": 61,
+      "kind": "runtime",
+      "text": "  writeFile(root, '.claude/commands/plan.md', 'Save the plan to `docs/features/[feature-name]/plan.md`.\\n');"
+    },
+    {
+      "path": "scripts/validate-artifact-paths-test.js",
+      "line": 62,
+      "kind": "runtime",
+      "text": "  writeFile(root, '.claude/commands/build.md', 'Require a spec at `SPEC.md` and a plan at `tasks/plan.md`.\\n');"
+    },
+    {
+      "path": "scripts/validate-artifact-paths-test.js",
+      "line": 74,
+      "kind": "runtime",
+      "text": "  writeFile(root, '.claude/commands/plan.md', 'Intro line.\\nSave the plan to `plan.md` in the root.\\n');"
+    },
+    {
+      "path": "scripts/validate-artifact-paths-test.js",
+      "line": 79,
+      "kind": "runtime",
+      "text": "  assert.match(result.stdout, /\\.claude\\/commands\\/plan\\.md/);"
+    },
+    {
+      "path": "scripts/validate-artifact-paths-test.js",
+      "line": 85,
+      "kind": "runtime",
+      "text": "  writeFile(root, '.claude/commands/build.md', 'Look for the spec at `docs/SPEC.md`.\\n');"
+    },
+    {
+      "path": "scripts/validate-artifact-paths-test.js",
+      "line": 109,
+      "kind": "runtime",
+      "text": "  writeFile(root, '.claude/commands/spec.md', 'Save the spec as `SPEC.md`.\\n');"
+    },
+    {
+      "path": "scripts/validate-artifact-paths-test.js",
+      "line": 118,
+      "kind": "runtime",
+      "text": "// ─── Every command surface is guarded, not only the Claude Code copy ────────"
+    },
+    {
+      "path": "scripts/validate-artifact-paths-test.js",
+      "line": 122,
+      "kind": "runtime",
+      "text": "// drift on one surface while `.claude/commands/` stays correct, and before"
+    },
+    {
+      "path": "scripts/validate-artifact-paths-test.js",
+      "line": 125,
+      "kind": "runtime",
+      "text": "test('fails when a Gemini command drifts while the Claude Code copy stays canonical', () => {"
+    },
+    {
+      "path": "scripts/validate-artifact-paths-test.js",
+      "line": 127,
+      "kind": "runtime",
+      "text": "  writeFile(root, '.claude/commands/spec.md', 'Save the spec as `SPEC.md` in the project root.\\n');"
+    },
+    {
+      "path": "scripts/validate-artifact-paths-test.js",
+      "line": 156,
+      "kind": "runtime",
+      "text": "  for (const dir of ['.claude/commands', '.gemini/commands', 'commands']) {"
+    },
+    {
+      "path": "scripts/validate-artifact-paths-test.js",
+      "line": 157,
+      "kind": "runtime",
+      "text": "    const ext = dir === '.claude/commands' ? 'md' : 'toml';"
+    },
+    {
+      "path": "scripts/validate-artifact-paths-test.js",
+      "line": 158,
+      "kind": "runtime",
+      "text": "    const planStem = dir === '.claude/commands' ? 'plan' : 'planning';"
+    },
+    {
+      "path": "scripts/validate-artifact-paths.js",
+      "line": 1,
+      "kind": "dependencies",
+      "text": "#!/usr/bin/env node"
+    },
+    {
+      "path": "scripts/validate-artifact-paths.js",
+      "line": 48,
+      "kind": "runtime",
+      "text": "// while the Claude Code copy stays correct. Every surface is guarded here."
+    },
+    {
+      "path": "scripts/validate-artifact-paths.js",
+      "line": 50,
+      "kind": "runtime",
+      "text": "  // Claude Code commands"
+    },
+    {
+      "path": "scripts/validate-artifact-paths.js",
+      "line": 51,
+      "kind": "runtime",
+      "text": "  '.claude/commands/spec.md',"
+    },
+    {
+      "path": "scripts/validate-artifact-paths.js",
+      "line": 52,
+      "kind": "runtime",
+      "text": "  '.claude/commands/plan.md',"
+    },
+    {
+      "path": "scripts/validate-artifact-paths.js",
+      "line": 53,
+      "kind": "runtime",
+      "text": "  '.claude/commands/build.md',"
+    },
+    {
+      "path": "scripts/validate-artifact-paths.js",
+      "line": 58,
+      "kind": "runtime",
+      "text": "  // Root command set (Antigravity, Codex, and other TOML-based hosts)"
+    },
+    {
+      "path": "scripts/validate-artifact-paths.js",
+      "line": 71,
+      "kind": "sensitive",
+      "text": "// Matches a path-like token ending in a spec/plan/todo artifact filename,"
+    },
+    {
+      "path": "scripts/validate-commands-test.js",
+      "line": 1,
+      "kind": "dependencies",
+      "text": "#!/usr/bin/env node"
+    },
+    {
+      "path": "scripts/validate-commands-test.js",
+      "line": 5,
+      "kind": "dependencies",
+      "text": "const assert = require('node:assert/strict');"
+    },
+    {
+      "path": "scripts/validate-commands-test.js",
+      "line": 6,
+      "kind": "dependencies",
+      "text": "const fs = require('node:fs');"
+    },
+    {
+      "path": "scripts/validate-commands-test.js",
+      "line": 7,
+      "kind": "dependencies",
+      "text": "const os = require('node:os');"
+    },
+    {
+      "path": "scripts/validate-commands-test.js",
+      "line": 8,
+      "kind": "dependencies",
+      "text": "const path = require('node:path');"
+    },
+    {
+      "path": "scripts/validate-commands-test.js",
+      "line": 9,
+      "kind": "dependencies",
+      "text": "const { spawnSync } = require('node:child_process');"
+    },
+    {
+      "path": "scripts/validate-commands-test.js",
+      "line": 10,
+      "kind": "dependencies",
+      "text": "const { afterEach, test } = require('node:test');"
+    },
+    {
+      "path": "scripts/validate-commands-test.js",
+      "line": 38,
+      "kind": "runtime",
+      "text": "    path.join('.claude', 'commands', `${stem}.md`),"
+    },
+    {
+      "path": "scripts/validate-commands-test.js",
+      "line": 80,
+      "kind": "runtime",
+      "text": "test('fails when a Claude command is missing a TOML twin', () => {"
+    },
+    {
+      "path": "scripts/validate-commands-test.js",
+      "line": 93,
+      "kind": "runtime",
+      "text": "test('fails when a TOML command has no Claude twin', () => {"
+    },
+    {
+      "path": "scripts/validate-commands-test.js",
+      "line": 101,
+      "kind": "runtime",
+      "text": "  assert.match(result.stdout, /deploy — present in toml dirs but missing in \\.claude\\/commands/);"
+    },
+    {
+      "path": "scripts/validate-commands-test.js",
+      "line": 114,
+      "kind": "runtime",
+      "text": "  assert.match(result.stdout, /\\.claude:\\s+Review a change/);"
+    },
+    {
+      "path": "scripts/validate-commands-test.js",
+      "line": 157,
+      "kind": "runtime",
+      "text": "// Claude parses a command's frontmatter as YAML when the command is loaded, and"
+    },
+    {
+      "path": "scripts/validate-commands-test.js",
+      "line": 167,
+      "kind": "runtime",
+      "text": "  assert.match(result.stdout, /Checking Claude command frontmatter/);"
+    },
+    {
+      "path": "scripts/validate-commands-test.js",
+      "line": 197,
+      "kind": "runtime",
+      "text": "    path.join('.claude', 'commands', 'build.md'),"
+    },
+    {
+      "path": "scripts/validate-commands.js",
+      "line": 1,
+      "kind": "dependencies",
+      "text": "#!/usr/bin/env node"
+    },
+    {
+      "path": "scripts/validate-commands.js",
+      "line": 6,
+      "kind": "runtime",
+      "text": " *   .claude/commands/  (.md — Claude Code)"
+    },
+    {
+      "path": "scripts/validate-commands.js",
+      "line": 13,
+      "kind": "runtime",
+      "text": " *   - Claude command frontmatter is valid YAML, not merely splittable"
+    },
+    {
+      "path": "scripts/validate-commands.js",
+      "line": 17,
+      "kind": "runtime",
+      "text": " *   syntax ($ARGUMENTS, agent-skills: prefixes, GEMINI.md vs CLAUDE.md)."
+    },
+    {
+      "path": "scripts/validate-commands.js",
+      "line": 30,
+      "kind": "runtime",
+      "text": "// every check here — and Claude Code parses that frontmatter when the command is"
+    },
+    {
+      "path": "scripts/validate-commands.js",
+      "line": 40,
+      "kind": "runtime",
+      "text": "  claude:     { dir: path.join(ROOT, '.claude', 'commands'), ext: '.md'   },"
+    },
+    {
+      "path": "scripts/validate-commands.js",
+      "line": 45,
+      "kind": "runtime",
+      "text": "// Commands where the file stem differs between Claude and the TOML dirs."
+    },
+    {
+      "path": "scripts/validate-commands.js",
+      "line": 46,
+      "kind": "runtime",
+      "text": "// Key = Claude stem, value = TOML stem."
+    },
+    {
+      "path": "scripts/validate-commands.js",
+      "line": 103,
+      "kind": "runtime",
+      "text": "    claude:      loadCommands(DIRS.claude),"
+    },
+    {
+      "path": "scripts/validate-commands.js",
+      "line": 108,
+      "kind": "runtime",
+      "text": "  // Canonical command list: use Claude stems as the reference."
+    },
+    {
+      "path": "scripts/validate-commands.js",
+      "line": 109,
+      "kind": "runtime",
+      "text": "  // Map each Claude stem to its TOML equivalent for lookup."
+    },
+    {
+      "path": "scripts/validate-commands.js",
+      "line": 110,
+      "kind": "runtime",
+      "text": "  const claudeStems = Object.keys(byTool.claude).sort();"
+    },
+    {
+      "path": "scripts/validate-commands.js",
+      "line": 125,
+      "kind": "runtime",
+      "text": "  // Commands in Claude not found in TOML dirs"
+    },
+    {
+      "path": "scripts/validate-commands.js",
+      "line": 139,
+      "kind": "runtime",
+      "text": "  // Commands in TOML dirs not found in Claude"
+    },
+    {
+      "path": "scripts/validate-commands.js",
+      "line": 142,
+      "kind": "runtime",
+      "text": "    if (!(claudeStem in byTool.claude)) {"
+    },
+    {
+      "path": "scripts/validate-commands.js",
+      "line": 143,
+      "kind": "runtime",
+      "text": "      console.log(`  ✗  ${stem} — present in toml dirs but missing in .claude/commands`);"
+    },
+    {
+      "path": "scripts/validate-commands.js",
+      "line": 148,
+      "kind": "runtime",
+      "text": "  // ── Claude frontmatter validity ─────────────────────────────────────────────"
+    },
+    {
+      "path": "scripts/validate-commands.js",
+      "line": 151,
+      "kind": "runtime",
+      "text": "  console.log('\\nChecking Claude command frontmatter...');"
+    },
+    {
+      "path": "scripts/validate-commands.js",
+      "line": 154,
+      "kind": "runtime",
+      "text": "    const full = path.join(DIRS.claude.dir, `${stem}${DIRS.claude.ext}`);"
+    },
+    {
+      "path": "scripts/validate-commands.js",
+      "line": 179,
+      "kind": "runtime",
+      "text": "    const descClaude = byTool.claude[claudeStem];"
+    },
+    {
+      "path": "scripts/validate-commands.js",
+      "line": 184,
+      "kind": "runtime",
+      "text": "      ['.claude/commands', byTool.claude, claudeStem],"
+    },
+    {
+      "path": "scripts/validate-commands.js",
+      "line": 209,
+      "kind": "runtime",
+      "text": "      console.log(`       .claude:      ${descClaude}`);"
+    },
+    {
+      "path": "scripts/validate-reference-links-test.js",
+      "line": 1,
+      "kind": "dependencies",
+      "text": "#!/usr/bin/env node"
+    },
+    {
+      "path": "scripts/validate-reference-links-test.js",
+      "line": 5,
+      "kind": "dependencies",
+      "text": "const assert = require('node:assert/strict');"
+    },
+    {
+      "path": "scripts/validate-reference-links-test.js",
+      "line": 6,
+      "kind": "dependencies",
+      "text": "const fs = require('node:fs');"
+    },
+    {
+      "path": "scripts/validate-reference-links-test.js",
+      "line": 7,
+      "kind": "dependencies",
+      "text": "const os = require('node:os');"
+    },
+    {
+      "path": "scripts/validate-reference-links-test.js",
+      "line": 8,
+      "kind": "dependencies",
+      "text": "const path = require('node:path');"
+    },
+    {
+      "path": "scripts/validate-reference-links-test.js",
+      "line": 9,
+      "kind": "dependencies",
+      "text": "const { spawnSync } = require('node:child_process');"
+    },
+    {
+      "path": "scripts/validate-reference-links-test.js",
+      "line": 10,
+      "kind": "dependencies",
+      "text": "const { afterEach, test } = require('node:test');"
+    },
+    {
+      "path": "scripts/validate-reference-links-test.js",
+      "line": 94,
+      "kind": "runtime",
+      "text": "  // CLAUDE.md allows self-contained skills to keep references under"
+    },
+    {
+      "path": "scripts/validate-reference-links.js",
+      "line": 1,
+      "kind": "dependencies",
+      "text": "#!/usr/bin/env node"
+    },
+    {
+      "path": "scripts/validate-reference-links.js",
+      "line": 11,
+      "kind": "runtime",
+      "text": " * every plugin-install layout (~/.claude/plugins/cache/..., ~/.codex/...)."
+    },
+    {
+      "path": "scripts/validate-reference-links.js",
+      "line": 20,
+      "kind": "runtime",
+      "text": " * accepts both conventions in CLAUDE.md — shared checklists reached via"
+    },
+    {
+      "path": "scripts/validate-skills.js",
+      "line": 1,
+      "kind": "dependencies",
+      "text": "#!/usr/bin/env node"
+    },
+    {
+      "path": "scripts/validate-versions-test.js",
+      "line": 3,
+      "kind": "dependencies",
+      "text": "const assert = require(\"node:assert/strict\");"
+    },
+    {
+      "path": "scripts/validate-versions-test.js",
+      "line": 4,
+      "kind": "dependencies",
+      "text": "const { readFileSync } = require(\"node:fs\");"
+    },
+    {
+      "path": "scripts/validate-versions-test.js",
+      "line": 5,
+      "kind": "dependencies",
+      "text": "const test = require(\"node:test\");"
+    },
+    {
+      "path": "scripts/validate-versions-test.js",
+      "line": 9,
+      "kind": "runtime",
+      "text": "  \".codex-plugin/plugin.json\","
+    },
+    {
+      "path": "scripts/validate-versions-test.js",
+      "line": 10,
+      "kind": "runtime",
+      "text": "  \".claude-plugin/plugin.json\","
+    },
+    {
+      "path": "scripts/validate-versions-test.js",
+      "line": 11,
+      "kind": "runtime",
+      "text": "  \".claude-plugin/marketplace.json\","
+    },
+    {
+      "path": "scripts/validate-versions.js",
+      "line": 1,
+      "kind": "dependencies",
+      "text": "#!/usr/bin/env node"
+    },
+    {
+      "path": "scripts/validate-versions.js",
+      "line": 5,
+      "kind": "dependencies",
+      "text": "const { readFileSync } = require(\"node:fs\");"
+    },
+    {
+      "path": "scripts/validate-versions.js",
+      "line": 9,
+      "kind": "runtime",
+      "text": "  \".codex-plugin/plugin.json\","
+    },
+    {
+      "path": "scripts/validate-versions.js",
+      "line": 10,
+      "kind": "runtime",
+      "text": "  \".claude-plugin/plugin.json\","
+    },
+    {
+      "path": "scripts/validate-versions.js",
+      "line": 11,
+      "kind": "runtime",
+      "text": "  \".claude-plugin/marketplace.json\","
+    },
+    {
+      "path": "skills/browser-testing-with-devtools/SKILL.md",
+      "line": 3,
+      "kind": "runtime",
+      "text": "description: Tests in real browsers via Chrome DevTools MCP. Use when building or debugging anything that runs in a browser. Use when you need to inspect the DOM, capture console errors, analyze network requests, profile performance, or verify visual output with real runtime data. Requires the chrom"
+    },
+    {
+      "path": "skills/browser-testing-with-devtools/SKILL.md",
+      "line": 28,
+      "kind": "runtime",
+      "text": "Add the following to your project's `.mcp.json` or Claude Code settings:"
+    },
+    {
+      "path": "skills/browser-testing-with-devtools/SKILL.md",
+      "line": 34,
+      "kind": "dependencies",
+      "text": "      \"command\": \"npx\","
+    },
+    {
+      "path": "skills/browser-testing-with-devtools/SKILL.md",
+      "line": 41,
+      "kind": "dependencies",
+      "text": "`-y` skips the npx install confirmation. By default the server launches Chrome with its own dedicated profile (under `~/.cache/chrome-devtools-mcp/`), separate from your personal browser; `--isolated` goes one step further and uses a temporary profile that is wiped when the browser closes. This is t"
+    },
+    {
+      "path": "skills/browser-testing-with-devtools/SKILL.md",
+      "line": 88,
+      "kind": "sensitive",
+      "text": "- **No credential access.** Do not use JavaScript execution to read cookies, localStorage tokens, sessionStorage secrets, or any authentication material."
+    },
+    {
+      "path": "skills/browser-testing-with-devtools/SKILL.md",
+      "line": 289,
+      "kind": "sensitive",
+      "text": "| \"I need to read localStorage to debug this\" | Credential material is off-limits. Inspect application state through non-sensitive variables instead. |"
+    },
+    {
+      "path": "skills/ci-cd-and-automation/SKILL.md",
+      "line": 39,
+      "kind": "dependencies",
+      "text": "│   BUILD          │  npm run build"
+    },
+    {
+      "path": "skills/ci-cd-and-automation/SKILL.md",
+      "line": 43,
+      "kind": "dependencies",
+      "text": "│   E2E (optional) │  Playwright/Cypress"
+    },
+    {
+      "path": "skills/ci-cd-and-automation/SKILL.md",
+      "line": 45,
+      "kind": "dependencies",
+      "text": "│   SECURITY AUDIT │  npm audit"
+    },
+    {
+      "path": "skills/ci-cd-and-automation/SKILL.md",
+      "line": 76,
+      "kind": "dependencies",
+      "text": "      - uses: actions/setup-node@v4"
+    },
+    {
+      "path": "skills/ci-cd-and-automation/SKILL.md",
+      "line": 78,
+      "kind": "dependencies",
+      "text": "          node-version: '22'"
+    },
+    {
+      "path": "skills/ci-cd-and-automation/SKILL.md",
+      "line": 79,
+      "kind": "dependencies",
+      "text": "          cache: 'npm'"
+    },
+    {
+      "path": "skills/ci-cd-and-automation/SKILL.md",
+      "line": 82,
+      "kind": "dependencies",
+      "text": "        run: npm ci"
+    },
+    {
+      "path": "skills/ci-cd-and-automation/SKILL.md",
+      "line": 85,
+      "kind": "dependencies",
+      "text": "        run: npm run lint"
+    },
+    {
+      "path": "skills/ci-cd-and-automation/SKILL.md",
+      "line": 88,
+      "kind": "dependencies",
+      "text": "        run: npx tsc --noEmit"
+    },
+    {
+      "path": "skills/ci-cd-and-automation/SKILL.md",
+      "line": 91,
+      "kind": "dependencies",
+      "text": "        run: npm test -- --coverage"
+    },
+    {
+      "path": "skills/ci-cd-and-automation/SKILL.md",
+      "line": 94,
+      "kind": "dependencies",
+      "text": "        run: npm run build"
+    },
+    {
+      "path": "skills/ci-cd-and-automation/SKILL.md",
+      "line": 97,
+      "kind": "dependencies",
+      "text": "        run: npm audit --audit-level=high"
+    },
+    {
+      "path": "skills/ci-cd-and-automation/SKILL.md",
+      "line": 122,
+      "kind": "dependencies",
+      "text": "      - uses: actions/setup-node@v4"
+    },
+    {
+      "path": "skills/ci-cd-and-automation/SKILL.md",
+      "line": 124,
+      "kind": "dependencies",
+      "text": "          node-version: '22'"
+    },
+    {
+      "path": "skills/ci-cd-and-automation/SKILL.md",
+      "line": 125,
+      "kind": "dependencies",
+      "text": "          cache: 'npm'"
+    },
+    {
+      "path": "skills/ci-cd-and-automation/SKILL.md",
+      "line": 126,
+      "kind": "dependencies",
+      "text": "      - run: npm ci"
+    },
+    {
+      "path": "skills/ci-cd-and-automation/SKILL.md",
+      "line": 128,
+      "kind": "dependencies",
+      "text": "        run: npx prisma migrate deploy"
+    },
+    {
+      "path": "skills/ci-cd-and-automation/SKILL.md",
+      "line": 132,
+      "kind": "dependencies",
+      "text": "        run: npm run test:integration"
+    },
+    {
+      "path": "skills/ci-cd-and-automation/SKILL.md",
+      "line": 146,
+      "kind": "dependencies",
+      "text": "      - uses: actions/setup-node@v4"
+    },
+    {
+      "path": "skills/ci-cd-and-automation/SKILL.md",
+      "line": 148,
+      "kind": "dependencies",
+      "text": "          node-version: '22'"
+    },
+    {
+      "path": "skills/ci-cd-and-automation/SKILL.md",
+      "line": 149,
+      "kind": "dependencies",
+      "text": "          cache: 'npm'"
+    },
+    {
+      "path": "skills/ci-cd-and-automation/SKILL.md",
+      "line": 150,
+      "kind": "dependencies",
+      "text": "      - run: npm ci"
+    },
+    {
+      "path": "skills/ci-cd-and-automation/SKILL.md",
+      "line": 151,
+      "kind": "dependencies",
+      "text": "      - name: Install Playwright"
+    },
+    {
+      "path": "skills/ci-cd-and-automation/SKILL.md",
+      "line": 152,
+      "kind": "dependencies",
+      "text": "        run: npx playwright install --with-deps chromium"
+    },
+    {
+      "path": "skills/ci-cd-and-automation/SKILL.md",
+      "line": 154,
+      "kind": "dependencies",
+      "text": "        run: npm run build"
+    },
+    {
+      "path": "skills/ci-cd-and-automation/SKILL.md",
+      "line": 156,
+      "kind": "dependencies",
+      "text": "        run: npx playwright test"
+    },
+    {
+      "path": "skills/ci-cd-and-automation/SKILL.md",
+      "line": 160,
+      "kind": "dependencies",
+      "text": "          name: playwright-report"
+    },
+    {
+      "path": "skills/ci-cd-and-automation/SKILL.md",
+      "line": 161,
+      "kind": "dependencies",
+      "text": "          path: playwright-report/"
+    },
+    {
+      "path": "skills/ci-cd-and-automation/SKILL.md",
+      "line": 187,
+      "kind": "dependencies",
+      "text": "Lint failure → Agent runs `npm run lint --fix` and commits"
+    },
+    {
+      "path": "skills/ci-cd-and-automation/SKILL.md",
+      "line": 207,
+      "kind": "dependencies",
+      "text": "      run: npx vercel --token=${{ secrets.VERCEL_TOKEN }}"
+    },
+    {
+      "path": "skills/ci-cd-and-automation/SKILL.md",
+      "line": 207,
+      "kind": "sensitive",
+      "text": "      run: npx vercel --token=${{ secrets.VERCEL_TOKEN }}"
+    },
+    {
+      "path": "skills/ci-cd-and-automation/SKILL.md",
+      "line": 268,
+      "kind": "dependencies",
+      "text": "          npx vercel rollback ${{ inputs.version }}"
+    },
+    {
+      "path": "skills/ci-cd-and-automation/SKILL.md",
+      "line": 291,
+      "kind": "dependencies",
+      "text": "  - package-ecosystem: npm"
+    },
+    {
+      "path": "skills/ci-cd-and-automation/SKILL.md",
+      "line": 316,
+      "kind": "dependencies",
+      "text": "│   └── Use actions/cache or setup-node cache option for node_modules"
+    },
+    {
+      "path": "skills/ci-cd-and-automation/SKILL.md",
+      "line": 336,
+      "kind": "dependencies",
+      "text": "      - uses: actions/setup-node@v4"
+    },
+    {
+      "path": "skills/ci-cd-and-automation/SKILL.md",
+      "line": 337,
+      "kind": "dependencies",
+      "text": "        with: { node-version: '22', cache: 'npm' }"
+    },
+    {
+      "path": "skills/ci-cd-and-automation/SKILL.md",
+      "line": 338,
+      "kind": "dependencies",
+      "text": "      - run: npm ci"
+    },
+    {
+      "path": "skills/ci-cd-and-automation/SKILL.md",
+      "line": 339,
+      "kind": "dependencies",
+      "text": "      - run: npm run lint"
+    },
+    {
+      "path": "skills/ci-cd-and-automation/SKILL.md",
+      "line": 345,
+      "kind": "dependencies",
+      "text": "      - uses: actions/setup-node@v4"
+    },
+    {
+      "path": "skills/ci-cd-and-automation/SKILL.md",
+      "line": 346,
+      "kind": "dependencies",
+      "text": "        with: { node-version: '22', cache: 'npm' }"
+    },
+    {
+      "path": "skills/ci-cd-and-automation/SKILL.md",
+      "line": 347,
+      "kind": "dependencies",
+      "text": "      - run: npm ci"
+    },
+    {
+      "path": "skills/ci-cd-and-automation/SKILL.md",
+      "line": 348,
+      "kind": "dependencies",
+      "text": "      - run: npx tsc --noEmit"
+    },
+    {
+      "path": "skills/ci-cd-and-automation/SKILL.md",
+      "line": 354,
+      "kind": "dependencies",
+      "text": "      - uses: actions/setup-node@v4"
+    },
+    {
+      "path": "skills/ci-cd-and-automation/SKILL.md",
+      "line": 355,
+      "kind": "dependencies",
+      "text": "        with: { node-version: '22', cache: 'npm' }"
+    },
+    {
+      "path": "skills/ci-cd-and-automation/SKILL.md",
+      "line": 356,
+      "kind": "dependencies",
+      "text": "      - run: npm ci"
+    },
+    {
+      "path": "skills/ci-cd-and-automation/SKILL.md",
+      "line": 357,
+      "kind": "dependencies",
+      "text": "      - run: npm test -- --coverage"
+    },
+    {
+      "path": "skills/code-review-and-quality/SKILL.md",
+      "line": 289,
+      "kind": "dependencies",
+      "text": "4. Does it have known vulnerabilities? (`npm audit`)"
+    },
+    {
+      "path": "skills/code-review-and-quality/SKILL.md",
+      "line": 302,
+      "kind": "dependencies",
+      "text": "For triaging `npm audit` findings and supply-chain risk (typosquatting, compromised maintainers), follow the `security-and-hardening` skill — this section covers the upgrade *workflow*, that one covers the security verdict."
+    },
+    {
+      "path": "skills/code-simplification/SKILL.md",
+      "line": 8,
+      "kind": "runtime",
+      "text": "> Inspired by the [Claude Code Simplifier plugin](https://github.com/anthropics/claude-plugins-official/blob/main/plugins/code-simplifier/agents/code-simplifier.md). Adapted here as a model-agnostic, process-driven skill for any AI coding agent."
+    },
+    {
+      "path": "skills/code-simplification/SKILL.md",
+      "line": 49,
+      "kind": "runtime",
+      "text": "1. Read CLAUDE.md / project conventions"
+    },
+    {
+      "path": "skills/code-simplification/SKILL.md",
+      "line": 238,
+      "kind": "dependencies",
+      "text": "### Python"
+    },
+    {
+      "path": "skills/code-simplification/SKILL.md",
+      "line": 240,
+      "kind": "dependencies",
+      "text": "```python"
+    },
+    {
+      "path": "skills/code-simplification/SKILL.md",
+      "line": 328,
+      "kind": "runtime",
+      "text": "- [ ] Simplified code follows project conventions (checked against CLAUDE.md or equivalent)"
+    },
+    {
+      "path": "skills/constraint-driven-development/SKILL.md",
+      "line": 53,
+      "kind": "runtime",
+      "text": "| Agent harness | `.claude/`, `.codex/`, `AGENTS.md` |"
+    },
+    {
+      "path": "skills/constraint-driven-development/SKILL.md",
+      "line": 140,
+      "kind": "runtime",
+      "text": "Then add one line to `AGENTS.md` and `CLAUDE.md`: `Read CONSTRAINTS.md before writing code. Do not weaken it to make a change pass.`"
+    },
+    {
+      "path": "skills/constraint-driven-development/SKILL.md",
+      "line": 149,
+      "kind": "dependencies",
+      "text": "| Types (Python) | mypy | `pip install mypy` | `mypy .` | any error |"
+    },
+    {
+      "path": "skills/constraint-driven-development/SKILL.md",
+      "line": 152,
+      "kind": "dependencies",
+      "text": "| Coverage (Python) | pytest-cov | `pip install pytest-cov` | `pytest --cov --cov-report=lcov` | same |"
+    },
+    {
+      "path": "skills/constraint-driven-development/SKILL.md",
+      "line": 156,
+      "kind": "dependencies",
+      "text": "| Performance: page | Lighthouse | `npm i -D lighthouse` | `lighthouse $URL --output=json --quiet` | LCP, CLS, performance score |"
+    },
+    {
+      "path": "skills/constraint-driven-development/SKILL.md",
+      "line": 157,
+      "kind": "dependencies",
+      "text": "| Performance: bundle | size-limit | `npm i -D size-limit` | `size-limit --json` | per-entry byte budget |"
+    },
+    {
+      "path": "skills/constraint-driven-development/SKILL.md",
+      "line": 158,
+      "kind": "dependencies",
+      "text": "| Accessibility | axe-core | `npm i -D @axe-core/cli` | `axe $URL --tags wcag2a,wcag2aa,wcag21aa` | zero critical or serious |"
+    },
+    {
+      "path": "skills/constraint-driven-development/SKILL.md",
+      "line": 159,
+      "kind": "dependencies",
+      "text": "| Architecture | dependency-cruiser | `npm i -D dependency-cruiser` | `depcruise --validate src` | any violation |"
+    },
+    {
+      "path": "skills/constraint-driven-development/SKILL.md",
+      "line": 160,
+      "kind": "dependencies",
+      "text": "| Assertion quality | Stryker | `npm i -D @stryker-mutator/core` | `stryker run --mutate <changed files>` | mutation score |"
+    },
+    {
+      "path": "skills/constraint-driven-development/SKILL.md",
+      "line": 164,
+      "kind": "sensitive",
+      "text": "1. **`--redact` on gitleaks is not optional.** Without it the matched secret lands in the agent's transcript, which is how a leaked key ends up in a log, a summary, or a commit message. Report the rule and the location, never the value."
+    },
+    {
+      "path": "skills/constraint-driven-development/SKILL.md",
+      "line": 176,
+      "kind": "dependencies",
+      "text": "    \"check:task\": \"npm run check:fast && vitest run --coverage\","
+    },
+    {
+      "path": "skills/constraint-driven-development/SKILL.md",
+      "line": 177,
+      "kind": "dependencies",
+      "text": "    \"check:full\": \"npm run check:task && semgrep scan --config p/default && osv-scanner scan source -r .\""
+    },
+    {
+      "path": "skills/constraint-driven-development/SKILL.md",
+      "line": 257,
+      "kind": "runtime",
+      "text": "2. **Scripted.** An `npm run check` (or `make check`) that runs the fast checks, wired into your agent's post-edit hook and your CI. Deterministic, no new dependency."
+    },
+    {
+      "path": "skills/constraint-driven-development/SKILL.md",
+      "line": 257,
+      "kind": "dependencies",
+      "text": "2. **Scripted.** An `npm run check` (or `make check`) that runs the fast checks, wired into your agent's post-edit hook and your CI. Deterministic, no new dependency."
+    },
+    {
+      "path": "skills/constraint-driven-development/SKILL.md",
+      "line": 301,
+      "kind": "runtime",
+      "text": "- [ ] `AGENTS.md` or `CLAUDE.md` points at the file"
+    },
+    {
+      "path": "skills/constraint-driven-development/references/floor-guard.md",
+      "line": 3,
+      "kind": "dependencies",
+      "text": "Every numbered dimension in `CONSTRAINTS.md` maps to a de facto tool (Step 4). The **floor** does not: it is a diff-scoped check for the five moves in Step 6, and without a shipped reference every agent invents its own, so two runs (or a Python repo and a Go one) produce two different guards. That i"
+    },
+    {
+      "path": "skills/constraint-driven-development/references/floor-guard.md",
+      "line": 12,
+      "kind": "sensitive",
+      "text": "- **Reports the rule and the location, never the matched secret value.** Redaction is not optional (Step 4)."
+    },
+    {
+      "path": "skills/constraint-driven-development/references/floor-guard.md",
+      "line": 15,
+      "kind": "dependencies",
+      "text": "## Reference (Node, ~stack-agnostic patterns)"
+    },
+    {
+      "path": "skills/constraint-driven-development/references/floor-guard.md",
+      "line": 18,
+      "kind": "dependencies",
+      "text": "#!/usr/bin/env node"
+    },
+    {
+      "path": "skills/constraint-driven-development/references/floor-guard.md",
+      "line": 20,
+      "kind": "dependencies",
+      "text": "// Usage: node floor-guard.mjs [--base <ref>]   (default base: origin/main)"
+    },
+    {
+      "path": "skills/constraint-driven-development/references/floor-guard.md",
+      "line": 21,
+      "kind": "dependencies",
+      "text": "import { execFileSync } from 'node:child_process';"
+    },
+    {
+      "path": "skills/constraint-driven-development/references/floor-guard.md",
+      "line": 131,
+      "kind": "sensitive",
+      "text": "  while ((m = re.exec(t))) {"
+    },
+    {
+      "path": "skills/context-engineering/SKILL.md",
+      "line": 26,
+      "kind": "runtime",
+      "text": "│  1. Rules Files (CLAUDE.md, etc.)   │ ← Always loaded, project-wide"
+    },
+    {
+      "path": "skills/context-engineering/SKILL.md",
+      "line": 42,
+      "kind": "runtime",
+      "text": "**CLAUDE.md** (for Claude Code):"
+    },
+    {
+      "path": "skills/context-engineering/SKILL.md",
+      "line": 48,
+      "kind": "dependencies",
+      "text": "- Node.js 22, Express, PostgreSQL, Prisma"
+    },
+    {
+      "path": "skills/context-engineering/SKILL.md",
+      "line": 51,
+      "kind": "dependencies",
+      "text": "- Build: `npm run build`"
+    },
+    {
+      "path": "skills/context-engineering/SKILL.md",
+      "line": 52,
+      "kind": "dependencies",
+      "text": "- Test: `npm test`"
+    },
+    {
+      "path": "skills/context-engineering/SKILL.md",
+      "line": 53,
+      "kind": "dependencies",
+      "text": "- Lint: `npm run lint --fix`"
+    },
+    {
+      "path": "skills/context-engineering/SKILL.md",
+      "line": 54,
+      "kind": "dependencies",
+      "text": "- Dev: `npm run dev`"
+    },
+    {
+      "path": "skills/context-engineering/SKILL.md",
+      "line": 55,
+      "kind": "dependencies",
+      "text": "- Type check: `npx tsc --noEmit`"
+    },
+    {
+      "path": "skills/context-engineering/SKILL.md",
+      "line": 58,
+      "kind": "runtime",
+      "text": "- Functional components with hooks (no class components)"
+    },
+    {
+      "path": "skills/context-engineering/SKILL.md",
+      "line": 78,
+      "kind": "runtime",
+      "text": "- `AGENTS.md` (OpenAI Codex)"
+    },
+    {
+      "path": "skills/context-engineering/SKILL.md",
+      "line": 125,
+      "kind": "sensitive",
+      "text": "A fresh session is safe at a completed task boundary, not at an arbitrary token count. Before leaving the current session, persist:"
+    },
+    {
+      "path": "skills/context-engineering/SKILL.md",
+      "line": 245,
+      "kind": "runtime",
+      "text": "| MCP Server | What It Provides |"
+    },
+    {
+      "path": "skills/debugging-and-error-recovery/SKILL.md",
+      "line": 62,
+      "kind": "dependencies",
+      "text": "│   ├── Compare Node/browser versions, OS, environment variables"
+    },
+    {
+      "path": "skills/debugging-and-error-recovery/SKILL.md",
+      "line": 75,
+      "kind": "dependencies",
+      "text": "For test failures (npm shown — substitute the repository's own test command, per the test-driven-development skill's Discover the Stack First section):"
+    },
+    {
+      "path": "skills/debugging-and-error-recovery/SKILL.md",
+      "line": 78,
+      "kind": "dependencies",
+      "text": "npm test -- --grep \"test name\""
+    },
+    {
+      "path": "skills/debugging-and-error-recovery/SKILL.md",
+      "line": 81,
+      "kind": "dependencies",
+      "text": "npm test -- --verbose"
+    },
+    {
+      "path": "skills/debugging-and-error-recovery/SKILL.md",
+      "line": 84,
+      "kind": "dependencies",
+      "text": "npm test -- --testPathPattern=\"specific-file\" --runInBand"
+    },
+    {
+      "path": "skills/debugging-and-error-recovery/SKILL.md",
+      "line": 108,
+      "kind": "dependencies",
+      "text": "git bisect run npm test -- --grep \"failing test\"  # substitute the repository's focused-test command"
+    },
+    {
+      "path": "skills/debugging-and-error-recovery/SKILL.md",
+      "line": 156,
+      "kind": "dependencies",
+      "text": "After fixing, verify the complete scenario with the repository's own commands (npm shown):"
+    },
+    {
+      "path": "skills/debugging-and-error-recovery/SKILL.md",
+      "line": 160,
+      "kind": "dependencies",
+      "text": "npm test -- --grep \"specific test\""
+    },
+    {
+      "path": "skills/debugging-and-error-recovery/SKILL.md",
+      "line": 163,
+      "kind": "dependencies",
+      "text": "npm test"
+    },
+    {
+      "path": "skills/debugging-and-error-recovery/SKILL.md",
+      "line": 166,
+      "kind": "dependencies",
+      "text": "npm run build"
+    },
+    {
+      "path": "skills/debugging-and-error-recovery/SKILL.md",
+      "line": 169,
+      "kind": "dependencies",
+      "text": "npm run dev  # Verify in browser"
+    },
+    {
+      "path": "skills/debugging-and-error-recovery/SKILL.md",
+      "line": 195,
+      "kind": "dependencies",
+      "text": "├── Dependency error → Check package.json, run npm install"
+    },
+    {
+      "path": "skills/debugging-and-error-recovery/SKILL.md",
+      "line": 196,
+      "kind": "dependencies",
+      "text": "└── Environment error → Check Node version, OS compatibility"
+    },
+    {
+      "path": "skills/deprecation-and-migration/SKILL.md",
+      "line": 91,
+      "kind": "dependencies",
+      "text": "3. Run the migration verification script: `npx migrate-check`"
+    },
+    {
+      "path": "skills/documentation-and-adrs/SKILL.md",
+      "line": 211,
+      "kind": "dependencies",
+      "text": "2. Install dependencies: `npm install`"
+    },
+    {
+      "path": "skills/documentation-and-adrs/SKILL.md",
+      "line": 213,
+      "kind": "dependencies",
+      "text": "4. Run the dev server: `npm run dev`"
+    },
+    {
+      "path": "skills/documentation-and-adrs/SKILL.md",
+      "line": 218,
+      "kind": "dependencies",
+      "text": "| `npm run dev` | Start development server |"
+    },
+    {
+      "path": "skills/documentation-and-adrs/SKILL.md",
+      "line": 219,
+      "kind": "dependencies",
+      "text": "| `npm test` | Run tests |"
+    },
+    {
+      "path": "skills/documentation-and-adrs/SKILL.md",
+      "line": 220,
+      "kind": "dependencies",
+      "text": "| `npm run build` | Production build |"
+    },
+    {
+      "path": "skills/documentation-and-adrs/SKILL.md",
+      "line": 221,
+      "kind": "dependencies",
+      "text": "| `npm run lint` | Run linter |"
+    },
+    {
+      "path": "skills/documentation-and-adrs/SKILL.md",
+      "line": 254,
+      "kind": "runtime",
+      "text": "- **CLAUDE.md / rules files** — Document project conventions so agents follow them"
+    },
+    {
+      "path": "skills/documentation-and-adrs/SKILL.md",
+      "line": 288,
+      "kind": "runtime",
+      "text": "- [ ] Rules files (CLAUDE.md etc.) are current and accurate"
+    },
+    {
+      "path": "skills/doubt-driven-development/SKILL.md",
+      "line": 47,
+      "kind": "runtime",
+      "text": "- **If you find yourself applying this skill from inside a subagent context** (where Claude Code prevents nested subagent spawn): the preferred path is to surface to the user that doubt-driven cannot run nested and let the main session handle it. As a last resort only, a degraded self-questioning fa"
+    },
+    {
+      "path": "skills/doubt-driven-development/SKILL.md",
+      "line": 108,
+      "kind": "runtime",
+      "text": "In Claude Code, the role-based reviewers in `agents/` start with isolated context by design and are usable here — see `agents/` for the roster and per-domain match."
+    },
+    {
+      "path": "skills/doubt-driven-development/SKILL.md",
+      "line": 110,
+      "kind": "runtime",
+      "text": "**The adversarial prompt above takes precedence over the persona's default response shape.** Personas like `code-reviewer` are written to produce balanced verdicts with both strengths and weaknesses; doubt-driven needs issues-only output. Paste the adversarial prompt verbatim into the invocation so "
+    },
+    {
+      "path": "skills/doubt-driven-development/SKILL.md",
+      "line": 122,
+      "kind": "runtime",
+      "text": "> *\"Single-model review complete. Want a cross-model second opinion? Options: Gemini CLI, Codex CLI, manual external review (you paste it elsewhere), or skip.\"*"
+    },
+    {
+      "path": "skills/doubt-driven-development/SKILL.md",
+      "line": 128,
+      "kind": "runtime",
+      "text": "1. Check the tool is in PATH (`which gemini`, `which codex`)."
+    },
+    {
+      "path": "skills/doubt-driven-development/SKILL.md",
+      "line": 143,
+      "kind": "runtime",
+      "text": "# Codex (read-only sandbox keeps the CLI from writing to your workspace):"
+    },
+    {
+      "path": "skills/doubt-driven-development/SKILL.md",
+      "line": 144,
+      "kind": "runtime",
+      "text": "codex exec --sandbox read-only -C <repo-path> - < /tmp/doubt-prompt.md"
+    },
+    {
+      "path": "skills/doubt-driven-development/SKILL.md",
+      "line": 144,
+      "kind": "sensitive",
+      "text": "codex exec --sandbox read-only -C <repo-path> - < /tmp/doubt-prompt.md"
+    },
+    {
+      "path": "skills/frontend-ui-engineering/SKILL.md",
+      "line": 32,
+      "kind": "runtime",
+      "text": "    use-task-list.ts      # Custom hook (if complex state)"
+    },
+    {
+      "path": "skills/git-workflow-and-versioning/SKILL.md",
+      "line": 189,
+      "kind": "sensitive",
+      "text": "This pattern means you never lose more than one increment of work. If an agent goes off the rails, `git reset --hard HEAD` takes you back to the last successful state."
+    },
+    {
+      "path": "skills/git-workflow-and-versioning/SKILL.md",
+      "line": 220,
+      "kind": "sensitive",
+      "text": "git diff --staged | grep -i \"password\\|secret\\|api_key\\|token\""
+    },
+    {
+      "path": "skills/git-workflow-and-versioning/SKILL.md",
+      "line": 223,
+      "kind": "dependencies",
+      "text": "npm test"
+    },
+    {
+      "path": "skills/git-workflow-and-versioning/SKILL.md",
+      "line": 226,
+      "kind": "dependencies",
+      "text": "npm run lint"
+    },
+    {
+      "path": "skills/git-workflow-and-versioning/SKILL.md",
+      "line": 229,
+      "kind": "dependencies",
+      "text": "npx tsc --noEmit"
+    },
+    {
+      "path": "skills/git-workflow-and-versioning/SKILL.md",
+      "line": 232,
+      "kind": "runtime",
+      "text": "Automate this with git hooks:"
+    },
+    {
+      "path": "skills/idea-refine/examples.md",
+      "line": 204,
+      "kind": "dependencies",
+      "text": "3. **Audience Shift — Retro for the Quiet Ones:** Design the format for the 4-5 people who don't talk. Anonymous submission of topics. Dot-voting to prioritize. Small-group breakouts (pairs) before full-group discussion. The loud voices still participate, but the structure prevents them from dominat"
+    },
+    {
+      "path": "skills/incremental-implementation/SKILL.md",
+      "line": 204,
+      "kind": "dependencies",
+      "text": "- [ ] All existing tests still pass (the repository's test command: `npm test`, `./gradlew test`, `pytest`, ...)"
+    },
+    {
+      "path": "skills/incremental-implementation/SKILL.md",
+      "line": 206,
+      "kind": "dependencies",
+      "text": "- [ ] Type checking passes, where the stack has one (`npx tsc --noEmit`, `mypy`, ...)"
+    },
+    {
+      "path": "skills/interview-me/SKILL.md",
+      "line": 170,
+      "kind": "sensitive",
+      "text": "Q:     When you say \"how are we doing?\", who's asking — you alone, the engineering team in standup, or up the chain (e.g., your manager, an exec, a board)?"
+    },
+    {
+      "path": "skills/observability-and-instrumentation/SKILL.md",
+      "line": 140,
+      "kind": "dependencies",
+      "text": "import { NodeSDK } from '@opentelemetry/sdk-node';"
+    },
+    {
+      "path": "skills/observability-and-instrumentation/SKILL.md",
+      "line": 141,
+      "kind": "dependencies",
+      "text": "import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node';"
+    },
+    {
+      "path": "skills/performance-optimization/SKILL.md",
+      "line": 129,
+      "kind": "dependencies",
+      "text": "- **Queries that ignore their index.** \"Add an index\" is the guess; `EXPLAIN ANALYZE` is the measurement. A `Seq Scan` where you expected an index, a `rows=` estimate off by an order of magnitude, and a `Sort` node above the scan each call for a different fix; a bad `rows=` estimate means stale stat"
+    },
+    {
+      "path": "skills/performance-optimization/SKILL.md",
+      "line": 206,
+      "kind": "dependencies",
+      "text": "npx bundlesize --config bundlesize.config.json"
+    },
+    {
+      "path": "skills/performance-optimization/SKILL.md",
+      "line": 209,
+      "kind": "dependencies",
+      "text": "npx lhci autorun"
+    },
+    {
+      "path": "skills/performance-optimization/references/optimization-patterns.md",
+      "line": 52,
+      "kind": "dependencies",
+      "text": "| A `Sort` node above the scan | The index covers the filter but not the `ORDER BY` |"
+    },
+    {
+      "path": "skills/planning-and-task-breakdown/SKILL.md",
+      "line": 162,
+      "kind": "runtime",
+      "text": "- **External tracker:** if the project's agent rules (`CLAUDE.md`, `AGENTS.md`, etc.) or the user designate an issue tracker (e.g. GitHub Issues, Jira, Linear, `bd`/beads), create one tracker item per task instead of writing `tasks/todo.md`. Map the Step 4 structure onto the tracker's fields: accept"
+    },
+    {
+      "path": "skills/security-and-hardening/SKILL.md",
+      "line": 10,
+      "kind": "sensitive",
+      "text": "Security-first development practices for web applications. Treat every external input as hostile, every secret as sacred, and every authorization check as mandatory. Security isn't a phase — it's a constraint on every line of code that touches user data, authentication, or external systems."
+    },
+    {
+      "path": "skills/security-and-hardening/SKILL.md",
+      "line": 71,
+      "kind": "sensitive",
+      "text": "- **Never use `eval()` or `innerHTML`** with user-provided data"
+    },
+    {
+      "path": "skills/security-and-hardening/SKILL.md",
+      "line": 89,
+      "kind": "sensitive",
+      "text": "- Hash passwords with bcrypt (≥12 rounds), scrypt, or argon2. The session secret comes from the environment, never from code."
+    },
+    {
+      "path": "skills/security-and-hardening/SKILL.md",
+      "line": 129,
+      "kind": "sensitive",
+      "text": "Secrets come from the environment. `.env.example` is committed with placeholders; real `.env*` files and key material are gitignored; grep the staged diff before committing. **A secret that reaches a remote is compromised the moment it lands: rotate it first, then purge history.**"
+    },
+    {
+      "path": "skills/security-and-hardening/SKILL.md",
+      "line": 137,
+      "kind": "dependencies",
+      "text": "3. **Run the native audit against the committed lockfile before every release.** Triage critical/high by **reachability** (runtime, build, test, deploy paths) and fix availability. Never apply forced remediation (`npm audit fix --force` or equivalent) automatically, since forced fixes may cross decl"
+    },
+    {
+      "path": "skills/security-and-hardening/SKILL.md",
+      "line": 138,
+      "kind": "dependencies",
+      "text": "4. **Audits only match known advisories.** They do not catch a newly malicious or typosquatted package (`cross-env` vs `crossenv`). Review new dependencies, lockfile diffs, and script-policy changes together: ownership, maintenance, release age, provenance, transitive graph. Verify registry signatur"
+    },
+    {
+      "path": "skills/security-and-hardening/SKILL.md",
+      "line": 158,
+      "kind": "sensitive",
+      "text": "- **Model output is untrusted input** (LLM05). Never into `eval`, SQL, a shell, `innerHTML`, or a file path; parse defensively, validate against a schema, then encode."
+    },
+    {
+      "path": "skills/security-and-hardening/SKILL.md",
+      "line": 195,
+      "kind": "sensitive",
+      "text": "- LLM/model output passed into a query, the DOM, a shell, or `eval`"
+    },
+    {
+      "path": "skills/security-and-hardening/references/hardening-patterns.md",
+      "line": 36,
+      "kind": "sensitive",
+      "text": "  secret: process.env.SESSION_SECRET,  // From environment, not code"
+    },
+    {
+      "path": "skills/security-and-hardening/references/hardening-patterns.md",
+      "line": 117,
+      "kind": "sensitive",
+      "text": "const API_KEY = process.env.STRIPE_API_KEY;"
+    },
+    {
+      "path": "skills/security-and-hardening/references/hardening-patterns.md",
+      "line": 118,
+      "kind": "sensitive",
+      "text": "if (!API_KEY) throw new Error('STRIPE_API_KEY not configured');"
+    },
+    {
+      "path": "skills/security-and-hardening/references/hardening-patterns.md",
+      "line": 130,
+      "kind": "dependencies",
+      "text": "import { lookup } from 'node:dns/promises';"
+    },
+    {
+      "path": "skills/security-and-hardening/references/hardening-patterns.md",
+      "line": 133,
+      "kind": "runtime",
+      "text": "const ALLOWED_HOSTS = new Set(['hooks.example.com']);"
+    },
+    {
+      "path": "skills/security-and-hardening/references/hardening-patterns.md",
+      "line": 292,
+      "kind": "sensitive",
+      "text": "git diff --cached | grep -i \"password\\|secret\\|api_key\\|token\""
+    },
+    {
+      "path": "skills/security-and-hardening/references/hardening-patterns.md",
+      "line": 295,
+      "kind": "sensitive",
+      "text": "**If a secret is ever committed, rotate it.** Deleting the line or rewriting history is not enough — assume it's compromised the moment it reaches a remote. Revoke and reissue the key first, then purge it from history."
+    },
+    {
+      "path": "skills/shipping-and-launch/SKILL.md",
+      "line": 35,
+      "kind": "dependencies",
+      "text": "- [ ] The ecosystem's dependency audit (`npm audit`, `pip-audit`, `cargo audit`, ...) shows no critical or high vulnerabilities"
+    },
+    {
+      "path": "skills/source-driven-development/SKILL.md",
+      "line": 43,
+      "kind": "dependencies",
+      "text": "package.json    → Node/React/Vue/Angular/Svelte"
+    },
+    {
+      "path": "skills/source-driven-development/SKILL.md",
+      "line": 45,
+      "kind": "dependencies",
+      "text": "requirements.txt / pyproject.toml → Python/Django/Flask"
+    },
+    {
+      "path": "skills/source-driven-development/SKILL.md",
+      "line": 74,
+      "kind": "dependencies",
+      "text": "| 4 | Browser/runtime compatibility | caniuse.com, node.green |"
+    },
+    {
+      "path": "skills/source-driven-development/SKILL.md",
+      "line": 158,
+      "kind": "runtime",
+      "text": "isPending/setIsPending pattern with this hook."
+    },
+    {
+      "path": "skills/spec-driven-development/SKILL.md",
+      "line": 90,
+      "kind": "dependencies",
+      "text": "   Build: npm run build"
+    },
+    {
+      "path": "skills/spec-driven-development/SKILL.md",
+      "line": 91,
+      "kind": "dependencies",
+      "text": "   Test: npm test -- --coverage"
+    },
+    {
+      "path": "skills/spec-driven-development/SKILL.md",
+      "line": 92,
+      "kind": "dependencies",
+      "text": "   Lint: npm run lint --fix"
+    },
+    {
+      "path": "skills/spec-driven-development/SKILL.md",
+      "line": 93,
+      "kind": "dependencies",
+      "text": "   Dev: npm run dev"
+    },
+    {
+      "path": "skills/test-driven-development/SKILL.md",
+      "line": 34,
+      "kind": "dependencies",
+      "text": "Run the repository's focused-test command during the loop and its full-suite command before completion. Never assume a default like `npm test` — a Gradle, Cargo, or pytest project has its own equivalent."
+    },
+    {
+      "path": "skills/test-driven-development/SKILL.md",
+      "line": 345,
+      "kind": "runtime",
+      "text": "For complex bug fixes, spawn a subagent to write the reproduction test:"
+    },
+    {
+      "path": "skills/test-driven-development/SKILL.md",
+      "line": 348,
+      "kind": "runtime",
+      "text": "Main agent: \"Spawn a subagent to write a test that reproduces this bug:"
+    },
+    {
+      "path": "skills/test-driven-development/SKILL.md",
+      "line": 351,
+      "kind": "runtime",
+      "text": "Subagent: Writes the reproduction test"
+    },
+    {
+      "path": "skills/test-driven-development/SKILL.md",
+      "line": 361,
+      "kind": "dependencies",
+      "text": "For JavaScript/TypeScript testing patterns illustrating these principles — Jest, React Testing Library, Supertest, Playwright — see `../../references/testing-patterns.md`. The principles transfer to any ecosystem; the syntax and tools there are JS/TS-specific."
+    },
+    {
+      "path": "skills/test-driven-development/SKILL.md",
+      "line": 378,
+      "kind": "dependencies",
+      "text": "- Reaching for a default test command (`npm test`) without checking what this repository actually uses"
+    },
+    {
+      "path": "skills/test-driven-development/SKILL.md",
+      "line": 392,
+      "kind": "dependencies",
+      "text": "- [ ] The full suite passes, run with the repository's own test command (`npm test`, `./gradlew test`, `pytest`, `go test ./...`, ...)"
+    }
+  ]
+}

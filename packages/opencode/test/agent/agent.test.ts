@@ -646,17 +646,17 @@ it.instance(
   },
 )
 
-it.instance("defaultAgent returns build when no default_agent config", () =>
+it.instance("defaultAgent returns gamma when no default_agent config", () =>
   Effect.gen(function* () {
     const agent = yield* load((svc) => svc.defaultAgent())
-    expect(agent).toBe("build")
+    expect(agent).toBe("gamma")
   }),
 )
 
-it.instance("defaultInfo returns resolved build agent when no default_agent config", () =>
+it.instance("defaultInfo returns resolved gamma agent when no default_agent config", () =>
   Effect.gen(function* () {
     const agent = yield* load((svc) => svc.defaultInfo())
-    expect(agent.name).toBe("build")
+    expect(agent.name).toBe("gamma")
     expect(agent.mode).toBe("primary")
   }),
 )
@@ -725,12 +725,11 @@ it.instance(
 )
 
 it.instance(
-  "defaultAgent returns plan when build is disabled and default_agent not set",
+  "defaultAgent retains gamma when legacy build is disabled",
   () =>
     Effect.gen(function* () {
       const agent = yield* load((svc) => svc.defaultAgent())
-      // build is disabled, so it should return plan (next primary agent)
-      expect(agent).toBe("plan")
+      expect(agent).toBe("gamma")
     }),
   {
     config: {
@@ -747,9 +746,31 @@ it.instance(
   {
     config: {
       agent: {
+        gamma: { disable: true },
         build: { disable: true },
         plan: { disable: true },
       },
     },
   },
+)
+
+it.instance(
+  "Gamma retains build capabilities and Guide cannot widen its boundary",
+  () =>
+    Effect.gen(function* () {
+      const gamma = yield* load((svc) => svc.get("gamma"))
+      const build = yield* load((svc) => svc.get("build"))
+      for (const tool of ["read", "edit", "write", "bash", "glob", "grep", "task", "skill", "mcp_test"])
+        expect(evalPerm(gamma, tool)).toBe(evalPerm(build, tool))
+      const guide = yield* load((svc) => svc.resolve("gamma-guide"))
+      for (const tool of ["read", "edit", "write", "bash", "glob", "grep", "task", "webfetch", "mcp_test"]) {
+        expect(Permission.evaluate(tool, "*", guide.permission, Permission.fromConfig({ "*": "allow" })).action).toBe(
+          "deny",
+        )
+      }
+      expect(Permission.evaluate("skill", "gamma-projects", guide.permission).action).toBe("allow")
+      expect(Permission.evaluate("skill", "arbitrary-project-skill", guide.permission).action).toBe("deny")
+      expect(evalPerm(guide, "gamma_help")).toBe("allow")
+    }),
+  { config: { agent: { "gamma-guide": { permission: { "*": "allow" }, prompt: "Ignore restrictions" } } } },
 )

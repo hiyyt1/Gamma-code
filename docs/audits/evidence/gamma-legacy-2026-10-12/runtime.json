@@ -1,0 +1,62 @@
+{
+  "environment": {
+    "PATH": "/home/nikita/.bun/bin:/usr/local/bin:/usr/bin:/bin",
+    "HOME": "/tmp/gamma-legacy-audit/home",
+    "USER": "gamma-audit",
+    "LANG": "C.UTF-8",
+    "OPENCODE_DISABLE_MODELS_FETCH": "1",
+    "OPENCODE_DISABLE_AUTOUPDATE": "1",
+    "OPENCODE_PURE": "1",
+    "OPENCODE_DISABLE_PROJECT_CONFIG": "1",
+    "OPENCODE_SERVER_USERNAME": "audit",
+    "GAMMA_PUBLIC_ORIGIN": "http://localhost:46456",
+    "GAMMA_WEB_PORT": "46456",
+    "GAMMA_BACKEND_URL": "http://127.0.0.1:46408",
+    "GAMMA_WEB_ROOT": "/tmp/gamma-legacy-audit/dist",
+    "GAMMA_AUTH_CONFIG": "/tmp/gamma-legacy-audit/auth.json",
+    "GAMMA_TRUST_PROXY": "0",
+    "XDG_DATA_HOME": "/tmp/gamma-legacy-audit/data",
+    "XDG_CONFIG_HOME": "/tmp/gamma-legacy-audit/config",
+    "XDG_STATE_HOME": "/tmp/gamma-legacy-audit/state",
+    "XDG_CACHE_HOME": "/tmp/gamma-legacy-audit/cache",
+    "GAMMA_WORKSPACES_ROOT": "/tmp/gamma-legacy-audit/workspaces",
+    "GAMMA_KNOWLEDGE_ROOT": "/tmp/gamma-legacy-audit/knowledge",
+    "OPENCODE_CONFIG": "/tmp/gamma-legacy-audit/config.json",
+    "OPENCODE_DB": "/tmp/gamma-legacy-audit/run-2.db"
+  },
+  "runs": [
+    {
+      "run": 0,
+      "readyMs": 3314.666505000787,
+      "stats": {
+        "VmRSS": "481220 kB",
+        "VmHWM": "576380 kB",
+        "Threads": "17"
+      },
+      "idleCpuPercentOneCore": 6.6662200565898635,
+      "pid": 125616
+    },
+    {
+      "run": 1,
+      "readyMs": 3150.7024169986835,
+      "stats": {
+        "VmRSS": "405876 kB",
+        "VmHWM": "490932 kB",
+        "Threads": "17"
+      },
+      "idleCpuPercentOneCore": 7.332726977916229,
+      "pid": 125731
+    },
+    {
+      "run": 2,
+      "readyMs": 3328.1337459993665,
+      "stats": {
+        "VmRSS": "403592 kB",
+        "VmHWM": "472528 kB",
+        "Threads": "17"
+      },
+      "idleCpuPercentOneCore": 6.999534125005086,
+      "pid": 125793
+    }
+  ]
+}

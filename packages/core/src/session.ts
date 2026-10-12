@@ -1,3 +1,4 @@
+import { SessionAgent } from "./session/agent"
 export * as SessionV2 from "./session"
 export * from "./session/schema"
 
@@ -216,6 +217,7 @@ const layer = Layer.effect(
           .onConflictDoNothing()
           .run()
           .pipe(Effect.orDie)
+        const prepared = yield* Effect.promise(() => SessionAgent.prepare(input.agent))
         const now = Date.now()
         const info = SessionV1.SessionInfo.make({
           id: sessionID,
@@ -226,7 +228,8 @@ const layer = Layer.effect(
           path: path.relative(project.directory, input.location.directory).replaceAll("\\", "/"),
           workspaceID: input.location.workspaceID ? WorkspaceV2.ID.make(input.location.workspaceID) : undefined,
           title: `New session - ${new Date(now).toISOString()}`,
-          agent: input.agent,
+          agent: prepared.agent,
+          metadata: prepared.pin ? { gammaAgent: prepared.pin } : undefined,
           model: input.model
             ? {
                 id: ModelV2.ID.make(input.model.id),
@@ -392,12 +395,8 @@ const layer = Layer.effect(
       }),
       switchAgent: Effect.fn("V2Session.switchAgent")(function* (input) {
         yield* result.get(input.sessionID)
-        yield* events.publish(SessionEvent.AgentSwitched, {
-          sessionID: input.sessionID,
-          messageID: SessionMessage.ID.create(),
-          timestamp: yield* DateTime.now,
-          agent: input.agent,
-        })
+        const binding = yield* SessionAgent.load(input.sessionID).pipe(Effect.provideService(Database.Service, { db }))
+        SessionAgent.assert(binding, input.agent)
       }),
       switchModel: Effect.fn("V2Session.switchModel")(function* (input) {
         const session = yield* result.get(input.sessionID)

@@ -74,13 +74,13 @@ export type HomeSessionsViewProps = {
 export function HomeSessionsView(props: HomeSessionsViewProps) {
   return (
     <section
-      data-component="oreshnik-home-sessions"
+      data-component="gamma-home-sessions"
       ref={props.onSetHoverTarget}
       class="min-h-0 min-w-0 flex-1 flex flex-col"
       aria-label={props.language.t("sidebar.project.recentSessions")}
     >
       <div class="sticky top-0 z-30 shrink-0 bg-v2-background-bg-base pb-3 pt-6 lg:pt-12" onWheel={props.onWheel}>
-        <h1 class="oreshnik-home-heading">{props.language.t("session.new.title")}</h1>
+        <h1 class="gamma-home-heading">{props.language.t("session.new.title")}</h1>
         <HomeSessionSearch {...props} />
         <Suspense>
           <Show when={props.groups().length > 0 && props.canCreateSession()}>

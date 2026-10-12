@@ -194,4 +194,8 @@ export const dict: Record<string, string> = {
   "ui.question.multiHint": "Chọn tất cả các câu trả lời phù hợp",
   "ui.question.singleHint": "Chọn một câu trả lời",
   "ui.question.custom.placeholder": "Nhập câu trả lời của bạn...",
+  // Explicit English fallback pending locale review.
+  "ui.sessionTurn.status.waitingProvider": "Waiting for provider",
+  "ui.sessionTurn.status.generating": "Model is generating a response",
+  "ui.sessionTurn.error.provider": "Provider error. You can send your message again.",
 }

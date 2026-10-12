@@ -6,7 +6,7 @@ import { TabsInfoPopup } from "@/components/help-button"
 import { Titlebar, type TitlebarUpdate } from "@/components/titlebar"
 import { usePlatform } from "@/context/platform"
 import { setV2Toast, ToastRegion } from "@/utils/toast"
-import { OreshnikShell, OreshnikSidebar } from "@/components/oreshnik-shell"
+import { GammaShell, GammaSidebar } from "@/components/gamma-shell"
 
 import { useLayout } from "@/context/layout"
 import { useLanguage } from "@/context/language"
@@ -33,11 +33,11 @@ export default function NewLayout(props: ParentProps) {
   }
 
   return (
-    <OreshnikShell.provider>
+    <GammaShell.provider>
       <div
-        data-oreshnik-shell=""
+        data-gamma-shell=""
         data-sidebar-open={layout.mobileSidebar.opened()}
-        data-oreshnik-web={platform.platform === "web" ? "" : undefined}
+        data-gamma-web={platform.platform === "web" ? "" : undefined}
         class="relative bg-v2-background-bg-deep flex-1 min-h-0 min-w-0 flex flex-col select-none [&_input]:select-text [&_textarea]:select-text [&_[contenteditable]]:select-text"
         style={{
           "padding-top": "env(safe-area-inset-top, 0px)",
@@ -45,24 +45,24 @@ export default function NewLayout(props: ParentProps) {
         }}
       >
         <IconButtonV2
-          class="oreshnik-sidebar-toggle"
+          class="gamma-sidebar-toggle"
           variant="ghost-muted"
           size="large"
           icon={<Icon name="menu" />}
           aria-label={language.t("command.sidebar.toggle")}
           aria-expanded={layout.mobileSidebar.opened()}
-          aria-controls="oreshnik-navigation"
+          aria-controls="gamma-navigation"
           onClick={layout.mobileSidebar.toggle}
         />
         <Show when={layout.mobileSidebar.opened()}>
           <button
-            class="oreshnik-sidebar-backdrop"
+            class="gamma-sidebar-backdrop"
             aria-label={language.t("command.sidebar.toggle")}
             onClick={layout.mobileSidebar.toggle}
           />
         </Show>
-        <div id="oreshnik-navigation" class="oreshnik-navigation">
-          <OreshnikSidebar tabsMount={(element) => setState("tabsMount", element)} />
+        <div id="gamma-navigation" class="gamma-navigation">
+          <GammaSidebar tabsMount={(element) => setState("tabsMount", element)} />
         </div>
         <Titlebar
           newChat={() => command.trigger("product.new")}
@@ -77,10 +77,10 @@ export default function NewLayout(props: ParentProps) {
         <main class="flex-1 min-h-0 min-w-0 overflow-x-hidden flex flex-col items-start contain-strict">
           <Suspense>{props.children}</Suspense>
         </main>
-        <div data-slot="oreshnik-debug">{import.meta.env.DEV && state.debugTools && <DebugBar inline />}</div>
+        <div data-slot="gamma-debug">{import.meta.env.DEV && state.debugTools && <DebugBar inline />}</div>
         <TabsInfoPopup />
         <ToastRegion v2 />
       </div>
-    </OreshnikShell.provider>
+    </GammaShell.provider>
   )
 }

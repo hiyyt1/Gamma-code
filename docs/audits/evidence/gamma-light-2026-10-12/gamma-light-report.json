@@ -1,0 +1,1086 @@
+{
+  "config": {
+    "configFile": "/home/nikita/menti/mvp_platform/packages/app/e2e/gamma-light/playwright.config.ts",
+    "rootDir": "/home/nikita/menti/mvp_platform/packages/app/e2e/gamma-light",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/tmp/gamma-light-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/home/nikita/menti/mvp_platform/packages/app/e2e/gamma-light",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "line",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "/tmp/gamma-light-report.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.59.1",
+    "workers": 1,
+    "webServer": {
+      "command": "bun run serve -- --host 127.0.0.1 --port 4518 --strictPort --outDir /tmp/gamma-light-build",
+      "url": "http://127.0.0.1:4518",
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "appearance.spec.ts",
+      "file": "appearance.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "1440 clean-light: pages and interactions",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4649,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T14:24:45.002Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50IjoiR2FtbWEgTGlnaHTQntGC0LrRgNGL0YLRjCIsInJhdGlvIjoxNy45Mjc4NDAyNTMwMjc2fQ=="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0KLQtdC60YHRgiDQvtGC0LLQtdGC0LAg0LTQvtC70LbQtdC9INCx0YvRgtGMINCy0LjQtNC40LzRi9C8LiIsInJhdGlvIjoxMi42MTI1OTk5MzM3MjYxNDN9"
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0J/RgNC+0LLQtdGA0LrQsCDQstCy0L7QtNCwIiwicmF0aW8iOjE4LjA5NjIxMTk3OTY1NTcyNH0="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0J3QvtCy0YvQuSDRh9Cw0YIiLCJyYXRpbyI6MTguMDk2MjExOTc5NjU1NzI0fQ=="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0J3QvtCy0YvQuSDRh9Cw0YIiLCJyYXRpbyI6MTguMDk2MjExOTc5NjU1NzI0fQ=="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0KHQvtC30LTQsNGC0Ywg0L/RgNC+0LXQutGCIiwicmF0aW8iOjE4LjA5NjIxMTk3OTY1NTcyNH0="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0JjRgdC/0L7Qu9GM0LfQvtCy0LDRgtGM4oaSIiwicmF0aW8iOjQuODAyNDUzNTg5OTIxODUzfQ=="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0J3QsNGH0L3QuNGC0LUg0YHQstC+0Y4g0LjRgdGC0L7RgNC40Y4g0LfQvdCw0L3QuNC5IiwicmF0aW8iOjE1LjI1OTYyNzI3MTE5OTgyNH0="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50IjoiIiwicmF0aW8iOjEyLjA4MzYyNTM5MzU5NTd9"
+                    },
+                    {
+                      "name": "console",
+                      "contentType": "application/json",
+                      "body": "W10="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "800c8f995c061dbbf429-b38a27909e64f5c569b4",
+          "file": "appearance.spec.ts",
+          "line": 48,
+          "column": 5
+        },
+        {
+          "title": "1440 clean-dark: pages and interactions",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4543,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T14:24:49.694Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50IjoiR2FtbWEgTGlnaHTQntGC0LrRgNGL0YLRjCIsInJhdGlvIjoxNy45Mjc4NDAyNTMwMjc2fQ=="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0KLQtdC60YHRgiDQvtGC0LLQtdGC0LAg0LTQvtC70LbQtdC9INCx0YvRgtGMINCy0LjQtNC40LzRi9C8LiIsInJhdGlvIjoxMi42MTI1OTk5MzM3MjYxNDN9"
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0J/RgNC+0LLQtdGA0LrQsCDQstCy0L7QtNCwIiwicmF0aW8iOjE4LjA5NjIxMTk3OTY1NTcyNH0="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0J3QvtCy0YvQuSDRh9Cw0YIiLCJyYXRpbyI6MTguMDk2MjExOTc5NjU1NzI0fQ=="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0J3QvtCy0YvQuSDRh9Cw0YIiLCJyYXRpbyI6MTguMDk2MjExOTc5NjU1NzI0fQ=="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0KHQvtC30LTQsNGC0Ywg0L/RgNC+0LXQutGCIiwicmF0aW8iOjE4LjA5NjIxMTk3OTY1NTcyNH0="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0JjRgdC/0L7Qu9GM0LfQvtCy0LDRgtGM4oaSIiwicmF0aW8iOjQuODAyNDUzNTg5OTIxODUzfQ=="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0J3QsNGH0L3QuNGC0LUg0YHQstC+0Y4g0LjRgdGC0L7RgNC40Y4g0LfQvdCw0L3QuNC5IiwicmF0aW8iOjE1LjI1OTYyNzI3MTE5OTgyNH0="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50IjoiIiwicmF0aW8iOjEyLjA4MzYyNTM5MzU5NTd9"
+                    },
+                    {
+                      "name": "console",
+                      "contentType": "application/json",
+                      "body": "W10="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "800c8f995c061dbbf429-34de001b20c449976670",
+          "file": "appearance.spec.ts",
+          "line": 48,
+          "column": 5
+        },
+        {
+          "title": "1440 saved-dark: pages and interactions",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4494,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T14:24:54.242Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50IjoiR2FtbWEgTGlnaHTQntGC0LrRgNGL0YLRjCIsInJhdGlvIjoxNy45Mjc4NDAyNTMwMjc2fQ=="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0KLQtdC60YHRgiDQvtGC0LLQtdGC0LAg0LTQvtC70LbQtdC9INCx0YvRgtGMINCy0LjQtNC40LzRi9C8LiIsInJhdGlvIjoxMi42MTI1OTk5MzM3MjYxNDN9"
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0J/RgNC+0LLQtdGA0LrQsCDQstCy0L7QtNCwIiwicmF0aW8iOjE4LjA5NjIxMTk3OTY1NTcyNH0="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0J3QvtCy0YvQuSDRh9Cw0YIiLCJyYXRpbyI6MTguMDk2MjExOTc5NjU1NzI0fQ=="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0J3QvtCy0YvQuSDRh9Cw0YIiLCJyYXRpbyI6MTguMDk2MjExOTc5NjU1NzI0fQ=="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0KHQvtC30LTQsNGC0Ywg0L/RgNC+0LXQutGCIiwicmF0aW8iOjE4LjA5NjIxMTk3OTY1NTcyNH0="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0JjRgdC/0L7Qu9GM0LfQvtCy0LDRgtGM4oaSIiwicmF0aW8iOjQuODAyNDUzNTg5OTIxODUzfQ=="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0J3QsNGH0L3QuNGC0LUg0YHQstC+0Y4g0LjRgdGC0L7RgNC40Y4g0LfQvdCw0L3QuNC5IiwicmF0aW8iOjE1LjI1OTYyNzI3MTE5OTgyNH0="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50IjoiIiwicmF0aW8iOjEyLjA4MzYyNTM5MzU5NTd9"
+                    },
+                    {
+                      "name": "console",
+                      "contentType": "application/json",
+                      "body": "W10="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "800c8f995c061dbbf429-390bb99c52038498b2c8",
+          "file": "appearance.spec.ts",
+          "line": 48,
+          "column": 5
+        },
+        {
+          "title": "1440 saved-system: pages and interactions",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4563,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T14:24:58.742Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50IjoiR2FtbWEgTGlnaHTQntGC0LrRgNGL0YLRjCIsInJhdGlvIjoxNy45Mjc4NDAyNTMwMjc2fQ=="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0KLQtdC60YHRgiDQvtGC0LLQtdGC0LAg0LTQvtC70LbQtdC9INCx0YvRgtGMINCy0LjQtNC40LzRi9C8LiIsInJhdGlvIjoxMi42MTI1OTk5MzM3MjYxNDN9"
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0J/RgNC+0LLQtdGA0LrQsCDQstCy0L7QtNCwIiwicmF0aW8iOjE4LjA5NjIxMTk3OTY1NTcyNH0="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0J3QvtCy0YvQuSDRh9Cw0YIiLCJyYXRpbyI6MTguMDk2MjExOTc5NjU1NzI0fQ=="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0J3QvtCy0YvQuSDRh9Cw0YIiLCJyYXRpbyI6MTguMDk2MjExOTc5NjU1NzI0fQ=="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0KHQvtC30LTQsNGC0Ywg0L/RgNC+0LXQutGCIiwicmF0aW8iOjE4LjA5NjIxMTk3OTY1NTcyNH0="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0JjRgdC/0L7Qu9GM0LfQvtCy0LDRgtGM4oaSIiwicmF0aW8iOjQuODAyNDUzNTg5OTIxODUzfQ=="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0J3QsNGH0L3QuNGC0LUg0YHQstC+0Y4g0LjRgdGC0L7RgNC40Y4g0LfQvdCw0L3QuNC5IiwicmF0aW8iOjE1LjI1OTYyNzI3MTE5OTgyNH0="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50IjoiIiwicmF0aW8iOjEyLjA4MzYyNTM5MzU5NTd9"
+                    },
+                    {
+                      "name": "console",
+                      "contentType": "application/json",
+                      "body": "W10="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "800c8f995c061dbbf429-f5b1f721c71ad45b4c0a",
+          "file": "appearance.spec.ts",
+          "line": 48,
+          "column": 5
+        },
+        {
+          "title": "1440 stale-cache: pages and interactions",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4461,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T14:25:03.311Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50IjoiR2FtbWEgTGlnaHTQntGC0LrRgNGL0YLRjCIsInJhdGlvIjoxNy45Mjc4NDAyNTMwMjc2fQ=="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0KLQtdC60YHRgiDQvtGC0LLQtdGC0LAg0LTQvtC70LbQtdC9INCx0YvRgtGMINCy0LjQtNC40LzRi9C8LiIsInJhdGlvIjoxMi42MTI1OTk5MzM3MjYxNDN9"
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0J/RgNC+0LLQtdGA0LrQsCDQstCy0L7QtNCwIiwicmF0aW8iOjE4LjA5NjIxMTk3OTY1NTcyNH0="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0J3QvtCy0YvQuSDRh9Cw0YIiLCJyYXRpbyI6MTguMDk2MjExOTc5NjU1NzI0fQ=="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0J3QvtCy0YvQuSDRh9Cw0YIiLCJyYXRpbyI6MTguMDk2MjExOTc5NjU1NzI0fQ=="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0KHQvtC30LTQsNGC0Ywg0L/RgNC+0LXQutGCIiwicmF0aW8iOjE4LjA5NjIxMTk3OTY1NTcyNH0="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0JjRgdC/0L7Qu9GM0LfQvtCy0LDRgtGM4oaSIiwicmF0aW8iOjQuODAyNDUzNTg5OTIxODUzfQ=="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0J3QsNGH0L3QuNGC0LUg0YHQstC+0Y4g0LjRgdGC0L7RgNC40Y4g0LfQvdCw0L3QuNC5IiwicmF0aW8iOjE1LjI1OTYyNzI3MTE5OTgyNH0="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50IjoiIiwicmF0aW8iOjEyLjA4MzYyNTM5MzU5NTd9"
+                    },
+                    {
+                      "name": "console",
+                      "contentType": "application/json",
+                      "body": "W10="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "800c8f995c061dbbf429-7d7fec8255c8e22b4471",
+          "file": "appearance.spec.ts",
+          "line": 48,
+          "column": 5
+        },
+        {
+          "title": "390 clean-light: pages and interactions",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2189,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T14:25:07.777Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50IjoiR2FtbWEgTGlnaHTQntGC0LrRgNGL0YLRjCIsInJhdGlvIjoxNy45Mjc4NDAyNTMwMjc2fQ=="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0KLQtdC60YHRgiDQvtGC0LLQtdGC0LAg0LTQvtC70LbQtdC9INCx0YvRgtGMINCy0LjQtNC40LzRi9C8LiIsInJhdGlvIjoxMi42MTI1OTk5MzM3MjYxNDN9"
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0J/RgNC+0LLQtdGA0LrQsCDQstCy0L7QtNCwIiwicmF0aW8iOjE4LjA5NjIxMTk3OTY1NTcyNH0="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0JjRgdC/0L7Qu9GM0LfQvtCy0LDRgtGM4oaSIiwicmF0aW8iOjQuODAyNDUzNTg5OTIxODUzfQ=="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0J3QsNGH0L3QuNGC0LUg0YHQstC+0Y4g0LjRgdGC0L7RgNC40Y4g0LfQvdCw0L3QuNC5IiwicmF0aW8iOjE1LjI1OTYyNzI3MTE5OTgyNH0="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50IjoiIiwicmF0aW8iOjEyLjA4MzYyNTM5MzU5NTd9"
+                    },
+                    {
+                      "name": "console",
+                      "contentType": "application/json",
+                      "body": "W10="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "800c8f995c061dbbf429-9ca2853f3c78e6d03f91",
+          "file": "appearance.spec.ts",
+          "line": 48,
+          "column": 5
+        },
+        {
+          "title": "390 clean-dark: pages and interactions",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2260,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T14:25:09.972Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50IjoiR2FtbWEgTGlnaHTQntGC0LrRgNGL0YLRjCIsInJhdGlvIjoxNy45Mjc4NDAyNTMwMjc2fQ=="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0KLQtdC60YHRgiDQvtGC0LLQtdGC0LAg0LTQvtC70LbQtdC9INCx0YvRgtGMINCy0LjQtNC40LzRi9C8LiIsInJhdGlvIjoxMi42MTI1OTk5MzM3MjYxNDN9"
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0J/RgNC+0LLQtdGA0LrQsCDQstCy0L7QtNCwIiwicmF0aW8iOjE4LjA5NjIxMTk3OTY1NTcyNH0="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0JjRgdC/0L7Qu9GM0LfQvtCy0LDRgtGM4oaSIiwicmF0aW8iOjQuODAyNDUzNTg5OTIxODUzfQ=="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0J3QsNGH0L3QuNGC0LUg0YHQstC+0Y4g0LjRgdGC0L7RgNC40Y4g0LfQvdCw0L3QuNC5IiwicmF0aW8iOjE1LjI1OTYyNzI3MTE5OTgyNH0="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50IjoiIiwicmF0aW8iOjEyLjA4MzYyNTM5MzU5NTd9"
+                    },
+                    {
+                      "name": "console",
+                      "contentType": "application/json",
+                      "body": "W10="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "800c8f995c061dbbf429-f9f7933c97600a46ea0e",
+          "file": "appearance.spec.ts",
+          "line": 48,
+          "column": 5
+        },
+        {
+          "title": "390 saved-dark: pages and interactions",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2197,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T14:25:12.238Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50IjoiR2FtbWEgTGlnaHTQntGC0LrRgNGL0YLRjCIsInJhdGlvIjoxNy45Mjc4NDAyNTMwMjc2fQ=="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0KLQtdC60YHRgiDQvtGC0LLQtdGC0LAg0LTQvtC70LbQtdC9INCx0YvRgtGMINCy0LjQtNC40LzRi9C8LiIsInJhdGlvIjoxMi42MTI1OTk5MzM3MjYxNDN9"
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0J/RgNC+0LLQtdGA0LrQsCDQstCy0L7QtNCwIiwicmF0aW8iOjE4LjA5NjIxMTk3OTY1NTcyNH0="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0JjRgdC/0L7Qu9GM0LfQvtCy0LDRgtGM4oaSIiwicmF0aW8iOjQuODAyNDUzNTg5OTIxODUzfQ=="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0J3QsNGH0L3QuNGC0LUg0YHQstC+0Y4g0LjRgdGC0L7RgNC40Y4g0LfQvdCw0L3QuNC5IiwicmF0aW8iOjE1LjI1OTYyNzI3MTE5OTgyNH0="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50IjoiIiwicmF0aW8iOjEyLjA4MzYyNTM5MzU5NTd9"
+                    },
+                    {
+                      "name": "console",
+                      "contentType": "application/json",
+                      "body": "W10="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "800c8f995c061dbbf429-4a2c21f035fe8c3bbd1d",
+          "file": "appearance.spec.ts",
+          "line": 48,
+          "column": 5
+        },
+        {
+          "title": "390 saved-system: pages and interactions",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2242,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T14:25:14.440Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50IjoiR2FtbWEgTGlnaHTQntGC0LrRgNGL0YLRjCIsInJhdGlvIjoxNy45Mjc4NDAyNTMwMjc2fQ=="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0KLQtdC60YHRgiDQvtGC0LLQtdGC0LAg0LTQvtC70LbQtdC9INCx0YvRgtGMINCy0LjQtNC40LzRi9C8LiIsInJhdGlvIjoxMi42MTI1OTk5MzM3MjYxNDN9"
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0J/RgNC+0LLQtdGA0LrQsCDQstCy0L7QtNCwIiwicmF0aW8iOjE4LjA5NjIxMTk3OTY1NTcyNH0="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0JjRgdC/0L7Qu9GM0LfQvtCy0LDRgtGM4oaSIiwicmF0aW8iOjQuODAyNDUzNTg5OTIxODUzfQ=="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0J3QsNGH0L3QuNGC0LUg0YHQstC+0Y4g0LjRgdGC0L7RgNC40Y4g0LfQvdCw0L3QuNC5IiwicmF0aW8iOjE1LjI1OTYyNzI3MTE5OTgyNH0="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50IjoiIiwicmF0aW8iOjEyLjA4MzYyNTM5MzU5NTd9"
+                    },
+                    {
+                      "name": "console",
+                      "contentType": "application/json",
+                      "body": "W10="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "800c8f995c061dbbf429-a2ac2b8aa26669c73996",
+          "file": "appearance.spec.ts",
+          "line": 48,
+          "column": 5
+        },
+        {
+          "title": "390 stale-cache: pages and interactions",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2212,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T14:25:16.687Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50IjoiR2FtbWEgTGlnaHTQntGC0LrRgNGL0YLRjCIsInJhdGlvIjoxNy45Mjc4NDAyNTMwMjc2fQ=="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0KLQtdC60YHRgiDQvtGC0LLQtdGC0LAg0LTQvtC70LbQtdC9INCx0YvRgtGMINCy0LjQtNC40LzRi9C8LiIsInJhdGlvIjoxMi42MTI1OTk5MzM3MjYxNDN9"
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0J/RgNC+0LLQtdGA0LrQsCDQstCy0L7QtNCwIiwicmF0aW8iOjE4LjA5NjIxMTk3OTY1NTcyNH0="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0JjRgdC/0L7Qu9GM0LfQvtCy0LDRgtGM4oaSIiwicmF0aW8iOjQuODAyNDUzNTg5OTIxODUzfQ=="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50Ijoi0J3QsNGH0L3QuNGC0LUg0YHQstC+0Y4g0LjRgdGC0L7RgNC40Y4g0LfQvdCw0L3QuNC5IiwicmF0aW8iOjE1LjI1OTYyNzI3MTE5OTgyNH0="
+                    },
+                    {
+                      "name": "contrast",
+                      "contentType": "application/json",
+                      "body": "eyJlbGVtZW50IjoiIiwicmF0aW8iOjEyLjA4MzYyNTM5MzU5NTd9"
+                    },
+                    {
+                      "name": "console",
+                      "contentType": "application/json",
+                      "body": "W10="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "800c8f995c061dbbf429-1a8be8762d808c95fbb4",
+          "file": "appearance.spec.ts",
+          "line": 48,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "loading.spec.ts",
+      "file": "loading.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "file loading preserves controls at 1440",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 828,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T14:25:18.911Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1be41964e0574414b0cd-7b7a61da2bc65b645e84",
+          "file": "loading.spec.ts",
+          "line": 7,
+          "column": 3
+        },
+        {
+          "title": "file loading preserves controls at 390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 782,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T14:25:19.744Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1be41964e0574414b0cd-24b25568812a0d3e571e",
+          "file": "loading.spec.ts",
+          "line": 7,
+          "column": 3
+        }
+      ]
+    },
+    {
+      "title": "mobile.spec.ts",
+      "file": "mobile.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "mobile file panel, navigation, project form and settings",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1919,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T14:25:20.536Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e79c838550b25e92508e-153ab49adbd67a13968c",
+          "file": "mobile.spec.ts",
+          "line": 5,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "startup.spec.ts",
+      "file": "startup.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "light before module execution; blocked storage=false",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 90,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T14:25:22.466Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9d5cd95b3f2ad7194fa4-86460facc22453d74fcb",
+          "file": "startup.spec.ts",
+          "line": 7,
+          "column": 3
+        },
+        {
+          "title": "light before module execution; blocked storage=true",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 96,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T14:25:22.561Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9d5cd95b3f2ad7194fa4-681422814757cbac8f2d",
+          "file": "startup.spec.ts",
+          "line": 7,
+          "column": 3
+        },
+        {
+          "title": "older tab cannot switch the mounted application back to dark",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 762,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T14:25:22.661Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9d5cd95b3f2ad7194fa4-54addc59fcff71ec9e97",
+          "file": "startup.spec.ts",
+          "line": 35,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-12T14:24:44.208Z",
+    "duration": 39256.389,
+    "expected": 16,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

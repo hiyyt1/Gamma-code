@@ -34,6 +34,7 @@ export async function mockOpenCodeServer(page: Page, config: MockServerConfig) {
   const cursors = new Map<string, string>()
   let nextCursor = 0
   const staticRoutes: Record<string, unknown> = {
+    "/auth/session": { username: "gamma-test" },
     "/path": {
       state: config.directory,
       config: config.directory,

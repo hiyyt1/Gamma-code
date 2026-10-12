@@ -1,8 +1,8 @@
 import { PRODUCT_ENGLISH } from "./product"
 export const dict = {
   ...PRODUCT_ENGLISH,
-  "app.name": "Oreshnik",
-  "desktop.menu.app": "Oreshnik",
+  "app.name": "Gamma",
+  "desktop.menu.app": "Gamma",
   "desktop.menu.file": "Datoteka",
   "desktop.menu.edit": "Uredi",
   "desktop.menu.view": "Prikaz",
@@ -244,7 +244,7 @@ export const dict = {
   "provider.connect.status.waiting": "Čekanje na autorizaciju...",
   "provider.connect.status.failed": "Autorizacija nije uspjela: {{error}}",
   "provider.connect.apiKey.description":
-    "Unesi svoj {{provider}} API ključ da povežeš račun i koristiš {{provider}} modele u Oreshnik-u.",
+    "Unesi svoj {{provider}} API ključ da povežeš račun i koristiš {{provider}} modele u Gamma-u.",
   "provider.connect.apiKey.label": "{{provider}} API ključ",
   "provider.connect.apiKey.placeholder": "API ključ",
   "provider.connect.apiKey.required": "API ključ je obavezan",
@@ -258,7 +258,7 @@ export const dict = {
   "provider.connect.oauth.code.visit.prefix": "Posjeti ",
   "provider.connect.oauth.code.visit.link": "ovaj link",
   "provider.connect.oauth.code.visit.suffix":
-    " da preuzmeš autorizacijski kod i povežeš račun te koristiš {{provider}} modele u Oreshnik-u.",
+    " da preuzmeš autorizacijski kod i povežeš račun te koristiš {{provider}} modele u Gamma-u.",
   "provider.connect.oauth.code.label": "{{method}} autorizacijski kod",
   "provider.connect.oauth.code.placeholder": "Autorizacijski kod",
   "provider.connect.oauth.code.required": "Autorizacijski kod je obavezan",
@@ -266,7 +266,7 @@ export const dict = {
   "provider.connect.oauth.auto.visit.prefix": "Posjeti ",
   "provider.connect.oauth.auto.visit.link": "ovaj link",
   "provider.connect.oauth.auto.visit.suffix":
-    " i unesi kod ispod da povežeš račun i koristiš {{provider}} modele u Oreshnik-u.",
+    " i unesi kod ispod da povežeš račun i koristiš {{provider}} modele u Gamma-u.",
   "provider.connect.oauth.auto.confirmationCode": "Kod za potvrdu",
   "provider.connect.toast.connected.title": "{{provider}} povezan",
   "provider.connect.toast.connected.description": "{{provider}} modeli su sada dostupni za korištenje.",
@@ -548,7 +548,7 @@ export const dict = {
   "help.tabs.title": "Predstavljamo kartice",
   "help.tabs.description": "Organizuj svoj rad i aktivne sesije pomoću kartica",
   "help.tabs.date": "14. juli",
-  "help.tabs.introduction": "Oreshnik Desktop sada je organizovan oko kartica.",
+  "help.tabs.introduction": "Gamma Desktop sada je organizovan oko kartica.",
   "help.tabs.sessions":
     "Započni novu sesiju u kartici ili otvori postojeću sesiju iz bilo kojeg projekta. Otvori novu karticu kada započinješ nešto novo, a zatvori je kada završiš.",
   "help.tabs.organize":
@@ -673,7 +673,7 @@ export const dict = {
   "toast.session.listFailed.title": "Neuspjelo učitavanje sesija za {{project}}",
 
   "toast.update.title": "Dostupno ažuriranje",
-  "toast.update.description": "Nova verzija Oreshnik-a ({{version}}) je dostupna za instalaciju.",
+  "toast.update.description": "Nova verzija Gamma-a ({{version}}) je dostupna za instalaciju.",
   "toast.update.action.installRestart": "Instaliraj i ponovo pokreni",
   "toast.update.action.notYet": "Ne još",
 
@@ -895,7 +895,7 @@ export const dict = {
   "sidebar.empty.title": "Nema otvorenih projekata",
   "sidebar.empty.description": "Otvori projekat za početak",
 
-  "app.name.desktop": "Oreshnik Desktop",
+  "app.name.desktop": "Gamma Desktop",
 
   "settings.section.desktop": "Desktop",
   "settings.section.server": "Server",
@@ -914,18 +914,18 @@ export const dict = {
   "settings.general.section.display": "Prikaz",
 
   "settings.general.row.language.title": "Jezik",
-  "settings.general.row.language.description": "Promijeni jezik prikaza u Oreshnik-u",
+  "settings.general.row.language.description": "Promijeni jezik prikaza u Gamma-u",
   "settings.general.row.shell.title": "Shell terminala",
   "settings.general.row.shell.description":
     "Odaberi shell koji se koristi za terminal. Kompatibilni shellovi koriste se i za pozive alata agenta.",
   "settings.general.row.shell.autoDefault": "Automatski (podrazumijevano)",
   "settings.general.row.shell.terminalOnly": "samo terminal",
   "settings.general.row.appearance.title": "Izgled",
-  "settings.general.row.appearance.description": "Prilagodi kako Oreshnik izgleda na tvom uređaju",
+  "settings.general.row.appearance.description": "Prilagodi kako Gamma izgleda na tvom uređaju",
   "settings.general.row.colorScheme.title": "Šema boja",
-  "settings.general.row.colorScheme.description": "Odaberi da li Oreshnik prati sistemsku, svijetlu ili tamnu temu",
+  "settings.general.row.colorScheme.description": "Odaberi da li Gamma prati sistemsku, svijetlu ili tamnu temu",
   "settings.general.row.theme.title": "Tema",
-  "settings.general.row.theme.description": "Prilagodi temu Oreshnik-a.",
+  "settings.general.row.theme.description": "Prilagodi temu Gamma-a.",
   "settings.general.row.font.title": "Font za kod",
   "settings.general.row.font.description": "Prilagodi font koji se koristi u blokovima koda",
   "settings.general.row.terminalFont.title": "Font terminala",
@@ -981,7 +981,7 @@ export const dict = {
   "settings.general.row.releaseNotes.description": 'Prikaži iskačuće prozore "Šta je novo" nakon ažuriranja',
 
   "settings.updates.row.startup.title": "Provjeri ažuriranja pri pokretanju",
-  "settings.updates.row.startup.description": "Automatski provjerava ažuriranja kada se Oreshnik pokrene",
+  "settings.updates.row.startup.description": "Automatski provjerava ažuriranja kada se Gamma pokrene",
   "settings.updates.row.check.title": "Provjeri ažuriranja",
   "settings.updates.row.check.description": "Ručno provjeri ažuriranja i instaliraj ako su dostupna",
   "settings.updates.action.checkNow": "Provjeri sada",
@@ -989,7 +989,7 @@ export const dict = {
   "settings.updates.action.downloading": "Preuzimanje...",
   "settings.updates.action.installing": "Instaliranje...",
   "settings.updates.toast.latest.title": "Sve je ažurno",
-  "settings.updates.toast.latest.description": "Koristiš najnoviju verziju Oreshnik-a.",
+  "settings.updates.toast.latest.description": "Koristiš najnoviju verziju Gamma-a.",
   "sound.option.none": "Nijedan",
   "sound.option.alert01": "Upozorenje 01",
   "sound.option.alert02": "Upozorenje 02",
@@ -1257,4 +1257,6 @@ export const dict = {
   "error.childStore.persistedProjectIconCreateFailed": "Nije uspjelo kreiranje trajne ikone projekta",
   "error.childStore.storeCreateFailed": "Nije uspjelo kreiranje skladišta",
   "terminal.connectionLost.abnormalClose": "WebSocket zatvoren nenormalno: {{code}}",
+  // English fallback pending locale review; retain the count placeholder.
+  "workspace.files.count.few": "{{count}} files",
 }

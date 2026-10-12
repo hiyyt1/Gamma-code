@@ -1,0 +1,22 @@
+[
+  {
+    "pid": 125793,
+    "role": "backend",
+    "cpuPercentOneCore": 0.7999713715045774,
+    "memory": [
+      "VmHWM:\t  860880 kB",
+      "VmRSS:\t  479132 kB",
+      "Threads:\t27"
+    ]
+  },
+  {
+    "pid": 125973,
+    "role": "gateway",
+    "cpuPercentOneCore": 0.19999105000052422,
+    "memory": [
+      "VmHWM:\t  122188 kB",
+      "VmRSS:\t   56444 kB",
+      "Threads:\t14"
+    ]
+  }
+]

@@ -1,0 +1,201 @@
+--- a/packages/app/src/pages/agent-market.tsx
++++ b/packages/app/src/pages/agent-market.tsx
+@@ -52,8 +52,10 @@
+     () => props.server ?? shell.home.server.focused()?.http,
+     (http) => productRequest<AgentMarket.Profile[]>(http, "agent-market/agents"),
+   )
++  // The page owns its loading/error UI. Reading a pending resource here would
++  // suspend the router transition and keep the previous page (and URL) visible.
+   const filtered = createMemo(() =>
+-    (catalog() ?? []).filter(
++    (catalog.loading || catalog.error ? [] : (catalog() ?? [])).filter(
+       (agent) =>
+         agent.type === state.type &&
+         (state.category === "all" || agent.category === state.category) &&
+--- a/packages/app/src/components/gamma-shell.tsx
++++ b/packages/app/src/components/gamma-shell.tsx
+@@ -14,7 +14,6 @@
+ import { A } from "@solidjs/router"
+ import { ProductBrand } from "./product-brand"
+ import { createEmptySessionLifecycle } from "@/utils/empty-session"
+-import { showToast } from "@/utils/toast"
+ import { productRequest } from "@/utils/product"
+ import { notifySessionTabsRemoved } from "./titlebar-session-events"
+ import { useGammaAuth } from "@/context/gamma-auth"
+@@ -93,20 +92,9 @@
+       const session = sessions.data.records().find((record) => record.session.directory === target.directory)?.session
+       setNavigation("target", undefined)
+       if (session) {
+-        const route = layout.route()
+-        // Resolve a cold target before switching workspace-scoped providers.
+-        // Otherwise their route can render before the directory is available.
+-        void home.server
+-          .context(target.server)
+-          .sync.session.lineage.resolve(session.id)
+-          .then(() => {
+-            const selected = home.selection.value()
+-            if (layout.route() !== route) return
+-            if (selected.server !== ServerConnection.key(target.server) || selected.directory !== target.directory)
+-              return
+-            sessions.session.open(session)
+-          })
+-          .catch(() => showToast({ title: projects.copy.language.t("workspace.files.projectError"), variant: "error" }))
++        // The target route resolves lineage and gates workspace providers until
++        // its directory is known. Commit navigation before that network request.
++        sessions.session.open(session)
+         return
+       }
+       home.project.openProjectNewSession(target.server, target.directory)
+--- a/packages/app/src/components/project-knowledge.tsx
++++ b/packages/app/src/components/project-knowledge.tsx
+@@ -50,6 +50,9 @@
+         })
+     },
+   )
++  // Knowledge metadata is optional to the chat. Its own loading UI must not
++  // suspend the route while these requests are pending (including on refocus).
++  const loaded = () => (catalog.loading ? undefined : catalog())
+   // Returning from a preview iframe must not suspend the page during a click.
+   const refresh = () =>
+     void startTransition(() => {
+@@ -57,12 +60,12 @@
+     })
+   window.addEventListener("focus", refresh)
+   onCleanup(() => window.removeEventListener("focus", refresh))
+-  const selected = () => props.selected ?? catalog()?.project?.spaces ?? []
++  const selected = () => props.selected ?? loaded()?.project?.spaces ?? []
+   const toggle = async (id: string, checked: boolean) => {
+     if (state.busy || props.disabled) return
+     const ids = checked ? [...new Set([...selected(), id])] : selected().filter((value) => value !== id)
+     if (props.onChange) return props.onChange(ids)
+-    const current = catalog()
++    const current = loaded()
+     if (!current?.project || current.directory !== props.directory) return
+     setState({ busy: true, error: false, pending: id })
+     await productRequest<Project[]>(props.server, "knowledge/projects", { projectID: current.project.id, spaces: ids })
+@@ -80,12 +83,12 @@
+       <p class="text-12 text-text-weak">{language.t("knowledge.project.hint")}</p>
+       <Show when={!catalog.loading} fallback={<p>{language.t("knowledge.sync.loading")}</p>}>
+         <Show
+-          when={props.onChange || catalog()?.project}
++          when={props.onChange || loaded()?.project}
+           fallback={<p class="text-12">{language.t("knowledge.project.notProduct")}</p>}
+         >
+           <div class="flex max-h-72 flex-col gap-3 overflow-y-auto">
+             <For
+-              each={catalog()?.data.data.spaces}
++              each={loaded()?.data.data.spaces}
+               fallback={<p class="text-12">{language.t("knowledge.project.empty")}</p>}
+             >
+               {(space) => (
+@@ -105,7 +108,7 @@
+                     </Show>
+                     <span class="block text-12 text-text-weak">
+                       {language.t("knowledge.project.materials", {
+-                        count: catalog()?.data.data.sources.filter((source) => source.spaceID === space.id).length ?? 0,
++                        count: loaded()?.data.data.sources.filter((source) => source.spaceID === space.id).length ?? 0,
+                       })}
+                     </span>
+                   </span>
+@@ -153,7 +156,7 @@
+           </>
+         }
+       >
+-        <Show when={(catalog()?.data.data.spaces.length ?? 0) > 6}>
++        <Show when={(loaded()?.data.data.spaces.length ?? 0) > 6}>
+           <input
+             class="gamma-knowledge-search"
+             type="search"
+@@ -166,7 +169,7 @@
+         <Show when={!catalog.loading} fallback={<p>{language.t("knowledge.sync.loading")}</p>}>
+           <div class="gamma-knowledge-options">
+             <For
+-              each={catalog()?.data.data.spaces.filter((space) =>
++              each={loaded()?.data.data.spaces.filter((space) =>
+                 space.name.toLowerCase().includes(state.query.trim().toLowerCase()),
+               )}
+               fallback={
+@@ -185,7 +188,7 @@
+                   <span>{space.name}</span>
+                   <small>
+                     {language.t("knowledge.project.materials", {
+-                      count: catalog()?.data.data.sources.filter((source) => source.spaceID === space.id).length ?? 0,
++                      count: loaded()?.data.data.sources.filter((source) => source.spaceID === space.id).length ?? 0,
+                     })}
+                   </small>
+                 </label>
+@@ -226,7 +229,7 @@
+             </section>
+           }
+         >
+-          <Show when={catalog()?.project || state.error}>
++          <Show when={loaded()?.project || state.error}>
+             <Popover
+               title={
+                 <span class="gamma-project-kb-heading">
+@@ -272,7 +275,7 @@
+               <div class="gamma-project-kb-list" aria-busy={catalog.loading || state.busy}>
+                 <Show when={!catalog.loading} fallback={<p role="status">{language.t("knowledge.sync.loading")}</p>}>
+                   <For
+-                    each={catalog()
++                    each={loaded()
+                       ?.data.data.spaces.filter((space) =>
+                         space.name.toLowerCase().includes(state.query.trim().toLowerCase()),
+                       )
+@@ -306,7 +309,7 @@
+                         <small>
+                           {language.t("knowledge.project.materials", {
+                             count:
+-                              catalog()?.data.data.sources.filter((source) => source.spaceID === space.id).length ?? 0,
++                              loaded()?.data.data.sources.filter((source) => source.spaceID === space.id).length ?? 0,
+                           })}
+                         </small>
+                         <Switch
+@@ -315,8 +318,8 @@
+                           disabled={
+                             state.busy ||
+                             props.disabled ||
+-                            !catalog()?.project ||
+-                            catalog()?.directory !== props.directory
++                            !loaded()?.project ||
++                            loaded()?.directory !== props.directory
+                           }
+                           onChange={(checked) => void toggle(space.id, checked)}
+                         >
+--- a/packages/app/src/components/prompt-agent-control.tsx
++++ b/packages/app/src/components/prompt-agent-control.tsx
+@@ -19,8 +19,11 @@
+   const name = createMemo(() => {
+     const current = props.agents.current
+     if (current === "gamma" || (!current && !props.sessionID)) return language.t("agents.standard")
++    // A display name must not hold the session's navigation transition open.
+     return (
+-      catalog()?.find((agent) => agent.id === current || `gamma-${agent.id}` === current)?.name ??
++      (catalog.loading
++        ? undefined
++        : catalog()?.find((agent) => agent.id === current || `gamma-${agent.id}` === current)?.name) ??
+       (current || language.t("agents.session.unknown"))
+     )
+   })
+--- a/packages/app/src/components/knowledge-graph.tsx
++++ b/packages/app/src/components/knowledge-graph.tsx
+@@ -611,10 +611,17 @@
+     observer?.disconnect()
+     clearInterval(timer)
+     const renderer = graph?.renderer()
++    const scene = graph?.scene()
++    graph?.pauseAnimation()
++    if (scene) scene.environment = null
++    // Dispose our textures/targets while the renderer's disposal listeners and
++    // property tables still exist; its destructor clears those tables first.
++    nodeResources.forEach((items) => items.forEach((item) => item.dispose()))
++    resources.splice(0).forEach((item) => item.dispose())
+     graph?._destructor()
+     renderer?.forceContextLoss()
+-    nodeResources.forEach((items) => items.forEach((item) => item.dispose()))
+-    resources.splice(0).forEach((item) => item.dispose())
++    // three-render-objects publishes a debug reference, even in production.
++    if (scene && Reflect.get(window, "scene") === scene) Reflect.deleteProperty(window, "scene")
+     graph = undefined
+     visuals.clear()
+     nodeResources.clear()

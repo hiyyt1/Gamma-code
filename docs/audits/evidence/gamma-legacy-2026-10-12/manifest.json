@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-12",
+  "gitHead": "768f18ffe3f35c81bbbd65ee8cae802ef53c35b9",
+  "worktree": "dirty before audit; current working tree audited, not clean HEAD",
+  "platform": "Linux-6.17.0-40-generic-x86_64-with-glibc2.39",
+  "bun": "1.3.14",
+  "node": "v20.20.0",
+  "sourceSha256": {
+    "package.json": "7312bd0ac5c5f89d561f12c8b64f6a86315df8f1a7efb4236b53464244c4e9ac",
+    "bun.lock": "d6dcd3e16e23683b34ed71404ea50f24020fdab8319887f7347f8960d69fff04",
+    "bunfig.toml": "ed50f5745fbcb845251debe79cc464a2142c62cf17a013c2a29de38bf248f158",
+    "script/dev-gamma.ts": "dbf31b3b7938c069f490cf2489459407efe5a7be16404e4ab59485ae2eddd2f8",
+    "packages/app/src/app.tsx": "936e0bc280ada68a394f72a4744f0b0a85ca0314b71558e776c0c722703df1ac",
+    "packages/app/src/entry.tsx": "feb0213dc2e5ecfdb1976ba55c5a44a9813fc4bbe1c0d9e92f743a06c3cca852",
+    "packages/app/src/context/settings.tsx": "7fdc13c864064cf90c0370fa11ed3c0730c83c36a927af25de41502b9f2e1604",
+    "packages/opencode/src/index.ts": "bddea4eb640adb6fe72193f292c1ae75526ff1bf5bc507ff7c539e4e93825dbc",
+    "packages/opencode/src/server/routes/instance/httpapi/server.ts": "cfd841e3e999e418373aeee31b1879f145caeeb24281b1492d1ef0d715aa1d1b",
+    "deploy/installer/gamma_installer.py": "dcafa782addf94e4d6476f25e0b7fe7748af4c9eacc925960d0a667a7ce73728",
+    "deploy/web.ts": "315e696bc9ac7fe8d2c4231fd5fe4f99863ce2ac145d98e73f826d182be50012",
+    "docs/audits/GAMMA_NAVIGATION_PERFORMANCE.md": "e9dd4146a7373bedaa8b2c6c1bdf65a8c841b8fcf35b65a0dcc83620a1745f99"
+  },
+  "scope": {
+    "files": 7463,
+    "source": 3547,
+    "packages": 40,
+    "edges": 20985
+  },
+  "fullStaticGraph": "/tmp/gamma-legacy-audit/inventory.json",
+  "builds": [
+    "/tmp/gamma-legacy-audit/dist",
+    "/tmp/gamma-legacy-audit/dist-prod"
+  ]
+}

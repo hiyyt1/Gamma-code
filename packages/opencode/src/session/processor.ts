@@ -1,4 +1,5 @@
 import { LayerNode } from "@opencode-ai/core/effect/layer-node"
+import { ProviderWait } from "@opencode-ai/core/session/provider-wait"
 import { PermissionV1 } from "@opencode-ai/core/v1/permission"
 import { Image } from "@/image/image"
 import { SessionV1 } from "@opencode-ai/core/v1/session"
@@ -115,10 +116,12 @@ const layer = Layer.effect(
       let aborted = false
 
       const parse = (e: unknown) =>
-        MessageV2.fromError(e, {
-          providerID: input.model.providerID,
-          aborted,
-        })
+        e instanceof ProviderWait.BudgetExceeded
+          ? new SessionV1.APIError({ message: e.message, isRetryable: false }).toObject()
+          : MessageV2.fromError(e, {
+              providerID: input.model.providerID,
+              aborted,
+            })
 
       const settleToolCall = Effect.fn("SessionProcessor.settleToolCall")(function* (toolCallID: string) {
         const done = ctx.toolcalls[toolCallID]?.done
@@ -645,6 +648,8 @@ const layer = Layer.effect(
         })
         ctx.needsCompaction = false
         ctx.shouldBreak = (yield* config.get()).experimental?.continue_loop_on_deny !== true
+        const wait = yield* ProviderWait.make(input.model.capabilities.reasoning)
+        let lastFailure: string | undefined
 
         return yield* Effect.gen(function* () {
           yield* Effect.gen(function* () {
@@ -654,19 +659,12 @@ const layer = Layer.effect(
             const stream = llm.stream(streamInput)
 
             yield* stream.pipe(
+              Stream.tap(wait.observe),
               Stream.tap((event) => handleEvent(event)),
               Stream.takeUntil(() => ctx.needsCompaction),
               Stream.runDrain,
             )
           }).pipe(
-            Effect.onInterrupt(() =>
-              Effect.gen(function* () {
-                aborted = true
-                if (!ctx.assistantMessage.error) {
-                  yield* halt(new DOMException("Aborted", "AbortError"))
-                }
-              }),
-            ),
             Effect.catchCauseIf(
               (cause) => !Cause.hasInterruptsOnly(cause),
               (cause) => Effect.fail(Cause.squash(cause)),
@@ -676,6 +674,7 @@ const layer = Layer.effect(
                 provider: input.model.providerID,
                 parse,
                 set: (info) => {
+                  lastFailure = info.message
                   return status.set(ctx.sessionID, {
                     type: "retry",
                     attempt: info.attempt,
@@ -684,6 +683,19 @@ const layer = Layer.effect(
                     next: info.next,
                   })
                 },
+              }),
+            ),
+            wait.run,
+            Effect.onInterrupt(() =>
+              Effect.gen(function* () {
+                aborted = true
+                if (!ctx.assistantMessage.error) yield* halt(new DOMException("Aborted", "AbortError"))
+              }),
+            ),
+            Effect.tapError((error) =>
+              Effect.sync(() => {
+                if (error instanceof ProviderWait.BudgetExceeded && lastFailure)
+                  error.message += `. Last provider error: ${lastFailure}`
               }),
             ),
             Effect.catch(halt),

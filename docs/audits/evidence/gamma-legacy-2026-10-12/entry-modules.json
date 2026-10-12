@@ -1,0 +1,5417 @@
+[
+  {
+    "id": "\u0000vite/modulepreload-polyfill.js",
+    "rendered": 1282,
+    "original": 1276
+  },
+  {
+    "id": "node_modules/.bun/solid-js@1.9.10/node_modules/solid-js/dist/solid.js",
+    "rendered": 38618,
+    "original": 51166
+  },
+  {
+    "id": "node_modules/.bun/solid-js@1.9.10/node_modules/solid-js/web/dist/web.js",
+    "rendered": 22937,
+    "original": 30544
+  },
+  {
+    "id": "node_modules/.bun/@sentry+core@10.36.0/node_modules/@sentry/core/build/esm/debug-build.js",
+    "rendered": 387,
+    "original": 453
+  },
+  {
+    "id": "node_modules/.bun/@sentry+core@10.36.0/node_modules/@sentry/core/build/esm/utils/worldwide.js",
+    "rendered": 167,
+    "original": 230
+  },
+  {
+    "id": "node_modules/.bun/@sentry+core@10.36.0/node_modules/@sentry/core/build/esm/utils/version.js",
+    "rendered": 77,
+    "original": 139
+  },
+  {
+    "id": "node_modules/.bun/@sentry+core@10.36.0/node_modules/@sentry/core/build/esm/carrier.js",
+    "rendered": 2096,
+    "original": 2301
+  },
+  {
+    "id": "node_modules/.bun/@sentry+core@10.36.0/node_modules/@sentry/core/build/esm/utils/debug-logger.js",
+    "rendered": 2093,
+    "original": 2444
+  },
+  {
+    "id": "node_modules/.bun/@sentry+core@10.36.0/node_modules/@sentry/core/build/esm/utils/is.js",
+    "rendered": 936,
+    "original": 5779
+  },
+  {
+    "id": "node_modules/.bun/@sentry+core@10.36.0/node_modules/@sentry/core/build/esm/utils/object.js",
+    "rendered": 621,
+    "original": 9061
+  },
+  {
+    "id": "node_modules/.bun/@sentry+core@10.36.0/node_modules/@sentry/core/build/esm/utils/randomSafeContext.js",
+    "rendered": 1283,
+    "original": 1440
+  },
+  {
+    "id": "node_modules/.bun/@sentry+core@10.36.0/node_modules/@sentry/core/build/esm/utils/string.js",
+    "rendered": 396,
+    "original": 4084
+  },
+  {
+    "id": "node_modules/.bun/@sentry+core@10.36.0/node_modules/@sentry/core/build/esm/utils/misc.js",
+    "rendered": 1092,
+    "original": 7765
+  },
+  {
+    "id": "node_modules/.bun/@sentry+core@10.36.0/node_modules/@sentry/core/build/esm/utils/time.js",
+    "rendered": 2601,
+    "original": 5423
+  },
+  {
+    "id": "node_modules/.bun/@sentry+core@10.36.0/node_modules/@sentry/core/build/esm/session.js",
+    "rendered": 2282,
+    "original": 5084
+  },
+  {
+    "id": "node_modules/.bun/@sentry+core@10.36.0/node_modules/@sentry/core/build/esm/utils/merge.js",
+    "rendered": 961,
+    "original": 1011
+  },
+  {
+    "id": "node_modules/.bun/@sentry+core@10.36.0/node_modules/@sentry/core/build/esm/utils/propagationContext.js",
+    "rendered": 94,
+    "original": 331
+  },
+  {
+    "id": "node_modules/.bun/@sentry+core@10.36.0/node_modules/@sentry/core/build/esm/utils/spanOnScope.js",
+    "rendered": 640,
+    "original": 786
+  },
+  {
+    "id": "node_modules/.bun/@sentry+core@10.36.0/node_modules/@sentry/core/build/esm/scope.js",
+    "rendered": 17346,
+    "original": 17979
+  },
+  {
+    "id": "node_modules/.bun/@sentry+core@10.36.0/node_modules/@sentry/core/build/esm/defaultScopes.js",
+    "rendered": 300,
+    "original": 493
+  },
+  {
+    "id": "node_modules/.bun/@sentry+core@10.36.0/node_modules/@sentry/core/build/esm/asyncContext/stackStrategy.js",
+    "rendered": 3320,
+    "original": 3661
+  },
+  {
+    "id": "node_modules/.bun/@sentry+core@10.36.0/node_modules/@sentry/core/build/esm/asyncContext/index.js",
+    "rendered": 327,
+    "original": 870
+  },
+  {
+    "id": "node_modules/.bun/@sentry+core@10.36.0/node_modules/@sentry/core/build/esm/currentScopes.js",
+    "rendered": 299,
+    "original": 3522
+  },
+  {
+    "id": "node_modules/.bun/@sentry+core@10.36.0/node_modules/@sentry/core/build/esm/utils/prepareEvent.js",
+    "rendered": 312,
+    "original": 10363
+  },
+  {
+    "id": "node_modules/.bun/@sentry+core@10.36.0/node_modules/@sentry/core/build/esm/exports.js",
+    "rendered": 545,
+    "original": 10390
+  },
+  {
+    "id": "\u0000vite/preload-helper.js",
+    "rendered": 2015,
+    "original": 2272
+  },
+  {
+    "id": "packages/app/src/index.css",
+    "rendered": 0,
+    "original": 11518
+  },
+  {
+    "id": "packages/ui/src/context/helper.tsx",
+    "rendered": 1033,
+    "original": 1255
+  },
+  {
+    "id": "packages/ui/src/context/file.tsx",
+    "rendered": 175,
+    "original": 331
+  },
+  {
+    "id": "node_modules/.bun/@solid-primitives+utils@6.4.0+95b571dd5236cc92/node_modules/@solid-primitives/utils/dist/index.js",
+    "rendered": 2988,
+    "original": 8670
+  },
+  {
+    "id": "node_modules/.bun/@solid-primitives+event-listener@2.4.5+95b571dd5236cc92/node_modules/@solid-primitives/event-listener/dist/eventListener.js",
+    "rendered": 2118,
+    "original": 3041
+  },
+  {
+    "id": "node_modules/.bun/@solid-primitives+keyed@1.5.3+95b571dd5236cc92/node_modules/@solid-primitives/keyed/dist/index.js",
+    "rendered": 4077,
+    "original": 8079
+  },
+  {
+    "id": "node_modules/.bun/@solid-primitives+rootless@1.5.3+95b571dd5236cc92/node_modules/@solid-primitives/rootless/dist/index.js",
+    "rendered": 2199,
+    "original": 6909
+  },
+  {
+    "id": "node_modules/.bun/@solid-primitives+media@2.3.3+95b571dd5236cc92/node_modules/@solid-primitives/media/dist/index.js",
+    "rendered": 1866,
+    "original": 5209
+  },
+  {
+    "id": "node_modules/.bun/@solid-primitives+props@3.2.3+95b571dd5236cc92/node_modules/@solid-primitives/props/dist/combineProps.js",
+    "rendered": 1434,
+    "original": 4662
+  },
+  {
+    "id": "node_modules/.bun/@solid-primitives+refs@1.1.3+95b571dd5236cc92/node_modules/@solid-primitives/refs/dist/index.js",
+    "rendered": 697,
+    "original": 5331
+  },
+  {
+    "id": "node_modules/.bun/@kobalte+utils@0.9.1+95b571dd5236cc92/node_modules/@kobalte/utils/dist/index.js",
+    "rendered": 15789,
+    "original": 23703
+  },
+  {
+    "id": "node_modules/.bun/@kobalte+core@0.13.11+95b571dd5236cc92/node_modules/@kobalte/core/dist/chunk/3NI6FTA2.jsx",
+    "rendered": 2093,
+    "original": 2210
+  },
+  {
+    "id": "node_modules/.bun/@kobalte+core@0.13.11+95b571dd5236cc92/node_modules/@kobalte/core/dist/chunk/7A3GDF4Y.jsx",
+    "rendered": 6228,
+    "original": 6922
+  },
+  {
+    "id": "node_modules/.bun/@kobalte+core@0.13.11+95b571dd5236cc92/node_modules/@kobalte/core/dist/chunk/JHMNWOLY.jsx",
+    "rendered": 53,
+    "original": 2302
+  },
+  {
+    "id": "node_modules/.bun/@kobalte+core@0.13.11+95b571dd5236cc92/node_modules/@kobalte/core/dist/chunk/FBCYWU27.jsx",
+    "rendered": 3654,
+    "original": 3969
+  },
+  {
+    "id": "node_modules/.bun/@kobalte+core@0.13.11+95b571dd5236cc92/node_modules/@kobalte/core/dist/chunk/MGQGUY64.jsx",
+    "rendered": 3024,
+    "original": 3482
+  },
+  {
+    "id": "node_modules/.bun/@kobalte+core@0.13.11+95b571dd5236cc92/node_modules/@kobalte/core/dist/chunk/IGYOA2ZZ.jsx",
+    "rendered": 469,
+    "original": 769
+  },
+  {
+    "id": "node_modules/.bun/@kobalte+core@0.13.11+95b571dd5236cc92/node_modules/@kobalte/core/dist/chunk/FLVHQV4A.jsx",
+    "rendered": 383,
+    "original": 471
+  },
+  {
+    "id": "node_modules/.bun/@kobalte+core@0.13.11+95b571dd5236cc92/node_modules/@kobalte/core/dist/chunk/3VFJM5NZ.jsx",
+    "rendered": 3592,
+    "original": 4186
+  },
+  {
+    "id": "node_modules/.bun/@kobalte+core@0.13.11+95b571dd5236cc92/node_modules/@kobalte/core/dist/chunk/FN6EICGO.jsx",
+    "rendered": 956,
+    "original": 1471
+  },
+  {
+    "id": "node_modules/.bun/@kobalte+core@0.13.11+95b571dd5236cc92/node_modules/@kobalte/core/dist/chunk/E53DB7BS.jsx",
+    "rendered": 501,
+    "original": 714
+  },
+  {
+    "id": "node_modules/.bun/@kobalte+core@0.13.11+95b571dd5236cc92/node_modules/@kobalte/core/dist/chunk/OYES4GOP.jsx",
+    "rendered": 333,
+    "original": 514
+  },
+  {
+    "id": "node_modules/.bun/@kobalte+core@0.13.11+95b571dd5236cc92/node_modules/@kobalte/core/dist/chunk/5WXHJDCZ.jsx",
+    "rendered": 176,
+    "original": 191
+  },
+  {
+    "id": "node_modules/.bun/@kobalte+core@0.13.11+95b571dd5236cc92/node_modules/@kobalte/core/dist/chunk/UKTBL2JL.jsx",
+    "rendered": 2024,
+    "original": 2169
+  },
+  {
+    "id": "node_modules/.bun/@kobalte+core@0.13.11+95b571dd5236cc92/node_modules/@kobalte/core/dist/chunk/JNCCF6MP.jsx",
+    "rendered": 110,
+    "original": 202
+  },
+  {
+    "id": "node_modules/.bun/@corvu+utils@0.4.2+95b571dd5236cc92/node_modules/@corvu/utils/dist/chunk/U42ECMND.jsx",
+    "rendered": 323,
+    "original": 416
+  },
+  {
+    "id": "node_modules/.bun/@corvu+utils@0.4.2+95b571dd5236cc92/node_modules/@corvu/utils/dist/chunk/GZJAOTUE.jsx",
+    "rendered": 992,
+    "original": 1483
+  },
+  {
+    "id": "node_modules/.bun/@corvu+utils@0.4.2+95b571dd5236cc92/node_modules/@corvu/utils/dist/create/style.jsx",
+    "rendered": 1459,
+    "original": 1619
+  },
+  {
+    "id": "node_modules/.bun/@corvu+utils@0.4.2+95b571dd5236cc92/node_modules/@corvu/utils/dist/scroll/index.jsx",
+    "rendered": 1528,
+    "original": 1602
+  },
+  {
+    "id": "node_modules/.bun/solid-prevent-scroll@0.1.10+95b571dd5236cc92/node_modules/solid-prevent-scroll/dist/index.jsx",
+    "rendered": 5403,
+    "original": 5881
+  },
+  {
+    "id": "node_modules/.bun/solid-presence@0.1.8+95b571dd5236cc92/node_modules/solid-presence/dist/index.jsx",
+    "rendered": 2354,
+    "original": 2573
+  },
+  {
+    "id": "node_modules/.bun/@kobalte+core@0.13.11+95b571dd5236cc92/node_modules/@kobalte/core/dist/chunk/PLLNVYER.jsx",
+    "rendered": 9702,
+    "original": 10900
+  },
+  {
+    "id": "packages/ui/src/context/dialog.tsx",
+    "rendered": 4815,
+    "original": 5219
+  },
+  {
+    "id": "node_modules/.bun/@kobalte+core@0.13.11+95b571dd5236cc92/node_modules/@kobalte/core/dist/chunk/LR7LBJN3.jsx",
+    "rendered": 2948,
+    "original": 5775
+  },
+  {
+    "id": "packages/ui/src/i18n/en.ts",
+    "rendered": 9956,
+    "original": 10017
+  },
+  {
+    "id": "packages/ui/src/context/i18n.tsx",
+    "rendered": 1448,
+    "original": 2403
+  },
+  {
+    "id": "packages/core/src/util/encode.ts",
+    "rendered": 1283,
+    "original": 1779
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/constants.js",
+    "rendered": 1595,
+    "original": 3319
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/managers/UniversalRenderingManager.js",
+    "rendered": 497,
+    "original": 772
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/areObjectsEqual.js",
+    "rendered": 523,
+    "original": 609
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/areThemesEqual.js",
+    "rendered": 276,
+    "original": 360
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/areOptionsEqual.js",
+    "rendered": 570,
+    "original": 817
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/areSelectionsEqual.js",
+    "rendered": 273,
+    "original": 365
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/createWindowFromScrollPosition.js",
+    "rendered": 948,
+    "original": 1064
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/hast_utils.js",
+    "rendered": 1860,
+    "original": 2058
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/createGutterUtilityElement.js",
+    "rendered": 316,
+    "original": 497
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/areSelectionPointsEqual.js",
+    "rendered": 149,
+    "original": 251
+  },
+  {
+    "id": "node_modules/.bun/html-void-elements@3.0.0/node_modules/html-void-elements/index.js",
+    "rendered": 309,
+    "original": 316
+  },
+  {
+    "id": "node_modules/.bun/property-information@7.1.0/node_modules/property-information/lib/util/schema.js",
+    "rendered": 585,
+    "original": 587
+  },
+  {
+    "id": "node_modules/.bun/property-information@7.1.0/node_modules/property-information/lib/util/merge.js",
+    "rendered": 570,
+    "original": 607
+  },
+  {
+    "id": "node_modules/.bun/property-information@7.1.0/node_modules/property-information/lib/normalize.js",
+    "rendered": 320,
+    "original": 326
+  },
+  {
+    "id": "node_modules/.bun/property-information@7.1.0/node_modules/property-information/lib/util/info.js",
+    "rendered": 813,
+    "original": 769
+  },
+  {
+    "id": "node_modules/.bun/property-information@7.1.0/node_modules/property-information/lib/util/types.js",
+    "rendered": 310,
+    "original": 350
+  },
+  {
+    "id": "node_modules/.bun/property-information@7.1.0/node_modules/property-information/lib/util/defined-info.js",
+    "rendered": 1133,
+    "original": 1198
+  },
+  {
+    "id": "node_modules/.bun/property-information@7.1.0/node_modules/property-information/lib/util/create.js",
+    "rendered": 896,
+    "original": 1710
+  },
+  {
+    "id": "node_modules/.bun/property-information@7.1.0/node_modules/property-information/lib/aria.js",
+    "rendered": 1555,
+    "original": 1644
+  },
+  {
+    "id": "node_modules/.bun/property-information@7.1.0/node_modules/property-information/lib/util/case-sensitive-transform.js",
+    "rendered": 292,
+    "original": 300
+  },
+  {
+    "id": "node_modules/.bun/property-information@7.1.0/node_modules/property-information/lib/util/case-insensitive-transform.js",
+    "rendered": 289,
+    "original": 367
+  },
+  {
+    "id": "node_modules/.bun/property-information@7.1.0/node_modules/property-information/lib/html.js",
+    "rendered": 8452,
+    "original": 8649
+  },
+  {
+    "id": "node_modules/.bun/property-information@7.1.0/node_modules/property-information/lib/svg.js",
+    "rendered": 14223,
+    "original": 14350
+  },
+  {
+    "id": "node_modules/.bun/property-information@7.1.0/node_modules/property-information/lib/xlink.js",
+    "rendered": 305,
+    "original": 351
+  },
+  {
+    "id": "node_modules/.bun/property-information@7.1.0/node_modules/property-information/lib/xmlns.js",
+    "rendered": 174,
+    "original": 298
+  },
+  {
+    "id": "node_modules/.bun/property-information@7.1.0/node_modules/property-information/lib/xml.js",
+    "rendered": 189,
+    "original": 233
+  },
+  {
+    "id": "node_modules/.bun/property-information@7.1.0/node_modules/property-information/lib/find.js",
+    "rendered": 2225,
+    "original": 2344
+  },
+  {
+    "id": "node_modules/.bun/property-information@7.1.0/node_modules/property-information/index.js",
+    "rendered": 178,
+    "original": 591
+  },
+  {
+    "id": "node_modules/.bun/zwitch@2.0.4/node_modules/zwitch/index.js",
+    "rendered": 3774,
+    "original": 3767
+  },
+  {
+    "id": "node_modules/.bun/stringify-entities@4.0.4/node_modules/stringify-entities/lib/core.js",
+    "rendered": 3044,
+    "original": 3040
+  },
+  {
+    "id": "node_modules/.bun/stringify-entities@4.0.4/node_modules/stringify-entities/lib/util/to-hexadecimal.js",
+    "rendered": 430,
+    "original": 436
+  },
+  {
+    "id": "node_modules/.bun/stringify-entities@4.0.4/node_modules/stringify-entities/lib/util/to-decimal.js",
+    "rendered": 386,
+    "original": 392
+  },
+  {
+    "id": "node_modules/.bun/character-entities-legacy@3.0.0/node_modules/character-entities-legacy/index.js",
+    "rendered": 1307,
+    "original": 1314
+  },
+  {
+    "id": "node_modules/.bun/character-entities-html4@2.1.0/node_modules/character-entities-html4/index.js",
+    "rendered": 3561,
+    "original": 3568
+  },
+  {
+    "id": "node_modules/.bun/stringify-entities@4.0.4/node_modules/stringify-entities/lib/constant/dangerous.js",
+    "rendered": 281,
+    "original": 288
+  },
+  {
+    "id": "node_modules/.bun/stringify-entities@4.0.4/node_modules/stringify-entities/lib/util/to-named.js",
+    "rendered": 1124,
+    "original": 1290
+  },
+  {
+    "id": "node_modules/.bun/stringify-entities@4.0.4/node_modules/stringify-entities/lib/util/format-smart.js",
+    "rendered": 2335,
+    "original": 2468
+  },
+  {
+    "id": "node_modules/.bun/stringify-entities@4.0.4/node_modules/stringify-entities/lib/index.js",
+    "rendered": 481,
+    "original": 961
+  },
+  {
+    "id": "node_modules/.bun/hast-util-to-html@9.0.5/node_modules/hast-util-to-html/lib/handle/comment.js",
+    "rendered": 1270,
+    "original": 1328
+  },
+  {
+    "id": "node_modules/.bun/hast-util-to-html@9.0.5/node_modules/hast-util-to-html/lib/handle/doctype.js",
+    "rendered": 593,
+    "original": 601
+  },
+  {
+    "id": "node_modules/.bun/ccount@2.0.1/node_modules/ccount/index.js",
+    "rendered": 616,
+    "original": 619
+  },
+  {
+    "id": "node_modules/.bun/comma-separated-tokens@2.0.3/node_modules/comma-separated-tokens/index.js",
+    "rendered": 842,
+    "original": 1592
+  },
+  {
+    "id": "node_modules/.bun/space-separated-tokens@2.0.2/node_modules/space-separated-tokens/index.js",
+    "rendered": 418,
+    "original": 551
+  },
+  {
+    "id": "node_modules/.bun/hast-util-whitespace@3.0.0/node_modules/hast-util-whitespace/lib/index.js",
+    "rendered": 888,
+    "original": 885
+  },
+  {
+    "id": "node_modules/.bun/hast-util-to-html@9.0.5/node_modules/hast-util-to-html/lib/omission/util/siblings.js",
+    "rendered": 1212,
+    "original": 1263
+  },
+  {
+    "id": "node_modules/.bun/hast-util-to-html@9.0.5/node_modules/hast-util-to-html/lib/omission/omission.js",
+    "rendered": 971,
+    "original": 978
+  },
+  {
+    "id": "node_modules/.bun/hast-util-to-html@9.0.5/node_modules/hast-util-to-html/lib/omission/closing.js",
+    "rendered": 8655,
+    "original": 8737
+  },
+  {
+    "id": "node_modules/.bun/hast-util-to-html@9.0.5/node_modules/hast-util-to-html/lib/omission/opening.js",
+    "rendered": 3423,
+    "original": 3598
+  },
+  {
+    "id": "node_modules/.bun/hast-util-to-html@9.0.5/node_modules/hast-util-to-html/lib/handle/element.js",
+    "rendered": 7249,
+    "original": 7550
+  },
+  {
+    "id": "node_modules/.bun/hast-util-to-html@9.0.5/node_modules/hast-util-to-html/lib/handle/text.js",
+    "rendered": 960,
+    "original": 1018
+  },
+  {
+    "id": "node_modules/.bun/hast-util-to-html@9.0.5/node_modules/hast-util-to-html/lib/handle/raw.js",
+    "rendered": 595,
+    "original": 632
+  },
+  {
+    "id": "node_modules/.bun/hast-util-to-html@9.0.5/node_modules/hast-util-to-html/lib/handle/root.js",
+    "rendered": 467,
+    "original": 473
+  },
+  {
+    "id": "node_modules/.bun/hast-util-to-html@9.0.5/node_modules/hast-util-to-html/lib/handle/index.js",
+    "rendered": 908,
+    "original": 1104
+  },
+  {
+    "id": "node_modules/.bun/hast-util-to-html@9.0.5/node_modules/hast-util-to-html/lib/index.js",
+    "rendered": 3133,
+    "original": 9674
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/managers/InteractionManager.js",
+    "rendered": 44009,
+    "original": 44404
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/managers/ResizeManager.js",
+    "rendered": 10417,
+    "original": 10499
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/highlighter/languages/constants.js",
+    "rendered": 269,
+    "original": 417
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/highlighter/languages/areLanguagesAttached.js",
+    "rendered": 313,
+    "original": 462
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/highlighter/languages/attachResolvedLanguages.js",
+    "rendered": 573,
+    "original": 747
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/isWorkerContext.js",
+    "rendered": 187,
+    "original": 273
+  },
+  {
+    "id": "node_modules/.bun/shiki@4.2.0/node_modules/shiki/dist/chunk-BBjsoOtd.mjs",
+    "rendered": 1007,
+    "original": 1113
+  },
+  {
+    "id": "node_modules/.bun/shiki@4.2.0/node_modules/shiki/dist/langs-bundle-full-4noeO3oH.mjs",
+    "rendered": 39988,
+    "original": 25333
+  },
+  {
+    "id": "node_modules/.bun/shiki@4.2.0/node_modules/shiki/dist/themes.mjs",
+    "rendered": 13594,
+    "original": 9647
+  },
+  {
+    "id": "node_modules/.bun/@shikijs+engine-oniguruma@4.2.0/node_modules/@shikijs/engine-oniguruma/dist/index.mjs",
+    "rendered": 15931,
+    "original": 15994
+  },
+  {
+    "id": "node_modules/.bun/shiki@4.2.0/node_modules/shiki/dist/engine-oniguruma.mjs",
+    "rendered": 169,
+    "original": 421
+  },
+  {
+    "id": "node_modules/.bun/@shikijs+types@4.2.0/node_modules/@shikijs/types/dist/index.mjs",
+    "rendered": 137,
+    "original": 174
+  },
+  {
+    "id": "node_modules/.bun/@shikijs+vscode-textmate@10.0.2/node_modules/@shikijs/vscode-textmate/dist/index.js",
+    "rendered": 95325,
+    "original": 100008
+  },
+  {
+    "id": "node_modules/.bun/@shikijs+primitive@4.2.0/node_modules/@shikijs/primitive/dist/index.mjs",
+    "rendered": 27655,
+    "original": 28585
+  },
+  {
+    "id": "node_modules/.bun/@shikijs+core@4.2.0/node_modules/@shikijs/core/dist/index.mjs",
+    "rendered": 40530,
+    "original": 49412
+  },
+  {
+    "id": "node_modules/.bun/shiki@4.2.0/node_modules/shiki/dist/bundle-full.mjs",
+    "rendered": 1601,
+    "original": 2334
+  },
+  {
+    "id": "node_modules/.bun/@shikijs+engine-javascript@4.2.0/node_modules/@shikijs/engine-javascript/dist/scanner-DX8LRFGE.mjs",
+    "rendered": 1932,
+    "original": 1975
+  },
+  {
+    "id": "node_modules/.bun/oniguruma-parser@0.12.2/node_modules/oniguruma-parser/dist/utils.js",
+    "rendered": 402,
+    "original": 523
+  },
+  {
+    "id": "node_modules/.bun/oniguruma-parser@0.12.2/node_modules/oniguruma-parser/dist/tokenizer/tokenize.js",
+    "rendered": 12045,
+    "original": 11850
+  },
+  {
+    "id": "node_modules/.bun/oniguruma-parser@0.12.2/node_modules/oniguruma-parser/dist/parser/node-utils.js",
+    "rendered": 383,
+    "original": 675
+  },
+  {
+    "id": "node_modules/.bun/oniguruma-parser@0.12.2/node_modules/oniguruma-parser/dist/parser/parse.js",
+    "rendered": 9947,
+    "original": 10646
+  },
+  {
+    "id": "node_modules/.bun/oniguruma-parser@0.12.2/node_modules/oniguruma-parser/dist/traverser/traverse.js",
+    "rendered": 1607,
+    "original": 1663
+  },
+  {
+    "id": "node_modules/.bun/regex@6.1.0/node_modules/regex/src/utils-internals.js",
+    "rendered": 704,
+    "original": 772
+  },
+  {
+    "id": "node_modules/.bun/regex-utilities@2.3.0/node_modules/regex-utilities/src/index.js",
+    "rendered": 6055,
+    "original": 6088
+  },
+  {
+    "id": "node_modules/.bun/regex@6.1.0/node_modules/regex/src/atomic.js",
+    "rendered": 7452,
+    "original": 7632
+  },
+  {
+    "id": "node_modules/.bun/regex-recursion@6.0.2/node_modules/regex-recursion/src/index.js",
+    "rendered": 12652,
+    "original": 12749
+  },
+  {
+    "id": "node_modules/.bun/oniguruma-to-es@4.3.6/node_modules/oniguruma-to-es/dist/esm/index.js",
+    "rendered": 59391,
+    "original": 60865
+  },
+  {
+    "id": "node_modules/.bun/@shikijs+engine-javascript@4.2.0/node_modules/@shikijs/engine-javascript/dist/engine-compile.mjs",
+    "rendered": 1294,
+    "original": 1492
+  },
+  {
+    "id": "node_modules/.bun/shiki@4.2.0/node_modules/shiki/dist/index.mjs",
+    "rendered": 913,
+    "original": 2018
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/highlighter/languages/resolveLanguage.js",
+    "rendered": 1043,
+    "original": 1337
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/highlighter/languages/getResolvedOrResolveLanguage.js",
+    "rendered": 189,
+    "original": 410
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/highlighter/themes/constants.js",
+    "rendered": 95,
+    "original": 174
+  },
+  {
+    "id": "node_modules/.bun/@pierre+theming@0.0.1+e86445fb3eeef29a/node_modules/@pierre/theming/dist/modules/createThemeCollection.js",
+    "rendered": 3493,
+    "original": 3591
+  },
+  {
+    "id": "node_modules/.bun/@pierre+theming@0.0.1+e86445fb3eeef29a/node_modules/@pierre/theming/dist/modules/unwrapDefault.js",
+    "rendered": 171,
+    "original": 253
+  },
+  {
+    "id": "node_modules/.bun/@pierre+theming@0.0.1+e86445fb3eeef29a/node_modules/@pierre/theming/dist/modules/createThemeResolver.js",
+    "rendered": 3140,
+    "original": 3354
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/highlighter/themes/themeResolver.js",
+    "rendered": 94,
+    "original": 232
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/highlighter/themes/attachResolvedThemes.js",
+    "rendered": 782,
+    "original": 980
+  },
+  {
+    "id": "node_modules/.bun/@pierre+theming@0.0.1+e86445fb3eeef29a/node_modules/@pierre/theming/dist/modules/createTheme.js",
+    "rendered": 334,
+    "original": 510
+  },
+  {
+    "id": "node_modules/.bun/@pierre+theming@0.0.1+e86445fb3eeef29a/node_modules/@pierre/theming/dist/collections/pierre.js",
+    "rendered": 2029,
+    "original": 1854
+  },
+  {
+    "id": "node_modules/.bun/@pierre+theming@0.0.1+e86445fb3eeef29a/node_modules/@pierre/theming/dist/collections/shiki.js",
+    "rendered": 10210,
+    "original": 6387
+  },
+  {
+    "id": "node_modules/.bun/@pierre+theming@0.0.1+e86445fb3eeef29a/node_modules/@pierre/theming/dist/themes.js",
+    "rendered": 87,
+    "original": 453
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/highlighter/themes/themeResolution.js",
+    "rendered": 799,
+    "original": 1092
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/highlighter/themes/resolveTheme.js",
+    "rendered": 248,
+    "original": 471
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/highlighter/themes/getResolvedOrResolveTheme.js",
+    "rendered": 189,
+    "original": 398
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/highlighter/shared_highlighter.js",
+    "rendered": 1775,
+    "original": 3045
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/getThemes.js",
+    "rendered": 248,
+    "original": 373
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/highlighter/themes/areThemesAttached.js",
+    "rendered": 192,
+    "original": 386
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/highlighter/themes/hasResolvedThemes.js",
+    "rendered": 149,
+    "original": 292
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/areFileRenderOptionsEqual.js",
+    "rendered": 297,
+    "original": 458
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/areFilesEqual.js",
+    "rendered": 223,
+    "original": 305
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/areRenderRangesEqual.js",
+    "rendered": 430,
+    "original": 526
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/createAnnotationElement.js",
+    "rendered": 457,
+    "original": 613
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/getIconForType.js",
+    "rendered": 374,
+    "original": 458
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/createFileHeaderElement.js",
+    "rendered": 2548,
+    "original": 2905
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/createPreElement.js",
+    "rendered": 885,
+    "original": 1055
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/getFiletypeFromFileName.js",
+    "rendered": 6873,
+    "original": 7781
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/getHighlighterOptions.js",
+    "rendered": 223,
+    "original": 366
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/getLineAnnotationName.js",
+    "rendered": 190,
+    "original": 288
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/cleanLastNewline.js",
+    "rendered": 122,
+    "original": 210
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/processLine.js",
+    "rendered": 732,
+    "original": 868
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/wrapTokenFragments.js",
+    "rendered": 2554,
+    "original": 2700
+  },
+  {
+    "id": "node_modules/.bun/@shikijs+transformers@3.20.0/node_modules/@shikijs/transformers/dist/index.mjs",
+    "rendered": 2314,
+    "original": 26168
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/createTransformerWithState.js",
+    "rendered": 2154,
+    "original": 2489
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/formatCSSVariablePrefix.js",
+    "rendered": 149,
+    "original": 251
+  },
+  {
+    "id": "node_modules/.bun/@pierre+theming@0.0.1+e86445fb3eeef29a/node_modules/@pierre/theming/dist/modules/color.js",
+    "rendered": 2321,
+    "original": 5148
+  },
+  {
+    "id": "node_modules/.bun/@pierre+theming@0.0.1+e86445fb3eeef29a/node_modules/@pierre/theming/dist/modules/normalizeThemeColors.js",
+    "rendered": 2839,
+    "original": 3000
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/getHighlighterThemeStyles.js",
+    "rendered": 2093,
+    "original": 2384
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/getLineNodes.js",
+    "rendered": 413,
+    "original": 493
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/iterateOverFile.js",
+    "rendered": 1689,
+    "original": 1775
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/splitFileContents.js",
+    "rendered": 376,
+    "original": 520
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/renderFileWithHighlighter.js",
+    "rendered": 2084,
+    "original": 2757
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/createContentColumn.js",
+    "rendered": 240,
+    "original": 388
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/isFilePlainText.js",
+    "rendered": 143,
+    "original": 302
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/shouldUseTokenTransformer.js",
+    "rendered": 238,
+    "original": 344
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/renderers/FileRenderer.js",
+    "rendered": 11284,
+    "original": 13143
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/sprite.js",
+    "rendered": 8447,
+    "original": 8523
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/areLineAnnotationsEqual.js",
+    "rendered": 217,
+    "original": 319
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/arePrePropertiesEqual.js",
+    "rendered": 1033,
+    "original": 1131
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/createAnnotationWrapperNode.js",
+    "rendered": 260,
+    "original": 370
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/createGutterUtilityContentNode.js",
+    "rendered": 525,
+    "original": 641
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/createUnsafeCSSStyleNode.js",
+    "rendered": 194,
+    "original": 355
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/style.js",
+    "rendered": 39438,
+    "original": 39523
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/scrollbarGutter.js",
+    "rendered": 1039,
+    "original": 1290
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/cssWrappers.js",
+    "rendered": 943,
+    "original": 1382
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/getOrCreateCodeNode.js",
+    "rendered": 592,
+    "original": 686
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/prerenderHTMLIfNecessary.js",
+    "rendered": 272,
+    "original": 376
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/setWrapperNodeProps.js",
+    "rendered": 1290,
+    "original": 1385
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/isStyleNode.js",
+    "rendered": 294,
+    "original": 372
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/getFileRendererOptions.js",
+    "rendered": 803,
+    "original": 903
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/hostTheme.js",
+    "rendered": 504,
+    "original": 671
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/components/web-components.js",
+    "rendered": 680,
+    "original": 936
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/components/File.js",
+    "rendered": 30648,
+    "original": 32629
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/computeVirtualFileMetrics.js",
+    "rendered": 808,
+    "original": 1093
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/components/VirtualizedFile.js",
+    "rendered": 18772,
+    "original": 19249
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/areDiffTargetsEqual.js",
+    "rendered": 179,
+    "original": 273
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/detachString.js",
+    "rendered": 992,
+    "original": 1099
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/parsePatchFiles.js",
+    "rendered": 21324,
+    "original": 21817
+  },
+  {
+    "id": "node_modules/.bun/diff@8.0.3/node_modules/diff/libesm/diff/base.js",
+    "rendered": 12006,
+    "original": 12008
+  },
+  {
+    "id": "node_modules/.bun/diff@8.0.3/node_modules/diff/libesm/diff/character.js",
+    "rendered": 185,
+    "original": 228
+  },
+  {
+    "id": "node_modules/.bun/diff@8.0.3/node_modules/diff/libesm/diff/word.js",
+    "rendered": 1672,
+    "original": 14557
+  },
+  {
+    "id": "node_modules/.bun/diff@8.0.3/node_modules/diff/libesm/diff/line.js",
+    "rendered": 2345,
+    "original": 2629
+  },
+  {
+    "id": "node_modules/.bun/diff@8.0.3/node_modules/diff/libesm/patch/create.js",
+    "rendered": 8999,
+    "original": 9499
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/parseDiffFromFile.js",
+    "rendered": 886,
+    "original": 1073
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/managers/ScrollSyncManager.js",
+    "rendered": 2119,
+    "original": 2209
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/areDiffRenderOptionsEqual.js",
+    "rendered": 409,
+    "original": 570
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/createEmptyRowBuffer.js",
+    "rendered": 279,
+    "original": 429
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/createNoNewlineElement.js",
+    "rendered": 366,
+    "original": 543
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/createSeparator.js",
+    "rendered": 2529,
+    "original": 2711
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/getHunkSeparatorSlotName.js",
+    "rendered": 149,
+    "original": 253
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/getTotalLineCountFromHunks.js",
+    "rendered": 277,
+    "original": 385
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/isDefaultRenderRange.js",
+    "rendered": 236,
+    "original": 332
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/parseDiffDecorations.js",
+    "rendered": 775,
+    "original": 907
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/virtualDiffLayout.js",
+    "rendered": 4156,
+    "original": 5086
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/iterateOverDiff.js",
+    "rendered": 19881,
+    "original": 20126
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/renderDiffWithHighlighter.js",
+    "rendered": 8748,
+    "original": 9544
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/isDiffPlainText.js",
+    "rendered": 330,
+    "original": 489
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/renderers/DiffHunksRenderer.js",
+    "rendered": 32150,
+    "original": 34401
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/areDiffLineAnnotationsEqual.js",
+    "rendered": 266,
+    "original": 376
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/areHunkDataEqual.js",
+    "rendered": 386,
+    "original": 474
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/getDiffHunksRendererOptions.js",
+    "rendered": 1223,
+    "original": 1333
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/components/FileDiff.js",
+    "rendered": 48615,
+    "original": 50849
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/computeEstimatedDiffHeights.js",
+    "rendered": 3495,
+    "original": 3862
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/components/VirtualizedFileDiff.js",
+    "rendered": 33771,
+    "original": 34690
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/utils/areVirtualWindowSpecsEqual.js",
+    "rendered": 300,
+    "original": 408
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/components/Virtualizer.js",
+    "rendered": 14503,
+    "original": 14830
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/highlighter/languages/getResolvedLanguages.js",
+    "rendered": 470,
+    "original": 619
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/highlighter/languages/hasResolvedLanguages.js",
+    "rendered": 246,
+    "original": 395
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/highlighter/languages/resolveLanguages.js",
+    "rendered": 847,
+    "original": 1074
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/highlighter/themes/getResolvedThemes.js",
+    "rendered": 149,
+    "original": 292
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/highlighter/themes/registerCustomTheme.js",
+    "rendered": 453,
+    "original": 709
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/highlighter/themes/resolveThemes.js",
+    "rendered": 347,
+    "original": 572
+  },
+  {
+    "id": "packages/session-ui/src/components/line-comment-styles.ts",
+    "rendered": 6918,
+    "original": 7343
+  },
+  {
+    "id": "packages/session-ui/src/pierre/index.ts",
+    "rendered": 6554,
+    "original": 7228
+  },
+  {
+    "id": "packages/session-ui/src/pierre/diff-selection.ts",
+    "rendered": 2083,
+    "original": 2431
+  },
+  {
+    "id": "packages/session-ui/src/pierre/commented-lines.ts",
+    "rendered": 2783,
+    "original": 3167
+  },
+  {
+    "id": "node_modules/.bun/@solid-primitives+resize-observer@2.1.3+95b571dd5236cc92/node_modules/@solid-primitives/resize-observer/dist/index.js",
+    "rendered": 1784,
+    "original": 4851
+  },
+  {
+    "id": "node_modules/.bun/solid-js@1.9.10/node_modules/solid-js/store/dist/store.js",
+    "rendered": 11462,
+    "original": 15165
+  },
+  {
+    "id": "packages/session-ui/src/pierre/file-find.ts",
+    "rendered": 11974,
+    "original": 13098
+  },
+  {
+    "id": "packages/session-ui/src/pierre/file-runtime.ts",
+    "rendered": 2556,
+    "original": 2975
+  },
+  {
+    "id": "packages/session-ui/src/pierre/selection-bridge.ts",
+    "rendered": 1702,
+    "original": 3885
+  },
+  {
+    "id": "packages/session-ui/src/pierre/file-selection.ts",
+    "rendered": 2165,
+    "original": 2832
+  },
+  {
+    "id": "packages/session-ui/src/pierre/virtualizer.ts",
+    "rendered": 1932,
+    "original": 2278
+  },
+  {
+    "id": "\u0000commonjsHelpers.js",
+    "rendered": 140,
+    "original": 1424
+  },
+  {
+    "id": "\u0000node_modules/.bun/lru_map@0.4.1/node_modules/lru_map/dist/lru.js?commonjs-module",
+    "rendered": 26,
+    "original": 49
+  },
+  {
+    "id": "node_modules/.bun/lru_map@0.4.1/node_modules/lru_map/dist/lru.js",
+    "rendered": 3136,
+    "original": 3065
+  },
+  {
+    "id": "\u0000node_modules/.bun/lru_map@0.4.1/node_modules/lru_map/dist/lru.js?commonjs-es-import",
+    "rendered": 98,
+    "original": 340
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/worker/WorkerPoolManager.js",
+    "rendered": 28469,
+    "original": 30301
+  },
+  {
+    "id": "node_modules/.bun/@pierre+diffs@1.2.10+acdfdc462ae62eaa/node_modules/@pierre/diffs/dist/worker/worker.js?worker&url",
+    "rendered": 57,
+    "original": 48
+  },
+  {
+    "id": "packages/ui/src/context/marked-theme.tsx",
+    "rendered": 8320,
+    "original": 9572
+  },
+  {
+    "id": "packages/ui/src/context/marked-theme-register.tsx",
+    "rendered": 180,
+    "original": 285
+  },
+  {
+    "id": "packages/session-ui/src/pierre/worker.ts",
+    "rendered": 974,
+    "original": 1523
+  },
+  {
+    "id": "packages/session-ui/src/pierre/media.ts",
+    "rendered": 3273,
+    "original": 3692
+  },
+  {
+    "id": "packages/session-ui/src/components/file-media.tsx",
+    "rendered": 11018,
+    "original": 9552
+  },
+  {
+    "id": "packages/ui/src/components/icon.tsx",
+    "rendered": 41348,
+    "original": 41323
+  },
+  {
+    "id": "packages/session-ui/src/components/file-search.tsx",
+    "rendered": 3635,
+    "original": 2834
+  },
+  {
+    "id": "packages/session-ui/src/components/file.tsx",
+    "rendered": 28216,
+    "original": 36297
+  },
+  {
+    "id": "packages/ui/src/components/font.tsx",
+    "rendered": 24,
+    "original": 31
+  },
+  {
+    "id": "packages/ui/src/components/logo.tsx",
+    "rendered": 1124,
+    "original": 2598
+  },
+  {
+    "id": "packages/ui/src/theme/themes/oc-2.json",
+    "rendered": 17926,
+    "original": 21538
+  },
+  {
+    "id": "packages/ui/src/theme/color.ts",
+    "rendered": 6800,
+    "original": 8651
+  },
+  {
+    "id": "packages/ui/src/theme/resolve.ts",
+    "rendered": 23883,
+    "original": 24995
+  },
+  {
+    "id": "packages/ui/src/theme/v2/avatar.ts",
+    "rendered": 1544,
+    "original": 1765
+  },
+  {
+    "id": "packages/ui/src/theme/v2/mapping.ts",
+    "rendered": 9161,
+    "original": 9583
+  },
+  {
+    "id": "packages/ui/src/theme/v2/foreground.ts",
+    "rendered": 2446,
+    "original": 2913
+  },
+  {
+    "id": "packages/ui/src/theme/v2/default-primitives.ts",
+    "rendered": 3401,
+    "original": 3579
+  },
+  {
+    "id": "packages/ui/src/theme/v2/resolve.ts",
+    "rendered": 3873,
+    "original": 5320
+  },
+  {
+    "id": "packages/ui/src/theme/context.tsx",
+    "rendered": 16768,
+    "original": 13433
+  },
+  {
+    "id": "node_modules/.bun/@solidjs+meta@0.29.4+95b571dd5236cc92/node_modules/@solidjs/meta/dist/index.jsx",
+    "rendered": 3678,
+    "original": 7844
+  },
+  {
+    "id": "node_modules/.bun/@solidjs+router@0.15.4+95b571dd5236cc92/node_modules/@solidjs/router/dist/lifecycle.js",
+    "rendered": 1836,
+    "original": 1921
+  },
+  {
+    "id": "node_modules/.bun/@solidjs+router@0.15.4+95b571dd5236cc92/node_modules/@solidjs/router/dist/utils.js",
+    "rendered": 6158,
+    "original": 6297
+  },
+  {
+    "id": "node_modules/.bun/@solidjs+router@0.15.4+95b571dd5236cc92/node_modules/@solidjs/router/dist/routing.js",
+    "rendered": 17067,
+    "original": 20121
+  },
+  {
+    "id": "node_modules/.bun/@solidjs+router@0.15.4+95b571dd5236cc92/node_modules/@solidjs/router/dist/routers/components.jsx",
+    "rendered": 3425,
+    "original": 4850
+  },
+  {
+    "id": "node_modules/.bun/@solidjs+router@0.15.4+95b571dd5236cc92/node_modules/@solidjs/router/dist/routers/createRouter.js",
+    "rendered": 1233,
+    "original": 1406
+  },
+  {
+    "id": "node_modules/.bun/@solidjs+router@0.15.4+95b571dd5236cc92/node_modules/@solidjs/router/dist/data/action.js",
+    "rendered": 42,
+    "original": 5759
+  },
+  {
+    "id": "node_modules/.bun/@solidjs+router@0.15.4+95b571dd5236cc92/node_modules/@solidjs/router/dist/data/events.js",
+    "rendered": 5287,
+    "original": 5459
+  },
+  {
+    "id": "node_modules/.bun/@solidjs+router@0.15.4+95b571dd5236cc92/node_modules/@solidjs/router/dist/routers/Router.js",
+    "rendered": 1456,
+    "original": 1841
+  },
+  {
+    "id": "node_modules/.bun/@solidjs+router@0.15.4+95b571dd5236cc92/node_modules/@solidjs/router/dist/components.jsx",
+    "rendered": 1669,
+    "original": 1624
+  },
+  {
+    "id": "node_modules/.bun/@tanstack+query-core@5.91.2/node_modules/@tanstack/query-core/build/modern/subscribable.js",
+    "rendered": 454,
+    "original": 522
+  },
+  {
+    "id": "node_modules/.bun/@tanstack+query-core@5.91.2/node_modules/@tanstack/query-core/build/modern/focusManager.js",
+    "rendered": 1443,
+    "original": 1577
+  },
+  {
+    "id": "node_modules/.bun/@tanstack+query-core@5.91.2/node_modules/@tanstack/query-core/build/modern/timeoutManager.js",
+    "rendered": 1751,
+    "original": 2518
+  },
+  {
+    "id": "node_modules/.bun/@tanstack+query-core@5.91.2/node_modules/@tanstack/query-core/build/modern/utils.js",
+    "rendered": 6391,
+    "original": 7650
+  },
+  {
+    "id": "node_modules/.bun/@tanstack+query-core@5.91.2/node_modules/@tanstack/query-core/build/modern/environmentManager.js",
+    "rendered": 421,
+    "original": 540
+  },
+  {
+    "id": "node_modules/.bun/@tanstack+query-core@5.91.2/node_modules/@tanstack/query-core/build/modern/thenable.js",
+    "rendered": 845,
+    "original": 961
+  },
+  {
+    "id": "node_modules/.bun/@tanstack+query-core@5.91.2/node_modules/@tanstack/query-core/build/modern/hydration.js",
+    "rendered": 2808,
+    "original": 5533
+  },
+  {
+    "id": "node_modules/.bun/@tanstack+query-core@5.91.2/node_modules/@tanstack/query-core/build/modern/notifyManager.js",
+    "rendered": 1858,
+    "original": 2031
+  },
+  {
+    "id": "node_modules/.bun/@tanstack+query-core@5.91.2/node_modules/@tanstack/query-core/build/modern/onlineManager.js",
+    "rendered": 1327,
+    "original": 1464
+  },
+  {
+    "id": "node_modules/.bun/@tanstack+query-core@5.91.2/node_modules/@tanstack/query-core/build/modern/retryer.js",
+    "rendered": 3284,
+    "original": 3724
+  },
+  {
+    "id": "node_modules/.bun/@tanstack+query-core@5.91.2/node_modules/@tanstack/query-core/build/modern/removable.js",
+    "rendered": 620,
+    "original": 843
+  },
+  {
+    "id": "node_modules/.bun/@tanstack+query-core@5.91.2/node_modules/@tanstack/query-core/build/modern/query.js",
+    "rendered": 12059,
+    "original": 12977
+  },
+  {
+    "id": "node_modules/.bun/@tanstack+query-core@5.91.2/node_modules/@tanstack/query-core/build/modern/queryObserver.js",
+    "rendered": 15985,
+    "original": 16560
+  },
+  {
+    "id": "node_modules/.bun/@tanstack+query-core@5.91.2/node_modules/@tanstack/query-core/build/modern/infiniteQueryBehavior.js",
+    "rendered": 3544,
+    "original": 4036
+  },
+  {
+    "id": "node_modules/.bun/@tanstack+query-core@5.91.2/node_modules/@tanstack/query-core/build/modern/mutation.js",
+    "rendered": 6907,
+    "original": 7128
+  },
+  {
+    "id": "node_modules/.bun/@tanstack+query-core@5.91.2/node_modules/@tanstack/query-core/build/modern/mutationCache.js",
+    "rendered": 3316,
+    "original": 3578
+  },
+  {
+    "id": "node_modules/.bun/@tanstack+query-core@5.91.2/node_modules/@tanstack/query-core/build/modern/mutationObserver.js",
+    "rendered": 3801,
+    "original": 4068
+  },
+  {
+    "id": "node_modules/.bun/@tanstack+query-core@5.91.2/node_modules/@tanstack/query-core/build/modern/queriesObserver.js",
+    "rendered": 6170,
+    "original": 6865
+  },
+  {
+    "id": "node_modules/.bun/@tanstack+query-core@5.91.2/node_modules/@tanstack/query-core/build/modern/queryCache.js",
+    "rendered": 2150,
+    "original": 2416
+  },
+  {
+    "id": "node_modules/.bun/@tanstack+query-core@5.91.2/node_modules/@tanstack/query-core/build/modern/queryClient.js",
+    "rendered": 9048,
+    "original": 9549
+  },
+  {
+    "id": "node_modules/.bun/@tanstack+solid-query@5.91.4+95b571dd5236cc92/node_modules/@tanstack/solid-query/build/index.js",
+    "rendered": 11717,
+    "original": 15975
+  },
+  {
+    "id": "node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/Pipeable.js",
+    "rendered": 3249,
+    "original": 3939
+  },
+  {
+    "id": "node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/Function.js",
+    "rendered": 6520,
+    "original": 14777
+  },
+  {
+    "id": "node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/internal/equal.js",
+    "rendered": 749,
+    "original": 797
+  },
+  {
+    "id": "node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/Predicate.js",
+    "rendered": 4731,
+    "original": 31350
+  },
+  {
+    "id": "node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/Hash.js",
+    "rendered": 13656,
+    "original": 13882
+  },
+  {
+    "id": "node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/Equal.js",
+    "rendered": 8140,
+    "original": 11195
+  },
+  {
+    "id": "node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/Equivalence.js",
+    "rendered": 1925,
+    "original": 21828
+  },
+  {
+    "id": "node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/internal/array.js",
+    "rendered": 91,
+    "original": 130
+  },
+  {
+    "id": "node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/Redactable.js",
+    "rendered": 3346,
+    "original": 3509
+  },
+  {
+    "id": "node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/Formatter.js",
+    "rendered": 5505,
+    "original": 7742
+  },
+  {
+    "id": "node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/Inspectable.js",
+    "rendered": 2297,
+    "original": 6070
+  },
+  {
+    "id": "node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/Utils.js",
+    "rendered": 2695,
+    "original": 2743
+  },
+  {
+    "id": "node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/internal/core.js",
+    "rendered": 9448,
+    "original": 11953
+  },
+  {
+    "id": "node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/internal/option.js",
+    "rendered": 1821,
+    "original": 2207
+  },
+  {
+    "id": "node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/internal/result.js",
+    "rendered": 1718,
+    "original": 2569
+  },
+  {
+    "id": "node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/Order.js",
+    "rendered": 4749,
+    "original": 24572
+  },
+  {
+    "id": "node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/Option.js",
+    "rendered": 8907,
+    "original": 59809
+  },
+  {
+    "id": "node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/Result.js",
+    "rendered": 2316,
+    "original": 40294
+  },
+  {
+    "id": "node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/Iterable.js",
+    "rendered": 3681,
+    "original": 65895
+  },
+  {
+    "id": "node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/Array.js",
+    "rendered": 10131,
+    "original": 105673
+  },
+  {
+    "id": "node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/Effectable.js",
+    "rendered": 578,
+    "original": 1302
+  },
+  {
+    "id": "node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/Context.js",
+    "rendered": 13216,
+    "original": 24845
+  },
+  {
+    "id": "node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/Duration.js",
+    "rendered": 15042,
+    "original": 40847
+  },
+  {
+    "id": "node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/Scheduler.js",
+    "rendered": 5910,
+    "original": 6033
+  },
+  {
+    "id": "node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/Tracer.js",
+    "rendered": 1206,
+    "original": 8667
+  },
+  {
+    "id": "node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/internal/metric.js",
+    "rendered": 101,
+    "original": 143
+  },
+  {
+    "id": "node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/internal/references.js",
+    "rendered": 419,
+    "original": 2002
+  },
+  {
+    "id": "node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/internal/version.js",
+    "rendered": 24,
+    "original": 65
+  },
+  {
+    "id": "node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/internal/effect.js",
+    "rendered": 29711,
+    "original": 109633
+  },
+  {
+    "id": "node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/Cause.js",
+    "rendered": 1747,
+    "original": 36089
+  },
+  {
+    "id": "node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/Exit.js",
+    "rendered": 1476,
+    "original": 23032
+  },
+  {
+    "id": "node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/Data.js",
+    "rendered": 1922,
+    "original": 7107
+  },
+  {
+    "id": "node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/internal/dateTime.js",
+    "rendered": 4490,
+    "original": 28201
+  },
+  {
+    "id": "node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/Effect.js",
+    "rendered": 22532,
+    "original": 244943
+  },
+  {
+    "id": "node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/internal/record.js",
+    "rendered": 288,
+    "original": 330
+  },
+  {
+    "id": "node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/internal/schema/annotations.js",
+    "rendered": 577,
+    "original": 1028
+  },
+  {
+    "id": "node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/RegExp.js",
+    "rendered": 1001,
+    "original": 2219
+  },
+  {
+    "id": "node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/DateTime.js",
+    "rendered": 8114,
+    "original": 58892
+  },
+  {
+    "id": "node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/SchemaIssue.js",
+    "rendered": 20603,
+    "original": 25747
+  },
+  {
+    "id": "node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/SchemaGetter.js",
+    "rendered": 9617,
+    "original": 45929
+  },
+  {
+    "id": "node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/SchemaTransformation.js",
+    "rendered": 8913,
+    "original": 45887
+  },
+  {
+    "id": "node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/SchemaAST.js",
+    "rendered": 50941,
+    "original": 90486
+  },
+  {
+    "id": "node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/Struct.js",
+    "rendered": 1632,
+    "original": 19119
+  },
+  {
+    "id": "node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/SchemaParser.js",
+    "rendered": 8204,
+    "original": 26857
+  },
+  {
+    "id": "node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/internal/schema/schema.js",
+    "rendered": 1198,
+    "original": 2695
+  },
+  {
+    "id": "node_modules/.bun/effect@4.0.0-beta.83/node_modules/effect/dist/Schema.js",
+    "rendered": 29833,
+    "original": 254525
+  },
+  {
+    "id": "node_modules/.bun/@solid-primitives+i18n@2.2.1+95b571dd5236cc92/node_modules/@solid-primitives/i18n/dist/index.js",
+    "rendered": 2061,
+    "original": 4783
+  },
+  {
+    "id": "packages/app/src/context/platform.tsx",
+    "rendered": 155,
+    "original": 4849
+  },
+  {
+    "id": "node_modules/.bun/@solid-primitives+storage@4.3.3+95b571dd5236cc92/node_modules/@solid-primitives/storage/dist/persisted.js",
+    "rendered": 2397,
+    "original": 4628
+  },
+  {
+    "id": "packages/app/src/utils/path-key.ts",
+    "rendered": 704,
+    "original": 824
+  },
+  {
+    "id": "packages/app/src/utils/server-scope.ts",
+    "rendered": 1938,
+    "original": 2655
+  },
+  {
+    "id": "packages/app/src/utils/persist.ts",
+    "rendered": 17195,
+    "original": 20339
+  },
+  {
+    "id": "packages/app/src/i18n/product.ts",
+    "rendered": 33047,
+    "original": 33286
+  },
+  {
+    "id": "packages/app/src/i18n/desktop-native.ts",
+    "rendered": 7947,
+    "original": 10719
+  },
+  {
+    "id": "packages/app/src/i18n/en.ts",
+    "rendered": 66145,
+    "original": 66453
+  },
+  {
+    "id": "packages/app/src/context/language.tsx",
+    "rendered": 16370,
+    "original": 10418
+  },
+  {
+    "id": "packages/app/src/context/settings.tsx",
+    "rendered": 17259,
+    "original": 20238
+  },
+  {
+    "id": "packages/app/src/context/command.tsx",
+    "rendered": 10802,
+    "original": 14030
+  },
+  {
+    "id": "node_modules/.bun/@solid-primitives+event-bus@1.1.2+95b571dd5236cc92/node_modules/@solid-primitives/event-bus/dist/eventBus.js",
+    "rendered": 940,
+    "original": 1049
+  },
+  {
+    "id": "node_modules/.bun/@solid-primitives+event-bus@1.1.2+95b571dd5236cc92/node_modules/@solid-primitives/event-bus/dist/emitter.js",
+    "rendered": 2419,
+    "original": 2597
+  },
+  {
+    "id": "packages/sdk/js/src/v2/gen/core/serverSentEvents.gen.ts",
+    "rendered": 4222,
+    "original": 7180
+  },
+  {
+    "id": "packages/sdk/js/src/v2/gen/core/pathSerializer.gen.ts",
+    "rendered": 3049,
+    "original": 4142
+  },
+  {
+    "id": "packages/sdk/js/src/v2/gen/core/utils.gen.ts",
+    "rendered": 2462,
+    "original": 3313
+  },
+  {
+    "id": "packages/sdk/js/src/v2/gen/core/auth.gen.ts",
+    "rendered": 321,
+    "original": 849
+  },
+  {
+    "id": "packages/sdk/js/src/v2/gen/core/bodySerializer.gen.ts",
+    "rendered": 151,
+    "original": 2503
+  },
+  {
+    "id": "packages/sdk/js/src/v2/gen/client/utils.gen.ts",
+    "rendered": 5528,
+    "original": 8113
+  },
+  {
+    "id": "packages/sdk/js/src/v2/gen/client/client.gen.ts",
+    "rendered": 5762,
+    "original": 7485
+  },
+  {
+    "id": "packages/sdk/js/src/v2/gen/core/params.gen.ts",
+    "rendered": 2330,
+    "original": 3907
+  },
+  {
+    "id": "packages/sdk/js/src/v2/gen/client.gen.ts",
+    "rendered": 80,
+    "original": 844
+  },
+  {
+    "id": "packages/sdk/js/src/v2/gen/sdk.gen.ts",
+    "rendered": 116470,
+    "original": 178931
+  },
+  {
+    "id": "packages/sdk/js/src/error-interceptor.ts",
+    "rendered": 1207,
+    "original": 2269
+  },
+  {
+    "id": "packages/sdk/js/src/v2/client.ts",
+    "rendered": 2269,
+    "original": 2881
+  },
+  {
+    "id": "node_modules/.bun/@opencode-ai+client@vendor+opencode-ai-client-1.17.13-v2.tgz/node_modules/@opencode-ai/client/dist/promise/generated/client-error.js",
+    "rendered": 176,
+    "original": 184
+  },
+  {
+    "id": "node_modules/.bun/@opencode-ai+client@vendor+opencode-ai-client-1.17.13-v2.tgz/node_modules/@opencode-ai/client/dist/promise/generated/client.js",
+    "rendered": 50571,
+    "original": 50625
+  },
+  {
+    "id": "packages/app/src/utils/base64.ts",
+    "rendered": 128,
+    "original": 218
+  },
+  {
+    "id": "packages/app/src/utils/server.ts",
+    "rendered": 912,
+    "original": 1828
+  },
+  {
+    "id": "packages/app/src/context/server.tsx",
+    "rendered": 9640,
+    "original": 12470
+  },
+  {
+    "id": "packages/app/src/utils/refcount.ts",
+    "rendered": 656,
+    "original": 772
+  },
+  {
+    "id": "packages/app/src/utils/server-health.ts",
+    "rendered": 4519,
+    "original": 5856
+  },
+  {
+    "id": "node_modules/.bun/@kobalte+core@0.13.11+95b571dd5236cc92/node_modules/@kobalte/core/dist/chunk/DU4ZVMV4.jsx",
+    "rendered": 19623,
+    "original": 22009
+  },
+  {
+    "id": "packages/ui/src/components/icon-button.tsx",
+    "rendered": 807,
+    "original": 979
+  },
+  {
+    "id": "packages/ui/src/components/toast.tsx",
+    "rendered": 4919,
+    "original": 5254
+  },
+  {
+    "id": "node_modules/.bun/solid-sonner@0.3.1+95b571dd5236cc92/node_modules/solid-sonner/dist/index.jsx",
+    "rendered": 63051,
+    "original": 55402
+  },
+  {
+    "id": "packages/ui/src/v2/components/button-v2.css",
+    "rendered": 0,
+    "original": 9020
+  },
+  {
+    "id": "packages/ui/src/v2/components/toast-v2.css",
+    "rendered": 0,
+    "original": 4661
+  },
+  {
+    "id": "packages/ui/src/v2/components/toast-v2.tsx",
+    "rendered": 8958,
+    "original": 8844
+  },
+  {
+    "id": "packages/app/src/utils/toast.tsx",
+    "rendered": 871,
+    "original": 1377
+  },
+  {
+    "id": "packages/core/src/util/path.ts",
+    "rendered": 804,
+    "original": 1357
+  },
+  {
+    "id": "packages/core/src/util/retry.ts",
+    "rendered": 953,
+    "original": 1290
+  },
+  {
+    "id": "packages/app/src/context/global-sync/utils.ts",
+    "rendered": 4535,
+    "original": 5751
+  },
+  {
+    "id": "packages/app/src/utils/server-errors.ts",
+    "rendered": 3489,
+    "original": 4640
+  },
+  {
+    "id": "packages/app/src/utils/session-title.ts",
+    "rendered": 382,
+    "original": 536
+  },
+  {
+    "id": "packages/app/src/utils/session.ts",
+    "rendered": 1022,
+    "original": 1365
+  },
+  {
+    "id": "packages/app/src/context/global-sync/bootstrap.ts",
+    "rendered": 14083,
+    "original": 20196
+  },
+  {
+    "id": "packages/app/src/context/global-sync/types.ts",
+    "rendered": 147,
+    "original": 2922
+  },
+  {
+    "id": "packages/app/src/context/global-sync/eviction.ts",
+    "rendered": 858,
+    "original": 964
+  },
+  {
+    "id": "packages/app/src/context/global-sync/child-store.ts",
+    "rendered": 11411,
+    "original": 13697
+  },
+  {
+    "id": "packages/core/src/util/binary.ts",
+    "rendered": 937,
+    "original": 968
+  },
+  {
+    "id": "packages/app/src/context/global-sync/session-trim.ts",
+    "rendered": 1821,
+    "original": 2206
+  },
+  {
+    "id": "packages/app/src/context/global-sync/session-cache.ts",
+    "rendered": 1254,
+    "original": 2152
+  },
+  {
+    "id": "packages/app/src/utils/diffs.ts",
+    "rendered": 1551,
+    "original": 1936
+  },
+  {
+    "id": "packages/app/src/utils/session-message.ts",
+    "rendered": 10409,
+    "original": 11988
+  },
+  {
+    "id": "packages/app/src/context/global-sync/event-reducer.ts",
+    "rendered": 14448,
+    "original": 16658
+  },
+  {
+    "id": "packages/app/src/context/global-sync/session-load.ts",
+    "rendered": 877,
+    "original": 1287
+  },
+  {
+    "id": "packages/app/src/context/global-sync/queue.ts",
+    "rendered": 1686,
+    "original": 2071
+  },
+  {
+    "id": "packages/app/src/context/directory-sync.ts",
+    "rendered": 4483,
+    "original": 5667
+  },
+  {
+    "id": "packages/app/src/context/global-sync/home-session-index.ts",
+    "rendered": 5065,
+    "original": 7059
+  },
+  {
+    "id": "packages/app/src/context/global-sync/mcp.ts",
+    "rendered": 303,
+    "original": 548
+  },
+  {
+    "id": "packages/app/src/utils/session-route.ts",
+    "rendered": 1015,
+    "original": 1487
+  },
+  {
+    "id": "packages/app/src/context/server-session-v2-reducer.ts",
+    "rendered": 16918,
+    "original": 19185
+  },
+  {
+    "id": "packages/app/src/context/server-session.ts",
+    "rendered": 51228,
+    "original": 57753
+  },
+  {
+    "id": "packages/app/src/context/server-sync.tsx",
+    "rendered": 20450,
+    "original": 26051
+  },
+  {
+    "id": "packages/app/src/context/global.tsx",
+    "rendered": 3948,
+    "original": 5154
+  },
+  {
+    "id": "packages/app/src/utils/server-protocol.ts",
+    "rendered": 1047,
+    "original": 1387
+  },
+  {
+    "id": "packages/app/src/utils/server-compat.ts",
+    "rendered": 16518,
+    "original": 20821
+  },
+  {
+    "id": "packages/app/src/context/server-sdk.tsx",
+    "rendered": 11860,
+    "original": 14864
+  },
+  {
+    "id": "packages/app/src/utils/scoped-cache.ts",
+    "rendered": 1935,
+    "original": 2221
+  },
+  {
+    "id": "packages/app/src/utils/uuid.ts",
+    "rendered": 364,
+    "original": 359
+  },
+  {
+    "id": "packages/app/src/context/sdk.tsx",
+    "rendered": 437,
+    "original": 728
+  },
+  {
+    "id": "packages/app/src/context/comments.tsx",
+    "rendered": 5414,
+    "original": 7657
+  },
+  {
+    "id": "packages/app/src/utils/product.ts",
+    "rendered": 1119,
+    "original": 1418
+  },
+  {
+    "id": "packages/app/src/context/sync.tsx",
+    "rendered": 167,
+    "original": 3505
+  },
+  {
+    "id": "packages/app/src/utils/same.ts",
+    "rendered": 166,
+    "original": 223
+  },
+  {
+    "id": "packages/app/src/context/layout-scroll.ts",
+    "rendered": 2356,
+    "original": 2818
+  },
+  {
+    "id": "packages/app/src/context/file/path.ts",
+    "rendered": 3435,
+    "original": 4357
+  },
+  {
+    "id": "packages/app/src/context/layout-helpers.ts",
+    "rendered": 697,
+    "original": 962
+  },
+  {
+    "id": "packages/app/src/context/tab-memory.ts",
+    "rendered": 814,
+    "original": 1021
+  },
+  {
+    "id": "packages/app/src/context/closed-tabs.ts",
+    "rendered": 882,
+    "original": 1491
+  },
+  {
+    "id": "packages/app/src/context/prompt-state.ts",
+    "rendered": 5540,
+    "original": 8567
+  },
+  {
+    "id": "packages/app/src/context/tab-migration.ts",
+    "rendered": 897,
+    "original": 1088
+  },
+  {
+    "id": "packages/app/src/context/tabs.tsx",
+    "rendered": 11898,
+    "original": 14377
+  },
+  {
+    "id": "packages/app/src/context/layout-tabs.ts",
+    "rendered": 2655,
+    "original": 2980
+  },
+  {
+    "id": "packages/app/src/context/layout.tsx",
+    "rendered": 33298,
+    "original": 36645
+  },
+  {
+    "id": "packages/app/src/context/file/content-cache.ts",
+    "rendered": 1475,
+    "original": 1979
+  },
+  {
+    "id": "packages/app/src/context/file/view-cache.ts",
+    "rendered": 3446,
+    "original": 4118
+  },
+  {
+    "id": "packages/app/src/context/file/tree-store.ts",
+    "rendered": 3705,
+    "original": 4895
+  },
+  {
+    "id": "packages/app/src/context/file/visibility.ts",
+    "rendered": 194,
+    "original": 411
+  },
+  {
+    "id": "packages/app/src/context/file/watcher.ts",
+    "rendered": 1050,
+    "original": 1522
+  },
+  {
+    "id": "packages/app/src/context/file/types.ts",
+    "rendered": 221,
+    "original": 824
+  },
+  {
+    "id": "packages/app/src/context/file.tsx",
+    "rendered": 7987,
+    "original": 10668
+  },
+  {
+    "id": "packages/ui/src/components/dialog.tsx",
+    "rendered": 3600,
+    "original": 2495
+  },
+  {
+    "id": "packages/ui/src/components/button.tsx",
+    "rendered": 902,
+    "original": 994
+  },
+  {
+    "id": "packages/app/src/components/dialog-release-notes.tsx",
+    "rendered": 5866,
+    "original": 4809
+  },
+  {
+    "id": "packages/app/src/context/highlights.tsx",
+    "rendered": 5924,
+    "original": 6896
+  },
+  {
+    "id": "packages/app/src/context/onboarding.tsx",
+    "rendered": 998,
+    "original": 1329
+  },
+  {
+    "id": "node_modules/.bun/luxon@3.6.1/node_modules/luxon/src/errors.js",
+    "rendered": 997,
+    "original": 1047
+  },
+  {
+    "id": "node_modules/.bun/luxon@3.6.1/node_modules/luxon/src/impl/formats.js",
+    "rendered": 2298,
+    "original": 2249
+  },
+  {
+    "id": "node_modules/.bun/luxon@3.6.1/node_modules/luxon/src/zone.js",
+    "rendered": 2202,
+    "original": 2270
+  },
+  {
+    "id": "node_modules/.bun/luxon@3.6.1/node_modules/luxon/src/zones/systemZone.js",
+    "rendered": 1044,
+    "original": 1147
+  },
+  {
+    "id": "node_modules/.bun/luxon@3.6.1/node_modules/luxon/src/zones/IANAZone.js",
+    "rendered": 6040,
+    "original": 6178
+  },
+  {
+    "id": "node_modules/.bun/luxon@3.6.1/node_modules/luxon/src/impl/locale.js",
+    "rendered": 16019,
+    "original": 16341
+  },
+  {
+    "id": "node_modules/.bun/luxon@3.6.1/node_modules/luxon/src/zones/fixedOffsetZone.js",
+    "rendered": 3498,
+    "original": 3608
+  },
+  {
+    "id": "node_modules/.bun/luxon@3.6.1/node_modules/luxon/src/zones/invalidZone.js",
+    "rendered": 715,
+    "original": 763
+  },
+  {
+    "id": "node_modules/.bun/luxon@3.6.1/node_modules/luxon/src/impl/zoneUtil.js",
+    "rendered": 936,
+    "original": 1253
+  },
+  {
+    "id": "node_modules/.bun/luxon@3.6.1/node_modules/luxon/src/impl/digits.js",
+    "rendered": 2329,
+    "original": 2351
+  },
+  {
+    "id": "node_modules/.bun/luxon@3.6.1/node_modules/luxon/src/settings.js",
+    "rendered": 5232,
+    "original": 5577
+  },
+  {
+    "id": "node_modules/.bun/luxon@3.6.1/node_modules/luxon/src/impl/invalid.js",
+    "rendered": 266,
+    "original": 282
+  },
+  {
+    "id": "node_modules/.bun/luxon@3.6.1/node_modules/luxon/src/impl/conversions.js",
+    "rendered": 6140,
+    "original": 6468
+  },
+  {
+    "id": "node_modules/.bun/luxon@3.6.1/node_modules/luxon/src/impl/util.js",
+    "rendered": 8171,
+    "original": 8540
+  },
+  {
+    "id": "node_modules/.bun/luxon@3.6.1/node_modules/luxon/src/impl/english.js",
+    "rendered": 3257,
+    "original": 5820
+  },
+  {
+    "id": "node_modules/.bun/luxon@3.6.1/node_modules/luxon/src/impl/formatter.js",
+    "rendered": 12353,
+    "original": 12682
+  },
+  {
+    "id": "node_modules/.bun/luxon@3.6.1/node_modules/luxon/src/impl/regexParser.js",
+    "rendered": 10184,
+    "original": 10509
+  },
+  {
+    "id": "node_modules/.bun/luxon@3.6.1/node_modules/luxon/src/duration.js",
+    "rendered": 33083,
+    "original": 33549
+  },
+  {
+    "id": "node_modules/.bun/luxon@3.6.1/node_modules/luxon/src/interval.js",
+    "rendered": 22484,
+    "original": 22837
+  },
+  {
+    "id": "node_modules/.bun/luxon@3.6.1/node_modules/luxon/src/info.js",
+    "rendered": 8959,
+    "original": 9239
+  },
+  {
+    "id": "node_modules/.bun/luxon@3.6.1/node_modules/luxon/src/impl/diff.js",
+    "rendered": 2964,
+    "original": 3015
+  },
+  {
+    "id": "node_modules/.bun/luxon@3.6.1/node_modules/luxon/src/impl/tokenParser.js",
+    "rendered": 12570,
+    "original": 13001
+  },
+  {
+    "id": "node_modules/.bun/luxon@3.6.1/node_modules/luxon/src/datetime.js",
+    "rendered": 94656,
+    "original": 96180
+  },
+  {
+    "id": "node_modules/.bun/remeda@2.26.0/node_modules/remeda/dist/chunk-D6FCK2GA.js",
+    "rendered": 96,
+    "original": 110
+  },
+  {
+    "id": "node_modules/.bun/remeda@2.26.0/node_modules/remeda/dist/chunk-WIMGWYZL.js",
+    "rendered": 140,
+    "original": 192
+  },
+  {
+    "id": "node_modules/.bun/remeda@2.26.0/node_modules/remeda/dist/chunk-ANXBDSUI.js",
+    "rendered": 77,
+    "original": 123
+  },
+  {
+    "id": "node_modules/.bun/remeda@2.26.0/node_modules/remeda/dist/chunk-3GOCSNFN.js",
+    "rendered": 886,
+    "original": 915
+  },
+  {
+    "id": "node_modules/.bun/remeda@2.26.0/node_modules/remeda/dist/chunk-LFJW7BOT.js",
+    "rendered": 213,
+    "original": 267
+  },
+  {
+    "id": "node_modules/.bun/remeda@2.26.0/node_modules/remeda/dist/chunk-7ZI6JRPB.js",
+    "rendered": 168,
+    "original": 243
+  },
+  {
+    "id": "node_modules/.bun/remeda@2.26.0/node_modules/remeda/dist/chunk-BSLJB6JE.js",
+    "rendered": 47,
+    "original": 99
+  },
+  {
+    "id": "node_modules/.bun/remeda@2.26.0/node_modules/remeda/dist/chunk-AIG3BDKO.js",
+    "rendered": 64,
+    "original": 112
+  },
+  {
+    "id": "node_modules/.bun/remeda@2.26.0/node_modules/remeda/dist/chunk-EMIEIAAH.js",
+    "rendered": 565,
+    "original": 660
+  },
+  {
+    "id": "node_modules/.bun/remeda@2.26.0/node_modules/remeda/dist/chunk-3ZJAREUD.js",
+    "rendered": 130,
+    "original": 177
+  },
+  {
+    "id": "node_modules/.bun/remeda@2.26.0/node_modules/remeda/dist/chunk-XUX3ZEXI.js",
+    "rendered": 123,
+    "original": 162
+  },
+  {
+    "id": "node_modules/.bun/remeda@2.26.0/node_modules/remeda/dist/chunk-HVPVHFDT.js",
+    "rendered": 239,
+    "original": 281
+  },
+  {
+    "id": "node_modules/.bun/remeda@2.26.0/node_modules/remeda/dist/chunk-HGKLN5KY.js",
+    "rendered": 1043,
+    "original": 1003
+  },
+  {
+    "id": "node_modules/.bun/remeda@2.26.0/node_modules/remeda/dist/chunk-JEUUQSE4.js",
+    "rendered": 139,
+    "original": 225
+  },
+  {
+    "id": "node_modules/.bun/remeda@2.26.0/node_modules/remeda/dist/chunk-XPCYQPKH.js",
+    "rendered": 364,
+    "original": 431
+  },
+  {
+    "id": "node_modules/.bun/remeda@2.26.0/node_modules/remeda/dist/chunk-FRNNS7AX.js",
+    "rendered": 205,
+    "original": 237
+  },
+  {
+    "id": "node_modules/.bun/remeda@2.26.0/node_modules/remeda/dist/chunk-VVM5DH6Z.js",
+    "rendered": 48,
+    "original": 100
+  },
+  {
+    "id": "node_modules/.bun/remeda@2.26.0/node_modules/remeda/dist/chunk-7U7TOHLV.js",
+    "rendered": 130,
+    "original": 207
+  },
+  {
+    "id": "packages/app/src/hooks/provider-catalog.ts",
+    "rendered": 504,
+    "original": 1069
+  },
+  {
+    "id": "packages/app/src/hooks/use-providers.ts",
+    "rendered": 1835,
+    "original": 2257
+  },
+  {
+    "id": "packages/app/src/context/models.tsx",
+    "rendered": 3878,
+    "original": 5091
+  },
+  {
+    "id": "packages/app/src/utils/sound.ts",
+    "rendered": 11323,
+    "original": 3982
+  },
+  {
+    "id": "packages/app/src/context/notification.tsx",
+    "rendered": 14033,
+    "original": 17110
+  },
+  {
+    "id": "packages/app/src/context/permission-auto-respond.ts",
+    "rendered": 1464,
+    "original": 1917
+  },
+  {
+    "id": "packages/app/src/context/permission.tsx",
+    "rendered": 13787,
+    "original": 16233
+  },
+  {
+    "id": "packages/app/src/context/prompt.tsx",
+    "rendered": 3793,
+    "original": 5516
+  },
+  {
+    "id": "packages/app/src/wsl/context.tsx",
+    "rendered": 830,
+    "original": 1207
+  },
+  {
+    "id": "packages/session-ui/src/context/data.tsx",
+    "rendered": 416,
+    "original": 1738
+  },
+  {
+    "id": "packages/app/src/context/local-agent.ts",
+    "rendered": 284,
+    "original": 391
+  },
+  {
+    "id": "packages/app/src/context/model-variant.ts",
+    "rendered": 1353,
+    "original": 1776
+  },
+  {
+    "id": "packages/app/src/context/local.tsx",
+    "rendered": 11751,
+    "original": 13456
+  },
+  {
+    "id": "packages/app/src/pages/directory-layout.tsx",
+    "rendered": 3013,
+    "original": 3870
+  },
+  {
+    "id": "packages/ui/src/components/resize-handle.tsx",
+    "rendered": 2639,
+    "original": 3026
+  },
+  {
+    "id": "packages/ui/src/v2/components/icon.tsx",
+    "rendered": 13648,
+    "original": 13738
+  },
+  {
+    "id": "node_modules/.bun/@floating-ui+utils@0.2.11/node_modules/@floating-ui/utils/dist/floating-ui.utils.mjs",
+    "rendered": 3615,
+    "original": 4149
+  },
+  {
+    "id": "node_modules/.bun/@floating-ui+core@1.7.5/node_modules/@floating-ui/core/dist/floating-ui.core.mjs",
+    "rendered": 24911,
+    "original": 36522
+  },
+  {
+    "id": "node_modules/.bun/@floating-ui+utils@0.2.11/node_modules/@floating-ui/utils/dist/floating-ui.utils.dom.mjs",
+    "rendered": 5550,
+    "original": 5841
+  },
+  {
+    "id": "node_modules/.bun/@floating-ui+dom@1.7.6/node_modules/@floating-ui/dom/dist/floating-ui.dom.mjs",
+    "rendered": 25566,
+    "original": 27436
+  },
+  {
+    "id": "node_modules/.bun/@kobalte+core@0.13.11+95b571dd5236cc92/node_modules/@kobalte/core/dist/chunk/2CTBMVJ4.jsx",
+    "rendered": 10633,
+    "original": 11676
+  },
+  {
+    "id": "node_modules/.bun/@kobalte+core@0.13.11+95b571dd5236cc92/node_modules/@kobalte/core/dist/chunk/2N4PRSLE.jsx",
+    "rendered": 13345,
+    "original": 14878
+  },
+  {
+    "id": "packages/ui/src/components/tooltip.tsx",
+    "rendered": 4895,
+    "original": 4370
+  },
+  {
+    "id": "node_modules/.bun/@kobalte+core@0.13.11+95b571dd5236cc92/node_modules/@kobalte/core/dist/chunk/YRH543JR.jsx",
+    "rendered": 3043,
+    "original": 3356
+  },
+  {
+    "id": "node_modules/.bun/@kobalte+core@0.13.11+95b571dd5236cc92/node_modules/@kobalte/core/dist/chunk/QZDH5R5B.jsx",
+    "rendered": 28583,
+    "original": 30614
+  },
+  {
+    "id": "node_modules/.bun/@kobalte+core@0.13.11+95b571dd5236cc92/node_modules/@kobalte/core/dist/chunk/N3GAC5SS.jsx",
+    "rendered": 4220,
+    "original": 4597
+  },
+  {
+    "id": "node_modules/.bun/@kobalte+core@0.13.11+95b571dd5236cc92/node_modules/@kobalte/core/dist/chunk/SOM3K36D.jsx",
+    "rendered": 4412,
+    "original": 5337
+  },
+  {
+    "id": "node_modules/.bun/@kobalte+core@0.13.11+95b571dd5236cc92/node_modules/@kobalte/core/dist/chunk/VI7QYH27.jsx",
+    "rendered": 636,
+    "original": 829
+  },
+  {
+    "id": "node_modules/.bun/@kobalte+core@0.13.11+95b571dd5236cc92/node_modules/@kobalte/core/dist/chunk/LEK3K6R3.jsx",
+    "rendered": 41659,
+    "original": 47138
+  },
+  {
+    "id": "node_modules/.bun/@kobalte+core@0.13.11+95b571dd5236cc92/node_modules/@kobalte/core/dist/chunk/T4C3DMHT.jsx",
+    "rendered": 882,
+    "original": 1118
+  },
+  {
+    "id": "node_modules/.bun/@kobalte+core@0.13.11+95b571dd5236cc92/node_modules/@kobalte/core/dist/chunk/V6FPT6B6.jsx",
+    "rendered": 2256,
+    "original": 3187
+  },
+  {
+    "id": "packages/ui/src/components/dropdown-menu.tsx",
+    "rendered": 7622,
+    "original": 9397
+  },
+  {
+    "id": "node_modules/.bun/@thisbeyond+solid-dnd@0.7.5+95b571dd5236cc92/node_modules/@thisbeyond/solid-dnd/dist/index.jsx",
+    "rendered": 32213,
+    "original": 36697
+  },
+  {
+    "id": "packages/app/src/context/terminal-title.ts",
+    "rendered": 598,
+    "original": 660
+  },
+  {
+    "id": "packages/app/src/context/terminal.tsx",
+    "rendered": 14507,
+    "original": 16509
+  },
+  {
+    "id": "packages/app/src/utils/aim.ts",
+    "rendered": 3034,
+    "original": 3438
+  },
+  {
+    "id": "packages/app/src/utils/worktree.ts",
+    "rendered": 1603,
+    "original": 2012
+  },
+  {
+    "id": "packages/app/src/pages/session/handoff.ts",
+    "rendered": 707,
+    "original": 970
+  },
+  {
+    "id": "packages/app/src/utils/solid-dnd.tsx",
+    "rendered": 1396,
+    "original": 1718
+  },
+  {
+    "id": "packages/ui/src/v2/components/tooltip-v2.css",
+    "rendered": 0,
+    "original": 1307
+  },
+  {
+    "id": "packages/ui/src/v2/components/tooltip-v2.tsx",
+    "rendered": 4585,
+    "original": 4048
+  },
+  {
+    "id": "packages/app/src/components/debug-bar.tsx",
+    "rendered": 19632,
+    "original": 17517
+  },
+  {
+    "id": "packages/ui/src/v2/components/icon-button-v2.css",
+    "rendered": 0,
+    "original": 5337
+  },
+  {
+    "id": "packages/ui/src/v2/components/icon-button-v2.tsx",
+    "rendered": 623,
+    "original": 1231
+  },
+  {
+    "id": "node_modules/.bun/@corvu+utils@0.4.2+95b571dd5236cc92/node_modules/@corvu/utils/dist/chunk/XJFCWSNS.jsx",
+    "rendered": 192,
+    "original": 338
+  },
+  {
+    "id": "node_modules/.bun/@corvu+utils@0.4.2+95b571dd5236cc92/node_modules/@corvu/utils/dist/chunk/74BWZKBI.jsx",
+    "rendered": 421,
+    "original": 491
+  },
+  {
+    "id": "node_modules/.bun/@corvu+utils@0.4.2+95b571dd5236cc92/node_modules/@corvu/utils/dist/chunk/UKBPAEF5.jsx",
+    "rendered": 1271,
+    "original": 1620
+  },
+  {
+    "id": "node_modules/.bun/@corvu+utils@0.4.2+95b571dd5236cc92/node_modules/@corvu/utils/dist/create/keyedContext.jsx",
+    "rendered": 439,
+    "original": 701
+  },
+  {
+    "id": "node_modules/.bun/solid-dismissible@0.1.1+95b571dd5236cc92/node_modules/solid-dismissible/dist/index.jsx",
+    "rendered": 8503,
+    "original": 10230
+  },
+  {
+    "id": "node_modules/.bun/@corvu+utils@0.4.2+95b571dd5236cc92/node_modules/@corvu/utils/dist/create/controllableSignal.jsx",
+    "rendered": 769,
+    "original": 920
+  },
+  {
+    "id": "node_modules/.bun/solid-focus-trap@0.1.9+95b571dd5236cc92/node_modules/solid-focus-trap/dist/index.jsx",
+    "rendered": 5598,
+    "original": 5923
+  },
+  {
+    "id": "node_modules/.bun/@corvu+utils@0.4.2+95b571dd5236cc92/node_modules/@corvu/utils/dist/create/once.jsx",
+    "rendered": 235,
+    "original": 335
+  },
+  {
+    "id": "node_modules/.bun/solid-presence@0.2.0+95b571dd5236cc92/node_modules/solid-presence/dist/index.jsx",
+    "rendered": 2461,
+    "original": 2688
+  },
+  {
+    "id": "node_modules/.bun/@corvu+utils@0.4.2+95b571dd5236cc92/node_modules/@corvu/utils/dist/create/register.jsx",
+    "rendered": 482,
+    "original": 713
+  },
+  {
+    "id": "node_modules/.bun/@corvu+dialog@0.2.4+95b571dd5236cc92/node_modules/@corvu/dialog/dist/index.jsx",
+    "rendered": 17960,
+    "original": 19143
+  },
+  {
+    "id": "node_modules/.bun/@corvu+utils@0.4.2+95b571dd5236cc92/node_modules/@corvu/utils/dist/create/size.jsx",
+    "rendered": 714,
+    "original": 888
+  },
+  {
+    "id": "node_modules/.bun/@corvu+utils@0.3.2+95b571dd5236cc92/node_modules/@corvu/utils/dist/chunk/U42ECMND.jsx",
+    "rendered": 54,
+    "original": 416
+  },
+  {
+    "id": "node_modules/.bun/@corvu+utils@0.3.2+95b571dd5236cc92/node_modules/@corvu/utils/dist/chunk/NVYXOAAC.jsx",
+    "rendered": 80,
+    "original": 1182
+  },
+  {
+    "id": "node_modules/.bun/solid-transition-size@0.1.4+95b571dd5236cc92/node_modules/solid-transition-size/dist/index.jsx",
+    "rendered": 2783,
+    "original": 3139
+  },
+  {
+    "id": "node_modules/.bun/@solid-primitives+memo@1.5.0+95b571dd5236cc92/node_modules/@solid-primitives/memo/dist/index.js",
+    "rendered": 1258,
+    "original": 10942
+  },
+  {
+    "id": "node_modules/.bun/@corvu+drawer@0.2.4+95b571dd5236cc92/node_modules/@corvu/drawer/dist/index.jsx",
+    "rendered": 23245,
+    "original": 24690
+  },
+  {
+    "id": "packages/app/src/components/ui/drawer.tsx",
+    "rendered": 1865,
+    "original": 4186
+  },
+  {
+    "id": "packages/app/src/assets/help/introducing-tabs.mp4",
+    "rendered": 56,
+    "original": 41
+  },
+  {
+    "id": "packages/app/src/assets/help/home.png",
+    "rendered": 45,
+    "original": 41
+  },
+  {
+    "id": "packages/app/src/assets/help/tabs.png",
+    "rendered": 45,
+    "original": 41
+  },
+  {
+    "id": "packages/app/src/components/help-button.tsx",
+    "rendered": 6873,
+    "original": 5892
+  },
+  {
+    "id": "packages/app/src/components/product-brand.tsx",
+    "rendered": 666,
+    "original": 595
+  },
+  {
+    "id": "packages/ui/src/v2/components/button-v2.tsx",
+    "rendered": 941,
+    "original": 1156
+  },
+  {
+    "id": "packages/ui/src/v2/components/keybind-v2.css",
+    "rendered": 0,
+    "original": 1770
+  },
+  {
+    "id": "packages/ui/src/v2/components/keybind-v2.tsx",
+    "rendered": 920,
+    "original": 778
+  },
+  {
+    "id": "packages/app/src/desktop-menu.ts",
+    "rendered": 6835,
+    "original": 8406
+  },
+  {
+    "id": "packages/app/src/components/windows-app-menu.tsx",
+    "rendered": 5821,
+    "original": 4990
+  },
+  {
+    "id": "packages/app/src/components/titlebar-history.ts",
+    "rendered": 1418,
+    "original": 1767
+  },
+  {
+    "id": "node_modules/.bun/@solid-primitives+resize-observer@2.1.5+95b571dd5236cc92/node_modules/@solid-primitives/resize-observer/dist/index.js",
+    "rendered": 1780,
+    "original": 4851
+  },
+  {
+    "id": "node_modules/.bun/@preact+signals-core@1.14.3/node_modules/@preact/signals-core/dist/signals-core.module.js",
+    "rendered": 4739,
+    "original": 5466
+  },
+  {
+    "id": "node_modules/.bun/@dnd-kit+state@0.5.0/node_modules/@dnd-kit/state/dist/index.mjs",
+    "rendered": 11558,
+    "original": 12159
+  },
+  {
+    "id": "node_modules/.bun/@dnd-kit+geometry@0.5.0/node_modules/@dnd-kit/geometry/dist/index.mjs",
+    "rendered": 10059,
+    "original": 11689
+  },
+  {
+    "id": "node_modules/.bun/@dnd-kit+abstract@0.5.0/node_modules/@dnd-kit/abstract/index.js",
+    "rendered": 56570,
+    "original": 56493
+  },
+  {
+    "id": "node_modules/.bun/@dnd-kit+dom@0.5.0/node_modules/@dnd-kit/dom/utilities.js",
+    "rendered": 52415,
+    "original": 54150
+  },
+  {
+    "id": "node_modules/.bun/@dnd-kit+collision@0.5.0/node_modules/@dnd-kit/collision/dist/index.js",
+    "rendered": 2266,
+    "original": 5559
+  },
+  {
+    "id": "node_modules/.bun/@dnd-kit+dom@0.5.0/node_modules/@dnd-kit/dom/index.js",
+    "rendered": 83107,
+    "original": 85344
+  },
+  {
+    "id": "node_modules/.bun/@dnd-kit+dom@0.5.0/node_modules/@dnd-kit/dom/sortable.js",
+    "rendered": 34804,
+    "original": 35754
+  },
+  {
+    "id": "node_modules/.bun/@dnd-kit+solid@0.5.0+95b571dd5236cc92/node_modules/@dnd-kit/solid/index.js",
+    "rendered": 5033,
+    "original": 13650
+  },
+  {
+    "id": "node_modules/.bun/@dnd-kit+solid@0.5.0+95b571dd5236cc92/node_modules/@dnd-kit/solid/hooks.js",
+    "rendered": 946,
+    "original": 1173
+  },
+  {
+    "id": "node_modules/.bun/@dnd-kit+solid@0.5.0+95b571dd5236cc92/node_modules/@dnd-kit/solid/sortable.js",
+    "rendered": 3480,
+    "original": 3884
+  },
+  {
+    "id": "node_modules/.bun/@dnd-kit+abstract@0.5.0/node_modules/@dnd-kit/abstract/modifiers.js",
+    "rendered": 3373,
+    "original": 3697
+  },
+  {
+    "id": "node_modules/.bun/@dnd-kit+dom@0.5.0/node_modules/@dnd-kit/dom/modifiers.js",
+    "rendered": 2141,
+    "original": 3916
+  },
+  {
+    "id": "node_modules/.bun/@dnd-kit+helpers@0.5.0/node_modules/@dnd-kit/helpers/dist/index.js",
+    "rendered": 205,
+    "original": 7721
+  },
+  {
+    "id": "node_modules/.bun/@kobalte+core@0.13.11+95b571dd5236cc92/node_modules/@kobalte/core/dist/chunk/RHVJLHNR.jsx",
+    "rendered": 5901,
+    "original": 7317
+  },
+  {
+    "id": "packages/ui/src/v2/components/menu-v2.css",
+    "rendered": 0,
+    "original": 4157
+  },
+  {
+    "id": "packages/ui/src/v2/components/menu-v2.tsx",
+    "rendered": 6971,
+    "original": 6628
+  },
+  {
+    "id": "packages/app/src/pages/layout/helpers.ts",
+    "rendered": 3368,
+    "original": 4928
+  },
+  {
+    "id": "packages/app/src/pages/session/composer/session-request-tree.ts",
+    "rendered": 1053,
+    "original": 1454
+  },
+  {
+    "id": "packages/app/src/pages/layout/project-avatar-state.ts",
+    "rendered": 1731,
+    "original": 2160
+  },
+  {
+    "id": "packages/ui/src/v2/components/project-avatar-v2.css",
+    "rendered": 0,
+    "original": 3847
+  },
+  {
+    "id": "packages/ui/src/v2/components/project-avatar-v2.tsx",
+    "rendered": 2324,
+    "original": 1994
+  },
+  {
+    "id": "packages/session-ui/src/v2/components/session-progress-indicator-v2.css",
+    "rendered": 0,
+    "original": 11986
+  },
+  {
+    "id": "packages/session-ui/src/v2/components/session-progress-indicator-v2.tsx",
+    "rendered": 1740,
+    "original": 1002
+  },
+  {
+    "id": "packages/app/src/pages/layout/session-tab-avatar.tsx",
+    "rendered": 1908,
+    "original": 2018
+  },
+  {
+    "id": "packages/app/src/components/titlebar-tab-gesture.ts",
+    "rendered": 386,
+    "original": 567
+  },
+  {
+    "id": "node_modules/.bun/@kobalte+core@0.13.11+95b571dd5236cc92/node_modules/@kobalte/core/dist/chunk/3JA5IX2L.jsx",
+    "rendered": 933,
+    "original": 1043
+  },
+  {
+    "id": "node_modules/.bun/@kobalte+core@0.13.11+95b571dd5236cc92/node_modules/@kobalte/core/dist/chunk/VS2QDEVD.jsx",
+    "rendered": 8953,
+    "original": 10124
+  },
+  {
+    "id": "packages/app/src/components/titlebar-tab-popover.css",
+    "rendered": 0,
+    "original": 2600
+  },
+  {
+    "id": "packages/app/src/components/titlebar-tab-popover.tsx",
+    "rendered": 3584,
+    "original": 3298
+  },
+  {
+    "id": "packages/app/src/components/titlebar-tab-nav.css",
+    "rendered": 0,
+    "original": 4058
+  },
+  {
+    "id": "packages/app/src/components/titlebar-tab-nav.tsx",
+    "rendered": 15291,
+    "original": 14501
+  },
+  {
+    "id": "packages/app/src/components/titlebar-tab-order.ts",
+    "rendered": 437,
+    "original": 518
+  },
+  {
+    "id": "packages/app/src/components/titlebar-tab-strip.tsx",
+    "rendered": 12443,
+    "original": 13551
+  },
+  {
+    "id": "packages/app/src/components/titlebar-session-events.ts",
+    "rendered": 993,
+    "original": 1341
+  },
+  {
+    "id": "packages/app/src/components/titlebar.css",
+    "rendered": 0,
+    "original": 1982
+  },
+  {
+    "id": "packages/app/src/components/command-tooltip-keybind.ts",
+    "rendered": 96,
+    "original": 365
+  },
+  {
+    "id": "packages/app/src/components/titlebar.tsx",
+    "rendered": 32868,
+    "original": 28309
+  },
+  {
+    "id": "node_modules/.bun/@kobalte+core@0.13.11+95b571dd5236cc92/node_modules/@kobalte/core/dist/chunk/XUUROM4M.jsx",
+    "rendered": 3193,
+    "original": 3894
+  },
+  {
+    "id": "node_modules/.bun/@kobalte+core@0.13.11+95b571dd5236cc92/node_modules/@kobalte/core/dist/chunk/NGHEENNE.jsx",
+    "rendered": 756,
+    "original": 1083
+  },
+  {
+    "id": "node_modules/.bun/@kobalte+core@0.13.11+95b571dd5236cc92/node_modules/@kobalte/core/dist/chunk/FOXVCQFV.jsx",
+    "rendered": 713,
+    "original": 961
+  },
+  {
+    "id": "node_modules/.bun/@kobalte+core@0.13.11+95b571dd5236cc92/node_modules/@kobalte/core/dist/chunk/QJIB6BDF.jsx",
+    "rendered": 601,
+    "original": 794
+  },
+  {
+    "id": "node_modules/.bun/@kobalte+core@0.13.11+95b571dd5236cc92/node_modules/@kobalte/core/dist/chunk/ZZYKR3VO.jsx",
+    "rendered": 701,
+    "original": 928
+  },
+  {
+    "id": "node_modules/.bun/@kobalte+core@0.13.11+95b571dd5236cc92/node_modules/@kobalte/core/dist/chunk/LROKH5N7.jsx",
+    "rendered": 7569,
+    "original": 8527
+  },
+  {
+    "id": "packages/ui/src/components/switch.tsx",
+    "rendered": 1492,
+    "original": 1114
+  },
+  {
+    "id": "packages/app/src/components/project-knowledge.css",
+    "rendered": 0,
+    "original": 5539
+  },
+  {
+    "id": "node_modules/.bun/@kobalte+core@0.13.11+95b571dd5236cc92/node_modules/@kobalte/core/dist/chunk/V2VBQZ5V.jsx",
+    "rendered": 9834,
+    "original": 11403
+  },
+  {
+    "id": "packages/ui/src/components/popover.tsx",
+    "rendered": 4771,
+    "original": 4736
+  },
+  {
+    "id": "packages/app/src/components/project-knowledge.tsx",
+    "rendered": 22939,
+    "original": 15180
+  },
+  {
+    "id": "packages/ui/src/v2/components/dialog-v2.css",
+    "rendered": 0,
+    "original": 4144
+  },
+  {
+    "id": "packages/ui/src/v2/components/dialog-v2.tsx",
+    "rendered": 4129,
+    "original": 3717
+  },
+  {
+    "id": "packages/app/src/components/dialog-product-project.css",
+    "rendered": 0,
+    "original": 5820
+  },
+  {
+    "id": "packages/app/src/components/dialog-product-project.tsx",
+    "rendered": 8608,
+    "original": 7629
+  },
+  {
+    "id": "packages/app/src/components/directory-picker.tsx",
+    "rendered": 542,
+    "original": 996
+  },
+  {
+    "id": "packages/app/src/pages/layout/deep-links.ts",
+    "rendered": 1286,
+    "original": 1526
+  },
+  {
+    "id": "packages/ui/src/components/inline-input.tsx",
+    "rendered": 779,
+    "original": 708
+  },
+  {
+    "id": "packages/app/src/pages/layout/inline-editor.tsx",
+    "rendered": 3308,
+    "original": 3441
+  },
+  {
+    "id": "node_modules/.bun/@kobalte+core@0.13.11+95b571dd5236cc92/node_modules/@kobalte/core/dist/chunk/UGE6PPGT.jsx",
+    "rendered": 4882,
+    "original": 5855
+  },
+  {
+    "id": "packages/ui/src/components/collapsible.tsx",
+    "rendered": 1268,
+    "original": 1449
+  },
+  {
+    "id": "packages/ui/src/components/spinner.tsx",
+    "rendered": 2081,
+    "original": 1429
+  },
+  {
+    "id": "packages/ui/src/components/avatar.tsx",
+    "rendered": 1761,
+    "original": 1581
+  },
+  {
+    "id": "packages/app/src/utils/agent.ts",
+    "rendered": 1168,
+    "original": 1333
+  },
+  {
+    "id": "packages/app/src/pages/layout/sidebar-items.tsx",
+    "rendered": 13564,
+    "original": 12343
+  },
+  {
+    "id": "packages/app/src/pages/layout/sidebar-workspace.tsx",
+    "rendered": 19060,
+    "original": 19079
+  },
+  {
+    "id": "packages/ui/src/components/context-menu.tsx",
+    "rendered": 7547,
+    "original": 9301
+  },
+  {
+    "id": "packages/ui/src/components/hover-card.tsx",
+    "rendered": 1132,
+    "original": 1086
+  },
+  {
+    "id": "packages/app/src/pages/layout/sidebar-project.tsx",
+    "rendered": 15034,
+    "original": 15072
+  },
+  {
+    "id": "packages/app/src/pages/layout/sidebar-shell.tsx",
+    "rendered": 5315,
+    "original": 4441
+  },
+  {
+    "id": "packages/app/src/pages/layout.tsx",
+    "rendered": 82858,
+    "original": 83839
+  },
+  {
+    "id": "packages/ui/src/components/scroll-view.tsx",
+    "rendered": 11331,
+    "original": 12561
+  },
+  {
+    "id": "packages/app/src/pages/home/home-controller.ts",
+    "rendered": 6552,
+    "original": 8170
+  },
+  {
+    "id": "\u0000node_modules/.bun/fuzzysort@3.1.0/node_modules/fuzzysort/fuzzysort.js?commonjs-module",
+    "rendered": 32,
+    "original": 61
+  },
+  {
+    "id": "node_modules/.bun/fuzzysort@3.1.0/node_modules/fuzzysort/fuzzysort.js",
+    "rendered": 29389,
+    "original": 27921
+  },
+  {
+    "id": "\u0000node_modules/.bun/fuzzysort@3.1.0/node_modules/fuzzysort/fuzzysort.js?commonjs-es-import",
+    "rendered": 116,
+    "original": 375
+  },
+  {
+    "id": "node_modules/.bun/solid-list@0.3.0+95b571dd5236cc92/node_modules/solid-list/dist/index.jsx",
+    "rendered": 3204,
+    "original": 9697
+  },
+  {
+    "id": "packages/ui/src/hooks/use-filtered-list.tsx",
+    "rendered": 3138,
+    "original": 4227
+  },
+  {
+    "id": "packages/ui/src/hooks/create-auto-scroll.tsx",
+    "rendered": 4834,
+    "original": 6980
+  },
+  {
+    "id": "node_modules/.bun/@kobalte+core@0.13.11+95b571dd5236cc92/node_modules/@kobalte/core/dist/chunk/MKJEDDFV.jsx",
+    "rendered": 5919,
+    "original": 6684
+  },
+  {
+    "id": "packages/ui/src/components/text-field.tsx",
+    "rendered": 4499,
+    "original": 3564
+  },
+  {
+    "id": "packages/ui/src/components/list.tsx",
+    "rendered": 14533,
+    "original": 13219
+  },
+  {
+    "id": "packages/app/src/components/server/server-row.tsx",
+    "rendered": 5268,
+    "original": 3965
+  },
+  {
+    "id": "packages/app/src/components/dialog-select-server.tsx",
+    "rendered": 27504,
+    "original": 25177
+  },
+  {
+    "id": "packages/app/src/components/settings-dialog.tsx",
+    "rendered": 929,
+    "original": 1144
+  },
+  {
+    "id": "packages/ui/src/v2/components/divider-v2.css",
+    "rendered": 0,
+    "original": 231
+  },
+  {
+    "id": "packages/ui/src/v2/components/divider-v2.tsx",
+    "rendered": 519,
+    "original": 511
+  },
+  {
+    "id": "packages/ui/src/v2/components/text-input-v2.css",
+    "rendered": 0,
+    "original": 4964
+  },
+  {
+    "id": "packages/ui/src/v2/components/text-input-v2.tsx",
+    "rendered": 3514,
+    "original": 3127
+  },
+  {
+    "id": "packages/app/src/components/settings-v2/settings-v2.css",
+    "rendered": 0,
+    "original": 14896
+  },
+  {
+    "id": "packages/app/src/components/settings-v2/dialog-server-v2.tsx",
+    "rendered": 6465,
+    "original": 5452
+  },
+  {
+    "id": "packages/app/src/pages/home/home-projects-controller.tsx",
+    "rendered": 4180,
+    "original": 5520
+  },
+  {
+    "id": "node_modules/.bun/dompurify@3.3.1/node_modules/dompurify/dist/purify.es.mjs",
+    "rendered": 63938,
+    "original": 64158
+  },
+  {
+    "id": "packages/session-ui/src/components/markdown.worker.ts?worker&url",
+    "rendered": 60,
+    "original": 48
+  },
+  {
+    "id": "packages/session-ui/src/components/markdown-worker-protocol.ts",
+    "rendered": 644,
+    "original": 1861
+  },
+  {
+    "id": "packages/session-ui/src/components/markdown-worker-transport.ts",
+    "rendered": 979,
+    "original": 1090
+  },
+  {
+    "id": "packages/session-ui/src/components/markdown-worker.ts",
+    "rendered": 6103,
+    "original": 7209
+  },
+  {
+    "id": "packages/session-ui/src/components/markdown-cache.tsx",
+    "rendered": 1543,
+    "original": 1848
+  },
+  {
+    "id": "packages/app/src/pages/home-session-archive.ts",
+    "rendered": 310,
+    "original": 708
+  },
+  {
+    "id": "packages/app/src/pages/home/home-sessions-controller.tsx",
+    "rendered": 9260,
+    "original": 12427
+  },
+  {
+    "id": "packages/app/src/utils/file-manager.ts",
+    "rendered": 484,
+    "original": 870
+  },
+  {
+    "id": "packages/app/src/pages/home/home-projects-view.tsx",
+    "rendered": 2684,
+    "original": 26383
+  },
+  {
+    "id": "packages/app/src/utils/empty-session.ts",
+    "rendered": 996,
+    "original": 1420
+  },
+  {
+    "id": "packages/app/src/pages/login.css",
+    "rendered": 0,
+    "original": 2360
+  },
+  {
+    "id": "packages/app/src/context/gamma-auth.tsx",
+    "rendered": 8746,
+    "original": 7694
+  },
+  {
+    "id": "packages/app/src/components/gamma-shell.tsx",
+    "rendered": 12029,
+    "original": 10636
+  },
+  {
+    "id": "packages/app/src/pages/layout-new.tsx",
+    "rendered": 3872,
+    "original": 3463
+  },
+  {
+    "id": "packages/app/src/pages/error-description.ts",
+    "rendered": 257,
+    "original": 310
+  },
+  {
+    "id": "packages/app/src/pages/error.tsx",
+    "rendered": 13540,
+    "original": 13261
+  },
+  {
+    "id": "packages/app/src/pages/session/session-lineage.ts",
+    "rendered": 1039,
+    "original": 3061
+  },
+  {
+    "id": "packages/ui/src/components/file-icons/sprite.svg",
+    "rendered": 44,
+    "original": 41
+  },
+  {
+    "id": "packages/ui/src/components/file-icon.tsx",
+    "rendered": 14793,
+    "original": 14753
+  },
+  {
+    "id": "packages/ui/src/v2/components/file-tree-v2.css",
+    "rendered": 0,
+    "original": 3741
+  },
+  {
+    "id": "packages/app/src/components/file-tree.tsx",
+    "rendered": 894,
+    "original": 15874
+  },
+  {
+    "id": "node_modules/.bun/@tanstack+virtual-core@3.17.3/node_modules/@tanstack/virtual-core/dist/esm/lazy-measurements.js",
+    "rendered": 862,
+    "original": 950
+  },
+  {
+    "id": "node_modules/.bun/@tanstack+virtual-core@3.17.3/node_modules/@tanstack/virtual-core/dist/esm/utils.js",
+    "rendered": 1075,
+    "original": 2210
+  },
+  {
+    "id": "node_modules/.bun/@tanstack+virtual-core@3.17.3/node_modules/@tanstack/virtual-core/dist/esm/index.js",
+    "rendered": 43510,
+    "original": 44997
+  },
+  {
+    "id": "node_modules/.bun/@tanstack+solid-virtual@3.13.32+95b571dd5236cc92/node_modules/@tanstack/solid-virtual/dist/esm/index.js",
+    "rendered": 1601,
+    "original": 2427
+  },
+  {
+    "id": "packages/app/src/components/file-tree-v2-model.ts",
+    "rendered": 2473,
+    "original": 3045
+  },
+  {
+    "id": "packages/app/src/components/virtual-scroll-element.ts",
+    "rendered": 127,
+    "original": 174
+  },
+  {
+    "id": "packages/app/src/components/file-tree-v2.tsx",
+    "rendered": 12224,
+    "original": 10648
+  },
+  {
+    "id": "packages/app/src/components/presentation-preview.css",
+    "rendered": 0,
+    "original": 1344
+  },
+  {
+    "id": "packages/app/src/components/presentation-preview.tsx",
+    "rendered": 10610,
+    "original": 9228
+  },
+  {
+    "id": "packages/app/src/components/workspace-file-preview.tsx",
+    "rendered": 6565,
+    "original": 3987
+  },
+  {
+    "id": "packages/app/src/components/site-preview.css",
+    "rendered": 0,
+    "original": 1341
+  },
+  {
+    "id": "packages/app/src/components/site-preview.tsx",
+    "rendered": 8624,
+    "original": 7143
+  },
+  {
+    "id": "packages/app/src/utils/site-results.ts",
+    "rendered": 4049,
+    "original": 5417
+  },
+  {
+    "id": "packages/app/src/components/workspace-files.css",
+    "rendered": 0,
+    "original": 9162
+  },
+  {
+    "id": "packages/app/src/components/workspace-files.tsx",
+    "rendered": 28590,
+    "original": 25732
+  },
+  {
+    "id": "packages/ui/src/assets/icons/app/android-studio.svg",
+    "rendered": 49,
+    "original": 41
+  },
+  {
+    "id": "packages/ui/src/assets/icons/app/antigravity.svg",
+    "rendered": 47,
+    "original": 41
+  },
+  {
+    "id": "packages/ui/src/assets/icons/app/cursor.svg",
+    "rendered": 1605,
+    "original": 1604
+  },
+  {
+    "id": "packages/ui/src/assets/icons/app/file-explorer.svg",
+    "rendered": 3881,
+    "original": 3874
+  },
+  {
+    "id": "packages/ui/src/assets/icons/app/finder.png",
+    "rendered": 2876,
+    "original": 2875
+  },
+  {
+    "id": "packages/ui/src/assets/icons/app/ghostty.svg",
+    "rendered": 3923,
+    "original": 3921
+  },
+  {
+    "id": "packages/ui/src/assets/icons/app/iterm2.svg",
+    "rendered": 3430,
+    "original": 3429
+  },
+  {
+    "id": "packages/ui/src/assets/icons/app/powershell.svg",
+    "rendered": 2537,
+    "original": 2532
+  },
+  {
+    "id": "packages/ui/src/assets/icons/app/terminal.png",
+    "rendered": 1334,
+    "original": 1331
+  },
+  {
+    "id": "packages/ui/src/assets/icons/app/textmate.png",
+    "rendered": 3910,
+    "original": 3907
+  },
+  {
+    "id": "packages/ui/src/assets/icons/app/vscode.svg",
+    "rendered": 42,
+    "original": 41
+  },
+  {
+    "id": "packages/ui/src/assets/icons/app/warp.png",
+    "rendered": 3334,
+    "original": 3335
+  },
+  {
+    "id": "packages/ui/src/assets/icons/app/xcode.png",
+    "rendered": 4667,
+    "original": 4667
+  },
+  {
+    "id": "packages/ui/src/assets/icons/app/zed.svg",
+    "rendered": 2124,
+    "original": 2126
+  },
+  {
+    "id": "packages/ui/src/assets/icons/app/zed-dark.svg",
+    "rendered": 2128,
+    "original": 2126
+  },
+  {
+    "id": "packages/ui/src/assets/icons/app/sublimetext.svg",
+    "rendered": 1659,
+    "original": 1653
+  },
+  {
+    "id": "packages/ui/src/components/app-icon.tsx",
+    "rendered": 1525,
+    "original": 2569
+  },
+  {
+    "id": "packages/ui/src/components/keybind.tsx",
+    "rendered": 346,
+    "original": 429
+  },
+  {
+    "id": "packages/app/src/pages/session/helpers.ts",
+    "rendered": 3578,
+    "original": 6030
+  },
+  {
+    "id": "packages/app/src/pages/session/session-layout.ts",
+    "rendered": 821,
+    "original": 1177
+  },
+  {
+    "id": "packages/app/src/components/status-popover-indicator.ts",
+    "rendered": 757,
+    "original": 1139
+  },
+  {
+    "id": "packages/app/src/components/status-popover.tsx",
+    "rendered": 7003,
+    "original": 6717
+  },
+  {
+    "id": "packages/app/src/components/session/session-header.tsx",
+    "rendered": 23891,
+    "original": 19857
+  },
+  {
+    "id": "node_modules/.bun/@kobalte+core@0.13.11+95b571dd5236cc92/node_modules/@kobalte/core/dist/chunk/PYUMFHDL.jsx",
+    "rendered": 7965,
+    "original": 9299
+  },
+  {
+    "id": "packages/ui/src/components/accordion.tsx",
+    "rendered": 2025,
+    "original": 2534
+  },
+  {
+    "id": "packages/ui/src/components/sticky-accordion-header.tsx",
+    "rendered": 321,
+    "original": 453
+  },
+  {
+    "id": "node_modules/.bun/morphdom@2.7.8/node_modules/morphdom/dist/morphdom-esm.js",
+    "rendered": 28927,
+    "original": 28936
+  },
+  {
+    "id": "packages/session-ui/src/components/markdown-projection.ts",
+    "rendered": 344,
+    "original": 484
+  },
+  {
+    "id": "packages/session-ui/src/components/markdown-code-state.ts",
+    "rendered": 233,
+    "original": 586
+  },
+  {
+    "id": "packages/session-ui/src/components/markdown-inline-code-kind.ts",
+    "rendered": 22531,
+    "original": 22772
+  },
+  {
+    "id": "packages/session-ui/src/components/markdown.tsx",
+    "rendered": 19299,
+    "original": 22752
+  },
+  {
+    "id": "packages/app/src/utils/session-export.ts",
+    "rendered": 1136,
+    "original": 1836
+  },
+  {
+    "id": "packages/app/src/components/session/session-context-metrics.ts",
+    "rendered": 1098,
+    "original": 1651
+  },
+  {
+    "id": "node_modules/.bun/@kobalte+core@0.13.11+95b571dd5236cc92/node_modules/@kobalte/core/dist/chunk/XTJD7L6B.jsx",
+    "rendered": 2312,
+    "original": 2387
+  },
+  {
+    "id": "node_modules/.bun/@kobalte+core@0.13.11+95b571dd5236cc92/node_modules/@kobalte/core/dist/chunk/ZABX5HRE.jsx",
+    "rendered": 13649,
+    "original": 14864
+  },
+  {
+    "id": "packages/ui/src/components/tabs.tsx",
+    "rendered": 3504,
+    "original": 3361
+  },
+  {
+    "id": "packages/app/src/components/session/session-sortable-terminal-tab.tsx",
+    "rendered": 6565,
+    "original": 6064
+  },
+  {
+    "id": "packages/app/src/components/session/session-new-view.tsx",
+    "rendered": 3590,
+    "original": 3657
+  },
+  {
+    "id": "packages/app/src/components/prompt-agent-control.css",
+    "rendered": 0,
+    "original": 1205
+  },
+  {
+    "id": "packages/app/src/components/prompt-agent-control.tsx",
+    "rendered": 2718,
+    "original": 2563
+  },
+  {
+    "id": "node_modules/.bun/motion-utils@12.39.0/node_modules/motion-utils/dist/es/array.mjs",
+    "rendered": 217,
+    "original": 691
+  },
+  {
+    "id": "node_modules/.bun/motion-utils@12.39.0/node_modules/motion-utils/dist/es/clamp.mjs",
+    "rendered": 123,
+    "original": 178
+  },
+  {
+    "id": "node_modules/.bun/motion-utils@12.39.0/node_modules/motion-utils/dist/es/errors.mjs",
+    "rendered": 26,
+    "original": 615
+  },
+  {
+    "id": "node_modules/.bun/motion-utils@12.39.0/node_modules/motion-utils/dist/es/global-config.mjs",
+    "rendered": 30,
+    "original": 106
+  },
+  {
+    "id": "node_modules/.bun/motion-utils@12.39.0/node_modules/motion-utils/dist/es/is-numerical-string.mjs",
+    "rendered": 178,
+    "original": 259
+  },
+  {
+    "id": "node_modules/.bun/motion-utils@12.39.0/node_modules/motion-utils/dist/es/is-object.mjs",
+    "rendered": 72,
+    "original": 134
+  },
+  {
+    "id": "node_modules/.bun/motion-utils@12.39.0/node_modules/motion-utils/dist/es/is-zero-value-string.mjs",
+    "rendered": 127,
+    "original": 209
+  },
+  {
+    "id": "node_modules/.bun/motion-utils@12.39.0/node_modules/motion-utils/dist/es/memo.mjs",
+    "rendered": 184,
+    "original": 237
+  },
+  {
+    "id": "node_modules/.bun/motion-utils@12.39.0/node_modules/motion-utils/dist/es/noop.mjs",
+    "rendered": 51,
+    "original": 104
+  },
+  {
+    "id": "node_modules/.bun/motion-utils@12.39.0/node_modules/motion-utils/dist/es/pipe.mjs",
+    "rendered": 230,
+    "original": 283
+  },
+  {
+    "id": "node_modules/.bun/motion-utils@12.39.0/node_modules/motion-utils/dist/es/progress.mjs",
+    "rendered": 348,
+    "original": 409
+  },
+  {
+    "id": "node_modules/.bun/motion-utils@12.39.0/node_modules/motion-utils/dist/es/subscription-manager.mjs",
+    "rendered": 1102,
+    "original": 1244
+  },
+  {
+    "id": "node_modules/.bun/motion-utils@12.39.0/node_modules/motion-utils/dist/es/time-conversion.mjs",
+    "rendered": 319,
+    "original": 423
+  },
+  {
+    "id": "node_modules/.bun/motion-utils@12.39.0/node_modules/motion-utils/dist/es/velocity-per-second.mjs",
+    "rendered": 184,
+    "original": 265
+  },
+  {
+    "id": "node_modules/.bun/motion-utils@12.39.0/node_modules/motion-utils/dist/es/wrap.mjs",
+    "rendered": 137,
+    "original": 190
+  },
+  {
+    "id": "node_modules/.bun/motion-utils@12.39.0/node_modules/motion-utils/dist/es/easing/cubic-bezier.mjs",
+    "rendered": 1925,
+    "original": 2030
+  },
+  {
+    "id": "node_modules/.bun/motion-utils@12.39.0/node_modules/motion-utils/dist/es/easing/modifiers/mirror.mjs",
+    "rendered": 277,
+    "original": 340
+  },
+  {
+    "id": "node_modules/.bun/motion-utils@12.39.0/node_modules/motion-utils/dist/es/easing/modifiers/reverse.mjs",
+    "rendered": 196,
+    "original": 261
+  },
+  {
+    "id": "node_modules/.bun/motion-utils@12.39.0/node_modules/motion-utils/dist/es/easing/back.mjs",
+    "rendered": 173,
+    "original": 411
+  },
+  {
+    "id": "node_modules/.bun/motion-utils@12.39.0/node_modules/motion-utils/dist/es/easing/anticipate.mjs",
+    "rendered": 135,
+    "original": 238
+  },
+  {
+    "id": "node_modules/.bun/motion-utils@12.39.0/node_modules/motion-utils/dist/es/easing/circ.mjs",
+    "rendered": 128,
+    "original": 316
+  },
+  {
+    "id": "node_modules/.bun/motion-utils@12.39.0/node_modules/motion-utils/dist/es/easing/ease.mjs",
+    "rendered": 177,
+    "original": 303
+  },
+  {
+    "id": "node_modules/.bun/motion-utils@12.39.0/node_modules/motion-utils/dist/es/easing/utils/is-easing-array.mjs",
+    "rendered": 124,
+    "original": 197
+  },
+  {
+    "id": "node_modules/.bun/motion-utils@12.39.0/node_modules/motion-utils/dist/es/easing/utils/get-easing-for-segment.mjs",
+    "rendered": 147,
+    "original": 328
+  },
+  {
+    "id": "node_modules/.bun/motion-utils@12.39.0/node_modules/motion-utils/dist/es/easing/utils/is-bezier-definition.mjs",
+    "rendered": 119,
+    "original": 202
+  },
+  {
+    "id": "node_modules/.bun/motion-utils@12.39.0/node_modules/motion-utils/dist/es/easing/utils/map.mjs",
+    "rendered": 665,
+    "original": 1400
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/frameloop/order.mjs",
+    "rendered": 249,
+    "original": 309
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/frameloop/render-step.mjs",
+    "rendered": 2814,
+    "original": 3216
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/frameloop/batcher.mjs",
+    "rendered": 2282,
+    "original": 2535
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/frameloop/frame.mjs",
+    "rendered": 185,
+    "original": 388
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/frameloop/sync-time.mjs",
+    "rendered": 773,
+    "original": 924
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/animation/utils/is-css-variable.mjs",
+    "rendered": 1101,
+    "original": 1219
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/value/types/numbers/index.mjs",
+    "rendered": 229,
+    "original": 338
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/value/types/utils/sanitize.mjs",
+    "rendered": 143,
+    "original": 204
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/value/types/utils/float-regex.mjs",
+    "rendered": 49,
+    "original": 115
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/value/types/utils/is-nullish.mjs",
+    "rendered": 47,
+    "original": 111
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/value/types/utils/single-color-regex.mjs",
+    "rendered": 143,
+    "original": 222
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/value/types/color/utils.mjs",
+    "rendered": 740,
+    "original": 992
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/value/types/color/rgba.mjs",
+    "rendered": 540,
+    "original": 802
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/value/types/color/hex.mjs",
+    "rendered": 806,
+    "original": 938
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/value/types/numbers/units.mjs",
+    "rendered": 626,
+    "original": 722
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/value/types/color/hsla.mjs",
+    "rendered": 508,
+    "original": 763
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/value/types/color/index.mjs",
+    "rendered": 653,
+    "original": 812
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/value/types/utils/color-regex.mjs",
+    "rendered": 136,
+    "original": 202
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/value/types/complex/index.mjs",
+    "rendered": 3743,
+    "original": 4003
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/value/types/color/hsla-to-rgba.mjs",
+    "rendered": 1034,
+    "original": 1101
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/utils/mix/immediate.mjs",
+    "rendered": 66,
+    "original": 132
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/utils/mix/number.mjs",
+    "rendered": 643,
+    "original": 701
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/utils/mix/color.mjs",
+    "rendered": 1290,
+    "original": 1866
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/utils/mix/visibility.mjs",
+    "rendered": 445,
+    "original": 530
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/utils/mix/complex.mjs",
+    "rendered": 2582,
+    "original": 3421
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/utils/mix/index.mjs",
+    "rendered": 243,
+    "original": 377
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/animation/drivers/frame.mjs",
+    "rendered": 467,
+    "original": 662
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/animation/waapi/utils/linear.mjs",
+    "rendered": 396,
+    "original": 467
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/animation/generators/utils/calc-duration.mjs",
+    "rendered": 475,
+    "original": 576
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/animation/generators/utils/create-generator-easing.mjs",
+    "rendered": 522,
+    "original": 749
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/animation/generators/spring.mjs",
+    "rendered": 13033,
+    "original": 13563
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/animation/generators/utils/velocity.mjs",
+    "rendered": 230,
+    "original": 354
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/animation/generators/inertia.mjs",
+    "rendered": 3209,
+    "original": 3369
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/utils/interpolate.mjs",
+    "rendered": 2306,
+    "original": 2574
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/animation/keyframes/offsets/fill.mjs",
+    "rendered": 250,
+    "original": 408
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/animation/keyframes/offsets/default.mjs",
+    "rendered": 114,
+    "original": 221
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/animation/keyframes/offsets/time.mjs",
+    "rendered": 95,
+    "original": 164
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/animation/generators/keyframes.mjs",
+    "rendered": 1529,
+    "original": 1888
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/animation/keyframes/get-final.mjs",
+    "rendered": 480,
+    "original": 550
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/animation/utils/replace-transition-type.mjs",
+    "rendered": 285,
+    "original": 536
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/animation/utils/WithPromise.mjs",
+    "rendered": 521,
+    "original": 588
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/animation/JSAnimation.mjs",
+    "rendered": 8837,
+    "original": 14544
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/animation/keyframes/utils/fill-wildcards.mjs",
+    "rendered": 151,
+    "original": 223
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/render/dom/parse-transform.mjs",
+    "rendered": 2414,
+    "original": 2540
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/render/utils/keys-transform.mjs",
+    "rendered": 878,
+    "original": 971
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/animation/keyframes/utils/unit-conversion.mjs",
+    "rendered": 1693,
+    "original": 2104
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/animation/keyframes/KeyframesResolver.mjs",
+    "rendered": 5050,
+    "original": 5343
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/render/dom/is-css-var.mjs",
+    "rendered": 49,
+    "original": 112
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/render/dom/style-set.mjs",
+    "rendered": 152,
+    "original": 260
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/utils/supports/flags.mjs",
+    "rendered": 135,
+    "original": 198
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/utils/supports/memo.mjs",
+    "rendered": 146,
+    "original": 290
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/utils/supports/scroll-timeline.mjs",
+    "rendered": 121,
+    "original": 385
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/utils/supports/linear-easing.mjs",
+    "rendered": 277,
+    "original": 399
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/animation/waapi/easing/cubic-bezier.mjs",
+    "rendered": 85,
+    "original": 161
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/animation/waapi/easing/supported.mjs",
+    "rendered": 434,
+    "original": 567
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/animation/waapi/easing/map-easing.mjs",
+    "rendered": 612,
+    "original": 998
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/animation/waapi/start-waapi-animation.mjs",
+    "rendered": 940,
+    "original": 1412
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/animation/generators/utils/is-generator.mjs",
+    "rendered": 97,
+    "original": 165
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/animation/waapi/utils/apply-generator.mjs",
+    "rendered": 305,
+    "original": 540
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/animation/NativeAnimation.mjs",
+    "rendered": 5849,
+    "original": 6489
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/animation/waapi/utils/unsupported-easing.mjs",
+    "rendered": 382,
+    "original": 530
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/animation/NativeAnimationExtended.mjs",
+    "rendered": 3043,
+    "original": 3539
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/animation/utils/is-animatable.mjs",
+    "rendered": 923,
+    "original": 1057
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/animation/utils/can-animate.mjs",
+    "rendered": 1332,
+    "original": 1811
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/animation/utils/make-animation-instant.mjs",
+    "rendered": 100,
+    "original": 187
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/animation/waapi/utils/accelerated-values.mjs",
+    "rendered": 364,
+    "original": 444
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/animation/waapi/utils/is-browser-color.mjs",
+    "rendered": 343,
+    "original": 424
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/animation/waapi/supports/waapi.mjs",
+    "rendered": 1701,
+    "original": 1952
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/animation/AsyncMotionValueAnimation.mjs",
+    "rendered": 6288,
+    "original": 7025
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/animation/GroupAnimation.mjs",
+    "rendered": 2105,
+    "original": 2178
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/animation/GroupAnimationWithThen.mjs",
+    "rendered": 159,
+    "original": 304
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/value/index.mjs",
+    "rendered": 7282,
+    "original": 9887
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/animation/utils/resolve-transition.mjs",
+    "rendered": 423,
+    "original": 503
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/animation/utils/get-value-transition.mjs",
+    "rendered": 293,
+    "original": 437
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/animation/utils/default-transitions.mjs",
+    "rendered": 872,
+    "original": 1029
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/animation/utils/is-transition-defined.mjs",
+    "rendered": 541,
+    "original": 626
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/animation/interfaces/motion-value.mjs",
+    "rendered": 3599,
+    "original": 4284
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/animation/utils/css-variables-conversion.mjs",
+    "rendered": 1168,
+    "original": 1588
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/render/utils/resolve-variants.mjs",
+    "rendered": 1308,
+    "original": 1392
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/render/utils/resolve-dynamic-variants.mjs",
+    "rendered": 190,
+    "original": 372
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/render/utils/keys-position.mjs",
+    "rendered": 140,
+    "original": 272
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/render/utils/is-keyframes-target.mjs",
+    "rendered": 66,
+    "original": 147
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/render/utils/setters.mjs",
+    "rendered": 881,
+    "original": 1124
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/value/utils/is-motion-value.mjs",
+    "rendered": 69,
+    "original": 142
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/value/will-change/is.mjs",
+    "rendered": 98,
+    "original": 231
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/value/will-change/add-will-change.mjs",
+    "rendered": 579,
+    "original": 763
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/render/dom/utils/camel-to-dash.mjs",
+    "rendered": 103,
+    "original": 172
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/animation/optimized-appear/data-id.mjs",
+    "rendered": 130,
+    "original": 306
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/animation/optimized-appear/get-appear-id.mjs",
+    "rendered": 110,
+    "original": 251
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/animation/interfaces/visual-element-target.mjs",
+    "rendered": 3975,
+    "original": 4595
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/value/types/auto.mjs",
+    "rendered": 101,
+    "original": 154
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/value/types/test.mjs",
+    "rendered": 106,
+    "original": 168
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/value/types/dimensions.mjs",
+    "rendered": 297,
+    "original": 587
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/animation/keyframes/utils/is-none.mjs",
+    "rendered": 250,
+    "original": 359
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/value/types/complex/filter.mjs",
+    "rendered": 810,
+    "original": 962
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/value/types/complex/mask.mjs",
+    "rendered": 294,
+    "original": 387
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/value/types/int.mjs",
+    "rendered": 58,
+    "original": 156
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/value/types/maps/transform.mjs",
+    "rendered": 787,
+    "original": 966
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/value/types/maps/number.mjs",
+    "rendered": 1474,
+    "original": 1620
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/value/types/maps/defaults.mjs",
+    "rendered": 586,
+    "original": 863
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/value/types/utils/animatable-none.mjs",
+    "rendered": 469,
+    "original": 747
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/animation/keyframes/utils/make-none-animatable.mjs",
+    "rendered": 1060,
+    "original": 1315
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/animation/keyframes/DOMKeyframesResolver.mjs",
+    "rendered": 5761,
+    "original": 6420
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/utils/resolve-elements.mjs",
+    "rendered": 628,
+    "original": 704
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/value/types/utils/get-as-type.mjs",
+    "rendered": 221,
+    "original": 291
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/frameloop/microtask.mjs",
+    "rendered": 91,
+    "original": 251
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/utils/is-svg-element.mjs",
+    "rendered": 184,
+    "original": 297
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/utils/is-svg-svg-element.mjs",
+    "rendered": 226,
+    "original": 358
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/value/follow-value.mjs",
+    "rendered": 3358,
+    "original": 4384
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/value/spring-value.mjs",
+    "rendered": 418,
+    "original": 1057
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/value/types/utils/find.mjs",
+    "rendered": 216,
+    "original": 473
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/projection/geometry/models.mjs",
+    "rendered": 119,
+    "original": 410
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/render/store.mjs",
+    "rendered": 41,
+    "original": 109
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/render/utils/is-animation-controls.mjs",
+    "rendered": 134,
+    "original": 219
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/render/utils/is-variant-label.mjs",
+    "rendered": 145,
+    "original": 220
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/render/utils/variant-props.mjs",
+    "rendered": 207,
+    "original": 299
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/render/utils/is-controlling-variants.mjs",
+    "rendered": 260,
+    "original": 541
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/render/utils/motion-values.mjs",
+    "rendered": 1922,
+    "original": 2132
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/render/utils/reduced-motion/state.mjs",
+    "rendered": 171,
+    "original": 267
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/render/utils/reduced-motion/index.mjs",
+    "rendered": 577,
+    "original": 778
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/render/VisualElement.mjs",
+    "rendered": 13395,
+    "original": 21988
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/render/dom/DOMVisualElement.mjs",
+    "rendered": 1175,
+    "original": 1469
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/projection/geometry/conversion.mjs",
+    "rendered": 1019,
+    "original": 1258
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/projection/utils/measure.mjs",
+    "rendered": 163,
+    "original": 752
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/render/html/utils/build-transform.mjs",
+    "rendered": 2519,
+    "original": 2813
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/render/html/utils/build-styles.mjs",
+    "rendered": 2145,
+    "original": 2571
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/render/html/utils/render.mjs",
+    "rendered": 614,
+    "original": 675
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/projection/styles/scale-border-radius.mjs",
+    "rendered": 1460,
+    "original": 1617
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/projection/styles/scale-box-shadow.mjs",
+    "rendered": 1299,
+    "original": 1494
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/projection/styles/scale-correction.mjs",
+    "rendered": 490,
+    "original": 1025
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/render/utils/is-forced-motion-value.mjs",
+    "rendered": 242,
+    "original": 563
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/render/html/utils/scrape-motion-values.mjs",
+    "rendered": 541,
+    "original": 784
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/render/html/HTMLVisualElement.mjs",
+    "rendered": 1233,
+    "original": 1880
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/render/object/ObjectVisualElement.mjs",
+    "rendered": 964,
+    "original": 1168
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/render/svg/utils/path.mjs",
+    "rendered": 1157,
+    "original": 1218
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/render/svg/utils/build-attrs.mjs",
+    "rendered": 2207,
+    "original": 2389
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/render/svg/utils/camel-case-attrs.mjs",
+    "rendered": 577,
+    "original": 657
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/render/svg/utils/is-svg-tag.mjs",
+    "rendered": 81,
+    "original": 144
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/render/svg/utils/render.mjs",
+    "rendered": 288,
+    "original": 534
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/render/svg/utils/scrape-motion-values.mjs",
+    "rendered": 527,
+    "original": 885
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/render/svg/SVGVisualElement.mjs",
+    "rendered": 1177,
+    "original": 1888
+  },
+  {
+    "id": "node_modules/.bun/motion-dom@12.40.0/node_modules/motion-dom/dist/es/animation/animate/single-value.mjs",
+    "rendered": 255,
+    "original": 524
+  },
+  {
+    "id": "node_modules/.bun/framer-motion@12.40.0+c648e134ecc4467b/node_modules/framer-motion/dist/es/animation/utils/is-dom-keyframes.mjs",
+    "rendered": 109,
+    "original": 184
+  },
+  {
+    "id": "node_modules/.bun/framer-motion@12.40.0+c648e134ecc4467b/node_modules/framer-motion/dist/es/animation/animate/resolve-subjects.mjs",
+    "rendered": 482,
+    "original": 669
+  },
+  {
+    "id": "node_modules/.bun/framer-motion@12.40.0+c648e134ecc4467b/node_modules/framer-motion/dist/es/animation/sequence/utils/calc-repeat-duration.mjs",
+    "rendered": 126,
+    "original": 214
+  },
+  {
+    "id": "node_modules/.bun/framer-motion@12.40.0+c648e134ecc4467b/node_modules/framer-motion/dist/es/animation/sequence/utils/calc-time.mjs",
+    "rendered": 617,
+    "original": 683
+  },
+  {
+    "id": "node_modules/.bun/framer-motion@12.40.0+c648e134ecc4467b/node_modules/framer-motion/dist/es/animation/sequence/utils/edit.mjs",
+    "rendered": 904,
+    "original": 1084
+  },
+  {
+    "id": "node_modules/.bun/framer-motion@12.40.0+c648e134ecc4467b/node_modules/framer-motion/dist/es/animation/sequence/utils/normalize-times.mjs",
+    "rendered": 638,
+    "original": 712
+  },
+  {
+    "id": "node_modules/.bun/framer-motion@12.40.0+c648e134ecc4467b/node_modules/framer-motion/dist/es/animation/sequence/utils/sort.mjs",
+    "rendered": 231,
+    "original": 293
+  },
+  {
+    "id": "node_modules/.bun/framer-motion@12.40.0+c648e134ecc4467b/node_modules/framer-motion/dist/es/animation/sequence/create.mjs",
+    "rendered": 13571,
+    "original": 14723
+  },
+  {
+    "id": "node_modules/.bun/framer-motion@12.40.0+c648e134ecc4467b/node_modules/framer-motion/dist/es/animation/utils/create-visual-element.mjs",
+    "rendered": 975,
+    "original": 1229
+  },
+  {
+    "id": "node_modules/.bun/framer-motion@12.40.0+c648e134ecc4467b/node_modules/framer-motion/dist/es/animation/animate/subject.mjs",
+    "rendered": 1741,
+    "original": 2268
+  },
+  {
+    "id": "node_modules/.bun/framer-motion@12.40.0+c648e134ecc4467b/node_modules/framer-motion/dist/es/animation/animate/sequence.mjs",
+    "rendered": 1079,
+    "original": 1317
+  },
+  {
+    "id": "node_modules/.bun/framer-motion@12.40.0+c648e134ecc4467b/node_modules/framer-motion/dist/es/animation/animate/index.mjs",
+    "rendered": 1900,
+    "original": 2173
+  },
+  {
+    "id": "packages/ui/src/components/motion-spring.tsx",
+    "rendered": 1294,
+    "original": 1770
+  },
+  {
+    "id": "packages/ui/src/components/dock-surface.tsx",
+    "rendered": 1552,
+    "original": 1259
+  },
+  {
+    "id": "packages/ui/src/components/provider-icons/sprite.svg",
+    "rendered": 42,
+    "original": 41
+  },
+  {
+    "id": "packages/ui/src/components/provider-icons/types.ts",
+    "rendered": 1549,
+    "original": 1674
+  },
+  {
+    "id": "packages/ui/src/components/provider-icon.tsx",
+    "rendered": 662,
+    "original": 782
+  },
+  {
+    "id": "node_modules/.bun/@kobalte+core@0.13.11+95b571dd5236cc92/node_modules/@kobalte/core/dist/chunk/3LKATPLK.jsx",
+    "rendered": 3693,
+    "original": 2792
+  },
+  {
+    "id": "node_modules/.bun/@kobalte+core@0.13.11+95b571dd5236cc92/node_modules/@kobalte/core/dist/chunk/FINWO3A5.jsx",
+    "rendered": 321,
+    "original": 398
+  },
+  {
+    "id": "node_modules/.bun/@kobalte+core@0.13.11+95b571dd5236cc92/node_modules/@kobalte/core/dist/chunk/2I3Q5YLM.jsx",
+    "rendered": 12349,
+    "original": 12660
+  },
+  {
+    "id": "node_modules/.bun/@kobalte+core@0.13.11+95b571dd5236cc92/node_modules/@kobalte/core/dist/chunk/JL7SEB2K.jsx",
+    "rendered": 21845,
+    "original": 23852
+  },
+  {
+    "id": "packages/ui/src/components/select.tsx",
+    "rendered": 5664,
+    "original": 5505
+  },
+  {
+    "id": "packages/ui/src/components/tag.tsx",
+    "rendered": 575,
+    "original": 527
+  },
+  {
+    "id": "packages/ui/src/v2/components/badge-v2.css",
+    "rendered": 0,
+    "original": 765
+  },
+  {
+    "id": "packages/ui/src/v2/components/badge-v2.tsx",
+    "rendered": 583,
+    "original": 566
+  },
+  {
+    "id": "packages/app/src/components/model-tooltip.tsx",
+    "rendered": 5420,
+    "original": 4736
+  },
+  {
+    "id": "packages/app/src/utils/search-keydown.ts",
+    "rendered": 3866,
+    "original": 4162
+  },
+  {
+    "id": "packages/app/src/utils/menu-dismiss-controller.ts",
+    "rendered": 970,
+    "original": 1112
+  },
+  {
+    "id": "packages/app/src/components/dialog-select-model-search.ts",
+    "rendered": 534,
+    "original": 609
+  },
+  {
+    "id": "packages/app/src/components/dialog-select-model.tsx",
+    "rendered": 27071,
+    "original": 21202
+  },
+  {
+    "id": "packages/app/src/components/dialog-select-model-unpaid.tsx",
+    "rendered": 7377,
+    "original": 5846
+  },
+  {
+    "id": "packages/app/src/components/prompt-input/editor-dom.ts",
+    "rendered": 4789,
+    "original": 5068
+  },
+  {
+    "id": "packages/app/src/utils/draft-store.ts",
+    "rendered": 6055,
+    "original": 6873
+  },
+  {
+    "id": "packages/app/src/constants/file-picker.ts",
+    "rendered": 1485,
+    "original": 1678
+  },
+  {
+    "id": "packages/app/src/components/prompt-input/files.ts",
+    "rendered": 1956,
+    "original": 2442
+  },
+  {
+    "id": "packages/app/src/components/prompt-input/paste.ts",
+    "rendered": 587,
+    "original": 613
+  },
+  {
+    "id": "packages/app/src/components/prompt-input/attachments.ts",
+    "rendered": 4862,
+    "original": 6609
+  },
+  {
+    "id": "packages/app/src/components/prompt-input/history.ts",
+    "rendered": 5993,
+    "original": 7522
+  },
+  {
+    "id": "packages/app/src/components/prompt-input/history-store.ts",
+    "rendered": 1354,
+    "original": 2515
+  },
+  {
+    "id": "packages/app/src/utils/id.ts",
+    "rendered": 2155,
+    "original": 2247
+  },
+  {
+    "id": "packages/app/src/utils/comment-note.ts",
+    "rendered": 2337,
+    "original": 3081
+  },
+  {
+    "id": "packages/app/src/components/prompt-input/build-request-parts.ts",
+    "rendered": 4686,
+    "original": 6184
+  },
+  {
+    "id": "packages/app/src/components/prompt-input/submission-state.ts",
+    "rendered": 644,
+    "original": 939
+  },
+  {
+    "id": "packages/schema/src/schema.ts",
+    "rendered": 601,
+    "original": 1234
+  },
+  {
+    "id": "packages/schema/src/identifier.ts",
+    "rendered": 728,
+    "original": 838
+  },
+  {
+    "id": "packages/schema/src/project-id.ts",
+    "rendered": 117,
+    "original": 251
+  },
+  {
+    "id": "packages/schema/src/workspace-id.ts",
+    "rendered": 403,
+    "original": 594
+  },
+  {
+    "id": "packages/schema/src/location.ts",
+    "rendered": 305,
+    "original": 743
+  },
+  {
+    "id": "packages/schema/src/event.ts",
+    "rendered": 154,
+    "original": 4098
+  },
+  {
+    "id": "packages/app/src/components/prompt-input/submit.ts",
+    "rendered": 17850,
+    "original": 21561
+  },
+  {
+    "id": "packages/app/src/components/prompt-input/slash-popover.tsx",
+    "rendered": 24821,
+    "original": 17308
+  },
+  {
+    "id": "packages/app/src/components/prompt-input/context-items.tsx",
+    "rendered": 4653,
+    "original": 4293
+  },
+  {
+    "id": "packages/session-ui/src/v2/components/attachment-card-v2.css",
+    "rendered": 0,
+    "original": 1512
+  },
+  {
+    "id": "packages/session-ui/src/v2/components/attachment-card-v2.tsx",
+    "rendered": 1223,
+    "original": 1016
+  },
+  {
+    "id": "packages/session-ui/src/v2/components/comment-card-v2.tsx",
+    "rendered": 2137,
+    "original": 1978
+  },
+  {
+    "id": "packages/session-ui/src/components/message-file.ts",
+    "rendered": 764,
+    "original": 1342
+  },
+  {
+    "id": "packages/app/src/components/prompt-input/image-attachments.css",
+    "rendered": 0,
+    "original": 1023
+  },
+  {
+    "id": "packages/app/src/components/prompt-input/image-attachments.tsx",
+    "rendered": 9810,
+    "original": 7557
+  },
+  {
+    "id": "packages/app/src/components/prompt-input/drag-overlay.tsx",
+    "rendered": 844,
+    "original": 786
+  },
+  {
+    "id": "packages/app/src/components/prompt-input/placeholder.ts",
+    "rendered": 631,
+    "original": 926
+  },
+  {
+    "id": "packages/app/src/components/prompt-input/transient-state.ts",
+    "rendered": 692,
+    "original": 1299
+  },
+  {
+    "id": "packages/ui/src/components/image-preview.tsx",
+    "rendered": 1484,
+    "original": 992
+  },
+  {
+    "id": "packages/app/src/components/prompt-input.tsx",
+    "rendered": 60987,
+    "original": 59013
+  },
+  {
+    "id": "packages/app/src/components/dialog-select-model-unpaid-v2.tsx",
+    "rendered": 10492,
+    "original": 9634
+  },
+  {
+    "id": "packages/session-ui/src/v2/components/prompt-input/attachments.css",
+    "rendered": 0,
+    "original": 1270
+  },
+  {
+    "id": "packages/session-ui/src/v2/components/prompt-input/index.tsx",
+    "rendered": 34059,
+    "original": 27989
+  },
+  {
+    "id": "packages/session-ui/src/v2/components/prompt-input/attachments.ts",
+    "rendered": 7195,
+    "original": 8554
+  },
+  {
+    "id": "packages/session-ui/src/v2/components/prompt-input/store.ts",
+    "rendered": 4199,
+    "original": 5398
+  },
+  {
+    "id": "packages/session-ui/src/v2/components/prompt-input/machine.ts",
+    "rendered": 7223,
+    "original": 10420
+  },
+  {
+    "id": "packages/session-ui/src/v2/components/prompt-input/interaction.ts",
+    "rendered": 14007,
+    "original": 17173
+  },
+  {
+    "id": "packages/app/src/components/prompt-input-v2.tsx",
+    "rendered": 19033,
+    "original": 20807
+  },
+  {
+    "id": "packages/session-ui/src/components/dock-prompt.tsx",
+    "rendered": 1333,
+    "original": 799
+  },
+  {
+    "id": "packages/app/src/pages/session/composer/session-permission-dock.tsx",
+    "rendered": 3527,
+    "original": 2608
+  },
+  {
+    "id": "packages/app/src/pages/session/composer/session-question-dock.tsx",
+    "rendered": 26839,
+    "original": 20635
+  },
+  {
+    "id": "packages/app/src/pages/session/composer/session-followup-dock.tsx",
+    "rendered": 4507,
+    "original": 3601
+  },
+  {
+    "id": "packages/app/src/pages/session/composer/session-revert-dock.tsx",
+    "rendered": 8476,
+    "original": 6938
+  },
+  {
+    "id": "packages/ui/src/components/animated-number.tsx",
+    "rendered": 3671,
+    "original": 3002
+  },
+  {
+    "id": "node_modules/.bun/@kobalte+core@0.13.11+95b571dd5236cc92/node_modules/@kobalte/core/dist/chunk/FEGVA6QU.jsx",
+    "rendered": 8961,
+    "original": 10200
+  },
+  {
+    "id": "packages/ui/src/components/checkbox.tsx",
+    "rendered": 2176,
+    "original": 1701
+  },
+  {
+    "id": "packages/ui/src/components/text-reveal.tsx",
+    "rendered": 4758,
+    "original": 4321
+  },
+  {
+    "id": "packages/ui/src/components/text-strikethrough.tsx",
+    "rendered": 2269,
+    "original": 2507
+  },
+  {
+    "id": "packages/app/src/pages/session/composer/session-todo-dock.tsx",
+    "rendered": 9998,
+    "original": 9760
+  },
+  {
+    "id": "packages/app/src/pages/session/composer/session-composer-region.tsx",
+    "rendered": 9401,
+    "original": 6339
+  },
+  {
+    "id": "packages/app/src/pages/session/composer/session-composer-controls.ts",
+    "rendered": 3567,
+    "original": 4957
+  },
+  {
+    "id": "packages/app/src/pages/session/composer/session-composer-state.ts",
+    "rendered": 4807,
+    "original": 6166
+  },
+  {
+    "id": "packages/app/src/pages/session/composer/session-composer-region-controller.ts",
+    "rendered": 2930,
+    "original": 4565
+  },
+  {
+    "id": "packages/app/src/components/agent-runtime.tsx",
+    "rendered": 3043,
+    "original": 2648
+  },
+  {
+    "id": "packages/app/src/components/bitrix24-connection.css",
+    "rendered": 0,
+    "original": 1417
+  },
+  {
+    "id": "packages/app/src/components/wildberries-connection.tsx",
+    "rendered": 10814,
+    "original": 9260
+  },
+  {
+    "id": "packages/app/src/components/bitrix24-connection.tsx",
+    "rendered": 10289,
+    "original": 8970
+  },
+  {
+    "id": "packages/app/src/components/project-agent.tsx",
+    "rendered": 4678,
+    "original": 4250
+  },
+  {
+    "id": "packages/app/src/components/site-result-card.css",
+    "rendered": 0,
+    "original": 1262
+  },
+  {
+    "id": "packages/app/src/components/site-result-card.tsx",
+    "rendered": 2096,
+    "original": 1811
+  },
+  {
+    "id": "packages/ui/src/components/card.tsx",
+    "rendered": 1701,
+    "original": 3493
+  },
+  {
+    "id": "node_modules/.bun/ansi-regex@6.2.2/node_modules/ansi-regex/index.js",
+    "rendered": 574,
+    "original": 590
+  },
+  {
+    "id": "node_modules/.bun/strip-ansi@7.1.2/node_modules/strip-ansi/index.js",
+    "rendered": 415,
+    "original": 468
+  },
+  {
+    "id": "packages/ui/src/components/text-shimmer.tsx",
+    "rendered": 1547,
+    "original": 1543
+  },
+  {
+    "id": "packages/session-ui/src/components/basic-tool.tsx",
+    "rendered": 12081,
+    "original": 11020
+  },
+  {
+    "id": "packages/session-ui/src/components/tool-error-card.tsx",
+    "rendered": 6890,
+    "original": 5846
+  },
+  {
+    "id": "packages/ui/src/components/diff-changes.tsx",
+    "rendered": 5030,
+    "original": 3763
+  },
+  {
+    "id": "packages/session-ui/src/components/tool-count-label.tsx",
+    "rendered": 2671,
+    "original": 2478
+  },
+  {
+    "id": "packages/session-ui/src/components/tool-count-summary.tsx",
+    "rendered": 2188,
+    "original": 1729
+  },
+  {
+    "id": "packages/session-ui/src/components/tool-status-title.tsx",
+    "rendered": 6902,
+    "original": 4407
+  },
+  {
+    "id": "node_modules/.bun/diff@8.0.2/node_modules/diff/libesm/patch/parse.js",
+    "rendered": 5065,
+    "original": 5073
+  },
+  {
+    "id": "packages/session-ui/src/components/session-diff.ts",
+    "rendered": 3486,
+    "original": 4971
+  },
+  {
+    "id": "packages/session-ui/src/components/apply-patch-file.ts",
+    "rendered": 1555,
+    "original": 2185
+  },
+  {
+    "id": "packages/session-ui/src/components/part-default-open.ts",
+    "rendered": 976,
+    "original": 1065
+  },
+  {
+    "id": "packages/session-ui/src/components/message-part-text.ts",
+    "rendered": 93,
+    "original": 175
+  },
+  {
+    "id": "packages/session-ui/src/components/message-part.tsx",
+    "rendered": 106011,
+    "original": 87796
+  },
+  {
+    "id": "packages/session-ui/src/components/session-retry.tsx",
+    "rendered": 3709,
+    "original": 2867
+  },
+  {
+    "id": "packages/app/src/pages/session/message-gesture.ts",
+    "rendered": 501,
+    "original": 654
+  },
+  {
+    "id": "packages/ui/src/components/progress-circle.tsx",
+    "rendered": 2358,
+    "original": 1795
+  },
+  {
+    "id": "packages/ui/src/v2/components/progress-circle-v2.css",
+    "rendered": 0,
+    "original": 411
+  },
+  {
+    "id": "packages/ui/src/v2/components/progress-circle-v2.tsx",
+    "rendered": 1962,
+    "original": 1563
+  },
+  {
+    "id": "packages/app/src/components/session-context-usage.tsx",
+    "rendered": 6150,
+    "original": 5102
+  },
+  {
+    "id": "packages/app/src/pages/session/session-archive.ts",
+    "rendered": 2038,
+    "original": 2764
+  },
+  {
+    "id": "packages/app/src/pages/session/timeline/measure.ts",
+    "rendered": 147,
+    "original": 201
+  },
+  {
+    "id": "packages/app/src/pages/session/timeline/observe-element-offset.ts",
+    "rendered": 2252,
+    "original": 2663
+  },
+  {
+    "id": "packages/app/src/pages/session/timeline/timeline-row.ts",
+    "rendered": 1792,
+    "original": 2463
+  },
+  {
+    "id": "packages/app/src/pages/session/timeline/row-reconciliation.ts",
+    "rendered": 2057,
+    "original": 2423
+  },
+  {
+    "id": "packages/app/src/pages/session/timeline/summary-diffs.ts",
+    "rendered": 405,
+    "original": 618
+  },
+  {
+    "id": "packages/session-ui/src/components/response-phase.tsx",
+    "rendered": 284,
+    "original": 440
+  },
+  {
+    "id": "packages/app/src/pages/session/timeline/rows.ts",
+    "rendered": 9111,
+    "original": 11278
+  },
+  {
+    "id": "packages/app/src/pages/session/timeline/projection.ts",
+    "rendered": 2084,
+    "original": 2848
+  },
+  {
+    "id": "packages/app/src/pages/session/timeline/virtual-items.ts",
+    "rendered": 114,
+    "original": 139
+  },
+  {
+    "id": "packages/app/src/pages/session/timeline/message-timeline.tsx",
+    "rendered": 76117,
+    "original": 67822
+  },
+  {
+    "id": "packages/app/src/pages/session/timeline/model.ts",
+    "rendered": 3343,
+    "original": 4157
+  },
+  {
+    "id": "packages/app/src/pages/session/session-model-helpers.ts",
+    "rendered": 971,
+    "original": 1796
+  },
+  {
+    "id": "packages/app/src/pages/session/session-panel-width.ts",
+    "rendered": 506,
+    "original": 1099
+  },
+  {
+    "id": "packages/app/src/addons/serialize.ts",
+    "rendered": 14290,
+    "original": 19810
+  },
+  {
+    "id": "packages/app/src/utils/runtime-adapters.ts",
+    "rendered": 725,
+    "original": 1306
+  },
+  {
+    "id": "packages/app/src/utils/terminal-writer.ts",
+    "rendered": 1199,
+    "original": 1336
+  },
+  {
+    "id": "packages/app/src/utils/terminal-websocket-url.ts",
+    "rendered": 790,
+    "original": 1045
+  },
+  {
+    "id": "packages/app/src/components/terminal.tsx",
+    "rendered": 20377,
+    "original": 23706
+  },
+  {
+    "id": "packages/app/src/pages/session/terminal-label.ts",
+    "rendered": 399,
+    "original": 613
+  },
+  {
+    "id": "packages/app/src/pages/session/terminal-panel.tsx",
+    "rendered": 13354,
+    "original": 11820
+  },
+  {
+    "id": "packages/app/src/components/session/session-sortable-terminal-tab-v2.tsx",
+    "rendered": 11914,
+    "original": 9777
+  },
+  {
+    "id": "packages/app/src/pages/session/terminal-panel-v2.tsx",
+    "rendered": 15698,
+    "original": 13853
+  },
+  {
+    "id": "packages/app/src/pages/session/session-ownership.ts",
+    "rendered": 772,
+    "original": 843
+  },
+  {
+    "id": "packages/app/src/pages/session/use-composer-commands.tsx",
+    "rendered": 2681,
+    "original": 3255
+  },
+  {
+    "id": "packages/app/src/utils/prompt.ts",
+    "rendered": 4505,
+    "original": 5622
+  },
+  {
+    "id": "packages/app/src/pages/session/use-session-commands.tsx",
+    "rendered": 15387,
+    "original": 17089
+  },
+  {
+    "id": "packages/app/src/pages/session/message-id-from-hash.ts",
+    "rendered": 189,
+    "original": 200
+  },
+  {
+    "id": "packages/app/src/pages/session/use-session-hash-scroll.ts",
+    "rendered": 4789,
+    "original": 5846
+  },
+  {
+    "id": "packages/app/src/components/dialog-usage-exceeded.tsx",
+    "rendered": 1204,
+    "original": 1318
+  },
+  {
+    "id": "packages/app/src/pages/session/usage-exceeded-dialogs.tsx",
+    "rendered": 4107,
+    "original": 4284
+  },
+  {
+    "id": "packages/app/src/pages/session.tsx",
+    "rendered": 45372,
+    "original": 49148
+  },
+  {
+    "id": "packages/app/src/pages/home/home-onboarding.css",
+    "rendered": 0,
+    "original": 4789
+  },
+  {
+    "id": "packages/app/src/pages/home/home-onboarding.tsx",
+    "rendered": 7316,
+    "original": 5053
+  },
+  {
+    "id": "packages/app/src/pages/home.tsx",
+    "rendered": 640,
+    "original": 512
+  },
+  {
+    "id": "packages/app/src/utils/knowledge-demo.ts",
+    "rendered": 36348,
+    "original": 36999
+  },
+  {
+    "id": "packages/app/src/utils/knowledge.ts",
+    "rendered": 4144,
+    "original": 6457
+  },
+  {
+    "id": "packages/app/src/utils/knowledge-backup.ts",
+    "rendered": 2600,
+    "original": 3186
+  },
+  {
+    "id": "packages/app/src/components/knowledge-migration.tsx",
+    "rendered": 10110,
+    "original": 8127
+  },
+  {
+    "id": "packages/app/src/utils/knowledge-sync.ts",
+    "rendered": 5701,
+    "original": 7151
+  },
+  {
+    "id": "packages/app/src/utils/knowledge-edit.ts",
+    "rendered": 5854,
+    "original": 8139
+  },
+  {
+    "id": "packages/app/src/components/knowledge-node-preview.tsx",
+    "rendered": 3700,
+    "original": 3232
+  },
+  {
+    "id": "packages/app/src/components/knowledge-editor.tsx",
+    "rendered": 31950,
+    "original": 22344
+  },
+  {
+    "id": "packages/app/src/utils/knowledge-preview.ts",
+    "rendered": 2707,
+    "original": 2978
+  },
+  {
+    "id": "packages/app/src/components/knowledge-viewer.css",
+    "rendered": 0,
+    "original": 3240
+  },
+  {
+    "id": "packages/app/src/components/knowledge-viewer.tsx",
+    "rendered": 12231,
+    "original": 8133
+  },
+  {
+    "id": "packages/app/src/utils/knowledge-layout.ts",
+    "rendered": 2655,
+    "original": 3064
+  },
+  {
+    "id": "packages/app/src/components/knowledge-graph.tsx",
+    "rendered": 23853,
+    "original": 29045
+  },
+  {
+    "id": "packages/app/src/pages/knowledge.css",
+    "rendered": 0,
+    "original": 28022
+  },
+  {
+    "id": "packages/app/src/pages/knowledge.tsx",
+    "rendered": 67538,
+    "original": 55260
+  },
+  {
+    "id": "packages/app/src/pages/skill-market.css",
+    "rendered": 0,
+    "original": 15869
+  },
+  {
+    "id": "packages/app/src/pages/agent-market.css",
+    "rendered": 0,
+    "original": 5342
+  },
+  {
+    "id": "packages/app/src/pages/agent-market.tsx",
+    "rendered": 30391,
+    "original": 20082
+  },
+  {
+    "id": "packages/app/src/pages/home/legacy-home.tsx",
+    "rendered": 6379,
+    "original": 5341
+  },
+  {
+    "id": "packages/app/src/app.tsx",
+    "rendered": 24159,
+    "original": 22726
+  },
+  {
+    "id": "packages/app/package.json",
+    "rendered": 52,
+    "original": 3908
+  },
+  {
+    "id": "packages/app/src/entry.tsx",
+    "rendered": 3332,
+    "original": 5110
+  },
+  {
+    "id": "packages/app/index.html",
+    "rendered": 0,
+    "original": 1377
+  }
+]

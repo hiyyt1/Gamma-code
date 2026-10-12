@@ -27,6 +27,7 @@ export namespace TimelineRow {
   export class Thinking extends Data.TaggedClass("Thinking")<{
     userMessageID: string
     reasoningHeading?: string
+    phase?: "waiting" | "generating" | "reasoning"
   }> {}
   export class DiffSummary extends Data.TaggedClass("DiffSummary")<{
     userMessageID: string
@@ -35,6 +36,7 @@ export namespace TimelineRow {
   export class Error extends Data.TaggedClass("Error")<{
     userMessageID: string
     text: string
+    providerError?: boolean
   }> {}
   export class Retry extends Data.TaggedClass("Retry")<{
     userMessageID: string

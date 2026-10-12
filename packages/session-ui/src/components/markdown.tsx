@@ -191,14 +191,14 @@ function codeLanguage(block: HTMLPreElement) {
 }
 
 function applyCodeMetadata(wrapper: HTMLElement, language: string | undefined) {
+  // Language metadata also labels readonly code blocks in the Gamma shell.
+  if (language) wrapper.dataset.language = language
+  else delete wrapper.dataset.language
+
   if (!document.body.hasAttribute("data-new-layout")) {
-    delete wrapper.dataset.language
     delete wrapper.dataset.codeKind
     return
   }
-
-  if (language) wrapper.dataset.language = language
-  else delete wrapper.dataset.language
 
   const kind = codeKind(language)
   if (kind) wrapper.dataset.codeKind = kind

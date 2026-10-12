@@ -1,0 +1,25 @@
+# In the http context. Use a separate registrable domain, never Gamma's cookie domain.
+# Wildcard DNS and a wildcard TLS certificate must exist before enabling this server.
+limit_req_zone $binary_remote_addr zone=gamma_preview:10m rate=30r/s;
+
+server {
+    listen 443 ssl;
+    server_name "~^[a-f0-9]{48}\.preview\.example\.net$";
+    ssl_certificate /etc/letsencrypt/live/preview.example.net/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/preview.example.net/privkey.pem;
+    access_log off; # Hostnames contain short-lived preview capabilities.
+    client_max_body_size 1k;
+    add_header Strict-Transport-Security "max-age=31536000" always;
+
+    location / {
+        limit_req zone=gamma_preview burst=60 nodelay;
+        proxy_pass http://127.0.0.1:4097;
+        proxy_set_header Host $host;
+        proxy_set_header Authorization "";
+        proxy_set_header Cookie "";
+        proxy_hide_header Set-Cookie;
+        proxy_hide_header X-Powered-By;
+        proxy_read_timeout 15s;
+        proxy_buffering on;
+    }
+}

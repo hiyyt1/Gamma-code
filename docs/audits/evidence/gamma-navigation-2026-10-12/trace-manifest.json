@@ -1,0 +1,38 @@
+[
+  {
+    "phase": "before",
+    "path": "/tmp/gamma-navigation-final-traces-before/manual-api1000-cab22512-c83335fd.json",
+    "bytes": 71613719,
+    "sha256": "282b42b0bf034de2040cd5838b11d64a70fef8794fa4a89614a7de652ea47a48"
+  },
+  {
+    "phase": "before",
+    "path": "/tmp/gamma-navigation-final-traces-before/manual-desktop-68693d02-3afbb9b7.json",
+    "bytes": 36878497,
+    "sha256": "970bb8d44f6b6b84dc4b0a884a7fbc16b616f71f9130d17903f3dbe7d974c4e9"
+  },
+  {
+    "phase": "before",
+    "path": "/tmp/gamma-navigation-final-traces-before/manual-cpu6-88c73587-d7d1eee2.json",
+    "bytes": 52800642,
+    "sha256": "75f8a04918193b498fa37bd31af7536589d7e9c22f1eab1e8941bf374bf0eafb"
+  },
+  {
+    "phase": "after",
+    "path": "/tmp/gamma-navigation-final-traces-after/manual-desktop-68693d02-4e6c7573.json",
+    "bytes": 37728113,
+    "sha256": "219e6ec0f50350c0305351fd91742c7ecc17dbdc41bcf9914fb572f501e782c4"
+  },
+  {
+    "phase": "after",
+    "path": "/tmp/gamma-navigation-final-traces-after/manual-api1000-cab22512-88654399.json",
+    "bytes": 61756827,
+    "sha256": "d8f992cdcba7eba98a1039fd7daae9d79262bb55e001fb4b428cf1495efc173d"
+  },
+  {
+    "phase": "after",
+    "path": "/tmp/gamma-navigation-final-traces-after/manual-cpu6-88c73587-a3fef7fa.json",
+    "bytes": 54162121,
+    "sha256": "63ce9a3d260b0c9da87efc33177ab3beef51bd433bad45e745ff982f428860ce"
+  }
+]

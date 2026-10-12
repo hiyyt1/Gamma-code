@@ -15,6 +15,34 @@ mock.module("@opencode-ai/session-ui/message-part", () => ({
 const { Timeline, TimelineRow } = await import("./rows")
 
 describe("current session timeline rows", () => {
+  for (const phase of ["waiting", "reasoning", "generating"] as const) {
+    test(`uses observed V2 output for the ${phase} indicator`, () => {
+      const source = [
+        { id: "user", type: "user", text: "Hello", time: { created: 1 } },
+        {
+          id: "assistant",
+          type: "assistant",
+          agent: "gamma",
+          model: { id: "model", providerID: "provider" },
+          content: phase === "waiting" ? [] : [{ type: phase === "reasoning" ? "reasoning" : "text", text: "Output" }],
+          time: { created: 2 },
+        },
+      ] satisfies SessionMessageInfo[]
+      const normalized = normalizeSessionMessages("session", source)
+      const messages = new Map(normalized.messages.map((message) => [message.id, message]))
+      const result = Timeline.constructSessionMessageRows(
+        source,
+        (id) => messages.get(id),
+        (id) => normalized.parts.get(id) ?? [],
+        false,
+        "busy",
+        true,
+        normalized.messages.filter((message) => message.role === "user"),
+      )
+      expect(result.rows.find((row) => row._tag === "Thinking")).toMatchObject({ phase })
+    })
+  }
+
   test("derives turns and tagged rows from chronological current messages", () => {
     const source = [
       { id: "msg_1", type: "user", text: "first", time: { created: 1 } },

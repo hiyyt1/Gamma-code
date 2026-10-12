@@ -1,8 +1,12 @@
+import { ProfileTools } from "../../tool/profile-tools"
+import { SessionAgent } from "../agent"
+import { ProviderWait } from "../provider-wait"
 import {
   LLM,
   LLMClient,
   LLMError,
   LLMEvent,
+  TransportReason,
   Message,
   SystemPart,
   isContextOverflowFailure,
@@ -105,6 +109,7 @@ const layer = Layer.effect(
     const referenceGuidance = yield* ReferenceGuidance.Service
     const config = yield* Config.Service
     const snapshots = yield* Snapshot.Service
+    const profiles = yield* ProfileTools.Service
     const db = (yield* Database.Service).db
     const compaction = SessionCompaction.make({ events, llm, config: yield* config.entries() })
     const getSession = Effect.fn("SessionRunner.getSession")(function* (sessionID: SessionSchema.ID) {
@@ -165,8 +170,8 @@ const layer = Layer.effect(
     const continueAfterOverflowCompaction = (step: number) =>
       new TurnTransitionError({ _tag: "ContinueAfterOverflowCompaction", step })
 
-    const loadSystemContext = (agent: AgentV2.Selection) =>
-      Effect.all([systemContext.load(), skillGuidance.load(agent), referenceGuidance.load()], {
+    const loadSystemContext = (agent: AgentV2.Selection, profile: SystemContext.SystemContext) =>
+      Effect.all([systemContext.load(), skillGuidance.load(agent), referenceGuidance.load(), Effect.succeed(profile)], {
         concurrency: "unbounded",
       }).pipe(Effect.map(SystemContext.combine))
 
@@ -180,7 +185,12 @@ const layer = Layer.effect(
       if (session.location.directory !== location.directory || session.location.workspaceID !== location.workspaceID)
         return yield* Effect.interrupt
       const agent = yield* agents.select(session.agent)
-      const initialized = yield* SessionContextEpoch.initialize(db, loadSystemContext(agent), session.id)
+      const profile = yield* profiles.load(location.directory)
+      const initialized = yield* SessionContextEpoch.initialize(
+        db,
+        loadSystemContext(agent, profile.context),
+        session.id,
+      )
       const toolFibers = yield* FiberSet.make<void, ToolOutputStore.Error>()
       let needsContinuation = false
       let currentStep = step
@@ -195,11 +205,13 @@ const layer = Layer.effect(
         if (promoted > 0) currentStep = 1
       }
       const system =
-        initialized ?? (yield* SessionContextEpoch.prepare(db, events, loadSystemContext(agent), session.id))
+        initialized ??
+        (yield* SessionContextEpoch.prepare(db, events, loadSystemContext(agent, profile.context), session.id))
       const model = yield* models.resolve(session)
       const entries = yield* SessionHistory.entriesForRunner(db, session.id, system.baselineSeq)
       const context = entries.map((entry) => entry.message)
       const isLastStep = agent.info?.steps !== undefined && currentStep >= agent.info.steps
+      yield* tools.register(profile.tools).pipe(Effect.orDie)
       const toolMaterialization = isLastStep ? undefined : yield* tools.materialize(agent.info?.permissions)
       const promptCacheKey = /^ses_[0-9a-f]{64}$/.test(session.id) ? session.id.slice(4) : session.id
       const request = LLM.request({
@@ -238,7 +250,10 @@ const layer = Layer.effect(
       const publish = (event: LLMEvent, outputPaths: ReadonlyArray<string> = []) =>
         withPublication(publisher.publish(event, outputPaths))
       let overflowFailure: ProviderErrorEvent | undefined
+      const wait = yield* ProviderWait.make()
       const providerStream = llm.stream(request).pipe(
+        wait.guard,
+        Stream.tap(wait.observe),
         Stream.runForEach((event) =>
           Effect.gen(function* () {
             if (overflowFailure || publisher.hasProviderError()) return
@@ -279,6 +294,19 @@ const layer = Layer.effect(
               ),
             ).pipe(FiberSet.run(toolFibers))
           }),
+        ),
+        wait.run,
+        Effect.mapError((error) =>
+          error instanceof ProviderWait.BudgetExceeded || error instanceof ProviderWait.StreamStalled
+            ? new LLMError({
+                module: "SessionRunner",
+                method: "stream",
+                reason: new TransportReason({
+                  message: error.message,
+                  kind: error.name,
+                }),
+              })
+            : error,
         ),
         Effect.ensuring(withPublication(publisher.flush())),
       )
@@ -415,7 +443,13 @@ const layer = Layer.effect(
     })
 
     return Service.of({
-      run,
+      run: (input) =>
+        Effect.gen(function* () {
+          const binding = yield* SessionAgent.load(input.sessionID).pipe(
+            Effect.provideService(Database.Service, { db }),
+          )
+          return yield* SessionAgent.provide(binding, run(input))
+        }),
     })
   }),
 )
@@ -427,6 +461,7 @@ export const node = makeLocationNode({
     EventV2.node,
     llmClient,
     AgentV2.node,
+    ProfileTools.node,
     ToolRegistry.node,
     SessionRunnerModel.node,
     SessionStore.node,

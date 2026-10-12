@@ -1,0 +1,126 @@
+{
+  "stats": {
+    "startTime": "2026-10-12T14:24:44.208Z",
+    "duration": 39256.389,
+    "expected": 16,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "tests": [
+    {
+      "name": "1440 clean-light: pages and interactions",
+      "status": "expected",
+      "durationMs": 4649
+    },
+    {
+      "name": "1440 clean-dark: pages and interactions",
+      "status": "expected",
+      "durationMs": 4543
+    },
+    {
+      "name": "1440 saved-dark: pages and interactions",
+      "status": "expected",
+      "durationMs": 4494
+    },
+    {
+      "name": "1440 saved-system: pages and interactions",
+      "status": "expected",
+      "durationMs": 4563
+    },
+    {
+      "name": "1440 stale-cache: pages and interactions",
+      "status": "expected",
+      "durationMs": 4461
+    },
+    {
+      "name": "390 clean-light: pages and interactions",
+      "status": "expected",
+      "durationMs": 2189
+    },
+    {
+      "name": "390 clean-dark: pages and interactions",
+      "status": "expected",
+      "durationMs": 2260
+    },
+    {
+      "name": "390 saved-dark: pages and interactions",
+      "status": "expected",
+      "durationMs": 2197
+    },
+    {
+      "name": "390 saved-system: pages and interactions",
+      "status": "expected",
+      "durationMs": 2242
+    },
+    {
+      "name": "390 stale-cache: pages and interactions",
+      "status": "expected",
+      "durationMs": 2212
+    },
+    {
+      "name": "file loading preserves controls at 1440",
+      "status": "expected",
+      "durationMs": 828
+    },
+    {
+      "name": "file loading preserves controls at 390",
+      "status": "expected",
+      "durationMs": 782
+    },
+    {
+      "name": "mobile file panel, navigation, project form and settings",
+      "status": "expected",
+      "durationMs": 1919
+    },
+    {
+      "name": "light before module execution; blocked storage=false",
+      "status": "expected",
+      "durationMs": 90
+    },
+    {
+      "name": "light before module execution; blocked storage=true",
+      "status": "expected",
+      "durationMs": 96
+    },
+    {
+      "name": "older tab cannot switch the mounted application back to dark",
+      "status": "expected",
+      "durationMs": 762
+    }
+  ],
+  "contrast": [
+    {
+      "element": "Gamma LightОткрыть",
+      "ratio": 17.9278402530276
+    },
+    {
+      "element": "Текст ответа должен быть видимым.",
+      "ratio": 12.612599933726143
+    },
+    {
+      "element": "Проверка ввода",
+      "ratio": 18.096211979655724
+    },
+    {
+      "element": "Новый чат",
+      "ratio": 18.096211979655724
+    },
+    {
+      "element": "Создать проект",
+      "ratio": 18.096211979655724
+    },
+    {
+      "element": "Использовать→",
+      "ratio": 4.802453589921853
+    },
+    {
+      "element": "Начните свою историю знаний",
+      "ratio": 15.259627271199824
+    },
+    {
+      "element": "",
+      "ratio": 12.0836253935957
+    }
+  ]
+}

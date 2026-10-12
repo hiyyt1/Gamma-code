@@ -1,0 +1,179 @@
+[
+  {
+    "protocol": "v1",
+    "rows": [
+      {
+        "stage": "home",
+        "requests": 24,
+        "api": 14,
+        "paths": {
+          "/auth/session": 1,
+          "/global/health": 2,
+          "/product/projects": 1,
+          "/api/health": 1,
+          "/api/session?limit=5000&order=desc": 1,
+          "/global/config": 1,
+          "/provider": 1,
+          "/path": 1,
+          "/session/status": 1,
+          "/project": 1,
+          "/global/event": 1,
+          "/session/ses_gamma_light": 1,
+          "/session/ses_gamma_light/message?limit=20": 1
+        }
+      },
+      {
+        "stage": "agents",
+        "requests": 2,
+        "api": 1,
+        "paths": {
+          "/product/agent-market/agents": 1
+        }
+      },
+      {
+        "stage": "knowledge",
+        "requests": 1,
+        "api": 1,
+        "paths": {
+          "/product/knowledge": 1
+        }
+      },
+      {
+        "stage": "projects",
+        "requests": 0,
+        "api": 0,
+        "paths": {}
+      },
+      {
+        "stage": "chat",
+        "requests": 27,
+        "api": 25,
+        "paths": {
+          "/product/knowledge": 1,
+          "/lsp?directory=%2Fgamma%2Flight-project": 1,
+          "/project/proj_gamma_light?directory=%2Fgamma%2Flight-project": 1,
+          "/session/ses_gamma_light": 1,
+          "/agent?directory=%2Fgamma%2Flight-project": 2,
+          "/provider": 1,
+          "/provider?directory=%2Fgamma%2Flight-project": 2,
+          "/path?directory=%2Fgamma%2Flight-project": 1,
+          "/api/reference?directory=%2Fgamma%2Flight-project&location%5Bdirectory%5D=%2Fgamma%2Flight-project": 1,
+          "/mcp?directory=%2Fgamma%2Flight-project": 1,
+          "/experimental/resource?directory=%2Fgamma%2Flight-project": 1,
+          "/product/agent-market/agents": 2,
+          "/session?directory=%2Fgamma%2Flight-project&roots=true&limit=55": 1,
+          "/config?directory=%2Fgamma%2Flight-project": 1,
+          "/session/status?directory=%2Fgamma%2Flight-project": 1,
+          "/vcs?directory=%2Fgamma%2Flight-project": 1,
+          "/command?directory=%2Fgamma%2Flight-project": 1,
+          "/permission?directory=%2Fgamma%2Flight-project": 1,
+          "/question?directory=%2Fgamma%2Flight-project": 1,
+          "/product/knowledge/projects": 1,
+          "/product/session/ses_gamma_light/preview": 1,
+          "/product/session/ses_gamma_light/files?path=": 1
+        }
+      },
+      {
+        "stage": "home-return",
+        "requests": 3,
+        "api": 3,
+        "paths": {
+          "/product/session/ses_gamma_light/discard-empty": 1,
+          "/api/health": 1,
+          "/global/health": 1
+        }
+      }
+    ]
+  },
+  {
+    "protocol": "v2",
+    "rows": [
+      {
+        "stage": "home",
+        "requests": 27,
+        "api": 17,
+        "paths": {
+          "/auth/session": 1,
+          "/global/health": 1,
+          "/product/projects": 1,
+          "/api/health": 2,
+          "/api/session?limit=5000&order=desc": 1,
+          "/api/event": 1,
+          "/api/session/ses_gamma_light": 1,
+          "/api/session/active": 1,
+          "/api/session/ses_gamma_light/message?limit=20&order=desc": 1,
+          "/api/project": 1,
+          "/api/provider": 2,
+          "/api/model": 2,
+          "/api/model/default": 2
+        }
+      },
+      {
+        "stage": "agents",
+        "requests": 5,
+        "api": 4,
+        "paths": {
+          "/product/agent-market/agents": 1,
+          "/api/provider": 1,
+          "/api/model": 1,
+          "/api/model/default": 1
+        }
+      },
+      {
+        "stage": "knowledge",
+        "requests": 1,
+        "api": 1,
+        "paths": {
+          "/product/knowledge": 1
+        }
+      },
+      {
+        "stage": "projects",
+        "requests": 3,
+        "api": 3,
+        "paths": {
+          "/api/provider": 1,
+          "/api/model": 1,
+          "/api/model/default": 1
+        }
+      },
+      {
+        "stage": "chat",
+        "requests": 55,
+        "api": 54,
+        "paths": {
+          "/product/knowledge": 1,
+          "/api/session/ses_gamma_light": 1,
+          "/api/agent?location%5Bdirectory%5D=%2Fgamma%2Flight-project": 2,
+          "/api/provider": 4,
+          "/api/model": 4,
+          "/api/model/default": 4,
+          "/api/provider?location%5Bdirectory%5D=%2Fgamma%2Flight-project": 8,
+          "/api/model?location%5Bdirectory%5D=%2Fgamma%2Flight-project": 8,
+          "/api/model/default?location%5Bdirectory%5D=%2Fgamma%2Flight-project": 8,
+          "/lsp?directory=%2Fgamma%2Flight-project": 1,
+          "/api/reference?location%5Bdirectory%5D=%2Fgamma%2Flight-project": 1,
+          "/api/mcp?location%5Bdirectory%5D=%2Fgamma%2Flight-project": 1,
+          "/api/mcp/resource?location%5Bdirectory%5D=%2Fgamma%2Flight-project": 1,
+          "/product/agent-market/agents": 2,
+          "/api/session?limit=55&order=desc&parentID=null&directory=%2Fgamma%2Flight-project": 1,
+          "/api/command?location%5Bdirectory%5D=%2Fgamma%2Flight-project": 1,
+          "/api/permission/request?location%5Bdirectory%5D=%2Fgamma%2Flight-project": 1,
+          "/api/question/request?location%5Bdirectory%5D=%2Fgamma%2Flight-project": 1,
+          "/product/knowledge/projects": 1,
+          "/api/health": 1,
+          "/product/session/ses_gamma_light/preview": 1,
+          "/product/session/ses_gamma_light/files?path=": 1
+        }
+      },
+      {
+        "stage": "home-return",
+        "requests": 1,
+        "api": 1,
+        "paths": {
+          "/product/session/ses_gamma_light/discard-empty": 1
+        }
+      }
+    ]
+  }
+]

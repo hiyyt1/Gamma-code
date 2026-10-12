@@ -11,6 +11,9 @@ import { PermissionV2 } from "./permission"
 import { AbsolutePath } from "./schema"
 import { SkillDiscovery } from "./skill/discovery"
 import { State } from "./state"
+import { Location } from "./location"
+import { SkillMarketService } from "./skill-market"
+import { SessionAgent } from "./session/agent"
 
 export const DirectorySource = Skill.DirectorySource
 export type DirectorySource = Skill.DirectorySource
@@ -58,6 +61,8 @@ const layer = Layer.effect(
   Effect.gen(function* () {
     const discovery = yield* SkillDiscovery.Service
     const fs = yield* FSUtil.Service
+    const location = yield* Location.Service
+    const market = yield* SkillMarketService.Service
 
     const state = State.create<Data, Draft>({
       initial: () => ({ sources: [] }),
@@ -115,6 +120,27 @@ const layer = Layer.effect(
         cache.set(key, loaded)
         for (const skill of loaded) skills.set(skill.name, skill)
       }
+      const packages = yield* market.sources(location.directory, "v2").pipe(
+        Effect.catch((error) =>
+          Effect.gen(function* () {
+            if ((yield* SessionAgent.Current)?.pin) return yield* Effect.die(error)
+            return yield* Effect.logWarning("market skills unavailable", { code: error.code }).pipe(Effect.as([]))
+          }),
+        ),
+      )
+      for (const pkg of packages) {
+        const loaded = yield* load({ type: "directory", path: AbsolutePath.make(pkg.directory) })
+        for (const skill of loaded) {
+          if (
+            !pkg.skills.some(
+              (entry) => entry.name === skill.name && path.resolve(pkg.directory, "..", entry.path) === skill.location,
+            )
+          )
+            continue
+          const name = `${pkg.id}:${skill.name}`
+          if (!skills.has(name)) skills.set(name, { ...skill, name })
+        }
+      }
       return Array.from(skills.values())
     })
 
@@ -129,4 +155,8 @@ const layer = Layer.effect(
   }),
 )
 
-export const node = makeLocationNode({ service: Service, layer, deps: [SkillDiscovery.node, FSUtil.node] })
+export const node = makeLocationNode({
+  service: Service,
+  layer,
+  deps: [SkillDiscovery.node, FSUtil.node, Location.node, SkillMarketService.node],
+})

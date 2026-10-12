@@ -1,8 +1,8 @@
 import { PRODUCT_ENGLISH } from "./product"
 export const dict = {
   ...PRODUCT_ENGLISH,
-  "app.name": "Oreshnik",
-  "desktop.menu.app": "Oreshnik",
+  "app.name": "Gamma",
+  "desktop.menu.app": "Gamma",
   "desktop.menu.file": "ไฟล์",
   "desktop.menu.edit": "แก้ไข",
   "desktop.menu.view": "มุมมอง",
@@ -242,7 +242,7 @@ export const dict = {
   "provider.connect.status.waiting": "รอการอนุญาต...",
   "provider.connect.status.failed": "การอนุญาตล้มเหลว: {{error}}",
   "provider.connect.apiKey.description":
-    "ป้อนคีย์ API ของ {{provider}} เพื่อเชื่อมต่อบัญชีและใช้โมเดล {{provider}} ใน Oreshnik",
+    "ป้อนคีย์ API ของ {{provider}} เพื่อเชื่อมต่อบัญชีและใช้โมเดล {{provider}} ใน Gamma",
   "provider.connect.apiKey.label": "คีย์ API ของ {{provider}}",
   "provider.connect.apiKey.placeholder": "คีย์ API",
   "provider.connect.apiKey.required": "ต้องใช้คีย์ API",
@@ -256,7 +256,7 @@ export const dict = {
   "provider.connect.oauth.code.visit.prefix": "เยี่ยมชม ",
   "provider.connect.oauth.code.visit.link": "ลิงก์นี้",
   "provider.connect.oauth.code.visit.suffix":
-    " เพื่อรับรหัสการอนุญาตสำหรับเชื่อมต่อบัญชีและใช้โมเดล {{provider}} ใน Oreshnik",
+    " เพื่อรับรหัสการอนุญาตสำหรับเชื่อมต่อบัญชีและใช้โมเดล {{provider}} ใน Gamma",
   "provider.connect.oauth.code.label": "รหัสการอนุญาต {{method}}",
   "provider.connect.oauth.code.placeholder": "รหัสการอนุญาต",
   "provider.connect.oauth.code.required": "ต้องใช้รหัสการอนุญาต",
@@ -264,7 +264,7 @@ export const dict = {
   "provider.connect.oauth.auto.visit.prefix": "เยี่ยมชม ",
   "provider.connect.oauth.auto.visit.link": "ลิงก์นี้",
   "provider.connect.oauth.auto.visit.suffix":
-    " และป้อนรหัสด้านล่างเพื่อเชื่อมต่อบัญชีและใช้โมเดล {{provider}} ใน Oreshnik",
+    " และป้อนรหัสด้านล่างเพื่อเชื่อมต่อบัญชีและใช้โมเดล {{provider}} ใน Gamma",
   "provider.connect.oauth.auto.confirmationCode": "รหัสยืนยัน",
   "provider.connect.toast.connected.title": "เชื่อมต่อ {{provider}} แล้ว",
   "provider.connect.toast.connected.description": "โมเดล {{provider}} พร้อมใช้งานแล้ว",
@@ -545,7 +545,7 @@ export const dict = {
   "help.tabs.title": "ขอแนะนำแท็บ",
   "help.tabs.description": "จัดระเบียบงานและเซสชันที่ใช้งานอยู่ด้วยแท็บ",
   "help.tabs.date": "14 กรกฎาคม",
-  "help.tabs.introduction": "ตอนนี้ Oreshnik Desktop สร้างขึ้นโดยใช้แท็บเป็นหลัก",
+  "help.tabs.introduction": "ตอนนี้ Gamma Desktop สร้างขึ้นโดยใช้แท็บเป็นหลัก",
   "help.tabs.sessions":
     "เริ่มเซสชันใหม่ในแท็บ หรือเปิดเซสชันที่มีอยู่จากโปรเจกต์ใดก็ได้ เปิดแท็บใหม่เมื่อเริ่มงานใหม่ และปิดเมื่อทำงานเสร็จ",
   "help.tabs.organize":
@@ -668,7 +668,7 @@ export const dict = {
   "toast.session.listFailed.title": "ไม่สามารถโหลดเซสชันสำหรับ {{project}}",
 
   "toast.update.title": "มีการอัปเดต",
-  "toast.update.description": "เวอร์ชันใหม่ของ Oreshnik ({{version}}) พร้อมใช้งานสำหรับติดตั้ง",
+  "toast.update.description": "เวอร์ชันใหม่ของ Gamma ({{version}}) พร้อมใช้งานสำหรับติดตั้ง",
   "toast.update.action.installRestart": "ติดตั้งและรีสตาร์ท",
   "toast.update.action.notYet": "ยังไม่",
 
@@ -882,7 +882,7 @@ export const dict = {
   "sidebar.empty.title": "ไม่มีโปรเจกต์ที่เปิดอยู่",
   "sidebar.empty.description": "เปิดโปรเจกต์เพื่อเริ่มต้น",
 
-  "app.name.desktop": "Oreshnik Desktop",
+  "app.name.desktop": "Gamma Desktop",
 
   "settings.section.desktop": "เดสก์ท็อป",
   "settings.section.server": "เซิร์ฟเวอร์",
@@ -901,18 +901,18 @@ export const dict = {
   "settings.general.section.display": "การแสดงผล",
 
   "settings.general.row.language.title": "ภาษา",
-  "settings.general.row.language.description": "เปลี่ยนภาษาที่แสดงสำหรับ Oreshnik",
+  "settings.general.row.language.description": "เปลี่ยนภาษาที่แสดงสำหรับ Gamma",
   "settings.general.row.shell.title": "เชลล์เทอร์มินัล",
   "settings.general.row.shell.description":
     "เลือกเชลล์ที่จะใช้กับเทอร์มินัล เชลล์ที่เข้ากันได้จะใช้สำหรับการเรียกเครื่องมือของเอเจนต์ด้วย",
   "settings.general.row.shell.autoDefault": "อัตโนมัติ (ค่าเริ่มต้น)",
   "settings.general.row.shell.terminalOnly": "เทอร์มินัลเท่านั้น",
   "settings.general.row.appearance.title": "รูปลักษณ์",
-  "settings.general.row.appearance.description": "ปรับแต่งรูปลักษณ์ของ Oreshnik บนอุปกรณ์ของคุณ",
+  "settings.general.row.appearance.description": "ปรับแต่งรูปลักษณ์ของ Gamma บนอุปกรณ์ของคุณ",
   "settings.general.row.colorScheme.title": "โทนสี",
-  "settings.general.row.colorScheme.description": "เลือกว่าจะให้ Oreshnik ใช้ธีมตามระบบ สว่าง หรือมืด",
+  "settings.general.row.colorScheme.description": "เลือกว่าจะให้ Gamma ใช้ธีมตามระบบ สว่าง หรือมืด",
   "settings.general.row.theme.title": "ธีม",
-  "settings.general.row.theme.description": "ปรับแต่งธีมของ Oreshnik",
+  "settings.general.row.theme.description": "ปรับแต่งธีมของ Gamma",
   "settings.general.row.font.title": "แบบอักษรโค้ด",
   "settings.general.row.font.description": "ปรับแต่งแบบอักษรที่ใช้ในบล็อกโค้ด",
   "settings.general.row.terminalFont.title": "แบบอักษรเทอร์มินัล",
@@ -963,7 +963,7 @@ export const dict = {
   "settings.general.row.releaseNotes.description": "แสดงป๊อปอัพ What's New หลังจากอัปเดต",
 
   "settings.updates.row.startup.title": "ตรวจสอบการอัปเดตเมื่อเริ่มต้น",
-  "settings.updates.row.startup.description": "ตรวจสอบการอัปเดตโดยอัตโนมัติเมื่อ Oreshnik เปิดใช้งาน",
+  "settings.updates.row.startup.description": "ตรวจสอบการอัปเดตโดยอัตโนมัติเมื่อ Gamma เปิดใช้งาน",
   "settings.updates.row.check.title": "ตรวจสอบการอัปเดต",
   "settings.updates.row.check.description": "ตรวจสอบการอัปเดตด้วยตนเองและติดตั้งหากมี",
   "settings.updates.action.checkNow": "ตรวจสอบทันที",
@@ -971,7 +971,7 @@ export const dict = {
   "settings.updates.action.downloading": "กำลังดาวน์โหลด...",
   "settings.updates.action.installing": "กำลังติดตั้ง...",
   "settings.updates.toast.latest.title": "คุณเป็นเวอร์ชันล่าสุดแล้ว",
-  "settings.updates.toast.latest.description": "คุณกำลังใช้งาน Oreshnik เวอร์ชันล่าสุด",
+  "settings.updates.toast.latest.description": "คุณกำลังใช้งาน Gamma เวอร์ชันล่าสุด",
 
   "sound.option.none": "ไม่มี",
   "sound.option.alert01": "เสียงเตือน 01",

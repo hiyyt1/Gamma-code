@@ -22,6 +22,7 @@ export const apply = Effect.fn("SessionReminders.apply")(function* (input: {
   const sessions = yield* Session.Service
   const userMessage = input.messages.findLast((msg) => msg.info.role === "user")
   if (!userMessage) return input.messages
+  if (input.agent.name === "gamma-guide") return input.messages
 
   if (!flags.experimentalPlanMode) {
     if (input.agent.name === "plan") {
@@ -35,7 +36,7 @@ export const apply = Effect.fn("SessionReminders.apply")(function* (input: {
       })
     }
     const wasPlan = input.messages.some((msg) => msg.info.role === "assistant" && msg.info.agent === "plan")
-    if (wasPlan && input.agent.name === "build") {
+    if (wasPlan && (input.agent.name === "build" || input.agent.name === "gamma")) {
       userMessage.parts.push({
         id: PartID.ascending(),
         messageID: userMessage.info.id,

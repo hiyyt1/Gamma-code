@@ -11,6 +11,8 @@ import { SkillV2 } from "@opencode-ai/core/skill"
 import { SkillDiscovery } from "@opencode-ai/core/skill/discovery"
 import { tmpdir } from "./fixture/tmpdir"
 import { testEffect } from "./lib/effect"
+import { Location } from "../src/location"
+import { tempLocationLayer } from "./fixture/location"
 
 const urls = new Map<string, AbsolutePath[]>()
 let pulls = 0
@@ -24,7 +26,10 @@ const discovery = Layer.succeed(
   }),
 )
 const it = testEffect(
-  AppNodeBuilder.build(LayerNode.group([SkillV2.node, AgentV2.node]), [[SkillDiscovery.node, discovery]]),
+  AppNodeBuilder.build(LayerNode.group([SkillV2.node, AgentV2.node]), [
+    [SkillDiscovery.node, discovery],
+    [Location.node, tempLocationLayer],
+  ]),
 )
 
 function write(directory: string, name: string, description: string) {

@@ -1,0 +1,551 @@
+{
+  "config": {
+    "configFile": "/home/nikita/menti/mvp_platform/packages/app/e2e/performance/navigation/playwright.config.ts",
+    "rootDir": "/home/nikita/menti/mvp_platform/packages/app/e2e/performance/navigation",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/tmp/gamma-navigation-after-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/home/nikita/menti/mvp_platform/packages/app/e2e/performance/navigation",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 180000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "line",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "/tmp/gamma-navigation-after-report.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.59.1",
+    "workers": 1,
+    "webServer": {
+      "command": "bun run serve -- --host 127.0.0.1 --port 4520 --strictPort --outDir /tmp/gamma-navigation-fixed",
+      "url": "http://127.0.0.1:4520",
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "navigation.spec.ts",
+      "file": "navigation.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "pending catalog diagnostic",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 943,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T15:27:07.959Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "pending-api",
+                      "contentType": "application/json",
+                      "body": "eyJ1cmwiOiJodHRwOi8vMTI3LjAuMC4xOjQ1MjAvYWdlbnRzIiwiaG9tZVZpc2libGUiOmZhbHNlLCJhZ2VudHNWaXNpYmxlIjp0cnVlLCJza2VsZXRvblZpc2libGUiOnRydWV9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5d2868f7d23420c27cca-85d4942d2cf230a3ff20",
+          "file": "navigation.spec.ts",
+          "line": 71,
+          "column": 1
+        },
+        {
+          "title": "pending lineage diagnostic",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 628,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T15:27:08.944Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "pending-lineage",
+                      "contentType": "application/json",
+                      "body": "eyJ1cmwiOiJodHRwOi8vMTI3LjAuMC4xOjQ1MjAvc2VydmVyL2FIUjBjRG92THpFeU55NHdMakF1TVRvME5USXcvc2Vzc2lvbi9zZXNfZ2FtbWFfbGlnaHQiLCJob21lVmlzaWJsZSI6ZmFsc2V9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5d2868f7d23420c27cca-bdef6b4fb71b6a8fa47f",
+          "file": "navigation.spec.ts",
+          "line": 222,
+          "column": 1
+        },
+        {
+          "title": "abandon pending catalog",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 575,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T15:27:09.577Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "abandoned",
+                      "contentType": "application/json",
+                      "body": "eyJ1cmwiOiJodHRwOi8vMTI3LjAuMC4xOjQ1MjAva25vd2xlZGdlIn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5d2868f7d23420c27cca-72cb2458b0af8a5105ab",
+          "file": "navigation.spec.ts",
+          "line": 251,
+          "column": 1
+        },
+        {
+          "title": "chat v1 independent of knowledge",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 815,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T15:27:10.156Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "pending-chat",
+                      "contentType": "application/json",
+                      "body": "eyJlbmRwb2ludCI6Imtub3dsZWRnZSIsInVybCI6Imh0dHA6Ly8xMjcuMC4wLjE6NDUyMC9zZXJ2ZXIvYUhSMGNEb3ZMekV5Tnk0d0xqQXVNVG8wTlRJdy9zZXNzaW9uL3Nlc19nYW1tYV9saWdodCIsImhvbWVWaXNpYmxlIjpmYWxzZSwicHJvbXB0VmlzaWJsZSI6dHJ1ZX0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5d2868f7d23420c27cca-c9628dd476c1747a2831",
+          "file": "navigation.spec.ts",
+          "line": 334,
+          "column": 5
+        },
+        {
+          "title": "chat v1 independent of agent-market/agents",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 796,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T15:27:10.976Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "pending-chat",
+                      "contentType": "application/json",
+                      "body": "eyJlbmRwb2ludCI6ImFnZW50LW1hcmtldC9hZ2VudHMiLCJ1cmwiOiJodHRwOi8vMTI3LjAuMC4xOjQ1MjAvc2VydmVyL2FIUjBjRG92THpFeU55NHdMakF1TVRvME5USXcvc2Vzc2lvbi9zZXNfZ2FtbWFfbGlnaHQiLCJob21lVmlzaWJsZSI6ZmFsc2UsInByb21wdFZpc2libGUiOnRydWV9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5d2868f7d23420c27cca-b47b15f4444308476b60",
+          "file": "navigation.spec.ts",
+          "line": 334,
+          "column": 5
+        },
+        {
+          "title": "chat v2 independent of knowledge",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8512,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T15:27:11.778Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "pending-chat",
+                      "contentType": "application/json",
+                      "body": "eyJlbmRwb2ludCI6Imtub3dsZWRnZSIsInVybCI6Imh0dHA6Ly8xMjcuMC4wLjE6NDUyMC9zZXJ2ZXIvYUhSMGNEb3ZMekV5Tnk0d0xqQXVNVG8wTlRJdy9zZXNzaW9uL3Nlc19nYW1tYV9saWdodCIsImhvbWVWaXNpYmxlIjpmYWxzZSwicHJvbXB0VmlzaWJsZSI6ZmFsc2V9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5d2868f7d23420c27cca-64db6cc1fdcb76f0881e",
+          "file": "navigation.spec.ts",
+          "line": 334,
+          "column": 5
+        },
+        {
+          "title": "chat v2 independent of agent-market/agents",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8529,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T15:27:20.295Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "pending-chat",
+                      "contentType": "application/json",
+                      "body": "eyJlbmRwb2ludCI6ImFnZW50LW1hcmtldC9hZ2VudHMiLCJ1cmwiOiJodHRwOi8vMTI3LjAuMC4xOjQ1MjAvc2VydmVyL2FIUjBjRG92THpFeU55NHdMakF1TVRvME5USXcvc2Vzc2lvbi9zZXNfZ2FtbWFfbGlnaHQiLCJob21lVmlzaWJsZSI6ZmFsc2UsInByb21wdFZpc2libGUiOmZhbHNlfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5d2868f7d23420c27cca-00cea92654e471c3cd82",
+          "file": "navigation.spec.ts",
+          "line": 334,
+          "column": 5
+        },
+        {
+          "title": "catalog failure stays local and can be retried",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 843,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T15:27:28.828Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5d2868f7d23420c27cca-e9fc828fbd771cb654cb",
+          "file": "navigation.spec.ts",
+          "line": 371,
+          "column": 1
+        },
+        {
+          "title": "leaving graph does not wait for catalog",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1789,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T15:27:29.676Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "pending-graph",
+                      "contentType": "application/json",
+                      "body": "eyJncmFwaFZpc2libGUiOmZhbHNlLCJ1cmwiOiJodHRwOi8vMTI3LjAuMC4xOjQ1MjAvYWdlbnRzIn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5d2868f7d23420c27cca-370066a9cb477697c27f",
+          "file": "navigation.spec.ts",
+          "line": 390,
+          "column": 1
+        },
+        {
+          "title": "selected session controls v1",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 670,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T15:27:31.470Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "session-control",
+                      "contentType": "application/json",
+                      "body": "eyJwcm90b2NvbCI6InYxIiwidXJsIjoiaHR0cDovLzEyNy4wLjAuMTo0NTIwL3NlcnZlci9hSFIwY0Rvdkx6RXlOeTR3TGpBdU1UbzBOVEl3L3Nlc3Npb24vc2VzX2dhbW1hX2xpZ2h0IiwidGV4dCI6IkFnZW50IG5vdCBkZXRlcm1pbmVkIiwiZGlzYWJsZWQiOnRydWUsImFnZW50IjpudWxsfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5d2868f7d23420c27cca-d64eb28f19482befbf7a",
+          "file": "navigation.spec.ts",
+          "line": 418,
+          "column": 3
+        },
+        {
+          "title": "selected session controls v2",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8363,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T15:27:32.145Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "session-control",
+                      "contentType": "application/json",
+                      "body": "eyJwcm90b2NvbCI6InYyIiwidXJsIjoiaHR0cDovLzEyNy4wLjAuMTo0NTIwL3NlcnZlci9hSFIwY0Rvdkx6RXlOeTR3TGpBdU1UbzBOVEl3L3Nlc3Npb24vc2VzX2dhbW1hX2xpZ2h0IiwidGV4dCI6ImJ1aWxkIiwiZGlzYWJsZWQiOnRydWUsImFnZW50IjoiYnVpbGQifQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5d2868f7d23420c27cca-cb35e7036a2816505f4c",
+          "file": "navigation.spec.ts",
+          "line": 418,
+          "column": 3
+        },
+        {
+          "title": "disposing one WebGL renderer preserves another",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1939,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T15:27:40.512Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5d2868f7d23420c27cca-823e2c4d477e1e6fc779",
+          "file": "navigation.spec.ts",
+          "line": 442,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-12T15:27:07.161Z",
+    "duration": 35322.949,
+    "expected": 12,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

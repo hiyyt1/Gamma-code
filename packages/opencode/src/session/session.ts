@@ -1,7 +1,10 @@
+import { SessionAgent } from "@opencode-ai/core/session/agent"
 import { LayerNode } from "@opencode-ai/core/effect/layer-node"
 import { PermissionV1 } from "@opencode-ai/core/v1/permission"
 import { Slug } from "@opencode-ai/core/util/slug"
 import { SessionV1 } from "@opencode-ai/core/v1/session"
+import { KeyedMutex } from "@opencode-ai/core/effect/keyed-mutex"
+import { EventTable } from "@opencode-ai/core/event/sql"
 import { serviceUse } from "@opencode-ai/core/effect/service-use"
 import path from "path"
 import { BackgroundJob } from "@/background/job"
@@ -26,7 +29,13 @@ import { inArray } from "drizzle-orm"
 import { lt } from "drizzle-orm"
 import { or } from "drizzle-orm"
 import type { SQL } from "drizzle-orm"
-import { PartTable, SessionTable } from "@opencode-ai/core/session/sql"
+import {
+  MessageTable,
+  PartTable,
+  SessionTable,
+  SessionInputTable,
+  SessionMessageTable,
+} from "@opencode-ai/core/session/sql"
 import { ProjectTable } from "@opencode-ai/core/project/sql"
 import { MessageV2 } from "./message-v2"
 import type { InstanceContext } from "../project/instance-context"
@@ -448,6 +457,8 @@ export interface Interface {
   readonly messages: (input: { sessionID: SessionID; limit?: number }) => Effect.Effect<SessionV1.WithParts[], NotFound>
   readonly children: (parentID: SessionID) => Effect.Effect<Info[]>
   readonly remove: (sessionID: SessionID) => Effect.Effect<void, NotFound>
+  readonly discardEmpty: (sessionID: SessionID) => Effect.Effect<boolean>
+  readonly withUserInput: <A, E, R>(sessionID: SessionID, effect: Effect.Effect<A, E, R>) => Effect.Effect<A, E, R>
   readonly updateMessage: <T extends SessionV1.Info>(msg: T) => Effect.Effect<T>
   readonly removeMessage: (input: { sessionID: SessionID; messageID: MessageID }) => Effect.Effect<MessageID>
   readonly removePart: (input: { sessionID: SessionID; messageID: MessageID; partID: PartID }) => Effect.Effect<PartID>
@@ -492,6 +503,7 @@ const layer: Layer.Layer<
   Effect.gen(function* () {
     const { db } = yield* Database.Service
     const database = yield* Database.Service
+    const admission = KeyedMutex.makeUnsafe<SessionID>()
     const background = yield* BackgroundJob.Service
     const events = yield* EventV2Bridge.Service
     const flags = yield* RuntimeFlags.Service
@@ -500,6 +512,7 @@ const layer: Layer.Layer<
       id?: SessionID
       title?: string
       agent?: string
+      agentPin?: SessionAgent.Pin
       model?: Schema.Schema.Type<typeof Model>
       parentID?: SessionID
       workspaceID?: WorkspaceV2.ID
@@ -509,6 +522,12 @@ const layer: Layer.Layer<
       permission?: PermissionV1.Ruleset
     }) {
       const ctx = yield* InstanceState.context
+      const parent = input.parentID
+        ? yield* SessionAgent.load(input.parentID).pipe(Effect.provideService(Database.Service, { db }))
+        : undefined
+      const prepared = yield* Effect.promise(() =>
+        SessionAgent.prepare(input.agent ?? "gamma", parent?.pin ?? input.agentPin),
+      )
       const result: Info = {
         id: SessionID.descending(input.id),
         slug: Slug.create(),
@@ -519,9 +538,9 @@ const layer: Layer.Layer<
         workspaceID: input.workspaceID,
         parentID: input.parentID,
         title: input.title ?? (input.parentID ? childTitlePrefix : parentTitlePrefix) + new Date().toISOString(),
-        agent: input.agent,
+        agent: prepared.agent,
         model: input.model,
-        metadata: input.metadata,
+        metadata: input.metadata || prepared.pin ? { ...input.metadata, gammaAgent: prepared.pin } : undefined,
         permission: input.permission ? [...input.permission] : undefined,
         cost: 0,
         tokens: EmptyTokens,
@@ -540,6 +559,15 @@ const layer: Layer.Layer<
     const get = Effect.fn("Session.get")(function* (id: SessionID) {
       const row = yield* db.select().from(SessionTable).where(eq(SessionTable.id, id)).get().pipe(Effect.orDie)
       if (!row) return yield* Effect.fail(new NotFoundError({ message: `Session not found: ${id}` }))
+      if (!row.agent) {
+        const binding = yield* SessionAgent.load(id).pipe(Effect.provideService(Database.Service, { db }), Effect.exit)
+        if (binding._tag === "Success")
+          return fromRow({
+            ...row,
+            agent: binding.value.agent,
+            metadata: { ...row.metadata, gammaAgent: binding.value.pin },
+          })
+      }
       return fromRow(row)
     })
 
@@ -603,28 +631,84 @@ const layer: Layer.Layer<
       return rows.map(fromRow)
     })
 
-    const remove: Interface["remove"] = Effect.fnUntraced(function* (sessionID: SessionID) {
-      const session = yield* get(sessionID)
-      try {
-        // `remove` needs to work in all cases, such as broken sessions that
-        // run cleanup without instance state.
-        const hasInstance = yield* InstanceState.directory.pipe(
-          Effect.as(true),
-          Effect.catchCause(() => Effect.succeed(false)),
-        )
+    const remove: (sessionID: SessionID, empty?: () => Effect.Effect<boolean>) => Effect.Effect<boolean, NotFound> =
+      Effect.fnUntraced(function* (sessionID: SessionID, empty?: () => Effect.Effect<boolean>) {
+        const session = yield* get(sessionID)
+        if (empty && !(yield* empty())) return false
+        try {
+          // `remove` needs to work in all cases, such as broken sessions that
+          // run cleanup without instance state.
+          const hasInstance = yield* InstanceState.directory.pipe(
+            Effect.as(true),
+            Effect.catchCause(() => Effect.succeed(false)),
+          )
 
-        if (hasInstance) yield* cancelBackgroundJobs(background, sessionID)
-        const kids = yield* children(sessionID)
-        for (const child of kids) {
-          yield* remove(child.id)
+          if (hasInstance) yield* cancelBackgroundJobs(background, sessionID)
+          if (!empty) {
+            const kids = yield* children(sessionID)
+            for (const child of kids) yield* remove(child.id)
+          }
+
+          const erase = Effect.gen(function* () {
+            if (empty && !(yield* empty())) return false
+            yield* events.publish(SessionV1.Event.Deleted, { sessionID, info: session })
+            yield* events.remove(sessionID)
+            return true
+          })
+          // Background cancellation can await database writes. Only the final
+          // condition and deletion belong inside the transaction.
+          return yield* empty ? db.transaction(() => erase).pipe(Effect.orDie) : erase
+        } catch (error) {
+          yield* Effect.logError("failed to remove session", { sessionID, error })
+          return false
         }
+      })
 
-        yield* events.publish(SessionV1.Event.Deleted, { sessionID, info: session })
-        yield* events.remove(sessionID)
-      } catch (error) {
-        yield* Effect.logError("failed to remove session", { sessionID, error })
-      }
-    })
+    const isUninitialized = (sessionID: SessionID) =>
+      Effect.gen(function* () {
+        // Existing children must never be recursively deleted by automatic cleanup.
+        if ((yield* children(sessionID)).length) return false
+        const user = yield* db
+          .select({ id: MessageTable.id })
+          .from(MessageTable)
+          .where(
+            and(eq(MessageTable.session_id, sessionID), sql`json_extract(${MessageTable.data}, '$.role') = 'user'`),
+          )
+          .get()
+        if (user) return false
+        // Initialization is permanent, including after a message is reverted/deleted.
+        const history = yield* db
+          .select({ id: EventTable.id })
+          .from(EventTable)
+          .where(
+            and(
+              eq(EventTable.aggregate_id, sessionID),
+              eq(EventTable.type, "message.updated.1"),
+              sql`json_extract(${EventTable.data}, '$.info.role') = 'user'`,
+            ),
+          )
+          .get()
+        if (history) return false
+        const input = yield* db
+          .select({ id: SessionInputTable.id })
+          .from(SessionInputTable)
+          .where(eq(SessionInputTable.session_id, sessionID))
+          .get()
+        if (input) return false
+        const message = yield* db
+          .select({ id: SessionMessageTable.id })
+          .from(SessionMessageTable)
+          .where(and(eq(SessionMessageTable.session_id, sessionID), eq(SessionMessageTable.type, "user")))
+          .get()
+        if (message) return false
+        return true
+      }).pipe(Effect.orDie)
+
+    const discardEmpty = (sessionID: SessionID) =>
+      remove(sessionID, () => isUninitialized(sessionID)).pipe(
+        Effect.catchTag("NotFoundError", () => Effect.succeed(true)),
+        admission.withLock(sessionID),
+      )
 
     const updateMessage = <T extends SessionV1.Info>(msg: T): Effect.Effect<T> =>
       Effect.gen(function* () {
@@ -691,12 +775,17 @@ const layer: Layer.Layer<
     const fork = Effect.fn("Session.fork")(function* (input: { sessionID: SessionID; messageID?: MessageID }) {
       const ctx = yield* InstanceState.context
       const original = yield* get(input.sessionID)
+      const binding = yield* SessionAgent.load(input.sessionID).pipe(Effect.provideService(Database.Service, { db }))
       const title = getForkedTitle(original.title)
       const session = yield* createNext({
         directory: ctx.directory,
         path: sessionPath(ctx.worktree, ctx.directory),
         workspaceID: original.workspaceID,
         title,
+        agent: binding.agent,
+        agentPin: binding.pin,
+        model: original.model,
+        permission: original.permission,
         metadata: structuredClone(original.metadata),
       })
       const msgs = yield* messages({ sessionID: input.sessionID })
@@ -759,7 +848,11 @@ const layer: Layer.Layer<
     })
 
     const setMetadata = Effect.fn("Session.setMetadata")(function* (input: typeof SetMetadataInput.Type) {
-      yield* patch(input.sessionID, { metadata: input.metadata, time: { updated: Date.now() } }).pipe(Effect.orDie)
+      const current = yield* get(input.sessionID).pipe(Effect.orDie)
+      yield* patch(input.sessionID, {
+        metadata: { ...input.metadata, gammaAgent: current.metadata?.gammaAgent },
+        time: { updated: Date.now() },
+      }).pipe(Effect.orDie)
     })
 
     const setAgentModel = Effect.fn("Session.setAgentModel")(function* (input: {
@@ -768,8 +861,10 @@ const layer: Layer.Layer<
       model: NonNullable<Info["model"]>
       time: number
     }) {
+      const binding = yield* SessionAgent.load(input.sessionID).pipe(Effect.provideService(Database.Service, { db }))
+      SessionAgent.assert(binding, input.agent)
       yield* patch(input.sessionID, {
-        agent: input.agent,
+        agent: binding.agent,
         model: input.model,
         time: { updated: input.time },
       }).pipe(Effect.orDie)
@@ -923,7 +1018,9 @@ const layer: Layer.Layer<
       diff,
       messages,
       children,
-      remove,
+      remove: (sessionID) => remove(sessionID).pipe(Effect.asVoid),
+      discardEmpty,
+      withUserInput: (sessionID, effect) => admission.withLock(sessionID)(effect),
       updateMessage,
       removeMessage,
       removePart,

@@ -322,17 +322,17 @@ describe("SessionV2.create", () => {
     }),
   )
 
-  it.effect("switches the selected agent through the durable Session event", () =>
+  it.effect("keeps Gamma fixed and rejects switching without changing history", () =>
     Effect.gen(function* () {
       const session = yield* SessionV2.Service
       const created = yield* session.create({ location })
-
-      yield* session.switchAgent({ sessionID: created.id, agent: "plan" })
-
-      expect(yield* session.get(created.id)).toMatchObject({ agent: "plan" })
-      expect(
-        Array.from(yield* session.events({ sessionID: created.id }).pipe(Stream.take(1), Stream.runCollect)),
-      ).toMatchObject([{ type: "session.next.agent.switched", data: { agent: "plan" } }])
+      expect(created.agent).toBe(AgentV2.ID.make("gamma"))
+      expect((yield* session.switchAgent({ sessionID: created.id, agent: "plan" }).pipe(Effect.exit))._tag).toBe(
+        "Failure",
+      )
+      yield* session.switchAgent({ sessionID: created.id, agent: "gamma" })
+      expect((yield* session.get(created.id)).agent).toBe(AgentV2.ID.make("gamma"))
+      expect(yield* session.messages({ sessionID: created.id })).toEqual([])
     }),
   )
 

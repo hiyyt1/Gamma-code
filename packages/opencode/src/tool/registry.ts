@@ -54,6 +54,8 @@ import { ModelV2 } from "@opencode-ai/core/model"
 import { MCP } from "@/mcp"
 import { PermissionV1 } from "@opencode-ai/core/v1/permission"
 import { McpCatalog } from "@/mcp/catalog"
+import { GammaHelpTool } from "./gamma-help"
+import { AgentMarketService } from "@opencode-ai/core/agent-market"
 
 export function webSearchEnabled(providerID: ProviderV2.ID, flags = { exa: false, parallel: false }) {
   return (
@@ -99,6 +101,7 @@ const layer = Layer.effect(
     const mcp = yield* MCP.Service
 
     const invalid = yield* InvalidTool
+    const gammaHelp = yield* GammaHelpTool
     const task = yield* TaskTool
     const read = yield* ReadTool
     const question = yield* QuestionTool
@@ -229,6 +232,7 @@ const layer = Layer.effect(
         return {
           custom,
           builtin: [
+            yield* Tool.init(gammaHelp),
             tool.invalid,
             ...(questionEnabled ? [tool.question] : []),
             tool.shell,
@@ -428,6 +432,7 @@ export const node = LayerNode.make({
   service: Service,
   layer,
   deps: [
+    AgentMarketService.node,
     Config.node,
     Plugin.node,
     Question.node,

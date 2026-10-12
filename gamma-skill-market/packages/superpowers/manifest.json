@@ -1,0 +1,107 @@
+{
+  "id": "superpowers",
+  "name": "Superpowers",
+  "source": "https://github.com/obra/superpowers",
+  "author": "obra",
+  "category": "development",
+  "description": "Планирование, разработка, отладка и тестирование.",
+  "revision": "d2d6cf485286ca9af69b84557e4da4c1d83a58e0",
+  "license": "MIT",
+  "skills": [
+    {
+      "name": "brainstorming",
+      "description": "You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation.",
+      "path": "skills/brainstorming/SKILL.md",
+      "sha256": "8fcd0bef91891535e63d50c4fa49bec154bef3b14e0540a2d370f5807c1e6385"
+    },
+    {
+      "name": "dispatching-parallel-agents",
+      "description": "Use when facing 2+ independent tasks that can be worked on without shared state or sequential dependencies",
+      "path": "skills/dispatching-parallel-agents/SKILL.md",
+      "sha256": "3f0f851f63a156d83bbba781ba46cdacc5c3aa1cdfcec21b716422a1edcf678b"
+    },
+    {
+      "name": "executing-plans",
+      "description": "Use when you have a written implementation plan to execute in a separate session with review checkpoints",
+      "path": "skills/executing-plans/SKILL.md",
+      "sha256": "50fddf155f25dcebe060bd2a5d6a07f63f8acaf17c046fe011476171a4a4298f"
+    },
+    {
+      "name": "finishing-a-development-branch",
+      "description": "Use when implementation is complete, all tests pass, and you need to decide how to integrate the work - guides completion of development work by presenting structured options for merge, PR, or cleanup",
+      "path": "skills/finishing-a-development-branch/SKILL.md",
+      "sha256": "17eed71a2c45b7e3546ba6acd18f1e6ad4e34ceac8554373404e6ed8893e2c95"
+    },
+    {
+      "name": "receiving-code-review",
+      "description": "Use when receiving code review feedback, before implementing suggestions, especially if feedback seems unclear or technically questionable - requires technical rigor and verification, not performative agreement or blind implementation",
+      "path": "skills/receiving-code-review/SKILL.md",
+      "sha256": "722515561f1562875e3f54d93277aa04c0420640faea94ea17ed6ea9a5246c13"
+    },
+    {
+      "name": "requesting-code-review",
+      "description": "Use when completing tasks, implementing major features, or before merging to verify work meets requirements",
+      "path": "skills/requesting-code-review/SKILL.md",
+      "sha256": "c583a91bbcdc840ad8af625d8cc1be2ae38111dac41b89a023cba1d18945aebe"
+    },
+    {
+      "name": "subagent-driven-development",
+      "description": "Use when executing implementation plans with independent tasks in the current session",
+      "path": "skills/subagent-driven-development/SKILL.md",
+      "sha256": "b687c2b1b8f5fd91fda40c978fe3bea09a4201afcee1ccdc83589ccabf82320f"
+    },
+    {
+      "name": "systematic-debugging",
+      "description": "Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes",
+      "path": "skills/systematic-debugging/SKILL.md",
+      "sha256": "c231d784146d0f44facfd4aa3f40e195bfe3b55e789a66744e049eb8922e4f83"
+    },
+    {
+      "name": "test-driven-development",
+      "description": "Use when implementing any feature or bugfix, before writing implementation code",
+      "path": "skills/test-driven-development/SKILL.md",
+      "sha256": "8bf1f3d91f01ad753bd647281c8c7b4ae6278a9ffd6f579c69717a327f9054cd"
+    },
+    {
+      "name": "using-git-worktrees",
+      "description": "Use when starting feature work that needs isolation from current workspace or before executing implementation plans - creates isolated git worktrees with smart directory selection and safety verification",
+      "path": "skills/using-git-worktrees/SKILL.md",
+      "sha256": "87723dd0ce99bac135f04617e3b63c4b1091c4fab344803fe40f3558dfbc7d8a"
+    },
+    {
+      "name": "using-superpowers",
+      "description": "Use when starting any conversation - establishes how to find and use skills, requiring Skill tool invocation before ANY response including clarifying questions",
+      "path": "skills/using-superpowers/SKILL.md",
+      "sha256": "5703ceb0aea97b23b771151eb04efcbbd5a86c3472583fe8e40523b8e8d72e6c"
+    },
+    {
+      "name": "verification-before-completion",
+      "description": "Use when about to claim work is complete, fixed, or passing, before committing or creating PRs - requires running verification commands and confirming output before making any success claims; evidence before assertions always",
+      "path": "skills/verification-before-completion/SKILL.md",
+      "sha256": "650437e5fe898520af77870fc5072bce9036b34c7fb62190d113dfa225ea4cb4"
+    },
+    {
+      "name": "writing-plans",
+      "description": "Use when you have a spec or requirements for a multi-step task, before touching code",
+      "path": "skills/writing-plans/SKILL.md",
+      "sha256": "e4e8cdfe7b94defbf2c873c95fa5c0938eb00274f649a5a993dcfa3c1822ae78"
+    },
+    {
+      "name": "writing-skills",
+      "description": "Use when creating new skills, editing existing skills, or verifying skills work before deployment",
+      "path": "skills/writing-skills/SKILL.md",
+      "sha256": "a3c30b639d3582db6ae536c82c839a517865efbf014839d2e5799c112bae7ea5"
+    }
+  ],
+  "dependencies": [
+    "Git и инструменты тестирования текущего проекта — для рабочих процессов разработки",
+    "Необязательно: авторизованный gh CLI для GitHub PR; Node.js и Graphviz dot для render-graphs.js. В окружении проверки gh и dot отсутствуют; эти сценарии не проверены и недоступны без настройки.",
+    "Gamma V1 со штатным task (subagent_type: general). В V2 этой версии отсутствует инструмент делегирования — пакет недоступен."
+  ],
+  "compatibility": "verified",
+  "reason": "Проверен Superpowers v4.3.1 для рабочего backend Gamma V1: 14 навыков загружаются штатным skill tool. Добавлено соответствие инструментов; upstream plugin и hooks не запускаются. В этой версии Gamma V2 нет инструмента task/subagent, поэтому пакет в V2 не подключается. Необязательные сценарии GitHub и диаграмм требуют настройки; полное выполнение всех workflows не проверялось.",
+  "enabledByDefault": false,
+  "runtimes": [
+    "v1"
+  ]
+}

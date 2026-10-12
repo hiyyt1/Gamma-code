@@ -1,0 +1,73 @@
+.gamma-site-preview {
+  display: flex;
+  flex-direction: column;
+  min-width: 320px;
+  width: 50%;
+  margin: 42px 10px 14px 0;
+  border: 1px solid #dedede;
+  border-radius: 17px;
+  background: #fff;
+  overflow: hidden;
+  color: #171717;
+}
+.gamma-site-preview header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  font-size: 12px;
+}
+.gamma-site-preview strong {
+  flex: 1;
+  font-size: 15px;
+}
+.gamma-site-preview button,
+.gamma-site-preview a {
+  padding: 6px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.gamma-site-preview button:hover,
+.gamma-site-preview a:hover {
+  background: #f6f6f6;
+}
+.gamma-site-preview button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.gamma-site-preview :is(button, a, select):focus-visible {
+  outline: 2px solid #a794d7;
+}
+.gamma-site-preview p,
+.gamma-site-preview label {
+  padding: 14px;
+  font-size: 13px;
+}
+.gamma-site-preview label {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.gamma-site-preview select {
+  flex: 1;
+  min-width: 0;
+}
+.gamma-site-preview iframe {
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  border: 0;
+  background: white;
+}
+@media (max-width: 900px) {
+  .gamma-site-preview {
+    position: absolute;
+    inset: 0;
+    width: auto;
+    min-width: 0;
+    z-index: 25;
+    margin: 8px;
+  }
+}

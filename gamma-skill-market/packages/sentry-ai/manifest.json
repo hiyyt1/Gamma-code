@@ -1,0 +1,224 @@
+{
+  "id": "sentry-ai",
+  "name": "Sentry for AI",
+  "source": "https://github.com/getsentry/sentry-for-ai",
+  "author": "getsentry",
+  "category": "integrations",
+  "description": "Наблюдаемость и диагностика с Sentry.",
+  "revision": "d8fd106782e609625704f5348b25c43b2f5dbeff",
+  "license": "MIT",
+  "skills": [
+    {
+      "name": "sentry-android-sdk",
+      "description": "Full Sentry SDK setup for Android. Use when asked to \"add Sentry to Android\", \"install sentry-android\", \"setup Sentry in Android\", or configure error monitoring, tracing, profiling, session replay, or logging for Android applications. Supports Kotlin and Java codebases.",
+      "path": "skills-legacy/sentry-android-sdk/SKILL.md",
+      "sha256": "b30ddb0f54a652002ede95c5108f9e611d69c6d08395ff3d58b108554a524dbd"
+    },
+    {
+      "name": "sentry-browser-sdk",
+      "description": "Full Sentry SDK setup for browser JavaScript. Use when asked to \"add Sentry to a website\", \"install @sentry/browser\", or configure error monitoring, tracing, session replay, or logging for vanilla JavaScript, jQuery, static sites, or WordPress.",
+      "path": "skills-legacy/sentry-browser-sdk/SKILL.md",
+      "sha256": "23f406cdc706b35150435709e4401d8db64dac231f38873645331db0d22489aa"
+    },
+    {
+      "name": "sentry-cloudflare-sdk",
+      "description": "Full Sentry SDK setup for Cloudflare Workers and Pages. Use when asked to \"add Sentry to Cloudflare Workers\", \"install @sentry/cloudflare\", or configure error monitoring, tracing, logging, crons, or AI monitoring for Cloudflare Workers, Pages, Durable Objects, Queues, Workflows, or Hono on Cloudflare.",
+      "path": "skills-legacy/sentry-cloudflare-sdk/SKILL.md",
+      "sha256": "0dcc8315ca75dc5660a3ec2ba80cc1fedbcd150a08037855fb5f1b29544dc414"
+    },
+    {
+      "name": "sentry-cocoa-sdk",
+      "description": "Full Sentry SDK setup for Apple platforms (iOS, macOS, tvOS, watchOS, visionOS). Use when asked to \"add Sentry to iOS\", \"add Sentry to Swift\", \"install sentry-cocoa\", or configure error monitoring, tracing, profiling, session replay, logging, or metrics for Apple applications. Supports SwiftUI and UIKit.",
+      "path": "skills-legacy/sentry-cocoa-sdk/SKILL.md",
+      "sha256": "ca4cdfa671bae65f73594ce7672058d0b777d842a76416b9424259d5cf74016a"
+    },
+    {
+      "name": "sentry-dotnet-sdk",
+      "description": "Full Sentry SDK setup for .NET. Use when asked to \"add Sentry to .NET\", \"install Sentry for C#\", or configure error monitoring, tracing, profiling, logging, or crons for ASP.NET Core, MAUI, WPF, WinForms, Blazor, Azure Functions, or any other .NET application.",
+      "path": "skills-legacy/sentry-dotnet-sdk/SKILL.md",
+      "sha256": "d5dc5226ea439e1baa9842267ea318d40f6b9a05b363f0762caf9e6500606f24"
+    },
+    {
+      "name": "sentry-elixir-sdk",
+      "description": "Full Sentry SDK setup for Elixir. Use when asked to \"add Sentry to Elixir\", \"install sentry for Elixir\", or configure error monitoring, tracing, logging, or crons for Elixir, Phoenix, or Plug applications. Supports Phoenix, Plug, LiveView, Oban, and Quantum.",
+      "path": "skills-legacy/sentry-elixir-sdk/SKILL.md",
+      "sha256": "e57dab9ff49ce9433b2843305de2947fc1afcaa6cd254a642ec56fe030300f18"
+    },
+    {
+      "name": "sentry-fix-issues",
+      "description": "Find and fix issues from Sentry using MCP. Use when asked to fix Sentry errors, debug production issues, investigate exceptions, or resolve bugs reported in Sentry. Methodically analyzes stack traces, breadcrumbs, traces, and context to identify root causes.",
+      "path": "skills-legacy/sentry-fix-issues/SKILL.md",
+      "sha256": "4a9c16f79980b61ab20366c84be252f1c21a6e36e60c3b9ee20b8d5d9fd3a56f"
+    },
+    {
+      "name": "sentry-flutter-sdk",
+      "description": "Full Sentry SDK setup for Flutter and Dart. Use when asked to \"add Sentry to Flutter\", \"install sentry_flutter\", \"setup Sentry in Dart\", or configure error monitoring, tracing, profiling, session replay, or logging for Flutter applications. Supports Android, iOS, macOS, Linux, Windows, and Web.",
+      "path": "skills-legacy/sentry-flutter-sdk/SKILL.md",
+      "sha256": "c9df31e9ea77c4dd0126cb0fe5245aaf4ad1ddcac414efd901f36936c18c925f"
+    },
+    {
+      "name": "sentry-go-sdk",
+      "description": "Full Sentry SDK setup for Go. Use when asked to \"add Sentry to Go\", \"install sentry-go\", \"setup Sentry in Go\", or configure error monitoring, tracing, logging, metrics, or crons for Go applications. Supports net/http, Gin, Echo, Fiber, FastHTTP, Iris, Negroni, and gRPC.",
+      "path": "skills-legacy/sentry-go-sdk/SKILL.md",
+      "sha256": "50edc0949dd185d6cf1276d6741cfbec7a62158fee2f2db3b39ac21cf404a426"
+    },
+    {
+      "name": "sentry-instrument-logging",
+      "description": "Instruments structured Sentry logs in a new or existing application.",
+      "path": "skills-legacy/sentry-instrument-logging/SKILL.md",
+      "sha256": "f0e923bc4886f0006c2009f88a0ec0ae2f021f0a44f310d66d6c90e893818415"
+    },
+    {
+      "name": "sentry-instrumentation-guide",
+      "description": "Decide which Sentry signal to reach for when instrumenting code — error, span, span attribute, log, or metric. Use when adding instrumentation and unsure whether something should be a log vs a span vs a metric, when deciding \"what to instrument where\", when reviewing instrumentation for gaps, or when a coding agent needs a rule for choosing between errors, traces, logs, and metrics. This skill decides WHAT to emit; the sentry-*-sdk skills handle HOW to set each pillar up.",
+      "path": "skills-legacy/sentry-instrumentation-guide/SKILL.md",
+      "sha256": "0f0da737200444ef44cad57e2a8a56d2687e052325db135576b21cea1016e741"
+    },
+    {
+      "name": "sentry-nestjs-sdk",
+      "description": "Full Sentry SDK setup for NestJS. Use when asked to \"add Sentry to NestJS\", \"install @sentry/nestjs\", \"setup Sentry in NestJS\", or configure error monitoring, tracing, profiling, logging, metrics, crons, or AI monitoring for NestJS applications. Supports Express and Fastify adapters, GraphQL, microservices, WebSockets, and background jobs.",
+      "path": "skills-legacy/sentry-nestjs-sdk/SKILL.md",
+      "sha256": "338fc78dfcfafa2007ce23176197ae17d5dd17d3c7876d15d02f6c7261456144"
+    },
+    {
+      "name": "sentry-nextjs-sdk",
+      "description": "Full Sentry SDK setup for Next.js. Use when asked to \"add Sentry to Next.js\", \"install @sentry/nextjs\", or configure error monitoring, tracing, session replay, logging, profiling, AI monitoring, or crons for Next.js applications. Supports Next.js 13+ with App Router and Pages Router.",
+      "path": "skills-legacy/sentry-nextjs-sdk/SKILL.md",
+      "sha256": "fd6383c73ea5ebea71bbe4a63f80d38811f062f2268bf7c7f9d330d15647f9d9"
+    },
+    {
+      "name": "sentry-node-sdk",
+      "description": "Full Sentry SDK setup for Node.js, Bun, and Deno. Use when asked to \"add Sentry to Node.js\", \"add Sentry to Bun\", \"add Sentry to Deno\", \"install @sentry/node\", \"@sentry/bun\", or \"@sentry/deno\", or configure error monitoring, tracing, logging, profiling, metrics, crons, or AI monitoring for server-side JavaScript/TypeScript runtimes.",
+      "path": "skills-legacy/sentry-node-sdk/SKILL.md",
+      "sha256": "666c503d0777f1f03a64385908abacb795c6d25f1c7e47358483b98b7501e1a1"
+    },
+    {
+      "name": "sentry-php-sdk",
+      "description": "Full Sentry SDK setup for PHP. Use when asked to \"add Sentry to PHP\", \"install sentry/sentry\", \"setup Sentry in PHP\", or configure error monitoring, tracing, profiling, logging, metrics, crons, or AI monitoring for PHP applications. Supports plain PHP, Laravel, and Symfony.",
+      "path": "skills-legacy/sentry-php-sdk/SKILL.md",
+      "sha256": "bb38e2ec3b92df39e1851034059f0f17a87727de92e7ad6ffe3b22c2f66e2f55"
+    },
+    {
+      "name": "sentry-python-sdk",
+      "description": "Full Sentry SDK setup for Python. Use when asked to \"add Sentry to Python\", \"install sentry-sdk\", \"setup Sentry in Python\", or configure error monitoring, tracing, profiling, logging, metrics, crons, or AI monitoring for Python applications. Supports Django, Flask, FastAPI, Celery, Starlette, AIOHTTP, Tornado, and more.",
+      "path": "skills-legacy/sentry-python-sdk/SKILL.md",
+      "sha256": "bf06c4afc499eec8e703ca4d9d2454c4158f14901f491cc1e968595bcf637a48"
+    },
+    {
+      "name": "sentry-react-native-sdk",
+      "description": "Full Sentry SDK setup for React Native and Expo. Use when asked to \"add Sentry to React Native\", \"install @sentry/react-native\", \"setup Sentry in Expo\", or configure error monitoring, tracing, profiling, session replay, or logging for React Native applications. Supports Expo managed, Expo bare, and vanilla React Native.",
+      "path": "skills-legacy/sentry-react-native-sdk/SKILL.md",
+      "sha256": "5f16c95e869dfd02f6d43acb653445847086fae3788f810d8bdadd11f09a65fb"
+    },
+    {
+      "name": "sentry-react-router-framework-sdk",
+      "description": "Full Sentry SDK setup for React Router Framework mode. Use when asked to \"add Sentry to React Router Framework\", \"install @sentry/react-router\", or configure error monitoring, tracing, profiling, session replay, logs, or user feedback for a React Router v7 framework app.",
+      "path": "skills-legacy/sentry-react-router-framework-sdk/SKILL.md",
+      "sha256": "6ead8487a827a9d63070f78930ee762d1761d6167996b6937a8d42408b3f5391"
+    },
+    {
+      "name": "sentry-react-sdk",
+      "description": "Full Sentry SDK setup for React. Use when asked to \"add Sentry to React\", \"install @sentry/react\", or configure error monitoring, tracing, session replay, profiling, or logging for React applications. Supports React 16+, React Router v5-v7 non-framework mode, TanStack Router, Redux, Vite, and webpack.",
+      "path": "skills-legacy/sentry-react-sdk/SKILL.md",
+      "sha256": "6f275429138a7b398f4cd450f31cfecf27855bf8fdf7a41679804acc0bfd1991"
+    },
+    {
+      "name": "sentry-ruby-sdk",
+      "description": "Full Sentry SDK setup for Ruby. Use when asked to add Sentry to Ruby, install sentry-ruby, setup Sentry in Rails/Sinatra/Rack, or configure error monitoring, tracing, logging, metrics, profiling, or crons for Ruby applications. Also handles migration from AppSignal, Honeybadger, Bugsnag, Rollbar, or Airbrake. Supports Rails, Sinatra, Rack, Sidekiq, and Resque.",
+      "path": "skills-legacy/sentry-ruby-sdk/SKILL.md",
+      "sha256": "a8e2b821b6fcd1ecfa124a451f2a98fdeb90fb78e50ca0516b009e39e2016f8d"
+    },
+    {
+      "name": "sentry-sdk-setup",
+      "description": "Set up Sentry in any language or framework. Detects the user's platform and loads the right SDK skill. Use when asked to add Sentry, install an SDK, or set up error monitoring in a project.",
+      "path": "skills-legacy/sentry-sdk-setup/SKILL.md",
+      "sha256": "a87cd36ef5dc70729987a0bcea705755e8c4fe0f1a790685cc8cc179dd439ab5"
+    },
+    {
+      "name": "sentry-sdk-skill-creator",
+      "description": "Create a complete Sentry SDK skill bundle for any platform. Use when asked to \"create an SDK skill\", \"add a new platform skill\", \"write a Sentry skill for X\", or build a new sentry-<platform>-sdk skill bundle with wizard flow and feature reference files.",
+      "path": "skills-legacy/sentry-sdk-skill-creator/SKILL.md",
+      "sha256": "f8d051fbb29191bfbda1c616761015d7481aad8c617504121182f20989c674c3"
+    },
+    {
+      "name": "sentry-sdk-upgrade",
+      "description": "Upgrade the Sentry JavaScript SDK across major versions. Use when asked to upgrade Sentry, migrate to a newer version, fix deprecated Sentry APIs, or resolve breaking changes after a Sentry version bump.",
+      "path": "skills-legacy/sentry-sdk-upgrade/SKILL.md",
+      "sha256": "3573b864d6a5325f5ee8e7aea3fae015a2269e33f9025e91b143445e85e67d7b"
+    },
+    {
+      "name": "sentry-setup-ai-monitoring",
+      "description": "Setup Sentry AI Agent Monitoring in any project. Use when asked to monitor LLM calls, track AI agents, track conversations, or instrument OpenAI/Anthropic/Vercel AI/LangChain/Google GenAI/Pydantic AI/Laravel AI. Detects installed AI SDKs and configures appropriate integrations.",
+      "path": "skills-legacy/sentry-setup-ai-monitoring/SKILL.md",
+      "sha256": "8dfd0fecddd70fde305556347fcc1e777b2091c902447714ad126d909cab11fa"
+    },
+    {
+      "name": "sentry-svelte-sdk",
+      "description": "Full Sentry SDK setup for Svelte and SvelteKit. Use when asked to \"add Sentry to Svelte\", \"add Sentry to SvelteKit\", \"install @sentry/sveltekit\", or configure error monitoring, tracing, session replay, or logging for Svelte or SvelteKit applications.",
+      "path": "skills-legacy/sentry-svelte-sdk/SKILL.md",
+      "sha256": "e83b1406c157de53a515b474e3cb627df0c3ff390ca83bab8421fc504bbf863a"
+    },
+    {
+      "name": "sentry-tanstack-start-sdk",
+      "description": "Full Sentry SDK setup for TanStack Start React. Use when asked to \"add Sentry to TanStack Start\", \"install @sentry/tanstackstart-react\", or configure error monitoring, tracing, session replay, logs, or user feedback in a TanStack Start React app.",
+      "path": "skills-legacy/sentry-tanstack-start-sdk/SKILL.md",
+      "sha256": "9edea583907b1439d027440bdace17a2e526be9c206858e5f79b4ae66821b591"
+    },
+    {
+      "name": "sentry-create-alert",
+      "description": "Create Sentry alerts using the workflow engine API. Use when asked to create alerts, set up notifications, configure issue priority alerts, or build workflow automations. Supports email, Slack, PagerDuty, Discord, and other notification actions.",
+      "path": "src/skills/sentry-create-alert/SKILL.md",
+      "sha256": "e00b85ebc74ef64b41f5744feb94db1ff59b213361fdff7b2c45424a53f7dfae"
+    },
+    {
+      "name": "sentry-debug-issue",
+      "description": "Debug and fix a Sentry issue — find it (by link, ID, or search), pull full context (stack trace, breadcrumbs, trace, logs), optionally run Seer root-cause / autofix, apply the code fix, and resolve it via a `Fixes PROJECT-NAME-12A` commit/PR. Use when working a known error or hunting one down to fix.",
+      "path": "src/skills/sentry-debug-issue/SKILL.md",
+      "sha256": "7fd7a690060fa09178ae92daabe96a61b6957d66ab40e21e93ddf8c906f3ec78"
+    },
+    {
+      "name": "sentry-fix-stack-traces",
+      "description": "Make Sentry stack traces readable — upload source maps for JavaScript/TypeScript, or debug files for native and mobile (dSYM, ProGuard/R8, NDK symbols, Dart obfuscation maps, .NET PDBs). Use when frames in Sentry show minified names, bundled paths, hex addresses, \"unknown\", or method names with no file/line, instead of your original source.",
+      "path": "src/skills/sentry-fix-stack-traces/SKILL.md",
+      "sha256": "5b9fa2d3bf1d8d94f39a42831a1aec91fab9cad1370029ccfb40357ac02a8c30"
+    },
+    {
+      "name": "sentry-get-started",
+      "description": "Guided entry point for using Sentry through your agent. Orients you to your current setup and, for a new project, sets up Sentry end to end with sane defaults — provision a project, install the SDK (errors, tracing, and whatever it enables by default), and confirm real telemetry reaches Sentry. Routes other intents (adding more signals, fixing issues) to the right skill.",
+      "path": "src/skills/sentry-get-started/SKILL.md",
+      "sha256": "6d3a50e0b5aa45e3c104e18e5eb91f0cd297799607b4b0ac34c4134c180865dc"
+    },
+    {
+      "name": "sentry-instrument",
+      "description": "Instrument an application with Sentry — detect the platform, install and initialize the SDK if needed, and wire up any signal — error monitoring, tracing/performance, logging, metrics, profiling, session replay, user feedback, cron check-ins, uptime monitors for the deployed app, and AI/LLM monitoring (agent runs, token cost, and conversations for OpenAI, Anthropic, Vercel AI, LangChain, Google GenAI, Pydantic AI, Laravel AI, Eve, Flue, the Cloudflare Agents SDK, and Workers AI). Use to add Sentry to a project or to capture more than errors.",
+      "path": "src/skills/sentry-instrument/SKILL.md",
+      "sha256": "299dd58a8bb07034d8739eb640514f72a811e3b6dc3b2f98f8feeb5f90287fdc"
+    },
+    {
+      "name": "sentry-otel-exporter-setup",
+      "description": "Configure the OpenTelemetry Collector with Sentry Exporter for multi-project routing and automatic project creation. Use when setting up OTel with Sentry, configuring collector pipelines for traces and logs, or routing telemetry from multiple services to Sentry projects.",
+      "path": "src/skills/sentry-otel-exporter-setup/SKILL.md",
+      "sha256": "8671e32a5d05dc708846889f1081e28c782c24ee1575a33de89a2d2a9d81c8fc"
+    },
+    {
+      "name": "sentry-setup-releases",
+      "description": "Set up Sentry releases and deploy tracking — tag events with a version and environment, create the release in CI with its commits, and wire up suspect commits and code mappings, so Sentry can show which release introduced an issue, which commit is responsible, and release health. Use when asked to set up releases, track deploys, see what changed, or when issues show an unknown release or no suspect commit.",
+      "path": "src/skills/sentry-setup-releases/SKILL.md",
+      "sha256": "d7e482855e8cbfd4dd460c23f00ed9d183c4005791b90f87f4738cda91912975"
+    },
+    {
+      "name": "sentry-snapshots-cocoa",
+      "description": "Full Sentry Snapshots setup for Apple/Cocoa projects. Use when asked to \"setup SnapshotPreviews\", \"setup Apple snapshot testing\", \"upload Apple snapshots to Sentry\", \"setup Apple snapshot GitHub Actions\", or \"setup Apple selective snapshot testing\".",
+      "path": "src/skills/sentry-snapshots-cocoa/SKILL.md",
+      "sha256": "1a3e9a08aac93912e6e26ed766298feabce47e77179b641061d57c59fff9e3d9"
+    }
+  ],
+  "dependencies": [
+    "Sentry MCP и авторизация организации",
+    "SDK Sentry для выбранного языка / платформы"
+  ],
+  "compatibility": "needs-configuration",
+  "reason": "Найдены текущие и legacy skills. Диагностика требует Sentry MCP и доступа к организации; интеграционные сценарии без них не проверены.",
+  "enabledByDefault": false,
+  "runtimes": []
+}

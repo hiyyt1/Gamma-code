@@ -1,0 +1,14 @@
+{
+  "source": {
+    "id": "anthropic",
+    "revision": "683bc88e56f3e09ba94f7055977f3d3aa499f202",
+    "source": "https://github.com/anthropics/skills",
+    "license": null,
+    "archiveSha256": "30a1152c163d87852587347c242261d7dd85f2208f25bd9c4b6bf47266a5f4bf",
+    "rejected": []
+  },
+  "discoveredFiles": 20,
+  "invalidFrontmatter": [],
+  "duplicateNames": [],
+  "findings": []
+}

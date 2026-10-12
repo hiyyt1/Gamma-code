@@ -3,9 +3,15 @@
   "compilerOptions": {
     "noEmit": true,
     "rootDir": "..",
-    "types": ["node", "bun"]
+    "types": [
+      "node",
+      "bun"
+    ]
   },
   "include": [
+    "./gamma-light/**/*.ts",
+    "./performance/navigation/**/*.ts",
+    "./performance/chrome-trace.ts",
     "./performance/timeline-stability/**/*.spec.ts",
     "./performance/timeline-stability/fixture.test.ts",
     "./performance/timeline-stability/fixture.ts",

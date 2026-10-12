@@ -46,6 +46,7 @@ import { ServerSyncProvider, useServerSync } from "@/context/server-sync"
 import { GlobalProvider, useGlobal } from "@/context/global"
 import { HighlightsProvider } from "@/context/highlights"
 import { LanguageProvider, type Locale, useLanguage } from "@/context/language"
+import { OnboardingProvider } from "@/context/onboarding"
 import { LayoutProvider } from "@/context/layout"
 import { ModelsProvider } from "@/context/models"
 import { NotificationProvider } from "@/context/notification"
@@ -67,6 +68,8 @@ import { createSessionLineage } from "@/pages/session/session-lineage"
 
 import { SessionPage, SessionRouteErrorBoundary, TargetSessionRouteContent } from "@/pages/session"
 import { NewHome } from "@/pages/home"
+import KnowledgePage from "@/pages/knowledge"
+import AgentMarketPage from "@/pages/agent-market"
 import { LegacyHome } from "@/pages/home/legacy-home"
 
 const NewSession = lazy(() => import("@/pages/new-session"))
@@ -242,30 +245,6 @@ function UiI18nBridge(props: ParentProps) {
   )
 }
 
-function LayoutCompatibility(props: ParentProps) {
-  const global = useGlobal()
-  const navigate = useNavigate()
-  const server = useServer()
-  const settings = useSettings()
-
-  createEffect(() => {
-    if (settings.general.newLayoutDesigns()) return
-    const current = server.current
-    if (!current) return
-    const protocol = global.ensureServerCtx(current).sdk.protocolKind()
-    if (protocol !== "v2") return
-    const next = global.servers.list().find((s) => {
-      if (ServerConnection.key(s) === ServerConnection.key(current)) return false
-      return global.ensureServerCtx(s).sdk.protocolKind() !== "v2"
-    })
-    if (!next) return
-    navigate("/")
-    queueMicrotask(() => server.setActive(ServerConnection.key(next)))
-  })
-
-  return <>{props.children}</>
-}
-
 declare global {
   interface Window {
     __OPENCODE__?: {
@@ -400,6 +379,7 @@ export function AppBaseProviders(
     <MetaProvider>
       <Font />
       <ThemeProvider
+        lightOnly
         onThemeApplied={(_, mode, scheme) => {
           void window.api?.setTitlebar?.({ mode, scheme })
         }}
@@ -415,7 +395,9 @@ export function AppBaseProviders(
               <QueryProvider>
                 <WslServersProvider>
                   <DialogProvider>
-                    <FileComponentProvider component={File}>{props.children}</FileComponentProvider>
+                    <OnboardingProvider>
+                      <FileComponentProvider component={File}>{props.children}</FileComponentProvider>
+                    </OnboardingProvider>
                   </DialogProvider>
                 </WslServersProvider>
               </QueryProvider>
@@ -637,6 +619,9 @@ function Routes(props: { serverScoped?: JSX.Element }) {
       </Route>
       <Show when={settings.general.newLayoutDesigns()}>
         <Route path="/" component={NewHome} />
+        <Route path="/agents" component={AgentMarketPage} />
+        <Route path="/knowledge" component={KnowledgePage} />
+        <Route path="/skills" component={() => <Navigate href="/knowledge" />} />
         <Route path="/:dir/session/:id" component={NewLayoutLegacySessionRedirect} />
         <Route path="/server/:serverKey/session/:id" component={TargetSessionRoute} />
       </Show>

@@ -6,6 +6,7 @@ import { define } from "./internal"
 import { Effect } from "effect"
 import { AbsolutePath } from "../schema"
 import { SkillV2 } from "../skill"
+import { guideSkills } from "../gamma/system"
 import customizeOpencodeContent from "./skill/customize-opencode.md" with { type: "text" }
 
 export const CustomizeOpencodeContent = customizeOpencodeContent
@@ -14,6 +15,13 @@ export const Plugin = define({
   id: "skill",
   effect: Effect.fn(function* (ctx) {
     yield* ctx.skill.transform((draft) => {
+      for (const skill of guideSkills)
+        draft.source(
+          SkillV2.EmbeddedSource.make({
+            type: "embedded",
+            skill: SkillV2.Info.make({ ...skill, location: AbsolutePath.make(`/builtin/${skill.name}.md`) }),
+          }),
+        )
       draft.source(
         SkillV2.EmbeddedSource.make({
           type: "embedded",

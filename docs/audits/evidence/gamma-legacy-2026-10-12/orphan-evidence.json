@@ -1,0 +1,66 @@
+[
+  {
+    "file": "packages/app/src/components/dialog-select-directory.tsx",
+    "sourceBytes": 7281,
+    "lines": 200,
+    "incoming": [],
+    "chunks": []
+  },
+  {
+    "file": "packages/app/src/pages/home/home-projects.tsx",
+    "sourceBytes": 2120,
+    "lines": 48,
+    "incoming": [],
+    "chunks": []
+  },
+  {
+    "file": "packages/app/src/pages/home/home-sessions.tsx",
+    "sourceBytes": 2133,
+    "lines": 47,
+    "incoming": [],
+    "chunks": []
+  },
+  {
+    "file": "packages/app/src/pages/session/review-tab.tsx",
+    "sourceBytes": 5646,
+    "lines": 167,
+    "incoming": [],
+    "chunks": []
+  },
+  {
+    "file": "packages/app/src/pages/session/session-side-panel.tsx",
+    "sourceBytes": 40776,
+    "lines": 867,
+    "incoming": [],
+    "chunks": []
+  },
+  {
+    "file": "packages/app/src/pages/session/v2/review-panel-v2.tsx",
+    "sourceBytes": 9260,
+    "lines": 251,
+    "incoming": [],
+    "chunks": []
+  },
+  {
+    "file": "packages/app/src/pages/skill-market.tsx",
+    "sourceBytes": 16881,
+    "lines": 430,
+    "incoming": [],
+    "chunks": []
+  },
+  {
+    "file": "packages/app/src/pages/product-placeholder.tsx",
+    "sourceBytes": 492,
+    "lines": 13,
+    "incoming": [
+      {
+        "from": "packages/app/src/app.tsx",
+        "spec": "@/pages/product-placeholder",
+        "kind": "import",
+        "typeOnly": false,
+        "to": "packages/app/src/pages/product-placeholder.tsx"
+      }
+    ],
+    "chunks": []
+  }
+]

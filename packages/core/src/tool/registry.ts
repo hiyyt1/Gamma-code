@@ -1,3 +1,4 @@
+import { SessionAgent } from "../session/agent"
 export * as ToolRegistry from "./registry"
 
 import { ToolOutput, type ToolCall, type ToolDefinition, type ToolResultValue } from "@opencode-ai/llm"
@@ -45,11 +46,15 @@ const registryLayer = Layer.effect(
     const applications = yield* ApplicationTools.Service
     const resources = yield* ToolOutputStore.Service
     type Registration = { readonly identity: object; readonly tool: AnyTool }
-    const local = new Map<string, Array<{ readonly token: object; readonly registration: Registration }>>()
+    const local = new Map<
+      string,
+      Array<{ readonly token: object; readonly sessionID?: string; readonly registration: Registration }>
+    >()
 
     const settleWith = Effect.fn("ToolRegistry.settle")(function* (input: ExecuteInput, advertised?: object) {
       const registration =
-        local.get(input.call.name)?.at(-1)?.registration ?? applications.entries().get(input.call.name)
+        local.get(input.call.name)?.findLast((entry) => !entry.sessionID || entry.sessionID === input.sessionID)
+          ?.registration ?? applications.entries().get(input.call.name)
       if (!registration)
         return {
           result: {
@@ -83,6 +88,7 @@ const registryLayer = Layer.effect(
 
     return Service.of({
       register: Effect.fn("ToolRegistry.register")(function* (tools) {
+        const sessionID = (yield* SessionAgent.Current)?.sessionID
         const entries = Object.entries(tools)
         if (entries.length === 0) return
         yield* Effect.forEach(entries, ([name]) => validateName(name), { discard: true })
@@ -90,7 +96,7 @@ const registryLayer = Layer.effect(
           Effect.gen(function* () {
             const token = {}
             for (const [name, tool] of entries)
-              local.set(name, [...(local.get(name) ?? []), { token, registration: { identity: {}, tool } }])
+              local.set(name, [...(local.get(name) ?? []), { token, sessionID, registration: { identity: {}, tool } }])
             yield* Effect.addFinalizer(() =>
               Effect.sync(() => {
                 for (const [name] of entries) {
@@ -104,9 +110,12 @@ const registryLayer = Layer.effect(
         )
       }),
       materialize: Effect.fn("ToolRegistry.materialize")(function* (permissions = []) {
+        const sessionID = (yield* SessionAgent.Current)?.sessionID
         const registrations = new Map(applications.entries())
         for (const [name, entries] of local) {
-          const registration = entries.at(-1)?.registration
+          const registration = entries.findLast(
+            (entry) => !entry.sessionID || entry.sessionID === sessionID,
+          )?.registration
           if (registration) registrations.set(name, registration)
         }
         for (const [name, registration] of registrations)

@@ -8,9 +8,11 @@ export async function productRequest<T>(
   path: string,
   body?: object,
   signal?: AbortSignal,
+  keepalive = false,
 ): Promise<T> {
   const response = await fetch(`${server.url.replace(/\/$/, "")}/product/${path}`, {
     signal,
+    keepalive,
     method: body ? "POST" : "GET",
     headers: {
       ...(body ? { "Content-Type": "application/json" } : {}),

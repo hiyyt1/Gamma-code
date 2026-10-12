@@ -5,8 +5,8 @@ type Keys = keyof typeof en
 
 export const dict = {
   ...PRODUCT_ENGLISH,
-  "app.name": "Oreshnik",
-  "desktop.menu.app": "Oreshnik",
+  "app.name": "Gamma",
+  "desktop.menu.app": "Gamma",
   "desktop.menu.file": "文件",
   "desktop.menu.edit": "编辑",
   "desktop.menu.view": "视图",
@@ -268,7 +268,7 @@ export const dict = {
   "provider.connect.status.waiting": "等待授权...",
   "provider.connect.status.failed": "授权失败：{{error}}",
   "provider.connect.apiKey.description":
-    "输入你的 {{provider}} API 密钥以连接账户，并在 Oreshnik 中使用 {{provider}} 模型。",
+    "输入你的 {{provider}} API 密钥以连接账户，并在 Gamma 中使用 {{provider}} 模型。",
   "provider.connect.apiKey.label": "{{provider}} API 密钥",
   "provider.connect.apiKey.placeholder": "API 密钥",
   "provider.connect.apiKey.required": "API 密钥为必填项",
@@ -279,14 +279,14 @@ export const dict = {
   "provider.connect.opencodeZen.visit.suffix": " 获取你的 API 密钥。",
   "provider.connect.oauth.code.visit.prefix": "访问 ",
   "provider.connect.oauth.code.visit.link": "此链接",
-  "provider.connect.oauth.code.visit.suffix": " 获取授权码，以连接你的账户并在 Oreshnik 中使用 {{provider}} 模型。",
+  "provider.connect.oauth.code.visit.suffix": " 获取授权码，以连接你的账户并在 Gamma 中使用 {{provider}} 模型。",
   "provider.connect.oauth.code.label": "{{method}} 授权码",
   "provider.connect.oauth.code.placeholder": "授权码",
   "provider.connect.oauth.code.required": "授权码为必填项",
   "provider.connect.oauth.code.invalid": "授权码无效",
   "provider.connect.oauth.auto.visit.prefix": "访问 ",
   "provider.connect.oauth.auto.visit.link": "此链接",
-  "provider.connect.oauth.auto.visit.suffix": " 并输入以下代码，以连接你的账户并在 Oreshnik 中使用 {{provider}} 模型。",
+  "provider.connect.oauth.auto.visit.suffix": " 并输入以下代码，以连接你的账户并在 Gamma 中使用 {{provider}} 模型。",
   "provider.connect.oauth.auto.confirmationCode": "确认码",
   "provider.connect.toast.connected.title": "{{provider}} 已连接",
   "provider.connect.toast.connected.description": "现在可以使用 {{provider}} 模型了。",
@@ -561,7 +561,7 @@ export const dict = {
   "help.tabs.title": "标签页功能介绍",
   "help.tabs.description": "使用标签页整理工作和进行中的会话",
   "help.tabs.date": "7 月 14 日",
-  "help.tabs.introduction": "Oreshnik Desktop 现已采用以标签页为核心的设计。",
+  "help.tabs.introduction": "Gamma Desktop 现已采用以标签页为核心的设计。",
   "help.tabs.sessions":
     "在标签页中开始新会话，或从任意项目打开现有会话。开始处理新任务时打开新标签页，完成后将其关闭。",
   "help.tabs.organize":
@@ -671,7 +671,7 @@ export const dict = {
 
   "toast.session.listFailed.title": "无法加载 {{project}} 的会话",
   "toast.update.title": "有可用更新",
-  "toast.update.description": "Oreshnik 有新版本 ({{version}}) 可安装。",
+  "toast.update.description": "Gamma 有新版本 ({{version}}) 可安装。",
   "toast.update.action.installRestart": "安装并重启",
   "toast.update.action.notYet": "稍后",
 
@@ -878,7 +878,7 @@ export const dict = {
   "sidebar.empty.title": "没有打开的项目",
   "sidebar.empty.description": "打开一个项目以开始使用",
 
-  "app.name.desktop": "Oreshnik Desktop",
+  "app.name.desktop": "Gamma Desktop",
 
   "settings.section.desktop": "桌面",
   "settings.section.server": "服务器",
@@ -898,17 +898,17 @@ export const dict = {
   "settings.general.section.feed": "动态",
   "settings.general.section.display": "显示",
   "settings.general.row.language.title": "语言",
-  "settings.general.row.language.description": "更改 Oreshnik 的显示语言",
+  "settings.general.row.language.description": "更改 Gamma 的显示语言",
   "settings.general.row.shell.title": "终端 Shell",
   "settings.general.row.shell.description": "选择终端使用的 shell。兼容的 shell 也会用于智能体工具调用。",
   "settings.general.row.shell.autoDefault": "自动（默认）",
   "settings.general.row.shell.terminalOnly": "仅终端",
   "settings.general.row.appearance.title": "外观",
-  "settings.general.row.appearance.description": "自定义 Oreshnik 在你的设备上的外观",
+  "settings.general.row.appearance.description": "自定义 Gamma 在你的设备上的外观",
   "settings.general.row.colorScheme.title": "配色方案",
-  "settings.general.row.colorScheme.description": "选择 Oreshnik 跟随系统、浅色或深色主题",
+  "settings.general.row.colorScheme.description": "选择 Gamma 跟随系统、浅色或深色主题",
   "settings.general.row.theme.title": "主题",
-  "settings.general.row.theme.description": "自定义 Oreshnik 的主题。",
+  "settings.general.row.theme.description": "自定义 Gamma 的主题。",
   "settings.general.row.font.title": "代码字体",
   "settings.general.row.font.description": "自定义代码块使用的字体",
   "settings.general.row.terminalFont.title": "终端字体",
@@ -954,7 +954,7 @@ export const dict = {
   "settings.general.row.releaseNotes.description": "更新后显示“新功能”弹窗",
 
   "settings.updates.row.startup.title": "启动时检查更新",
-  "settings.updates.row.startup.description": "在 Oreshnik 启动时自动检查更新",
+  "settings.updates.row.startup.description": "在 Gamma 启动时自动检查更新",
   "settings.updates.row.check.title": "检查更新",
   "settings.updates.row.check.description": "手动检查更新并在有更新时安装",
   "settings.updates.action.checkNow": "立即检查",
@@ -962,7 +962,7 @@ export const dict = {
   "settings.updates.action.downloading": "正在下载...",
   "settings.updates.action.installing": "正在安装...",
   "settings.updates.toast.latest.title": "已是最新版本",
-  "settings.updates.toast.latest.description": "你正在使用最新版本的 Oreshnik。",
+  "settings.updates.toast.latest.description": "你正在使用最新版本的 Gamma。",
 
   "sound.option.none": "无",
   "sound.option.alert01": "警报 01",

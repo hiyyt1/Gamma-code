@@ -1,0 +1,66 @@
+{
+  "id": "wildberries-management",
+  "revision": "gamma-wb-1",
+  "skills": [
+    {
+      "name": "wb-api",
+      "description": "Выбор и безопасное выполнение методов Wildberries, права, пагинация и ошибки.",
+      "path": "skills/wb-api/SKILL.md",
+      "sha256": "08cad1710129108d4aad77ece8318cb9055c6daf0649f86bd263eb7a71bde22c"
+    },
+    {
+      "name": "wb-sales-analytics",
+      "description": "Динамика продаж WB, сравнение периодов, ABC и аномалии.",
+      "path": "skills/wb-sales-analytics/SKILL.md",
+      "sha256": "e36db7b6f48d74fd8bec1753cc96180bc07b046204c19cfd3ac0cfde6ba1ea8a"
+    },
+    {
+      "name": "wb-advertising",
+      "description": "Расходы, ДРР и эффективность кампаний WB; подготовка безопасных изменений.",
+      "path": "skills/wb-advertising/SKILL.md",
+      "sha256": "d82aba98f7d8ec79c8d783674fc1f4c63dbf761d04c82286180bf055a7ff88ff"
+    },
+    {
+      "name": "wb-unit-economics",
+      "description": "Программные расчёты прибыли, маржи и импорт себестоимости CSV/XLSX.",
+      "path": "skills/wb-unit-economics/SKILL.md",
+      "sha256": "418155505343ec8d061bbbb2680ea7dd1911f40a61ed4f485280332ef30b0110"
+    },
+    {
+      "name": "wb-inventory",
+      "description": "Остатки, скорость продаж, покрытие и рекомендации пополнения WB.",
+      "path": "skills/wb-inventory/SKILL.md",
+      "sha256": "35c2128dbb0a5f32e9540646019bd02fd8fa79257ac1adc34d04cb67e6e8a7c4"
+    },
+    {
+      "name": "wb-product-optimization",
+      "description": "Аудит карточек Wildberries и подготовка конкретных улучшений.",
+      "path": "skills/wb-product-optimization/SKILL.md",
+      "sha256": "9f95c20488097fbc7b049e0fb691aac126651c7a0a6cd7fb623d0a679a7af958"
+    },
+    {
+      "name": "wb-reviews",
+      "description": "Группировка отзывов WB, выявление жалоб и подготовка ответов.",
+      "path": "skills/wb-reviews/SKILL.md",
+      "sha256": "ed8793b696eed5bdef5f362697ad23916210148247bc910f37747f0c3c398cd4"
+    },
+    {
+      "name": "wb-pricing",
+      "description": "Цены, скидки и рекомендации с учётом минимальной маржи.",
+      "path": "skills/wb-pricing/SKILL.md",
+      "sha256": "621927ee108a79163c00573155f1df78f5f970aa6162d70b9da9aa75b60ba241"
+    }
+  ],
+  "files": {
+    "skills/wb-advertising/SKILL.md": "d82aba98f7d8ec79c8d783674fc1f4c63dbf761d04c82286180bf055a7ff88ff",
+    "skills/wb-api/SKILL.md": "08cad1710129108d4aad77ece8318cb9055c6daf0649f86bd263eb7a71bde22c",
+    "skills/wb-inventory/SKILL.md": "35c2128dbb0a5f32e9540646019bd02fd8fa79257ac1adc34d04cb67e6e8a7c4",
+    "skills/wb-pricing/SKILL.md": "621927ee108a79163c00573155f1df78f5f970aa6162d70b9da9aa75b60ba241",
+    "skills/wb-product-optimization/SKILL.md": "9f95c20488097fbc7b049e0fb691aac126651c7a0a6cd7fb623d0a679a7af958",
+    "skills/wb-reviews/SKILL.md": "ed8793b696eed5bdef5f362697ad23916210148247bc910f37747f0c3c398cd4",
+    "skills/wb-sales-analytics/SKILL.md": "e36db7b6f48d74fd8bec1753cc96180bc07b046204c19cfd3ac0cfde6ba1ea8a",
+    "skills/wb-unit-economics/SKILL.md": "418155505343ec8d061bbbb2680ea7dd1911f40a61ed4f485280332ef30b0110",
+    "skills/wb-unit-economics/references/input.md": "e53bd5c760cc144c90c5108a6f3bc31bf05a4e6e13f4b490c794ac37c6353e0e",
+    "skills/wb-unit-economics/scripts/analytics.py": "4d5a78b2217e169e68d16d9725511af10c71ceab255fee4f9b592ea790bd0894"
+  }
+}

@@ -1,0 +1,530 @@
+{
+  "id": "trail-of-bits",
+  "name": "Trail of Bits Skills",
+  "source": "https://github.com/trailofbits/skills",
+  "author": "trailofbits",
+  "category": "security",
+  "description": "Анализ кода и исследование безопасности.",
+  "revision": "82fe8226252622fa807643bdca1710901198553a",
+  "license": "CC-BY-SA-4.0",
+  "skills": [
+    {
+      "name": "agentic-actions-auditor",
+      "description": "Audits GitHub Actions workflows for security vulnerabilities in AI agent integrations including Claude Code Action, Gemini CLI, OpenAI Codex, and GitHub AI Inference. Detects attack vectors where attacker-controlled input reaches AI agents running in CI/CD pipelines, including env var intermediary patterns, direct expression injection, dangerous sandbox configurations, and wildcard user allowlists. Use when reviewing workflow files that invoke AI coding agents, auditing CI/CD pipeline security for prompt injection risks, or evaluating agentic action configurations.",
+      "path": "plugins/agentic-actions-auditor/skills/agentic-actions-auditor/SKILL.md",
+      "sha256": "b2bdb88d559bc37e6c2c8314e28e7a2eb47e7cdd9da51e77da347d3517326dc0"
+    },
+    {
+      "name": "audit-context-building",
+      "description": "Understand a codebase before looking for bugs in it - what each function assumes, what it guarantees, and what it depends on elsewhere. Use when starting an audit, threat model, or architecture review on unfamiliar code, and before any vulnerability-hunting pass.",
+      "path": "plugins/audit-context-building/skills/audit-context-building/SKILL.md",
+      "sha256": "33fa693dc6e166cfa4919e4373cb6578c009d296234c2ae7cb3cd4e79b443765"
+    },
+    {
+      "name": "algorand-vulnerability-scanner",
+      "description": "Scans Algorand smart contracts for 11 common vulnerabilities including rekeying attacks, unchecked transaction fees, missing field validations, and access control issues. Use when auditing Algorand projects (TEAL/PyTeal).",
+      "path": "plugins/building-secure-contracts/skills/algorand-vulnerability-scanner/SKILL.md",
+      "sha256": "751082b27bda377339dee7daa38009e98c224e11cf51738288f7ff6d8f670ffb"
+    },
+    {
+      "name": "audit-prep-assistant",
+      "description": "Prepares codebases for security review using Trail of Bits' checklist. Helps set review goals, runs static analysis tools, increases test coverage, removes dead code, ensures accessibility, and generates documentation (flowcharts, user stories, inline comments). Use when preparing your own codebase to be audited by someone else, getting a repository review-ready before an external security review, deciding what to fix before auditors start, or asking what assessors need from a project. For understanding unfamiliar code you are about to audit, use audit-context-building instead.",
+      "path": "plugins/building-secure-contracts/skills/audit-prep-assistant/SKILL.md",
+      "sha256": "d639b411a315ea9420e40afabe75bbf4b1bfed6ea5c8601a3e963343ac9924f2"
+    },
+    {
+      "name": "cairo-vulnerability-scanner",
+      "description": "Scans Cairo/StarkNet smart contracts for 6 critical vulnerabilities including felt252 arithmetic overflow, L1-L2 messaging issues, address conversion problems, and signature replay. Use when auditing StarkNet projects.",
+      "path": "plugins/building-secure-contracts/skills/cairo-vulnerability-scanner/SKILL.md",
+      "sha256": "2d843b87efa0775e1147e8fce1493288267b19a3aa86efd65df6eb3085725f97"
+    },
+    {
+      "name": "code-maturity-assessor",
+      "description": "Systematic code maturity assessment using Trail of Bits' 9-category framework. Analyzes codebase for arithmetic safety, auditing practices, access controls, complexity, decentralization, documentation, MEV risks, low-level code, and testing, then produces a scorecard with evidence-based ratings and a priority-ordered roadmap. Use when assessing or scoring the maturity of a smart contract or blockchain codebase, producing a maturity scorecard or evaluation, or judging how mature, well-tested, or well-documented such a project is against a rubric.",
+      "path": "plugins/building-secure-contracts/skills/code-maturity-assessor/SKILL.md",
+      "sha256": "a5e1427ae04cb0ed32b003c332becc0c8adb8e382d8d1d489edc997148b57ab1"
+    },
+    {
+      "name": "cosmos-vulnerability-scanner",
+      "description": "Scans Cosmos SDK blockchain modules and CosmWasm contracts for consensus-critical vulnerabilities — chain halts, fund loss, state divergence. 25 core + 16 IBC + 10 EVM + 3 CosmWasm patterns. Use when auditing custom x/ modules, reviewing IBC integrations, or assessing pre-launch chain security. Updated for SDK v0.53.x.",
+      "path": "plugins/building-secure-contracts/skills/cosmos-vulnerability-scanner/SKILL.md",
+      "sha256": "5f12f1ecdcf220726d32b391e5e646807d09d869d4cc92ae105236ecff4b9a42"
+    },
+    {
+      "name": "guidelines-advisor",
+      "description": "Smart contract development advisor based on Trail of Bits' best practices. Analyzes codebase to generate documentation/specifications, review architecture, check upgradeability patterns, assess implementation quality, identify pitfalls, review dependencies, and evaluate testing. Use when asking whether a smart contract project follows development best practices, reviewing on-chain/off-chain split, upgradeability, or delegatecall proxy patterns against guidelines, or seeking recommendations on contract design, inheritance, events, documentation, dependencies, or test strategy.",
+      "path": "plugins/building-secure-contracts/skills/guidelines-advisor/SKILL.md",
+      "sha256": "5bb8ba34d363c419e1769a59d0fcc7444a04dc6d9e59032cb93019befdc2e464"
+    },
+    {
+      "name": "secure-workflow-guide",
+      "description": "Guides through Trail of Bits' 5-step secure development workflow. Runs Slither scans, checks special features (upgradeability/ERC conformance/token integration), generates visual security diagrams, helps document security properties for fuzzing/verification, and reviews manual security areas. Use when securing a smart contract end to end rather than hunting one bug, checking a project on every check-in or before deployment, triaging a Slither report, or asking where to start on smart contract security.",
+      "path": "plugins/building-secure-contracts/skills/secure-workflow-guide/SKILL.md",
+      "sha256": "7c0e7fb45f97c073ec9599cbe0b2acf44f31bbece38636bc5c3fcc9bc7703015"
+    },
+    {
+      "name": "solana-vulnerability-scanner",
+      "description": "Scans Solana programs for 6 critical vulnerabilities including arbitrary CPI, improper PDA validation, missing signer/ownership checks, and sysvar spoofing. Use when auditing Solana/Anchor programs.",
+      "path": "plugins/building-secure-contracts/skills/solana-vulnerability-scanner/SKILL.md",
+      "sha256": "c6c553e84cd3bfbe80850993909c21983484f620662fbfb984f51720b63b38b0"
+    },
+    {
+      "name": "substrate-vulnerability-scanner",
+      "description": "Scans Substrate/Polkadot pallets for 7 critical vulnerabilities including arithmetic overflow, panic DoS, incorrect weights, and bad origin checks. Use when auditing Substrate runtimes or FRAME pallets.",
+      "path": "plugins/building-secure-contracts/skills/substrate-vulnerability-scanner/SKILL.md",
+      "sha256": "6d8557b382bf9b437d9431bb31e803de8e137eb1b58dfa0d0e2fb45db285f6a4"
+    },
+    {
+      "name": "token-integration-analyzer",
+      "description": "Token integration and implementation analyzer based on Trail of Bits' token integration checklist. Analyzes token implementations for ERC20/ERC721 conformity, checks for 20+ weird token patterns, assesses contract composition and owner privileges, performs on-chain scarcity analysis, and evaluates how protocols handle non-standard tokens. Use when integrating or accepting arbitrary ERC20/ERC721 tokens, auditing a token implementation for standards conformity, or assessing risk from weird tokens such as fee-on-transfer, rebasing, missing return values, or blocklists.",
+      "path": "plugins/building-secure-contracts/skills/token-integration-analyzer/SKILL.md",
+      "sha256": "4b7f5cb3c52f9b45e2216963a49458e1f23f5a279a0296e702fd9d8df268b301"
+    },
+    {
+      "name": "ton-vulnerability-scanner",
+      "description": "Scans TON (The Open Network) smart contracts for 3 critical vulnerabilities including integer-as-boolean misuse, fake Jetton contracts, and forward TON without gas checks. Use when auditing FunC contracts.",
+      "path": "plugins/building-secure-contracts/skills/ton-vulnerability-scanner/SKILL.md",
+      "sha256": "e02e01228f892ed0a17709bddbac92695194689dda19873e99f1a36c2257bb80"
+    },
+    {
+      "name": "burpsuite-project-parser",
+      "description": "Searches and explores Burp Suite project files (.burp) from the command line. Use when searching response headers or bodies with regex patterns, extracting security audit findings, dumping proxy history or site map data, or analyzing HTTP traffic captured in a Burp project.",
+      "path": "plugins/burpsuite-project-parser/skills/burpsuite-project-parser/SKILL.md",
+      "sha256": "6c34b59d603023bc03b2aa2b6a5788eba6be9b69ff5c4096d19c288cce3dbd13"
+    },
+    {
+      "name": "c-review",
+      "description": "Performs comprehensive C/C++ security review for memory corruption, integer overflows, race conditions, and platform-specific vulnerabilities. Use when auditing native C/C++ applications, reviewing daemons or services for memory safety, or hunting integer overflow / use-after-free / race conditions in userspace code.",
+      "path": "plugins/c-review/skills/c-review/SKILL.md",
+      "sha256": "3fc2fc7f3dba9decd2dd9e449150395cf62ee156c8dd1c48d09a233318f4dc69"
+    },
+    {
+      "name": "chrome-mcp-troubleshooting",
+      "description": "Diagnose and fix Claude in Chrome MCP extension connectivity issues. Use when mcp__claude-in-chrome__* tools fail, return \"Browser extension is not connected\", or behave erratically.",
+      "path": "plugins/claude-in-chrome-troubleshooting/skills/chrome-mcp-troubleshooting/SKILL.md",
+      "sha256": "1456ace18266e81691c6ba0e5f3ec11df4a51cfa3e50eb511a113f15ab080c68"
+    },
+    {
+      "name": "code-improver",
+      "description": "Runs an autonomous review-and-fix improvement loop over any code target — a skill, plugin, module, or directory — using a reviewer the user names: any installed skill or agent. Keeps a cross-round findings ledger, escalates when fixes stop converging, and guards scope mechanically. Use when asked to 'improve this code until review passes', 'run an improvement loop with <reviewer>', or to iterate review-and-fix with a specific reviewer. For skills prefer the skill-improver entry; for a branch prefer pr-improver.",
+      "path": "plugins/code-improver/skills/code-improver/SKILL.md",
+      "sha256": "a4e33a24c853da3df13262da9bce1fd833dce694493b344e001f18df73692d2f"
+    },
+    {
+      "name": "pr-improver",
+      "description": "Runs an autonomous review-and-fix improvement loop over the current branch's changes until a PR review comes back clean, scoped mechanically to the directories the branch touched. Reviews are performed by an installed PR-review skill (default: pr-review-toolkit's review-pr). Use to fix review findings on a branch before opening or updating a pull request ('clean up this branch', 'fix this PR until review passes', 'run review-and-fix on my changes'). NOT for a one-time review — run the PR-review skill directly.",
+      "path": "plugins/code-improver/skills/pr-improver/SKILL.md",
+      "sha256": "8bb6055905f95d4e0bbd6dbbab2be930a3d3e09cd22a18afbd306abcf9e0828f"
+    },
+    {
+      "name": "skill-improver",
+      "description": "Runs an autonomous review-and-fix improvement loop over a Claude Code skill until a review comes back clean, with a cross-round findings ledger, escalation when fixes stop converging, and a mechanical scope guard. Reviews are performed by the plugin-dev skill-reviewer agent. Use to fix skill quality issues, iteratively refine a skill, or resume a loop after an escalation ('fix my skill', 'improve this skill until it passes review', 'skill improvement loop'). NOT for a one-time review — use the plugin-dev skill-reviewer agent directly.",
+      "path": "plugins/code-improver/skills/skill-improver/SKILL.md",
+      "sha256": "5764d6f51c5cd2e9dccb650b2a8f04282e44aa6d118abbfd051c0eebfaa86fe3"
+    },
+    {
+      "name": "review-pr",
+      "description": "Reviews the current branch's changes against its base branch as a pull request: correctness of new and modified code, test coverage for it, and documentation accuracy. Use when asked to review a branch, a diff, or a pull request.",
+      "path": "plugins/code-improver/tests/fixtures/pr-review-toolkit/skills/review-pr/SKILL.md",
+      "sha256": "133b4e5a107b41260d4f7e4b91311a3758fb49d2089abbb7b8028f0b01e6495e"
+    },
+    {
+      "name": "panel-review",
+      "description": "Reviews a code target by launching a panel of specialist auditor agents and merging their reports. Use when asked to run a panel review.",
+      "path": "plugins/code-improver/tests/fixtures/review-panel/skills/panel-review/SKILL.md",
+      "sha256": "3c16ddddc03bf29bc254b9ca1de1e6f1a9f1bcdc2bc8f88a9e4f8e64e0b4f608"
+    },
+    {
+      "name": "constant-time-analysis",
+      "description": "Detects timing side-channel vulnerabilities in cryptographic code. Use when implementing or reviewing crypto code, encountering division on secrets, secret-dependent branches, or constant-time programming questions in C, C++, Go, Rust, Swift, Java, Kotlin, C#, PHP, JavaScript, TypeScript, Python, or Ruby.",
+      "path": "plugins/constant-time-analysis/skills/constant-time-analysis/SKILL.md",
+      "sha256": "4807f710a234e2520d7e163cc5a0e55785a495b2790dadcd7f0952dd6bff8d07"
+    },
+    {
+      "name": "interpreting-culture-index",
+      "description": "Interprets Culture Index (CI) surveys, behavioral profiles, and personality assessment data. Supports individual profile interpretation, team composition analysis (gas/brake/glue), burnout detection, profile comparison, hiring profiles, manager coaching, interview transcript analysis for trait prediction, candidate debrief, onboarding planning, and conflict mediation. Accepts extracted JSON or PDF input via OpenCV extraction script. Use when the user shares a Culture Index PDF or JSON profile, asks what someone's CI traits mean, compares Culture Index profiles across a team or against a hiring profile, or asks about burnout risk from Survey-versus-Job gaps.",
+      "path": "plugins/culture-index/skills/interpreting-culture-index/SKILL.md",
+      "sha256": "fd777bfc802a216a0cfb15398ce14880e44250850096d19e3e45d58731932163"
+    },
+    {
+      "name": "devcontainer-setup",
+      "description": "Creates devcontainers with Claude Code, language-specific tooling (Python/Node/Rust/Go), and persistent volumes. Use when adding devcontainer support to a project, setting up isolated development environments, or configuring sandboxed Claude Code workspaces.",
+      "path": "plugins/devcontainer-setup/skills/devcontainer-setup/SKILL.md",
+      "sha256": "ef698feec8a76cf89f283c07632a2ce92378cb34e030f6c2ca13f312a7393e39"
+    },
+    {
+      "name": "differential-review",
+      "description": "Performs security-focused differential review of code changes. Adapts analysis depth to codebase size, uses git blame for context, calculates blast radius by counting callers, checks test coverage of modified code, and generates a markdown report. Use when reviewing a PR, commit, or diff for security vulnerabilities, checking whether a change re-introduces a previously fixed bug, asking what else a change could break, or finding which modified code has no test covering it.",
+      "path": "plugins/differential-review/skills/differential-review/SKILL.md",
+      "sha256": "f9af6a8193fc1a9f8ca3c54bb8d19095a5f20c9472ca6d014488bbde50b67da0"
+    },
+    {
+      "name": "dimensional-analysis",
+      "description": "Annotates codebases with dimensional analysis comments documenting units, dimensions, and decimal scaling. Use when someone asks to annotate units in a codebase, perform a dimensional analysis, or find vulnerabilities in a DeFi protocol, offchain code, or other blockchain-related codebase with arithmetic. Prevents dimensional mismatches and catches formula bugs early.",
+      "path": "plugins/dimensional-analysis/skills/dimensional-analysis/SKILL.md",
+      "sha256": "0434b5ec95a0ae3037160e24d38d6579c3127ad86d0020e6f430d5f71c18c66b"
+    },
+    {
+      "name": "dwarf-expert",
+      "description": "Analyzes DWARF debug information in compiled binaries. Use when inspecting .debug_* sections, DIE trees, or DW_TAG_/DW_AT_ entries with dwarfdump/llvm-dwarfdump or readelf, verifying debug info with llvm-dwarfdump --verify, answering DWARF standard questions, or writing code that parses DWARF (libdwarf, pyelftools, gimli).",
+      "path": "plugins/dwarf-expert/skills/dwarf-expert/SKILL.md",
+      "sha256": "c4623d2d9c5a31c7722a293a96038817631e7d511f256613b4cbfa417c24466a"
+    },
+    {
+      "name": "entry-point-analyzer",
+      "description": "Analyzes smart contract codebases to identify state-changing entry points for security auditing. Detects externally callable functions that modify state, categorizes them by access level (public, admin, role-restricted, contract-only), and generates structured audit reports. Excludes view/pure/read-only functions. Use when auditing smart contracts (Solidity, Vyper, Solana/Rust, Move, TON, CosmWasm) or when asked to find entry points, audit flows, external functions, access control patterns, or privileged operations.",
+      "path": "plugins/entry-point-analyzer/skills/entry-point-analyzer/SKILL.md",
+      "sha256": "0d0e2956bdf9bf5be7efdfcefc754cabd2c1deb015731f3341f919eae2a0e3ca"
+    },
+    {
+      "name": "firebase-apk-scanner",
+      "description": "Scans Android APKs for Firebase security misconfigurations including open databases, storage buckets, authentication issues, and exposed cloud functions. Use when analyzing APK files for Firebase vulnerabilities, performing mobile app security audits, or testing Firebase endpoint security. For authorized security research only.",
+      "path": "plugins/firebase-apk-scanner/skills/firebase-apk-scanner/SKILL.md",
+      "sha256": "fd7376ea038ea5a44a819e6fb75aa8e6e2ad38a2ec0d237cc6f71aa8ebbf95a4"
+    },
+    {
+      "name": "fp-check",
+      "description": "Systematically verifies suspected security bugs to eliminate false positives, producing a TRUE POSITIVE or FALSE POSITIVE verdict with documented evidence for each. Use when asked whether a specific finding is real, exploitable, or a false positive, or to verify or validate a suspected vulnerability — not for hunting or discovering new bugs.",
+      "path": "plugins/fp-check/skills/fp-check/SKILL.md",
+      "sha256": "129223b79b8cb1e7c289c90cbe4ba288d9b210e318a0d1464f319e30329481b3"
+    },
+    {
+      "name": "gh-cli",
+      "description": "Enforces authenticated gh CLI workflows over unauthenticated curl, WebFetch, and MCP fetch patterns. Use when working with GitHub URLs, API access, pull requests, or issues.",
+      "path": "plugins/gh-cli/skills/gh-cli/SKILL.md",
+      "sha256": "3810c9ff56ae9a26f4c6c1e0d058a946cd97e800441630208007a0983b9cfc49"
+    },
+    {
+      "name": "github-triage",
+      "description": "Triages a repository's open GitHub issues and pull requests via the gh CLI. Optionally reviews and merges ready PRs — incrementally merging passing automated/bot PRs and maintainer-approved ones, and spawning review subagents for never-reviewed ones — then closes already-resolved issues with comments citing the resolving PR or commit, cross-links issues with their pending fix PRs, and assigns local-only priority and change-size estimates for everything outstanding. Use when triaging, grooming, or reviewing a repository's open issues and PRs.",
+      "path": "plugins/github-triage/skills/github-triage/SKILL.md",
+      "sha256": "b3289e800b7b5dc9c37c9de2768ca052ec7077dcf184d83d3d0c9f32a9fdd3cf"
+    },
+    {
+      "name": "goal-prompt",
+      "description": "Drafts copy-paste-ready /goal commands for goal mode in Claude Code and Codex. Use when the user asks to create, write, rewrite, improve, compress, clean up, or prepare a goal prompt, goal condition, /goal command, goal-mode objective, or copy-ready long-running task objective.",
+      "path": "plugins/goal-prompt/skills/goal-prompt/SKILL.md",
+      "sha256": "684bd98d836f88e7b7ec552cc329e4e4cc1fd51cb0d4ef23e83036992f6ef6cc"
+    },
+    {
+      "name": "let-fate-decide",
+      "description": "Draws the 12 Houses of the Zodiac Tarot spread to inject entropy into planning when prompts are vague, ambiguous, or casually delegated. Interprets the spread to guide next steps. Use when the user says 'let fate decide', 'YOLO', 'whatever', 'idk', or other nonchalant phrases, makes Yu-Gi-Oh references, or when you are about to arbitrarily pick between multiple reasonable approaches. Prefer over asking clarifying questions when the user's tone is casual or playful rather than precision-seeking.",
+      "path": "plugins/let-fate-decide/skills/let-fate-decide/SKILL.md",
+      "sha256": "ef51258f594553a28c44cf0e6feef89d0c89f4d2aad2dc7ab606f4e1568c251e"
+    },
+    {
+      "name": "modern-cpp",
+      "description": "Guides C++ code toward modern idioms (C++20/23/26). Use when writing new C++ code, modernizing legacy patterns, or working on security-critical C++. Replaces raw pointers with smart pointers, SFINAE with concepts, printf with std::print, error codes with std::expected.",
+      "path": "plugins/modern-cpp/skills/modern-cpp/SKILL.md",
+      "sha256": "a3a886fc425c591202b18165aa587111fafdd9250c37a71bbc48f7285fcd3c3e"
+    },
+    {
+      "name": "modern-python",
+      "description": "Configures Python projects with modern tooling (uv, ruff, ty). Use when creating projects, writing standalone scripts, or migrating from pip/Poetry/mypy/black.",
+      "path": "plugins/modern-python/skills/modern-python/SKILL.md",
+      "sha256": "ef774b925eb1d1fc12e4f5ddc3f5ad925ecd795315827447228c70cc44c6170c"
+    },
+    {
+      "name": "mutation-testing",
+      "description": "Configures mewt or muton campaigns, analyzes surviving mutants, and investigates bugs exposed by testing gaps. Use when setting up mutation testing, reviewing campaign results, identifying equivalent mutants, or finding bugs from surviving mutations.",
+      "path": "plugins/mutation-testing/skills/mutation-testing/SKILL.md",
+      "sha256": "20e6ee2b6cec91bad7572dea966b5fce1e50f9ef8d4bf2e4ba69ac9b679792ff"
+    },
+    {
+      "name": "open-sourcing",
+      "description": "This skill should be used when the user asks to \"open source this project\", \"prepare this repository for public release\", \"make this repo public\", \"check open-source readiness\", \"choose a license for this project\", or \"set up release automation\" ahead of a public launch. Provides a release-readiness workflow covering secrets hygiene, licensing, documentation, CI, and language-specific packaging.",
+      "path": "plugins/open-sourcing/skills/open-sourcing/SKILL.md",
+      "sha256": "da8d876edfc13f234cb88a2531da86a5e37d417d63d5c4b174ad18b6a20e0c53"
+    },
+    {
+      "name": "post-patch-validation",
+      "description": "Validates security patches with reproducible baseline-versus-patched evidence, including original exploits, root-cause variants, behavior preservation, regressions, and newly introduced security failures. Use after a patch exists and before accepting, merging, or reporting it as fixed; also use when an AI-generated patch, remediation commit, pull request, or proposed upstream fix needs adversarial post-patch validation across any language.\n",
+      "path": "plugins/post-patch-validation/skills/post-patch-validation/SKILL.md",
+      "sha256": "33b604f4d7d62eab393d710edb98b18505fcbe079c07c9428daa018f29439b54"
+    },
+    {
+      "name": "property-based-testing",
+      "description": "Writes, reviews, and debugs property-based tests — Hypothesis, fast-check, proptest, jqwik, rapid, and Echidna or Medusa for Solidity invariants. Use whenever tests should cover a whole input domain instead of a hand-picked list of examples: encode/decode and serialize/deserialize pairs, parsers, canonicalizers and normalizers, validators, numeric and Decimal types, comparators and sort order, data structures, and smart-contract state invariants. Also use when adding cases to an existing @given, fast-check, or proptest suite, when judging whether existing property tests assert anything real, and when a generator has shrunk a counterexample and you need to tell a wrong property from a genuine bug. Not for coverage-guided binary fuzzing (libFuzzer, AFL), mutation-testing campaigns, static analysis, benchmarking, or end-to-end UI tests.",
+      "path": "plugins/property-based-testing/skills/property-based-testing/SKILL.md",
+      "sha256": "9448cacb65c6237a7c22dc59602667177ecae405524079ae9ff92240590b995a"
+    },
+    {
+      "name": "review-walkthrough",
+      "description": "Generates an interactive HTML walkthrough for reviewing code changes. Use only when explicitly called.",
+      "path": "plugins/review-walkthrough/skills/review-walkthrough/SKILL.md",
+      "sha256": "af098bc743979e8130ac5e98db908aec08a13ed5bda1c2288e4e5483c4a108c5"
+    },
+    {
+      "name": "rust-review",
+      "description": "Performs comprehensive Rust security review for safe/unsafe boundary issues, memory safety in unsafe blocks, concurrency hazards, panic-induced DoS, FFI safety, and async runtime mistakes. Use when auditing Rust crates, services, or libraries — particularly those with `unsafe`, FFI, or concurrent code.",
+      "path": "plugins/rust-review/skills/rust-review/SKILL.md",
+      "sha256": "52ee8b08876b0ad90ecdf4a58de8d41fb2d8627f1e4d259a806a35a6e187ae91"
+    },
+    {
+      "name": "second-opinion",
+      "description": "Gets independent code reviews from Codex or Antigravity for uncommitted changes, branch diffs, and commits. Use when the user requests an external review, a second opinion on code, a codex review, a gemini review, an antigravity review, or /second-opinion.",
+      "path": "plugins/second-opinion/skills/second-opinion/SKILL.md",
+      "sha256": "e274353992ba838ff006322565479dc1fb16adde917765fa271397c2770254e9"
+    },
+    {
+      "name": "semgrep-rule-creator",
+      "description": "Creates custom Semgrep rules for detecting security vulnerabilities, bug patterns, and code patterns. Use when writing Semgrep rules or building custom static analysis detections.",
+      "path": "plugins/semgrep-rule-creator/skills/semgrep-rule-creator/SKILL.md",
+      "sha256": "6ca2e3b8520ed20af1b0879b7cab318832fcbe89c19c17a9fa347a45a9f28913"
+    },
+    {
+      "name": "semgrep-rule-variant-creator",
+      "description": "Creates language variants of existing Semgrep rules. Use when porting a Semgrep rule to specified target languages. Takes an existing rule and target languages as input, produces independent rule+test directories for each language.",
+      "path": "plugins/semgrep-rule-variant-creator/skills/semgrep-rule-variant-creator/SKILL.md",
+      "sha256": "a456a7897a8042b1e2be81e10a7ac78f85cedeb22358b3ef9166a4faa058d0de"
+    },
+    {
+      "name": "sharp-edges",
+      "description": "Identifies error-prone APIs, dangerous configurations, and footgun designs that enable security mistakes. Use when reviewing API designs, configuration schemas, cryptographic library ergonomics, or evaluating whether code follows 'secure by default' and 'pit of success' principles. Triggers: footgun, misuse-resistant, secure defaults, API usability, dangerous configuration.",
+      "path": "plugins/sharp-edges/skills/sharp-edges/SKILL.md",
+      "sha256": "3b69a709c2f8f0cfcf57d40a3186e166f307865cc8ed924be4098e549a121e9c"
+    },
+    {
+      "name": "spec-to-code-compliance",
+      "description": "Check code against the documentation that specifies it - which requirements hold, which the code contradicts, which are absent, and what the code does that no document mentions. Use when comparing an implementation against a whitepaper, protocol spec, or design document.",
+      "path": "plugins/spec-to-code-compliance/skills/spec-to-code-compliance/SKILL.md",
+      "sha256": "eb0d91b50a9c06f50baf8763d1e23566897b9fa3e7ffcf13134eee4e1ccaefe5"
+    },
+    {
+      "name": "codeql",
+      "description": "Scans a codebase for security vulnerabilities using CodeQL's interprocedural data flow and taint tracking analysis. Triggers on \"run codeql\", \"codeql scan\", \"build codeql database\", \"SAST scan\", \"taint analysis\", \"dataflow analysis\", or \"find vulnerabilities in this repo\". Covers Python, JavaScript/TypeScript, Go, Java/Kotlin, C/C++, C#, Ruby, and Swift. Supports \"run all\" (security-and-quality + security-experimental) and \"important only\" (high-precision) scan modes, and creates data extension models for project-specific sources and sinks. For fast single-file pattern matching, or when no build is available for a compiled language, use the semgrep skill; to parse SARIF that already exists rather than produce it, use the sarif-parsing skill.",
+      "path": "plugins/static-analysis/skills/codeql/SKILL.md",
+      "sha256": "1a6d919ff80f83b262daf650552af6eb6d2c32b19d0c529b70efe0c116b675cf"
+    },
+    {
+      "name": "sarif-parsing",
+      "description": "Parses and processes SARIF files from static analysis tools like CodeQL, Semgrep, or other scanners. Triggers on \"parse sarif\", \"read scan results\", \"aggregate findings\", \"deduplicate alerts\", or \"process sarif output\". Handles filtering, deduplication, format conversion, and CI/CD integration of SARIF data. Does NOT run scans — use the Semgrep or CodeQL skills for that.",
+      "path": "plugins/static-analysis/skills/sarif-parsing/SKILL.md",
+      "sha256": "cc5f008f40ffb8a1ae03ebd32d7234de43e828293955a0bc251b76ba249554fa"
+    },
+    {
+      "name": "semgrep",
+      "description": "Runs a Semgrep security scan over a codebase: detects languages, selects rulesets, presents the plan for explicit approval, then runs every approved ruleset through scripts/run-scans.sh, which batches the semgrep processes and writes scans.json, and merges the output to SARIF. Supports two scan modes, \"run all\" for full ruleset coverage and \"important only\" for security findings at medium-to-high confidence and impact. Uses Semgrep Pro for cross-file taint analysis when it is available. Use when asked to scan code for vulnerabilities, run a security audit with Semgrep, find bugs, or perform static analysis. For the same scan without the approval gate, use the /static-analysis:semgrep-scan workflow.",
+      "path": "plugins/static-analysis/skills/semgrep/SKILL.md",
+      "sha256": "52162605593f871cf45f48f9cf00b7c2d7e0759ccb7507981088442b7cc5d76c"
+    },
+    {
+      "name": "supply-chain-risk-auditor",
+      "description": "Audits a project's dependencies for supply-chain risk: version-matched advisories for direct dependencies and the full lockfile tree, abandoned or archived upstreams, npm publisher concentration, and install-time script execution. Use when asked to audit dependencies, assess supply-chain or third-party package risk, or review a dependency tree before an engagement.",
+      "path": "plugins/supply-chain-risk-auditor/skills/supply-chain-risk-auditor/SKILL.md",
+      "sha256": "a1254b7f8d3a1731a9a7e1f9cd6c67b59cf84ed6ef7c7fb455db9a14c528ceb4"
+    },
+    {
+      "name": "address-sanitizer",
+      "description": "Builds and runs code under AddressSanitizer to catch buffer overflows, use-after-free, and other memory errors during fuzzing or tests. Covers -fsanitize=address builds, ASAN_OPTIONS, reading the crash report, LeakSanitizer, and the overhead and platform trade-offs. Use when fuzzing C/C++ or Rust that has unsafe blocks or FFI, when debugging a memory corruption crash, or when reading an ASan stack trace.",
+      "path": "plugins/testing-handbook-skills/skills/address-sanitizer/SKILL.md",
+      "sha256": "eb9ea8210fa55d50477fbe52993a704e320c88739c10d619864b6ce377ebce25"
+    },
+    {
+      "name": "aflpp",
+      "description": "Sets up and runs AFL++ for multi-core fuzzing of C/C++ projects built with afl-clang-fast or afl-gcc-fast. Covers instrumentation modes, parallel main and secondary campaigns, persistent mode, corpus minimization, and crash triage. Use when scaling fuzzing across cores, fuzzing a mature C/C++ codebase, reading the afl-fuzz status screen, or moving on after libFuzzer has plateaued.",
+      "path": "plugins/testing-handbook-skills/skills/aflpp/SKILL.md",
+      "sha256": "0a31023527808e68a53b81b89c7a6c10c6f84755a410df820facef44252e518d"
+    },
+    {
+      "name": "atheris",
+      "description": "Sets up and runs Atheris, the coverage-guided Python fuzzer built on libFuzzer. Covers TestOneInput harnesses, FuzzedDataProvider, instrumenting both pure Python and native C extensions, and running under AddressSanitizer. Use when fuzzing a Python package, hunting memory corruption in a Python C extension, or choosing between Atheris and Hypothesis for a Python target.",
+      "path": "plugins/testing-handbook-skills/skills/atheris/SKILL.md",
+      "sha256": "133306875d88bb063636a9165c56141ac8b30d3b993db3740f166693dfeecbb5"
+    },
+    {
+      "name": "cargo-fuzz",
+      "description": "Sets up and runs cargo-fuzz, the standard fuzzing tool for Cargo-based Rust projects. Covers cargo fuzz init, the nightly toolchain requirement, fuzz_target! harnesses, Arbitrary-derived structured inputs, sanitizer options, cargo fuzz coverage, and reproducing a crash artifact. Use when fuzzing a Rust crate, writing a fuzz_target!, exercising unsafe blocks or FFI in Rust, or triaging a cargo fuzz crash.",
+      "path": "plugins/testing-handbook-skills/skills/cargo-fuzz/SKILL.md",
+      "sha256": "8e8f882604f68c682afde3562ba1bd3828264fd226f427ff7d9ba50617268db1"
+    },
+    {
+      "name": "constant-time-testing",
+      "description": "Measures timing side channels in cryptographic implementations by running them, using dudect for statistical analysis and Timecop over Valgrind for dynamic tracing. Covers the formal, symbolic, dynamic, and statistical tool categories and how to read a result. Use when testing whether a running implementation is constant-time, measuring timing variance on a compiled binary, or investigating a suspected timing attack. Not for statically inspecting compiler output — the constant-time-analysis plugin covers that.",
+      "path": "plugins/testing-handbook-skills/skills/constant-time-testing/SKILL.md",
+      "sha256": "d294126ee90dbb949261145fbf1fb05dbbeb1a986320ba597b746fa4068f0028"
+    },
+    {
+      "name": "coverage-analysis",
+      "description": "Measures and interprets what a fuzzing campaign actually reaches, using llvm-cov, lcov, or a fuzzer's own coverage output. Covers baselining a new campaign, reading coverage reports, and turning uncovered regions into harness, seed, or dictionary work. Use when a fuzzer plateaus, when judging whether a harness is effective, after changing a harness, or when asking why some code is never reached.",
+      "path": "plugins/testing-handbook-skills/skills/coverage-analysis/SKILL.md",
+      "sha256": "9f71cfaffec44f159aa333924a25cdbe3eebd221cc7c0b0175fb93794d3ecacc"
+    },
+    {
+      "name": "fuzzing-dictionary",
+      "description": "Builds and applies fuzzing dictionaries so a fuzzer can produce the keywords, magic bytes, and tokens a target expects. Covers extracting tokens from source, headers, binaries, and specifications, dictionary syntax, and wiring one into libFuzzer or AFL++. Use when fuzzing a parser, protocol, or file format, when coverage stalls at input validation, or when a target compares against fixed strings.",
+      "path": "plugins/testing-handbook-skills/skills/fuzzing-dictionary/SKILL.md",
+      "sha256": "b71fa7cab36ca466647123efa07c665c1968661f6d5060d9ac0cbb7f7599f7e0"
+    },
+    {
+      "name": "fuzzing-obstacles",
+      "description": "Patches past the barriers that stop a fuzzer making progress — checksum and hash verification, magic-value validation, time-based seeds, and other non-deterministic global state. Covers locating the blocking check, neutering it behind a fuzzing build flag, and avoiding the false positives a patch can introduce. Use when a fuzzer is stuck at validation, when coverage shows large regions behind a checksum, or when valid inputs are impractical to generate.",
+      "path": "plugins/testing-handbook-skills/skills/fuzzing-obstacles/SKILL.md",
+      "sha256": "7d77500c3e0a2db1ce5fd5dbb0559b802a621c63110dd8fd4664f0bf1634a3b2"
+    },
+    {
+      "name": "harness-writing",
+      "description": "Designs and improves fuzzing harnesses for C/C++ and Rust. Covers mapping raw bytes onto a target API, generating structured inputs, avoiding non-determinism and false crashes, and deciding what to fuzz together. Use when writing a first LLVMFuzzerTestOneInput or fuzz_target! harness, when a campaign finds nothing or reports crashes that will not reproduce, or when the target API needs structured rather than raw input.",
+      "path": "plugins/testing-handbook-skills/skills/harness-writing/SKILL.md",
+      "sha256": "8efda12f4ab61a7eef4daae88affc7649695d8db5fb2c2a33a78dab2a3fe36c0"
+    },
+    {
+      "name": "libafl",
+      "description": "Builds custom fuzzers with LibAFL, the modular Rust fuzzing library. Covers composing observers, feedbacks, mutators, schedulers, and executors into a fuzzer for targets the standard tools do not fit. Use when writing a bespoke fuzzer or mutator, fuzzing a non-standard target or architecture, implementing a fuzzing research idea, or when libFuzzer and AFL++ lack the control you need.",
+      "path": "plugins/testing-handbook-skills/skills/libafl/SKILL.md",
+      "sha256": "2f7f261439c2d87a15ddbb8a04a387fb8c211b9f20b00baf28b1466e036fc0d5"
+    },
+    {
+      "name": "libfuzzer",
+      "description": "Sets up and runs libFuzzer, the coverage-guided fuzzer built into LLVM, on C/C++ code that compiles with Clang. Covers harness structure, -fsanitize=fuzzer builds, corpus and dictionary management, sanitizer integration, and campaign triage. Use when writing or debugging an LLVMFuzzerTestOneInput harness, starting fuzzing on a C/C++ library, choosing between libFuzzer and AFL++, or working out why a libFuzzer run finds nothing.",
+      "path": "plugins/testing-handbook-skills/skills/libfuzzer/SKILL.md",
+      "sha256": "56b2c68b193f7fed4ae00ade6c6395196d44612d140ad51de43d150404dde2eb"
+    },
+    {
+      "name": "ossfuzz",
+      "description": "Enrolls a project in OSS-Fuzz, Google's free continuous fuzzing service for open source, and drives it locally. Covers project.yaml, Dockerfile and build.sh setup, the helper scripts, reproducing OSS-Fuzz crash reports, and the acceptance criteria. Use when setting up continuous fuzzing for an open-source project, reproducing an OSS-Fuzz bug report, or testing an OSS-Fuzz build before submitting it.",
+      "path": "plugins/testing-handbook-skills/skills/ossfuzz/SKILL.md",
+      "sha256": "aeb1abbcac5ae5e4a73be4bb923fc9cca20d8d1073630c2e0a1ff37fccbec598"
+    },
+    {
+      "name": "ruzzy",
+      "description": "Sets up and runs Ruzzy, Trail of Bits' coverage-guided Ruby fuzzer and the only production-ready one for the language. Covers harness structure, fuzzing pure Ruby and the native C extensions in gems, and sanitizer builds. Use when fuzzing a Ruby library or gem, testing a Ruby C extension for memory safety, or asking how to fuzz Ruby at all.",
+      "path": "plugins/testing-handbook-skills/skills/ruzzy/SKILL.md",
+      "sha256": "46374463b7ff99b028692ed8d30f1c9f488597597e5a2af4ad3919e2a47d6ce9"
+    },
+    {
+      "name": "testing-handbook-generator",
+      "description": "Generates Claude Code skills from the Trail of Bits Testing Handbook (appsec.guide), analyzing handbook pages and emitting SKILL.md files with the structure each skill type requires. Use when creating or refreshing a skill from handbook content, or when the user names the testing handbook or appsec.guide. Not for answering security testing questions — the generated skills cover those.",
+      "path": "plugins/testing-handbook-skills/skills/testing-handbook-generator/SKILL.md",
+      "sha256": "84d2022bff1675f77f71a219aa3999b01dc3fcfeff1666965177195ecf808aaa"
+    },
+    {
+      "name": "wycheproof",
+      "description": "Validates cryptographic implementations against Project Wycheproof's test vectors, which encode known attacks and edge cases across AES, RSA, ECDSA, ECDH, and more. Covers loading test vectors, mapping result flags onto pass and fail expectations, and reading a failure. Use when testing a crypto implementation against known attacks, checking a library against standard test vectors, or investigating why two implementations disagree on the same input.",
+      "path": "plugins/testing-handbook-skills/skills/wycheproof/SKILL.md",
+      "sha256": "d092dc70fbd0f86d1f755857bf57172a6593cae0bff5d052443fc60b8d675a33"
+    },
+    {
+      "name": "audit-augmentation",
+      "description": "Augments Trailmark code graphs with external audit findings from SARIF static analysis results, weAudit annotation files, and version-gated Trailmark 0.4.x binary-analysis graph exports. Maps findings to graph nodes by file and line overlap, creates severity-based subgraphs, and enables cross-referencing findings with pre-analysis data (blast radius, taint, etc.). Use when projecting SARIF results onto a code graph, overlaying weAudit annotations, importing binary graph findings, cross-referencing Semgrep, CodeQL, or binary-analysis findings with call graph data, or visualizing audit findings in the context of code structure.\n",
+      "path": "plugins/trailmark/skills/audit-augmentation/SKILL.md",
+      "sha256": "164ab881bfc63e77c782cfc6b67b2bb6887695425d3654c6c4d498004392b1f7"
+    },
+    {
+      "name": "crypto-protocol-diagram",
+      "description": "Extracts protocol message flow from source code, RFCs, academic papers, pseudocode, informal prose, ProVerif (.pv), or Tamarin (.spthy) models and generates Mermaid sequenceDiagrams with cryptographic annotations. Use when diagramming a crypto protocol, visualizing a handshake or key exchange flow, extracting message flow from a spec or RFC, diagramming a ProVerif or Tamarin model, or drawing sequence diagrams for TLS, Noise, Signal, X3DH, Double Ratchet, FROST, DH, or ECDH protocols.",
+      "path": "plugins/trailmark/skills/crypto-protocol-diagram/SKILL.md",
+      "sha256": "11e665a8180bfc5dcac16cb4baa01100f83d6875b2d38dcd54ad6866f9b04dbc"
+    },
+    {
+      "name": "diagramming-code",
+      "description": "Generates Mermaid diagrams from Trailmark code graphs. Produces call graphs, class hierarchies, module dependency maps, containment diagrams, complexity heatmaps, and attack surface data flow visualizations. Use when visualizing code architecture, drawing call graphs, generating class diagrams, creating dependency maps, producing complexity heatmaps, or visualizing data flow and attack surface paths as Mermaid diagrams.\n",
+      "path": "plugins/trailmark/skills/diagramming-code/SKILL.md",
+      "sha256": "1d2397bd08607b686122078afe8d2742cca2a46f19c8e924e54f5886136d1053"
+    },
+    {
+      "name": "genotoxic",
+      "description": "Graph-informed mutation testing triage. Parses codebases with Trailmark, runs mutation testing and necessist, then uses survived mutants, unnecessary test statements, and call graph data to identify false positives, missing test coverage, and fuzzing targets. Use when triaging survived mutants, analyzing mutation testing results, identifying test gaps, finding fuzzing targets from weak tests, running mutation frameworks (including circomvent and cairo-mutants), or using necessist.",
+      "path": "plugins/trailmark/skills/genotoxic/SKILL.md",
+      "sha256": "cfbb30f69e91f2b04a14f426ef4442164edeea8c00041692067121b7baae6e09"
+    },
+    {
+      "name": "graph-evolution",
+      "description": "Compares Trailmark code graphs at two source code snapshots (git commits, tags, or directories) to surface security-relevant structural changes. Detects new attack paths, complexity shifts, blast radius growth, taint propagation changes, and privilege boundary modifications that text diffs miss. Use when comparing code between commits or tags, analyzing structural evolution, detecting attack surface growth, reviewing what changed between audit snapshots, or finding security-relevant changes that text diffs miss.\n",
+      "path": "plugins/trailmark/skills/graph-evolution/SKILL.md",
+      "sha256": "009055f8ad529fd9fa3bfe58c510fae79cf81d8b3d16b31b27a86ec248797618"
+    },
+    {
+      "name": "mermaid-to-proverif",
+      "description": "Translates Mermaid sequenceDiagrams describing cryptographic protocols into ProVerif formal verification models (.pv files). Use when generating a ProVerif model, formally verifying a protocol, converting a Mermaid diagram to ProVerif, verifying protocol security properties (secrecy, authentication, forward secrecy), checking for replay attacks, or producing a .pv file from a sequence diagram.",
+      "path": "plugins/trailmark/skills/mermaid-to-proverif/SKILL.md",
+      "sha256": "2f096151ad7fb5de2d74556bfa85322510a6e71710f4aa0ff963e5ce6ec3fa25"
+    },
+    {
+      "name": "slicing-code-context",
+      "description": "Selects bounded, graph-informed source slices with Trailmark and delegates focused code analysis or patch-proposal work to a smaller subagent. Use when offloading function-, class-, caller-, callee-, call-path-, entrypoint-, or line-focused code tasks to constrained or locally hosted models without exposing the full repository.",
+      "path": "plugins/trailmark/skills/slicing-code-context/SKILL.md",
+      "sha256": "72ea4b2adc22f0c9d64b1f7846517fb285d8601e30a693126a4d3e133d0e97fe"
+    },
+    {
+      "name": "trailmark-finding-triage",
+      "description": "Performs graph-assisted triage of a single security finding, SARIF result, weAudit annotation, suspicious function, or report excerpt using Trailmark reachability, entrypoint paths, taint, privilege-boundary, blast-radius, caller/callee, and neighborhood evidence. Use when deciding whether one candidate issue is reachable, prioritizing a finding before PoC work, preparing evidence for exploit validation, or checking whether a static-analysis result is actionable.",
+      "path": "plugins/trailmark/skills/trailmark-finding-triage/SKILL.md",
+      "sha256": "9f76e25b1ef98076e462dcac78afb488825bdab4d4d9fd5ffb74decc419c6989"
+    },
+    {
+      "name": "trailmark-review-gate",
+      "description": "Runs a Trailmark structural review gate over a branch, pull request, fix commit, release diff, or git ref range to detect new entrypoints, new tainted paths, removed validation or authorization calls, privilege-boundary drift, blast-radius growth, complexity growth, and newly reachable sensitive sinks. Use when reviewing a PR, branch, remediation commit, or release diff where graph-level security regressions should be checked before merge.",
+      "path": "plugins/trailmark/skills/trailmark-review-gate/SKILL.md",
+      "sha256": "fad45861eca1e8fe7c44d20a178816e5fcfc2c00f01835ca8a1991dbd7241a9f"
+    },
+    {
+      "name": "trailmark-structural",
+      "description": "Runs full Trailmark structural analysis by building a graph, running `preanalysis()`, and reporting hotspots, taint, blast radius, privilege boundaries, attack surface, and version-gated Trailmark 0.4+/0.5+ data such as proxy counts, subgraph edges, type/reference summaries, and entrypoint attributes. Use when vivisect needs detailed structural data for a target. Triggers: structural analysis, blast radius, taint analysis, complexity hotspots, proxy nodes, type references.",
+      "path": "plugins/trailmark/skills/trailmark-structural/SKILL.md",
+      "sha256": "7716c9069a3f216f26c69d2324953824b9578b59e0f746accd66c236ebd0b50a"
+    },
+    {
+      "name": "trailmark-summary",
+      "description": "Runs a Trailmark summary analysis on a codebase. Returns auto-detected languages, entry point count, and dependency list. Use when vivisect or galvanize needs a quick structural overview. Triggers: trailmark summary, code summary, structural overview.",
+      "path": "plugins/trailmark/skills/trailmark-summary/SKILL.md",
+      "sha256": "c6a6b5feb7bc3eda3b45140be8aa01f5a5c5c8cc2454918ad1da98080815bf48"
+    },
+    {
+      "name": "trailmark-variant-neighborhood",
+      "description": "Expands one confirmed or suspected vulnerability into a Trailmark graph neighborhood of variant candidates by finding sibling functions, shared callers and callees, common sensitive sinks, common entrypoint paths, interface implementations, override relationships, type/reference neighbors, and structurally similar nodes. Use after one issue is found to seed variant-analysis, semgrep-rule-creator, static-analysis, or manual review with graph-derived candidate locations.",
+      "path": "plugins/trailmark/skills/trailmark-variant-neighborhood/SKILL.md",
+      "sha256": "e49b232b46dce59ea2fd68a1c1dda25d83cee6717cb2921346184665bf7ecb4c"
+    },
+    {
+      "name": "trailmark",
+      "description": "Builds and queries multi-language source and binary code graphs for security analysis. Includes pre-analysis passes for blast radius, taint propagation, privilege boundaries, entry point enumeration, proxy/unresolved-call tracking, type/reference queries, structural traversal, graph diffs, audit augmentation, declared cross-language/FFI/external links via `.trailmark/links.toml`, and SQL schema graphs. Use when analyzing call paths, mapping attack surface, finding complexity hotspots, enumerating entry points, tracing taint propagation, measuring blast radius, importing SARIF/weAudit/binary findings, linking source graphs across language or RPC boundaries, or building a code graph for audit prioritization. Feature-gate version-specific Trailmark APIs before using them; prefer `trailmark.parse.detect_languages()` or `--language auto` when the target language is unknown or polyglot.",
+      "path": "plugins/trailmark/skills/trailmark/SKILL.md",
+      "sha256": "113af24db2830394ca7a42078a3172d3a693c1080acdc9e3f66209eaeaa36876"
+    },
+    {
+      "name": "vector-forge",
+      "description": "Mutation-driven test vector generation. Finds implementations of a cryptographic algorithm or protocol, runs mutation testing to identify escaped mutants, then generates new test vectors that deliberately exercise the uncovered code paths. Compares before/after mutation kill rates to prove vector effectiveness. Use when generating cryptographic test vectors, measuring Wycheproof coverage gaps, finding escaped mutants via mutation testing, creating cross-implementation test suites, or improving test vector coverage for crypto primitives.",
+      "path": "plugins/trailmark/skills/vector-forge/SKILL.md",
+      "sha256": "aca07e846ce5615031e9df0faca3537f4796f72997dcece53c9e389cf9d9d132"
+    },
+    {
+      "name": "variant-analysis",
+      "description": "Hunts for the other instances of a bug already found — the variants of one root cause across a codebase. Use immediately after a vulnerability, logic bug, or bad pattern turns up in a specific file and the question becomes where else it occurs, including the bare conversational form (\"are there others like this?\", \"is this the same bug?\"). Also for generalizing one known instance into a CodeQL or Semgrep query for its whole pattern family, and for triaging a set of look-alike candidates against a known root cause. Not for initial discovery with no bug in hand.",
+      "path": "plugins/variant-analysis/skills/variant-analysis/SKILL.md",
+      "sha256": "7b6b78e499bcb88d05c68254ffc91ebc28edabf4e9808adcc40e2628ebb9407e"
+    },
+    {
+      "name": "vulnerability-triage-brocards",
+      "description": "This skill should be used when the user asks to \"triage a vulnerability report\", \"assess a CVE\", \"evaluate a bug bounty submission\", \"decide if a finding is valid\", \"review a security finding\", \"dismiss a vulnerability\", \"should we fix this CVE\", \"prioritize a vulnerability report\", or needs to determine whether an incoming vulnerability report warrants investigation. Applies 7 brocards (rules of thumb) to systematically accept, dismiss, or request more information on vulnerability reports, or needs to filter raw findings from agentic vulnerability discovery pipelines before human review.",
+      "path": "plugins/vulnerability-triage-brocards/skills/vulnerability-triage-brocards/SKILL.md",
+      "sha256": "b033c02d83f65b19b96c79e70fbf7cee58e51c8cbdd8f81d907ad2351a1433db"
+    },
+    {
+      "name": "writing-lean-proofs",
+      "description": "Writes and reviews structured Lean 4 proofs and designs Lean libraries following Mathlib conventions. Use when proving theorems in Lean, formalizing mathematics or specifications in Lean 4, defining new types or definitions in a Lean library, reviewing Lean proofs for readability and maintainability, refactoring long tactic proofs into lemmas, filling in sorry placeholders in a Lean development, setting up CI or linters for a Lean project, diagnosing slow proofs or maxHeartbeats timeouts, or writing custom tactics, macros, or linters.",
+      "path": "plugins/writing-lean-proofs/skills/writing-lean-proofs/SKILL.md",
+      "sha256": "fb2ad9c463ac5185a014892ce33202460b3423d64405024b95b534f0d3b4d3e0"
+    },
+    {
+      "name": "yara-rule-authoring",
+      "description": "Guides authoring of high-quality YARA-X detection rules for malware identification. Use when writing, reviewing, or optimizing YARA rules. Covers naming conventions, string selection, performance optimization, migration from legacy YARA, and false positive reduction. Triggers on: YARA, YARA-X, malware detection, threat hunting, IOC, signature, crx module, dex module.\n",
+      "path": "plugins/yara-authoring/skills/yara-rule-authoring/SKILL.md",
+      "sha256": "c23ee1aeabf26318e25e00903ef8f31c2de294d796c230081ce8bcf95a668f7c"
+    },
+    {
+      "name": "zeroize-audit",
+      "description": "Detects missing zeroization of sensitive data in source code and identifies zeroization removed by compiler optimizations, with assembly-level analysis, and control-flow verification. Use for auditing C/C++/Rust code handling secrets, keys, passwords, or other sensitive data.",
+      "path": "plugins/zeroize-audit/skills/zeroize-audit/SKILL.md",
+      "sha256": "b0a6c227817f9702d5168105c85977bb32ec077c6e90fd1ae094aa07b69a47cc"
+    }
+  ],
+  "dependencies": [
+    "Semgrep, CodeQL, Slither, fuzzers и компиляторы по сценарию",
+    "Изолированное окружение; некоторые workflows требуют Docker/Claude hooks"
+  ],
+  "compatibility": "needs-configuration",
+  "reason": "Лицензия CC-BY-SA-4.0 сохранена с исходниками; изменение материалов потребует сохранения её условий. Навыки зависят от security CLI, контейнеров и Claude hooks. Runtime не проверен, подключение заблокировано.",
+  "enabledByDefault": false,
+  "runtimes": []
+}

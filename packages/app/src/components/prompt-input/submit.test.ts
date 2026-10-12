@@ -134,11 +134,16 @@ beforeAll(async () => {
 
   mock.module("@opencode-ai/ui/toast", () => ({
     Toast: { Region: () => null },
+    toaster: { show: () => 0, dismiss: () => undefined },
     showToast: () => 0,
   }))
 
   mock.module("@opencode-ai/core/util/encode", () => ({
     base64Encode: (value: string) => value,
+  }))
+
+  mock.module("@/context/onboarding", () => ({
+    useOnboarding: () => ({ pending: () => undefined }),
   }))
 
   mock.module("@/context/local", () => ({

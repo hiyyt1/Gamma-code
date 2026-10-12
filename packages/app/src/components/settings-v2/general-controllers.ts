@@ -1,6 +1,4 @@
-import { createMemo, createResource, onMount, type Accessor } from "solid-js"
-import type { ColorScheme } from "@opencode-ai/ui/theme/context"
-import { useTheme } from "@opencode-ai/ui/theme/context"
+import { createMemo, createResource, type Accessor } from "solid-js"
 import { usePermission } from "@/context/permission"
 import { useServerSDK } from "@/context/server-sdk"
 import { useServerSync } from "@/context/server-sync"
@@ -74,21 +72,7 @@ export function createShellSettingsController() {
 
 export function createAppearanceSettingsController() {
   const settings = useSettings()
-  const theme = useTheme()
-  const themes = createMemo(() => theme.ids().map((id) => ({ id, name: theme.name(id) })))
-
-  onMount(() => void theme.loadThemes())
-
   return {
-    scheme: {
-      current: theme.colorScheme,
-      select: (value: ColorScheme) => theme.setColorScheme(value),
-    },
-    theme: {
-      options: themes,
-      current: createMemo(() => themes().find((option) => option.id === theme.themeId())),
-      select: (option: { id: string } | null) => option && theme.setTheme(option.id),
-    },
     fonts: {
       ui: createMemo(() => ({
         value: sansInput(settings.appearance.uiFont()),

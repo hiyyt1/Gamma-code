@@ -1,0 +1,87 @@
+{
+  "id": "bitrix24-development",
+  "revision": "gamma-1",
+  "sources": [
+    {
+      "repository": "https://github.com/vrtalex/bitrix24-skill",
+      "commit": "73e781d48d2023f75f6e20afb5220d19bbd53e1a",
+      "license": "Unlicense"
+    },
+    {
+      "repository": "https://github.com/bitrix24/b24ui",
+      "commit": "473f4933b8bb3c17f21a0c93f5d1d96a04379e13",
+      "license": "MIT"
+    }
+  ],
+  "skills": [
+    {
+      "name": "b24-ui-nuxt",
+      "description": "Build UIs with @bitrix24/b24ui-nuxt v2 — 130+ accessible Vue components with Tailwind CSS theming. Use when creating interfaces, building forms, or composing layouts for a Bitrix24 application.",
+      "path": "skills/b24-ui-nuxt/SKILL.md",
+      "sha256": "049fb70e9fdbd91cdfa409e03a8b65d26f2e9b2f145d0decf0c18d86e8e41c5f"
+    },
+    {
+      "name": "bitrix24-automation",
+      "description": "Автоматизации, события, бизнес-процессы и надёжные обработчики.",
+      "path": "skills/bitrix24-automation/SKILL.md",
+      "sha256": "8dd287dae5473cf306d0944c58c48423f543d835c30ff9411154f2f8ef8e24a3"
+    },
+    {
+      "name": "bitrix24-backend",
+      "description": "REST, webhook, OAuth, приложения и интеграции с 1С/почтой.",
+      "path": "skills/bitrix24-backend/SKILL.md",
+      "sha256": "e58bbe981ebd9e2a046ef974b279a2ff13f68e28c69321c319ae5ed656b6ca1e"
+    },
+    {
+      "name": "bitrix24-crm",
+      "description": "CRM, поля, воронки, смарт-процессы и проверка изменений.",
+      "path": "skills/bitrix24-crm/SKILL.md",
+      "sha256": "123b1c8712abda70c75b424a6126d2c77cbc37fa8648f3c4ac0dd023244c96b0"
+    },
+    {
+      "name": "bitrix24-operations",
+      "description": "Pagination, rate limits, ошибки, scopes, безопасные журналы.",
+      "path": "skills/bitrix24-operations/SKILL.md",
+      "sha256": "67d1b566440b2931a066bd69697874e1b500f34facf20e3eb840023bc04eece9"
+    },
+    {
+      "name": "bitrix24-review",
+      "description": "Проверка безопасности, идемпотентности, API и полноты результата.",
+      "path": "skills/bitrix24-review/SKILL.md",
+      "sha256": "274813f98a489f9b373f1ab1d5e4cbf15648d2907751c2574f13be9ef86f4da1"
+    }
+  ],
+  "files": {
+    "LICENSE-b24ui": "55507a7e4d6c98c363e46befc0e24d918fa55a61113b22b1a66d08f7cc491ae0",
+    "LICENSE-vrtalex": "14bbddd475d1db8ac010e61e97863d044a207de342e25712ed55dc8d6974fbf1",
+    "skills/b24-ui-nuxt/SKILL.md": "049fb70e9fdbd91cdfa409e03a8b65d26f2e9b2f145d0decf0c18d86e8e41c5f",
+    "skills/b24-ui-nuxt/references/components.md": "09999fb9e5652ae5c05bbf32d42ab69b9395003190bd867cd8c758e56cf3f09a",
+    "skills/b24-ui-nuxt/references/guidelines/component-selection.md": "c72dfac0c3c2ef50684145b13e82fbf06901a60da17c61c846943795bfcf6bb2",
+    "skills/b24-ui-nuxt/references/guidelines/conventions.md": "44d656a3730020653edb1d6da739f4789be608c6e5a82f0b7ae3e63a1afe627c",
+    "skills/b24-ui-nuxt/references/guidelines/design-system.md": "86ce56b434578195f78c861fe6ec7f42819113f2dbc426414eb1e66673a3b336",
+    "skills/b24-ui-nuxt/references/guidelines/forms.md": "e774195b8a15adbc83457381dcf415950615e399aaec21d5fb54f8cd3e48a6b7",
+    "skills/b24-ui-nuxt/references/guidelines/icons.md": "6a94fa61e14d3a61334fd0c7a4293c99335b98a28698b8b85843944161a78310",
+    "skills/b24-ui-nuxt/references/layouts/dashboard.md": "a858e284fbb7c67c9a6d8339c7aad6b8c3598f94eed174b4cb95928b7fee2493",
+    "skills/b24-ui-nuxt/references/layouts/landing.md": "df1819c5f16533b32e35a413c9f7beb6deebb8a9cb5c11d69c1c8a284126e904",
+    "skills/b24-ui-nuxt/references/recipes/card-pickers.md": "9187c9653b0edb6370909bf16576d89c79ea2d99bf1b7bac60841bd8eb1f97c7",
+    "skills/b24-ui-nuxt/references/recipes/data-tables.md": "cd9164cefe48dffab72e9e9f2d8ff0a48b60ad2928fdcc94feb67424609d7597",
+    "skills/b24-ui-nuxt/references/recipes/detail-panel.md": "47414e106835c6cbb18023417f604fdf17a92a8ce94ee2afd72c15517664a98b",
+    "skills/b24-ui-nuxt/references/recipes/navigation.md": "0e641de08dd7765d36080fb5bf2314fdfc62d1b90210190ed1111c9d0102b9ef",
+    "skills/b24-ui-nuxt/references/recipes/overlays.md": "6fa5e81e5a9db9429af064e223b235c485b5d209f531a99ea5d4dec64c6c530d",
+    "skills/b24-ui-nuxt/references/recipes/settings.md": "6a88b1303d7c38d8266b6b467c8a3aa5b770fcf86f2673e3128780d50006fff0",
+    "skills/b24-ui-nuxt/references/recipes/task-form.md": "99c84ab55805bb0cc52c7410a6fce4ce772d777c50eeae2573bd05a061be7847",
+    "skills/bitrix24-automation/SKILL.md": "8dd287dae5473cf306d0944c58c48423f543d835c30ff9411154f2f8ef8e24a3",
+    "skills/bitrix24-automation/references/catalog-automation.md": "dd4297038428ebf4f14a4f1df589d975137322bbc76ee0140ea29b945eae8b87",
+    "skills/bitrix24-automation/references/chains-automation.md": "8acad844aff637bc7fd068cbbf5ab0025ce93c340bc25d6ed25799225ce809a2",
+    "skills/bitrix24-backend/SKILL.md": "e58bbe981ebd9e2a046ef974b279a2ff13f68e28c69321c319ae5ed656b6ca1e",
+    "skills/bitrix24-backend/references/bitrix24.md": "c634165e2bb46eb22a713bc40e7bcf0331546df65605b8619460831099d4c50f",
+    "skills/bitrix24-backend/references/catalog-platform.md": "e902c1573a856c9fb6889d83b6316126c7aef83ba07eea9378a1b96686bc6278",
+    "skills/bitrix24-crm/SKILL.md": "123b1c8712abda70c75b424a6126d2c77cbc37fa8648f3c4ac0dd023244c96b0",
+    "skills/bitrix24-crm/references/catalog-core.md": "dbbe03896eeb5ba7c438c37faa00daded2d1c8a17d01d7c0f555f1d44ed60388",
+    "skills/bitrix24-crm/references/chains-core.md": "5de29bd95888e4ec8d7bc7ef1c607175fd7e59cd3178ae5b7be5fbda833a44b6",
+    "skills/bitrix24-operations/SKILL.md": "67d1b566440b2931a066bd69697874e1b500f34facf20e3eb840023bc04eece9",
+    "skills/bitrix24-operations/references/catalog-diagnostics.md": "47abfc5f673ff307607aa2c000b10c0896118a3133bd130435f8f35411873f1e",
+    "skills/bitrix24-operations/references/chains-diagnostics.md": "acc9743c2fbf5fc322b1ba74479b6aba040c70e198061577e3b416e816bead1b",
+    "skills/bitrix24-review/SKILL.md": "274813f98a489f9b373f1ab1d5e4cbf15648d2907751c2574f13be9ef86f4da1"
+  }
+}

@@ -1,0 +1,582 @@
+{
+  "bizproc.workflow.instances.list": {
+    "scope": "bizproc",
+    "write": false,
+    "source": "tools/biz/workflows.ts"
+  },
+  "bizproc.workflow.start": {
+    "scope": "bizproc",
+    "write": true,
+    "source": "tools/biz/workflows.ts"
+  },
+  "bizproc.workflow.template.add": {
+    "scope": "bizproc",
+    "write": true,
+    "source": "tools/biz/workflows.ts"
+  },
+  "bizproc.workflow.template.delete": {
+    "scope": "bizproc",
+    "write": true,
+    "source": "tools/biz/workflows.ts"
+  },
+  "bizproc.workflow.template.get": {
+    "scope": "bizproc",
+    "write": false,
+    "source": "tools/biz/workflows.ts"
+  },
+  "bizproc.workflow.template.list": {
+    "scope": "bizproc",
+    "write": false,
+    "source": "tools/biz/workflows.ts"
+  },
+  "bizproc.workflow.template.update": {
+    "scope": "bizproc",
+    "write": true,
+    "source": "tools/biz/workflows.ts"
+  },
+  "bizproc.workflow.terminate": {
+    "scope": "bizproc",
+    "write": true,
+    "source": "tools/biz/workflows.ts"
+  },
+  "crm.company.add": {
+    "scope": "crm",
+    "write": true,
+    "source": "tools/crm/companies.ts"
+  },
+  "crm.company.contact.add": {
+    "scope": "crm",
+    "write": true,
+    "source": "tools/crm/companies.ts"
+  },
+  "crm.company.contact.delete": {
+    "scope": "crm",
+    "write": true,
+    "source": "tools/crm/companies.ts"
+  },
+  "crm.company.contact.items.delete": {
+    "scope": "crm",
+    "write": true,
+    "source": "tools/crm/companies.ts"
+  },
+  "crm.company.contact.items.get": {
+    "scope": "crm",
+    "write": false,
+    "source": "tools/crm/companies.ts"
+  },
+  "crm.company.delete": {
+    "scope": "crm",
+    "write": true,
+    "source": "tools/crm/companies.ts"
+  },
+  "crm.company.details.configuration.get": {
+    "scope": "crm",
+    "write": false,
+    "source": "tools/crm/companies.ts"
+  },
+  "crm.company.fields": {
+    "scope": "crm",
+    "write": false,
+    "source": "tools/crm/companies.ts"
+  },
+  "crm.company.get": {
+    "scope": "crm",
+    "write": false,
+    "source": "tools/crm/companies.ts"
+  },
+  "crm.company.list": {
+    "scope": "crm",
+    "write": false,
+    "source": "tools/crm/companies.ts"
+  },
+  "crm.company.update": {
+    "scope": "crm",
+    "write": true,
+    "source": "tools/crm/companies.ts"
+  },
+  "crm.company.userfield.add": {
+    "scope": "crm",
+    "write": true,
+    "source": "tools/crm/companies.ts"
+  },
+  "crm.company.userfield.delete": {
+    "scope": "crm",
+    "write": true,
+    "source": "tools/crm/companies.ts"
+  },
+  "crm.company.userfield.get": {
+    "scope": "crm",
+    "write": false,
+    "source": "tools/crm/companies.ts"
+  },
+  "crm.company.userfield.update": {
+    "scope": "crm",
+    "write": true,
+    "source": "tools/crm/companies.ts"
+  },
+  "crm.contact.add": {
+    "scope": "crm",
+    "write": true,
+    "source": "tools/crm/contacts.ts"
+  },
+  "crm.contact.company.add": {
+    "scope": "crm",
+    "write": true,
+    "source": "tools/crm/contacts.ts"
+  },
+  "crm.contact.company.delete": {
+    "scope": "crm",
+    "write": true,
+    "source": "tools/crm/contacts.ts"
+  },
+  "crm.contact.company.items.delete": {
+    "scope": "crm",
+    "write": true,
+    "source": "tools/crm/contacts.ts"
+  },
+  "crm.contact.company.items.get": {
+    "scope": "crm",
+    "write": false,
+    "source": "tools/crm/contacts.ts"
+  },
+  "crm.contact.delete": {
+    "scope": "crm",
+    "write": true,
+    "source": "tools/crm/contacts.ts"
+  },
+  "crm.contact.details.configuration.get": {
+    "scope": "crm",
+    "write": false,
+    "source": "tools/crm/contacts.ts"
+  },
+  "crm.contact.fields": {
+    "scope": "crm",
+    "write": false,
+    "source": "tools/crm/contacts.ts"
+  },
+  "crm.contact.get": {
+    "scope": "crm",
+    "write": false,
+    "source": "tools/crm/contacts.ts"
+  },
+  "crm.contact.list": {
+    "scope": "crm",
+    "write": false,
+    "source": "tools/crm/contacts.ts"
+  },
+  "crm.contact.update": {
+    "scope": "crm",
+    "write": true,
+    "source": "tools/crm/contacts.ts"
+  },
+  "crm.contact.userfield.add": {
+    "scope": "crm",
+    "write": true,
+    "source": "tools/crm/contacts.ts"
+  },
+  "crm.contact.userfield.delete": {
+    "scope": "crm",
+    "write": true,
+    "source": "tools/crm/contacts.ts"
+  },
+  "crm.contact.userfield.get": {
+    "scope": "crm",
+    "write": false,
+    "source": "tools/crm/contacts.ts"
+  },
+  "crm.contact.userfield.update": {
+    "scope": "crm",
+    "write": true,
+    "source": "tools/crm/contacts.ts"
+  },
+  "crm.deal.add": {
+    "scope": "crm",
+    "write": true,
+    "source": "tools/crm/deals.ts"
+  },
+  "crm.deal.contact.add": {
+    "scope": "crm",
+    "write": true,
+    "source": "tools/crm/deals.ts"
+  },
+  "crm.deal.contact.delete": {
+    "scope": "crm",
+    "write": true,
+    "source": "tools/crm/deals.ts"
+  },
+  "crm.deal.contact.items.delete": {
+    "scope": "crm",
+    "write": true,
+    "source": "tools/crm/deals.ts"
+  },
+  "crm.deal.contact.items.get": {
+    "scope": "crm",
+    "write": false,
+    "source": "tools/crm/deals.ts"
+  },
+  "crm.deal.delete": {
+    "scope": "crm",
+    "write": true,
+    "source": "tools/crm/deals.ts"
+  },
+  "crm.deal.details.configuration.get": {
+    "scope": "crm",
+    "write": false,
+    "source": "tools/crm/deals.ts"
+  },
+  "crm.deal.fields": {
+    "scope": "crm",
+    "write": false,
+    "source": "tools/crm/deals.ts"
+  },
+  "crm.deal.get": {
+    "scope": "crm",
+    "write": false,
+    "source": "tools/crm/deals.ts"
+  },
+  "crm.deal.list": {
+    "scope": "crm",
+    "write": false,
+    "source": "tools/crm/deals.ts"
+  },
+  "crm.deal.productrows.add": {
+    "scope": "crm",
+    "write": true,
+    "source": "tools/crm/deals.ts"
+  },
+  "crm.deal.productrows.get": {
+    "scope": "crm",
+    "write": false,
+    "source": "tools/crm/deals.ts"
+  },
+  "crm.deal.recurring.add": {
+    "scope": "crm",
+    "write": true,
+    "source": "tools/crm/deals.ts"
+  },
+  "crm.deal.recurring.delete": {
+    "scope": "crm",
+    "write": true,
+    "source": "tools/crm/deals.ts"
+  },
+  "crm.deal.recurring.fields": {
+    "scope": "crm",
+    "write": false,
+    "source": "tools/crm/deals.ts"
+  },
+  "crm.deal.recurring.get": {
+    "scope": "crm",
+    "write": false,
+    "source": "tools/crm/deals.ts"
+  },
+  "crm.deal.recurring.list": {
+    "scope": "crm",
+    "write": false,
+    "source": "tools/crm/deals.ts"
+  },
+  "crm.deal.recurring.update": {
+    "scope": "crm",
+    "write": true,
+    "source": "tools/crm/deals.ts"
+  },
+  "crm.deal.update": {
+    "scope": "crm",
+    "write": true,
+    "source": "tools/crm/deals.ts"
+  },
+  "crm.deal.userfield.add": {
+    "scope": "crm",
+    "write": true,
+    "source": "tools/crm/deals.ts"
+  },
+  "crm.deal.userfield.delete": {
+    "scope": "crm",
+    "write": true,
+    "source": "tools/crm/deals.ts"
+  },
+  "crm.deal.userfield.get": {
+    "scope": "crm",
+    "write": false,
+    "source": "tools/crm/deals.ts"
+  },
+  "crm.deal.userfield.update": {
+    "scope": "crm",
+    "write": true,
+    "source": "tools/crm/deals.ts"
+  },
+  "crm.dealcategory.add": {
+    "scope": "crm",
+    "write": true,
+    "source": "tools/crm/deals.ts"
+  },
+  "crm.dealcategory.delete": {
+    "scope": "crm",
+    "write": true,
+    "source": "tools/crm/deals.ts"
+  },
+  "crm.dealcategory.list": {
+    "scope": "crm",
+    "write": false,
+    "source": "tools/crm/deals.ts"
+  },
+  "crm.dealcategory.update": {
+    "scope": "crm",
+    "write": true,
+    "source": "tools/crm/deals.ts"
+  },
+  "crm.item.productrow.add": {
+    "scope": "crm",
+    "write": true,
+    "source": "tools/crm/products.ts"
+  },
+  "crm.item.productrow.get": {
+    "scope": "crm",
+    "write": false,
+    "source": "tools/crm/products.ts"
+  },
+  "crm.item.productrow.list": {
+    "scope": "crm",
+    "write": false,
+    "source": "tools/crm/products.ts"
+  },
+  "crm.lead.add": {
+    "scope": "crm",
+    "write": true,
+    "source": "tools/crm/leads.ts"
+  },
+  "crm.lead.contact.add": {
+    "scope": "crm",
+    "write": true,
+    "source": "tools/crm/leads.ts"
+  },
+  "crm.lead.contact.delete": {
+    "scope": "crm",
+    "write": true,
+    "source": "tools/crm/leads.ts"
+  },
+  "crm.lead.contact.items.delete": {
+    "scope": "crm",
+    "write": true,
+    "source": "tools/crm/leads.ts"
+  },
+  "crm.lead.contact.items.get": {
+    "scope": "crm",
+    "write": false,
+    "source": "tools/crm/leads.ts"
+  },
+  "crm.lead.delete": {
+    "scope": "crm",
+    "write": true,
+    "source": "tools/crm/leads.ts"
+  },
+  "crm.lead.details.configuration.get": {
+    "scope": "crm",
+    "write": false,
+    "source": "tools/crm/leads.ts"
+  },
+  "crm.lead.fields": {
+    "scope": "crm",
+    "write": false,
+    "source": "tools/crm/leads.ts"
+  },
+  "crm.lead.get": {
+    "scope": "crm",
+    "write": false,
+    "source": "tools/crm/leads.ts"
+  },
+  "crm.lead.list": {
+    "scope": "crm",
+    "write": false,
+    "source": "tools/crm/leads.ts"
+  },
+  "crm.lead.productrows.get": {
+    "scope": "crm",
+    "write": false,
+    "source": "tools/crm/leads.ts"
+  },
+  "crm.lead.update": {
+    "scope": "crm",
+    "write": true,
+    "source": "tools/crm/leads.ts"
+  },
+  "crm.lead.userfield.add": {
+    "scope": "crm",
+    "write": true,
+    "source": "tools/crm/leads.ts"
+  },
+  "crm.lead.userfield.delete": {
+    "scope": "crm",
+    "write": true,
+    "source": "tools/crm/leads.ts"
+  },
+  "crm.lead.userfield.get": {
+    "scope": "crm",
+    "write": false,
+    "source": "tools/crm/leads.ts"
+  },
+  "crm.lead.userfield.update": {
+    "scope": "crm",
+    "write": true,
+    "source": "tools/crm/leads.ts"
+  },
+  "crm.status.add": {
+    "scope": "crm",
+    "write": true,
+    "source": "tools/crm/duplicates.ts"
+  },
+  "crm.status.delete": {
+    "scope": "crm",
+    "write": true,
+    "source": "tools/crm/duplicates.ts"
+  },
+  "crm.status.fields": {
+    "scope": "crm",
+    "write": false,
+    "source": "tools/crm/duplicates.ts"
+  },
+  "crm.status.get": {
+    "scope": "crm",
+    "write": false,
+    "source": "tools/crm/duplicates.ts"
+  },
+  "crm.status.list": {
+    "scope": "crm",
+    "write": false,
+    "source": "tools/crm/duplicates.ts"
+  },
+  "crm.status.update": {
+    "scope": "crm",
+    "write": true,
+    "source": "tools/crm/duplicates.ts"
+  },
+  "event.bind": {
+    "scope": "event",
+    "write": true,
+    "source": "tools/biz/events.ts"
+  },
+  "event.get": {
+    "scope": "event",
+    "write": false,
+    "source": "tools/biz/events.ts"
+  },
+  "event.offline.list": {
+    "scope": "event",
+    "write": false,
+    "source": "tools/biz/events.ts"
+  },
+  "event.supported.list": {
+    "scope": "event",
+    "write": false,
+    "source": "tools/biz/events.ts"
+  },
+  "event.unbind": {
+    "scope": "event",
+    "write": true,
+    "source": "tools/biz/events.ts"
+  },
+  "tasks.task.add": {
+    "scope": "task",
+    "write": true,
+    "source": "tools/collab/tasks.ts"
+  },
+  "tasks.task.delete": {
+    "scope": "task",
+    "write": true,
+    "source": "tools/collab/tasks.ts"
+  },
+  "tasks.task.get": {
+    "scope": "task",
+    "write": false,
+    "source": "tools/collab/tasks.ts"
+  },
+  "tasks.task.history.list": {
+    "scope": "task",
+    "write": false,
+    "source": "tools/collab/tasks.ts"
+  },
+  "tasks.task.list": {
+    "scope": "task",
+    "write": false,
+    "source": "tools/collab/tasks.ts"
+  },
+  "tasks.task.result.delete": {
+    "scope": "task",
+    "write": true,
+    "source": "tools/collab/tasks.ts"
+  },
+  "tasks.task.result.update": {
+    "scope": "task",
+    "write": true,
+    "source": "tools/collab/tasks.ts"
+  },
+  "tasks.task.start": {
+    "scope": "task",
+    "write": true,
+    "source": "tools/collab/tasks.ts"
+  },
+  "tasks.task.update": {
+    "scope": "task",
+    "write": true,
+    "source": "tools/collab/tasks.ts"
+  },
+  "user.add": {
+    "scope": "user",
+    "write": true,
+    "source": "tools/org/hr.ts"
+  },
+  "user.current": {
+    "scope": "user",
+    "write": false,
+    "source": "tools/org/users.ts"
+  },
+  "user.delete": {
+    "scope": "user",
+    "write": true,
+    "source": "tools/org/users.ts"
+  },
+  "user.fields": {
+    "scope": "user",
+    "write": false,
+    "source": "tools/org/users.ts"
+  },
+  "user.get": {
+    "scope": "user",
+    "write": false,
+    "source": "tools/org/users.ts"
+  },
+  "user.search": {
+    "scope": "user",
+    "write": false,
+    "source": "tools/org/users.ts"
+  },
+  "user.update": {
+    "scope": "user",
+    "write": true,
+    "source": "tools/org/hr.ts"
+  },
+  "user.userfield.add": {
+    "scope": "user",
+    "write": true,
+    "source": "tools/org/users.ts"
+  },
+  "user.userfield.delete": {
+    "scope": "user",
+    "write": true,
+    "source": "tools/org/users.ts"
+  },
+  "user.userfield.get": {
+    "scope": "user",
+    "write": false,
+    "source": "tools/org/users.ts"
+  },
+  "user.userfield.list": {
+    "scope": "user",
+    "write": false,
+    "source": "tools/org/users.ts"
+  },
+  "user.userfield.update": {
+    "scope": "user",
+    "write": true,
+    "source": "tools/org/users.ts"
+  }
+}

@@ -1,4 +1,16 @@
+import { ProfileTools } from "@opencode-ai/core/tool/profile-tools"
+import { GammaProfileTools } from "@/mcp/profile-tools"
+import { knowledgeRoutes } from "./knowledge"
+import { agentMarketRoutes } from "./agent-market"
+import { wildberriesRoutes } from "./wildberries"
+import { Wildberries } from "@/wildberries/store"
+import { bitrix24Routes } from "./bitrix24"
+import { Bitrix24 } from "@/bitrix24/portal"
+import { AgentMarketService } from "@opencode-ai/core/agent-market"
 import { workspaceFilesRoutes } from "./workspace-files"
+import { sitePreviewRoutes } from "./site-preview"
+import { skillMarketRoutes } from "./skill-market"
+import { SkillMarketService } from "@opencode-ai/core/skill-market"
 import { Config as EffectConfig, Context, Effect, Layer } from "effect"
 import { HttpApiBuilder, OpenApi } from "effect/unstable/httpapi"
 import { HttpClient, HttpMiddleware, HttpRouter, HttpServer, HttpServerResponse } from "effect/unstable/http"
@@ -228,6 +240,10 @@ const app = LayerNode.group([
   ProviderAuth.node,
   Agent.node,
   Skill.node,
+  SkillMarketService.node,
+  AgentMarketService.node,
+  Bitrix24.node,
+  Wildberries.node,
   Discovery.node,
   Question.node,
   Permission.node,
@@ -272,10 +288,22 @@ const app = LayerNode.group([
 export function createRoutes(
   corsOptions?: CorsOptions,
 ): Layer.Layer<never, EffectConfig.ConfigError, RouteRequirements> {
-  const locationServiceMapV2 = buildLocationServiceMap()
+  const locationServiceMapV2 = Layer.unwrap(
+    Effect.gen(function* () {
+      const mcp = yield* MCP.Service
+      const instances = yield* InstanceStore.Service
+      return buildLocationServiceMap([[ProfileTools.node, GammaProfileTools.node(mcp, instances)]])
+    }),
+  )
 
   return Layer.mergeAll(
     workspaceFilesRoutes.pipe(Layer.provide(httpApiAuthLayer)),
+    sitePreviewRoutes.pipe(Layer.provide(httpApiAuthLayer)),
+    knowledgeRoutes.pipe(Layer.provide(httpApiAuthLayer)),
+    agentMarketRoutes.pipe(Layer.provide(httpApiAuthLayer)),
+    wildberriesRoutes.pipe(Layer.provide(httpApiAuthLayer), Layer.provide(ServerAuth.Config.layer)),
+    bitrix24Routes.pipe(Layer.provide(httpApiAuthLayer), Layer.provide(ServerAuth.Config.layer)),
+    skillMarketRoutes.pipe(Layer.provide(httpApiAuthLayer)),
     rootApiRoutes,
     eventApiRoutes,
     ptyConnectApiRoutes,

@@ -1,3 +1,5 @@
+import { AgentMarketService } from "@opencode-ai/core/agent-market"
+import { InstanceState } from "@/effect/instance-state"
 import { LayerNode } from "@opencode-ai/core/effect/layer-node"
 import { llmClient } from "@opencode-ai/core/effect/app-node-platform"
 import { PermissionV1 } from "@opencode-ai/core/v1/permission"
@@ -62,6 +64,7 @@ export const use = serviceUse(Service)
 const live: Layer.Layer<
   Service,
   never,
+  | AgentMarketService.Service
   | Auth.Service
   | Config.Service
   | Provider.Service
@@ -73,6 +76,7 @@ const live: Layer.Layer<
 > = Layer.effect(
   Service,
   Effect.gen(function* () {
+    const market = yield* AgentMarketService.Service
     const auth = yield* Auth.Service
     const config = yield* Config.Service
     const provider = yield* Provider.Service
@@ -358,6 +362,7 @@ const live: Layer.Layer<
       Stream.scoped(
         Stream.unwrap(
           Effect.gen(function* () {
+            yield* market.lease(yield* InstanceState.directory)
             const ctrl = yield* Effect.acquireRelease(
               Effect.sync(() => new AbortController()),
               (ctrl) => Effect.sync(() => ctrl.abort()),
@@ -390,6 +395,7 @@ export const node = LayerNode.make({
   service: Service,
   layer: live,
   deps: [
+    AgentMarketService.node,
     Auth.node,
     Config.node,
     Provider.node,

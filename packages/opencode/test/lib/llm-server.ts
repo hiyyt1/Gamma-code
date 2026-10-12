@@ -46,6 +46,8 @@ type HttpError = {
   type: "http-error"
   status: number
   body: unknown
+  headers?: Record<string, string>
+  wait?: PromiseLike<unknown>
 }
 
 export type Item = Sse | HttpError
@@ -445,6 +447,7 @@ const reset = Effect.fn("TestLLMServer.reset")(function* (item: Sse) {
 function fail(item: HttpError) {
   return HttpServerResponse.text(JSON.stringify(item.body), {
     status: item.status,
+    headers: item.headers,
     contentType: "application/json",
   })
 }
@@ -690,7 +693,10 @@ export class TestLLMServer extends Context.Service<TestLLMServer, TestLLMServer.
         }
         hits = [...hits, current]
         yield* notify()
-        if (next.type !== "sse") return fail(next)
+        if (next.type !== "sse") {
+          if (next.wait) yield* Effect.promise(() => Promise.resolve(next.wait))
+          return fail(next)
+        }
         if (mode === "responses") return send(responses(next, modelFrom(body)))
         if (next.reset) {
           yield* reset(next)

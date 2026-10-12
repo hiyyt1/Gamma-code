@@ -163,6 +163,7 @@ function createV1Api(input: CompatibleInput): CompatibleApi {
       async create(value?: Parameters<ServerApi["session"]["create"]>[0]) {
         const result = await legacy(value?.location ?? undefined).session.create({
           directory: directory(value?.location ?? undefined),
+          agent: value?.agent ?? "gamma",
         })
         if (!result.data) throw new Error("Failed to create session")
         return sessionInfo(result.data)

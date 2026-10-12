@@ -1,3 +1,7 @@
+import { SessionAgent } from "@opencode-ai/core/session/agent"
+import { AgentMarketService } from "@opencode-ai/core/agent-market"
+import { AgentCatalog } from "@opencode-ai/core/agent-market/catalog"
+import { gammaPrompt, guidePrompt, guidePermissions } from "@opencode-ai/core/gamma/system"
 import { LayerNode } from "@opencode-ai/core/effect/layer-node"
 import { PermissionV1 } from "@opencode-ai/core/v1/permission"
 import { Config } from "@/config/config"
@@ -62,6 +66,7 @@ const GeneratedAgent = Schema.Struct({
 })
 
 export interface Interface {
+  readonly resolve: (agent: string, child?: boolean) => Effect.Effect<Info>
   readonly get: (agent: string) => Effect.Effect<Info>
   readonly list: () => Effect.Effect<Info[]>
   readonly defaultInfo: () => Effect.Effect<Info>
@@ -79,7 +84,7 @@ export interface Interface {
   >
 }
 
-type State = Omit<Interface, "generate">
+type State = Omit<Interface, "generate" | "resolve">
 
 export class Service extends Context.Service<Service, Interface>()("@opencode/Agent") {}
 
@@ -88,6 +93,7 @@ export const use = serviceUse(Service)
 const layer = Layer.effect(
   Service,
   Effect.gen(function* () {
+    const market = yield* AgentMarketService.Service
     const config = yield* Config.Service
     const auth = yield* Auth.Service
     const plugin = yield* Plugin.Service
@@ -138,6 +144,28 @@ const layer = Layer.effect(
         const user = Permission.fromConfig(cfg.permission ?? {})
 
         const agents: Record<string, Info> = {
+          gamma: {
+            name: "gamma",
+            description: "Gamma — universal project agent",
+            prompt: gammaPrompt,
+            mode: "primary",
+            native: true,
+            options: {},
+            permission: Permission.merge(
+              defaults,
+              Permission.fromConfig({ question: "allow", plan_enter: "allow" }),
+              user,
+            ),
+          },
+          "gamma-guide": {
+            name: "gamma-guide",
+            description: "Gamma Guide — product help",
+            prompt: guidePrompt,
+            mode: "primary",
+            native: true,
+            options: {},
+            permission: Permission.intersect(user, Permission.fromConfig(guidePermissions)),
+          },
           build: {
             name: "build",
             description: "The default agent. Executes tools based on configured permissions.",
@@ -293,8 +321,20 @@ const layer = Layer.effect(
           item.permission = Permission.merge(item.permission, Permission.fromConfig(value.permission ?? {}))
         }
 
+        // Guide's capability boundary cannot be widened by config or approvals.
+        agents["gamma-guide"] = {
+          ...agents["gamma-guide"],
+          name: "gamma-guide",
+          mode: "primary",
+          native: true,
+          hidden: false,
+          prompt: guidePrompt,
+          options: agents["gamma-guide"]?.options ?? {},
+          permission: Permission.intersect(user, Permission.fromConfig(guidePermissions)),
+        }
         // Ensure Truncate.GLOB is allowed unless explicitly configured
         for (const name in agents) {
+          if (name === "gamma-guide") continue
           const agent = agents[name]
           const explicit = agent.permission.some((r) => {
             if (r.permission !== "external_directory") return false
@@ -319,7 +359,7 @@ const layer = Layer.effect(
             agents,
             values(),
             sortBy(
-              [(x) => (cfg.default_agent ? x.name === cfg.default_agent : x.name === "build"), "desc"],
+              [(x) => (cfg.default_agent ? x.name === cfg.default_agent : x.name === "gamma"), "desc"],
               [(x) => x.name, "asc"],
             ),
           )
@@ -334,7 +374,9 @@ const layer = Layer.effect(
             if (agent.hidden === true) throw new Error(`default agent "${c.default_agent}" is hidden`)
             return agent
           }
-          const visible = Object.values(agents).find((a) => a.mode !== "subagent" && a.hidden !== true)
+          const visible = Object.values(agents).find(
+            (a) => a.mode !== "subagent" && a.hidden !== true && a.name !== "gamma-guide",
+          )
           if (!visible) throw new Error("no primary visible agent found")
           return visible
         })
@@ -352,12 +394,132 @@ const layer = Layer.effect(
       }),
     )
 
+    const marketAgent = Effect.fn("Agent.market")(function* (name: string) {
+      const directory = yield* InstanceState.directory
+      const selected = yield* SessionAgent.selection
+      const catalog = yield* market.catalog().pipe(Effect.orDie)
+      const id = name.replace(/^gamma-/, "")
+      const active = catalog.find((item) => item.id === (selected.agentId ?? id))
+      if (
+        !active ||
+        (selected.revision !== null && selected.revision !== active.revision) ||
+        (active.id !== id && !active.members.includes(id))
+      )
+        throw new Error("Agent is not part of the session profile")
+      const profile = catalog.find((item) => item.id === id)
+      if (!profile?.available) throw new Error("Agent profile is unavailable")
+      const cfg = yield* Effect.promise(() => AgentCatalog.config(id))
+      const bundled = active.skillBundle
+        ? yield* Effect.promise(() => AgentCatalog.bundle(active.skillBundle!))
+        : undefined
+      const context = yield* InstanceState.context
+      const base = yield* InstanceState.useEffect(state, (s) => s.get("build"))
+      const project = yield* config.get()
+      const members =
+        (active.type === "team" || active.leader) && active.id === id
+          ? active.members.filter(
+              (member) =>
+                member !==
+                (active.leader ??
+                  (id === "web-team" ? "project-architect" : id === "ai-team" ? "ai-developer" : "code-reviewer")),
+            )
+          : []
+      const policy = Permission.fromConfig({
+        "*": "allow",
+        ...cfg.permission,
+        ...(bundled
+          ? {
+              external_directory: { "*": "deny", [path.join(bundled.directory, "*")]: "allow" },
+              edit: {
+                "*": cfg.permission?.edit === "deny" ? "deny" : "allow",
+                ...(typeof cfg.permission?.edit === "object" ? cfg.permission.edit : {}),
+                [path.join(bundled.directory, "*")]: "deny",
+                [path.join(path.relative(context.worktree, bundled.directory), "*")]: "deny",
+              },
+            }
+          : {}),
+        task: {
+          "*": "deny",
+          ...Object.fromEntries(
+            members.map((member) => [
+              `gamma-${member}`,
+              Permission.evaluate(
+                "task",
+                `gamma-${member}`,
+                Permission.fromConfig({ task: cfg.permission?.task ?? "ask" }),
+              ).action,
+            ]),
+          ),
+        },
+      })
+      return {
+        ...base,
+        name,
+        description: profile.description,
+        mode: active.id === id ? ("primary" as const) : ("subagent" as const),
+        native: false,
+        prompt: cfg.prompt,
+        temperature: cfg.temperature,
+        topP: cfg.top_p,
+        steps: cfg.steps,
+        ...(cfg.model || project.agent?.[name]?.model
+          ? { model: Provider.parseModel(project.agent?.[name]?.model ?? cfg.model!) }
+          : {}),
+        permission: Permission.intersect(
+          bundled
+            ? Permission.merge(
+                base.permission,
+                Permission.fromConfig({ external_directory: { [path.join(bundled.directory, "*")]: "allow" } }),
+              )
+            : base.permission,
+          Permission.fromConfig(project.permission ?? {}),
+          policy,
+        ),
+        options: { ...base.options, ...cfg.options, gammaAgent: id, gammaVersion: selected.version },
+      }
+    })
+
     return Service.of({
+      resolve: Effect.fn("Agent.resolve")(function* (requested: string, child = false) {
+        if (requested === "gamma-guide") return yield* InstanceState.useEffect(state, (s) => s.get(requested))
+        if (requested.startsWith("gamma-")) return yield* marketAgent(requested)
+        return yield* InstanceState.useEffect(state, (s) => s.get(requested))
+      }),
       get: Effect.fn("Agent.get")(function* (agent: string) {
+        if (agent !== "gamma-guide" && agent.startsWith("gamma-")) return yield* marketAgent(agent)
         return yield* InstanceState.useEffect(state, (s) => s.get(agent))
       }),
       list: Effect.fn("Agent.list")(function* () {
-        return yield* InstanceState.useEffect(state, (s) => s.list())
+        const original = yield* InstanceState.useEffect(state, (s) => s.list())
+        const selected = yield* SessionAgent.selection
+        if (!selected.agentId) {
+          if (yield* SessionAgent.Current) return original
+          const profiles = (yield* market.catalog().pipe(Effect.orDie)).filter(
+            (item) => item.available && !item.source.startsWith("builtin:"),
+          )
+          return [
+            ...original,
+            ...(yield* Effect.forEach(profiles, (profile) =>
+              marketAgent(`gamma-${profile.id}`).pipe(
+                Effect.map((agent) => ({
+                  ...agent,
+                  ...(profile.hidden ? { mode: "subagent" as const, hidden: true } : {}),
+                })),
+              ),
+            )),
+          ].toSorted((a, b) =>
+            a.name === original[0]?.name ? -1 : b.name === original[0]?.name ? 1 : a.name.localeCompare(b.name),
+          )
+        }
+        const active = (yield* market.catalog().pipe(Effect.orDie)).find((item) => item.id === selected.agentId)
+        if (!active) throw new Error("Active agent is unavailable")
+        const ids = [active.id, ...active.members.filter((id) => id !== "code-reviewer")]
+        const profiles = yield* Effect.forEach(ids, (id) => marketAgent(`gamma-${id}`))
+        return [
+          ...original.filter((agent) => agent.hidden),
+          ...profiles,
+          ...original.filter((agent) => agent.name === "gamma-guide"),
+        ]
       }),
       defaultInfo: Effect.fn("Agent.defaultInfo")(function* () {
         return yield* InstanceState.useEffect(state, (s) => s.defaultInfo())
@@ -447,7 +609,15 @@ const locationServiceMapNode = LayerNode.make({
 export const node = LayerNode.make({
   service: Service,
   layer: layer,
-  deps: [Config.node, Auth.node, Plugin.node, Skill.node, Provider.node, locationServiceMapNode],
+  deps: [
+    AgentMarketService.node,
+    Config.node,
+    Auth.node,
+    Plugin.node,
+    Skill.node,
+    Provider.node,
+    locationServiceMapNode,
+  ],
 })
 
 export * as Agent from "./agent"

@@ -1,0 +1,10 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "strict": true,
+    "types": ["bun"],
+    "skipLibCheck": true,
+    "typeRoots": ["../packages/opencode/node_modules/@types"]
+  },
+  "include": ["*.ts", "../script/dev-gamma.ts"]
+}

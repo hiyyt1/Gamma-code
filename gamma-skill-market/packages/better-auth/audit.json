@@ -1,0 +1,14 @@
+{
+  "source": {
+    "id": "better-auth",
+    "revision": "20c9e88a5c007461a703f1c213572b073196113e",
+    "source": "https://github.com/better-auth/skills",
+    "license": null,
+    "archiveSha256": "faef88884916ac030dbabd16003023c19e9e4e326391a45fdc71e37417916a60",
+    "rejected": []
+  },
+  "discoveredFiles": 6,
+  "invalidFrontmatter": [],
+  "duplicateNames": [],
+  "findings": []
+}

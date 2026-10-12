@@ -1,0 +1,2075 @@
+[
+  {
+    "id": "website-builder",
+    "name": "Создатель сайтов",
+    "description": "Лендинги и сайты с адаптивной вёрсткой и понятной навигацией.",
+    "type": "specialist",
+    "category": "development",
+    "tasks": [
+      "Адаптивная вёрстка",
+      "Доступность и навигация",
+      "Проверка сборки"
+    ],
+    "skills": [],
+    "tools": [
+      "read",
+      "glob",
+      "grep",
+      "edit",
+      "write",
+      "bash",
+      "skill"
+    ],
+    "members": [],
+    "permissions": {
+      "bash": "ask",
+      "external_directory": "deny",
+      "task": "deny"
+    },
+    "source": "https://github.com/wshobson/agents/blob/46891e7e60da0e52baf1050b7b6391b64e84c6d9/plugins/frontend-mobile-development/agents/frontend-developer.md",
+    "revision": "46891e7e60da0e52baf1050b7b6391b64e84c6d9",
+    "license": "MIT",
+    "available": true,
+    "reason": "Адаптирован для OpenCode V1. Внешние сервисы и инструменты подключаются отдельно."
+  },
+  {
+    "id": "webapp-developer",
+    "name": "Разработчик веб-приложений",
+    "description": "Веб-приложения с интерфейсом, данными и бизнес-логикой.",
+    "type": "specialist",
+    "category": "development",
+    "tasks": [
+      "Интерфейс приложения",
+      "Управление состоянием",
+      "Интеграция API"
+    ],
+    "skills": [
+      "superpowers:systematic-debugging"
+    ],
+    "tools": [
+      "read",
+      "glob",
+      "grep",
+      "edit",
+      "write",
+      "bash",
+      "skill"
+    ],
+    "members": [],
+    "permissions": {
+      "bash": "ask",
+      "external_directory": "deny",
+      "task": "deny"
+    },
+    "source": "https://github.com/wshobson/agents/blob/46891e7e60da0e52baf1050b7b6391b64e84c6d9/plugins/frontend-mobile-development/agents/frontend-developer.md",
+    "revision": "46891e7e60da0e52baf1050b7b6391b64e84c6d9",
+    "license": "MIT",
+    "available": true,
+    "reason": "Адаптирован для OpenCode V1. Внешние сервисы и инструменты подключаются отдельно."
+  },
+  {
+    "id": "telegram-developer",
+    "name": "Telegram-разработчик",
+    "description": "Боты с командами, webhook и хранением данных.",
+    "type": "specialist",
+    "category": "development",
+    "tasks": [
+      "Команды Telegram Bot API",
+      "Webhook и обработка обновлений",
+      "Безопасное хранение токенов"
+    ],
+    "skills": [],
+    "tools": [
+      "read",
+      "glob",
+      "grep",
+      "edit",
+      "write",
+      "bash",
+      "skill"
+    ],
+    "members": [],
+    "permissions": {
+      "bash": "ask",
+      "external_directory": "deny",
+      "task": "deny"
+    },
+    "source": "https://github.com/wshobson/agents/blob/46891e7e60da0e52baf1050b7b6391b64e84c6d9/plugins/backend-development/agents/backend-architect.md",
+    "revision": "46891e7e60da0e52baf1050b7b6391b64e84c6d9",
+    "license": "MIT",
+    "available": true,
+    "reason": "Адаптирован для OpenCode V1. Внешние сервисы и инструменты подключаются отдельно."
+  },
+  {
+    "id": "ui-ux-designer",
+    "name": "UI/UX-дизайнер",
+    "description": "Пользовательские сценарии, интерфейсы и дизайн-системы.",
+    "type": "specialist",
+    "category": "design",
+    "tasks": [
+      "Пользовательские сценарии",
+      "Дизайн-система",
+      "Доступные интерфейсы"
+    ],
+    "skills": [],
+    "tools": [
+      "read",
+      "glob",
+      "grep",
+      "edit",
+      "write",
+      "bash",
+      "skill"
+    ],
+    "members": [],
+    "permissions": {
+      "bash": "ask",
+      "external_directory": "deny",
+      "task": "deny"
+    },
+    "source": "https://github.com/wshobson/agents/blob/46891e7e60da0e52baf1050b7b6391b64e84c6d9/plugins/multi-platform-apps/agents/ui-ux-designer.md",
+    "revision": "46891e7e60da0e52baf1050b7b6391b64e84c6d9",
+    "license": "MIT",
+    "available": true,
+    "reason": "Адаптирован для OpenCode V1. Внешние сервисы и инструменты подключаются отдельно."
+  },
+  {
+    "id": "backend-developer",
+    "name": "Backend-разработчик",
+    "description": "API, базы данных и надёжная серверная логика.",
+    "type": "specialist",
+    "category": "development",
+    "tasks": [
+      "Контракты API",
+      "Модели данных",
+      "Серверная логика"
+    ],
+    "skills": [
+      "superpowers:systematic-debugging"
+    ],
+    "tools": [
+      "read",
+      "glob",
+      "grep",
+      "edit",
+      "write",
+      "bash",
+      "skill"
+    ],
+    "members": [],
+    "permissions": {
+      "bash": "ask",
+      "external_directory": "deny",
+      "task": "deny"
+    },
+    "source": "https://github.com/wshobson/agents/blob/46891e7e60da0e52baf1050b7b6391b64e84c6d9/plugins/backend-development/agents/backend-architect.md",
+    "revision": "46891e7e60da0e52baf1050b7b6391b64e84c6d9",
+    "license": "MIT",
+    "available": true,
+    "reason": "Адаптирован для OpenCode V1. Внешние сервисы и инструменты подключаются отдельно."
+  },
+  {
+    "id": "qa-engineer",
+    "name": "Тестировщик",
+    "description": "Проверка сценариев, автоматизация тестов и воспроизведение ошибок.",
+    "type": "specialist",
+    "category": "testing",
+    "tasks": [
+      "План тестирования",
+      "Автоматические тесты",
+      "Регрессионные проверки"
+    ],
+    "skills": [
+      "superpowers:systematic-debugging"
+    ],
+    "tools": [
+      "read",
+      "glob",
+      "grep",
+      "edit",
+      "write",
+      "bash",
+      "skill"
+    ],
+    "members": [],
+    "permissions": {
+      "bash": "ask",
+      "external_directory": "deny",
+      "task": "deny"
+    },
+    "source": "https://github.com/wshobson/agents/blob/46891e7e60da0e52baf1050b7b6391b64e84c6d9/plugins/unit-testing/agents/test-automator.md",
+    "revision": "46891e7e60da0e52baf1050b7b6391b64e84c6d9",
+    "license": "MIT",
+    "available": true,
+    "reason": "Адаптирован для OpenCode V1. Внешние сервисы и инструменты подключаются отдельно."
+  },
+  {
+    "id": "security-auditor",
+    "name": "Аудитор безопасности",
+    "description": "Аудит кода, зависимостей и границ доступа с конкретными рекомендациями.",
+    "type": "specialist",
+    "category": "security",
+    "tasks": [
+      "Поиск уязвимостей",
+      "Аудит зависимостей",
+      "Рекомендации по исправлению"
+    ],
+    "skills": [],
+    "tools": [
+      "read",
+      "glob",
+      "grep",
+      "bash",
+      "skill"
+    ],
+    "members": [],
+    "permissions": {
+      "bash": "ask",
+      "external_directory": "deny",
+      "task": "deny",
+      "edit": "deny"
+    },
+    "source": "https://github.com/wshobson/agents/blob/46891e7e60da0e52baf1050b7b6391b64e84c6d9/plugins/security-scanning/agents/security-auditor.md",
+    "revision": "46891e7e60da0e52baf1050b7b6391b64e84c6d9",
+    "license": "MIT",
+    "available": true,
+    "reason": "Адаптирован для OpenCode V1. Внешние сервисы и инструменты подключаются отдельно."
+  },
+  {
+    "id": "devops-engineer",
+    "name": "DevOps-инженер",
+    "description": "Сборка, CI/CD и инфраструктурные конфигурации.",
+    "type": "specialist",
+    "category": "automation",
+    "tasks": [
+      "Контейнеризация",
+      "CI/CD",
+      "План развёртывания"
+    ],
+    "skills": [],
+    "tools": [
+      "read",
+      "glob",
+      "grep",
+      "edit",
+      "write",
+      "bash",
+      "skill"
+    ],
+    "members": [],
+    "permissions": {
+      "bash": "ask",
+      "external_directory": "deny",
+      "task": "deny"
+    },
+    "source": "https://github.com/wshobson/agents/blob/46891e7e60da0e52baf1050b7b6391b64e84c6d9/plugins/deployment-strategies/agents/deployment-engineer.md",
+    "revision": "46891e7e60da0e52baf1050b7b6391b64e84c6d9",
+    "license": "MIT",
+    "available": true,
+    "reason": "Адаптирован для OpenCode V1. Внешние сервисы и инструменты подключаются отдельно."
+  },
+  {
+    "id": "seo-specialist",
+    "name": "SEO-специалист",
+    "description": "Структура контента, метаданные и техническая оптимизация сайта.",
+    "type": "specialist",
+    "category": "development",
+    "tasks": [
+      "Иерархия заголовков",
+      "Структурированные данные",
+      "Внутренние ссылки"
+    ],
+    "skills": [],
+    "tools": [
+      "read",
+      "glob",
+      "grep",
+      "edit",
+      "write",
+      "bash",
+      "skill"
+    ],
+    "members": [],
+    "permissions": {
+      "bash": "ask",
+      "external_directory": "deny",
+      "task": "deny"
+    },
+    "source": "https://github.com/wshobson/agents/blob/46891e7e60da0e52baf1050b7b6391b64e84c6d9/plugins/seo-technical-optimization/agents/seo-structure-architect.md",
+    "revision": "46891e7e60da0e52baf1050b7b6391b64e84c6d9",
+    "license": "MIT",
+    "available": true,
+    "reason": "Адаптирован для OpenCode V1. Внешние сервисы и инструменты подключаются отдельно."
+  },
+  {
+    "id": "ai-developer",
+    "name": "Разработчик AI-приложений",
+    "description": "LLM-интеграции, RAG и проверка качества AI-функций.",
+    "type": "specialist",
+    "category": "data",
+    "tasks": [
+      "Интеграция LLM",
+      "RAG и поиск",
+      "Оценка качества"
+    ],
+    "skills": [],
+    "tools": [
+      "read",
+      "glob",
+      "grep",
+      "edit",
+      "write",
+      "bash",
+      "skill"
+    ],
+    "members": [],
+    "permissions": {
+      "bash": "ask",
+      "external_directory": "deny",
+      "task": "deny"
+    },
+    "source": "https://github.com/wshobson/agents/blob/46891e7e60da0e52baf1050b7b6391b64e84c6d9/plugins/llm-application-dev/agents/ai-engineer.md",
+    "revision": "46891e7e60da0e52baf1050b7b6391b64e84c6d9",
+    "license": "MIT",
+    "available": true,
+    "reason": "Адаптирован для OpenCode V1. Внешние сервисы и инструменты подключаются отдельно."
+  },
+  {
+    "id": "data-analyst",
+    "name": "Аналитик данных",
+    "description": "Обработка данных, исследование и воспроизводимые отчёты.",
+    "type": "specialist",
+    "category": "data",
+    "tasks": [
+      "Очистка данных",
+      "Исследовательский анализ",
+      "Отчёты и визуализация"
+    ],
+    "skills": [],
+    "tools": [
+      "read",
+      "glob",
+      "grep",
+      "edit",
+      "write",
+      "bash",
+      "skill"
+    ],
+    "members": [],
+    "permissions": {
+      "bash": "ask",
+      "external_directory": "deny",
+      "task": "deny"
+    },
+    "source": "https://github.com/wshobson/agents/blob/46891e7e60da0e52baf1050b7b6391b64e84c6d9/plugins/machine-learning-ops/agents/data-scientist.md",
+    "revision": "46891e7e60da0e52baf1050b7b6391b64e84c6d9",
+    "license": "MIT",
+    "available": true,
+    "reason": "Адаптирован для OpenCode V1. Внешние сервисы и инструменты подключаются отдельно."
+  },
+  {
+    "id": "project-architect",
+    "name": "Архитектор проекта",
+    "description": "Архитектура, технические решения и план развития проекта.",
+    "type": "specialist",
+    "category": "development",
+    "tasks": [
+      "Обзор архитектуры",
+      "Границы компонентов",
+      "План реализации"
+    ],
+    "skills": [],
+    "tools": [
+      "read",
+      "glob",
+      "grep",
+      "edit",
+      "write",
+      "bash",
+      "skill"
+    ],
+    "members": [],
+    "permissions": {
+      "bash": "ask",
+      "external_directory": "deny",
+      "task": "deny"
+    },
+    "source": "https://github.com/wshobson/agents/blob/46891e7e60da0e52baf1050b7b6391b64e84c6d9/plugins/comprehensive-review/agents/architect-review.md",
+    "revision": "46891e7e60da0e52baf1050b7b6391b64e84c6d9",
+    "license": "MIT",
+    "available": true,
+    "reason": "Адаптирован для OpenCode V1. Внешние сервисы и инструменты подключаются отдельно."
+  },
+  {
+    "id": "web-team",
+    "name": "Команда веб-разработки",
+    "description": "Один ведущий агент и профильные помощники в общей рабочей директории.",
+    "type": "team",
+    "category": "development",
+    "tasks": [
+      "Планирование работы",
+      "Делегирование по необходимости",
+      "Проверка и объединение результатов"
+    ],
+    "skills": [
+      "superpowers:systematic-debugging"
+    ],
+    "tools": [
+      "read",
+      "glob",
+      "grep",
+      "edit",
+      "write",
+      "bash",
+      "skill",
+      "task"
+    ],
+    "members": [
+      "project-architect",
+      "ui-ux-designer",
+      "webapp-developer",
+      "qa-engineer"
+    ],
+    "permissions": {
+      "bash": "ask",
+      "external_directory": "deny",
+      "task": "ask"
+    },
+    "source": "https://github.com/wshobson/agents/tree/46891e7e60da0e52baf1050b7b6391b64e84c6d9",
+    "revision": "46891e7e60da0e52baf1050b7b6391b64e84c6d9",
+    "license": "MIT",
+    "available": true,
+    "reason": "Нативный task tool OpenCode V1. Делегирование по необходимости, с разрешения пользователя."
+  },
+  {
+    "id": "ai-team",
+    "name": "Команда AI-разработки",
+    "description": "Один ведущий агент и профильные помощники в общей рабочей директории.",
+    "type": "team",
+    "category": "data",
+    "tasks": [
+      "Планирование работы",
+      "Делегирование по необходимости",
+      "Проверка и объединение результатов"
+    ],
+    "skills": [
+      "superpowers:systematic-debugging"
+    ],
+    "tools": [
+      "read",
+      "glob",
+      "grep",
+      "edit",
+      "write",
+      "bash",
+      "skill",
+      "task"
+    ],
+    "members": [
+      "ai-developer",
+      "backend-developer",
+      "project-architect",
+      "qa-engineer"
+    ],
+    "permissions": {
+      "bash": "ask",
+      "external_directory": "deny",
+      "task": "ask"
+    },
+    "source": "https://github.com/wshobson/agents/tree/46891e7e60da0e52baf1050b7b6391b64e84c6d9",
+    "revision": "46891e7e60da0e52baf1050b7b6391b64e84c6d9",
+    "license": "MIT",
+    "available": true,
+    "reason": "Нативный task tool OpenCode V1. Делегирование по необходимости, с разрешения пользователя."
+  },
+  {
+    "id": "review-team",
+    "name": "Команда проверки проекта",
+    "description": "Один ведущий агент и профильные помощники в общей рабочей директории.",
+    "type": "team",
+    "category": "testing",
+    "tasks": [
+      "Планирование работы",
+      "Делегирование по необходимости",
+      "Проверка и объединение результатов"
+    ],
+    "skills": [
+      "superpowers:systematic-debugging"
+    ],
+    "tools": [
+      "read",
+      "glob",
+      "grep",
+      "edit",
+      "write",
+      "bash",
+      "skill",
+      "task"
+    ],
+    "members": [
+      "code-reviewer",
+      "security-auditor",
+      "qa-engineer"
+    ],
+    "permissions": {
+      "bash": "ask",
+      "external_directory": "deny",
+      "task": "ask"
+    },
+    "source": "https://github.com/wshobson/agents/tree/46891e7e60da0e52baf1050b7b6391b64e84c6d9",
+    "revision": "46891e7e60da0e52baf1050b7b6391b64e84c6d9",
+    "license": "MIT",
+    "available": true,
+    "reason": "Нативный task tool OpenCode V1. Делегирование по необходимости, с разрешения пользователя."
+  },
+  {
+    "id": "1c-developer",
+    "name": "1С Разработчик",
+    "description": "Профессиональная разработка 1С:Предприятие 8.3: BSL, метаданные, формы, расширения, СКД и БСП.",
+    "type": "specialist",
+    "category": "development",
+    "tasks": [
+      "Разработка / Бизнес",
+      "BSL и семантический анализ",
+      "Метаданные, формы и расширения",
+      "СКД, внешние обработки и отчёты",
+      "БСП 3.1.11 и code review",
+      "Статическая проверка XML"
+    ],
+    "skills": [
+      "1c-development:1c-config-index",
+      "1c-development:1c-cf-info",
+      "1c-development:1c-cf-init",
+      "1c-development:1c-cf-edit",
+      "1c-development:1c-cf-validate",
+      "1c-development:1c-meta-compile",
+      "1c-development:1c-meta-info",
+      "1c-development:1c-meta-edit",
+      "1c-development:1c-meta-validate",
+      "1c-development:1c-form-compile",
+      "1c-development:1c-form-edit",
+      "1c-development:1c-form-validate",
+      "1c-development:1c-form-info",
+      "1c-development:1c-form-add",
+      "1c-development:1c-cfe-init",
+      "1c-development:1c-cfe-borrow",
+      "1c-development:1c-cfe-validate",
+      "1c-development:1c-epf-scaffold",
+      "1c-development:1c-epf-add-form",
+      "1c-development:1c-epf-validate",
+      "1c-development:1c-erf-init",
+      "1c-development:1c-skd-compile",
+      "1c-development:1c-skd-edit",
+      "1c-development:1c-skd-validate",
+      "1c-development:1c-bsl-validate",
+      "1c-development:1c-code-review",
+      "1c-development:1c-query-optimization",
+      "1c-development:bsp",
+      "1c-development:1c-form-patterns",
+      "1c-development:1c-environment"
+    ],
+    "tools": [
+      "read",
+      "glob",
+      "grep",
+      "edit",
+      "write",
+      "bash",
+      "skill",
+      "task",
+      "gamma-bsl_document_symbols",
+      "gamma-bsl_definition",
+      "gamma-bsl_find_references",
+      "gamma-bsl_analyze_file",
+      "gamma-bsl_type_info",
+      "gamma-bsl_global_member_info"
+    ],
+    "members": [
+      "1c-explorer",
+      "1c-bsl-developer",
+      "1c-metadata-developer",
+      "1c-reviewer"
+    ],
+    "permissions": {
+      "bash": "ask",
+      "external_directory": "deny",
+      "task": "ask"
+    },
+    "source": "https://github.com/Desko77/claude-code-skills-1c/tree/4d56644ddb643951058f1e0a0a0059a677dd5785",
+    "revision": "4d56644ddb643951058f1e0a0a0059a677dd5785",
+    "license": "MIT",
+    "available": true,
+    "reason": "Исходники можно разрабатывать без Конфигуратора. Семантический MCP требует отдельной проверки подключения.",
+    "hidden": false,
+    "leader": "1c-developer",
+    "skillBundle": "1c-development",
+    "mcp": "bsl-language-server",
+    "environment": [
+      "Python 3.10+ и lxml 6.0.2 (GAMMA_1C_PYTHON)",
+      "Для MCP: Java 21+ и BSL Language Server 1.1.0-rc.6 exec.jar (GAMMA_BSL_JAR); GAMMA_BSL_JAVA задаёт Java",
+      "MCP запускается локально только для активного профиля; до проверки состояние не готово."
+    ],
+    "limitations": [
+      "Генераторы XML предназначены для выгрузки Конфигуратора; EDT доступен для чтения и BSL-анализа, без автоматического преобразования .mdo.",
+      "Без платформы 1С: исходники и статические проверки; без сборки бинарных CF/CFE/EPF/ERF, запуска базы и бизнес-тестов.",
+      "Справочник БСП относится к 3.1.11; другая версия требует проверки по её исходникам.",
+      "BSL Language Server MCP — экспериментальная функция prerelease; static diagnostics не заменяет проверку на платформе."
+    ]
+  },
+  {
+    "id": "1c-explorer",
+    "name": "Исследователь 1С",
+    "description": "Анализ структуры, метаданных, модулей и зависимостей 1С.",
+    "type": "specialist",
+    "category": "development",
+    "tasks": [
+      "Разработка / Бизнес",
+      "BSL и семантический анализ",
+      "Метаданные, формы и расширения",
+      "СКД, внешние обработки и отчёты",
+      "БСП 3.1.11 и code review",
+      "Статическая проверка XML"
+    ],
+    "skills": [
+      "1c-development:1c-config-index",
+      "1c-development:1c-cf-info",
+      "1c-development:1c-cf-init",
+      "1c-development:1c-cf-edit",
+      "1c-development:1c-cf-validate",
+      "1c-development:1c-meta-compile",
+      "1c-development:1c-meta-info",
+      "1c-development:1c-meta-edit",
+      "1c-development:1c-meta-validate",
+      "1c-development:1c-form-compile",
+      "1c-development:1c-form-edit",
+      "1c-development:1c-form-validate",
+      "1c-development:1c-form-info",
+      "1c-development:1c-form-add",
+      "1c-development:1c-cfe-init",
+      "1c-development:1c-cfe-borrow",
+      "1c-development:1c-cfe-validate",
+      "1c-development:1c-epf-scaffold",
+      "1c-development:1c-epf-add-form",
+      "1c-development:1c-epf-validate",
+      "1c-development:1c-erf-init",
+      "1c-development:1c-skd-compile",
+      "1c-development:1c-skd-edit",
+      "1c-development:1c-skd-validate",
+      "1c-development:1c-bsl-validate",
+      "1c-development:1c-code-review",
+      "1c-development:1c-query-optimization",
+      "1c-development:bsp",
+      "1c-development:1c-form-patterns",
+      "1c-development:1c-environment"
+    ],
+    "tools": [
+      "read",
+      "glob",
+      "grep",
+      "edit",
+      "write",
+      "bash",
+      "skill",
+      "gamma-bsl_document_symbols",
+      "gamma-bsl_definition",
+      "gamma-bsl_find_references",
+      "gamma-bsl_analyze_file",
+      "gamma-bsl_type_info",
+      "gamma-bsl_global_member_info"
+    ],
+    "members": [],
+    "permissions": {
+      "bash": "ask",
+      "external_directory": "deny",
+      "task": "deny",
+      "edit": "deny"
+    },
+    "source": "https://github.com/Desko77/claude-code-skills-1c/tree/4d56644ddb643951058f1e0a0a0059a677dd5785",
+    "revision": "4d56644ddb643951058f1e0a0a0059a677dd5785",
+    "license": "MIT",
+    "available": true,
+    "reason": "Исходники можно разрабатывать без Конфигуратора. Семантический MCP требует отдельной проверки подключения.",
+    "hidden": true,
+    "leader": "1c-developer",
+    "skillBundle": "1c-development",
+    "mcp": "bsl-language-server",
+    "environment": [
+      "Python 3.10+ и lxml 6.0.2 (GAMMA_1C_PYTHON)",
+      "Для MCP: Java 21+ и BSL Language Server 1.1.0-rc.6 exec.jar (GAMMA_BSL_JAR); GAMMA_BSL_JAVA задаёт Java",
+      "MCP запускается локально только для активного профиля; до проверки состояние не готово."
+    ],
+    "limitations": [
+      "Генераторы XML предназначены для выгрузки Конфигуратора; EDT доступен для чтения и BSL-анализа, без автоматического преобразования .mdo.",
+      "Без платформы 1С: исходники и статические проверки; без сборки бинарных CF/CFE/EPF/ERF, запуска базы и бизнес-тестов.",
+      "Справочник БСП относится к 3.1.11; другая версия требует проверки по её исходникам.",
+      "BSL Language Server MCP — экспериментальная функция prerelease; static diagnostics не заменяет проверку на платформе."
+    ]
+  },
+  {
+    "id": "1c-bsl-developer",
+    "name": "BSL-разработчик",
+    "description": "Реализация и статическая проверка BSL.",
+    "type": "specialist",
+    "category": "development",
+    "tasks": [
+      "Разработка / Бизнес",
+      "BSL и семантический анализ",
+      "Метаданные, формы и расширения",
+      "СКД, внешние обработки и отчёты",
+      "БСП 3.1.11 и code review",
+      "Статическая проверка XML"
+    ],
+    "skills": [
+      "1c-development:1c-config-index",
+      "1c-development:1c-cf-info",
+      "1c-development:1c-cf-init",
+      "1c-development:1c-cf-edit",
+      "1c-development:1c-cf-validate",
+      "1c-development:1c-meta-compile",
+      "1c-development:1c-meta-info",
+      "1c-development:1c-meta-edit",
+      "1c-development:1c-meta-validate",
+      "1c-development:1c-form-compile",
+      "1c-development:1c-form-edit",
+      "1c-development:1c-form-validate",
+      "1c-development:1c-form-info",
+      "1c-development:1c-form-add",
+      "1c-development:1c-cfe-init",
+      "1c-development:1c-cfe-borrow",
+      "1c-development:1c-cfe-validate",
+      "1c-development:1c-epf-scaffold",
+      "1c-development:1c-epf-add-form",
+      "1c-development:1c-epf-validate",
+      "1c-development:1c-erf-init",
+      "1c-development:1c-skd-compile",
+      "1c-development:1c-skd-edit",
+      "1c-development:1c-skd-validate",
+      "1c-development:1c-bsl-validate",
+      "1c-development:1c-code-review",
+      "1c-development:1c-query-optimization",
+      "1c-development:bsp",
+      "1c-development:1c-form-patterns",
+      "1c-development:1c-environment"
+    ],
+    "tools": [
+      "read",
+      "glob",
+      "grep",
+      "edit",
+      "write",
+      "bash",
+      "skill",
+      "gamma-bsl_document_symbols",
+      "gamma-bsl_definition",
+      "gamma-bsl_find_references",
+      "gamma-bsl_analyze_file",
+      "gamma-bsl_type_info",
+      "gamma-bsl_global_member_info"
+    ],
+    "members": [],
+    "permissions": {
+      "bash": "ask",
+      "external_directory": "deny",
+      "task": "deny"
+    },
+    "source": "https://github.com/Desko77/claude-code-skills-1c/tree/4d56644ddb643951058f1e0a0a0059a677dd5785",
+    "revision": "4d56644ddb643951058f1e0a0a0059a677dd5785",
+    "license": "MIT",
+    "available": true,
+    "reason": "Исходники можно разрабатывать без Конфигуратора. Семантический MCP требует отдельной проверки подключения.",
+    "hidden": true,
+    "leader": "1c-developer",
+    "skillBundle": "1c-development",
+    "mcp": "bsl-language-server",
+    "environment": [
+      "Python 3.10+ и lxml 6.0.2 (GAMMA_1C_PYTHON)",
+      "Для MCP: Java 21+ и BSL Language Server 1.1.0-rc.6 exec.jar (GAMMA_BSL_JAR); GAMMA_BSL_JAVA задаёт Java",
+      "MCP запускается локально только для активного профиля; до проверки состояние не готово."
+    ],
+    "limitations": [
+      "Генераторы XML предназначены для выгрузки Конфигуратора; EDT доступен для чтения и BSL-анализа, без автоматического преобразования .mdo.",
+      "Без платформы 1С: исходники и статические проверки; без сборки бинарных CF/CFE/EPF/ERF, запуска базы и бизнес-тестов.",
+      "Справочник БСП относится к 3.1.11; другая версия требует проверки по её исходникам.",
+      "BSL Language Server MCP — экспериментальная функция prerelease; static diagnostics не заменяет проверку на платформе."
+    ]
+  },
+  {
+    "id": "1c-metadata-developer",
+    "name": "Разработчик метаданных 1С",
+    "description": "Объекты, управляемые формы, расширения, внешние обработки и СКД.",
+    "type": "specialist",
+    "category": "development",
+    "tasks": [
+      "Разработка / Бизнес",
+      "BSL и семантический анализ",
+      "Метаданные, формы и расширения",
+      "СКД, внешние обработки и отчёты",
+      "БСП 3.1.11 и code review",
+      "Статическая проверка XML"
+    ],
+    "skills": [
+      "1c-development:1c-config-index",
+      "1c-development:1c-cf-info",
+      "1c-development:1c-cf-init",
+      "1c-development:1c-cf-edit",
+      "1c-development:1c-cf-validate",
+      "1c-development:1c-meta-compile",
+      "1c-development:1c-meta-info",
+      "1c-development:1c-meta-edit",
+      "1c-development:1c-meta-validate",
+      "1c-development:1c-form-compile",
+      "1c-development:1c-form-edit",
+      "1c-development:1c-form-validate",
+      "1c-development:1c-form-info",
+      "1c-development:1c-form-add",
+      "1c-development:1c-cfe-init",
+      "1c-development:1c-cfe-borrow",
+      "1c-development:1c-cfe-validate",
+      "1c-development:1c-epf-scaffold",
+      "1c-development:1c-epf-add-form",
+      "1c-development:1c-epf-validate",
+      "1c-development:1c-erf-init",
+      "1c-development:1c-skd-compile",
+      "1c-development:1c-skd-edit",
+      "1c-development:1c-skd-validate",
+      "1c-development:1c-bsl-validate",
+      "1c-development:1c-code-review",
+      "1c-development:1c-query-optimization",
+      "1c-development:bsp",
+      "1c-development:1c-form-patterns",
+      "1c-development:1c-environment"
+    ],
+    "tools": [
+      "read",
+      "glob",
+      "grep",
+      "edit",
+      "write",
+      "bash",
+      "skill",
+      "gamma-bsl_document_symbols",
+      "gamma-bsl_definition",
+      "gamma-bsl_find_references",
+      "gamma-bsl_analyze_file",
+      "gamma-bsl_type_info",
+      "gamma-bsl_global_member_info"
+    ],
+    "members": [],
+    "permissions": {
+      "bash": "ask",
+      "external_directory": "deny",
+      "task": "deny"
+    },
+    "source": "https://github.com/Desko77/claude-code-skills-1c/tree/4d56644ddb643951058f1e0a0a0059a677dd5785",
+    "revision": "4d56644ddb643951058f1e0a0a0059a677dd5785",
+    "license": "MIT",
+    "available": true,
+    "reason": "Исходники можно разрабатывать без Конфигуратора. Семантический MCP требует отдельной проверки подключения.",
+    "hidden": true,
+    "leader": "1c-developer",
+    "skillBundle": "1c-development",
+    "mcp": "bsl-language-server",
+    "environment": [
+      "Python 3.10+ и lxml 6.0.2 (GAMMA_1C_PYTHON)",
+      "Для MCP: Java 21+ и BSL Language Server 1.1.0-rc.6 exec.jar (GAMMA_BSL_JAR); GAMMA_BSL_JAVA задаёт Java",
+      "MCP запускается локально только для активного профиля; до проверки состояние не готово."
+    ],
+    "limitations": [
+      "Генераторы XML предназначены для выгрузки Конфигуратора; EDT доступен для чтения и BSL-анализа, без автоматического преобразования .mdo.",
+      "Без платформы 1С: исходники и статические проверки; без сборки бинарных CF/CFE/EPF/ERF, запуска базы и бизнес-тестов.",
+      "Справочник БСП относится к 3.1.11; другая версия требует проверки по её исходникам.",
+      "BSL Language Server MCP — экспериментальная функция prerelease; static diagnostics не заменяет проверку на платформе."
+    ]
+  },
+  {
+    "id": "1c-reviewer",
+    "name": "Ревьюер 1С",
+    "description": "Проверка BSL, XML и соответствия API БСП.",
+    "type": "specialist",
+    "category": "development",
+    "tasks": [
+      "Разработка / Бизнес",
+      "BSL и семантический анализ",
+      "Метаданные, формы и расширения",
+      "СКД, внешние обработки и отчёты",
+      "БСП 3.1.11 и code review",
+      "Статическая проверка XML"
+    ],
+    "skills": [
+      "1c-development:1c-config-index",
+      "1c-development:1c-cf-info",
+      "1c-development:1c-cf-init",
+      "1c-development:1c-cf-edit",
+      "1c-development:1c-cf-validate",
+      "1c-development:1c-meta-compile",
+      "1c-development:1c-meta-info",
+      "1c-development:1c-meta-edit",
+      "1c-development:1c-meta-validate",
+      "1c-development:1c-form-compile",
+      "1c-development:1c-form-edit",
+      "1c-development:1c-form-validate",
+      "1c-development:1c-form-info",
+      "1c-development:1c-form-add",
+      "1c-development:1c-cfe-init",
+      "1c-development:1c-cfe-borrow",
+      "1c-development:1c-cfe-validate",
+      "1c-development:1c-epf-scaffold",
+      "1c-development:1c-epf-add-form",
+      "1c-development:1c-epf-validate",
+      "1c-development:1c-erf-init",
+      "1c-development:1c-skd-compile",
+      "1c-development:1c-skd-edit",
+      "1c-development:1c-skd-validate",
+      "1c-development:1c-bsl-validate",
+      "1c-development:1c-code-review",
+      "1c-development:1c-query-optimization",
+      "1c-development:bsp",
+      "1c-development:1c-form-patterns",
+      "1c-development:1c-environment"
+    ],
+    "tools": [
+      "read",
+      "glob",
+      "grep",
+      "edit",
+      "write",
+      "bash",
+      "skill",
+      "gamma-bsl_document_symbols",
+      "gamma-bsl_definition",
+      "gamma-bsl_find_references",
+      "gamma-bsl_analyze_file",
+      "gamma-bsl_type_info",
+      "gamma-bsl_global_member_info"
+    ],
+    "members": [],
+    "permissions": {
+      "bash": "ask",
+      "external_directory": "deny",
+      "task": "deny",
+      "edit": "deny"
+    },
+    "source": "https://github.com/Desko77/claude-code-skills-1c/tree/4d56644ddb643951058f1e0a0a0059a677dd5785",
+    "revision": "4d56644ddb643951058f1e0a0a0059a677dd5785",
+    "license": "MIT",
+    "available": true,
+    "reason": "Исходники можно разрабатывать без Конфигуратора. Семантический MCP требует отдельной проверки подключения.",
+    "hidden": true,
+    "leader": "1c-developer",
+    "skillBundle": "1c-development",
+    "mcp": "bsl-language-server",
+    "environment": [
+      "Python 3.10+ и lxml 6.0.2 (GAMMA_1C_PYTHON)",
+      "Для MCP: Java 21+ и BSL Language Server 1.1.0-rc.6 exec.jar (GAMMA_BSL_JAR); GAMMA_BSL_JAVA задаёт Java",
+      "MCP запускается локально только для активного профиля; до проверки состояние не готово."
+    ],
+    "limitations": [
+      "Генераторы XML предназначены для выгрузки Конфигуратора; EDT доступен для чтения и BSL-анализа, без автоматического преобразования .mdo.",
+      "Без платформы 1С: исходники и статические проверки; без сборки бинарных CF/CFE/EPF/ERF, запуска базы и бизнес-тестов.",
+      "Справочник БСП относится к 3.1.11; другая версия требует проверки по её исходникам.",
+      "BSL Language Server MCP — экспериментальная функция prerelease; static diagnostics не заменяет проверку на платформе."
+    ]
+  },
+  {
+    "id": "bitrix24-developer",
+    "name": "Битрикс24 Разработчик",
+    "description": "Универсальная разработка интеграций, приложений, CRM и автоматизаций Битрикс24.",
+    "type": "specialist",
+    "category": "development",
+    "tasks": [
+      "Бизнес / Разработка / Интеграции",
+      "CRM, поля и смарт-процессы",
+      "Приложения, REST и события",
+      "Автоматизация и диагностика"
+    ],
+    "skills": [
+      "bitrix24-development:b24-ui-nuxt",
+      "bitrix24-development:bitrix24-automation",
+      "bitrix24-development:bitrix24-backend",
+      "bitrix24-development:bitrix24-crm",
+      "bitrix24-development:bitrix24-operations",
+      "bitrix24-development:bitrix24-review"
+    ],
+    "tools": [
+      "read",
+      "glob",
+      "grep",
+      "edit",
+      "bash",
+      "skill",
+      "task",
+      "gamma-b24_connection_status",
+      "gamma-b24_rest_read",
+      "gamma-b24_prepare_plan",
+      "gamma-b24_execute_plan",
+      "gamma-b24-docs_bitrix-search",
+      "gamma-b24-docs_bitrix-method-details",
+      "gamma-b24-docs_bitrix-event-details",
+      "gamma-b24-docs_bitrix-article-details",
+      "gamma-b24-docs_bitrix-app-development-doc-details"
+    ],
+    "members": [
+      "bitrix24-analyst",
+      "bitrix24-backend-developer",
+      "bitrix24-app-developer",
+      "bitrix24-reviewer"
+    ],
+    "permissions": {
+      "bash": "ask",
+      "external_directory": "deny",
+      "task": "allow",
+      "gamma-b24_execute_plan": "allow",
+      "gamma-b24_prepare_plan": "allow"
+    },
+    "source": "https://github.com/kostikpenzin/mcp_b24/tree/74e9062ef04c53b6be336b778a73c5236996e015",
+    "revision": "74e9062ef04c53b6be336b778a73c5236996e015",
+    "license": "MIT",
+    "available": true,
+    "reason": "Без портала — разработка кода; реальные данные — после безопасного подключения.",
+    "hidden": false,
+    "leader": "bitrix24-developer",
+    "skillBundle": "bitrix24-development",
+    "mcp": "bitrix24",
+    "environment": [
+      "Документационный MCP: официальный сервис Bitrix24, без токенов.",
+      "Портал: входящий webhook через защищённую форму, нужные scopes и права пользователя.",
+      "Backend Gamma с паролем доступа; HTTPS или локальное подключение.",
+      "Действующий доступ к REST на стороне портала; его условия зависят от версии, региона и тарифа Битрикс24."
+    ],
+    "limitations": [
+      "OAuth lifecycle пока не подключён.",
+      "Cloud/коробка: доступность методов зависит от версии, тарифа и прав.",
+      "Секреты и планы только в памяти; после перезапуска нужно подключиться заново.",
+      "V1 runtime; не production-ready multi-tenant SaaS."
+    ]
+  },
+  {
+    "id": "bitrix24-analyst",
+    "name": "Аналитик Битрикс24",
+    "description": "Требования, структура CRM, доступы и выбор механизма.",
+    "type": "specialist",
+    "category": "development",
+    "tasks": [
+      "Бизнес / Разработка / Интеграции",
+      "CRM, поля и смарт-процессы",
+      "Приложения, REST и события",
+      "Автоматизация и диагностика"
+    ],
+    "skills": [
+      "bitrix24-development:b24-ui-nuxt",
+      "bitrix24-development:bitrix24-automation",
+      "bitrix24-development:bitrix24-backend",
+      "bitrix24-development:bitrix24-crm",
+      "bitrix24-development:bitrix24-operations",
+      "bitrix24-development:bitrix24-review"
+    ],
+    "tools": [
+      "read",
+      "glob",
+      "grep",
+      "edit",
+      "bash",
+      "skill",
+      "task",
+      "gamma-b24_connection_status",
+      "gamma-b24_rest_read",
+      "gamma-b24_prepare_plan",
+      "gamma-b24_execute_plan",
+      "gamma-b24-docs_bitrix-search",
+      "gamma-b24-docs_bitrix-method-details",
+      "gamma-b24-docs_bitrix-event-details",
+      "gamma-b24-docs_bitrix-article-details",
+      "gamma-b24-docs_bitrix-app-development-doc-details"
+    ],
+    "members": [],
+    "permissions": {
+      "bash": "ask",
+      "external_directory": "deny",
+      "task": "deny",
+      "gamma-b24_execute_plan": "deny",
+      "gamma-b24_prepare_plan": "deny",
+      "edit": "deny"
+    },
+    "source": "https://github.com/kostikpenzin/mcp_b24/tree/74e9062ef04c53b6be336b778a73c5236996e015",
+    "revision": "74e9062ef04c53b6be336b778a73c5236996e015",
+    "license": "MIT",
+    "available": true,
+    "reason": "Без портала — разработка кода; реальные данные — после безопасного подключения.",
+    "hidden": true,
+    "leader": "bitrix24-developer",
+    "skillBundle": "bitrix24-development",
+    "mcp": "bitrix24",
+    "environment": [
+      "Документационный MCP: официальный сервис Bitrix24, без токенов.",
+      "Портал: входящий webhook через защищённую форму, нужные scopes и права пользователя.",
+      "Backend Gamma с паролем доступа; HTTPS или локальное подключение."
+    ],
+    "limitations": [
+      "OAuth lifecycle пока не подключён.",
+      "Cloud/коробка: доступность методов зависит от версии, тарифа и прав.",
+      "Секреты и планы только в памяти; после перезапуска нужно подключиться заново.",
+      "V1 runtime; не production-ready multi-tenant SaaS."
+    ]
+  },
+  {
+    "id": "bitrix24-backend-developer",
+    "name": "Backend Битрикс24",
+    "description": "REST, события, интеграции и обработчики.",
+    "type": "specialist",
+    "category": "development",
+    "tasks": [
+      "Бизнес / Разработка / Интеграции",
+      "CRM, поля и смарт-процессы",
+      "Приложения, REST и события",
+      "Автоматизация и диагностика"
+    ],
+    "skills": [
+      "bitrix24-development:b24-ui-nuxt",
+      "bitrix24-development:bitrix24-automation",
+      "bitrix24-development:bitrix24-backend",
+      "bitrix24-development:bitrix24-crm",
+      "bitrix24-development:bitrix24-operations",
+      "bitrix24-development:bitrix24-review"
+    ],
+    "tools": [
+      "read",
+      "glob",
+      "grep",
+      "edit",
+      "bash",
+      "skill",
+      "task",
+      "gamma-b24_connection_status",
+      "gamma-b24_rest_read",
+      "gamma-b24_prepare_plan",
+      "gamma-b24_execute_plan",
+      "gamma-b24-docs_bitrix-search",
+      "gamma-b24-docs_bitrix-method-details",
+      "gamma-b24-docs_bitrix-event-details",
+      "gamma-b24-docs_bitrix-article-details",
+      "gamma-b24-docs_bitrix-app-development-doc-details"
+    ],
+    "members": [],
+    "permissions": {
+      "bash": "ask",
+      "external_directory": "deny",
+      "task": "deny",
+      "gamma-b24_execute_plan": "deny",
+      "gamma-b24_prepare_plan": "deny"
+    },
+    "source": "https://github.com/kostikpenzin/mcp_b24/tree/74e9062ef04c53b6be336b778a73c5236996e015",
+    "revision": "74e9062ef04c53b6be336b778a73c5236996e015",
+    "license": "MIT",
+    "available": true,
+    "reason": "Без портала — разработка кода; реальные данные — после безопасного подключения.",
+    "hidden": true,
+    "leader": "bitrix24-developer",
+    "skillBundle": "bitrix24-development",
+    "mcp": "bitrix24",
+    "environment": [
+      "Документационный MCP: официальный сервис Bitrix24, без токенов.",
+      "Портал: входящий webhook через защищённую форму, нужные scopes и права пользователя.",
+      "Backend Gamma с паролем доступа; HTTPS или локальное подключение."
+    ],
+    "limitations": [
+      "OAuth lifecycle пока не подключён.",
+      "Cloud/коробка: доступность методов зависит от версии, тарифа и прав.",
+      "Секреты и планы только в памяти; после перезапуска нужно подключиться заново.",
+      "V1 runtime; не production-ready multi-tenant SaaS."
+    ]
+  },
+  {
+    "id": "bitrix24-app-developer",
+    "name": "Приложения Битрикс24",
+    "description": "Приложения, интерфейсы, виджеты и B24 UI.",
+    "type": "specialist",
+    "category": "development",
+    "tasks": [
+      "Бизнес / Разработка / Интеграции",
+      "CRM, поля и смарт-процессы",
+      "Приложения, REST и события",
+      "Автоматизация и диагностика"
+    ],
+    "skills": [
+      "bitrix24-development:b24-ui-nuxt",
+      "bitrix24-development:bitrix24-automation",
+      "bitrix24-development:bitrix24-backend",
+      "bitrix24-development:bitrix24-crm",
+      "bitrix24-development:bitrix24-operations",
+      "bitrix24-development:bitrix24-review"
+    ],
+    "tools": [
+      "read",
+      "glob",
+      "grep",
+      "edit",
+      "bash",
+      "skill",
+      "task",
+      "gamma-b24_connection_status",
+      "gamma-b24_rest_read",
+      "gamma-b24_prepare_plan",
+      "gamma-b24_execute_plan",
+      "gamma-b24-docs_bitrix-search",
+      "gamma-b24-docs_bitrix-method-details",
+      "gamma-b24-docs_bitrix-event-details",
+      "gamma-b24-docs_bitrix-article-details",
+      "gamma-b24-docs_bitrix-app-development-doc-details"
+    ],
+    "members": [],
+    "permissions": {
+      "bash": "ask",
+      "external_directory": "deny",
+      "task": "deny",
+      "gamma-b24_execute_plan": "deny",
+      "gamma-b24_prepare_plan": "deny",
+      "gamma-b24_rest_read": "deny"
+    },
+    "source": "https://github.com/kostikpenzin/mcp_b24/tree/74e9062ef04c53b6be336b778a73c5236996e015",
+    "revision": "74e9062ef04c53b6be336b778a73c5236996e015",
+    "license": "MIT",
+    "available": true,
+    "reason": "Без портала — разработка кода; реальные данные — после безопасного подключения.",
+    "hidden": true,
+    "leader": "bitrix24-developer",
+    "skillBundle": "bitrix24-development",
+    "mcp": "bitrix24",
+    "environment": [
+      "Документационный MCP: официальный сервис Bitrix24, без токенов.",
+      "Портал: входящий webhook через защищённую форму, нужные scopes и права пользователя.",
+      "Backend Gamma с паролем доступа; HTTPS или локальное подключение."
+    ],
+    "limitations": [
+      "OAuth lifecycle пока не подключён.",
+      "Cloud/коробка: доступность методов зависит от версии, тарифа и прав.",
+      "Секреты и планы только в памяти; после перезапуска нужно подключиться заново.",
+      "V1 runtime; не production-ready multi-tenant SaaS."
+    ]
+  },
+  {
+    "id": "bitrix24-reviewer",
+    "name": "Ревьюер Битрикс24",
+    "description": "Безопасность, идемпотентность и проверка результата.",
+    "type": "specialist",
+    "category": "development",
+    "tasks": [
+      "Бизнес / Разработка / Интеграции",
+      "CRM, поля и смарт-процессы",
+      "Приложения, REST и события",
+      "Автоматизация и диагностика"
+    ],
+    "skills": [
+      "bitrix24-development:b24-ui-nuxt",
+      "bitrix24-development:bitrix24-automation",
+      "bitrix24-development:bitrix24-backend",
+      "bitrix24-development:bitrix24-crm",
+      "bitrix24-development:bitrix24-operations",
+      "bitrix24-development:bitrix24-review"
+    ],
+    "tools": [
+      "read",
+      "glob",
+      "grep",
+      "edit",
+      "bash",
+      "skill",
+      "task",
+      "gamma-b24_connection_status",
+      "gamma-b24_rest_read",
+      "gamma-b24_prepare_plan",
+      "gamma-b24_execute_plan",
+      "gamma-b24-docs_bitrix-search",
+      "gamma-b24-docs_bitrix-method-details",
+      "gamma-b24-docs_bitrix-event-details",
+      "gamma-b24-docs_bitrix-article-details",
+      "gamma-b24-docs_bitrix-app-development-doc-details"
+    ],
+    "members": [],
+    "permissions": {
+      "bash": "ask",
+      "external_directory": "deny",
+      "task": "deny",
+      "gamma-b24_execute_plan": "deny",
+      "gamma-b24_prepare_plan": "deny",
+      "edit": "deny",
+      "gamma-b24_rest_read": "deny"
+    },
+    "source": "https://github.com/kostikpenzin/mcp_b24/tree/74e9062ef04c53b6be336b778a73c5236996e015",
+    "revision": "74e9062ef04c53b6be336b778a73c5236996e015",
+    "license": "MIT",
+    "available": true,
+    "reason": "Без портала — разработка кода; реальные данные — после безопасного подключения.",
+    "hidden": true,
+    "leader": "bitrix24-developer",
+    "skillBundle": "bitrix24-development",
+    "mcp": "bitrix24",
+    "environment": [
+      "Документационный MCP: официальный сервис Bitrix24, без токенов.",
+      "Портал: входящий webhook через защищённую форму, нужные scopes и права пользователя.",
+      "Backend Gamma с паролем доступа; HTTPS или локальное подключение."
+    ],
+    "limitations": [
+      "OAuth lifecycle пока не подключён.",
+      "Cloud/коробка: доступность методов зависит от версии, тарифа и прав.",
+      "Секреты и планы только в памяти; после перезапуска нужно подключиться заново.",
+      "V1 runtime; не production-ready multi-tenant SaaS."
+    ]
+  },
+  {
+    "id": "wildberries-manager",
+    "name": "Wildberries Менеджер",
+    "description": "AI-управляющий магазином Wildberries. Анализирует продажи, рекламу, финансы, товары и остатки. Находит проблемы и помогает их исправлять",
+    "type": "specialist",
+    "category": "business",
+    "tasks": [
+      "Бизнес / Маркетплейсы",
+      "Почему падают продажи?",
+      "Почему реклама не окупается?",
+      "Прибыль по товарам",
+      "Аудит карточек",
+      "Какие товары заканчиваются?"
+    ],
+    "skills": [
+      "wildberries-management:wb-api",
+      "wildberries-management:wb-sales-analytics",
+      "wildberries-management:wb-advertising",
+      "wildberries-management:wb-unit-economics",
+      "wildberries-management:wb-inventory",
+      "wildberries-management:wb-product-optimization",
+      "wildberries-management:wb-reviews",
+      "wildberries-management:wb-pricing"
+    ],
+    "tools": [
+      "read",
+      "glob",
+      "grep",
+      "edit",
+      "skill",
+      "question",
+      "gamma-wb_connection_status",
+      "gamma-wb_search_methods",
+      "gamma-wb_read",
+      "gamma-wb_analyse",
+      "task",
+      "gamma-wb_prepare_plan",
+      "gamma-wb_execute_plan",
+      "gamma-wb_verify_plan"
+    ],
+    "members": [
+      "wb-sales-analyst",
+      "wb-advertising-manager",
+      "wb-product-manager",
+      "wb-financial-analyst"
+    ],
+    "permissions": {
+      "*": "deny",
+      "read": "allow",
+      "glob": "allow",
+      "grep": "allow",
+      "edit": "allow",
+      "skill": "allow",
+      "question": "allow",
+      "gamma-wb_connection_status": "allow",
+      "gamma-wb_search_methods": "allow",
+      "gamma-wb_read": "allow",
+      "gamma-wb_analyse": "allow",
+      "gamma-wb_prepare_plan": "allow",
+      "gamma-wb_execute_plan": "allow",
+      "bash": "deny",
+      "external_directory": "deny",
+      "webfetch": "deny",
+      "websearch": "deny"
+    },
+    "source": "https://dev.wildberries.ru/openapi/api-information",
+    "revision": "cd1c39b1bfb2dad69c7ea3f3053885a3f17b74f0",
+    "license": "MIT",
+    "available": true,
+    "reason": "MVP: аналитика файлов доступна без магазина; API после безопасного подключения.",
+    "hidden": false,
+    "leader": "wildberries-manager",
+    "skillBundle": "wildberries-management",
+    "mcp": "wildberries",
+    "environment": [
+      "Python 3 для аналитики (без pip-зависимостей).",
+      "Excel/CSV или разрешённый тестовый токен; персональный только on-premise.",
+      "HTTPS/localhost и пароль сервера Gamma для подключения."
+    ],
+    "limitations": [
+      "V1 runtime. Реальный кабинет не проверен.",
+      "Все записи требуют UI-подтверждения; 14 проверенных API операций.",
+      "Один магазин на проект; секреты в памяти до 8 часов.",
+      "Сервисный SaaS/OAuth ещё не реализован."
+    ]
+  },
+  {
+    "id": "wb-sales-analyst",
+    "name": "Аналитик продаж WB",
+    "description": "Продажи, сравнение периодов, ABC, аномалии и группы товаров.",
+    "type": "specialist",
+    "category": "business",
+    "tasks": [
+      "Бизнес / Маркетплейсы",
+      "Почему падают продажи?",
+      "Почему реклама не окупается?",
+      "Прибыль по товарам",
+      "Аудит карточек",
+      "Какие товары заканчиваются?"
+    ],
+    "skills": [
+      "wildberries-management:wb-api",
+      "wildberries-management:wb-sales-analytics",
+      "wildberries-management:wb-unit-economics"
+    ],
+    "tools": [
+      "read",
+      "glob",
+      "grep",
+      "edit",
+      "skill",
+      "question",
+      "gamma-wb_connection_status",
+      "gamma-wb_search_methods",
+      "gamma-wb_read",
+      "gamma-wb_analyse"
+    ],
+    "members": [],
+    "permissions": {
+      "*": "deny",
+      "read": "allow",
+      "glob": "allow",
+      "grep": "allow",
+      "edit": "allow",
+      "skill": "allow",
+      "question": "allow",
+      "gamma-wb_connection_status": "allow",
+      "gamma-wb_search_methods": "allow",
+      "gamma-wb_read": "allow",
+      "gamma-wb_analyse": "allow",
+      "bash": "deny",
+      "external_directory": "deny",
+      "webfetch": "deny",
+      "websearch": "deny"
+    },
+    "source": "https://dev.wildberries.ru/openapi/api-information",
+    "revision": "cd1c39b1bfb2dad69c7ea3f3053885a3f17b74f0",
+    "license": "MIT",
+    "available": true,
+    "reason": "MVP: аналитика файлов доступна без магазина; API после безопасного подключения.",
+    "hidden": true,
+    "leader": "wildberries-manager",
+    "skillBundle": "wildberries-management",
+    "mcp": "wildberries",
+    "environment": [
+      "Python 3 для аналитики (без pip-зависимостей).",
+      "Excel/CSV или разрешённый тестовый токен; персональный только on-premise.",
+      "HTTPS/localhost и пароль сервера Gamma для подключения."
+    ],
+    "limitations": [
+      "V1 runtime. Реальный кабинет не проверен.",
+      "Все записи требуют UI-подтверждения; 14 проверенных API операций.",
+      "Один магазин на проект; секреты в памяти до 8 часов.",
+      "Сервисный SaaS/OAuth ещё не реализован."
+    ]
+  },
+  {
+    "id": "wb-advertising-manager",
+    "name": "Менеджер рекламы WB",
+    "description": "Расходы, ДРР, кампании, рекомендации по ставкам и бюджетам.",
+    "type": "specialist",
+    "category": "business",
+    "tasks": [
+      "Бизнес / Маркетплейсы",
+      "Почему падают продажи?",
+      "Почему реклама не окупается?",
+      "Прибыль по товарам",
+      "Аудит карточек",
+      "Какие товары заканчиваются?"
+    ],
+    "skills": [
+      "wildberries-management:wb-api",
+      "wildberries-management:wb-advertising",
+      "wildberries-management:wb-unit-economics"
+    ],
+    "tools": [
+      "read",
+      "glob",
+      "grep",
+      "edit",
+      "skill",
+      "question",
+      "gamma-wb_connection_status",
+      "gamma-wb_search_methods",
+      "gamma-wb_read",
+      "gamma-wb_analyse"
+    ],
+    "members": [],
+    "permissions": {
+      "*": "deny",
+      "read": "allow",
+      "glob": "allow",
+      "grep": "allow",
+      "edit": "allow",
+      "skill": "allow",
+      "question": "allow",
+      "gamma-wb_connection_status": "allow",
+      "gamma-wb_search_methods": "allow",
+      "gamma-wb_read": "allow",
+      "gamma-wb_analyse": "allow",
+      "bash": "deny",
+      "external_directory": "deny",
+      "webfetch": "deny",
+      "websearch": "deny"
+    },
+    "source": "https://dev.wildberries.ru/openapi/api-information",
+    "revision": "cd1c39b1bfb2dad69c7ea3f3053885a3f17b74f0",
+    "license": "MIT",
+    "available": true,
+    "reason": "MVP: аналитика файлов доступна без магазина; API после безопасного подключения.",
+    "hidden": true,
+    "leader": "wildberries-manager",
+    "skillBundle": "wildberries-management",
+    "mcp": "wildberries",
+    "environment": [
+      "Python 3 для аналитики (без pip-зависимостей).",
+      "Excel/CSV или разрешённый тестовый токен; персональный только on-premise.",
+      "HTTPS/localhost и пароль сервера Gamma для подключения."
+    ],
+    "limitations": [
+      "V1 runtime. Реальный кабинет не проверен.",
+      "Все записи требуют UI-подтверждения; 14 проверенных API операций.",
+      "Один магазин на проект; секреты в памяти до 8 часов.",
+      "Сервисный SaaS/OAuth ещё не реализован."
+    ]
+  },
+  {
+    "id": "wb-product-manager",
+    "name": "Менеджер товаров WB",
+    "description": "Карточки, ассортимент, отзывы, остатки и поставки.",
+    "type": "specialist",
+    "category": "business",
+    "tasks": [
+      "Бизнес / Маркетплейсы",
+      "Почему падают продажи?",
+      "Почему реклама не окупается?",
+      "Прибыль по товарам",
+      "Аудит карточек",
+      "Какие товары заканчиваются?"
+    ],
+    "skills": [
+      "wildberries-management:wb-api",
+      "wildberries-management:wb-product-optimization",
+      "wildberries-management:wb-inventory",
+      "wildberries-management:wb-reviews",
+      "wildberries-management:wb-unit-economics"
+    ],
+    "tools": [
+      "read",
+      "glob",
+      "grep",
+      "edit",
+      "skill",
+      "question",
+      "gamma-wb_connection_status",
+      "gamma-wb_search_methods",
+      "gamma-wb_read",
+      "gamma-wb_analyse"
+    ],
+    "members": [],
+    "permissions": {
+      "*": "deny",
+      "read": "allow",
+      "glob": "allow",
+      "grep": "allow",
+      "edit": "allow",
+      "skill": "allow",
+      "question": "allow",
+      "gamma-wb_connection_status": "allow",
+      "gamma-wb_search_methods": "allow",
+      "gamma-wb_read": "allow",
+      "gamma-wb_analyse": "allow",
+      "bash": "deny",
+      "external_directory": "deny",
+      "webfetch": "deny",
+      "websearch": "deny"
+    },
+    "source": "https://dev.wildberries.ru/openapi/api-information",
+    "revision": "cd1c39b1bfb2dad69c7ea3f3053885a3f17b74f0",
+    "license": "MIT",
+    "available": true,
+    "reason": "MVP: аналитика файлов доступна без магазина; API после безопасного подключения.",
+    "hidden": true,
+    "leader": "wildberries-manager",
+    "skillBundle": "wildberries-management",
+    "mcp": "wildberries",
+    "environment": [
+      "Python 3 для аналитики (без pip-зависимостей).",
+      "Excel/CSV или разрешённый тестовый токен; персональный только on-premise.",
+      "HTTPS/localhost и пароль сервера Gamma для подключения."
+    ],
+    "limitations": [
+      "V1 runtime. Реальный кабинет не проверен.",
+      "Все записи требуют UI-подтверждения; 14 проверенных API операций.",
+      "Один магазин на проект; секреты в памяти до 8 часов.",
+      "Сервисный SaaS/OAuth ещё не реализован."
+    ]
+  },
+  {
+    "id": "wb-financial-analyst",
+    "name": "Финансовый аналитик WB",
+    "description": "Себестоимость, расходы, юнит-экономика и прибыльность.",
+    "type": "specialist",
+    "category": "business",
+    "tasks": [
+      "Бизнес / Маркетплейсы",
+      "Почему падают продажи?",
+      "Почему реклама не окупается?",
+      "Прибыль по товарам",
+      "Аудит карточек",
+      "Какие товары заканчиваются?"
+    ],
+    "skills": [
+      "wildberries-management:wb-api",
+      "wildberries-management:wb-unit-economics",
+      "wildberries-management:wb-pricing"
+    ],
+    "tools": [
+      "read",
+      "glob",
+      "grep",
+      "edit",
+      "skill",
+      "question",
+      "gamma-wb_connection_status",
+      "gamma-wb_search_methods",
+      "gamma-wb_read",
+      "gamma-wb_analyse"
+    ],
+    "members": [],
+    "permissions": {
+      "*": "deny",
+      "read": "allow",
+      "glob": "allow",
+      "grep": "allow",
+      "edit": "allow",
+      "skill": "allow",
+      "question": "allow",
+      "gamma-wb_connection_status": "allow",
+      "gamma-wb_search_methods": "allow",
+      "gamma-wb_read": "allow",
+      "gamma-wb_analyse": "allow",
+      "bash": "deny",
+      "external_directory": "deny",
+      "webfetch": "deny",
+      "websearch": "deny"
+    },
+    "source": "https://dev.wildberries.ru/openapi/api-information",
+    "revision": "cd1c39b1bfb2dad69c7ea3f3053885a3f17b74f0",
+    "license": "MIT",
+    "available": true,
+    "reason": "MVP: аналитика файлов доступна без магазина; API после безопасного подключения.",
+    "hidden": true,
+    "leader": "wildberries-manager",
+    "skillBundle": "wildberries-management",
+    "mcp": "wildberries",
+    "environment": [
+      "Python 3 для аналитики (без pip-зависимостей).",
+      "Excel/CSV или разрешённый тестовый токен; персональный только on-premise.",
+      "HTTPS/localhost и пароль сервера Gamma для подключения."
+    ],
+    "limitations": [
+      "V1 runtime. Реальный кабинет не проверен.",
+      "Все записи требуют UI-подтверждения; 14 проверенных API операций.",
+      "Один магазин на проект; секреты в памяти до 8 часов.",
+      "Сервисный SaaS/OAuth ещё не реализован."
+    ]
+  },
+  {
+    "id": "presentation-creator",
+    "name": "Создатель презентаций",
+    "description": "Автономная разработка и редактирование презентаций: содержание, дизайн, данные, PowerPoint и визуальное ревью.",
+    "type": "specialist",
+    "category": "business",
+    "tasks": [
+      "Бизнес / Документы и презентации",
+      "Создание презентаций",
+      "Презентации по данным",
+      "Точечное редактирование PPTX",
+      "Визуальная проверка"
+    ],
+    "skills": [
+      "presentation-creation:pptagent",
+      "presentation-creation:presentation-planning",
+      "presentation-creation:presentation-storytelling",
+      "presentation-creation:presentation-design",
+      "presentation-creation:presentation-data",
+      "presentation-creation:presentation-branding",
+      "presentation-creation:presentation-pptx-editing",
+      "presentation-creation:presentation-visual-qa"
+    ],
+    "tools": [
+      "read",
+      "glob",
+      "grep",
+      "skill",
+      "question",
+      "gamma-presentation_create",
+      "gamma-presentation_ingest",
+      "gamma-presentation_inspect",
+      "gamma-presentation_aggregate",
+      "gamma-presentation_build",
+      "gamma-presentation_edit",
+      "gamma-presentation_render",
+      "gamma-presentation_finalize",
+      "gamma-presentation_status",
+      "gamma-presentation_health",
+      "task",
+      "gamma-presentation_redesign_slide",
+      "gamma-presentation_write_source"
+    ],
+    "members": [
+      "presentation-researcher",
+      "presentation-storyteller",
+      "presentation-designer",
+      "presentation-reviewer"
+    ],
+    "permissions": {
+      "*": "deny",
+      "read": "allow",
+      "glob": "allow",
+      "grep": "allow",
+      "skill": "allow",
+      "question": "allow",
+      "gamma-presentation_create": "allow",
+      "gamma-presentation_ingest": "allow",
+      "gamma-presentation_inspect": "allow",
+      "gamma-presentation_aggregate": "allow",
+      "gamma-presentation_build": "allow",
+      "gamma-presentation_edit": "allow",
+      "gamma-presentation_render": "allow",
+      "gamma-presentation_review_slides": "allow",
+      "gamma-presentation_review_deck": "allow",
+      "gamma-presentation_finalize": "allow",
+      "gamma-presentation_status": "allow",
+      "gamma-presentation_health": "allow",
+      "task": "allow",
+      "bash": "deny",
+      "external_directory": "deny",
+      "gamma-presentation_redesign_slide": "allow",
+      "gamma-presentation_write_source": "allow",
+      "edit": "deny",
+      "write": "deny"
+    },
+    "source": "https://github.com/icip-cas/PPTAgent/tree/833cda553b343be0e486a93b0b57cac962cdd566/skills/pptagent",
+    "revision": "05360198cd174e166aaf5b6d7cad05ee73b53a74",
+    "license": "MIT",
+    "available": true,
+    "reason": "OpenCode V1, PPTAgent workflow, PptxGenJS, office-kit; системные зависимости проверяются health-check.",
+    "hidden": false,
+    "leader": "presentation-creator",
+    "skillBundle": "presentation-creation",
+    "mcp": "presentation",
+    "environment": [
+      "LibreOffice, Poppler, Python 3, Chromium и установленные шрифты.",
+      "Настроенный Gamma provider с поддержкой изображений для завершённого visual QA."
+    ],
+    "limitations": [
+      "До 40 слайдов и 50 MiB на входной файл.",
+      "Ограниченный безопасный HTML/CSS; сложные объекты редактируются только при поддержке office-kit.",
+      "Без vision допускается только явно обозначенный непроверенный черновик."
+    ]
+  },
+  {
+    "id": "presentation-researcher",
+    "name": "Исследователь презентации",
+    "description": "Анализ документов, проверяемых фактов, чисел и требований.",
+    "type": "specialist",
+    "category": "business",
+    "tasks": [
+      "Бизнес / Документы и презентации",
+      "Создание презентаций",
+      "Презентации по данным",
+      "Точечное редактирование PPTX",
+      "Визуальная проверка"
+    ],
+    "skills": [
+      "presentation-creation:pptagent",
+      "presentation-creation:presentation-planning",
+      "presentation-creation:presentation-storytelling",
+      "presentation-creation:presentation-design",
+      "presentation-creation:presentation-data",
+      "presentation-creation:presentation-branding",
+      "presentation-creation:presentation-pptx-editing",
+      "presentation-creation:presentation-visual-qa"
+    ],
+    "tools": [
+      "read",
+      "glob",
+      "grep",
+      "skill",
+      "question",
+      "gamma-presentation_ingest",
+      "gamma-presentation_inspect",
+      "gamma-presentation_aggregate",
+      "gamma-presentation_status",
+      "gamma-presentation_health",
+      "gamma-presentation_write_source"
+    ],
+    "members": [],
+    "permissions": {
+      "*": "deny",
+      "read": "allow",
+      "glob": "allow",
+      "grep": "allow",
+      "skill": "allow",
+      "question": "allow",
+      "gamma-presentation_ingest": "allow",
+      "gamma-presentation_inspect": "allow",
+      "gamma-presentation_aggregate": "allow",
+      "gamma-presentation_status": "allow",
+      "gamma-presentation_health": "allow",
+      "bash": "deny",
+      "external_directory": "deny",
+      "gamma-presentation_write_source": "allow",
+      "edit": "deny",
+      "write": "deny"
+    },
+    "source": "https://github.com/icip-cas/PPTAgent/tree/833cda553b343be0e486a93b0b57cac962cdd566/skills/pptagent",
+    "revision": "05360198cd174e166aaf5b6d7cad05ee73b53a74",
+    "license": "MIT",
+    "available": true,
+    "reason": "OpenCode V1, PPTAgent workflow, PptxGenJS, office-kit; системные зависимости проверяются health-check.",
+    "hidden": true,
+    "leader": "presentation-creator",
+    "skillBundle": "presentation-creation",
+    "mcp": "presentation",
+    "environment": [
+      "LibreOffice, Poppler, Python 3, Chromium и установленные шрифты.",
+      "Настроенный Gamma provider с поддержкой изображений для завершённого visual QA."
+    ],
+    "limitations": [
+      "До 40 слайдов и 50 MiB на входной файл.",
+      "Ограниченный безопасный HTML/CSS; сложные объекты редактируются только при поддержке office-kit.",
+      "Без vision допускается только явно обозначенный непроверенный черновик."
+    ]
+  },
+  {
+    "id": "presentation-storyteller",
+    "name": "Сценарист презентации",
+    "description": "Структура, аргументация и повествование презентации.",
+    "type": "specialist",
+    "category": "business",
+    "tasks": [
+      "Бизнес / Документы и презентации",
+      "Создание презентаций",
+      "Презентации по данным",
+      "Точечное редактирование PPTX",
+      "Визуальная проверка"
+    ],
+    "skills": [
+      "presentation-creation:pptagent",
+      "presentation-creation:presentation-planning",
+      "presentation-creation:presentation-storytelling",
+      "presentation-creation:presentation-design",
+      "presentation-creation:presentation-data",
+      "presentation-creation:presentation-branding",
+      "presentation-creation:presentation-pptx-editing",
+      "presentation-creation:presentation-visual-qa"
+    ],
+    "tools": [
+      "read",
+      "glob",
+      "grep",
+      "skill",
+      "question",
+      "gamma-presentation_status",
+      "gamma-presentation_health",
+      "gamma-presentation_write_source"
+    ],
+    "members": [],
+    "permissions": {
+      "*": "deny",
+      "read": "allow",
+      "glob": "allow",
+      "grep": "allow",
+      "skill": "allow",
+      "question": "allow",
+      "gamma-presentation_status": "allow",
+      "gamma-presentation_health": "allow",
+      "bash": "deny",
+      "external_directory": "deny",
+      "gamma-presentation_write_source": "allow",
+      "edit": "deny",
+      "write": "deny"
+    },
+    "source": "https://github.com/icip-cas/PPTAgent/tree/833cda553b343be0e486a93b0b57cac962cdd566/skills/pptagent",
+    "revision": "05360198cd174e166aaf5b6d7cad05ee73b53a74",
+    "license": "MIT",
+    "available": true,
+    "reason": "OpenCode V1, PPTAgent workflow, PptxGenJS, office-kit; системные зависимости проверяются health-check.",
+    "hidden": true,
+    "leader": "presentation-creator",
+    "skillBundle": "presentation-creation",
+    "mcp": "presentation",
+    "environment": [
+      "LibreOffice, Poppler, Python 3, Chromium и установленные шрифты.",
+      "Настроенный Gamma provider с поддержкой изображений для завершённого visual QA."
+    ],
+    "limitations": [
+      "До 40 слайдов и 50 MiB на входной файл.",
+      "Ограниченный безопасный HTML/CSS; сложные объекты редактируются только при поддержке office-kit.",
+      "Без vision допускается только явно обозначенный непроверенный черновик."
+    ]
+  },
+  {
+    "id": "presentation-designer",
+    "name": "Дизайнер презентации",
+    "description": "HTML и нативные слайды, композиция, визуальные материалы.",
+    "type": "specialist",
+    "category": "business",
+    "tasks": [
+      "Бизнес / Документы и презентации",
+      "Создание презентаций",
+      "Презентации по данным",
+      "Точечное редактирование PPTX",
+      "Визуальная проверка"
+    ],
+    "skills": [
+      "presentation-creation:pptagent",
+      "presentation-creation:presentation-planning",
+      "presentation-creation:presentation-storytelling",
+      "presentation-creation:presentation-design",
+      "presentation-creation:presentation-data",
+      "presentation-creation:presentation-branding",
+      "presentation-creation:presentation-pptx-editing",
+      "presentation-creation:presentation-visual-qa"
+    ],
+    "tools": [
+      "read",
+      "glob",
+      "grep",
+      "skill",
+      "question",
+      "gamma-presentation_inspect",
+      "gamma-presentation_build",
+      "gamma-presentation_edit",
+      "gamma-presentation_render",
+      "gamma-presentation_status",
+      "gamma-presentation_health",
+      "gamma-presentation_redesign_slide",
+      "gamma-presentation_write_source"
+    ],
+    "members": [],
+    "permissions": {
+      "*": "deny",
+      "read": "allow",
+      "glob": "allow",
+      "grep": "allow",
+      "skill": "allow",
+      "question": "allow",
+      "gamma-presentation_inspect": "allow",
+      "gamma-presentation_build": "allow",
+      "gamma-presentation_edit": "allow",
+      "gamma-presentation_render": "allow",
+      "gamma-presentation_status": "allow",
+      "gamma-presentation_health": "allow",
+      "bash": "deny",
+      "external_directory": "deny",
+      "gamma-presentation_redesign_slide": "allow",
+      "gamma-presentation_write_source": "allow",
+      "edit": "deny",
+      "write": "deny"
+    },
+    "source": "https://github.com/icip-cas/PPTAgent/tree/833cda553b343be0e486a93b0b57cac962cdd566/skills/pptagent",
+    "revision": "05360198cd174e166aaf5b6d7cad05ee73b53a74",
+    "license": "MIT",
+    "available": true,
+    "reason": "OpenCode V1, PPTAgent workflow, PptxGenJS, office-kit; системные зависимости проверяются health-check.",
+    "hidden": true,
+    "leader": "presentation-creator",
+    "skillBundle": "presentation-creation",
+    "mcp": "presentation",
+    "environment": [
+      "LibreOffice, Poppler, Python 3, Chromium и установленные шрифты.",
+      "Настроенный Gamma provider с поддержкой изображений для завершённого visual QA."
+    ],
+    "limitations": [
+      "До 40 слайдов и 50 MiB на входной файл.",
+      "Ограниченный безопасный HTML/CSS; сложные объекты редактируются только при поддержке office-kit.",
+      "Без vision допускается только явно обозначенный непроверенный черновик."
+    ]
+  },
+  {
+    "id": "presentation-reviewer",
+    "name": "Ревьюер презентации",
+    "description": "Визуальная проверка, сверка данных и контроль сохранности PPTX.",
+    "type": "specialist",
+    "category": "business",
+    "tasks": [
+      "Бизнес / Документы и презентации",
+      "Создание презентаций",
+      "Презентации по данным",
+      "Точечное редактирование PPTX",
+      "Визуальная проверка"
+    ],
+    "skills": [
+      "presentation-creation:pptagent",
+      "presentation-creation:presentation-planning",
+      "presentation-creation:presentation-storytelling",
+      "presentation-creation:presentation-design",
+      "presentation-creation:presentation-data",
+      "presentation-creation:presentation-branding",
+      "presentation-creation:presentation-pptx-editing",
+      "presentation-creation:presentation-visual-qa"
+    ],
+    "tools": [
+      "read",
+      "glob",
+      "grep",
+      "skill",
+      "question",
+      "gamma-presentation_inspect",
+      "gamma-presentation_render",
+      "gamma-presentation_review_slides",
+      "gamma-presentation_review_deck",
+      "gamma-presentation_status",
+      "gamma-presentation_health"
+    ],
+    "members": [],
+    "permissions": {
+      "*": "deny",
+      "read": "allow",
+      "glob": "allow",
+      "grep": "allow",
+      "skill": "allow",
+      "question": "allow",
+      "gamma-presentation_inspect": "allow",
+      "gamma-presentation_render": "allow",
+      "gamma-presentation_review_slides": "allow",
+      "gamma-presentation_review_deck": "allow",
+      "gamma-presentation_status": "allow",
+      "gamma-presentation_health": "allow",
+      "bash": "deny",
+      "external_directory": "deny",
+      "edit": "deny",
+      "write": "deny"
+    },
+    "source": "https://github.com/icip-cas/PPTAgent/tree/833cda553b343be0e486a93b0b57cac962cdd566/skills/pptagent",
+    "revision": "05360198cd174e166aaf5b6d7cad05ee73b53a74",
+    "license": "MIT",
+    "available": true,
+    "reason": "OpenCode V1, PPTAgent workflow, PptxGenJS, office-kit; системные зависимости проверяются health-check.",
+    "hidden": true,
+    "leader": "presentation-creator",
+    "skillBundle": "presentation-creation",
+    "mcp": "presentation",
+    "environment": [
+      "LibreOffice, Poppler, Python 3, Chromium и установленные шрифты.",
+      "Настроенный Gamma provider с поддержкой изображений для завершённого visual QA."
+    ],
+    "limitations": [
+      "До 40 слайдов и 50 MiB на входной файл.",
+      "Ограниченный безопасный HTML/CSS; сложные объекты редактируются только при поддержке office-kit.",
+      "Без vision допускается только явно обозначенный непроверенный черновик."
+    ]
+  }
+]

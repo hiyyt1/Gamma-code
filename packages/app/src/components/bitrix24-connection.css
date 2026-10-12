@@ -1,0 +1,68 @@
+.bitrix24-connection {
+  --market-accent: #7755be;
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.bitrix24-connection h3,
+.bitrix24-connection h4 {
+  font-weight: 600;
+}
+.bitrix24-connection form {
+  display: grid;
+  gap: 16px;
+}
+.bitrix24-connection input[type="password"] {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  padding: 9px 12px;
+  margin-top: 6px;
+  border: 1px solid var(--border-base, #e2e2e8);
+  border-radius: 8px;
+  background: var(--surface-base, #fff);
+}
+.bitrix24-connection fieldset {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+}
+.bitrix24-connection legend {
+  margin-bottom: 8px;
+}
+.bitrix24-connection fieldset label {
+  display: inline-flex;
+  gap: 7px;
+  align-items: center;
+}
+.bitrix24-connection button {
+  justify-self: start;
+  max-width: 100%;
+  white-space: normal;
+  color: #fff;
+  background: var(--market-accent);
+  padding: 8px 12px;
+  border: 1px solid var(--border-base, #e2e2e8);
+  border-radius: 8px;
+  cursor: pointer;
+}
+.bitrix24-connection button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.bitrix24-connection .bitrix24-plan {
+  display: grid;
+  gap: 10px;
+  border-top: 1px solid var(--border-base, #e2e2e8);
+  padding-top: 16px;
+}
+.bitrix24-connection pre {
+  max-height: 320px;
+  overflow: auto;
+}
+.bitrix24-connection [role="alert"] {
+  color: var(--text-danger-base, #b42318);
+}

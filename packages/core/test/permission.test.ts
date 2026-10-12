@@ -18,6 +18,9 @@ import { SessionStore } from "@opencode-ai/core/session/store"
 import { eq } from "drizzle-orm"
 import { location } from "./fixture/location"
 import { testEffect } from "./lib/effect"
+import { GammaHelpTool } from "../src/tool/gamma-help"
+import { ToolRegistry } from "../src/tool/registry"
+import { executeTool, toolIdentity } from "./lib/tool"
 
 const current = Layer.succeed(
   Location.Service,
@@ -32,6 +35,8 @@ const it = testEffect(
       PermissionSaved.node,
       AgentV2.node,
       PermissionV2.node,
+      GammaHelpTool.node,
+      ToolRegistry.toolsNode,
     ]),
     [[Location.node, current]],
   ),
@@ -168,7 +173,7 @@ describe("PermissionV2", () => {
     }),
   )
 
-  it.effect("uses build permissions when the Session agent is omitted", () =>
+  it.effect("adopts Gamma permissions for an empty legacy Session with no recorded agent", () =>
     Effect.gen(function* () {
       yield* setup()
       const { db } = yield* Database.Service
@@ -180,7 +185,7 @@ describe("PermissionV2", () => {
         .pipe(Effect.orDie)
       const agents = yield* AgentV2.Service
       yield* agents.transform((editor) =>
-        editor.update(AgentV2.ID.make("build"), (agent) => {
+        editor.update(AgentV2.ID.make("gamma"), (agent) => {
           agent.permissions = [{ action: "todowrite", resource: "*", effect: "allow" }]
         }),
       )
@@ -313,3 +318,40 @@ describe("PermissionV2", () => {
     }),
   )
 })
+
+it.effect("Gamma Guide denies filesystem, shell, MCP and delegation even after permissive config", () =>
+  Effect.gen(function* () {
+    yield* setup()
+    const agents = yield* AgentV2.Service
+    yield* agents.transform((draft) =>
+      draft.update(AgentV2.ID.make("gamma-guide"), (agent) => {
+        agent.mode = "primary"
+        agent.permissions = [{ action: "*", resource: "*", effect: "allow" }]
+      }),
+    )
+    const service = yield* PermissionV2.Service
+    for (const action of ["read", "write", "edit", "bash", "task", "mcp_example", "webfetch"]) {
+      const result = yield* service
+        .assert(assertion({ agent: AgentV2.ID.make("gamma-guide"), action }))
+        .pipe(Effect.flip)
+      expect(result).toBeInstanceOf(PermissionV2.BlockedError)
+    }
+    yield* service.assert(
+      assertion({ agent: AgentV2.ID.make("gamma-guide"), action: "skill", resources: ["gamma-projects"] }),
+    )
+    yield* service.assert(
+      assertion({ agent: AgentV2.ID.make("gamma-guide"), action: "gamma_help", resources: ["catalog"] }),
+    )
+    const registry = yield* ToolRegistry.Service
+    const result = yield* executeTool(registry, {
+      ...toolIdentity,
+      sessionID: SessionV2.ID.make("ses_test"),
+      agent: AgentV2.ID.make("gamma-guide"),
+      call: { type: "tool-call", id: "guide-catalog", name: "gamma_help", input: { topic: "catalog" } },
+    })
+    expect(result.type).toBe("text")
+    expect(JSON.stringify(result)).toContain("presentation-creator")
+    expect(JSON.stringify(result)).not.toContain("apiKey")
+    expect(yield* service.list()).toEqual([])
+  }),
+)

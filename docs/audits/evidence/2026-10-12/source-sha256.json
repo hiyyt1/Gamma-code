@@ -1,0 +1,19 @@
+{
+  "head": "768f18ffe3f35c81bbbd65ee8cae802ef53c35b9",
+  "note": "Working tree already contains many user changes; HEAD alone does not identify audited content.",
+  "files": {
+    "packages/app/src/gamma.css": "893908bbf383f5d39d433dc4b499e2cf2b7c7358b7ed63007cea2894d7d5f2a5",
+    "packages/ui/src/theme/context.tsx": "59db2f5d2b74405d8527362b3784cfd0553301fa7392df092af0374c50f222da",
+    "packages/app/public/oc-theme-preload.js": "8d4449bfa3375186f91aa344dfe7352344af1a5a92d7e2e61d55ada85b1e7c19",
+    "packages/app/src/context/server-sdk.tsx": "0114cb5f67cdea370d9e7d40c7db0bbba876be43f1aceaa62a5aac48b86c2b91",
+    "packages/app/src/context/server-sync.tsx": "84271ba864710a49c4abd31709ce8678266a62c0dae08049150f52ca514809ea",
+    "packages/app/src/context/server-session.ts": "f9aaee1e0528a6de031ee485d2efb283f4a2cb19e4bc3cd7b7c5b8b3beb62978",
+    "packages/app/src/pages/session/timeline/projection.ts": "ac5cfc29fe2d45ba287b2b260c53d3383734ca82d2cf73a2ebead4ed43a9b917",
+    "packages/opencode/src/session/prompt.ts": "fe07bb00b6985047092d0326cedae375a125a2661798a3bd016f0c6abaab939d",
+    "packages/opencode/src/session/processor.ts": "8aa64485d2cf8967cb5bd755bc86f9f882dbd7a5931b7181c5ac49fd0b7d03c5",
+    "packages/opencode/src/session/message-v2.ts": "bfeb41e03e3788c83d3a031cce0aa1cf19a82c024a09e2a6aadbebb7a3d40d53",
+    "packages/opencode/src/server/routes/instance/httpapi/middleware/compression.ts": "d2ad4b241afb2a898c2bec6c56cc0a9b4fb0bc7b654dea4e7accd4869ae272e6",
+    "packages/app/src/components/workspace-files.tsx": "5d9fd8b86a86f5f024dc4792b6fc2cdeebb28bcef9746423ece8d2ee77f9f43e",
+    "deploy/web.ts": "315e696bc9ac7fe8d2c4231fd5fe4f99863ce2ac145d98e73f826d182be50012"
+  }
+}

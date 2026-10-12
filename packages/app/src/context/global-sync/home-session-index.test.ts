@@ -31,6 +31,17 @@ const session = (input: {
 })
 
 describe("Home V2 session index", () => {
+  test("retains legacy sessions without an agent or profile metadata beside specialist sessions", () => {
+    const result = parseHomeSessionIndex([
+      session({ id: "legacy" }),
+      { ...session({ id: "gamma" }), agent: "gamma" },
+      { ...session({ id: "1c" }), agent: "gamma-1c-developer" },
+      { ...session({ id: "bitrix" }), agent: "gamma-bitrix24-developer" },
+    ])
+    expect(result.map((item) => item.id).sort()).toEqual(["1c", "bitrix", "gamma", "legacy"])
+    expect(result.find((item) => item.id === "legacy")?.agent).toBeUndefined()
+  })
+
   test("Home observers share the SSE cache even beneath a different QueryProvider", () => {
     const serverClient = new QueryClient()
     const shellClient = new QueryClient()

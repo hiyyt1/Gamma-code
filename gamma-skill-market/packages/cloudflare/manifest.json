@@ -1,0 +1,116 @@
+{
+  "id": "cloudflare",
+  "name": "Cloudflare Skills",
+  "source": "https://github.com/cloudflare/skills",
+  "author": "cloudflare",
+  "category": "integrations",
+  "description": "Приложения и инфраструктура Cloudflare.",
+  "revision": "41e0d19858946d18af9ee2c2feebbe2e11d829ff",
+  "license": "Apache-2.0",
+  "skills": [
+    {
+      "name": "agents-sdk",
+      "description": "Build, debug, or review Cloudflare Agents SDK applications using the agents package.",
+      "path": "skills/agents-sdk/SKILL.md",
+      "sha256": "95890d0c50e3a1c871b6508f60cd93e1ae10c83732c90f471e985aa5c07d15b0"
+    },
+    {
+      "name": "basin",
+      "description": "Build and troubleshoot Cloudflare Basin analytics workflows with Basin Pipelines, Basin Catalog, and Basin SQL. Use for streaming data into R2 Iceberg tables, managing catalogs, or querying those tables; also use for requests using the former Data Platform, Pipelines, R2 Data Catalog, or R2 SQL names.",
+      "path": "skills/basin/SKILL.md",
+      "sha256": "d9bd504ac8125ef84820af6815b3a6f3417fb9126614bad68e420f0f01cec4e3"
+    },
+    {
+      "name": "cloudflare-email-service",
+      "description": "Implement or troubleshoot Cloudflare Email Sending and Email Routing integrations and their delivery configuration.",
+      "path": "skills/cloudflare-email-service/SKILL.md",
+      "sha256": "846013394fd263cf637b4ea8fb319ccce8ca23a8e5c5aa2ee920a813cf13781a"
+    },
+    {
+      "name": "cloudflare-one-migrations",
+      "description": "Assess and plan migrations from existing VPN, SWG, or SASE platforms to Cloudflare One, including policy mapping, parity gaps, and rollout.",
+      "path": "skills/cloudflare-one-migrations/SKILL.md",
+      "sha256": "0416b670d82b83170156f6fea54436d18af70e1b9d5395811dcfe9e1d16abbb3"
+    },
+    {
+      "name": "cloudflare-one",
+      "description": "Design, configure, troubleshoot, or review Cloudflare One Zero Trust and SASE deployments. Use cloudflare-one-migrations for migration planning from other vendors.",
+      "path": "skills/cloudflare-one/SKILL.md",
+      "sha256": "95e76b32abd7e5e65e92804ef2349bf1b1315c3d9d97ee3d8d7feb64c1c20d1b"
+    },
+    {
+      "name": "cloudflare",
+      "description": "Discover and choose Cloudflare products for apps, APIs, AI agents, storage, networking, and security. Use for architecture and product selection, including when the user describes a need without naming a Cloudflare product; then find the relevant skill or documentation.",
+      "path": "skills/cloudflare/SKILL.md",
+      "sha256": "75cff3ebad35ca82eab3a07e2026d434e61b86d6f367c2ed346c3c780adc1ec5"
+    },
+    {
+      "name": "durable-objects",
+      "description": "Build, debug, or review Cloudflare Durable Objects code for persistent state and coordination.",
+      "path": "skills/durable-objects/SKILL.md",
+      "sha256": "2468c1795f439f494f076eb13a2202a3c4e579e71e6e2ed98b4d1f5ce62fef1b"
+    },
+    {
+      "name": "k2",
+      "description": "Build and troubleshoot Cloudflare K2 or K2 Streams durable logs. Use for stream setup, producing from Workers or HTTP, configuring retention and inputs, and consuming through subscriptions.",
+      "path": "skills/k2/SKILL.md",
+      "sha256": "906b7269c035872eb3802f810b3475107cc121b55b23533a19efb3e615fb5ef6"
+    },
+    {
+      "name": "nextjs-on-cloudflare",
+      "description": "Build, migrate, and deploy Next.js apps on Cloudflare Workers with vinext. Use when starting a Next.js project on Cloudflare, moving an existing app to Workers, choosing between vinext and OpenNext, or setting up vinext for Workers. For setup, migration, or deployment, install vinext's upstream skills with `npx skills add cloudflare/vinext` if missing, then read and follow the applicable skill and docs.",
+      "path": "skills/nextjs-on-cloudflare/SKILL.md",
+      "sha256": "4755b76350b64f2057f21f44aabc46b73d23b7d66f2c4ceb2970634e7eae70d6"
+    },
+    {
+      "name": "sandbox-migrate-to-next",
+      "description": "Migrate Cloudflare Sandbox apps from stable @cloudflare/sandbox to @cloudflare/sandbox@next (SDK 1.0 preview). Use sandbox-next for apps already on the preview.",
+      "path": "skills/sandbox-migrate-to-next/SKILL.md",
+      "sha256": "cd070c652654eb419e11cdaab403351a451d2bbac88afa70141bdc0077ae2512"
+    },
+    {
+      "name": "sandbox-next",
+      "description": "Build or maintain Cloudflare Sandbox apps on @cloudflare/sandbox@next (SDK 1.0 preview). Use sandbox-migrate-to-next when porting a stable app.",
+      "path": "skills/sandbox-next/SKILL.md",
+      "sha256": "12715f895553982177161d13169ffaef17ea05966645fd85757e067f34df68f1"
+    },
+    {
+      "name": "sandbox-stable",
+      "description": "Build or maintain Cloudflare Sandbox apps on the stable @cloudflare/sandbox package. Use sandbox-next for preview apps and sandbox-migrate-to-next for stable-to-preview migrations.",
+      "path": "skills/sandbox-stable/SKILL.md",
+      "sha256": "490dc8b20d6ffbdfcbf1b4bc30fda1362997d4cf1d2af48fa1afb63fdf8f37ad"
+    },
+    {
+      "name": "turnstile-spin",
+      "description": "Set up, repair, or migrate to Cloudflare Turnstile bot verification in an existing frontend and backend, including server-side Siteverify.",
+      "path": "skills/turnstile-spin/SKILL.md",
+      "sha256": "ec154e3f2df0ce4018be74aa287b59596031617f939c3b4e5ef49a4f10ce6a66"
+    },
+    {
+      "name": "web-perf",
+      "description": "Audit, diagnose, or optimize website loading and interaction performance, Core Web Vitals, and Lighthouse performance scores.",
+      "path": "skills/web-perf/SKILL.md",
+      "sha256": "79c531e95ca4d96a7de920c28c127c2c09ec55cd452a92222267d2954580be23"
+    },
+    {
+      "name": "workers-best-practices",
+      "description": "Cloudflare Workers best practices for production applications. Use when writing, reviewing, or configuring Workers.",
+      "path": "skills/workers-best-practices/SKILL.md",
+      "sha256": "8ae8c6e7359171ba6a1688503850fa05ce47199c4e288343bf55b5e277351bae"
+    },
+    {
+      "name": "wrangler",
+      "description": "Run or troubleshoot Wrangler CLI commands and configure Worker projects for local development, Previews, deployment, and Cloudflare resource management.",
+      "path": "skills/wrangler/SKILL.md",
+      "sha256": "9d9bd78c79823cdad36a88dbece8e48d8512c7262c66546ccbfac64ae08d310f"
+    }
+  ],
+  "dependencies": [
+    "Node.js и Wrangler CLI",
+    "Cloudflare account / API token с ограниченными правами; дополнительные MCP по сценарию"
+  ],
+  "compatibility": "needs-configuration",
+  "reason": "Skills разбираются OpenCode, но выполнение требует Cloudflare account, Wrangler и отдельных MCP/CLI. Эти зависимости не настроены; развёртывание не проверено.",
+  "enabledByDefault": false,
+  "runtimes": []
+}

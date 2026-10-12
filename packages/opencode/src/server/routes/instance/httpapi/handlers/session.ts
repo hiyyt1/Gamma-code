@@ -1,3 +1,5 @@
+import { SessionAgent } from "@opencode-ai/core/session/agent"
+import { Database } from "@opencode-ai/core/database/database"
 import { PermissionV1 } from "@opencode-ai/core/v1/permission"
 import { Agent } from "@/agent/agent"
 import { SessionV1 } from "@opencode-ai/core/v1/session"
@@ -47,6 +49,7 @@ const tryParseJson = (text: string) =>
 
 export const sessionHandlers = HttpApiBuilder.group(InstanceHttpApi, "session", (handlers) =>
   Effect.gen(function* () {
+    const database = yield* Database.Service
     const session = yield* Session.Service
     const shareSvc = yield* SessionShare.Service
     const promptSvc = yield* SessionPrompt.Service
@@ -292,11 +295,19 @@ export const sessionHandlers = HttpApiBuilder.group(InstanceHttpApi, "session", 
       return true
     })
 
+    const requireAgent = (sessionID: string, agent?: string) =>
+      SessionAgent.load(sessionID).pipe(
+        Effect.provideService(Database.Service, database),
+        Effect.map((binding) => SessionAgent.assert(binding, agent)),
+        Effect.catchDefect(() => Effect.fail(new HttpApiError.BadRequest({}))),
+      )
+
     const prompt = Effect.fn("SessionHttpApi.prompt")(function* (ctx: {
       params: { sessionID: SessionID }
       payload: typeof PromptPayload.Type
     }) {
       yield* requireSession(ctx.params.sessionID)
+      yield* requireAgent(ctx.params.sessionID, ctx.payload.agent)
       const message = yield* promptSvc
         .prompt({
           ...ctx.payload,
@@ -313,6 +324,7 @@ export const sessionHandlers = HttpApiBuilder.group(InstanceHttpApi, "session", 
       payload: typeof PromptPayload.Type
     }) {
       yield* requireSession(ctx.params.sessionID)
+      yield* requireAgent(ctx.params.sessionID, ctx.payload.agent)
       yield* promptSvc.prompt({ ...ctx.payload, sessionID: ctx.params.sessionID }).pipe(
         Effect.catchCause((cause) =>
           Effect.gen(function* () {
@@ -333,6 +345,7 @@ export const sessionHandlers = HttpApiBuilder.group(InstanceHttpApi, "session", 
       payload: typeof CommandPayload.Type
     }) {
       yield* requireSession(ctx.params.sessionID)
+      yield* requireAgent(ctx.params.sessionID, ctx.payload.agent)
       return yield* promptSvc
         .command({ ...ctx.payload, sessionID: ctx.params.sessionID })
         .pipe(Effect.mapError(() => new HttpApiError.BadRequest({})))
@@ -343,6 +356,7 @@ export const sessionHandlers = HttpApiBuilder.group(InstanceHttpApi, "session", 
       payload: typeof ShellPayload.Type
     }) {
       yield* requireSession(ctx.params.sessionID)
+      yield* requireAgent(ctx.params.sessionID, ctx.payload.agent)
       return yield* SessionError.mapBusy(promptSvc.shell({ ...ctx.payload, sessionID: ctx.params.sessionID }))
     })
 

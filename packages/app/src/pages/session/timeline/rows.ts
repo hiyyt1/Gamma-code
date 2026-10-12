@@ -5,6 +5,7 @@ import { groupParts, renderable, type PartGroup } from "@opencode-ai/session-ui/
 import { TimelineRow, type SummaryDiff } from "./timeline-row"
 import { uniqueSummaryDiffs } from "./summary-diffs"
 import { compareMessages } from "@/utils/session-message"
+import { responsePhase } from "@opencode-ai/session-ui/response-phase"
 
 export { TimelineRow, type SummaryDiff } from "./timeline-row"
 
@@ -26,10 +27,10 @@ export type TimelineRowMap = {
     group: PartGroup
     previousAssistantPart: boolean
   }
-  Thinking: { userMessageID: string; reasoningHeading?: string }
+  Thinking: { userMessageID: string; reasoningHeading?: string; phase?: "waiting" | "generating" | "reasoning" }
   Retry: { userMessageID: string }
   DiffSummary: { userMessageID: string; diffs: SummaryDiff[] }
-  Error: { userMessageID: string; text: string }
+  Error: { userMessageID: string; text: string; providerError?: boolean }
 }
 
 export namespace Timeline {
@@ -199,6 +200,7 @@ export namespace Timeline {
       rows.push(
         new TimelineRow.Thinking({
           userMessageID: userMessage.id,
+          phase: responsePhase(getMessageParts(assistantMessages.at(-1)?.id ?? "")),
           reasoningHeading: heading,
         }),
       )
@@ -221,6 +223,7 @@ export namespace Timeline {
       rows.push(
         new TimelineRow.Error({
           userMessageID: userMessage.id,
+          providerError: error.name === "APIError",
           text: unwrapErrorMessage(
             typeof data === "string" ? data : data === undefined || data === null ? "" : String(data),
           ),

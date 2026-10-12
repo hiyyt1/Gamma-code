@@ -1,0 +1,123 @@
+{
+  "config": {
+    "configFile": "/home/nikita/menti/mvp_platform/packages/app/e2e/performance/navigation/playwright.config.ts",
+    "rootDir": "/home/nikita/menti/mvp_platform/packages/app/e2e/performance/navigation",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/tmp/gamma-navigation-after-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/home/nikita/menti/mvp_platform/packages/app/e2e/performance/navigation",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 180000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "line",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "/tmp/gamma-navigation-after-report.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.59.1",
+    "workers": 1,
+    "webServer": {
+      "command": "bun run serve -- --host 127.0.0.1 --port 4520 --strictPort --outDir /tmp/gamma-navigation-fixed",
+      "url": "http://127.0.0.1:4520",
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "navigation.spec.ts",
+      "file": "navigation.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "graph lifecycle",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 35345,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T15:40:30.705Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "graph",
+                      "contentType": "application/json",
+                      "body": "eyJpbml0aWFsIjp7ImRvY3VtZW50cyI6Miwibm9kZXMiOjI5MTEsImpzRXZlbnRMaXN0ZW5lcnMiOjExN30sImFmdGVyIjp7ImRvY3VtZW50cyI6Miwibm9kZXMiOjIzMTUsImpzRXZlbnRMaXN0ZW5lcnMiOjg4fSwiY3ljbGVzIjpbeyJkb2N1bWVudHMiOjIsIm5vZGVzIjoyMzUzLCJqc0V2ZW50TGlzdGVuZXJzIjo4OH0seyJkb2N1bWVudHMiOjIsIm5vZGVzIjoyMzYwLCJqc0V2ZW50TGlzdGVuZXJzIjo4OH0seyJkb2N1bWVudHMiOjIsIm5vZGVzIjoyMzUzLCJqc0V2ZW50TGlzdGVuZXJzIjo4OH0seyJkb2N1bWVudHMiOjIsIm5vZGVzIjoyMzUzLCJqc0V2ZW50TGlzdGVuZXJzIjo4OH0seyJkb2N1bWVudHMiOjIsIm5vZGVzIjoyMzUzLCJqc0V2ZW50TGlzdGVuZXJzIjo4OH0seyJkb2N1bWVudHMiOjIsIm5vZGVzIjoyMzUzLCJqc0V2ZW50TGlzdGVuZXJzIjo4OH0seyJkb2N1bWVudHMiOjIsIm5vZGVzIjoyMzUzLCJqc0V2ZW50TGlzdGVuZXJzIjo4OH0seyJkb2N1bWVudHMiOjIsIm5vZGVzIjoyMzUzLCJqc0V2ZW50TGlzdGVuZXJzIjo4OH0seyJkb2N1bWVudHMiOjIsIm5vZGVzIjoyMzUzLCJqc0V2ZW50TGlzdGVuZXJzIjo4OH0seyJkb2N1bWVudHMiOjIsIm5vZGVzIjoyMzUzLCJqc0V2ZW50TGlzdGVuZXJzIjo4OH0seyJkb2N1bWVudHMiOjIsIm5vZGVzIjoyMzUzLCJqc0V2ZW50TGlzdGVuZXJzIjo4OH0seyJkb2N1bWVudHMiOjIsIm5vZGVzIjoyMzUzLCJqc0V2ZW50TGlzdGVuZXJzIjo4OH0seyJkb2N1bWVudHMiOjIsIm5vZGVzIjoyMzUzLCJqc0V2ZW50TGlzdGVuZXJzIjo4OH0seyJkb2N1bWVudHMiOjIsIm5vZGVzIjoyMzUzLCJqc0V2ZW50TGlzdGVuZXJzIjo4OH0seyJkb2N1bWVudHMiOjIsIm5vZGVzIjoyMzUzLCJqc0V2ZW50TGlzdGVuZXJzIjo4OH0seyJkb2N1bWVudHMiOjIsIm5vZGVzIjoyMzUzLCJqc0V2ZW50TGlzdGVuZXJzIjo4OH0seyJkb2N1bWVudHMiOjIsIm5vZGVzIjoyMzUzLCJqc0V2ZW50TGlzdGVuZXJzIjo4OH0seyJkb2N1bWVudHMiOjIsIm5vZGVzIjoyMzUzLCJqc0V2ZW50TGlzdGVuZXJzIjo4OH0seyJkb2N1bWVudHMiOjIsIm5vZGVzIjoyMzUzLCJqc0V2ZW50TGlzdGVuZXJzIjo4OH0seyJkb2N1bWVudHMiOjIsIm5vZGVzIjoyMzUzLCJqc0V2ZW50TGlzdGVuZXJzIjo4OH0seyJkb2N1bWVudHMiOjIsIm5vZGVzIjoyMzYwLCJqc0V2ZW50TGlzdGVuZXJzIjo4OH0seyJkb2N1bWVudHMiOjIsIm5vZGVzIjoyMzUzLCJqc0V2ZW50TGlzdGVuZXJzIjo4OH0seyJkb2N1bWVudHMiOjIsIm5vZGVzIjoyMzUzLCJqc0V2ZW50TGlzdGVuZXJzIjo4OH0seyJkb2N1bWVudHMiOjIsIm5vZGVzIjoyMzUzLCJqc0V2ZW50TGlzdGVuZXJzIjo4OH0seyJkb2N1bWVudHMiOjIsIm5vZGVzIjoyMzUzLCJqc0V2ZW50TGlzdGVuZXJzIjo4OH1dfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5d2868f7d23420c27cca-54d2114c1a05332d2808",
+          "file": "navigation.spec.ts",
+          "line": 278,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-12T15:40:29.897Z",
+    "duration": 36226.003000000004,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

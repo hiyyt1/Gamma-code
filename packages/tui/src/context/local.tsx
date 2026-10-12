@@ -78,7 +78,7 @@ export const { use: useLocal, provider: LocalProvider } = createSimpleContext({
       const agents = createMemo(() => sync.data.agent.filter((agent) => agent.mode !== "subagent" && !agent.hidden))
       const visibleAgents = createMemo(() => sync.data.agent.filter((agent) => !agent.hidden))
       const [agentStore, setAgentStore] = createStore({
-        current: undefined as string | undefined,
+        current: "gamma" as string | undefined,
       })
       const colors = createMemo(() => [
         theme.secondary,
@@ -91,12 +91,19 @@ export const { use: useLocal, provider: LocalProvider } = createSimpleContext({
       ])
       return {
         list() {
+          const currentRoute = route.data
+          if (currentRoute.type === "session")
+            return sync.data.agent.filter((agent) => agent.name === sync.session.get(currentRoute.sessionID)?.agent)
           return agents()
         },
         current() {
+          const currentRoute = route.data
+          if (currentRoute.type === "session")
+            return sync.data.agent.find((agent) => agent.name === sync.session.get(currentRoute.sessionID)?.agent)
           return agents().find((x) => x.name === agentStore.current) ?? agents().at(0)
         },
         set(name: string) {
+          if (route.data.type === "session") return
           if (!agents().some((x) => x.name === name))
             return toast.show({
               variant: "warning",
@@ -106,6 +113,7 @@ export const { use: useLocal, provider: LocalProvider } = createSimpleContext({
           setAgentStore("current", name)
         },
         move(direction: 1 | -1) {
+          if (route.data.type === "session") return
           batch(() => {
             const current = this.current()
             if (!current) return

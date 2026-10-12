@@ -27,3 +27,10 @@ describe("resolveAgent", () => {
     expect(resolveAgent([{ name: "custom" }], "missing")?.name).toBe("custom")
   })
 })
+
+test("Gamma is the default and explicit specialists/Guide remain selected", () => {
+  const agents = [{ name: "build" }, { name: "gamma" }, { name: "gamma-guide" }, { name: "gamma-website-builder" }]
+  expect(resolveAgent(agents)?.name).toBe("gamma")
+  expect(resolveAgent(agents, "gamma-guide")?.name).toBe("gamma-guide")
+  expect(resolveAgent(agents, "gamma-website-builder")?.name).toBe("gamma-website-builder")
+})

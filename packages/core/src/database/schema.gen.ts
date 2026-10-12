@@ -57,6 +57,26 @@ export default {
         );
       `)
       yield* tx.run(`
+        CREATE TABLE \`agent_market_request\` (
+          \`project_directory\` text NOT NULL,
+          \`request_id\` text NOT NULL,
+          \`agent_id\` text NOT NULL,
+          \`session_id\` text NOT NULL,
+          \`version\` integer NOT NULL,
+          \`revision\` text NOT NULL,
+          CONSTRAINT \`agent_market_request_pk\` PRIMARY KEY(\`project_directory\`, \`request_id\`)
+        );
+      `)
+      yield* tx.run(`
+        CREATE TABLE \`agent_market_selection\` (
+          \`project_directory\` text PRIMARY KEY,
+          \`agent_id\` text NOT NULL,
+          \`version\` integer NOT NULL,
+          \`revision\` text NOT NULL,
+          \`skill_packages\` text NOT NULL
+        );
+      `)
+      yield* tx.run(`
         CREATE TABLE \`credential\` (
           \`id\` text PRIMARY KEY,
           \`integration_id\` text,
@@ -234,6 +254,14 @@ export default {
           \`time_created\` integer NOT NULL,
           \`time_updated\` integer NOT NULL,
           CONSTRAINT \`fk_session_share_session_id_session_id_fk\` FOREIGN KEY (\`session_id\`) REFERENCES \`session\`(\`id\`) ON DELETE CASCADE
+        );
+      `)
+      yield* tx.run(`
+        CREATE TABLE \`skill_market_selection\` (
+          \`project_directory\` text NOT NULL,
+          \`package_id\` text NOT NULL,
+          \`revision\` text NOT NULL,
+          CONSTRAINT \`skill_market_selection_pk\` PRIMARY KEY(\`project_directory\`, \`package_id\`)
         );
       `)
       yield* tx.run(`CREATE UNIQUE INDEX \`event_aggregate_seq_idx\` ON \`event\` (\`aggregate_id\`,\`seq\`);`)

@@ -1,3 +1,4 @@
+import { ProjectKnowledge } from "./project-knowledge"
 import { Button } from "@opencode-ai/ui/button"
 import { Dialog } from "@opencode-ai/ui/dialog"
 import { TextField } from "@opencode-ai/ui/text-field"
@@ -164,6 +165,7 @@ export function DialogEditProject(props: { project: LocalProject; server: Server
             {model.save.isPending ? language.t("common.saving") : language.t("common.save")}
           </Button>
         </div>
+        <ProjectKnowledge server={props.server.http} directory={props.project.worktree} />
       </form>
     </Dialog>
   )

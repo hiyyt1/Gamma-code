@@ -5,7 +5,7 @@ import { open, mkdir, readdir, type FileHandle } from "node:fs/promises"
 import path from "node:path"
 
 export function root() {
-  const value = process.env.ORESHNIK_WORKSPACES_ROOT ?? "/home/oreshnik/workspaces"
+  const value = process.env.GAMMA_WORKSPACES_ROOT ?? "/home/gamma/workspaces"
   if (!path.isAbsolute(value)) throw new Error("invalid_root")
   return path.resolve(value)
 }
@@ -137,9 +137,38 @@ export function files(directory: string, relative: string) {
   )
 }
 
+export const MAX_PREVIEW_BYTES = 2 * 1024 * 1024
+
+export function download(directory: string, relative: string) {
+  return withFile(directory, relative, false, async (handle) => {
+    const limit = 50 * 1024 * 1024
+    const size = (await handle.stat()).size
+    if (size > limit) throw new Error("too_large")
+    const bytes = Buffer.alloc(size + 1)
+    const cursor = { read: 0 }
+    while (cursor.read < bytes.length) {
+      const result = await handle.read(bytes, cursor.read, bytes.length - cursor.read, cursor.read)
+      if (!result.bytesRead) break
+      cursor.read += result.bytesRead
+    }
+    if (cursor.read !== size) throw new Error("file_changed")
+    return bytes.subarray(0, cursor.read)
+  })
+}
+
 export function content(directory: string, relative: string) {
   return withFile(directory, relative, false, async (handle) => {
-    const bytes = await handle.readFile()
+    if ((await handle.stat()).size > MAX_PREVIEW_BYTES) throw new Error("too_large")
+    // Bound the read itself as well: a file can grow after stat().
+    const buffer = Buffer.alloc(MAX_PREVIEW_BYTES + 1)
+    let length = 0
+    while (length < buffer.length) {
+      const result = await handle.read(buffer, length, buffer.length - length, null)
+      if (!result.bytesRead) break
+      length += result.bytesRead
+    }
+    if (length > MAX_PREVIEW_BYTES) throw new Error("too_large")
+    const bytes = buffer.subarray(0, length)
     const text = bytes.includes(0)
       ? undefined
       : await Promise.resolve()

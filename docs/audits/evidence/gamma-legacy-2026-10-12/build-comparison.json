@@ -1,0 +1,20 @@
+{
+  "dev-gamma": {
+    "entry": "assets/index-BS_WLSAz.js",
+    "bytes": 2814360,
+    "build": {
+      "elapsedMs": 13829.080978
+    },
+    "gzip6Bytes": 840799,
+    "gzip9Bytes": 838851
+  },
+  "-prod": {
+    "entry": "assets/index-BMqSZebU.js",
+    "bytes": 2814065,
+    "build": {
+      "elapsedMs": 14061.710771
+    },
+    "gzip6Bytes": 840717,
+    "gzip9Bytes": 838771
+  }
+}

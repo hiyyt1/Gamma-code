@@ -1,8 +1,8 @@
 import { PRODUCT_ENGLISH } from "./product"
 export const dict = {
   ...PRODUCT_ENGLISH,
-  "app.name": "Oreshnik",
-  "desktop.menu.app": "Oreshnik",
+  "app.name": "Gamma",
+  "desktop.menu.app": "Gamma",
   "desktop.menu.file": "Fitxer",
   "desktop.menu.edit": "Edita",
   "desktop.menu.view": "Veure",
@@ -225,7 +225,7 @@ export const dict = {
   "provider.connect.status.waiting": "Esperant l'autorització...",
   "provider.connect.status.failed": "L'autorització ha fallat: {{error}}",
   "provider.connect.apiKey.description":
-    "Introduïu la clau API de {{provider}} per connectar el compte i utilitzar els models de {{provider}} a Oreshnik.",
+    "Introduïu la clau API de {{provider}} per connectar el compte i utilitzar els models de {{provider}} a Gamma.",
   "provider.connect.apiKey.label": "Tecla {{provider}} API.",
   "provider.connect.apiKey.placeholder": "tecla API.",
   "provider.connect.apiKey.required": "La clau API és necessària",
@@ -239,7 +239,7 @@ export const dict = {
   "provider.connect.oauth.code.visit.prefix": "Visita ",
   "provider.connect.oauth.code.visit.link": "aquest enllaç",
   "provider.connect.oauth.code.visit.suffix":
-    " per recollir el vostre codi d'autorització per connectar el vostre compte i utilitzar {{provider}} models a Oreshnik.",
+    " per recollir el vostre codi d'autorització per connectar el vostre compte i utilitzar {{provider}} models a Gamma.",
   "provider.connect.oauth.code.label": "{{method}} codi d'autorització",
   "provider.connect.oauth.code.placeholder": "Codi d'autorització",
   "provider.connect.oauth.code.required": "Cal un codi d'autorització",
@@ -247,7 +247,7 @@ export const dict = {
   "provider.connect.oauth.auto.visit.prefix": "Visita ",
   "provider.connect.oauth.auto.visit.link": "aquest enllaç",
   "provider.connect.oauth.auto.visit.suffix":
-    " i introduïu el codi següent per connectar el vostre compte i utilitzar {{provider}} models a Oreshnik.",
+    " i introduïu el codi següent per connectar el vostre compte i utilitzar {{provider}} models a Gamma.",
   "provider.connect.oauth.auto.confirmationCode": "Codi de confirmació",
   "provider.connect.toast.connected.title": "{{provider}} connectat",
   "provider.connect.toast.connected.description": "{{provider}} ara es poden utilitzar models.",
@@ -520,7 +520,7 @@ export const dict = {
   "help.tabs.title": "Presentació de les pestanyes",
   "help.tabs.description": "Organitza el teu treball i les sessions actives amb pestanyes",
   "help.tabs.date": "14 de juliol",
-  "help.tabs.introduction": "Oreshnik L'escriptori ara està construït al voltant de pestanyes.",
+  "help.tabs.introduction": "Gamma L'escriptori ara està construït al voltant de pestanyes.",
   "help.tabs.sessions":
     "Inicieu una sessió nova en una pestanya o obriu una sessió existent des de qualsevol dels vostres projectes. Obre una pestanya nova quan comencis una cosa nova i tanca-la quan hagis acabat.",
   "help.tabs.organize":
@@ -630,7 +630,7 @@ export const dict = {
   "toast.session.listFailed.title": "No s'han pogut carregar les sessions de {{project}}",
   "toast.project.reloadFailed.title": "No s'ha pogut tornar a carregar {{project}}",
   "toast.update.title": "Actualització disponible",
-  "toast.update.description": "Una nova versió de Oreshnik ({{version}}) ja està disponible per instal·lar-la.",
+  "toast.update.description": "Una nova versió de Gamma ({{version}}) ja està disponible per instal·lar-la.",
   "toast.update.action.installRestart": "Instal·leu i reinicieu",
   "toast.update.action.notYet": "Encara no",
   "error.page.title": "Alguna cosa va fallar",
@@ -920,7 +920,7 @@ export const dict = {
   "debugBar.direction.tip": "Força la direcció completa del disseny de l'aplicació sense canviar l'idioma seleccionat",
   "debugBar.direction.ltr": "LTR",
   "debugBar.direction.rtl": "RTL",
-  "app.name.desktop": "Oreshnik Escriptori",
+  "app.name.desktop": "Gamma Escriptori",
   "settings.section.desktop": "Escriptori",
   "settings.section.server": "Servidor",
   "settings.tab.general": "General",
@@ -936,17 +936,17 @@ export const dict = {
   "settings.general.section.feed": "Alimentació",
   "settings.general.section.display": "Mostra",
   "settings.general.row.language.title": "Llengua",
-  "settings.general.row.language.description": "Canvia l'idioma de visualització per a Oreshnik",
+  "settings.general.row.language.description": "Canvia l'idioma de visualització per a Gamma",
   "settings.general.row.shell.title": "Carcassa terminal",
   "settings.general.row.shell.description": "Shell utilitzat pel terminal i les eines d'agent",
   "settings.general.row.shell.autoDefault": "Automàtic (per defecte)",
   "settings.general.row.shell.terminalOnly": "només terminal",
   "settings.general.row.appearance.title": "Aparença",
-  "settings.general.row.appearance.description": "Personalitza com es veu Oreshnik al teu dispositiu",
+  "settings.general.row.appearance.description": "Personalitza com es veu Gamma al teu dispositiu",
   "settings.general.row.colorScheme.title": "Esquema de colors",
-  "settings.general.row.colorScheme.description": "Trieu si Oreshnik segueix el tema del sistema, clar o fosc",
+  "settings.general.row.colorScheme.description": "Trieu si Gamma segueix el tema del sistema, clar o fosc",
   "settings.general.row.theme.title": "Tema",
-  "settings.general.row.theme.description": "Personalitza la temàtica de Oreshnik.",
+  "settings.general.row.theme.description": "Personalitza la temàtica de Gamma.",
   "settings.general.row.font.title": "Font del codi",
   "settings.general.row.font.description": "Personalitzeu el tipus de lletra utilitzat als blocs de codi",
   "settings.general.row.terminalFont.title": "Tipus de lletra terminal",
@@ -1002,7 +1002,7 @@ export const dict = {
     "Mostra les finestres emergents Novetats després de les actualitzacions",
   "settings.updates.row.startup.title": "Comproveu si hi ha actualitzacions a l'inici",
   "settings.updates.row.startup.description":
-    "Comprova automàticament si hi ha actualitzacions quan s'iniciï Oreshnik.",
+    "Comprova automàticament si hi ha actualitzacions quan s'iniciï Gamma.",
   "settings.updates.row.check.title": "Comproveu si hi ha actualitzacions",
   "settings.updates.row.check.description":
     "Comproveu manualment si hi ha actualitzacions i instal·leu si està disponible",
@@ -1011,7 +1011,7 @@ export const dict = {
   "settings.updates.action.downloading": "S'està baixant...",
   "settings.updates.action.installing": "S'està instal·lant...",
   "settings.updates.toast.latest.title": "Estàs al dia",
-  "settings.updates.toast.latest.description": "Esteu executant la darrera versió de Oreshnik.",
+  "settings.updates.toast.latest.description": "Esteu executant la darrera versió de Gamma.",
   "sound.option.none": "Cap",
   "sound.option.alert01": "Alerta 01",
   "sound.option.alert02": "Alerta 02",
@@ -1173,4 +1173,6 @@ export const dict = {
   "workspace.reset.archived.many": "{{count}} sessions s'arxivaran.",
   "workspace.reset.note": "Això restablirà l'espai de treball perquè coincideixi amb la branca predeterminada.",
   "dialog.usageExceeded.dontShowAgain": "No ho tornis a mostrar",
+  // English fallback pending locale review; retain the count placeholder.
+  "workspace.files.count.many": "{{count}} files",
 }
