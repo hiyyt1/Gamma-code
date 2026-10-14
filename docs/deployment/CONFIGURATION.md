@@ -30,7 +30,7 @@
 | `GAMMA_WEB_ROOT` | Нет | ../packages/app/dist относительно deploy/web.ts | Production static assets | /opt/gamma/releases/<id>/packages/app/dist | Нет |
 | `GAMMA_PUBLIC_ORIGIN` | Да | нет; startup error | Точный origin без trailing slash; HTTPS вне loopback | https://gamma.example.com | Нет |
 | `GAMMA_AUTH_CONFIG` | Да | нет; startup error | Путь к 0600 JSON с username/passwordHash; не provider credentials | /etc/gamma/auth.json | Нет |
-| `GAMMA_TRUST_PROXY` | Да за данным Nginx | false | Только строка 1 доверяет X-Real-IP; Nginx обязан перезаписывать header | 1 | Нет |
+| `GAMMA_TRUST_PROXY` | 1 за данным Nginx; 0 для SSH/Cloudflare Tunnel | false | Только строка 1 доверяет X-Real-IP; Nginx обязан перезаписывать header | 1 | Нет |
 | `OPENCODE_SERVER_USERNAME` | Нет | opencode | Внутренний Basic login, не browser admin; setup-auth создаёт gamma-internal | gamma-internal | Нет |
 | `OPENCODE_SERVER_PASSWORD` | Да для gateway | нет; backend без auth, gateway откажет | Случайный внутренний пароль >=32 символов, создан setup-auth | генерируется setup-auth | Да |
 | `GAMMA_PREVIEW_DOMAIN` | При Preview | нет; disabled | Base для capability hosts на независимом регистрируемом домене | preview.example.net | Нет |
@@ -307,3 +307,5 @@ User/workspace directories 0700; release после build root-owned, group/othe
 
 
 Финальные defaults: `dev:gamma` использует `deploy/opencode.json`, `OPENCODE_DISABLE_PROJECT_CONFIG=1` и build `NODE_OPTIONS=--max-old-space-size=4096`, если оператор не указал overrides. Installer рендерит ту же permission policy (allow + external_directory deny), сохраняет выбранный профиль при upgrade и задаёт `PLAYWRIGHT_BROWSERS_PATH` внутри immutable release. Proxy variables installer не принимает: необходим прямой egress, диагностика происходит до provisioning.
+
+В installer-режиме `cloudflare-tunnel` origin — `https://<ваш hostname>`, gateway — `127.0.0.1:4444`, trust proxy — 0. Локальный cloudflared направляется на gateway по HTTP; Secure cookie и exact-Origin проверки определяются публичным HTTPS origin, а не локальным транспортом. Настройка описана в [INSTALL.md](INSTALL.md).

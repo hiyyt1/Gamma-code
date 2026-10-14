@@ -4,7 +4,7 @@
 
 ## Поддерживаемый сценарий
 
-Чистый Ubuntu Server **24.04 LTS amd64**, systemd, минимум 2 vCPU, 8 GiB RAM и 30 GiB свободно на томах приложения/данных. Рекомендуется 4 vCPU/16 GiB при работе браузеров. Python 3 входит в обычный Ubuntu Server; для получения checkout нужны Git и CA certificates. Другие Ubuntu/ARM намеренно отклоняются до отдельной квалификации. Это целевая платформа установщика; полноценная проверка в загруженной чистой VM ещё не выполнена.
+Чистый Ubuntu Server **24.04 или 26.04 LTS amd64** (включая **26.04.1**), systemd, минимум 2 vCPU, 8 GiB RAM и 30 GiB свободно на томах приложения/данных. Рекомендуется 4 vCPU/16 GiB при работе браузеров. Python 3 входит в обычный Ubuntu Server; для получения checkout нужны Git и CA certificates. Другие Ubuntu/ARM намеренно отклоняются до отдельной квалификации. Это целевая платформа установщика; полноценная проверка в загруженной чистой VM ещё не выполнена.
 
 Установщик состоит из корневого `install-gamma.sh` и `deploy/installer/gamma_installer.py` (Python stdlib). Нужен **полный checkout**, один скачанный shell-файл недостаточен. Все команды ниже выполняет администратор со своего SSH-аккаунта; `sudo` запускает provisioning от root. Приложение работает как `gamma`, сборка как отдельный `gamma-build`. Ни у одного нет sudo/docker membership.
 
@@ -34,6 +34,34 @@ sudo ./install-gamma.sh --check
 ```
 
 Без параметров домена эта проверка оценивает вариант SSH-туннеля. Проверка DNS/public портов требует тех же `--domain` и `--https`, что будут при установке. `--check` не скачивает runtime и не выполняет пробную сборку.
+
+## Домашний сервер: Ubuntu 26.04.1 и Cloudflare Tunnel
+
+Intel Core i5 с 4 ядрами, 8 GB RAM и HDD подходят при прохождении проверки доступной ОС памяти и свободного места. SSD ускоряет сборку и SQLite, но не обязателен. GPU и локальные модели не нужны. Wi-Fi допустим: настройте автоматическое подключение при загрузке и стабильный исходящий доступ; установщик сеть не перенастраивает.
+
+После публикации изменений в Gamma repository, **администратор на новом сервере**:
+
+```bash
+sudo apt-get update
+sudo apt-get install -y git ca-certificates python3
+git clone https://github.com/hiyyt1/Gamma-code.git Gamma-code
+cd Gamma-code
+read -rp 'Публичный hostname Gamma в Cloudflare: ' GAMMA_HOST
+GAMMA_RELEASE="$(git rev-parse HEAD)"
+sudo ./install-gamma.sh --check
+sudo ./install-gamma.sh --check --https cloudflare-tunnel --domain "$GAMMA_HOST"
+sudo ./install-gamma.sh --install --ref "$GAMMA_RELEASE" --https cloudflare-tunnel --domain "$GAMMA_HOST"
+sudo ./install-gamma.sh --status
+sudo ./install-gamma.sh --doctor
+```
+
+Нужен постоянный hostname вашего домена, без `https://` и пути. Режим `cloudflare-tunnel` фиксирует `GAMMA_PUBLIC_ORIGIN=https://HOST`; cookie остаётся Secure/HttpOnly, проверка Origin сохраняется. Gateway и backend слушают только loopback. Nginx virtual host и локальный сертификат для Gamma не создаются; DNS может быть настроен после установки. Общие пакеты Nginx/Certbot пока входят в стандартный набор, их штатные настройки не удаляются.
+
+На **этом же сервере** настройте `cloudflared` как системный сервис по [официальной инструкции Cloudflare](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel/). Для published application задайте выбранный hostname и Service **HTTP → `127.0.0.1:4444`**. Cloudflare принимает внешний HTTPS и передаёт HTTP через локальный connector — [поддерживаемая схема](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/protocols/). Не направляйте tunnel на backend 4096. Включите перенаправление внешнего HTTP на HTTPS в Cloudflare; не задавайте Cache Everything для приложения/API. Проверяйте вход только по `https://HOST`.
+
+Установщик не получает токен Cloudflare, не устанавливает connector и не управляет аккаунтом/DNS. Настройка tunnel требует ваших данных Cloudflare; это отдельный шаг публикации, а не исправление зависимостей Gamma. Проброс входящих портов на роутере не нужен. Не открывайте 4096/4444 наружу. `GAMMA_TRUST_PROXY=0` намеренно не доверяет входному `X-Real-IP`: лимит входа общий для локального connector.
+
+После подключения проверьте внешний login/logout, SSE и terminal WebSocket. Локальные `--status`/`--doctor` **не подтверждают** доступность Cloudflare, внешний TLS или восстановление Wi-Fi после reboot. Область выполненных тестов: [аудит Ubuntu](UBUNTU.md).
 
 ## Домен и HTTPS
 
@@ -80,7 +108,7 @@ ssh -N -L 4444:127.0.0.1:4444 "$GAMMA_SSH"
 | `--repo URL` | По умолчанию Gamma GitHub URL выше; только GitHub HTTPS без credentials |
 | `--ref REF` | По умолчанию remote `HEAD`; branch/tag/40-character SHA, результат закрепляется в manifest |
 | `--domain HOST` | Lowercase DNS hostname; IPv4 разрешён только с existing TLS |
-| `--https MODE` | `letsencrypt`, `existing`, `ssh-tunnel`; интерактивный выбор |
+| `--https MODE` | `letsencrypt`, `existing`, `ssh-tunnel`, `cloudflare-tunnel`; интерактивный выбор |
 | `--email EMAIL` | ACME contact, обязателен с letsencrypt |
 | `--tls-cert PATH`, `--tls-key PATH` | Абсолютные пути для existing TLS |
 | `--admin-user LOGIN` | Один администратор gateway, не системный пользователь |

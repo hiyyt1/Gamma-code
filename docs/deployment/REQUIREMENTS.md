@@ -12,12 +12,12 @@
 
 | Компонент | Базовый профиль | Основание / ограничение |
 | --- | --- | --- |
-| ОС | Ubuntu Server 24.04 LTS, amd64 | Предлагаемый стандарт; в проекте нет сертифицированной матрицы Ubuntu |
+| ОС | Ubuntu Server 24.04 и 26.04 LTS, amd64; включая 26.04.1 | Поддерживаются установщиком; границы контейнерной проверки и VM-приёмка: [UBUNTU.md](UBUNTU.md) |
 | Ubuntu 22.04 LTS | Кандидат совместимости, отдельная приёмка | glibc/Linux подходят; нужен отдельный Node, Java 21 для 1C. Не считать проверенной платформой |
 | Другие Ubuntu / arm64 | Не включены в стандарт до CI-проверки | Нативные PTY, watcher, FFI, браузер и зависимости требуют проверки на целевой архитектуре |
 | CPU | Плановый минимум 2 vCPU; рекомендовано 4 | Один пользователь, внешний LLM; сборки и браузеры требуют дополнительных CPU |
 | RAM | Минимум 8 GiB для установки со сборкой; рекомендовано 16 GiB | При Chromium/LibreOffice/1C и параллельных проектах начать с 16 GiB; измерить peak RSS |
-| Диск | Минимум 30 GiB SSD; рекомендовано 80 GiB | Без больших пользовательских данных; хранить запас не менее 20%, backup вне VPS |
+| Диск | Минимум 30 GiB свободно; рекомендовано 80 GiB, SSD желателен | HDD допустим; без больших пользовательских данных; хранить запас не менее 20%, backup вне VPS |
 | ФС | Локальная ext4; `/proc`, glibc | Knowledge использует `bun:ffi`, `libc.so.6`, `flock`, `renameat2(RENAME_EXCHANGE)`, `/proc`; SQLite WAL. NFS и object mount не квалифицированы |
 | GPU | Не требуется | Модели вызываются через провайдеров; локальный inference — отдельный sizing |
 
@@ -46,7 +46,7 @@ PostgreSQL, Redis, Docker, Kubernetes, PM2, внешний vector DB не тре
 
 | Возможность | Что установить / настроить |
 | --- | --- |
-| Presentation agents | `libreoffice-impress libreoffice-calc poppler-utils python3 fontconfig fonts-liberation`; Chromium для `playwright@1.59.1`, его OS dependencies; vision-capable модель. Проверки инструментов: `packages/opencode/src/presentation/service.ts:health` |
+| Presentation agents | `libreoffice-impress libreoffice-calc poppler-utils python3 fontconfig fonts-liberation`; Chromium для `playwright@1.61.1`, его OS dependencies; vision-capable модель. Проверки инструментов: `packages/opencode/src/presentation/service.ts:health` |
 | 1C source tools | Installer использует Ubuntu `python3-lxml` + `/usr/bin/python3`; ручной venv-вариант закреплён отдельно в `gamma-agent-market/bundles/1c-development/requirements.txt` |
 | 1C BSL MCP | Installer ставит Java 21 и проверенный JAR; BSL Language Server `1.1.0-rc.6` exec.jar; `GAMMA_BSL_JAR`, `GAMMA_BSL_JAVA`, `GAMMA_1C_PYTHON`. Java запускается с `-Xmx1g`; это дополнительная память |
 | Bitrix24 | Настроенное подключение портала и scopes, исходящий HTTPS, UI approval key; docs MCP опционально. Credentials соединения в памяти, reconnect после restart |
@@ -99,16 +99,26 @@ Backend — `packages/opencode/src/index.ts serve` (Legacy Gamma endpoints пл�
 
 ## Дополнительные требования установщика
 
-[install-gamma.sh](../../install-gamma.sh) поддерживает только Ubuntu 24.04 amd64 с systemd, 2 vCPU, 8 GiB RAM, 30 GiB свободно на используемых томах. Это целевая матрица, ещё не подтверждённая clean-VM прогоном. Перед остановкой сервисов нужно свободное место на `/var/backups`: не менее двойного фактического размера `/var/lib/gamma` + workspaces и 2 GiB резерва (snapshot и quarantine). Большие проекты увеличивают время downtime. Не писать в workspaces внешними процессами во время snapshot.
+[install-gamma.sh](../../install-gamma.sh) поддерживает Ubuntu 24.04 и 26.04 LTS amd64 (включая 26.04.1) с systemd, 2 vCPU, 8 GiB RAM, 30 GiB свободно на используемых томах. Это целевая матрица, ещё не подтверждённая clean-VM прогоном. Перед остановкой сервисов нужно свободное место на `/var/backups`: не менее двойного фактического размера `/var/lib/gamma` + workspaces и 2 GiB резерва (snapshot и quarantine). Большие проекты увеличивают время downtime. Не писать в workspaces внешними процессами во время snapshot.
 
 Сборка выполняется отдельным `gamma-build`; `gamma` не имеет доступа к домашнему каталогу сборщика, sudo, docker group. Устанавливаются `ca-certificates curl unzip xz-utils git ripgrep build-essential python3 python3-venv pkg-config nginx certbot sqlite3 openssl iproute2`. Git/Python/CA нужны для bootstrap полного checkout. Docker и DNS provider plugins не входят в базовую установку. Java 21, Chromium, office/PDF/fonts и Python lxml входят; полный актуальный список — PACKAGES в installer. В `/etc/gamma/install.json` нет паролей, но файл root0600; snapshot `/var/backups/gamma` включает secrets и должен быть приватным.
 
 ## Дополнения финального pre-deploy аудита
 
-Обязательный стандартный install включает `libreoffice-impress`, `libreoffice-calc`, `poppler-utils`, `fontconfig`, DejaVu/Liberation/Noto Emoji, `python3-lxml` и Linux Chromium libraries (список сверён с `playwright-core@1.59.1` Ubuntu 24.04 manifest). Chromium загружается CLI из frozen lockfile от пользователя gamma-build; runtime получает `PLAYWRIGHT_BROWSERS_PATH=<release>/.playwright`. Browser revision откатывается вместе с релизом. Новые npm-версии не добавлялись.
+Обязательный стандартный install включает `libreoffice-impress`, `libreoffice-calc`, `poppler-utils`, `fontconfig`, DejaVu/Liberation/Noto Emoji, `python3-lxml` и Linux Chromium libraries (реальная установка и запуск Chromium из `playwright-core@1.61.1` проверены на Ubuntu 24.04 и 26.04.1). Chromium загружается CLI из frozen lockfile от пользователя gamma-build; runtime получает `PLAYWRIGHT_BROWSERS_PATH=<release>/.playwright`. Browser revision откатывается вместе с релизом. Playwright и @playwright/test обновлены синхронно до 1.61.1: в 1.59.1 отсутствовала поддержка Ubuntu 26.04.
 
 Knowledge PDF/DOCX: `pdfjs-dist` и `mammoth` в frontend lockfile. Презентации: `@office-kit/pptx`, `pptxgenjs`, Playwright; PDF/render требуют Poppler/LibreOffice и шрифтов. Graph: `3d-force-graph`/Three.js из lockfile. PTY/watcher/FFI: platform-specific glibc amd64 пакеты; Python extractor и WB analytics используют stdlib, часть 1C XML scripts требует lxml. Python/pip packages глобально не устанавливаются. OpenJDK 21 и BSL Language Server 1.1.0-rc.6 ставятся автоматически; JAR проверяется SHA-256 существующим `script/1c-agent/download-bsl.ts`. Для source tools используется Ubuntu `python3-lxml`, `GAMMA_1C_PYTHON=/usr/bin/python3`; версия записывается в dpkg manifest. Это отдельная qualification Ubuntu-пакета, а не установка pip requirements (ручной venv recipe закрепляет lxml 6.0.2). `GAMMA_BSL_JAR` указывает внутрь release и откатывается с ним. Внешняя платформа 1C и credentials остаются интеграционными prerequisites.
 
 Heap production build: `NODE_OPTIONS=--max-old-space-size=4096`, минимум 8 GiB RAM. Прокси: installer требует прямой egress и явно отклоняет унаследованные proxy variables до изменений. Browser download требует доступа к Playwright CDN дополнительно к GitHub, nodejs.org и npm registry. Общие правила загрузки browsers описаны в [Playwright documentation](https://playwright.dev/docs/browsers).
 
 Сервис получает `LANG=C.UTF-8`, `LC_ALL=C.UTF-8`: без UTF-8 locale реальный Java BSL на чистой ОС возвращал пустые symbols для кириллических путей. Dev использует тот же default. Calc нужен для XLSX/CSV conversion; одного Impress недостаточно.
+
+## Особенности Ubuntu 26.04.1
+
+`/etc/os-release` содержит `VERSION_ID="26.04"`; номер `.1` находится в человекочитаемом имени. Установщик проверяет точные ID Ubuntu 24.04/26.04, amd64 и загруженный systemd. Другие дистрибутивы и промежуточные Ubuntu не допускаются автоматически.
+
+Python использует стандартную библиотеку (3.12 на 24.04, 3.14 на 26.04). `python3-lxml` берётся из APT под системный Python; глобальный pip и обход externally-managed environment не нужны. Node/Bun берутся из закреплённых архивов, а не из APT. Java остаётся явно 21, независимо от смены default-jre в новой Ubuntu. Для пакетов Java/Certbot и части приложений нужен компонент **universe** стандартных Ubuntu repositories.
+
+Названия пакетов t64 сохранены: фактическая APT-установка всего PACKAGES на 26.04.1 прошла. Playwright 1.61 поддерживает 26.04 официально ([release notes](https://playwright.dev/docs/release-notes#version-161)); override платформы и пропуск validation не используются. Подробности проверки — [UBUNTU.md](UBUNTU.md).
+
+Для Cloudflare Tunnel вместо входящих 80/443 требуется работающий локальный cloudflared с исходящим соединением; DNS hostname направляется на tunnel, а не на домашний IP. Схема: browser HTTPS → Cloudflare → cloudflared → 127.0.0.1:4444 → backend. Wi-Fi/HDD не запрещены; фактическую задержку, стабильность и расход памяти проверять под своей нагрузкой. 16 GiB остаётся рекомендацией для параллельных браузеров, а не обязательным минимумом.

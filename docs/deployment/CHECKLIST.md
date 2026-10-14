@@ -131,7 +131,7 @@ bun test
 
 Перед публикацией статуса «проверенный production installer» дополнительно:
 
-- [ ] Disposable Ubuntu24.04 amd64: clone опубликованного installer SHA, `--check`, `--install` с ACME staging/тестовым DNS, реальная production app build.
+- [ ] Disposable Ubuntu 24.04 и 26.04.1 amd64: clone опубликованного installer SHA, `--check`, `--install` с ACME staging/тестовым DNS, реальная production app build.
 - [ ] Repeat install оставляет credentials byte-for-byte, unit/NGINX не дублируются.
 - [ ] Второй release upgrade сохраняет сессии, Knowledge и файлы; миграции + намеренно неуспешная activation возвращают согласованный snapshot.
 - [ ] Перезагрузка только тестовой VM: enabled services действительно стартуют и доступ по HTTPS восстанавливается.
@@ -141,3 +141,13 @@ bun test
 Не считать mock HTTP200 или состояние simulated systemd доказательством этих пунктов. Deployment-код готов к этой проверке; гарантия clean-VPS результата требует её фактического прохождения.
 
 Актуальные результаты финального прогона, clean Ubuntu container и явно непроверенный systemd/VM lifecycle: [GAMMA_PRE_DEPLOY_CHECK](../audits/GAMMA_PRE_DEPLOY_CHECK.md).
+
+## Дополнительно для Ubuntu 26.04.1 / Cloudflare Tunnel
+
+- [ ] Записаны VERSION_ID, kernel, systemd, Python, Node/Bun, Playwright/browser и APT manifest; нет platform override.
+- [ ] На i5/8 GB/HDD завершена сборка; измерены память и свободное место под snapshots.
+- [ ] Внешний HTTPS hostname ведёт через локальный cloudflared на gateway 4444; прямые backend/gateway не опубликованы.
+- [ ] HTTP на edge перенаправляется на HTTPS; login/logout и Secure cookie работают; SSE/WS проверены через настоящий tunnel.
+- [ ] После reboot Wi-Fi, cloudflared и обе Gamma units стартуют; проверены повтор установки, upgrade и restore на отдельной VM.
+
+Контейнерный прогон и тесты orchestration не отмечают эти пункты автоматически: [UBUNTU.md](UBUNTU.md).

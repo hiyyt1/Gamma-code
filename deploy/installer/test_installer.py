@@ -11,18 +11,19 @@ import sqlite3
 import subprocess
 import tempfile
 import unittest
+from unittest.mock import patch
 import gamma_installer as gamma
 
 
 class TemporaryHost(gamma.Host):
-    def __init__(self, root):
+    def __init__(self, root, version='24.04'):
         self.root, self.calls = root, []
         self.users, self.active, self.enabled = set(), set(), set()
         self.fail, self.conflict, self.disk, self.builds = None, '', 100 * 1024**3, 0
         self.cookie = False
         for name in ('etc', 'proc', 'run/systemd/system', 'opt', 'var/lib'):
             (root / name).mkdir(parents=True, exist_ok=True)
-        self.path('/etc/os-release').write_text('ID=ubuntu\nVERSION_ID="24.04"\n')
+        self.path('/etc/os-release').write_text(f'ID=ubuntu\nVERSION_ID="{version}"\nPRETTY_NAME="Ubuntu {version}.1 LTS"\n')
         self.path('/proc/meminfo').write_text('MemTotal: 8388608 kB\n')
         self.repo = root / 'upstream'
         self.repo.mkdir()
@@ -140,10 +141,12 @@ class TemporaryHost(gamma.Host):
 
 
 class InstallerTests(unittest.TestCase):
+    version = '24.04'
+
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory(prefix='gamma-installer-test-')
         self.addCleanup(self.temp.cleanup)
-        self.host = TemporaryHost(Path(self.temp.name))
+        self.host = TemporaryHost(Path(self.temp.name), self.version)
         self.args = gamma.parse_args(['--install', '--non-interactive', '--https', 'ssh-tunnel'])
         self.options = gamma.configuration(self.args, None)
         self.admin = {'username': 'admin', 'password': 'Fixture-password-only-9234!'}
@@ -160,7 +163,7 @@ class InstallerTests(unittest.TestCase):
 
     def seed_data(self):
         db = self.host.path('/var/lib/gamma/opencode.db')
-        with sqlite3.connect(db) as connection:
+        with contextlib.closing(sqlite3.connect(db)) as connection, connection:
             connection.execute('create table session (id text primary key)')
             connection.execute("insert into session values ('keep-me')")
         self.host.path(self.options['workspaces'] + '/keep.txt').write_text('user content')
@@ -175,6 +178,74 @@ class InstallerTests(unittest.TestCase):
             self.assertNotIn('password', str(error.exception))
             self.assertNotIn('secret', str(error.exception))
         gamma.check_proxy({'NO_PROXY': 'localhost'})
+
+    def test_runuser_resolves_outside_restricted_service_path(self):
+        result = subprocess.CompletedProcess([], 0, '', '')
+        with patch.object(gamma.subprocess, 'run', return_value=result) as run:
+            gamma.Host().run(['/usr/bin/true'], user='gamma')
+        self.assertEqual(run.call_args.args[0][0], '/usr/sbin/runuser')
+        self.assertNotIn('/usr/sbin', run.call_args.kwargs['env']['PATH'].split(':'))
+
+    def test_cli_lifecycle_with_isolated_os_boundary(self):
+        install_runtimes = gamma.install_runtimes
+
+        def provision_runtime(host):
+            host.prepare_runtime()
+            install_runtimes(host)
+
+        with patch.object(gamma, 'Host', return_value=self.host), patch.object(gamma.os, 'geteuid', return_value=0), \
+                patch.object(gamma, 'admin_input', return_value=self.admin), \
+                patch.object(gamma, 'install_runtimes', side_effect=provision_runtime), \
+                patch.dict(os.environ, {'PATH': os.environ['PATH']}, clear=True):
+            # The real dispatcher runs; only OS access and interactive credentials are substituted.
+            previous_umask = os.umask(0o077)
+            self.addCleanup(os.umask, previous_umask)
+            gamma.main(['--check'])
+            gamma.main(['--install', '--non-interactive', '--https', 'ssh-tunnel'])
+            before = self.host.path('/etc/gamma/auth.json').read_bytes()
+            for mode in ('status', 'doctor', 'install', 'upgrade', 'doctor'):
+                gamma.main(['--' + mode, '--non-interactive'])
+            self.assertEqual(self.host.builds, 2)
+            self.assertEqual(self.host.path('/etc/gamma/auth.json').read_bytes(), before)
+
+    def test_unsupported_os_rejected_before_provisioning(self):
+        for distro, version in (('ubuntu', '22.04'), ('ubuntu', '25.10'), ('ubuntu', '26.10'),
+                                ('debian', '26.04'), ('linuxmint', '26.04'), ('ubuntu', '26.04.1')):
+            with self.subTest(distro=distro, version=version):
+                self.host.path('/etc/os-release').write_text(f'ID={distro}\nVERSION_ID="{version}"\n')
+                with self.assertRaisesRegex(gamma.Failure, 'Supported installation targets'):
+                    gamma.preflight(self.host, self.options, None)
+        self.assertFalse(self.host.calls)
+
+    def test_booted_systemd_required(self):
+        self.host.path('/run/systemd/system').rmdir()
+        with self.assertRaisesRegex(gamma.Failure, 'booted systemd'):
+            gamma.preflight(self.host, self.options, None)
+
+    def test_home_server_resources(self):
+        self.host.path('/proc/meminfo').write_text('MemTotal: 7800000 kB\n')
+        self.host.disk = 30 * 1024**3
+        gamma.preflight(self.host, self.options, None)
+
+    def test_cloudflare_tunnel_install_repeat_upgrade(self):
+        self.options.update(https='cloudflare-tunnel', domain='gamma.example.test')
+        gamma.validate(self.options)
+        self.host.conflict = 'LISTEN 0 128 0.0.0.0:443 0.0.0.0:* users:(("other",pid=1,fd=1))'
+        with patch.object(self.host, 'resolve', side_effect=AssertionError('Tunnel DNS may be configured later')):
+            state = self.install()
+        env = self.host.path('/etc/gamma/gamma.env').read_text()
+        self.assertIn('GAMMA_PUBLIC_ORIGIN=https://gamma.example.test\n', env)
+        self.assertIn('GAMMA_TRUST_PROXY=0\n', env)
+        self.assertNotIn('listen ', self.host.path(gamma.NGINX).read_text())
+        gamma.deploy(self.host, self.args, self.options, state, None)
+        self.args.mode = 'upgrade'
+        gamma.deploy(self.host, self.args, self.options, state, None)
+        gamma.inspect(self.host, 'doctor')
+        self.assertEqual(self.host.enabled, {'gamma-backend', 'gamma-web'})
+        self.assertFalse(any(call[0] in ('certbot', 'curl') for call in self.host.calls))
+        for domain in (None, '', '127.0.0.1', 'https://gamma.example.test', 'bad;host'):
+            with self.assertRaises(gamma.Failure):
+                gamma.validate({**self.options, 'domain': domain})
 
     def test_dev_and_installer_defaults_match(self):
         config = json.loads((Path(gamma.__file__).parents[1] / 'opencode.json').read_text())
@@ -401,6 +472,10 @@ class InstallerTests(unittest.TestCase):
         self.assertIn('nginx -t', self.host.path('/etc/letsencrypt/renewal-hooks/deploy/gamma-nginx').read_text())
         gamma.deploy(self.host, self.args, self.options, state, None)
         self.assertEqual(sum(call[0] == 'certbot' and 'certonly' in call for call in self.host.calls), 1)
+
+
+class Installer26Tests(InstallerTests):
+    version = '26.04'
 
 
 if __name__ == '__main__': unittest.main()

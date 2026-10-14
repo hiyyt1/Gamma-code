@@ -78,7 +78,7 @@ Installer отказывается усыновлять неизвестную G
 
 | Ошибка | Действие |
 | --- | --- |
-| Unsupported OS/arch, RAM/disk | Ubuntu24.04 amd64, увеличить ресурсы; не обходить guard |
+| Unsupported OS/arch, RAM/disk | Ubuntu 24.04/26.04 LTS amd64 (26.04.1 включена), проверить реальные ресурсы; не обходить guard |
 | Port4096/4444 occupied | Выяснить владельца через ss; не останавливать чужой сервис автоматически |
 | Nginx server_name conflict/invalid config | Исправить конфликт существующего site, сохранив его назначение; повторить nginx -t |
 | ACME failure | Проверить A/AAAA, reachability80 и rate limits; bootstrap обслуживает только challenge/404, не пароль |
@@ -103,7 +103,7 @@ Installer отказывается усыновлять неизвестную G
 | High | Core V2 config loader не читает полный набор Legacy policy env | Единой env-политики для обоих runners нет; нельзя silently переключать engine |
 | High | Units работают под общим gamma, без sandbox settings в исходном template | Нет полноценной изоляции проектов/secrets; installer генерирует basic systemd hardening, не sandbox |
 | Medium | `deploy/gamma.env.example` не задаёт Knowledge root | Backup только `/var/lib/gamma` может пропустить fallback HOME Knowledge; INSTALL задаёт явно |
-| Release gate | Installer orchestration реализован и проверен временными fixtures, но нет booted-VM acceptance | Нужен чистый Ubuntu 24.04 прогон, реальный reboot и upgrade drill до гарантии production |
+| Release gate | Installer orchestration реализован и проверен временными fixtures, но нет booted-VM acceptance | Нужны чистые Ubuntu 24.04 и 26.04.1 прогоны, реальный reboot и upgrade drill до гарантии production |
 | Medium | Node patch, OS package versions, browser assets, LLM catalog не закреплены единым release manifest (BSL downloader уже имеет version/hash) | Frozen Bun lock — необходимое, но недостаточное условие одинаковой поставки |
 | Medium | Preview поддерживает static output, dynamic projects возвращают dynamic_unavailable | Нельзя обещать preview произвольного dev server |
 | Medium | Preview domain validation проверяет hostname nesting, но не public suffix/site boundary | Оператор обязан использовать независимый регистрируемый домен; sibling subdomains одного domain недостаточны стандарту |
@@ -121,7 +121,7 @@ Installer отказывается усыновлять неизвестную G
 
 ## Оставшаяся автоматизация
 
-1. Booted Ubuntu24.04 CI VM: реальный apt/build, TLS staging, reboot/autostart, upgrade с миграциями и restore drill.
+1. Booted Ubuntu 24.04/26.04.1 CI VM: реальный apt/build, TLS staging, reboot/autostart, upgrade с миграциями и restore drill.
 2. Signed release/artifact manifest и immutable APT image/snapshot; сейчас runtime archives проверены SHA, source фиксируется commit, package versions записываются.
 3. Явная миграция managed env/profile/model и импорт legacy deployment; сейчас drift fail-closed.
 4. Provider-specific DNS-01 и Preview opt-in, optional agent capabilities, без изменения runtime.
@@ -137,3 +137,11 @@ README: предлагается ссылка `[Развёртывание Gamma
 * `Reached heap limit`: installer задаёт Node heap 4096 MiB; установка со сборкой требует минимум 8 GiB RAM. Build failure до переключения сохраняет старые services/data.
 * Missing Chromium/LibreOffice/Poppler: `--upgrade` ставит стандартные зависимости; браузер находится внутри нового release, не в HOME gamma-build. `--doctor` дополнительно проверяет dpkg status обязательных пакетов. В тестах с новым XDG явно задавать browser path.
 * Permission drift: не удалять пользовательский config ради upgrade. Согласовать отличия и процедуру миграции; прежний restricted сохраняется. Итоговые результаты см. [pre-deploy audit](../audits/GAMMA_PRE_DEPLOY_CHECK.md).
+
+## Ubuntu 26.04.1 и домашняя сеть
+
+Результаты проверки зависимостей и ограничения — [UBUNTU.md](UBUNTU.md). `--upgrade` обновляет Gamma, **не Ubuntu**. Перед сменой ОС нужен отдельный backup и проверка восстановления; при наличии старого release с Playwright 1.59.1 после обновления ОС требуется новый проверенный Gamma release с 1.61.1. Повторный `--install` готовый release не пересобирает.
+
+При `--https cloudflare-tunnel` status/doctor проверяют локальную Gamma. Если локально всё исправно, но внешний сайт недоступен, проверьте `sudo systemctl status cloudflared --no-pager`, hostname/service в Cloudflare (HTTP `127.0.0.1:4444`), исходящую сеть и Wi-Fi. Не выводите token/Environment сервиса в отчёты. Перезапуск connector не требует смены Gamma origin или правки managed env. Смена hostname/режима у существующей установки требует согласованной миграции, не обхода drift guard.
+
+На HDD upgrade может дольше копировать offline snapshot; оставляйте место для исходных данных, снимка и failed-state quarantine. Никаких автоматических удалений или OS-specific uninstall не добавлено. Для вывода из эксплуатации сначала сохраните и проверьте backup, остановите/отключите сервисы и публикацию tunnel; удаление данных — отдельное решение владельца.

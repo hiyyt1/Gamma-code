@@ -29,6 +29,7 @@ import urllib.request
 import uuid
 
 REPO = "https://github.com/hiyyt1/Gamma-code.git"
+SUPPORTED_UBUNTU = ("24.04", "26.04")
 BUN = "1.3.14"
 NODE = "22.22.0"
 BUN_SHA = "a063908ae08b7852ca10939bbdc6ceed3ddabce8fb9402dce83d65d73b36e6c7"
@@ -71,14 +72,14 @@ def policy(profile):
 
 
 def parse_args(argv=None):
-    parser = argparse.ArgumentParser(description="Gamma Ubuntu 24.04 amd64 installer (no firewall changes)")
+    parser = argparse.ArgumentParser(description="Gamma Ubuntu 24.04 / 26.04 LTS amd64 installer (no firewall changes)")
     modes = parser.add_mutually_exclusive_group(required=True)
     for name in ("check", "install", "upgrade", "status", "doctor"):
         modes.add_argument("--" + name, dest="mode", action="store_const", const=name)
     parser.add_argument("--repo", default=REPO, help="HTTPS GitHub repository, no credentials")
     parser.add_argument("--ref", default="HEAD", help="branch/tag/SHA; resolved to an immutable commit")
     parser.add_argument("--domain", help="DNS name (or IP with --https existing)")
-    parser.add_argument("--https", choices=["letsencrypt", "existing", "ssh-tunnel"])
+    parser.add_argument("--https", choices=["letsencrypt", "existing", "ssh-tunnel", "cloudflare-tunnel"])
     parser.add_argument("--email", help="ACME contact")
     parser.add_argument("--tls-cert", help="existing trusted fullchain PEM")
     parser.add_argument("--tls-key", help="existing root-only private key PEM")
@@ -105,15 +106,17 @@ def validate(options):
     require(any(workspace.is_relative_to(base) and workspace != Path(base) for base in ("/home/gamma", "/srv", "/mnt")),
             "Project path must be a child of /home/gamma, /srv or /mnt (dedicated empty directory)")
     require(not workspace.is_relative_to("/home/gamma/.bun"), "Runtime cannot be a workspace")
-    require(options["https"] in ("letsencrypt", "existing", "ssh-tunnel"), "HTTPS mode required")
+    require(options["https"] in ("letsencrypt", "existing", "ssh-tunnel", "cloudflare-tunnel"), "HTTPS mode required")
     if options["https"] == "ssh-tunnel":
         require(not options.get("domain"), "ssh-tunnel mode uses http://localhost:4444 only; omit --domain")
         return
-    domain = options.get("domain", "")
+    domain = options.get("domain") or ""
     require(bool(re.fullmatch(r"[a-z0-9](?:[a-z0-9.-]*[a-z0-9])?", domain)) and "." in domain and ".." not in domain,
             "Enter a lowercase DNS hostname without scheme, port or path")
     require(all(0 < len(label) <= 63 and not label.startswith("-") and not label.endswith("-") for label in domain.split(".")) and len(domain) < 254,
             "Invalid DNS labels")
+    if options["https"] == "cloudflare-tunnel":
+        require(not re.fullmatch(r"[0-9.]+", domain), "Cloudflare Tunnel requires a public DNS hostname")
     if options["https"] == "letsencrypt":
         require(not re.fullmatch(r"[0-9.]+", domain), "For IP use existing trusted TLS or ssh-tunnel")
         require(bool(re.fullmatch(r"[^\s@]+@[^\s@]+\.[^\s@]+", options.get("email") or "")), "ACME email required")
@@ -137,7 +140,7 @@ def configuration(args, previous):
     if not args.non_interactive:
         if not options["https"]:
             options["domain"] = options["domain"] or input("Gamma domain (empty = secure SSH tunnel by IP): ").strip()
-            options["https"] = input("HTTPS: letsencrypt / existing / ssh-tunnel [%s]: " % ("letsencrypt" if options["domain"] else "ssh-tunnel")).strip() or ("letsencrypt" if options["domain"] else "ssh-tunnel")
+            options["https"] = input("HTTPS: letsencrypt / existing / ssh-tunnel / cloudflare-tunnel [%s]: " % ("letsencrypt" if options["domain"] else "ssh-tunnel")).strip() or ("letsencrypt" if options["domain"] else "ssh-tunnel")
         if options["https"] == "letsencrypt":
             options["email"] = options["email"] or input("ACME email: ").strip()
         if options["https"] == "existing":
@@ -159,7 +162,8 @@ class Host:
         if user:
             env.update(HOME=f"/home/{user}", PATH=f"{RUNTIME}/bun-{BUN}:{NODE_BIN}:/usr/bin:/bin")
         env.update(extra or {})
-        cmd = ["runuser", "-u", user, "--", "env", "-i", *[f"{key}={value}" for key, value in env.items()], *command] if user else command
+        # Service PATH deliberately excludes sbin; runuser itself is an admin executable.
+        cmd = ["/usr/sbin/runuser", "-u", user, "--", "env", "-i", *[f"{key}={value}" for key, value in env.items()], *command] if user else command
         try:
             result = subprocess.run(cmd, cwd=cwd, input=data, text=True, stdout=subprocess.PIPE,
                                     stderr=subprocess.PIPE, env=env, timeout=timeout)
@@ -257,8 +261,9 @@ def check_proxy(environment):
 
 def preflight(host, options, previous):
     release = dict(line.split("=", 1) for line in host.path("/etc/os-release").read_text().splitlines() if "=" in line)
-    require(release.get("ID", "").strip('"') == "ubuntu" and release.get("VERSION_ID", "").strip('"') == "24.04",
-            "Supported installation target: Ubuntu Server 24.04 LTS")
+    # Point releases keep VERSION_ID=26.04 (PRETTY_NAME contains 26.04.1).
+    require(release.get("ID", "").strip('"') == "ubuntu" and release.get("VERSION_ID", "").strip('"') in SUPPORTED_UBUNTU,
+            "Supported installation targets: Ubuntu Server 24.04 LTS and 26.04 LTS (including 26.04.1)")
     require(host.run(["uname", "-m"]).stdout.strip() == "x86_64", "Only amd64 is qualified by this installer")
     require(host.path("/run/systemd/system").is_dir(), "A booted systemd host is required (not a plain container/chroot)")
     memory = int(re.search(r"MemTotal:\s+(\d+)", host.path("/proc/meminfo").read_text())[1])
@@ -290,9 +295,9 @@ def preflight(host, options, previous):
         port = parts[3].rsplit(":", 1)[-1]
         if port in ("4096", "4444"):
             require(bool(previous), f"Port {port} occupied; no service was stopped")
-        if options["https"] != "ssh-tunnel" and port in ("80", "443"):
+        if options["https"] in ("letsencrypt", "existing") and port in ("80", "443"):
             require('"nginx"' in line, f"Port {port} occupied by a non-Nginx process")
-    if options["https"] != "ssh-tunnel":
+    if options["https"] in ("letsencrypt", "existing"):
         require(bool(host.resolve(options["domain"])), "DNS resolution failed")
     if host.path("/etc/nginx/nginx.conf").exists():
         result = host.run(["nginx", "-T"], check=False)
@@ -429,6 +434,8 @@ def check_credentials(host):
 
 
 def nginx_config(options, bootstrap=False):
+    if options["https"] == "cloudflare-tunnel":
+        return MARKER + "\n# No Gamma listener. Local cloudflared forwards to http://127.0.0.1:4444\n"
     if options["https"] == "ssh-tunnel":
         return MARKER + "\n# No public listener. Use ssh -L 4444:127.0.0.1:4444 user@VPS\n"
     domain = options["domain"]
@@ -489,7 +496,7 @@ def activate_nginx(host, content):
 
 
 def tls(host, options, previous):
-    if options["https"] == "ssh-tunnel":
+    if options["https"] in ("ssh-tunnel", "cloudflare-tunnel"):
         return
     if options["https"] == "existing":
         cert = host.path(options["tls_cert"])
@@ -529,7 +536,8 @@ def rendered(options, release):
            "PLAYWRIGHT_BROWSERS_PATH": release + "/.playwright",
            "GAMMA_BSL_JAR": release + "/runtime/bsl-language-server.jar",
            "GAMMA_1C_PYTHON": "/usr/bin/python3",
-           "GAMMA_AUTH_CONFIG": "/etc/gamma/auth.json", "GAMMA_TRUST_PROXY": "0" if options["https"] == "ssh-tunnel" else "1",
+           # cloudflared connects directly; do not trust client-supplied X-Real-IP.
+           "GAMMA_AUTH_CONFIG": "/etc/gamma/auth.json", "GAMMA_TRUST_PROXY": "1" if options["https"] in ("letsencrypt", "existing") else "0",
            "OPENCODE_CONFIG": "/etc/gamma/opencode.json", "OPENCODE_DISABLE_PROJECT_CONFIG": "1",
            "OPENCODE_DISABLE_AUTOUPDATE": "1", "OPENCODE_DISABLE_SHARE": "1"}
     files = {"/etc/gamma/gamma.env": (MARKER + "\n" + "".join(f"{key}={value}\n" for key, value in env.items()), 0o600),
@@ -686,6 +694,8 @@ def finish_message(state):
         print("Then open http://localhost:4444 (traffic to the VPS is protected by SSH).")
     else:
         print("Open https://" + state["options"]["domain"])
+    if state["options"]["https"] == "cloudflare-tunnel":
+        print("Configure local cloudflared: public HTTPS hostname -> http://127.0.0.1:4444. External tunnel/TLS is not tested by this installer.")
     print("Connect an LLM provider and select its model in the UI; live inference is not provisioned/tested.")
     print("Permissions: " + state["options"]["profile"] + ". Native Gamma policy persists across restarts.")
     print("Standard tools inherit auto permissions; role denies, delegation boundaries and business approvals remain.")
@@ -728,7 +738,7 @@ def deploy(host, args, options, previous, admin):
         host.run(["systemctl", "daemon-reload"])
         host.run(["systemctl", "enable", "--now", "gamma-backend", "gamma-web"])
         smoke(host, options, admin)
-        if options["https"] != "ssh-tunnel":
+        if options["https"] in ("letsencrypt", "existing"):
             activate_nginx(host, nginx_config(options))
             code = host.run(["curl", "--silent", "--show-error", "--noproxy", "*", "--max-time", "15", "--resolve",
                              options["domain"] + ":443:127.0.0.1", "--output", "/dev/null", "--write-out", "%{http_code}",
