@@ -1,0 +1,18 @@
+{
+  "name": "build-6g",
+  "exit": 0,
+  "elapsed_seconds": 18.52,
+  "memory_limit": "6442450944",
+  "swap_limit": "0",
+  "cpu_limit": "400000 100000",
+  "sampled_peak_bytes": {
+    "current": 6442450944,
+    "anon": 3586883584,
+    "file": 3132825600
+  },
+  "events_before": "low 0\nhigh 0\nmax 2015\noom 0\noom_kill 0\noom_group_kill 0\n",
+  "events_after": "low 0\nhigh 0\nmax 3417\noom 0\noom_kill 0\noom_group_kill 0\n",
+  "time": "\tCommand being timed: \"/opt/gamma/runtime/bun-1.3.14/bun run build\"\n\tUser time (seconds): 32.77\n\tSystem time (seconds): 1.72\n\tPercent of CPU this job got: 186%\n\tElapsed (wall clock) time (h:mm:ss or m:ss): 0:18.51\n\tAverage shared text size (kbytes): 0\n\tAverage unshared data size (kbytes): 0\n\tAverage stack size (kbytes): 0\n\tAverage total size (kbytes): 0\n\tMaximum resident set size (kbytes): 3351536\n\tAverage resident set size (kbytes): 0\n\tMajor (requiring I/O) page faults: 0\n\tMinor (reclaiming a frame) page faults: 1083829\n\tVoluntary context switches: 54933\n\tInvoluntary context switches: 2463\n\tSwaps: 0\n\tFile system inputs: 0\n\tFile system outputs: 235328\n\tSocket messages sent: 0\n\tSocket messages received: 0\n\tSignals delivered: 0\n\tPage size (bytes): 4096\n\tExit status: 0\n",
+  "lock_unchanged": true,
+  "frontend_exists": true
+}

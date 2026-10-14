@@ -267,7 +267,10 @@ def preflight(host, options, previous):
     require(host.run(["uname", "-m"]).stdout.strip() == "x86_64", "Only amd64 is qualified by this installer")
     require(host.path("/run/systemd/system").is_dir(), "A booted systemd host is required (not a plain container/chroot)")
     memory = int(re.search(r"MemTotal:\s+(\d+)", host.path("/proc/meminfo").read_text())[1])
-    require(memory >= 7_600_000, "At least 8 GiB RAM required for the production build; 16 GiB recommended with browsers")
+    # /proc/meminfo reports KiB usable by Linux, not the nominal capacity of RAM modules.
+    require(memory >= 6 * 1024**2, "At least 6 GiB RAM visible to Linux required for the production build; 16 GiB recommended with browsers")
+    if memory < 16 * 1024**2:
+        print(f"Warning: {memory / 1024**2:.2f} GiB RAM visible to Linux; 16 GiB recommended with browsers and parallel projects.")
     require(int(host.run(["nproc"]).stdout) >= 2, "At least 2 vCPU required")
     for name in ("/opt", "/var/lib", options["workspaces"]):
         path = host.path(name)

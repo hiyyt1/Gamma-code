@@ -56,3 +56,31 @@ python3 -B -m unittest -v test_installer.py
 Перед окончательной приёмкой на отдельном Ubuntu Server 26.04.1 необходимо пройти [CHECKLIST.md](CHECKLIST.md): успешный check/install/status/doctor, repeat install, upgrade/recovery с реальными сервисами, reboot/autostart, работа Wi-Fi и cloudflared после загрузки, внешний HTTPS/SSE/WebSocket, live LLM API. Отдельно проверить browser/LibreOffice/1C сценарии, которые реально используются. Container kernel — kernel хоста, поэтому проверка не доказывает поведение AppArmor/ядра полноценного Ubuntu 26.04 сервера.
 
 8 GiB/4 CPU build прошёл под cgroup-лимитами; это не нагрузочная гарантия для параллельных браузеров и пользовательских проектов. Реальный Intel i5, HDD и сеть остаются частью приёмки владельца. Требования не вводят SSD/GPU/проводную сеть как обязательные условия.
+
+
+## Память на машинах с 8 GB RAM
+
+Дополнительная проверка 14 октября 2026 после сообщения об iMac. Старый порог `7_600_000 KiB` соответствовал примерно 7,25 GiB, а ошибка сообщала о 8 GiB. Номинальные 8 GB, единицы GB/GiB и память, зарезервированная прошивкой/устройствами, не равны `MemTotal` Linux. Теперь минимум — **6 GiB = 6 291 456 KiB**. При `6 GiB <= MemTotal < 16 GiB` installer печатает предупреждение с фактическим объёмом и рекомендацией 16 GiB, затем продолжает проверки. Ниже 6 GiB он останавливается. Swap не включён в этот порог. Остальные guards, права, runtime pins и heap 4096 MiB не изменены.
+
+Проверялся код сборки из commit `f611406945`, Ubuntu 26.04.1 в новом Docker-контейнере с собственным rootfs, без host mounts/network и без production credentials. С самого создания заданы `--cpus 4 --memory 7g --memory-swap 7g`; cgroup подтверждает `cpu.max=400000 100000`, `memory.max=7516192768`, `memory.swap.max=0`. Реально установлены PACKAGES и закреплённые Bun 1.3.14 / Node 22.22.0 с проверкой SHA-256, выполнен чистый `bun install --frozen-lockfile`. Сборка выполнялась через `Host.run(..., user="gamma-build")` с теми же очищенными env и PATH, что installer.
+
+В `packages/app` запускалась команда:
+
+```bash
+OPENCODE_CHANNEL=prod NODE_OPTIONS=--max-old-space-size=4096 \
+  /usr/bin/time -v /opt/gamma/runtime/bun-1.3.14/bun run build
+```
+
+| Лимит | Прогон | Время | Max RSS по GNU time | Пик anonymous memory всего контейнера | Результат |
+| --- | --- | --- | --- | --- | --- |
+| 4 CPU / 7 GiB, без swap | Первая сборка после чистой установки зависимостей | 18,65 с | 3,21 GiB | 3,33 GiB | PASS |
+| 4 CPU / 7 GiB, без swap | Повторная сборка | 18,92 с | 3,21 GiB | 3,38 GiB | PASS |
+| 4 CPU / 6 GiB, без swap | Дополнительная проверка нового порога | 18,52 с | 3,20 GiB | 3,34 GiB | PASS |
+
+Все три команды завершились с exit 0, создали `dist/index.html`, не изменили bun.lock; `oom=0`, `oom_kill=0`, `Swaps=0`. Третий прогон выполнен после изменения лимитов **только тестового контейнера** на `--memory 6g --memory-swap 6g`.
+
+RSS не равен полному расходу машины: cgroup `memory.current` с файловым кэшем достигал лимита 7/6 GiB, а `memory.events:max` рос при reclaim. Это не OOM, но и не доказательство большого запаса памяти для дополнительных процессов. Пики `current`, `anon`, `file` опрашивались каждые 50 мс и не обязательно приходятся на один момент. GNU time показывает max RSS дочернего процесса, не сумму всех RSS. Пиковые исходные данные: [7 GiB первый](../audits/evidence/2026-10-14/gamma-memory/build-7g-first.json), [7 GiB повтор](../audits/evidence/2026-10-14/gamma-memory/build-7g-repeat.json), [6 GiB](../audits/evidence/2026-10-14/gamma-memory/build-6g.json).
+
+Тесты после исправления: **74 PASS** на Python 3.12 текущего Ubuntu 24.04 и Python 3.14 контейнера 26.04.1. Полная suite по-прежнему выполняет матрицу fixtures обеих Ubuntu. Новый RAM boundary проверяется на 6 GiB минус 1 KiB и ровно 6 GiB; предупреждение — при 6, 7, 8 и почти 16 GiB, без предупреждения ровно при 16 GiB. CLI lifecycle check/install/status/doctor/repeat/upgrade выполняется с fixture `MemTotal=7 GiB`. Подмена APT/systemd/build в этой suite остаётся явной.
+
+Настоящие shell entrypoints check/install/status/doctor отдельно запущены от root тестового контейнера. Check/install корректно отказали без booted systemd, status/doctor — без managed manifest. Полную успешную установку и автозапуск сервисов в VM этот прогон не подтверждает. `/etc/os-release`, системные ограничения и production VPS не изменялись. Результаты сборки относятся к контейнеру без активной Gamma/браузеров: upgrade на нагруженном сервере требует дополнительной свободной памяти. Изменения этого RAM-fix в GitHub не публиковались.

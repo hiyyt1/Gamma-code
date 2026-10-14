@@ -134,7 +134,7 @@ README: предлагается ссылка `[Развёртывание Gamma
 ## Уточнения финального аудита
 
 * `UnsupportedProxyProtocol`: installer больше не игнорирует proxy variables; требуется разрешённый прямой egress. Не печатать URL proxy с паролем. Dev launcher отклоняет SOCKS с объяснением, HTTP proxy остаётся явной локальной настройкой.
-* `Reached heap limit`: installer задаёт Node heap 4096 MiB; установка со сборкой требует минимум 8 GiB RAM. Build failure до переключения сохраняет старые services/data.
+* `Reached heap limit`: installer задаёт Node heap 4096 MiB; установка со сборкой требует минимум 6 GiB RAM, видимых Linux. Build failure до переключения сохраняет старые services/data.
 * Missing Chromium/LibreOffice/Poppler: `--upgrade` ставит стандартные зависимости; браузер находится внутри нового release, не в HOME gamma-build. `--doctor` дополнительно проверяет dpkg status обязательных пакетов. В тестах с новым XDG явно задавать browser path.
 * Permission drift: не удалять пользовательский config ради upgrade. Согласовать отличия и процедуру миграции; прежний restricted сохраняется. Итоговые результаты см. [pre-deploy audit](../audits/GAMMA_PRE_DEPLOY_CHECK.md).
 
@@ -145,3 +145,5 @@ README: предлагается ссылка `[Развёртывание Gamma
 При `--https cloudflare-tunnel` status/doctor проверяют локальную Gamma. Если локально всё исправно, но внешний сайт недоступен, проверьте `sudo systemctl status cloudflared --no-pager`, hostname/service в Cloudflare (HTTP `127.0.0.1:4444`), исходящую сеть и Wi-Fi. Не выводите token/Environment сервиса в отчёты. Перезапуск connector не требует смены Gamma origin или правки managed env. Смена hostname/режима у существующей установки требует согласованной миграции, не обхода drift guard.
 
 На HDD upgrade может дольше копировать offline snapshot; оставляйте место для исходных данных, снимка и failed-state quarantine. Никаких автоматических удалений или OS-specific uninstall не добавлено. Для вывода из эксплуатации сначала сохраните и проверьте backup, остановите/отключите сервисы и публикацию tunnel; удаление данных — отдельное решение владельца.
+
+Если iMac с 8 GB RAM не проходил старый RAM guard: обновлённый installer допускает `MemTotal >= 6291456 kB`, рекомендация 16 GiB выводится как предупреждение. Посмотреть значение: `awk '/^MemTotal:/ {print}' /proc/meminfo`. При OOM во время сборки проверьте текущую нагрузку и `free -h`; heap остаётся 4096 MiB, автоматически увеличивать его не нужно. Upgrade собирает новый release при работающих старых сервисах, поэтому браузеры/параллельные проекты могут уменьшить запас памяти.

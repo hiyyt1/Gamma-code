@@ -16,7 +16,7 @@
 | Ubuntu 22.04 LTS | Кандидат совместимости, отдельная приёмка | glibc/Linux подходят; нужен отдельный Node, Java 21 для 1C. Не считать проверенной платформой |
 | Другие Ubuntu / arm64 | Не включены в стандарт до CI-проверки | Нативные PTY, watcher, FFI, браузер и зависимости требуют проверки на целевой архитектуре |
 | CPU | Плановый минимум 2 vCPU; рекомендовано 4 | Один пользователь, внешний LLM; сборки и браузеры требуют дополнительных CPU |
-| RAM | Минимум 8 GiB для установки со сборкой; рекомендовано 16 GiB | При Chromium/LibreOffice/1C и параллельных проектах начать с 16 GiB; измерить peak RSS |
+| RAM | Минимум 6 GiB MemTotal для установки со сборкой; рекомендовано 16 GiB | При Chromium/LibreOffice/1C и параллельных проектах начать с 16 GiB; измерить peak RSS |
 | Диск | Минимум 30 GiB свободно; рекомендовано 80 GiB, SSD желателен | HDD допустим; без больших пользовательских данных; хранить запас не менее 20%, backup вне VPS |
 | ФС | Локальная ext4; `/proc`, glibc | Knowledge использует `bun:ffi`, `libc.so.6`, `flock`, `renameat2(RENAME_EXCHANGE)`, `/proc`; SQLite WAL. NFS и object mount не квалифицированы |
 | GPU | Не требуется | Модели вызываются через провайдеров; локальный inference — отдельный sizing |
@@ -99,7 +99,7 @@ Backend — `packages/opencode/src/index.ts serve` (Legacy Gamma endpoints пл�
 
 ## Дополнительные требования установщика
 
-[install-gamma.sh](../../install-gamma.sh) поддерживает Ubuntu 24.04 и 26.04 LTS amd64 (включая 26.04.1) с systemd, 2 vCPU, 8 GiB RAM, 30 GiB свободно на используемых томах. Это целевая матрица, ещё не подтверждённая clean-VM прогоном. Перед остановкой сервисов нужно свободное место на `/var/backups`: не менее двойного фактического размера `/var/lib/gamma` + workspaces и 2 GiB резерва (snapshot и quarantine). Большие проекты увеличивают время downtime. Не писать в workspaces внешними процессами во время snapshot.
+[install-gamma.sh](../../install-gamma.sh) поддерживает Ubuntu 24.04 и 26.04 LTS amd64 (включая 26.04.1) с systemd, 2 vCPU, 6 GiB RAM, видимых Linux, 30 GiB свободно на используемых томах. Это целевая матрица, ещё не подтверждённая clean-VM прогоном. Перед остановкой сервисов нужно свободное место на `/var/backups`: не менее двойного фактического размера `/var/lib/gamma` + workspaces и 2 GiB резерва (snapshot и quarantine). Большие проекты увеличивают время downtime. Не писать в workspaces внешними процессами во время snapshot.
 
 Сборка выполняется отдельным `gamma-build`; `gamma` не имеет доступа к домашнему каталогу сборщика, sudo, docker group. Устанавливаются `ca-certificates curl unzip xz-utils git ripgrep build-essential python3 python3-venv pkg-config nginx certbot sqlite3 openssl iproute2`. Git/Python/CA нужны для bootstrap полного checkout. Docker и DNS provider plugins не входят в базовую установку. Java 21, Chromium, office/PDF/fonts и Python lxml входят; полный актуальный список — PACKAGES в installer. В `/etc/gamma/install.json` нет паролей, но файл root0600; snapshot `/var/backups/gamma` включает secrets и должен быть приватным.
 
@@ -109,7 +109,7 @@ Backend — `packages/opencode/src/index.ts serve` (Legacy Gamma endpoints пл�
 
 Knowledge PDF/DOCX: `pdfjs-dist` и `mammoth` в frontend lockfile. Презентации: `@office-kit/pptx`, `pptxgenjs`, Playwright; PDF/render требуют Poppler/LibreOffice и шрифтов. Graph: `3d-force-graph`/Three.js из lockfile. PTY/watcher/FFI: platform-specific glibc amd64 пакеты; Python extractor и WB analytics используют stdlib, часть 1C XML scripts требует lxml. Python/pip packages глобально не устанавливаются. OpenJDK 21 и BSL Language Server 1.1.0-rc.6 ставятся автоматически; JAR проверяется SHA-256 существующим `script/1c-agent/download-bsl.ts`. Для source tools используется Ubuntu `python3-lxml`, `GAMMA_1C_PYTHON=/usr/bin/python3`; версия записывается в dpkg manifest. Это отдельная qualification Ubuntu-пакета, а не установка pip requirements (ручной venv recipe закрепляет lxml 6.0.2). `GAMMA_BSL_JAR` указывает внутрь release и откатывается с ним. Внешняя платформа 1C и credentials остаются интеграционными prerequisites.
 
-Heap production build: `NODE_OPTIONS=--max-old-space-size=4096`, минимум 8 GiB RAM. Прокси: installer требует прямой egress и явно отклоняет унаследованные proxy variables до изменений. Browser download требует доступа к Playwright CDN дополнительно к GitHub, nodejs.org и npm registry. Общие правила загрузки browsers описаны в [Playwright documentation](https://playwright.dev/docs/browsers).
+Heap production build: `NODE_OPTIONS=--max-old-space-size=4096`, минимум 6 GiB RAM, видимых Linux. Прокси: installer требует прямой egress и явно отклоняет унаследованные proxy variables до изменений. Browser download требует доступа к Playwright CDN дополнительно к GitHub, nodejs.org и npm registry. Общие правила загрузки browsers описаны в [Playwright documentation](https://playwright.dev/docs/browsers).
 
 Сервис получает `LANG=C.UTF-8`, `LC_ALL=C.UTF-8`: без UTF-8 locale реальный Java BSL на чистой ОС возвращал пустые symbols для кириллических путей. Dev использует тот же default. Calc нужен для XLSX/CSV conversion; одного Impress недостаточно.
 
@@ -122,3 +122,5 @@ Python использует стандартную библиотеку (3.12 н
 Названия пакетов t64 сохранены: фактическая APT-установка всего PACKAGES на 26.04.1 прошла. Playwright 1.61 поддерживает 26.04 официально ([release notes](https://playwright.dev/docs/release-notes#version-161)); override платформы и пропуск validation не используются. Подробности проверки — [UBUNTU.md](UBUNTU.md).
 
 Для Cloudflare Tunnel вместо входящих 80/443 требуется работающий локальный cloudflared с исходящим соединением; DNS hostname направляется на tunnel, а не на домашний IP. Схема: browser HTTPS → Cloudflare → cloudflared → 127.0.0.1:4444 → backend. Wi-Fi/HDD не запрещены; фактическую задержку, стабильность и расход памяти проверять под своей нагрузкой. 16 GiB остаётся рекомендацией для параллельных браузеров, а не обязательным минимумом.
+
+Минимум памяти измеряется по `MemTotal` (`/proc/meminfo`): **6 GiB = 6 291 456 KiB**. Это память, доступная ядру Linux после аппаратных резервов, а не физический объём на наклейке. При меньшем значении установка отклоняется; при 6–16 GiB предупреждение рекомендует 16 GiB. Swap не учитывается в минимуме. Подробные замеры production build: [UBUNTU.md](UBUNTU.md#память-на-машинах-с-8-gb-ram).

@@ -187,6 +187,7 @@ class InstallerTests(unittest.TestCase):
         self.assertNotIn('/usr/sbin', run.call_args.kwargs['env']['PATH'].split(':'))
 
     def test_cli_lifecycle_with_isolated_os_boundary(self):
+        self.host.path('/proc/meminfo').write_text('MemTotal: 7340032 kB\n')
         install_runtimes = gamma.install_runtimes
 
         def provision_runtime(host):
@@ -223,9 +224,27 @@ class InstallerTests(unittest.TestCase):
             gamma.preflight(self.host, self.options, None)
 
     def test_home_server_resources(self):
-        self.host.path('/proc/meminfo').write_text('MemTotal: 7800000 kB\n')
+        self.host.path('/proc/meminfo').write_text('MemTotal: 7340032 kB\n')
         self.host.disk = 30 * 1024**3
         gamma.preflight(self.host, self.options, None)
+
+    def test_six_gib_memory_boundary(self):
+        self.host.path('/proc/meminfo').write_text('MemTotal: 6291455 kB\n')
+        with self.assertRaisesRegex(gamma.Failure, 'At least 6 GiB'):
+            gamma.preflight(self.host, self.options, None)
+        self.assertFalse(any(call[0] == 'apt-get' for call in self.host.calls))
+        self.host.path('/proc/meminfo').write_text('MemTotal: 6291456 kB\n')
+        gamma.preflight(self.host, self.options, None)
+
+    def test_memory_recommendation_is_a_warning(self):
+        for memory in (6291456, 7340032, 8388608, 16777215, 16777216):
+            with self.subTest(memory=memory):
+                self.output.seek(0)
+                self.output.truncate()
+                self.host.path('/proc/meminfo').write_text(f'MemTotal: {memory} kB\n')
+                gamma.preflight(self.host, self.options, None)
+                self.assertIn('Preflight OK', self.output.getvalue())
+                self.assertEqual('16 GiB recommended' in self.output.getvalue(), memory < 16777216)
 
     def test_cloudflare_tunnel_install_repeat_upgrade(self):
         self.options.update(https='cloudflare-tunnel', domain='gamma.example.test')
