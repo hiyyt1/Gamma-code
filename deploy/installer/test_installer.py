@@ -21,6 +21,7 @@ class TemporaryHost(gamma.Host):
         self.users, self.active, self.enabled = set(), set(), set()
         self.fail, self.conflict, self.disk, self.builds = None, '', 100 * 1024**3, 0
         self.cookie = False
+        self.install_failures = []
         for name in ('etc', 'proc', 'run/systemd/system', 'opt', 'var/lib'):
             (root / name).mkdir(parents=True, exist_ok=True)
         self.path('/etc/os-release').write_text(f'ID=ubuntu\nVERSION_ID="{version}"\nPRETTY_NAME="Ubuntu {version}.1 LTS"\n')
@@ -97,6 +98,13 @@ class TemporaryHost(gamma.Host):
             return subprocess.run([str(self.repo) if arg == gamma.REPO else arg for arg in command],
                                   cwd=cwd, text=True, capture_output=True, check=check)
         elif tool == 'bun':
+            if command[1] == 'install' and self.install_failures:
+                code, output = self.install_failures.pop(0)
+                if code:
+                    for name in ('node_modules', 'packages/app/node_modules'):
+                        (cwd / name).mkdir(parents=True, exist_ok=True)
+                        (cwd / name / 'partial').write_text('incomplete')
+                return subprocess.CompletedProcess(command, code, '', output)
             if command[1:] == ['--version']: output = gamma.BUN + '\n'
             elif command[1] == '-e':
                 return subprocess.run([shutil.which('bun'), *command[1:]], input=data, text=True, capture_output=True, check=True)
@@ -105,7 +113,7 @@ class TemporaryHost(gamma.Host):
                 (cwd / 'dist').mkdir(parents=True)
                 (cwd / 'dist/index.html').write_text('<html>fixture</html>')
         elif tool == 'node': output = 'v' + gamma.NODE + '\n'
-        elif tool in ('cp', 'mv', 'chmod', 'sh', 'du'):
+        elif tool in ('cp', 'mv', 'chmod', 'sh', 'du', 'python3'):
             if tool != 'sh':
                 for arg in command[1:]:
                     if arg.startswith('/'): assert arg.startswith(str(self.root)), command
@@ -472,6 +480,59 @@ class InstallerTests(unittest.TestCase):
         with self.assertRaisesRegex(gamma.Failure, 'permissions'):
             gamma.deploy(self.host, self.args, self.options, state, None)
         self.assertEqual(self.host.builds, 1)
+
+    def test_link_failure_retries_clean_copyfile_during_upgrade(self):
+        state = self.install()
+        database = self.seed_data()
+        self.host.install_failures = [(127, 'EPERM: Operation not permitted: failed to link package SECRET')]
+        args = gamma.parse_args(['--upgrade'])
+        gamma.deploy(self.host, args, self.options, state, None)
+        current = self.host.read_json(gamma.MANIFEST)
+        release = self.host.path(current['release'])
+        self.assertFalse((release / 'node_modules/partial').exists())
+        self.assertFalse((release / 'packages/app/node_modules/partial').exists())
+        installs = [call for call in self.host.calls if len(call) > 1 and call[1] == 'install' and Path(call[0]).name == 'bun']
+        self.assertEqual(installs[-1][1:], ['install', '--backend=copyfile', '--frozen-lockfile'])
+        self.assertTrue(all('--frozen-lockfile' in call and '--ignore-scripts' not in call for call in installs))
+        self.assertEqual(self.host.path('/var/lib/gamma/opencode.db').read_bytes(), database)
+        self.assertIn('exit 127', self.output.getvalue())
+        self.assertNotIn('SECRET', self.output.getvalue())
+        gamma.inspect(self.host, 'doctor')
+
+    def test_non_link_install_failure_does_not_retry_or_stop_services(self):
+        state = self.install()
+        for error in ('error: postinstall script exited with code 127 SECRET',
+                      'EPERM: cannot execute SECRET', 'error: lockfile had changes SECRET',
+                      'HTTP 401 SECRET'):
+            self.host.install_failures = [(127, error)]
+            start = len(self.host.calls)
+            with self.assertRaisesRegex(gamma.Failure, r'Bun dependencies .*exit 127') as caught:
+                gamma.deploy(self.host, gamma.parse_args(['--upgrade']), self.options, state, None)
+            self.assertNotIn('SECRET', str(caught.exception))
+            calls = self.host.calls[start:]
+            self.assertFalse(any('--backend=copyfile' in call for call in calls))
+            self.assertFalse(any(call[:2] == ['systemctl', 'stop'] for call in calls))
+            self.assertEqual(self.host.read_json(gamma.MANIFEST), state)
+            self.assertEqual(self.host.active, {'gamma-web', 'gamma-backend'})
+
+    def test_copyfile_failure_reports_stage_and_exit_without_activation(self):
+        state = self.install()
+        database = self.seed_data()
+        self.host.install_failures = [(127, 'EPERM: failed to link package SECRET'), (42, 'script SECRET failed')]
+        start = len(self.host.calls)
+        with self.assertRaisesRegex(gamma.Failure, r'copyfile retry.*exit 42') as caught:
+            gamma.deploy(self.host, gamma.parse_args(['--upgrade']), self.options, state, None)
+        self.assertNotIn('SECRET', str(caught.exception))
+        self.assertEqual(sum('--backend=copyfile' in call for call in self.host.calls[start:]), 1)
+        self.assertEqual(self.host.read_json(gamma.MANIFEST), state)
+        self.assertEqual(self.host.path('/var/lib/gamma/opencode.db').read_bytes(), database)
+        self.assertIn('gamma-web', self.host.active)
+
+    def test_dependency_timeout_has_stage_without_sensitive_output(self):
+        with patch.object(self.host, 'run', side_effect=subprocess.TimeoutExpired('SECRET', 1800, output='SECRET')):
+            with self.assertRaisesRegex(gamma.Failure, 'Bun dependencies.*timeout') as caught:
+                gamma.run_stage(self.host, 'Bun dependencies (default backend)', ['bun', 'install'])
+        self.assertNotIn('SECRET', str(caught.exception))
 
     def test_build_failure_leaves_old_services_running(self):
         state = self.install()

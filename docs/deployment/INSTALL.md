@@ -234,6 +234,33 @@ Site Preview по умолчанию выключен. Ему нужны нез�
 
 Конфигурация, runtime archives и release SHA фиксируются. APT packages, удалённый model catalog и внешние API не заморожены: версии записываются, но битовая идентичность VPS не обещается. Необходимы apt snapshot/image, release signing и VM acceptance CI. Локальные тесты и их границы описаны в [CHECKLIST](CHECKLIST.md).
 
+## Bun: ошибки линковки при установке зависимостей
+
+В новом release установщик сначала выполняет `bun install --frozen-lockfile` как `gamma-build`. Только при ненулевом exit и диагностике Bun `EPERM`, `EACCES`, `EXDEV`, `EMLINK` или `ENOTSUP` вместе с `failed to link package` он:
+
+1. Проверяет, что `bun.lock` не изменился.
+2. Удаляет частичные `node_modules` в новом release, включая workspace-каталоги, от имени `gamma-build`. Не следует по symlink, не трогает общий cache, работающий release, проекты и данные.
+3. Один раз повторяет `bun install --backend=copyfile --frozen-lockfile`.
+4. Проверяет неизменность lockfile, затем продолжает обычную сборку.
+
+`--ignore-scripts` не используется. Project `postinstall`/`prepare` и разрешённые Bun lifecycle-скрипты зависимостей сохраняются; `trustedDependencies` не меняется. Один лишь exit 127, ошибка скрипта, registry, lockfile, таймаут или нехватка места не запускают fallback. Если copyfile тоже упал, третьей попытки нет. Вывод содержит название этапа и exit code; stdout/stderr дочерних процессов не печатаются, поскольку могут содержать секреты. Таймаут помечается отдельно: у него может не быть exit code.
+
+Установка и сборка нового release происходят до остановки текущих сервисов и до переключения manifest. Неуспешный build оставляет текущую Gamma работающей. Повтор `--upgrade` создаёт новый release; вручную чистить production `node_modules` или cache не требуется. Copyfile требует дополнительного дискового места по сравнению с hardlinks.
+
+Для безопасного применения на Ubuntu iMac доставить полный проверенный checkout с исправленным установщиком. Пока изменение не опубликовано, `git pull` его не доставит. Из этого checkout выполнить:
+
+```bash
+sudo ./install-gamma.sh --doctor
+# HEAD должен указывать на проверенный commit, доступный в origin.
+GAMMA_RELEASE_SHA="$(git rev-parse HEAD)"
+sudo ./install-gamma.sh --upgrade --ref "$GAMMA_RELEASE_SHA"
+sudo ./install-gamma.sh --doctor
+```
+
+Сначала разрешить любые ошибки doctor, не переписывая manifest вручную. Перед upgrade сохранить обычную резервную копию и завершить активные задачи: успешная активация кратковременно перезапускает Gamma. Public Origin и provider config сохраняются штатным механизмом обновления. Не запускать вручную `bun install` в активном release и не использовать `--ignore-scripts` как production workaround.
+
+Локально проверены реальные Bun 1.3.14 copyfile install с lifecycle-скриптами и production frontend build в отдельном checkout (Node 22.22.3). Начальная ошибка линковки внедрена тестовым host; EPERM конкретного Ubuntu-хоста не воспроизведён. Regression tests используют настоящий Bun в временном workspace, проверяют postinstall/prepare, частичную установку, workspace dependency, symlink-границы и неизменный lockfile. Upgrade/сохранение работающих сервисов проверяются существующим OS contract harness для Ubuntu 24.04 и 26.04; это не загрузочные VM-тесты и не проверка production.
+
 ## Прокси и память сборки
 
 Installer использует прямой HTTPS/APT egress. Если до него дошли `HTTP_PROXY`, `HTTPS_PROXY`, `ALL_PROXY` или lowercase-варианты, он останавливается **до provisioning** с именами переменных, без значений/credentials. SOCKS не передаётся Bun: иначе возможен `UnsupportedProxyProtocol`. Если прямой выход разрешён, явно очистить переменные перед запуском; не обходить обязательный корпоративный proxy. Для proxy-only сети нужен отдельный проверенный provisioning — этот installer такой режим не поддерживает. `sudo` может очищать переменные ещё до входа в installer; оператор должен обеспечить заявленный прямой egress.

@@ -371,6 +371,50 @@ def install_runtimes(host):
         alias.symlink_to("bun")
 
 
+def run_stage(host, stage, command, *, check=True, **kwargs):
+    print("Stage: " + stage, flush=True)
+    try:
+        result = host.run(command, check=False, **kwargs)
+    except subprocess.TimeoutExpired:
+        raise Failure(f"Stage failed: {stage} (timeout; no exit code available)") from None
+    require(not check or result.returncode == 0,
+            f"Stage failed: {stage} (exit {result.returncode}); subprocess output withheld to protect secrets")
+    return result
+
+
+def install_dependencies(host, directory):
+    locked = hashlib.sha256((directory / "bun.lock").read_bytes()).hexdigest()
+    result = run_stage(host, "Bun dependencies (default backend)",
+                       [BUN_BIN, "install", "--frozen-lockfile"],
+                       user="gamma-build", cwd=directory, check=False)
+    if result.returncode:
+        # Exit 127 alone can mean a missing lifecycle executable, not a link
+        # failure. Only Bun's explicit package-link diagnostic warrants retry.
+        linking = re.search(r"(?:EPERM|EACCES|EXDEV|EMLINK|ENOTSUP):[^\r\n]*failed to link package",
+                            result.stdout + "\n" + result.stderr)
+        require(linking, f"Stage failed: Bun dependencies (default backend) (exit {result.returncode}); no confirmed package-link failure; output withheld")
+        require(hashlib.sha256((directory / "bun.lock").read_bytes()).hexdigest() == locked,
+                "Bun dependencies modified the frozen lockfile; refusing retry")
+        print(f"Bun dependencies (default backend) failed (exit {result.returncode}); confirmed package-link failure. Retrying once with copyfile.", flush=True)
+        # Run cleanup as the build user, only inside this fresh release. Do not
+        # follow workspace/package symlinks or remove the shared Bun cache.
+        run_stage(host, "Remove partial release dependencies", ["python3", "-c",
+            "import os,shutil\n"
+            "for root, dirs, files in os.walk('.', topdown=True, followlinks=False):\n"
+            "    dirs[:] = [name for name in dirs if name != '.git']\n"
+            "    if 'node_modules' not in dirs and 'node_modules' not in files: continue\n"
+            "    target = os.path.join(root, 'node_modules')\n"
+            "    if os.path.islink(target) or not os.path.isdir(target): os.unlink(target)\n"
+            "    else: shutil.rmtree(target)\n"
+            "    dirs[:] = [name for name in dirs if name != 'node_modules']\n"],
+            user="gamma-build", cwd=directory)
+        run_stage(host, "Bun dependencies (copyfile retry)",
+                  [BUN_BIN, "install", "--backend=copyfile", "--frozen-lockfile"],
+                  user="gamma-build", cwd=directory)
+    require(hashlib.sha256((directory / "bun.lock").read_bytes()).hexdigest() == locked,
+            "Bun dependencies modified the frozen lockfile")
+
+
 def build_release(host, options):
     print("Resolving release and building as gamma-build (no production credentials)…", flush=True)
     host.mkdir("/opt/gamma/releases", 0o755)
@@ -392,14 +436,14 @@ def build_release(host, options):
         require(not any((directory / part / name).exists() for part in (".", "packages/app", "packages/opencode")),
                 "Release contains a dotenv file; production environment must come from /etc/gamma")
     locked = hashlib.sha256((directory / "bun.lock").read_bytes()).hexdigest()
-    host.run([BUN_BIN, "install", "--frozen-lockfile"], user="gamma-build", cwd=directory)
-    host.run([BUN_BIN, "script/1c-agent/download-bsl.ts", str(directory / "runtime/bsl-language-server.jar")],
+    install_dependencies(host, directory)
+    run_stage(host, "BSL language server download", [BUN_BIN, "script/1c-agent/download-bsl.ts", str(directory / "runtime/bsl-language-server.jar")],
              user="gamma-build", cwd=directory)
     # Browser revision is pinned by the release lockfile and travels with rollback.
-    host.run([BUN_BIN, "node_modules/playwright/cli.js", "install", "chromium"],
+    run_stage(host, "Playwright Chromium install", [BUN_BIN, "node_modules/playwright/cli.js", "install", "chromium"],
              user="gamma-build", cwd=directory / "packages/opencode",
              extra={"PLAYWRIGHT_BROWSERS_PATH": release + "/.playwright"})
-    host.run([BUN_BIN, "run", "build"], user="gamma-build", cwd=directory / "packages/app", extra={"OPENCODE_CHANNEL": "prod", "NODE_OPTIONS": "--max-old-space-size=4096"})
+    run_stage(host, "Frontend production build", [BUN_BIN, "run", "build"], user="gamma-build", cwd=directory / "packages/app", extra={"OPENCODE_CHANNEL": "prod", "NODE_OPTIONS": "--max-old-space-size=4096"})
     require((directory / "packages/app/dist/index.html").is_file(), "Frontend build has no index.html")
     require(hashlib.sha256((directory / "bun.lock").read_bytes()).hexdigest() == locked, "Build modified the lockfile")
     host.owner(directory, "root", recursive=True)
