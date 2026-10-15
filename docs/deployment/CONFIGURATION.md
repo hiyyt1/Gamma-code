@@ -33,7 +33,7 @@
 | `GAMMA_TRUST_PROXY` | 1 за данным Nginx; 0 для SSH/Cloudflare Tunnel | false | Только строка 1 доверяет X-Real-IP; Nginx обязан перезаписывать header | 1 | Нет |
 | `OPENCODE_SERVER_USERNAME` | Нет | opencode | Внутренний Basic login, не browser admin; setup-auth создаёт gamma-internal | gamma-internal | Нет |
 | `OPENCODE_SERVER_PASSWORD` | Да для gateway | нет; backend без auth, gateway откажет | Случайный внутренний пароль >=32 символов, создан setup-auth | генерируется setup-auth | Да |
-| `GAMMA_PREVIEW_DOMAIN` | При Preview | нет; disabled | Base для capability hosts на независимом регистрируемом домене | preview.example.net | Нет |
+| `GAMMA_PREVIEW_DOMAIN` | Только legacy внешний Preview | нет; встроенный режим работает | Base для capability hosts на независимом регистрируемом домене | preview.example.net | Нет |
 | `GAMMA_PREVIEW_PORT` | Нет | 4097 | Listener backend; изменение требует изменения Nginx upstream | 4097 | Нет |
 | `OPENCODE_CONFIG` | Да (Legacy стандарт) | нет | Дополнительный файл до project config; не читается native V2 loader | /etc/gamma/opencode.json | Нет |
 | `OPENCODE_CONFIG_DIR` | Нет | global XDG config в V2 | Дополнительный каталог Legacy; global directory V2; возможны plugins/agents | /var/lib/gamma/config/opencode | Нет |

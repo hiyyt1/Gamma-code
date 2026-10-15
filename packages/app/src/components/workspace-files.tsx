@@ -61,6 +61,7 @@ export function WorkspaceFiles(props: ParentProps<{ sessionID?: string }>) {
   const [state, setState] = createStore({
     sitePreview: false,
     sitePath: undefined as string | undefined,
+    siteEntry: undefined as string | undefined,
     preview: false,
     selected: "",
     drag: 0,
@@ -111,7 +112,7 @@ export function WorkspaceFiles(props: ParentProps<{ sessionID?: string }>) {
     siteRequest = request
     return request
   }
-  const openSite = (path?: string) => setState({ sitePreview: true, sitePath: path })
+  const openSite = (path?: string, entry?: string) => setState({ sitePreview: true, sitePath: path, siteEntry: entry })
   createEffect(
     on(
       () => [props.sessionID, sdk().directory] as const,
@@ -374,7 +375,7 @@ export function WorkspaceFiles(props: ParentProps<{ sessionID?: string }>) {
         <Show
           when={
             !guide() && state.sitePreview && props.sessionID
-              ? { sessionID: props.sessionID!, path: state.sitePath }
+              ? { sessionID: props.sessionID!, path: state.sitePath, entry: state.siteEntry }
               : undefined
           }
           keyed
@@ -383,6 +384,7 @@ export function WorkspaceFiles(props: ParentProps<{ sessionID?: string }>) {
             <SitePreview
               sessionID={selection.sessionID}
               path={selection.path}
+              entry={selection.entry}
               onClose={() => setState("sitePreview", false)}
             />
           )}
@@ -564,7 +566,18 @@ export function WorkspaceFiles(props: ParentProps<{ sessionID?: string }>) {
                   </div>
                 }
               >
-                <WorkspaceFilePreview path={state.selected} onBack={() => setState("preview", false)} />
+                <WorkspaceFilePreview
+                  path={state.selected}
+                  onBack={() => setState("preview", false)}
+                  onOpenSite={() => {
+                    const site = sites.current
+                      .filter(
+                        (site) => site.kind === "static" && (!site.path || state.selected.startsWith(`${site.path}/`)),
+                      )
+                      .sort((a, b) => b.path.length - a.path.length)[0]
+                    openSite(site?.path, site ? state.selected.slice(site.path ? site.path.length + 1 : 0) : undefined)
+                  }}
+                />
               </Show>
             </div>
             <section class="workspace-useful" aria-label={language.t("gamma.useful")}>

@@ -2,7 +2,7 @@ import { Effect, Layer, Schema } from "effect"
 import { HttpApi, HttpApiBuilder, HttpApiEndpoint, HttpApiGroup } from "effect/unstable/httpapi"
 import { Session } from "@/session/session"
 import { SessionID } from "@/session/schema"
-import { configuration, createPreview, discover } from "@/server/site-preview"
+import { configuration, createPreview, discover, snapshot } from "@/server/site-preview"
 import { Authorization } from "./middleware/authorization"
 
 class PreviewError extends Schema.TaggedErrorClass<PreviewError>()(
@@ -15,6 +15,17 @@ class PreviewError extends Schema.TaggedErrorClass<PreviewError>()(
 
 const Api = HttpApi.make("sitePreview").add(
   HttpApiGroup.make("sitePreview")
+    .add(
+      HttpApiEndpoint.post("snapshot", "/product/session/:sessionID/preview/snapshot", {
+        params: { sessionID: SessionID },
+        payload: Schema.Struct({ path: Schema.String, revision: Schema.optional(Schema.String) }),
+        success: Schema.Struct({
+          revision: Schema.String,
+          files: Schema.Array(Schema.Struct({ path: Schema.String, mime: Schema.String, data: Schema.String })),
+        }),
+        error: PreviewError,
+      }),
+    )
     .add(
       HttpApiEndpoint.get("list", "/product/session/:sessionID/preview", {
         params: { sessionID: SessionID },
@@ -111,11 +122,22 @@ const handlers = HttpApiBuilder.group(Api, "sitePreview", (group) =>
       return preview
     }
     return group
+      .handle("snapshot", (ctx) =>
+        sessions.get(ctx.params.sessionID).pipe(
+          Effect.mapError(() => new PreviewError({ code: "session_missing" })),
+          Effect.flatMap((session) =>
+            operation(async () => {
+              const result = await snapshot(session.directory, ctx.payload.path)
+              return ctx.payload.revision === result.revision ? { ...result, files: [] } : result
+            }),
+          ),
+        ),
+      )
       .handle("list", (ctx) =>
         sessions.get(ctx.params.sessionID).pipe(
           Effect.mapError(() => new PreviewError({ code: "session_missing" })),
           Effect.flatMap((session) =>
-            operation(async () => ({ enabled: !!preview, apps: await discover(session.directory) })),
+            operation(async () => ({ enabled: true, apps: await discover(session.directory) })),
           ),
         ),
       )

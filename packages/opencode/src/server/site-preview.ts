@@ -15,6 +15,51 @@ function visible(value: string) {
   return value.split("/").every((part) => part && !part.startsWith(".") && !excluded.has(part))
 }
 
+// The embedded renderer receives data only, never an executable HTTP document.
+// Reuse the descriptor-based project boundary (including O_NOFOLLOW on ancestors).
+export async function snapshot(directory: string, root: string) {
+  const app = (await discover(directory)).find((app) => app.path === root)
+  if (!app) throw new Error("site_missing")
+  if (app.kind !== "static") throw new Error("dynamic_unavailable")
+  const files: { path: string; mime: string; data: string }[] = []
+  const budget = { bytes: 0, entries: 0 }
+  const visit = async (relative: string, depth: number) => {
+    if (depth > 16) throw new Error("preview_limit")
+    const entries = await ProductProjects.files(directory, path.posix.join(root, relative))
+    budget.entries += entries.length
+    if (budget.entries > 2000) throw new Error("preview_limit")
+    for (const entry of entries) {
+      if (!visible(entry.name)) continue
+      const name = path.posix.join(relative, entry.name)
+      if (entry.type === "directory") {
+        await visit(name, depth + 1)
+        continue
+      }
+      if (!extensions.has(path.extname(name).toLowerCase())) continue
+      if (/(^|\/)(package(-lock)?\.json|.*lock\.json|gamma\.json|opencode\.json)$/i.test(name)) continue
+      await ProductProjects.withFile(directory, entry.path, false, async (handle) => {
+        const stat = await handle.stat()
+        if (stat.nlink !== 1) throw new Error("invalid_path")
+        budget.bytes += stat.size
+        if (stat.size > 8 * 1024 * 1024 || budget.bytes > 24 * 1024 * 1024 || files.length >= 512)
+          throw new Error("preview_limit")
+        const bytes = Buffer.alloc(stat.size + 1)
+        const cursor = { read: 0 }
+        while (cursor.read < bytes.length) {
+          const result = await handle.read(bytes, cursor.read, bytes.length - cursor.read, cursor.read)
+          if (!result.bytesRead) break
+          cursor.read += result.bytesRead
+        }
+        if (cursor.read !== stat.size) throw new Error("file_changed")
+        files.push({ path: name, mime: Bun.file(name).type, data: bytes.subarray(0, cursor.read).toString("base64") })
+      })
+    }
+  }
+  await visit("", 0)
+  if (!files.some((file) => file.path === "index.html")) throw new Error("site_missing")
+  return { files, revision: Bun.hash(JSON.stringify(files)).toString(16) }
+}
+
 export async function discover(directory: string) {
   const apps: PreviewApp[] = []
   const budget = { remaining: 2000 }

@@ -197,3 +197,44 @@ test("local mode only accepts an explicit loopback HTTP origin on a separate por
     })
   }
 })
+
+test("embedded snapshots are bounded, revisioned and confined to the selected build", async () => {
+  const { snapshot } = await import("../../src/server/site-preview")
+  const project = await ProductProjects.create("snapshot")
+  await Bun.write(path.join(project.path, "dist/index.html"), '<script src="assets/app.js"></script>')
+  await Bun.write(path.join(project.path, "dist/assets/app.js"), "console.log('ready')")
+  await Bun.write(path.join(project.path, "dist/.env"), "SECRET")
+  await Bun.write(path.join(project.path, "dist/package.json"), "{}")
+  await Bun.write(path.join(project.path, "secret.js"), "OUTSIDE BUILD")
+  await symlink(path.join(project.path, "secret.js"), path.join(project.path, "dist/escape.js"))
+  const first = await snapshot(project.path, "dist")
+  expect(first.files.map((file) => file.path).sort()).toEqual(["assets/app.js", "index.html"])
+  expect((await snapshot(project.path, "dist")).revision).toBe(first.revision)
+  await Bun.write(path.join(project.path, "dist/assets/app.js"), "console.log('updated')")
+  expect((await snapshot(project.path, "dist")).revision).not.toBe(first.revision)
+  for (const root of ["../", "/etc", "dist/..", "dist/%2e%2e", "dist\\.."])
+    await expect(snapshot(project.path, root)).rejects.toThrow("site_missing")
+  await link(path.join(project.path, "secret.js"), path.join(project.path, "dist/hardlink.js"))
+  await expect(snapshot(project.path, "dist")).rejects.toThrow("invalid_path")
+  await rm(path.join(project.path, "dist/hardlink.js"))
+  await Bun.write(path.join(project.path, "dist/large.js"), Buffer.alloc(8 * 1024 * 1024 + 1))
+  await expect(snapshot(project.path, "dist")).rejects.toThrow("preview_limit")
+})
+
+test("embedded snapshots bound total bytes and file count, and never execute source projects", async () => {
+  const { snapshot } = await import("../../src/server/site-preview")
+  const project = await ProductProjects.create("snapshot-limits")
+  await Bun.write(path.join(project.path, "index.html"), "static")
+  await Promise.all(Array.from({ length: 512 }, (_, index) => Bun.write(path.join(project.path, `${index}.css`), "x")))
+  await expect(snapshot(project.path, "")).rejects.toThrow("preview_limit")
+  await Promise.all(Array.from({ length: 512 }, (_, index) => rm(path.join(project.path, `${index}.css`))))
+  await Promise.all(
+    Array.from({ length: 4 }, (_, index) =>
+      Bun.write(path.join(project.path, `${index}.js`), Buffer.alloc(7 * 1024 * 1024)),
+    ),
+  )
+  await expect(snapshot(project.path, "")).rejects.toThrow("preview_limit")
+  await Bun.write(path.join(project.path, "package.json"), JSON.stringify({ scripts: { build: "touch NEVER" } }))
+  await expect(snapshot(project.path, "")).rejects.toThrow("dynamic_unavailable")
+  expect(await Bun.file(path.join(project.path, "NEVER")).exists()).toBe(false)
+})

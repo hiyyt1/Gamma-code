@@ -1,184 +1,160 @@
-# Gamma website Preview
+# Gamma: встроенный Preview сайтов
 
-Preview is an independent product feature; it does not change agents, sessions,
-skills, MCP, the database schema, or the OpenCode PTY lifecycle.
+Preview работает через тот же HTTPS-origin, что и Gamma. Дополнительные DNS,
+домены, туннели, публичные порты и dev-серверы не нужны. Код агентного runtime,
+PTY и модель разрешений не меняются.
 
-## Supported sites
+## Использование
 
-After a successful assistant turn, supported websites appear as compact result
-cards beneath its final answer. **Open website / Открыть сайт** opens the existing
-Preview panel beside the chat. Refresh rereads assets; the external link opens
-the website in a new tab. Closing Preview restores the Workspace panel. The file
-panel no longer has a permanent Preview button.
+1. Откройте проект и его сессию. Создайте сайт с `index.html` либо готовую сборку
+   в `dist`/`build`.
+2. Нажмите **Предпросмотр** в верхней панели. Кнопка появляется после обнаружения
+   статического сайта. Также работают карточка **Открыть сайт**, ссылки на
+   `index.html` в ответах агента и кнопка возле открытого HTML-файла в файловой панели.
+3. При нескольких сайтах доступен выбор. По умолчанию предпочтение отдаётся
+   готовой сборке `dist`/`build`, затем первому статическому сайту.
+4. В панели есть обновление, закрытие, разворачивание внутри Gamma и размеры
+   **Компьютер / Планшет / Телефон** (доступная ширина / 768 / 390 CSS px).
+   Большое окно остаётся внутри Gamma: недоверенный HTML не открывается отдельно
+   без защищающей оболочки.
 
-Cards combine existing Preview discovery with completed write/edit/apply_patch
-tool results, patch parts, or durable per-turn file diffs. Model prose alone never
-creates a card. Each site belongs to its latest modifying turn in the current
-session, with the deepest matching application directory selected. Multiple
-results get separate cards. History reconstructs the cards after reload without
-new model requests or new database records. A scan after completion, on focus,
-and every ten visible-page seconds revalidates availability. Removed sites become
-disabled; after reload, absent sites are omitted. Starting a preview always
-rechecks the files on the backend.
+Переходы между локальными HTML-страницами и hash-навигация сохраняются при
+обновлении. После закрытия удаляются iframe, подписки и таймеры; активный запрос
+отменяется. При смене проекта существующая WorkspaceFiles-интеграция закрывает
+Preview. Никаких процессов сайта, публичных ссылок или серверных снимков не остаётся.
 
-Result cards are siblings below the original assistant text container, never
-children of its horizontal flex row. They are capped at 560 px and the available
-message width; the text retains its original flex sizing and code-block layout.
-Availability distinguishes successful discovery, a missing entry file, missing
-Preview configuration, denied access, a network failure and a backend error.
-Failed requests preserve the last discovered sites and disable opening with the
-specific reason. Only a successful scan can mark an entry file as missing.
+## Архитектура и аудит
 
-Local `index.html` links in assistant answers open the corresponding discovered
-site. Other local file links open the file viewer; external URLs remain ordinary
-links. The chat menu **Project websites / Сайты проекта** opens the existing site
-selector, including for older sessions without structured mutation evidence.
-Shell-only work without per-turn file diffs cannot be attributed to an answer
-reliably; use this menu in that case. Preview discovery never executes a model.
+- `packages/opencode/src/server/site-preview.ts`: существующее обнаружение сайтов
+  и новый ограниченный снимок выбранного корня. Переиспользуются
+  `ProductProjects.files/withFile`: pinned directory descriptors, `O_NOFOLLOW`
+  для каждого компонента, включая предков workspace. Не используются пути из
+  HTML для чтения произвольных файлов.
+- `/product/session/:sessionID/preview/snapshot`: авторизованный POST возвращает
+  JSON с base64-файлами и ревизией. Проект определяется серверной сессией,
+  клиент выбирает только обнаруженный корень сайта. Совпавшая ревизия возвращает
+  пустой список файлов. API не отдаёт исполняемый HTML.
+- `deploy/web.ts`: существующие login, cookie, Origin/CSRF и проксирование
+  `/product` используются без ослабления проверок. Новые nginx-маршруты не нужны.
+  Авторизация остаётся существующей общей моделью Gamma, без новых tenant ACL.
+- `site-preview-document.ts`: превращает локальные ссылки HTML/CSS и строковые
+  пути JS в автономные data URL; ES modules связываются import map. JS разбирается
+  токенизатором Acorn, не исполняется в Gamma. HTML разбирается инертным template
+  и parse5; не вставляется в живой DOM приложения.
+- Внешний iframe содержит только доверенную оболочку Gamma. Его CSP запрещает
+  сетевые загрузки HTTP-ресурсов и задаёт `frame-src 'none'`. Внутренний iframe содержит сайт в `srcdoc`.
+  Оба имеют `sandbox="allow-scripts"`, без `allow-same-origin`, forms, popup,
+  downloads или top-navigation. CSP внешнего документа блокирует даже переход
+  внутреннего iframe на другой URL до отправки запроса. Один sandbox такого
+  свойства не даёт.
+- Сайт не получает URL API, cookies или Authorization из загрузчика снимка.
+  Он имеет opaque origin, не может читать Gamma/оболочку, cookies или localStorage.
+  `connect-src`, workers, frames, objects, forms и внешние ресурсы запрещены.
+  `postMessage` проверяется по source; разрешены только ограниченные команды
+  готовности и навигации среди уже загруженных HTML-файлов.
+- Переиспользуется событие существующего файлового watcher. События объединяются;
+  каждые пять секунд видимая открытая панель также проверяет ревизию, поскольку
+  watcher может игнорировать `dist/build`. Неизменившийся сайт не перемонтируется.
 
-Supported: root or nested `index.html`, CSS, browser JavaScript and ES modules,
-images, fonts, media, WASM and existing static builds (including React/Vite
-`dist/index.html`). Root-relative asset URLs work because each preview has its
-own hostname. Discovery searches six directory levels, at most 2,000 entries and
-50 applications; hidden directories, node_modules, vendor and coverage are skipped.
+Старые `start/renew/stop` и отдельный preview-listener сохранены для совместимости
+с уже настроенными установками и старыми клиентами. Новый UI их не вызывает.
+`GAMMA_PREVIEW_DOMAIN`, `GAMMA_PREVIEW_LOCAL` и Preview nginx-конфигурация для
+встроенного режима не нужны. По умолчанию отдельный listener не запускается.
 
-Projects with package.json scripts `dev`, `start` or `build` are identified as
-requiring a build/dev server. **No project scripts, installers, dev servers or
-build commands are executed by Preview.** Existing PTY processes inherit Gamma's
-environment and are not a safe sandbox. VPS execution isolation has not been
-audited, so dynamic execution, HMR/WebSockets and automatic React/Vite compilation
-are intentionally unavailable. A ready static build can be selected separately.
+Политика основана на [CSP frame-src](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy/frame-src)
+и [sandbox/srcdoc iframe](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/iframe),
+а сетевые запреты дополнительно проверены в Chromium реальными HTTP-счётчиками.
 
-## Backend and isolation
+## Поддержка и ограничения
 
-Authenticated product endpoints under `/product/session/:sessionID/preview`
-list sites and start, renew or stop a preview. The session selects the existing
-ProductProjects workspace; the client cannot pass an arbitrary filesystem root.
-The existing shared Gamma authorization model is preserved (this does not add
-tenant-level ownership to a server using one shared login).
+Поддерживаются обычные HTML/CSS/JS, локальные изображения, шрифты и медиа,
+вложенные каталоги, относительные и корневые URL ресурсов, ES modules, статические
+lazy imports, многостраничные сайты и hash-SPA. Готовые Vite/React/Vue-сборки
+работают в пределах этих браузерных возможностей; принадлежность фреймворку не
+заменяет сборку. Реальная Vite-сборка проверяется автоматическим тестом.
 
-A process-scoped listener binds only to `127.0.0.1:4097` when configured. It serves
-only files, never proxies localhost targets, and never executes user code.
-Each start creates a random 192-bit capability hostname mapped to one site.
-There are at most 32 leases. The UI renews its lease every 30 seconds; abandoned
-leases expire after 120 seconds and are swept every 30 seconds. Closing the panel
-revokes its lease immediately, including its new-tab URL. Server restart revokes
-all leases. No per-site processes or persistent preview records exist.
+Не поддерживаются исходные JSX/TS/Vue SFC, SSR, npm/dev-серверы, HMR, WebSocket,
+fetch/XHR (включая локальный JSON), CDN, внешние шрифты, workers, service workers,
+localStorage/cookies, eval и WebAssembly-компиляция. History API с pathname требует
+реального origin: используйте hash router. Произвольные вычисляемые URL ресурсов,
+`new URL(..., import.meta.url)` относительно data-модуля и нестандартные загрузчики
+могут потребовать адаптации сборки. Никакие npm-скрипты автоматически не запускаются.
 
-Files are read through ProductProjects' pinned directory descriptors, with
-O_NOFOLLOW on every path component. Only a web-asset extension allowlist is
-served; dotfiles, known Gamma/package configs, symlinks, hardlinks, traversal and
-files over 8 MiB are refused. There is no directory listing or SPA fallback;
-client-side routers should use hash routing. Files deliberately placed in the
-selected site's public asset tree are accessible to holders of its preview URL.
+Поддерживаемые сайты не должны зависеть от сетевого обмена. Поэтому формы могут обрабатываться
+локальным JS, но отправить их на сервер нельзя. Внешние переходы не открываются.
+Снимок содержит только файлы выбранного корня; относительный выход за этот корень
+не загружает ресурсы соседнего проекта.
 
-Use an **independent registrable domain** for Preview, with no Gamma cookies or
-authentication. Nginx strips Authorization/Cookie headers. Preview does not receive
-Gamma tokens. The HTTP CSP applies sandboxing even in a new tab, with scripts and
-forms enabled but no same-origin, popup or top-navigation privileges. Cookies,
-localStorage, workers, embedded frames and external network resources/API calls
-are unavailable. Assets must be local; third-party CDN libraries/fonts must be
-vendored. This is more restrictive than ordinary hosting.
+Лимиты: 512 файлов, 8 MiB на файл, 24 MiB исходного содержимого, 2 000 просмотренных
+записей, 16 уровней ресурсов и 64 MiB бюджета преобразования/документа. Исключены
+скрытые каталоги, node_modules/vendor/coverage, package/lock/Gamma configs,
+symlink и hardlink escape. Обнаружение сайтов сохраняет прежние ограничения:
+6 уровней, 2 000 записей, 50 сайтов. Большие проекты следует открывать из готовой
+папки сборки. Лимит не является квотой CPU для бесконечного JS-цикла: браузерный
+sandbox не заменяет изоляцию ресурсов браузера. Проверен Chromium; другие движки
+требуют отдельной приёмки. CSP не является полным сетевым firewall браузера:
+WebRTC (включая STUN) и DNS side channels не покрыты проверенными HTTP-запретами.
+В тестируемом Chromium конструктор RTCPeerConnection остаётся доступен внутри
+sandbox. Не следует считать этот режим средой полного сдерживания заведомо
+враждебного кода или гарантией отсутствия всех исходящих пакетов. Для такой
+гарантии нужна отдельная изоляция браузерного процесса/сети; она здесь не реализована.
+Это ограничение не даёт сайту доступ к cookies, DOM или авторизации Gamma.
+См. [обсуждение WebRTC и CSP](https://lists.w3.org/Archives/Public/public-webappsec/2014Aug/0162.html).
 
-The production web proxy rejects opaque-origin and cross-origin browser API
-requests before credentials reach Gamma. All public Gamma API traffic must pass
-through this proxy; do not expose backend port 4096 or add Nginx routes bypassing
-it. CORS on the preview asset listener allows credentialless module and asset
-loads from opaque sandbox origins; it does not enable credentials.
+## Локальные проверки
 
-Security references: [CSP sandbox](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy/sandbox)
-and [Fetch Metadata](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Fetch_metadata).
+Из `packages/opencode`:
 
-## Deployment by the administrator
+```bash
+bun test test/server/site-preview.test.ts
+bun typecheck
+```
 
-No VPS changes were made as part of this implementation. Keep the existing
-database, workspaces, environment, authorization and service account.
+Из `packages/app`:
 
-1. Provision wildcard DNS and TLS for an independent domain, e.g.
-   `*.preview.example.net`. Do not use Gamma's cookie domain. No additional public
-   ports are needed: both sites use HTTPS port 443.
-2. Add to the existing Gamma backend environment:
-   ```ini
-   GAMMA_PUBLIC_ORIGIN=https://gamma.example.com
-   GAMMA_PREVIEW_DOMAIN=preview.example.net
-   GAMMA_PREVIEW_PORT=4097
-   ```
-   `GAMMA_PUBLIC_ORIGIN` must be the exact HTTPS origin, without a trailing slash.
-   Leave these unset to keep Preview disabled with an explanatory UI message.
-3. Adapt `deploy/gamma-preview.nginx.conf.example` to the actual domain and
-   certificate. Include it in Nginx's http context. The main Gamma host must proxy
-   to `deploy/web.ts` as before. Do not configure Gamma Basic auth on the preview
-   virtual host. Avoid logging capability hostnames in upstream/error logs.
-4. Build with `bun run --cwd packages/app build`. Deploy the changed backend,
-   frontend build and `deploy/web.ts`. Keep Gamma running as its existing non-root
-   service account (the provided templates use `gamma`). Do not replace an
-   existing installation's paths/data with the sample paths.
-5. Validate with `nginx -t`, then reload Nginx and restart only Gamma backend/web
-   services during the planned update. The preview listener follows backend
-   startup/shutdown; it does not need another systemd service.
-6. Verify a temporary static project through the real production hostname,
-   including a new tab, refresh and API-denial checks. Remove only that fixture.
+```bash
+bun typecheck
+bun run build
+bun run e2e/embedded-preview-renderer.ts
+bun run e2e/embedded-preview-smoke.ts
+```
 
-## Local validation
+Пройдены 12 серверных Preview-тестов (80 assertions), 15 gateway-тестов
+(213 assertions), 11 тестов карточек сайтов (50 assertions), оба Chromium-сценария,
+frontend/backend typecheck, typecheck browser-сценариев и production build.
 
-From `packages/opencode`: `bun test test/server/site-preview.test.ts` and
-`bun typecheck`. From `packages/app`: `bun typecheck`, `bun run build`, then
-`bun run e2e/preview-smoke.ts` (requires installed Playwright Chromium and openssl).
+Из `deploy`: `bun test web.test.ts`. После изменения публичного API выполнено
+`bun run generate` из `packages/client`; генерируемые файлы вручную не меняются.
 
-The browser smoke runner launches isolated backend/web instances with temporary
-data, workspace and TLS certificate, and cleans those instances/data in finally.
-It uses the production build and real preview responses; Playwright routes the
-test-only wildcard domain to the loopback listener. It generates a site fixture
-directly, without calling a paid model. Therefore agent generation and real
-production DNS/Nginx/TLS must still be checked after deployment.
+Renderer-тест проверяет JS modules, CSS, изображения, hash routing, opaque storage,
+запрет fetch/images/scripts/iframes/popup/top и self-navigation с реальным HTTP
+listener. Smoke запускает production UI, backend и HTTPS reverse proxy на loopback
+с временной БД, сертификатом и workspace. Проверяет login, Origin/CSRF, файлы,
+Vite build с lazy import, автообновление/refresh, навигацию, размеры экрана,
+разворачивание и закрытие/повторное открытие. Удаляет свои процессы и данные.
+Он не подключается к production и не проверяет реальный публичный VPS.
+Прежняя команда `e2e/preview-smoke.ts` перенаправлена на этот встроенный сценарий;
+legacy listener продолжает проверяться серверными тестами.
 
-Validated locally: backend/frontend/e2e typechecks, production frontend build,
-22 backend filesystem/preview tests (67 assertions), 11 card-attribution/status tests
-(50 assertions), and the browser smoke flow:
-embedded HTML, CSS, ES modules, images, animation, normal-click new tab, refresh,
-opaque-origin storage/parent/API denial, close/revocation, result cards, reload
-without duplicates, HTML/file/external links, deletion, multiple-site selection,
-Vite static builds, unsupported dev projects, neighboring-session isolation and
-legacy project-menu access. Durable assistant/tool history is seeded through the
-real Session service in the isolated test database, without a paid LLM call.
-Temporary test databases, projects,
-certificates and server processes are removed by the runner.
+## Проверка «сайт-тест-2» и обновление
 
-The smoke now also checks long paragraphs, lists and code blocks with and without
-a result card, open/closed file panels, a 390 px viewport, and recovery after
-403, 500 and network failures. `PREVIEW_REAL_SITE=/absolute/path/to/coffee-site`
-optionally copies that existing site into the disposable fixture to verify the
-real coffee website with configured isolated Preview; the source is read-only.
-`bun run e2e/preview-layout-audit.ts <sessionID> <directory>` audits an existing
-session on the local dev pair, blocks mutating requests, compares text geometry
-with the cards hidden, captures desktop/mobile screenshots in `/tmp`, and verifies
-that the history response remains unchanged. This audit expects the unconfigured
-Preview state found in the reported local installation.
+После обновления откройте существующий проект **сайт-тест-2** и сессию, в которой
+агент создал сайт. Нажмите **Предпросмотр**. Если сайтов несколько, выберите каталог
+с нужным `index.html` или `dist/build`. Проверьте интерактивность, переключите ширину,
+измените файл через агента и дождитесь обновления либо нажмите **Обновить**.
+Закройте панель и убедитесь, что проект и чат сохранились. Сам существующий проект
+при разработке не изменялся; тесты использовали временный аналог.
 
-The reported project `123` was checked directly: `coffee-site/index.html` exists
-(44,073 bytes), the file API and Preview discovery resolve the same workspace,
-and discovery returns `{ "enabled": false, "apps": [{ "path": "coffee-site",
-"kind": "static" }] }`. The running backend lacks `GAMMA_PUBLIC_ORIGIN` and
-`GAMMA_PREVIEW_DOMAIN`; this is a configuration issue, not deletion or a session
-binding issue. Enabling the existing feature still requires the isolated origin
-configuration described above. No same-origin fallback is introduced.
+После публикации проверенного коммита, из обновлённого checkout установщика:
 
-For the layout fix, production readiness measured 3143 ms before and 3110 ms
-after (single runs); logs are `/tmp/preview-fix-baseline.log` and
-`/tmp/preview-fix-smoke.log`. In the unchanged real coffee session, text widths
-were 713 px with the file panel, 808 px without it, and 323 px at a 390 px viewport.
-Showing the card does not change those widths. The original regression was the
-card competing with the text as a second child of `.gamma-assistant-response`
-(`display: flex`, row direction, default cross-axis stretching).
+```bash
+GAMMA_RELEASE='<опубликованный SHA с этими изменениями>'
+sudo ./install-gamma.sh --upgrade --ref "$GAMMA_RELEASE"
+sudo ./install-gamma.sh --doctor
+```
 
-Production-build readiness smoke baseline: 3123 ms, 667 DOM nodes, 47 resources;
-after the chat integration: 3104 ms, 666 nodes, 48 resources (single runs, not a
-statistical performance claim). The existing session-tab-switch benchmark failed
-before the change because it targets the older tab/review layout. Raw logs are
-kept in `/tmp/gamma-preview-ux-baseline.log`,
-`/tmp/gamma-preview-ux-smoke-baseline.log` and `/tmp/gamma-preview-ux-smoke.log`.
-
-Returning focus from the iframe exposed an existing suspense issue in the
-project knowledge/agent UI widgets: focus-triggered refetch briefly unmounted the
-page and swallowed toolbar clicks. Those two refresh handlers now use a Solid
-transition to retain the visible UI while their data refreshes.
+Штатный upgrade собирает frontend/backend в новом release и выполняет управляемое
+переключение с backup. Существующие данные и пути не нужно переносить. Следуйте
+[операционному руководству](deployment/OPERATIONS.md); дополнительные DNS/TLS
+настройки именно для Preview не нужны. Эти команды здесь не выполнялись,
+изменения в GitHub не публиковались.

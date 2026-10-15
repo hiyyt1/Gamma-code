@@ -64,13 +64,12 @@
 
 ## Preview, SSE и WebSocket
 
-- [ ] Если Preview не нужен: env отсутствует, UI сообщает disabled, пункт N/A. Если заявлен в deployment — N/A недопустим.
-- [ ] Preview на независимом регистрируемом домене; wildcard DNS/TLS валидны; DNS-01 renewal автоматизирован и проверен.
-- [ ] Сгенерированный static site открывается в iframe и новой вкладке, refresh работает; CSS/JS/assets локальные.
-- [ ] Vite/React сначала собран, выбран его static dist. Не обещается запуск dynamic Next/Node server; `dynamic_unavailable` ожидаем до реализации.
-- [ ] Gamma cookies/Authorization не передаются preview upstream, Set-Cookie скрыт; access log не сохраняет capability hosts.
-- [ ] Попытка preview обратиться к Gamma API/parent/storage блокируется; соседняя сессия не получает private site lease.
-- [ ] После close/revoke/expiry/restart старая capability недоступна; новый Preview можно открыть.
+- [ ] Встроенный Preview открывается через origin Gamma без Preview env, DNS или отдельного listener.
+- [ ] Static site и готовая Vite/React/Vue-сборка работают: CSS/JS/assets, ширины экрана, разворачивание, refresh и автообновление.
+- [ ] Переходы между HTML-страницами и hash-навигация сохраняются при refresh. Dev-сервер автоматически не запускается.
+- [ ] Cookies/localStorage/parent/API недоступны; внешние ресурсы, popup и навигация из iframe блокируются.
+- [ ] Закрытие/смена проекта удаляет iframe и прекращает загрузку снимков; повторное открытие работает.
+- [ ] При использовании legacy внешнего Preview дополнительно проверить отдельный домен, wildcard TLS, снятие credentials и отзыв lease.
 - [ ] Authenticated SSE через внешний Nginx получает события по мере появления; после logout поток закрыт.
 - [ ] Terminal WebSocket получает 101, принимает ввод/возвращает вывод через Nginx, закрывается при logout; cross-origin WS отвергается.
 

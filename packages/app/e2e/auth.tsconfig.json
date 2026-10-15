@@ -7,5 +7,5 @@
     "rootDir": "../../..",
     "types": ["node", "bun"]
   },
-  "include": ["auth-smoke.ts", "preview-smoke.ts"]
+  "include": ["auth-smoke.ts", "preview-smoke.ts", "embedded-preview-renderer.ts", "embedded-preview-smoke.ts"]
 }

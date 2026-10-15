@@ -7,7 +7,7 @@ import { useFile } from "@/context/file"
 import { useLanguage } from "@/context/language"
 import { PresentationPreview } from "./presentation-preview"
 
-export function WorkspaceFilePreview(props: { path: string; onBack: () => void }) {
+export function WorkspaceFilePreview(props: { path: string; onBack: () => void; onOpenSite?: () => void }) {
   const file = useFile()
   const language = useLanguage()
   const component = useFileComponent()
@@ -41,6 +41,9 @@ export function WorkspaceFilePreview(props: { path: string; onBack: () => void }
           <Icon name="arrow-left" />
         </button>
         <strong title={props.path}>{props.path}</strong>
+        <Show when={props.onOpenSite && /\.html?$/i.test(props.path)}>
+          <button onClick={() => props.onOpenSite?.()}>{language.t("sitePreview.openSite")}</button>
+        </Show>
         <Show when={content()?.type === "text" && !current()?.error}>
           <button
             onClick={() => void copy()}

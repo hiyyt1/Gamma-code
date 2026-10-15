@@ -1,6 +1,14 @@
 // Explicit English fallback for product copy awaiting locale review.
 export const PRODUCT_ENGLISH = {
   "sitePreview.title": "Preview",
+  "sitePreview.desktop": "Desktop",
+  "sitePreview.tablet": "Tablet",
+  "sitePreview.mobile": "Mobile",
+  "sitePreview.viewport": "Screen width",
+  "sitePreview.expand": "Expand preview",
+  "sitePreview.collapse": "Restore preview size",
+  "sitePreview.buildRequired": "Build this project first. Preview supports static HTML and existing dist/build output; it does not run development servers.",
+  "sitePreview.limit": "This site exceeds Preview limits: 512 files, 8 MB per file, 24 MB total. Select a smaller build folder.",
   "sitePreview.setupRequired": "Preview is disabled or not configured. An administrator must configure a separate HTTPS preview domain and Gamma’s public address.",
   "sitePreview.accessDenied": "Access to Preview was denied. Check your sign-in and workspace permissions.",
   "sitePreview.offline": "Cannot reach the Preview backend. Check the connection and refresh the page.",

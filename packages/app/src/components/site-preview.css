@@ -71,3 +71,38 @@
     margin: 8px;
   }
 }
+.gamma-site-preview-tools {
+  display: flex;
+  gap: 8px;
+  padding: 8px 12px;
+  border-bottom: 1px solid #eee;
+  font-size: 12px;
+}
+.gamma-site-preview-tools [aria-pressed="true"] {
+  background: #eee8fa;
+}
+.gamma-site-preview-viewport {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  background: #f2f2f2;
+  display: flex;
+}
+.gamma-site-preview-viewport iframe {
+  flex: none;
+  margin: 0 auto;
+  height: 100%;
+}
+.gamma-site-preview-viewport[data-width="tablet"] iframe {
+  width: 768px;
+}
+.gamma-site-preview-viewport[data-width="mobile"] iframe {
+  width: 390px;
+}
+.gamma-site-preview-expanded {
+  position: fixed;
+  inset: 12px;
+  margin: 0;
+  width: auto;
+  z-index: 50;
+}

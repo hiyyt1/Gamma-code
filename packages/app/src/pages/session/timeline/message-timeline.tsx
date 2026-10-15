@@ -1471,7 +1471,11 @@ export function MessageTimeline(props: {
                   <div class="gamma-session-actions">
                     <ProjectKnowledge compact server={serverSDK().server.http} directory={sdk().directory} />
                     <Show when={workspace?.sites().some((site) => site.kind === "static")}>
-                      <button type="button" class="gamma-session-action" onClick={() => workspace?.openSite()}>
+                      <button
+                        type="button"
+                        class="gamma-session-action gamma-session-preview-action"
+                        onClick={() => workspace?.openSite()}
+                      >
                         {language.t("sitePreview.title")}
                       </button>
                     </Show>
