@@ -12,10 +12,11 @@ import { useLanguage } from "@/context/language"
 import { useProviders } from "@/hooks/use-providers"
 import { useSDK } from "@/context/sdk"
 import { getSessionContext } from "@/components/session/session-context-metrics"
+import { createSessionContextFormatter } from "@/components/session/session-context-format"
 import { useSessionLayout } from "@/pages/session/session-layout"
 
 interface SessionContextUsageProps {
-  trigger?: (open: () => void, indicator: JSX.Element, usage: Accessor<number>) => JSX.Element
+  trigger?: (open: () => void, indicator: JSX.Element, usage: Accessor<string>) => JSX.Element
   variant?: "button" | "indicator"
   buttonAppearance?: "default" | "v2"
   placement?: ComponentProps<typeof TooltipV2>["placement"]
@@ -57,6 +58,7 @@ export function SessionContextUsage(props: SessionContextUsageProps) {
   )
 
   const context = createMemo(() => getSessionContext(messages(), [...providers.all().values()]))
+  const usage = () => createSessionContextFormatter(language.intl()).percent(context()?.usage)
   const cost = createMemo(() => {
     return usd().format(info()?.cost ?? 0)
   })
@@ -98,16 +100,15 @@ export function SessionContextUsage(props: SessionContextUsageProps) {
   const tooltipValue = () => (
     <div class="flex w-[120px] flex-col gap-2">
       <ContextTooltipRow name={language.t("context.usage.cost")} value={cost()} />
-      <ContextTooltipRow name={language.t("context.usage.usage")} value={`${context()?.usage ?? 0}%`} />
+      <ContextTooltipRow name={language.t("context.usage.usage")} value={usage()} />
       <ContextTooltipRow
         name={language.t("context.usage.tokens")}
-        value={context()?.total.toLocaleString(language.intl()) ?? "0"}
+        value={context()?.total.toLocaleString(language.intl()) ?? "—"}
       />
     </div>
   )
 
-  if (props.trigger)
-    return <Show when={params.id}>{props.trigger(openContext, circle(), () => context()?.usage ?? 0)}</Show>
+  if (props.trigger) return <Show when={params.id}>{props.trigger(openContext, circle(), usage)}</Show>
 
   return (
     <Show when={params.id}>

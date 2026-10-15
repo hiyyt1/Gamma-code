@@ -40,7 +40,7 @@ export function SitePreview(props: { sessionID: string; path?: string; onClose: 
       setState({ busy: false, error: "dynamic_unavailable" })
       return
     }
-    await productRequest<{ id: string; url: string }>(http, `${endpoint}/start`, { path })
+    await productRequest<{ id: string; url: string }>(http, `${endpoint}/start`, { path }, AbortSignal.timeout(20_000))
       .then(async (result) => {
         if (disposed || current !== generation) return release(result.id)
         setState("id", result.id)
@@ -65,7 +65,7 @@ export function SitePreview(props: { sessionID: string; path?: string; onClose: 
   }
   const scan = async () => {
     setState({ busy: true, error: "" })
-    await productRequest<{ enabled: boolean; apps: App[] }>(http, endpoint)
+    await productRequest<{ enabled: boolean; apps: App[] }>(http, endpoint, undefined, AbortSignal.timeout(20_000))
       .then(async (result) => {
         if (disposed) return
         setState(result)
@@ -76,7 +76,8 @@ export function SitePreview(props: { sessionID: string; path?: string; onClose: 
           await start(props.path)
           return
         }
-        if (result.apps.length === 1) await start(result.apps[0].path)
+        const ready = result.apps.filter((app) => app.kind === "static")
+        if (ready.length === 1) await start(ready[0].path)
       })
       .catch((error) => {
         if (!disposed) setState("error", fail(error))
@@ -87,7 +88,7 @@ export function SitePreview(props: { sessionID: string; path?: string; onClose: 
   const heartbeat = setInterval(() => {
     if (!state.id) return
     const id = state.id
-    void productRequest(http, `${endpoint}/renew`, { id }).catch(() => {
+    void productRequest(http, `${endpoint}/renew`, { id }, AbortSignal.timeout(15_000)).catch(() => {
       if (disposed || state.id !== id) return
       release(id)
       setState({ id: "", url: "", error: "expired", loading: false })

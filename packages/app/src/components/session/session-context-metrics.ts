@@ -33,7 +33,10 @@ const lastAssistantWithTokens = (messages: Message[]) => {
   for (let i = messages.length - 1; i >= 0; i--) {
     const msg = messages[i]
     if (msg.role !== "assistant") continue
-    if (tokenTotal(msg) <= 0) continue
+    if (!Number.isFinite(tokenTotal(msg)) || tokenTotal(msg) <= 0) {
+      if (msg.time.completed) return
+      continue
+    }
     return msg
   }
 }
@@ -46,6 +49,7 @@ const build = (messages: Message[] = [], providers: Provider[] = []): Context | 
   const model = provider?.models[message.modelID]
   const limit = model?.limit.context
   const total = tokenTotal(message)
+  const input = message.tokens.input + message.tokens.cache.read + message.tokens.cache.write
 
   return {
     message,
@@ -56,7 +60,7 @@ const build = (messages: Message[] = [], providers: Provider[] = []): Context | 
     limit,
     input: message.tokens.input,
     total,
-    usage: limit ? Math.round((total / limit) * 100) : null,
+    usage: input > 0 && limit && Number.isFinite(limit) && limit > 0 ? (total / limit) * 100 : null,
   }
 }
 

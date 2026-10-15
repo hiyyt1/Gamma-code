@@ -261,6 +261,8 @@ class InstallerTests(unittest.TestCase):
         gamma.deploy(self.host, self.args, self.options, state, None)
         gamma.inspect(self.host, 'doctor')
         self.assertEqual(self.host.enabled, {'gamma-backend', 'gamma-web'})
+        self.assertIn('OPENCODE_ENABLE_EXA=1\n', self.host.path('/etc/gamma/gamma.env').read_text())
+        self.assertIn('OPENCODE_WEBSEARCH_PROVIDER=exa\n', self.host.path('/etc/gamma/gamma.env').read_text())
         self.assertFalse(any(call[0] in ('certbot', 'curl') for call in self.host.calls))
         for domain in (None, '', '127.0.0.1', 'https://gamma.example.test', 'bad;host'):
             with self.assertRaises(gamma.Failure):

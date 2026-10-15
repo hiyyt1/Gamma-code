@@ -1470,6 +1470,11 @@ export function MessageTimeline(props: {
                 {(id) => (
                   <div class="gamma-session-actions">
                     <ProjectKnowledge compact server={serverSDK().server.http} directory={sdk().directory} />
+                    <Show when={workspace?.sites().some((site) => site.kind === "static")}>
+                      <button type="button" class="gamma-session-action" onClick={() => workspace?.openSite()}>
+                        {language.t("sitePreview.title")}
+                      </button>
+                    </Show>
                     <Show when={workspace?.visible()}>
                       <button
                         type="button"
@@ -1487,6 +1492,7 @@ export function MessageTimeline(props: {
                       when={settings.general.newLayoutDesigns()}
                       fallback={
                         <DropdownMenu
+                          modal={false}
                           gutter={4}
                           placement="bottom-end"
                           open={title.menuOpen}
@@ -1516,12 +1522,7 @@ export function MessageTimeline(props: {
                                 }
                               }}
                             >
-                              <Show
-                                when={
-                                  workspace?.previewEnabled() &&
-                                  workspace?.sites().some((site) => site.kind === "static")
-                                }
-                              >
+                              <Show when={workspace?.sites().some((site) => site.kind === "static")}>
                                 <DropdownMenu.Item onSelect={() => workspace?.openSite()}>
                                   <DropdownMenu.ItemLabel>
                                     {language.t("sitePreview.projectSites")}
@@ -1556,7 +1557,7 @@ export function MessageTimeline(props: {
                                   <DropdownMenu.Item onSelect={open}>
                                     {indicator}
                                     <DropdownMenu.ItemLabel>{language.t("context.usage.view")}</DropdownMenu.ItemLabel>
-                                    <span class="ml-auto text-text-weak">{usage()}%</span>
+                                    <span class="ml-auto text-text-weak">{usage()}</span>
                                   </DropdownMenu.Item>
                                 )}
                               />
@@ -1574,6 +1575,7 @@ export function MessageTimeline(props: {
                       }
                     >
                       <MenuV2
+                        modal={false}
                         gutter={6}
                         placement="bottom-end"
                         open={title.menuOpen}
@@ -1603,11 +1605,7 @@ export function MessageTimeline(props: {
                               }
                             }}
                           >
-                            <Show
-                              when={
-                                workspace?.previewEnabled() && workspace?.sites().some((site) => site.kind === "static")
-                              }
-                            >
+                            <Show when={workspace?.sites().some((site) => site.kind === "static")}>
                               <MenuV2.Item onSelect={() => workspace?.openSite()}>
                                 {language.t("sitePreview.projectSites")}
                               </MenuV2.Item>
@@ -1638,7 +1636,7 @@ export function MessageTimeline(props: {
                                 <MenuV2.Item onSelect={open}>
                                   {indicator}
                                   <span>{language.t("context.usage.view")}</span>
-                                  <span class="ml-auto text-v2-text-text-muted">{usage()}%</span>
+                                  <span class="ml-auto text-v2-text-text-muted">{usage()}</span>
                                 </MenuV2.Item>
                               )}
                             />

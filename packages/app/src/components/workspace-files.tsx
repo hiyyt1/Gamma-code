@@ -88,6 +88,8 @@ export function WorkspaceFiles(props: ParentProps<{ sessionID?: string }>) {
     const request = productRequest<{ apps: PreviewSite[]; enabled: boolean }>(
       server().server.http,
       `session/${encodeURIComponent(id)}/preview`,
+      undefined,
+      AbortSignal.timeout(20_000),
     )
       .then((result) => {
         if (disposed || epoch !== siteEpoch) return
@@ -161,46 +163,56 @@ export function WorkspaceFiles(props: ParentProps<{ sessionID?: string }>) {
     const directory = sdk().directory
     const http = server().server.http
     setState({ uploading: true, errors: [], progress: 0 })
-    for (const item of files) {
-      if (disposed) return
-      setState({ current: item.name, progress: 0 })
-      const code = await new Promise<string | undefined>((resolve) => {
-        if (item.size > 20 * 1024 * 1024) return resolve("too_large")
-        const xhr = new XMLHttpRequest()
-        request = xhr
-        xhr.open("POST", `${http.url.replace(/\/$/, "")}/product/session/${encodeURIComponent(sessionID)}/files`)
-        if (http.password)
-          xhr.setRequestHeader(
-            "Authorization",
-            `Basic ${authTokenFromCredentials({ username: http.username, password: http.password })}`,
-          )
-        xhr.responseType = "json"
-        xhr.timeout = 120_000
-        xhr.upload.onprogress = (event) => {
-          if (!disposed && event.lengthComputable) setState("progress", Math.round((event.loaded / event.total) * 100))
-        }
-        xhr.onload = () => resolve(xhr.status >= 200 && xhr.status < 300 ? undefined : (xhr.response?.code ?? "failed"))
-        xhr.onerror = xhr.ontimeout = xhr.onabort = () => resolve("failed")
-        const data = new FormData()
-        data.append("file", item)
-        xhr.send(data)
-      })
-      if (disposed) return
-      if (code)
-        setState("errors", (errors) => [
-          ...errors,
-          language.t(
-            code === "exists"
-              ? "workspace.files.exists"
-              : code === "too_large"
-                ? "workspace.files.tooLarge"
-                : "workspace.files.failed",
-            { name: item.name },
-          ),
-        ])
-      if (sdk().directory === directory) await file.tree.refresh("")
+    try {
+      for (const item of files) {
+        if (disposed) return
+        setState({ current: item.name, progress: 0 })
+        const code = await new Promise<string | undefined>((resolve) => {
+          if (item.size > 20 * 1024 * 1024) return resolve("too_large")
+          const xhr = new XMLHttpRequest()
+          request = xhr
+          xhr.open("POST", `${http.url.replace(/\/$/, "")}/product/session/${encodeURIComponent(sessionID)}/files`)
+          if (http.password)
+            xhr.setRequestHeader(
+              "Authorization",
+              `Basic ${authTokenFromCredentials({ username: http.username, password: http.password })}`,
+            )
+          xhr.responseType = "json"
+          xhr.timeout = 120_000
+          xhr.upload.onprogress = (event) => {
+            if (!disposed && event.lengthComputable)
+              setState("progress", Math.round((event.loaded / event.total) * 100))
+          }
+          xhr.onload = () =>
+            resolve(xhr.status >= 200 && xhr.status < 300 ? undefined : (xhr.response?.code ?? "failed"))
+          xhr.onerror = xhr.ontimeout = xhr.onabort = () => resolve("failed")
+          const data = new FormData()
+          data.append("file", item)
+          xhr.send(data)
+        })
+        if (disposed) return
+        if (code)
+          setState("errors", (errors) => [
+            ...errors,
+            language.t(
+              code === "exists"
+                ? "workspace.files.exists"
+                : code === "too_large"
+                  ? "workspace.files.tooLarge"
+                  : "workspace.files.failed",
+              { name: item.name },
+            ),
+          ])
+        // Upload completion must not depend on a subsequent directory listing.
+        if (sdk().directory === directory) void file.tree.refresh("").catch(() => {})
+      }
+    } catch {
+      if (!disposed)
+        setState("errors", (errors) => [...errors, language.t("workspace.files.failed", { name: state.current })])
+    } finally {
+      request = undefined
+      if (!disposed) setState({ uploading: false, current: "", progress: 0 })
     }
-    if (!disposed) setState({ uploading: false, current: "", progress: 0 })
   }
 
   const refresh = async (path = "", directory = sdk().directory) => {

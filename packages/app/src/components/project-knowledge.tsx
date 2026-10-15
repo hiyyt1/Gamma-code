@@ -52,7 +52,11 @@ export function ProjectKnowledge(props: {
   )
   // Knowledge metadata is optional to the chat. Its own loading UI must not
   // suspend the route while these requests are pending (including on refocus).
-  const loaded = () => (catalog.loading ? undefined : catalog())
+  const loaded = () => {
+    if (catalog.state === "unresolved" || catalog.state === "pending") return
+    const value = catalog.latest
+    return value?.directory === props.directory ? value : undefined
+  }
   // Returning from a preview iframe must not suspend the page during a click.
   const refresh = () =>
     void startTransition(() => {
@@ -248,7 +252,7 @@ export function ProjectKnowledge(props: {
               open={state.open}
               onOpenChange={(open) => {
                 setState("open", open)
-                if (open) void refetch()
+                if (open) refresh()
               }}
               triggerAs="button"
               triggerProps={{

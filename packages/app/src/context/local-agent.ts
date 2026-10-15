@@ -10,3 +10,13 @@ export function resolveAgent<T extends { name: string }>(items: T[], name?: stri
     items[0]
   )
 }
+
+// Session identity wins over browser preferences. Legacy sessions did not persist
+// an agent on the session itself; recover it from their latest user/provider turn.
+export function sessionAgentName(
+  session: { agent?: string } | undefined,
+  messages: readonly { agent?: string; role: string }[],
+  saved?: string,
+) {
+  return session?.agent || messages.findLast((message) => message.agent)?.agent || saved || "gamma"
+}

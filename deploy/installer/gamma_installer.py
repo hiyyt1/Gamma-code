@@ -542,7 +542,8 @@ def rendered(options, release):
            # cloudflared connects directly; do not trust client-supplied X-Real-IP.
            "GAMMA_AUTH_CONFIG": "/etc/gamma/auth.json", "GAMMA_TRUST_PROXY": "1" if options["https"] in ("letsencrypt", "existing") else "0",
            "OPENCODE_CONFIG": "/etc/gamma/opencode.json", "OPENCODE_DISABLE_PROJECT_CONFIG": "1",
-           "OPENCODE_DISABLE_AUTOUPDATE": "1", "OPENCODE_DISABLE_SHARE": "1"}
+           "OPENCODE_DISABLE_AUTOUPDATE": "1", "OPENCODE_DISABLE_SHARE": "1",
+           "OPENCODE_ENABLE_EXA": "1", "OPENCODE_WEBSEARCH_PROVIDER": "exa"}
     files = {"/etc/gamma/gamma.env": (MARKER + "\n" + "".join(f"{key}={value}\n" for key, value in env.items()), 0o600),
              "/etc/gamma/opencode.json": (json.dumps(policy(options["profile"]), indent=2) + "\n", 0o644)}
     for name in ("backend", "web"):

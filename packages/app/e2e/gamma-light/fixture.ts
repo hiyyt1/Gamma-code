@@ -6,7 +6,10 @@ export const sessionID = "ses_gamma_light"
 export const sessionURL = `/${Buffer.from(directory).toString("base64url")}/session/${sessionID}`
 const model = { providerID: "opencode", modelID: "claude-opus-4-6" }
 
-export async function setupGamma(page: Page, options: { protocol?: "v1" | "v2" } = {}) {
+export async function setupGamma(
+  page: Page,
+  options: { protocol?: "v1" | "v2"; agent?: string; context?: number } = {},
+) {
   await mockOpenCodeServer(page, {
     protocol: options.protocol,
     directory,
@@ -23,6 +26,7 @@ export async function setupGamma(page: Page, options: { protocol?: "v1" | "v2" }
         projectID: "proj_gamma_light",
         directory,
         title: "Проверка интерфейса",
+        agent: options.agent,
         version: "dev",
         time: { created: 1700000000000, updated: 1700000000000 },
       },
@@ -32,7 +36,13 @@ export async function setupGamma(page: Page, options: { protocol?: "v1" | "v2" }
         {
           id: "opencode",
           name: "OpenCode",
-          models: { [model.modelID]: { id: model.modelID, name: "Claude Opus 4.6", limit: { context: 200000 } } },
+          models: {
+            [model.modelID]: {
+              id: model.modelID,
+              name: "Claude Opus 4.6",
+              limit: { context: options.context ?? 200000 },
+            },
+          },
         },
       ],
       connected: ["opencode"],

@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test"
-import { hasCustomAgent, resolveAgent } from "./local-agent"
+import { hasCustomAgent, resolveAgent, sessionAgentName } from "./local-agent"
 
 describe("hasCustomAgent", () => {
   test("detects explicitly custom agents", () => {
@@ -33,4 +33,16 @@ test("Gamma is the default and explicit specialists/Guide remain selected", () =
   expect(resolveAgent(agents)?.name).toBe("gamma")
   expect(resolveAgent(agents, "gamma-guide")?.name).toBe("gamma-guide")
   expect(resolveAgent(agents, "gamma-website-builder")?.name).toBe("gamma-website-builder")
+})
+
+test("session agent recovery preserves durable identity and recovers legacy history", () => {
+  const history = [
+    { role: "user", agent: "gamma-designer" },
+    { role: "assistant", agent: "gamma-designer" },
+  ]
+  expect(sessionAgentName({ agent: "gamma-guide" }, history, "gamma")).toBe("gamma-guide")
+  expect(sessionAgentName({}, history, "gamma")).toBe("gamma-designer")
+  expect(sessionAgentName({}, [], "gamma-designer")).toBe("gamma-designer")
+  expect(sessionAgentName({}, [])).toBe("gamma")
+  expect(sessionAgentName({ agent: "removed-specialist" }, history)).toBe("removed-specialist")
 })

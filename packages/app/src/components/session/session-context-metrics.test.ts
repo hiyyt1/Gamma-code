@@ -38,6 +38,17 @@ const user = (id: string) => {
 }
 
 describe("getSessionContext", () => {
+  test("does not round real small usage to zero or reuse metrics after a completed turn without usage", () => {
+    const previous = assistant("a1", { input: 20, output: 10, reasoning: 0, read: 0, write: 0 }, 0)
+    const providers = [{ id: "openai", models: { "gpt-4.1": { limit: { context: 200000 } } } }]
+    expect(getSessionContext([previous], providers)?.usage).toBeCloseTo(0.015)
+    const missing = assistant("a2", { input: 0, output: 0, reasoning: 0, read: 0, write: 0 }, 0)
+    if (missing.role === "assistant") missing.time.completed = 2
+    expect(getSessionContext([previous, missing], providers)).toBeUndefined()
+    expect(
+      getSessionContext([previous], [{ id: "openai", models: { "gpt-4.1": { limit: { context: -1 } } } }])?.usage,
+    ).toBeNull()
+  })
   test("computes token totals and usage from latest assistant with tokens", () => {
     const messages = [
       user("u1"),

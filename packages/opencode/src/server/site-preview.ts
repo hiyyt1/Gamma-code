@@ -72,6 +72,25 @@ export async function discover(directory: string) {
 export function configuration() {
   const domain = process.env.GAMMA_PREVIEW_DOMAIN
   const main = process.env.GAMMA_PUBLIC_ORIGIN
+  if (process.env.GAMMA_PREVIEW_LOCAL === "1") {
+    if (!main) throw new Error("invalid_preview_config")
+    const origin = new URL(main)
+    const localPort = Number(process.env.GAMMA_PREVIEW_PORT ?? 4097)
+    if (
+      domain ||
+      origin.origin !== main ||
+      origin.protocol !== "http:" ||
+      !["localhost", "127.0.0.1", "[::1]"].includes(origin.hostname) ||
+      !Number.isInteger(localPort) ||
+      localPort < 1 ||
+      localPort > 65535 ||
+      localPort === Number(origin.port || 80)
+    )
+      throw new Error("invalid_preview_config")
+    // Browsers resolve .localhost to loopback without DNS. Each lease retains
+    // its own origin and root-relative assets; Gamma's host-only cookie is not shared.
+    return { domain: "localhost", main, localPort }
+  }
   if (!domain || !main) return
   const origin = new URL(main)
   if (
@@ -87,7 +106,7 @@ export function configuration() {
   return { domain, main }
 }
 
-export function createPreview(config: { domain: string; main: string }, now = Date.now) {
+export function createPreview(config: { domain: string; main: string; localPort?: number }, now = Date.now) {
   const leases = new Map<string, { session: string; directory: string; root: string; expires: number }>()
   const sweep = () => {
     for (const [id, lease] of leases) if (lease.expires <= now()) leases.delete(id)
@@ -111,7 +130,10 @@ export function createPreview(config: { domain: string; main: string }, now = Da
       if (leases.size >= 32) throw new Error("preview_limit")
       const id = randomBytes(24).toString("hex")
       leases.set(id, { session, directory, root, expires: now() + ttl })
-      return { id, url: `https://${id}.${config.domain}/` }
+      return {
+        id,
+        url: config.localPort ? `http://${id}.localhost:${config.localPort}/` : `https://${id}.${config.domain}/`,
+      }
     },
     renew(session: string, id: string) {
       owned(session, id).expires = now() + ttl
@@ -124,8 +146,10 @@ export function createPreview(config: { domain: string; main: string }, now = Da
       sweep()
       const url = new URL(request.url)
       const host = request.headers.get("host") ?? url.host
-      const id = host.endsWith(`.${config.domain}`) ? host.slice(0, -config.domain.length - 1) : ""
+      const suffix = `.${config.domain}${config.localPort ? `:${config.localPort}` : ""}`
+      const id = host.endsWith(suffix) ? host.slice(0, -suffix.length) : ""
       const lease = leases.get(id)
+      const origin = `${config.localPort ? "http" : "https"}://${host}`
       const headers = {
         "cache-control": "no-store",
         "x-content-type-options": "nosniff",
@@ -133,35 +157,66 @@ export function createPreview(config: { domain: string; main: string }, now = Da
         "access-control-allow-origin": "*",
         "cross-origin-resource-policy": "cross-origin",
         "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
-        "content-security-policy": `sandbox allow-scripts allow-forms; default-src https://${host}; script-src https://${host} 'unsafe-inline'; style-src https://${host} 'unsafe-inline'; img-src https://${host} data: blob:; font-src https://${host} data:; connect-src https://${host}; frame-src 'none'; worker-src 'none'; object-src 'none'; base-uri https://${host}; form-action https://${host}; frame-ancestors ${config.main}`,
+        "content-security-policy": `sandbox allow-scripts allow-forms; default-src ${origin}; script-src ${origin} 'unsafe-inline'; style-src ${origin} 'unsafe-inline'; img-src ${origin} data: blob:; font-src ${origin} data:; connect-src ${origin}; frame-src 'none'; worker-src 'none'; object-src 'none'; base-uri ${origin}; form-action ${origin}; frame-ancestors ${config.main}`,
       }
       if (!lease || !/^[a-f0-9]{48}$/.test(id)) return new Response("Preview expired", { status: 404, headers })
       if (!["GET", "HEAD"].includes(request.method)) return new Response(null, { status: 405, headers })
-      const relative = decodeURIComponent(url.pathname).slice(1) + (url.pathname.endsWith("/") ? "index.html" : "")
+      const decoded = (() => {
+        try {
+          return decodeURIComponent(url.pathname).slice(1)
+        } catch {
+          return undefined
+        }
+      })()
+      if (decoded === undefined) return new Response(null, { status: 400, headers })
+      const relative = decoded + (url.pathname.endsWith("/") ? "index.html" : "")
+      // Only browser document navigations may fall back to the SPA shell. Missing
+      // scripts, API-like requests and forbidden paths must retain their 404s.
+      const navigation =
+        request.headers.get("accept")?.includes("text/html") &&
+        !path.posix.extname(decoded) &&
+        !/^(api|product|auth|etc|proc|sys)(\/|$)/i.test(decoded)
       if (
         !visible(relative) ||
         /[\\:%\x00-\x1f\x7f]/.test(relative) ||
-        !extensions.has(path.extname(relative).toLowerCase()) ||
+        (!extensions.has(path.extname(relative).toLowerCase()) && !navigation) ||
         /(^|\/)(package(-lock)?\.json|.*lock\.json|gamma\.json|opencode\.json)$/i.test(relative)
       )
         return new Response(null, { status: 404, headers })
-      return ProductProjects.withFile(lease.directory, path.posix.join(lease.root, relative), false, async (handle) => {
-        const stat = await handle.stat()
-        if (stat.size > 8 * 1024 * 1024 || stat.nlink !== 1) return new Response(null, { status: 413, headers })
-        if (request.method === "HEAD")
-          return new Response(null, { headers: { ...headers, "content-type": Bun.file(relative).type } })
-        const bytes = Buffer.alloc(stat.size + 1)
-        const cursor = { read: 0 }
-        while (cursor.read < bytes.length) {
-          const result = await handle.read(bytes, cursor.read, bytes.length - cursor.read, cursor.read)
-          if (!result.bytesRead) break
-          cursor.read += result.bytesRead
-        }
-        if (cursor.read !== stat.size) return new Response(null, { status: 409, headers })
-        return new Response(request.method === "HEAD" ? null : bytes.subarray(0, cursor.read), {
-          headers: { ...headers, "content-type": Bun.file(relative).type },
+      const serve = (file: string) =>
+        ProductProjects.withFile(lease.directory, path.posix.join(lease.root, file), false, async (handle) => {
+          const stat = await handle.stat()
+          if (stat.size > 8 * 1024 * 1024 || stat.nlink !== 1) return new Response(null, { status: 413, headers })
+          if (request.method === "HEAD")
+            return new Response(null, { headers: { ...headers, "content-type": Bun.file(file).type } })
+          const bytes = Buffer.alloc(stat.size + 1)
+          const cursor = { read: 0 }
+          while (cursor.read < bytes.length) {
+            const result = await handle.read(bytes, cursor.read, bytes.length - cursor.read, cursor.read)
+            if (!result.bytesRead) break
+            cursor.read += result.bytesRead
+          }
+          if (cursor.read !== stat.size) return new Response(null, { status: 409, headers })
+          return new Response(request.method === "HEAD" ? null : bytes.subarray(0, cursor.read), {
+            headers: { ...headers, "content-type": Bun.file(file).type },
+          })
         })
-      }).catch(() => new Response(null, { status: 404, headers }))
+      // Extensionless navigation is a directory/SPA route, never permission to
+      // expose an arbitrary extensionless file from the workspace.
+      return serve(path.posix.extname(relative) ? relative : `${relative}/index.html`).catch(
+        async (error: NodeJS.ErrnoException) => {
+          if (navigation && (error.code === "ENOENT" || error.code === "ENOTDIR")) {
+            const response = await serve("index.html").catch(() => new Response(null, { status: 404, headers }))
+            if (!response.ok || request.method === "HEAD") return response
+            const html = await response.text()
+            // Relative build assets must resolve at the selected site's root even
+            // when a deep SPA URL is opened directly.
+            const body = /<base\s/i.test(html) ? html : html.replace(/(<head(?:\s[^>]*)?>)/i, '$1<base href="/">')
+            return new Response(body, { headers: response.headers })
+          }
+          return new Response(null, { status: 404, headers })
+        },
+      )
     },
   }
 }

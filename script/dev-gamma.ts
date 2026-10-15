@@ -36,11 +36,18 @@ const env: Record<string, string | undefined> = {
   GAMMA_BACKEND_URL: `http://127.0.0.1:${port}`,
   GAMMA_WEB_PORT: webPort,
   GAMMA_TRUST_PROXY: "0",
+  GAMMA_PREVIEW_LOCAL: process.env.GAMMA_PREVIEW_DOMAIN ? "0" : "1",
+  GAMMA_PREVIEW_PORT: process.env.GAMMA_PREVIEW_PORT ?? "4109",
+  OPENCODE_ENABLE_EXA: process.env.OPENCODE_ENABLE_EXA ?? "1",
+  // Native keyless search; keep an explicitly selected provider.
+  OPENCODE_WEBSEARCH_PROVIDER: process.env.OPENCODE_WEBSEARCH_PROVIDER ?? "parallel",
 }
 // Bun's HTTP client cannot use SOCKS proxy URLs inherited from some desktop shells.
 for (const key of ["HTTP_PROXY", "HTTPS_PROXY", "ALL_PROXY", "http_proxy", "https_proxy", "all_proxy"]) {
   if (!/^socks/i.test(env[key] ?? "")) continue
-  throw new Error(`Gamma dev: unsupported SOCKS proxy in ${key}; use an HTTP proxy or explicitly unset it if direct access is permitted`)
+  throw new Error(
+    `Gamma dev: unsupported SOCKS proxy in ${key}; use an HTTP proxy or explicitly unset it if direct access is permitted`,
+  )
 }
 await mkdir(data, { recursive: true })
 const build = Bun.spawn([process.execPath, "run", "build"], {

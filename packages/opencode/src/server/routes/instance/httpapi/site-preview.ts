@@ -68,7 +68,7 @@ const handlers = HttpApiBuilder.group(Api, "sitePreview", (group) =>
         Effect.sync(() => {
           const server = Bun.serve({
             hostname: "127.0.0.1",
-            port: Number(process.env.GAMMA_PREVIEW_PORT ?? 4097),
+            port: config?.localPort ?? Number(process.env.GAMMA_PREVIEW_PORT ?? 4097),
             maxRequestBodySize: 1024,
             fetch: preview.fetch,
             error: () => new Response("Preview unavailable", { status: 400 }),

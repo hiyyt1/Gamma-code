@@ -1,4 +1,6 @@
 import { useServerSync } from "@/context/server-sync"
+import { useSync } from "@/context/sync"
+import { sessionAgentName } from "@/context/local-agent"
 import { createResource, onCleanup, Show, startTransition, type JSX } from "solid-js"
 import { A } from "@solidjs/router"
 import type { AgentMarket } from "@opencode-ai/schema/agent-market"
@@ -20,13 +22,16 @@ export function ProjectAgent(props: { trigger: (label: string, open: () => void)
   const language = useLanguage()
   const dialog = useDialog()
   const sync = useServerSync()
+  const messages = useSync()
   const agent = () => {
     const route = layout.route()
-    return route.type === "session" ? sync().session.data.info[route.sessionId]?.agent : undefined
+    return route.type === "session"
+      ? sessionAgentName(sync().session.data.info[route.sessionId], messages().data.message[route.sessionId] ?? [])
+      : undefined
   }
   const project = () => sdk().directory.split("/").filter(Boolean).at(-1) ?? ""
   const label = () =>
-    active()?.name ??
+    profile()?.name ??
     (agent() === "gamma" ? language.t("agents.standard") : agent()) ??
     language.t("agents.session.unknown")
   const [active, { refetch }] = createResource(
@@ -36,9 +41,10 @@ export function ProjectAgent(props: { trigger: (label: string, open: () => void)
       return productRequest<AgentMarket.Profile>(
         key.http,
         `agent-market/agents/${encodeURIComponent(key.agent.replace(/^gamma-/, ""))}`,
-      )
+      ).catch(() => null)
     },
   )
+  const profile = () => (active.loading ? undefined : active.latest)
   // Keep the current UI mounted when focus returns from a preview iframe.
   const refresh = () =>
     void startTransition(() => {
@@ -57,13 +63,13 @@ export function ProjectAgent(props: { trigger: (label: string, open: () => void)
         <DialogBody>
           <div class="skill-market-detail">
             <p>
-              {active()?.description ?? language.t(agent() ? "agents.scopeDescription" : "agents.session.unresolved")}
+              {profile()?.description ?? language.t(agent() ? "agents.scopeDescription" : "agents.session.unresolved")}
             </p>
             <p>{language.t("agents.session.fixed")}</p>
-            <Show when={active()?.mcp === "bsl-language-server" || active()?.mcp === "presentation"}>
-              <AgentRuntime server={server().server.http} project={project()} agentId={active()!.id} />
+            <Show when={profile()?.mcp === "bsl-language-server" || profile()?.mcp === "presentation"}>
+              <AgentRuntime server={server().server.http} project={project()} agentId={profile()!.id} />
             </Show>
-            <Show when={active()?.mcp === "wildberries"}>
+            <Show when={profile()?.mcp === "wildberries"}>
               <WildberriesConnection
                 server={server().server.http}
                 project={project()}
@@ -84,7 +90,7 @@ export function ProjectAgent(props: { trigger: (label: string, open: () => void)
                 }}
               />
             </Show>
-            <Show when={active()?.mcp === "bitrix24"}>
+            <Show when={profile()?.mcp === "bitrix24"}>
               <Bitrix24Connection server={server().server.http} project={project()} />
             </Show>
             <A

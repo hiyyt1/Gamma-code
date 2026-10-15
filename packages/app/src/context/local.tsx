@@ -9,7 +9,7 @@ import { useSettings } from "@/context/settings"
 import { useProviders } from "@/hooks/use-providers"
 import { resolveDefaultModel } from "@/hooks/provider-catalog"
 import { Persist, persisted } from "@/utils/persist"
-import { hasCustomAgent, resolveAgent } from "./local-agent"
+import { hasCustomAgent, resolveAgent, sessionAgentName } from "./local-agent"
 import { cycleModelVariant, getConfiguredAgentVariant, resolveModelVariant } from "./model-variant"
 import { useSDK } from "./sdk"
 import { useSync } from "./sync"
@@ -187,9 +187,16 @@ export const { use: useLocal, provider: LocalProvider } = createSimpleContext({
     const agent = {
       list,
       visible: () => !id() && agentsVisible(),
+      name() {
+        if (!id()) return
+        return sessionAgentName(serverSync().session.data.info[id()!], sync().data.message[id()!] ?? [], scope()?.agent)
+      },
       current() {
-        const session = id() ? serverSync().session.data.info[id()!] : undefined
-        if (id()) return sync().data.agent.find((agent) => agent.name === session?.agent)
+        if (id()) {
+          const name = agent.name()
+          // Do not silently replace an explicitly selected but removed specialist.
+          return sync().data.agent.find((agent) => agent.name === name)
+        }
         return pickAgent(search.draftId ? (tabs.draft(search.draftId).agent ?? "gamma") : (scope()?.agent ?? "gamma"))
       },
       set(name: string | undefined) {

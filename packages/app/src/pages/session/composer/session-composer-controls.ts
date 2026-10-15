@@ -39,8 +39,10 @@ export function createPromptInputController(input: {
       agents: {
         available: sync().data.agent,
         options: local.agent.list().map((agent) => agent.name),
-        current: local.agent.current()?.name ?? "",
-        loading: agentsQuery.isLoading,
+        current: local.agent.current()?.name ?? local.agent.name() ?? "",
+        // Query completion can precede the directory bootstrap copying agents
+        // into sync, which is the catalog used by prompt submission.
+        loading: agentsQuery.isLoading || (sync().data.agent.length === 0 && sync().data.status !== "complete"),
         visible: local.agent.visible(),
         select: local.agent.set,
       },
