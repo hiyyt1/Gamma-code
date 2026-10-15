@@ -112,6 +112,7 @@ class TemporaryHost(gamma.Host):
                 self.builds += 1
                 (cwd / 'dist').mkdir(parents=True)
                 (cwd / 'dist/index.html').write_text('<html>fixture</html>')
+        elif tool == 'node-gyp': output = 'v11.2.0\n'
         elif tool == 'node': output = 'v' + gamma.NODE + '\n'
         elif tool in ('cp', 'mv', 'chmod', 'sh', 'du', 'python3'):
             if tool != 'sh':
@@ -146,6 +147,9 @@ class TemporaryHost(gamma.Host):
         self.path(gamma.BUN_BIN).touch()
         self.path(gamma.NODE_BIN).mkdir(parents=True, exist_ok=True)
         self.path(gamma.NODE_BIN + '/node').touch()
+        gyp = self.path(gamma.NODE_BIN + '/' + gamma.NODE_GYP)
+        gyp.parent.mkdir(parents=True, exist_ok=True)
+        gyp.touch()
 
 
 class InstallerTests(unittest.TestCase):
@@ -480,6 +484,70 @@ class InstallerTests(unittest.TestCase):
         with self.assertRaisesRegex(gamma.Failure, 'permissions'):
             gamma.deploy(self.host, self.args, self.options, state, None)
         self.assertEqual(self.host.builds, 1)
+
+    def test_bundled_node_gyp_alias_is_created_and_idempotent(self):
+        self.host.prepare_runtime()
+        gamma.install_runtimes(self.host)
+        alias = self.host.path(gamma.NODE_BIN + '/node-gyp')
+        self.assertTrue(alias.is_symlink())
+        self.assertEqual(os.readlink(alias), gamma.NODE_GYP)
+        gamma.install_runtimes(self.host)
+        alias.unlink()
+        alias.write_text('unreviewed executable')
+        with self.assertRaisesRegex(gamma.Failure, 'Unexpected node-gyp'):
+            gamma.install_runtimes(self.host)
+        self.assertEqual(alias.read_text(), 'unreviewed executable')
+
+    def test_missing_bundled_node_gyp_fails_before_build(self):
+        self.host.prepare_runtime()
+        self.host.path(gamma.NODE_BIN + '/' + gamma.NODE_GYP).unlink()
+        with self.assertRaisesRegex(gamma.Failure, 'missing bundled node-gyp'):
+            gamma.install_runtimes(self.host)
+        self.assertEqual(self.host.builds, 0)
+
+    def test_native_build_and_load_checks_surround_dependency_install(self):
+        self.install()
+        commands = self.host.calls
+        tool = next(i for i, command in enumerate(commands) if command == [gamma.NODE_BIN + '/node-gyp', '--version'])
+        install = next(i for i, command in enumerate(commands) if command == [gamma.BUN_BIN, 'install', '--frozen-lockfile'])
+        native = next(i for i, command in enumerate(commands) if command == [gamma.NODE_BIN + '/node', '-e', 'require("tree-sitter-powershell")'])
+        build = next(i for i, command in enumerate(commands) if command == [gamma.BUN_BIN, 'run', 'build'])
+        self.assertLess(tool, install)
+        self.assertLess(install, native)
+        self.assertLess(native, build)
+
+    def test_native_module_failure_prevents_release_activation(self):
+        state = self.install()
+        database = self.seed_data()
+        run = self.host.run
+        def missing_native(command, **kwargs):
+            if command == [gamma.NODE_BIN + '/node', '-e', 'require("tree-sitter-powershell")']:
+                return subprocess.CompletedProcess(command, 1, '', 'missing native binding SECRET')
+            return run(command, **kwargs)
+        start = len(self.host.calls)
+        with patch.object(self.host, 'run', side_effect=missing_native):
+            with self.assertRaisesRegex(gamma.Failure, 'Native PowerShell grammar load.*exit 1') as error:
+                gamma.deploy(self.host, gamma.parse_args(['--upgrade']), self.options, state, None)
+        self.assertNotIn('SECRET', str(error.exception))
+        self.assertFalse(any(call[:2] == ['systemctl', 'stop'] for call in self.host.calls[start:]))
+        self.assertEqual(self.host.read_json(gamma.MANIFEST), state)
+        self.assertEqual(self.host.path('/var/lib/gamma/opencode.db').read_bytes(), database)
+
+    def test_missing_node_gyp_diagnostic_is_safe(self):
+        result = subprocess.CompletedProcess([], 1, '', 'SECRET spawn node-gyp ENOENT')
+        with patch.object(self.host, 'run', return_value=result):
+            with self.assertRaisesRegex(gamma.Failure, 'node-gyp executable missing') as error:
+                gamma.run_stage(self.host, 'Bun dependencies (copyfile retry)', ['bun', 'install'])
+        self.assertIn('exit 1', str(error.exception))
+        self.assertNotIn('SECRET', str(error.exception))
+
+    def test_build_user_gets_pinned_node_headers_without_inherited_environment(self):
+        with patch.object(subprocess, 'run', return_value=subprocess.CompletedProcess([], 0, '', '')) as run:
+            gamma.Host().run(['node-gyp', '--version'], user='gamma-build')
+        env = run.call_args.kwargs['env']
+        self.assertEqual(env['npm_config_nodedir'], str(Path(gamma.NODE_BIN).parent))
+        self.assertIn(gamma.NODE_BIN, env['PATH'].split(':'))
+        self.assertIn('npm_config_nodedir=' + str(Path(gamma.NODE_BIN).parent), run.call_args.args[0])
 
     def test_link_failure_retries_clean_copyfile_during_upgrade(self):
         state = self.install()

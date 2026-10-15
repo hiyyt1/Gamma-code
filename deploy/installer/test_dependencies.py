@@ -7,6 +7,7 @@ import shutil
 import subprocess
 import tempfile
 import unittest
+from unittest.mock import patch
 import gamma_installer as gamma
 
 
@@ -65,6 +66,24 @@ class DependencyTests(unittest.TestCase):
             with contextlib.redirect_stdout(io.StringIO()):
                 gamma.install_dependencies(host, release)
             self.assertEqual((release / 'bun.lock').read_bytes(), locked)
+
+    def test_real_bundled_node_gyp_is_available_to_child_processes(self):
+        node = Path(shutil.which('node')).resolve()
+        bundled = node.parent / gamma.NODE_GYP
+        self.assertTrue(bundled.is_file(), 'Test requires the npm bundle shipped with Node')
+        with tempfile.TemporaryDirectory(prefix='gamma-node-gyp-test-') as tmp:
+            root = Path(tmp)
+            (root / 'bin').mkdir()
+            (root / 'lib/node_modules').mkdir(parents=True)
+            (root / 'bin/node').symlink_to(node)
+            (root / 'lib/node_modules/npm').symlink_to(node.parent.parent / 'lib/node_modules/npm', target_is_directory=True)
+            command = [str(node), '-e', 'const r=require("child_process").spawnSync("node-gyp",["--version"],{stdio:"ignore"});process.exit(r.error?1:r.status)']
+            env = {'PATH': str(root / 'bin'), 'HOME': str(root)}
+            self.assertEqual(subprocess.run(command, env=env, capture_output=True).returncode, 1)
+            with patch.object(gamma, 'NODE_BIN', str(root / 'bin')):
+                gamma.install_node_gyp(gamma.Host())
+                gamma.install_node_gyp(gamma.Host())
+            self.assertEqual(subprocess.run(command, env=env, capture_output=True).returncode, 0)
 
     def test_lockfile_mutation_prevents_retry(self):
         with tempfile.TemporaryDirectory(prefix='gamma-lock-test-') as tmp:

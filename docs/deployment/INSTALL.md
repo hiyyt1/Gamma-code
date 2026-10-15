@@ -261,6 +261,31 @@ sudo ./install-gamma.sh --doctor
 
 Локально проверены реальные Bun 1.3.14 copyfile install с lifecycle-скриптами и production frontend build в отдельном checkout (Node 22.22.3). Начальная ошибка линковки внедрена тестовым host; EPERM конкретного Ubuntu-хоста не воспроизведён. Regression tests используют настоящий Bun в временном workspace, проверяют postinstall/prepare, частичную установку, workspace dependency, symlink-границы и неизменный lockfile. Upgrade/сохранение работающих сервисов проверяются существующим OS contract harness для Ubuntu 24.04 и 26.04; это не загрузочные VM-тесты и не проверка production.
 
+## Native lifecycle: node-gyp и ложный успех повторной установки
+
+На тестовом Ubuntu 26.04.1 воспроизведена отдельная причина `copyfile retry (exit 1)`: install script зависимости `tree-sitter-powershell@0.25.10` запускает `node-gyp-build`, которому нужен `node-gyp rebuild`. В очищенном PATH установщика этой команды не было: `Error: spawn node-gyp ENOENT`. Закреплённый Node 22.22.0 уже содержит node-gyp 11.2.0 внутри npm, но не предоставляет ссылку `bin/node-gyp`.
+
+Исправленный installer создаёт проверяемую идемпотентную ссылку `bin/node-gyp` на bundled npm tool внутри закреплённого Node runtime. Неизвестную существующую команду он не заменяет. Для `gamma-build` явно передаются заголовки той же версии Node через `npm_config_nodedir`; отдельное скачивание headers и глобальная установка произвольного node-gyp не нужны. `build-essential` и Python уже входят в зависимости установщика. До Bun install проверяется доступность toolchain, после него — настоящая загрузка `tree-sitter-powershell` через закреплённый Node. Ошибка не допускает активацию release.
+
+На том же тестовом сервере повторный `bun install --backend=copyfile --frozen-lockfile` в частично установленном каталоге вернул exit 0, хотя native-модуль отсутствовал и `require("tree-sitter-powershell")` завершился с exit 1. Поэтому повторная команда вручную не является доказательством исправной установки; не обходить lifecycle через `--ignore-scripts`.
+
+Первоначальный EPERM имеет другую причину: shared Bun cache содержит root-owned файлы с несколькими hardlinks; смена владельца release при финализации затрагивает общий inode. `protected_hardlinks=1` запрещает `gamma-build` повторно линковать такие файлы. Это обрабатывается существующим copyfile fallback. Не выполнять chown/chmod старого cache: через общий inode это может изменить права действующего release.
+
+На реальном тестовом iMac Ubuntu 26.04.1 проверен новый изолированный staging с Bun 1.3.14 / Node 22.22.0: copyfile install с lifecycle-скриптами — exit 0 (587 секунд), загрузка native grammar — exit 0, production frontend build — exit 0 (149 секунд), lockfile не изменился. Для проверки bundled node-gyp ссылка создавалась только в staging toolchain, production runtime не менялся. PID действующих сервисов остались прежними. Дополнительно прошли 127 локальных Python-тестов, включая OS contract tests для Ubuntu 24.04/26.04, реальный запуск bundled node-gyp из child process и запрет активации release при отсутствии native binding. Полный upgrade/переключение сервисов не выполнялись.
+
+Изменение применяется обычным upgrade **после отдельного согласованного опубликования исправления**:
+
+```bash
+cd /home/nikita/Gamma-code
+git pull --ff-only origin main
+sudo ./install-gamma.sh --doctor
+GAMMA_RELEASE_SHA="$(git rev-parse HEAD)"
+sudo ./install-gamma.sh --upgrade --ref "$GAMMA_RELEASE_SHA"
+sudo ./install-gamma.sh --doctor
+```
+
+До публикации `git pull` не доставит исправление. Во время диагностики полный upgrade не запускался, текущий runtime и службы не менялись. После успешной staging-проверки отключить временное разрешение NOPASSWD для диагностических команд от `gamma-build`. Для обычного upgrade оно не нужно: installer запускается администратором и сам понижает привилегии сборки.
+
 ## Прокси и память сборки
 
 Installer использует прямой HTTPS/APT egress. Если до него дошли `HTTP_PROXY`, `HTTPS_PROXY`, `ALL_PROXY` или lowercase-варианты, он останавливается **до provisioning** с именами переменных, без значений/credentials. SOCKS не передаётся Bun: иначе возможен `UnsupportedProxyProtocol`. Если прямой выход разрешён, явно очистить переменные перед запуском; не обходить обязательный корпоративный proxy. Для proxy-only сети нужен отдельный проверенный provisioning — этот installer такой режим не поддерживает. `sudo` может очищать переменные ещё до входа в installer; оператор должен обеспечить заявленный прямой egress.

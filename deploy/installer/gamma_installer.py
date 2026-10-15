@@ -39,6 +39,7 @@ NODE_SHA = "9aa8e9d2298ab68c600bd6fb86a6c13bce11a4eca1ba9b39d79fa021755d7c37"
 RUNTIME = "/opt/gamma/runtime"
 BUN_BIN = f"{RUNTIME}/bun-{BUN}/bun"
 NODE_BIN = f"{RUNTIME}/node-v{NODE}-linux-x64/bin"
+NODE_GYP = "../lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js"
 MANIFEST = "/etc/gamma/install.json"
 JOURNAL = "/etc/gamma/transaction.json"
 NGINX = "/etc/nginx/conf.d/gamma.conf"
@@ -182,6 +183,10 @@ class Host:
         env = {"PATH": "/usr/sbin:/usr/bin:/sbin:/bin", "LANG": "C.UTF-8", "HOME": "/root"}
         if user:
             env.update(HOME=f"/home/{user}", PATH=f"{RUNTIME}/bun-{BUN}:{NODE_BIN}:/usr/bin:/bin")
+        if user == "gamma-build":
+            # Use headers from the same verified Node distribution, not a second
+            # network download or host/system Node with a different ABI.
+            env["npm_config_nodedir"] = str(Path(NODE_BIN).parent)
         env.update(extra or {})
         # Service PATH deliberately excludes sbin; runuser itself is an admin executable.
         cmd = ["/usr/sbin/runuser", "-u", user, "--", "env", "-i", *[f"{key}={value}" for key, value in env.items()], *command] if user else command
@@ -369,6 +374,18 @@ def install_runtimes(host):
     require(not alias.exists() or alias.is_symlink() and os.readlink(alias) == "bun", "Unexpected bunx executable")
     if not alias.is_symlink():
         alias.symlink_to("bun")
+    install_node_gyp(host)
+
+
+def install_node_gyp(host):
+    # Node's verified distribution includes node-gyp through npm, but exposes no
+    # node-gyp executable on PATH. node-gyp-build's fallback spawns that name.
+    require(host.path(NODE_BIN + "/" + NODE_GYP).is_file(), "Pinned Node distribution is missing bundled node-gyp")
+    alias = host.path(NODE_BIN + "/node-gyp")
+    require(not alias.exists() and not alias.is_symlink() or alias.is_symlink() and os.readlink(alias) == NODE_GYP,
+            "Unexpected node-gyp executable; refusing replacement")
+    if not alias.is_symlink():
+        alias.symlink_to(NODE_GYP)
 
 
 def run_stage(host, stage, command, *, check=True, **kwargs):
@@ -377,8 +394,9 @@ def run_stage(host, stage, command, *, check=True, **kwargs):
         result = host.run(command, check=False, **kwargs)
     except subprocess.TimeoutExpired:
         raise Failure(f"Stage failed: {stage} (timeout; no exit code available)") from None
+    detail = "; node-gyp executable missing from lifecycle PATH" if "spawn node-gyp ENOENT" in result.stdout + result.stderr else ""
     require(not check or result.returncode == 0,
-            f"Stage failed: {stage} (exit {result.returncode}); subprocess output withheld to protect secrets")
+            f"Stage failed: {stage} (exit {result.returncode}){detail}; subprocess output withheld to protect secrets")
     return result
 
 
@@ -436,7 +454,12 @@ def build_release(host, options):
         require(not any((directory / part / name).exists() for part in (".", "packages/app", "packages/opencode")),
                 "Release contains a dotenv file; production environment must come from /etc/gamma")
     locked = hashlib.sha256((directory / "bun.lock").read_bytes()).hexdigest()
+    run_stage(host, "Native build toolchain", [NODE_BIN + "/node-gyp", "--version"], user="gamma-build", cwd=directory)
     install_dependencies(host, directory)
+    # A repeated Bun install can return 0 after a dependency install script failed
+    # previously. Require the native addon, rather than trusting that exit alone.
+    run_stage(host, "Native PowerShell grammar load", [NODE_BIN + "/node", "-e", 'require("tree-sitter-powershell")'],
+              user="gamma-build", cwd=directory / "packages/opencode")
     run_stage(host, "BSL language server download", [BUN_BIN, "script/1c-agent/download-bsl.ts", str(directory / "runtime/bsl-language-server.jar")],
              user="gamma-build", cwd=directory)
     # Browser revision is pinned by the release lockfile and travels with rollback.
