@@ -28,6 +28,7 @@ import urllib.error
 import urllib.request
 from urllib.parse import urlsplit
 import uuid
+import provider_config
 
 REPO = "https://github.com/hiyyt1/Gamma-code.git"
 SUPPORTED_UBUNTU = ("24.04", "26.04")
@@ -610,8 +611,26 @@ def check_drift(host, state, verified=None):
     for name in ("/home/gamma/.opencode", "/etc/opencode/opencode.json", "/etc/opencode/opencode.jsonc"):
         require(not host.path(name).exists(), f"Policy override detected: {name}; review before upgrade")
     config = host.path("/var/lib/gamma/config/opencode")
-    require(not any((config / name).exists() for name in ("config.json", "opencode.json", "opencode.jsonc", "agents", "agent", "modes", "mode")),
-            "Global OpenCode overrides detected; review effective permissions before upgrade")
+    host.no_symlink(config)
+    for name in ("config", "agents", "agent", "modes", "mode", "commands", "command",
+                 "plugins", "plugin", "tools", "tool", "skills", "skill"):
+        require(not (config / name).exists() and not (config / name).is_symlink(),
+                "Global OpenCode execution overrides detected; review effective permissions before upgrade")
+    # All three files are merged by OpenCode, not just the preferred JSONC file.
+    for name in ("config.json", "opencode.json", "opencode.jsonc"):
+        path = config / name
+        host.no_symlink(path)
+        if not path.exists():
+            continue
+        require(path.is_file() and path.stat().st_uid in (host.uid("gamma"), host.uid("root"))
+                and stat.S_IMODE(path.stat().st_mode) == 0o600,
+                f"Unsafe global provider config ownership/mode: {path.name}; expected gamma/root-owned 0600 regular file")
+        require(path.stat().st_size <= 1024 * 1024, "Global provider config exceeds validation limit")
+        try:
+            provider_config.validate(provider_config.parse(path.read_bytes().decode("utf-8")))
+        except (ValueError, RecursionError, OverflowError):
+            # Parser exceptions and config values can contain API keys. Never echo them.
+            raise Failure(f"Global OpenCode overrides detected in {path.name}: invalid JSONC or unsupported provider/model settings; see docs/deployment/INSTALL.md") from None
 
 
 def smoke(host, options, admin=None):

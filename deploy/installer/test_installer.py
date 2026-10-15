@@ -601,6 +601,90 @@ class InstallerTests(unittest.TestCase):
         self.options['workspaces'] = '/srv/projects'
         with self.assertRaisesRegex(gamma.Failure, 'Symlink'): gamma.preflight(self.host, self.options, None)
 
+    def provider_file(self, name='opencode.jsonc'):
+        path = self.host.path('/var/lib/gamma/config/opencode/' + name)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text('{/* custom provider */ "$schema":"https://opencode.ai/config.json",'
+                        '"disabled_providers":["openai"],"provider":{"vsellm":{'
+                        '"name":"VSELLM","npm":"@ai-sdk/openai-compatible",'
+                        '"options":{"baseURL":"https://example.invalid/v1"},'
+                        '"models":{"minimax/minimax-m3":{"name":"MiniMax M3"}}}},}')
+        path.chmod(0o600)
+        return path
+
+    def test_provider_config_survives_funnel_migration_upgrade_doctor_and_rollback(self):
+        previous = self.install()
+        data = self.seed_data()
+        paths = [self.provider_file(name) for name in ('config.json', 'opencode.json', 'opencode.jsonc')]
+        before = [path.read_bytes() for path in paths]
+        gamma.inspect(self.host, 'doctor')
+        gamma.reconfigure(self.host, self.funnel_args('--dry-run'), previous)
+        gamma.reconfigure(self.host, self.funnel_args(), previous)
+        gamma.inspect(self.host, 'doctor')
+        gamma.reconfigure(self.host, gamma.parse_args(['--rollback-config']), self.host.read_json(gamma.MANIFEST))
+        gamma.reconfigure(self.host, self.funnel_args(), self.host.read_json(gamma.MANIFEST))
+        state = self.host.read_json(gamma.MANIFEST)
+        args = gamma.parse_args(['--upgrade', '--non-interactive'])
+        gamma.deploy(self.host, args, gamma.configuration(args, state), state, None)
+        gamma.inspect(self.host, 'doctor')
+        self.assertEqual(gamma.public_origin(self.host.read_json(gamma.MANIFEST)['options']), 'https://fixture.tail123.ts.net')
+        self.assertEqual([path.read_bytes() for path in paths], before)
+        self.assertTrue(all(path.stat().st_mode & 0o777 == 0o600 for path in paths))
+        self.assertEqual(self.host.path('/var/lib/gamma/opencode.db').read_bytes(), data)
+
+    def test_manual_origin_adoption_with_provider_config(self):
+        previous = self.install()
+        provider = self.provider_file()
+        before = provider.read_bytes()
+        env = self.host.path('/etc/gamma/gamma.env')
+        env.write_bytes(env.read_bytes().replace(b'http://localhost:4444', b'https://fixture.tail123.ts.net'))
+        gamma.reconfigure(self.host, self.funnel_args('--adopt-public-origin', '--dry-run'), previous)
+        gamma.reconfigure(self.host, self.funnel_args('--adopt-public-origin'), previous)
+        gamma.inspect(self.host, 'doctor')
+        self.assertEqual(provider.read_bytes(), before)
+
+    def test_unsafe_provider_config_blocks_every_operation_without_changes(self):
+        state = self.install()
+        path = self.provider_file()
+        path.write_text('{"provider":{"vsellm":{"options":{"apiKey":"SECRET-FIXTURE","permission":"allow"}}}}')
+        before = path.read_bytes()
+        calls = len(self.host.calls)
+        for operation in (lambda: gamma.inspect(self.host, 'doctor'),
+                          lambda: gamma.reconfigure(self.host, self.funnel_args(), state),
+                          lambda: gamma.deploy(self.host, gamma.parse_args(['--upgrade']), self.options, state, None)):
+            with self.assertRaises(gamma.Failure) as error:
+                operation()
+            self.assertNotIn('SECRET-FIXTURE', str(error.exception))
+            self.assertEqual(len(self.host.calls), calls)
+            self.assertEqual(path.read_bytes(), before)
+            self.assertEqual(self.host.read_json(gamma.MANIFEST), state)
+
+    def test_global_provider_siblings_symlinks_modes_and_execution_directories(self):
+        state = self.install()
+        path = self.provider_file()
+        sibling = path.with_name('config.json')
+        sibling.write_text('{"permission":"allow"}')
+        sibling.chmod(0o600)
+        with self.assertRaises(gamma.Failure):
+            gamma.check_drift(self.host, state)
+        sibling.unlink()
+        path.chmod(0o644)
+        with self.assertRaisesRegex(gamma.Failure, 'ownership/mode'):
+            gamma.check_drift(self.host, state)
+        path.chmod(0o600)
+        sibling.symlink_to(path)
+        with self.assertRaisesRegex(gamma.Failure, 'Symlink'):
+            gamma.check_drift(self.host, state)
+        sibling.unlink()
+        for name in ('config', 'command', 'commands', 'agent', 'agents', 'mode', 'modes',
+                     'plugin', 'plugins', 'tool', 'tools', 'skill', 'skills'):
+            target = path.with_name(name)
+            target.mkdir()
+            with self.assertRaisesRegex(gamma.Failure, 'execution overrides'):
+                gamma.check_drift(self.host, state)
+            target.rmdir()
+        gamma.check_drift(self.host, state)
+
     def test_global_policy_override_rejected_before_changes(self):
         self.host.path('/etc/opencode').mkdir()
         self.host.path('/etc/opencode/opencode.json').write_text('{"permission":"deny"}')

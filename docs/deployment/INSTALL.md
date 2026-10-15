@@ -187,6 +187,35 @@ sudo ./install-gamma.sh --doctor
 
 Полные источники генерации — [gamma_installer.py](../../deploy/installer/gamma_installer.py). Базовые `deploy/*.service` и `.env.example` остаются образцами для ручных установок; не копировать их поверх managed files.
 
+## Глобальная конфигурация LLM и проверка overrides
+
+`--doctor`, `--reconfigure`, `--rollback-config` и `--upgrade` проверяют содержимое всех существующих файлов `/var/lib/gamma/config/opencode/{config.json,opencode.json,opencode.jsonc}`. Наличие provider-only конфигурации больше не считается опасным override. Файлы должны быть обычными, без symlink, принадлежать `gamma` или root, иметь права `0600` и размер не более 1 MiB. Установщик читает их без изменения содержимого, владельца и прав; они не становятся immutable managed files.
+
+Это строгий разрешённый subset реальной схемы OpenCode, а не разрешение всех расширений схемы:
+
+- Верхний уровень: `$schema`, `disabled_providers`, `enabled_providers`, `model`, `small_model`, `provider`.
+- Провайдер: `id`, `name`, `api`, `env`, `npm`, `whitelist`, `blacklist`, `options`, `models`.
+- Provider options: `baseURL`, `apiKey`, `timeout`, `headerTimeout`, `chunkTimeout`, `setCacheKey` с проверкой типов. URL — HTTP/HTTPS без встроенного username/password. Локальные LLM endpoints допустимы; это не механизм сетевой изоляции.
+- Модель: `id`, `name`, `family`, `release_date`, `attachment`, `reasoning`, `temperature`, `tool_call`, `experimental`, `status`, `limit`, `cost`, `modalities`, `provider`. Вложенные cost/limits/modalities/provider также имеют закрытые схемы. `tool_call` описывает способность модели, а не разрешения инструментов.
+- `npm` на уровне провайдера и модели: только точные встроенные `@ai-sdk/{openai-compatible,openai,anthropic,azure,google,xai,mistral,groq,deepinfra,cerebras,cohere,togetherai,perplexity}` и `@openrouter/ai-sdk-provider`. Версии, пути, URL и произвольные npm packages запрещены: runtime может импортировать их как исполняемый код.
+
+JSONC поддерживает комментарии и завершающие запятые. Невалидный JSONC, дубли ключей, неизвестные поля на любом структурном уровне, произвольные `options`/`variants` моделей, `headers`, policy/agent/tool/command/plugin/MCP/instructions и текстовые подстановки `{env:…}` / `{file:…}` блокируются. Последние обрабатываются OpenCode до JSON parsing, поэтому установщик не выполняет и не разрешает их. Для существующей конфигурации вне поддержанного subset требуется отдельный разбор; не удалять настройки ради прохождения проверки. Значения и ключи API не выводятся в диагностике.
+
+OpenCode последовательно объединяет `config.json`, `opencode.json`, `opencode.jsonc`, затем custom config установщика. Deep merge может сохранить небезопасные вложенные настройки, поэтому проверяются все файлы, а не только последний. Legacy TOML `config` и глобальные каталоги `agent(s)`, `mode(s)`, `command(s)`, `plugin(s)`, `tool(s)`, `skill(s)` остаются заблокированы. Managed config, unit-файлы и env по-прежнему защищены манифестом. Проверка установщика — проверка конфигурации в момент запуска, не runtime sandbox для процессов того же UID.
+
+Применение исправления на Ubuntu iMac: доставить **полный проверенный checkout с этим исправлением**, включая `deploy/installer/provider_config.py`. Изменения не появляются в GitHub автоматически. Исправление относится к установщику, поэтому для устранения ложной блокировки не требуется пересобирать или обновлять работающий runtime.
+
+```bash
+# Выполнять из обновлённого checkout на Ubuntu, не из старого release.
+sudo ./install-gamma.sh --doctor
+sudo ./install-gamma.sh --reconfigure --https tailscale-funnel \
+  --public-origin https://nikita.tail9b440a.ts.net --dry-run
+```
+
+Если Origin всё ещё вручную изменён и не принят манифестом, первая команда закономерно сообщит managed drift: добавить `--adopt-public-origin` к reconfigure, как описано в разделе Funnel выше. После успешного dry run повторить reconfigure без `--dry-run` вне активных задач агента, затем выполнить `--doctor`. Уже завершённую миграцию повторять не требуется.
+
+После отдельного согласованного опубликования релиза обновлять его из того же проверенного checkout: `sudo ./install-gamma.sh --upgrade --ref APPROVED_COMMIT_SHA`, заменив `APPROVED_COMMIT_SHA` реальным опубликованным SHA, затем `sudo ./install-gamma.sh --doctor`. Пока исправление не опубликовано, обычный `git pull` не доставит его. Не менять manifest и не удалять provider config. Upgrade сохраняет его через существующий механизм snapshots; ошибка upgrade восстанавливает исходные данные.
+
 ## Провайдер, специалисты и Preview
 
 После установки войти в UI, подключить доступного LLM-провайдера и выбрать модель. Provider credentials сохраняются отдельно от admin auth в XDG data. Установщик не может выдать API key/подписку, не делает платных LLM вызовов и не обещает streaming без провайдера. Не помещать provider secrets в `VITE_*` или Git. [Полный env inventory](CONFIGURATION.md) описывает дополнительные провайдеры.
