@@ -11,7 +11,7 @@ const cleanup: Array<() => Promise<unknown> | unknown> = []
 afterEach(async () => {
   for (const close of cleanup.splice(0).reverse()) await close()
 })
-async function fixture() {
+async function fixture(origin = "http://127.0.0.1:4444") {
   const root = await mkdtemp(path.join(tmpdir(), "gamma-auth-test-"))
   cleanup.push(() => rm(root, { recursive: true, force: true }))
   await Bun.write(path.join(root, "index.html"), "<html>Gamma login fixture</html>")
@@ -50,7 +50,6 @@ async function fixture() {
     },
   })
   cleanup.push(() => upstream.stop(true))
-  const origin = "http://127.0.0.1:4444"
   const gateway = await createGammaServer({
     auth: { origin, username: "test-admin", passwordHash: hash, backendAuthorization: authorization },
     backend: upstream.url.origin,
@@ -66,109 +65,120 @@ async function fixture() {
       body: JSON.stringify({ username: "test-admin", password }),
     })
     expect(response.status).toBe(200)
-    return response.headers.get("set-cookie")!.split(";")[0]!
+    const cookie = response.headers.get("set-cookie")!
+    expect(cookie).toContain("HttpOnly")
+    expect(cookie).toContain("SameSite=Lax")
+    if (origin.startsWith("https:")) {
+      expect(cookie).toStartWith("__Host-gamma_session=")
+      expect(cookie).toContain("Secure")
+      expect(cookie).not.toContain("Domain=")
+    }
+    return cookie.split(";")[0]!
   }
   return { url, origin, login, authorization }
 }
 
-test("protects pages, every API family, SSE and WebSocket without Basic challenges", async () => {
-  const app = await fixture()
-  for (const endpoint of ["/", "/knowledge", "/agents", "/anything/session/existing"]) {
-    const response = await fetch(app.url + endpoint, { redirect: "manual" })
-    expect(response.status).toBe(303)
-    expect(response.headers.get("location")).toBe("/login")
-  }
-  expect((await fetch(`${app.url}/login`)).status).toBe(200)
-  for (const endpoint of [
-    "/global/health",
-    "/api/v2/session",
-    "/product/projects",
-    "/session",
-    "/file",
-    "/event",
-    "/pty/test/connect",
-    "/mcp",
-    "/config",
-    "/auth/provider",
-  ]) {
-    const response = await fetch(app.url + endpoint)
-    expect(response.status).toBe(401)
-    expect(response.headers.has("www-authenticate")).toBe(false)
-  }
-  const websocket = await fetch(`${app.url}/pty/test/connect`, {
-    headers: { Upgrade: "websocket", Connection: "Upgrade", Origin: app.origin },
+for (const origin of ["http://127.0.0.1:4444", "https://fixture.tail123.ts.net"]) {
+  test("protects pages, every API family, SSE and WebSocket without Basic challenges", async () => {
+    const app = await fixture(origin)
+    for (const endpoint of ["/", "/knowledge", "/agents", "/anything/session/existing"]) {
+      const response = await fetch(app.url + endpoint, { redirect: "manual" })
+      expect(response.status).toBe(303)
+      expect(response.headers.get("location")).toBe("/login")
+    }
+    expect((await fetch(`${app.url}/login`)).status).toBe(200)
+    for (const endpoint of [
+      "/global/health",
+      "/api/v2/session",
+      "/product/projects",
+      "/session",
+      "/file",
+      "/event",
+      "/pty/test/connect",
+      "/mcp",
+      "/config",
+      "/auth/provider",
+    ]) {
+      const response = await fetch(app.url + endpoint)
+      expect(response.status).toBe(401)
+      expect(response.headers.has("www-authenticate")).toBe(false)
+    }
+    const websocket = await fetch(`${app.url}/pty/test/connect`, {
+      headers: { Upgrade: "websocket", Connection: "Upgrade", Origin: app.origin },
+    })
+    expect(websocket.status).toBe(401)
+    expect((await fetch(`${app.url}/product/projects`, { headers: { Authorization: app.authorization } })).status).toBe(
+      401,
+    )
   })
-  expect(websocket.status).toBe(401)
-  expect((await fetch(`${app.url}/product/projects`, { headers: { Authorization: app.authorization } })).status).toBe(
-    401,
-  )
-})
 
-test("requires exact Origin for mutations and strips browser credentials on the internal hop", async () => {
-  const app = await fixture()
-  const cookie = await app.login()
-  for (const origin of [undefined, "null", "https://evil.test", "http://localhost:4444"]) {
+  test("requires exact Origin for mutations and strips browser credentials on the internal hop", async () => {
+    const app = await fixture(origin)
+    const cookie = await app.login()
+    for (const origin of [undefined, "null", "https://evil.test", "http://localhost:4444"]) {
+      const response = await fetch(`${app.url}/product/projects`, {
+        method: "POST",
+        headers: { Cookie: cookie, ...(origin ? { Origin: origin } : {}) },
+      })
+      expect(response.status).toBe(403)
+    }
     const response = await fetch(`${app.url}/product/projects`, {
       method: "POST",
-      headers: { Cookie: cookie, ...(origin ? { Origin: origin } : {}) },
+      headers: { Cookie: cookie, Origin: app.origin, Authorization: "Basic attacker" },
     })
-    expect(response.status).toBe(403)
-  }
-  const response = await fetch(`${app.url}/product/projects`, {
-    method: "POST",
-    headers: { Cookie: cookie, Origin: app.origin, Authorization: "Basic attacker" },
+    expect(response.status).toBe(200)
+    expect(await response.json()).toEqual({ cookie: null, authorization: app.authorization, method: "POST" })
+    expect(response.headers.get("cache-control")).toBe("no-store")
+    expect((await fetch(`${app.url}/file`, { headers: { Cookie: cookie, Origin: "null" } })).status).toBe(403)
   })
-  expect(response.status).toBe(200)
-  expect(await response.json()).toEqual({ cookie: null, authorization: app.authorization, method: "POST" })
-  expect(response.headers.get("cache-control")).toBe("no-store")
-  expect((await fetch(`${app.url}/file`, { headers: { Cookie: cookie, Origin: "null" } })).status).toBe(403)
-})
 
-test("SSE streams immediately and is revoked on logout", async () => {
-  const app = await fixture()
-  const cookie = await app.login()
-  const response = await fetch(`${app.url}/event`, { headers: { Cookie: cookie } })
-  expect(response.status).toBe(200)
-  expect(response.headers.get("x-accel-buffering")).toBe("no")
-  const reader = response.body!.getReader()
-  expect(new TextDecoder().decode((await reader.read()).value)).toBe("data: connected\n\n")
-  const ended = reader.read().then(
-    (result) => result.done,
-    () => true,
-  )
-  expect(
-    (await fetch(`${app.url}/auth/logout`, { method: "POST", headers: { Cookie: cookie, Origin: app.origin } })).status,
-  ).toBe(200)
-  expect(await ended).toBe(true)
-  expect((await fetch(`${app.url}/event`, { headers: { Cookie: cookie } })).status).toBe(401)
-})
-
-test("WebSocket requires Origin, relays frames and closes on logout", async () => {
-  const app = await fixture()
-  const cookie = await app.login()
-  for (const origin of [undefined, "null", "https://evil.test"]) {
-    const response = await fetch(`${app.url}/pty/test/connect`, {
-      headers: { Cookie: cookie, Upgrade: "websocket", Connection: "Upgrade", ...(origin ? { Origin: origin } : {}) },
-    })
-    expect(response.status).toBe(403)
-  }
-  const socket = new WebSocket(app.url.replace("http:", "ws:") + "/pty/test/connect", {
-    headers: { Cookie: cookie, Origin: app.origin },
+  test("SSE streams immediately and is revoked on logout", async () => {
+    const app = await fixture(origin)
+    const cookie = await app.login()
+    const response = await fetch(`${app.url}/event`, { headers: { Cookie: cookie } })
+    expect(response.status).toBe(200)
+    expect(response.headers.get("x-accel-buffering")).toBe("no")
+    const reader = response.body!.getReader()
+    expect(new TextDecoder().decode((await reader.read()).value)).toBe("data: connected\n\n")
+    const ended = reader.read().then(
+      (result) => result.done,
+      () => true,
+    )
+    expect(
+      (await fetch(`${app.url}/auth/logout`, { method: "POST", headers: { Cookie: cookie, Origin: app.origin } }))
+        .status,
+    ).toBe(200)
+    expect(await ended).toBe(true)
+    expect((await fetch(`${app.url}/event`, { headers: { Cookie: cookie } })).status).toBe(401)
   })
-  await new Promise<void>((resolve, reject) => {
-    socket.onopen = () => socket.send("hello-gamma")
-    socket.onmessage = (event) => {
-      expect(event.data).toBe("hello-gamma")
-      resolve()
+
+  test("WebSocket requires Origin, relays frames and closes on logout", async () => {
+    const app = await fixture(origin)
+    const cookie = await app.login()
+    for (const origin of [undefined, "null", "https://evil.test"]) {
+      const response = await fetch(`${app.url}/pty/test/connect`, {
+        headers: { Cookie: cookie, Upgrade: "websocket", Connection: "Upgrade", ...(origin ? { Origin: origin } : {}) },
+      })
+      expect(response.status).toBe(403)
     }
-    socket.onerror = reject
+    const socket = new WebSocket(app.url.replace("http:", "ws:") + "/pty/test/connect", {
+      headers: { Cookie: cookie, Origin: app.origin },
+    })
+    await new Promise<void>((resolve, reject) => {
+      socket.onopen = () => socket.send("hello-gamma")
+      socket.onmessage = (event) => {
+        expect(event.data).toBe("hello-gamma")
+        resolve()
+      }
+      socket.onerror = reject
+    })
+    const closed = new Promise<number>((resolve) => {
+      socket.onclose = (event) => resolve(event.code)
+    })
+    await fetch(`${app.url}/auth/logout`, { method: "POST", headers: { Cookie: cookie, Origin: app.origin } })
+    expect(await closed).toBe(1008)
   })
-  const closed = new Promise<number>((resolve) => {
-    socket.onclose = (event) => resolve(event.code)
-  })
-  await fetch(`${app.url}/auth/logout`, { method: "POST", headers: { Cookie: cookie, Origin: app.origin } })
-  expect(await closed).toBe(1008)
-})
+}
 
 test("refuses to start against an unprotected backend", async () => {
   const upstream = Bun.serve({ port: 0, hostname: "127.0.0.1", fetch: () => Response.json({ healthy: true }) })

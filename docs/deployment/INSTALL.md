@@ -96,11 +96,66 @@ ssh -N -L 4444:127.0.0.1:4444 "$GAMMA_SSH"
 
 Открыть **http://localhost:4444**, не публичный IP и не другой hostname. Незашифрованный HTTP существует только на loopback; путь компьютер↔VPS защищён SSH. Альтернатива — заранее выданный доверенный сертификат с IP SAN и `--https existing`. Автоматическая выдача сертификатов для IP не реализована.
 
+## Tailscale Funnel и миграция существующей установки
+
+Режим `tailscale-funnel` использует уже настроенный Tailscale: публичный HTTPS Origin направляется на `http://127.0.0.1:4444`. Установщик не устанавливает и не перенастраивает Tailscale, DNS, TLS или firewall. Backend остаётся на `127.0.0.1:4096`; публичные порты Gamma не открываются. Поддерживаются hostname вида `node.tailnet.ts.net`, стандартный HTTPS порт и порты 8443/10000. Origin указывать без завершающего `/`, пути или `:443`.
+
+Для новой установки:
+
+```bash
+sudo ./install-gamma.sh --install --https tailscale-funnel \
+  --public-origin https://nikita.tail9b440a.ts.net
+```
+
+Для существующей установки выполнить следующие команды **на Ubuntu iMac**, из полного checkout с этой версией установщика (не из macOS и не из старого release). Сначала доставить и проверить изменения кода: наличие этой инструкции не означает, что они уже опубликованы в GitHub. Перед применением сохранить обычный резервный снимок установки. Убедиться через `sudo tailscale funnel status`, что корневой маршрут нужного hostname ведёт на `http://127.0.0.1:4444`.
+
+Если `GAMMA_PUBLIC_ORIGIN` уже вручную заменён на указанный адрес:
+
+```bash
+sudo ./install-gamma.sh --reconfigure --https tailscale-funnel \
+  --public-origin https://nikita.tail9b440a.ts.net --adopt-public-origin --dry-run
+
+sudo ./install-gamma.sh --reconfigure --https tailscale-funnel \
+  --public-origin https://nikita.tail9b440a.ts.net --adopt-public-origin
+
+sudo ./install-gamma.sh --doctor
+sudo tailscale funnel status
+curl --silent --show-error --output /dev/null --write-out '%{http_code}\n' \
+  https://nikita.tail9b440a.ts.net/auth/session
+```
+
+Ожидаемый HTTP status без cookie — `401`. Затем открыть сайт и войти заново, проверить чат, streaming и терминал. `--doctor` проверяет локальные сервисы, а не внешний Funnel/TLS. Установщик кратковременно перезапускает оба сервиса Gamma: выполнять вне активных задач агента. Текущие login-сессии в памяти сбрасываются; пользователи, проекты, знания, provider credentials и admin hash не меняются.
+
+Если env не редактировали вручную, убрать `--adopt-public-origin` из обеих команд. Этот флаг разрешает **только** одну точную строку `GAMMA_PUBLIC_ORIGIN`, совпадающую с явно переданным адресом. Обратная замена строки должна восстановить прежний SHA-256 из манифеста. Любая другая правка, изменение другого managed file, небезопасные права или symlink блокируют миграцию. Не редактировать хеши manifest вручную. Dry run ничего не записывает и не перезапускает.
+
+Миграция меняет только access settings в env и комментарий tunnel-конфигурации Nginx, сохраняет release и записывает новые проверенные хеши в manifest. Повтор с теми же параметрами ничего не перезапускает. `GAMMA_TRUST_PROXY=0`: cookies и Origin берутся из явной конфигурации, а не из непроверенных forwarded headers. HTTPS включает `__Host-` Secure/HttpOnly/SameSite=Lax cookie; mutations и WebSocket требуют точный Origin. SSE остаётся потоковым. Из-за отсутствия доверия forwarded IP ограничения входа применяются к адресу локального tunnel proxy совместно для клиентов.
+
+Конфигурация сохраняется в приватном `/var/backups/gamma/config-…`. Ошибка активации автоматически возвращает точные исходные файлы; прерывание восстанавливается при следующей mutating-команде. При неудаче принятия ручной правки исходный drift тоже вернётся — это не повод переписывать manifest.
+
+Откат успешной миграции (без отката БД или новых файлов проектов):
+
+```bash
+sudo ./install-gamma.sh --rollback-config --dry-run
+sudo ./install-gamma.sh --rollback-config
+sudo ./install-gamma.sh --doctor
+```
+
+При исходном `ssh-tunnel` вернётся `http://localhost:4444`; пользоваться SSH forwarding, а не прежним HTTPS адресом. Rollback проверяет хеш сохранённой конфигурации и принадлежность текущему release. Последующий `--upgrade` сохраняет Funnel Origin, но завершает окно `--rollback-config` для старого release. Для возврата к SSH после upgrade использовать `sudo ./install-gamma.sh --reconfigure --https ssh-tunnel --dry-run`, затем ту же команду без `--dry-run`. Ошибки самого upgrade восстанавливаются существующим механизмом offline snapshot. Автоматическая миграция между Nginx TLS и tunnel-режимами не выполняется; существующие режимы `letsencrypt`/`existing` продолжают работать.
+
+Если Funnel ещё не настроен, его администратор отдельно включает его по [официальной инструкции Tailscale](https://tailscale.com/docs/reference/tailscale-cli/funnel), например `sudo tailscale funnel --bg --https=443 http://127.0.0.1:4444`. Для уже работающего туннеля эту команду повторять не требуется. Установщик не проверяет права аккаунта Tailscale и доступность сервиса извне.
+
+Локальная регрессия: installer contract tests выполняются для Ubuntu VERSION_ID 24.04 и 26.04, включая миграцию, узкое принятие drift, rollback, ошибку активации и upgrade. Это тесты файлов/SQLite с заменёнными OS-командами, а не загрузка VM. Gateway integration tests выполняют настоящие HTTP/WS/SSE запросы с HTTPS Origin через локальный HTTP transport; они не заменяют проверку реального TLS/Funnel и браузера после применения.
+
 ## Все параметры
 
 | Параметр | Значение / поведение |
 | --- | --- |
 | `--install` | Первая установка; готовую установку проверяет, не пересобирает |
+| `--reconfigure` | Транзакционная смена tunnel-режима и Origin текущего release |
+| `--rollback-config` | Проверенный откат последней конфигурации текущего release без отката данных |
+| `--public-origin URL` | Явный публичный HTTPS Origin; обязателен для Funnel |
+| `--adopt-public-origin` | Только reconfigure: принять строго Origin-only ручную правку |
+| `--dry-run` | Только reconfigure/rollback-config: проверка без изменений |
 | `--upgrade` | Новый immutable release, offline snapshot, переключение с восстановлением при ошибке |
 | `--check` | Read-only ОС/arch/CPU/RAM/disk, порты, конфликт installation/Nginx, DNS |
 | `--status` | Read-only manifest, active/enabled, anonymous/authenticated HTTP health и login HTML |
@@ -108,7 +163,7 @@ ssh -N -L 4444:127.0.0.1:4444 "$GAMMA_SSH"
 | `--repo URL` | По умолчанию Gamma GitHub URL выше; только GitHub HTTPS без credentials |
 | `--ref REF` | По умолчанию remote `HEAD`; branch/tag/40-character SHA, результат закрепляется в manifest |
 | `--domain HOST` | Lowercase DNS hostname; IPv4 разрешён только с existing TLS |
-| `--https MODE` | `letsencrypt`, `existing`, `ssh-tunnel`, `cloudflare-tunnel`; интерактивный выбор |
+| `--https MODE` | `letsencrypt`, `existing`, `ssh-tunnel`, `cloudflare-tunnel`, `tailscale-funnel`; интерактивный выбор |
 | `--email EMAIL` | ACME contact, обязателен с letsencrypt |
 | `--tls-cert PATH`, `--tls-key PATH` | Абсолютные пути для existing TLS |
 | `--admin-user LOGIN` | Один администратор gateway, не системный пользователь |

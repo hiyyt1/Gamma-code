@@ -26,6 +26,7 @@ import tempfile
 import time
 import urllib.error
 import urllib.request
+from urllib.parse import urlsplit
 import uuid
 
 REPO = "https://github.com/hiyyt1/Gamma-code.git"
@@ -74,12 +75,15 @@ def policy(profile):
 def parse_args(argv=None):
     parser = argparse.ArgumentParser(description="Gamma Ubuntu 24.04 / 26.04 LTS amd64 installer (no firewall changes)")
     modes = parser.add_mutually_exclusive_group(required=True)
-    for name in ("check", "install", "upgrade", "status", "doctor"):
+    for name in ("check", "install", "upgrade", "status", "doctor", "reconfigure", "rollback-config"):
         modes.add_argument("--" + name, dest="mode", action="store_const", const=name)
     parser.add_argument("--repo", default=REPO, help="HTTPS GitHub repository, no credentials")
     parser.add_argument("--ref", default="HEAD", help="branch/tag/SHA; resolved to an immutable commit")
     parser.add_argument("--domain", help="DNS name (or IP with --https existing)")
-    parser.add_argument("--https", choices=["letsencrypt", "existing", "ssh-tunnel", "cloudflare-tunnel"])
+    parser.add_argument("--https", choices=["letsencrypt", "existing", "ssh-tunnel", "cloudflare-tunnel", "tailscale-funnel"])
+    parser.add_argument("--public-origin", help="Exact public HTTPS Origin; required for tailscale-funnel")
+    parser.add_argument("--adopt-public-origin", action="store_true", help="Reconfigure only: accept precisely the requested Origin-only edit")
+    parser.add_argument("--dry-run", action="store_true", help="Validate reconfigure/rollback without writes or restarts")
     parser.add_argument("--email", help="ACME contact")
     parser.add_argument("--tls-cert", help="existing trusted fullchain PEM")
     parser.add_argument("--tls-key", help="existing root-only private key PEM")
@@ -106,7 +110,15 @@ def validate(options):
     require(any(workspace.is_relative_to(base) and workspace != Path(base) for base in ("/home/gamma", "/srv", "/mnt")),
             "Project path must be a child of /home/gamma, /srv or /mnt (dedicated empty directory)")
     require(not workspace.is_relative_to("/home/gamma/.bun"), "Runtime cannot be a workspace")
-    require(options["https"] in ("letsencrypt", "existing", "ssh-tunnel", "cloudflare-tunnel"), "HTTPS mode required")
+    require(options["https"] in ("letsencrypt", "existing", "ssh-tunnel", "cloudflare-tunnel", "tailscale-funnel"), "HTTPS mode required")
+    if options["https"] == "tailscale-funnel":
+        origin = options.get("public_origin") or ""
+        require(bool(re.fullmatch(r"https://[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.ts\.net(?::(?:8443|10000))?", origin)),
+                "Tailscale Funnel requires an exact https://node.tailnet.ts.net Origin (optional port 8443 or 10000)")
+        require(options.get("domain") == urlsplit(origin).hostname, "Funnel domain must match public Origin")
+    elif options.get("public_origin"):
+        require(options["public_origin"] == ("http://localhost:4444" if options["https"] == "ssh-tunnel" else "https://" + (options.get("domain") or "")),
+                "Public Origin does not match HTTPS mode/domain")
     if options["https"] == "ssh-tunnel":
         require(not options.get("domain"), "ssh-tunnel mode uses http://localhost:4444 only; omit --domain")
         return
@@ -128,19 +140,19 @@ def validate(options):
 def configuration(args, previous):
     if previous:
         options = previous["options"].copy()
-        for attr, key in [("domain", "domain"), ("https", "https"), ("workspaces", "workspaces"),
+        for attr, key in [("domain", "domain"), ("https", "https"), ("public_origin", "public_origin"), ("workspaces", "workspaces"),
                           ("permission_profile", "profile"), ("tls_cert", "tls_cert"), ("tls_key", "tls_key")]:
-            require(getattr(args, attr) in (None, options.get(key)), "Existing settings differ; use documented manual migration, not install/upgrade")
+            require(getattr(args, attr) in (None, options.get(key)), "Existing settings differ; use --reconfigure, not install/upgrade")
         options.update(repo=args.repo, ref=args.ref)
         validate(options)
         return options
     options = {"repo": args.repo, "ref": args.ref, "domain": args.domain, "https": args.https,
-               "email": args.email, "tls_cert": args.tls_cert, "tls_key": args.tls_key,
+               "email": args.email, "tls_cert": args.tls_cert, "tls_key": args.tls_key, "public_origin": args.public_origin,
                "workspaces": args.workspaces or "/home/gamma/workspaces", "profile": args.permission_profile or "trusted-auto"}
     if not args.non_interactive:
         if not options["https"]:
             options["domain"] = options["domain"] or input("Gamma domain (empty = secure SSH tunnel by IP): ").strip()
-            options["https"] = input("HTTPS: letsencrypt / existing / ssh-tunnel / cloudflare-tunnel [%s]: " % ("letsencrypt" if options["domain"] else "ssh-tunnel")).strip() or ("letsencrypt" if options["domain"] else "ssh-tunnel")
+            options["https"] = input("HTTPS: letsencrypt / existing / ssh-tunnel / cloudflare-tunnel / tailscale-funnel [%s]: " % ("letsencrypt" if options["domain"] else "ssh-tunnel")).strip() or ("letsencrypt" if options["domain"] else "ssh-tunnel")
         if options["https"] == "letsencrypt":
             options["email"] = options["email"] or input("ACME email: ").strip()
         if options["https"] == "existing":
@@ -148,8 +160,16 @@ def configuration(args, previous):
             options["tls_key"] = options["tls_key"] or input("Private key PEM path: ").strip()
         if not args.workspaces:
             options["workspaces"] = input("Project storage [/home/gamma/workspaces]: ").strip() or "/home/gamma/workspaces"
+    if options["https"] == "tailscale-funnel":
+        if not options["public_origin"] and not args.non_interactive:
+            options["public_origin"] = input("Public Funnel HTTPS Origin: ").strip()
+        options["domain"] = options["domain"] or urlsplit(options["public_origin"] or "").hostname
     validate(options)
     return options
+
+
+def public_origin(options):
+    return options.get("public_origin") or ("http://localhost:4444" if options["https"] == "ssh-tunnel" else "https://" + options["domain"])
 
 
 class Host:
@@ -437,6 +457,8 @@ def check_credentials(host):
 
 
 def nginx_config(options, bootstrap=False):
+    if options["https"] == "tailscale-funnel":
+        return MARKER + "\n# No Gamma listener. Tailscale Funnel forwards HTTPS to http://127.0.0.1:4444\n"
     if options["https"] == "cloudflare-tunnel":
         return MARKER + "\n# No Gamma listener. Local cloudflared forwards to http://127.0.0.1:4444\n"
     if options["https"] == "ssh-tunnel":
@@ -499,7 +521,7 @@ def activate_nginx(host, content):
 
 
 def tls(host, options, previous):
-    if options["https"] in ("ssh-tunnel", "cloudflare-tunnel"):
+    if options["https"] in ("ssh-tunnel", "cloudflare-tunnel", "tailscale-funnel"):
         return
     if options["https"] == "existing":
         cert = host.path(options["tls_cert"])
@@ -529,7 +551,7 @@ def tls(host, options, previous):
 
 
 def rendered(options, release):
-    origin = "http://localhost:4444" if options["https"] == "ssh-tunnel" else "https://" + options["domain"]
+    origin = public_origin(options)
     env = {"NODE_ENV": "production", "LANG": "C.UTF-8", "LC_ALL": "C.UTF-8", "HOME": "/home/gamma", "GAMMA_WORKSPACES_ROOT": options["workspaces"],
            "GAMMA_KNOWLEDGE_ROOT": "/var/lib/gamma/knowledge", "GAMMA_AGENT_MARKET_ROOT": release + "/gamma-agent-market",
            "GAMMA_SKILL_MARKET_ROOT": release + "/gamma-skill-market", "OPENCODE_DB": "/var/lib/gamma/opencode.db",
@@ -539,7 +561,7 @@ def rendered(options, release):
            "PLAYWRIGHT_BROWSERS_PATH": release + "/.playwright",
            "GAMMA_BSL_JAR": release + "/runtime/bsl-language-server.jar",
            "GAMMA_1C_PYTHON": "/usr/bin/python3",
-           # cloudflared connects directly; do not trust client-supplied X-Real-IP.
+           # Tunnel daemons connect directly; never trust client-supplied X-Real-IP.
            "GAMMA_AUTH_CONFIG": "/etc/gamma/auth.json", "GAMMA_TRUST_PROXY": "1" if options["https"] in ("letsencrypt", "existing") else "0",
            "OPENCODE_CONFIG": "/etc/gamma/opencode.json", "OPENCODE_DISABLE_PROJECT_CONFIG": "1",
            "OPENCODE_DISABLE_AUTOUPDATE": "1", "OPENCODE_DISABLE_SHARE": "1",
@@ -575,14 +597,16 @@ WantedBy=multi-user.target
     return files
 
 
-def check_drift(host, state):
+def check_drift(host, state, verified=None):
+    require(set(MANAGED) - {MANIFEST} <= set(state.get("files", {})), "Incomplete managed-file manifest; refusing integrity bypass")
     check_credentials(host)
     for name, expected in state.get("files", {}).items():
         path = host.path(name)
         host.no_symlink(path)
-        require(path.is_file() and hashlib.sha256(path.read_bytes()).hexdigest() == expected,
-                f"Managed file drift: {name}; not overwriting. Reconcile changes with installation manifest first")
+        require(path.is_file() and hashlib.sha256((verified or {}).get(name, path.read_bytes())).hexdigest() == expected,
+                f"Managed file drift: {name}; not overwriting. Use --reconfigure for managed changes; Origin-only edits require explicit --adopt-public-origin")
         require(path.stat().st_uid == host.uid("root") and path.stat().st_mode & 0o022 == 0, f"Unsafe managed file ownership: {name}")
+    require(stat.S_IMODE(host.path("/etc/gamma/gamma.env").stat().st_mode) == 0o600, "gamma.env must remain private (0600)")
     for name in ("/home/gamma/.opencode", "/etc/opencode/opencode.json", "/etc/opencode/opencode.jsonc"):
         require(not host.path(name).exists(), f"Policy override detected: {name}; review before upgrade")
     config = host.path("/var/lib/gamma/config/opencode")
@@ -613,7 +637,7 @@ def smoke(host, options, admin=None):
         if len(fields) >= 4 and fields[3].rsplit(":", 1)[-1] in ("4096", "4444"):
             require(fields[3].startswith("127.0.0.1:"), "Backend/gateway is not loopback-only")
     if admin:
-        origin = "http://localhost:4444" if options["https"] == "ssh-tunnel" else "https://" + options["domain"]
+        origin = public_origin(options)
         headers = {"Origin": origin, "Content-Type": "application/json"}
         code, response, _ = host.request("http://127.0.0.1:4444/auth/login", headers=headers, body=json.dumps(admin).encode())
         require(code == 200 and "HttpOnly" in response.get("Set-Cookie", ""), "Administrator login smoke failed")
@@ -697,7 +721,9 @@ def finish_message(state):
         print("No public HTTP published. On your computer: ssh -N -L 4444:127.0.0.1:4444 YOUR_SSH_USER@VPS_IP")
         print("Then open http://localhost:4444 (traffic to the VPS is protected by SSH).")
     else:
-        print("Open https://" + state["options"]["domain"])
+        print("Open " + public_origin(state["options"]))
+    if state["options"]["https"] == "tailscale-funnel":
+        print("Tailscale Funnel must forward this Origin to http://127.0.0.1:4444. Installer does not alter Tailscale, DNS or TLS; external reachability is not tested.")
     if state["options"]["https"] == "cloudflare-tunnel":
         print("Configure local cloudflared: public HTTPS hostname -> http://127.0.0.1:4444. External tunnel/TLS is not tested by this installer.")
     print("Connect an LLM provider and select its model in the UI; live inference is not provisioned/tested.")
@@ -760,6 +786,99 @@ def deploy(host, args, options, previous, admin):
     finish_message(state)
 
 
+def env_setting(content, key, value):
+    pattern = re.compile(r"^" + re.escape(key) + r"=([^\r\n]*)$", re.MULTILINE)
+    require(len(pattern.findall(content)) == 1, f"Expected exactly one managed {key} setting")
+    return pattern.sub(lambda match: key + "=" + value, content)
+
+
+def reconfigure(host, args, previous):
+    require(previous and previous.get("schema") == 1 and previous.get("phase") == "ready",
+            "Configuration changes require a completed managed installation")
+    require(not any((args.workspaces, args.permission_profile, args.email, args.tls_cert, args.tls_key,
+                     args.admin_user, args.admin_password_file, args.domain)),
+            "Configuration migration only changes access mode and public Origin; storage, policy and credentials stay unchanged")
+    env_path = "/etc/gamma/gamma.env"
+    host.no_symlink(host.path(env_path))
+    original = host.path(env_path).read_bytes().decode()
+    canonical = original
+    options = previous["options"].copy()
+    if args.mode == "rollback-config":
+        require(not args.https and not args.public_origin, "Rollback does not accept a new mode or Origin")
+        check_drift(host, previous)
+        pointer = previous.get("config_rollback")
+        require(pointer, "No configuration rollback is available for this release")
+        name = safe_path(pointer["path"])
+        require(name.startswith("/var/backups/gamma/") and name.endswith("/rollback.json"), "Invalid configuration backup path")
+        host.no_symlink(host.path(name))
+        raw = host.path(name).read_bytes()
+        require(hashlib.sha256(raw).hexdigest() == pointer["sha256"], "Configuration backup drift; refusing rollback")
+        rollback = json.loads(raw)
+        require(rollback["release"] == previous["release"], "Configuration rollback belongs to another release")
+        options = rollback["options"]
+        validate(options)
+        require(options["workspaces"] == previous["options"]["workspaces"] and options["profile"] == previous["options"]["profile"],
+                "Rollback cannot change storage or permissions")
+        require(set(rollback["files"]) == {env_path, NGINX}, "Invalid rollback file set")
+        files = rollback["files"]
+    else:
+        require(args.https in ("ssh-tunnel", "cloudflare-tunnel", "tailscale-funnel"),
+                "--reconfigure requires --https ssh-tunnel, cloudflare-tunnel or tailscale-funnel")
+        require(options["https"] in ("ssh-tunnel", "cloudflare-tunnel", "tailscale-funnel"),
+                "Migration from Nginx TLS requires separate certificate/listener planning; no files changed")
+        require(args.https == "ssh-tunnel" or args.public_origin, "Explicit --public-origin is required for a public tunnel")
+        options.update(https=args.https, public_origin=args.public_origin,
+                       domain=urlsplit(args.public_origin or "").hostname if args.https != "ssh-tunnel" else None)
+        validate(options)
+        if args.adopt_public_origin:
+            require(args.public_origin and args.https != "ssh-tunnel", "Adoption requires an explicit public HTTPS Origin")
+            require(re.findall(r"^GAMMA_PUBLIC_ORIGIN=([^\r\n]*)$", original, re.MULTILINE) == [args.public_origin],
+                    "Live Origin must exactly match the explicitly requested Origin")
+            canonical = env_setting(original, "GAMMA_PUBLIC_ORIGIN", public_origin(previous["options"]))
+        # Reversing only the approved line must reproduce the old digest. All other
+        # files, settings and permissions still pass the ordinary integrity check.
+        check_drift(host, previous, {env_path: canonical.encode()})
+        files = {env_path: env_setting(env_setting(canonical, "GAMMA_PUBLIC_ORIGIN", public_origin(options)), "GAMMA_TRUST_PROXY", "0"),
+                 NGINX: nginx_config(options)}
+    print("Configuration: " + previous["options"]["https"] + " -> " + options["https"])
+    print("Public Origin: " + public_origin(options) + "; backend/gateway remain loopback-only")
+    if args.dry_run:
+        print("Dry run passed; no files, services, Tailscale settings or manifests changed.")
+        return
+    if options == previous["options"] and all(host.path(name).read_text() == content for name, content in files.items()):
+        print("Configuration already matches; no writes or restarts.")
+        return
+    backup = f"/var/backups/gamma/config-{time.strftime('%Y%m%dT%H%M%SZ', time.gmtime())}-{uuid.uuid4().hex[:8]}"
+    host.mkdir(backup)
+    for name in MANAGED:
+        host.copy(host.path(name), host.path(backup + "/config" + name))
+    rollback = {"release": previous["release"], "options": previous["options"],
+                "files": {env_path: canonical, NGINX: host.path(NGINX).read_text()}}
+    host.json(backup + "/rollback.json", rollback)
+    # Config-only recovery restores exact pre-operation files (including an adopted
+    # manual edit), without ever rewinding user data or changing credentials.
+    host.json(JOURNAL, {"backup": backup, "previous": previous, "snapshot": False, "present": MANAGED})
+    try:
+        host.run(["systemctl", "stop", "gamma-web", "gamma-backend"])
+        for line in host.ports().splitlines():
+            require(not re.search(r":(?:4096|4444)\s", line), "Ports still occupied; refusing configuration activation")
+        for name, content in files.items():
+            host.write(name, content, 0o600 if name == env_path else 0o644)
+        host.run(["systemctl", "start", "gamma-backend", "gamma-web"])
+        smoke(host, options)
+        state = {**previous, "options": options,
+                 "files": {**previous["files"], **{name: hashlib.sha256(content.encode()).hexdigest() for name, content in files.items()}},
+                 "config_rollback": {"path": backup + "/rollback.json",
+                                     "sha256": hashlib.sha256(host.path(backup + "/rollback.json").read_bytes()).hexdigest()}}
+        host.json(MANIFEST, state)
+        host.path(JOURNAL).unlink()
+    except BaseException:
+        recover(host)
+        raise
+    print("Configuration backup: " + backup + "; undo with --rollback-config (configuration only, current release)")
+    finish_message(state)
+
+
 def inspect(host, mode):
     state = host.read_json(MANIFEST)
     require(state and state.get("schema") == 1, "No installer-managed Gamma found; legacy installations require explicit migration")
@@ -791,13 +910,16 @@ def inspect(host, mode):
 
 def main(argv=None):
     args = parse_args(argv)
+    require(not args.adopt_public_origin or args.mode == "reconfigure", "--adopt-public-origin requires --reconfigure")
+    require(not args.dry_run or args.mode in ("reconfigure", "rollback-config"), "--dry-run requires --reconfigure or --rollback-config")
     host = Host()
     require(os.geteuid() == 0, "Run with sudo; --check/--status/--doctor are read-only but inspect protected configuration")
     os.umask(0o077)
     if args.mode in ("status", "doctor"):
         inspect(host, args.mode)
         return
-    check_proxy(os.environ)
+    if args.mode not in ("reconfigure", "rollback-config"):
+        check_proxy(os.environ)
     previous = host.read_json(MANIFEST)
     if previous:
         require(previous.get("schema") == 1, "Unknown installation manifest schema")
@@ -808,6 +930,10 @@ def main(argv=None):
         validate(options)
         preflight(host, options, previous)
         return
+    if args.dry_run:
+        require(not host.path(JOURNAL).exists(), "Recover the interrupted transaction before planning configuration changes")
+        reconfigure(host, args, previous)
+        return
     lock = host.path("/run/lock/gamma-install.lock")
     lock.parent.mkdir(parents=True, exist_ok=True)
     with lock.open("w") as stream:
@@ -817,6 +943,9 @@ def main(argv=None):
             raise Failure("Another Gamma installation is in progress") from None
         recover(host)
         previous = host.read_json(MANIFEST)
+        if args.mode in ("reconfigure", "rollback-config"):
+            reconfigure(host, args, previous)
+            return
         require(args.mode != "upgrade" or previous and previous.get("phase") == "ready", "--upgrade requires a completed managed installation")
         options = configuration(args, previous)
         preflight(host, options, previous)

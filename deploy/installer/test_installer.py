@@ -170,6 +170,137 @@ class InstallerTests(unittest.TestCase):
         self.host.path('/var/lib/gamma/knowledge/material.txt').write_text('knowledge')
         return db.read_bytes()
 
+    def funnel_args(self, *extra):
+        return gamma.parse_args(['--reconfigure', '--https', 'tailscale-funnel',
+                                 '--public-origin', 'https://fixture.tail123.ts.net', *extra])
+
+    def test_funnel_migration_upgrade_and_rollback(self):
+        previous = self.install()
+        data = self.seed_data()
+        secrets = {name: self.host.path('/etc/gamma/' + name).read_bytes()
+                   for name in ('auth.json', 'backend.env')}
+        builds = self.host.builds
+        gamma.reconfigure(self.host, self.funnel_args(), previous)
+        state = self.host.read_json(gamma.MANIFEST)
+        gamma.inspect(self.host, 'doctor')
+        self.assertEqual(self.host.builds, builds)
+        self.assertIn('GAMMA_TRUST_PROXY=0', self.host.path('/etc/gamma/gamma.env').read_text())
+        calls = len(self.host.calls)
+        gamma.reconfigure(self.host, self.funnel_args(), state)
+        self.assertEqual(len(self.host.calls), calls)
+        self.host.path(self.options['workspaces'] + '/new.txt').write_text('after migration')
+        gamma.reconfigure(self.host, gamma.parse_args(['--rollback-config']), state)
+        rolled = self.host.read_json(gamma.MANIFEST)
+        self.assertEqual(rolled['options'], previous['options'])
+        gamma.inspect(self.host, 'doctor')
+        self.assertEqual(self.host.path(self.options['workspaces'] + '/new.txt').read_text(), 'after migration')
+        gamma.reconfigure(self.host, self.funnel_args(), rolled)
+        state = self.host.read_json(gamma.MANIFEST)
+        args = gamma.parse_args(['--upgrade', '--non-interactive'])
+        gamma.deploy(self.host, args, gamma.configuration(args, state), state, None)
+        upgraded = self.host.read_json(gamma.MANIFEST)
+        self.assertEqual(gamma.public_origin(upgraded['options']), 'https://fixture.tail123.ts.net')
+        gamma.inspect(self.host, 'doctor')
+        self.assertEqual(self.host.path('/var/lib/gamma/opencode.db').read_bytes(), data)
+        self.assertEqual(self.host.path('/var/lib/gamma/knowledge/material.txt').read_text(), 'knowledge')
+        for name, content in secrets.items():
+            self.assertEqual(self.host.path('/etc/gamma/' + name).read_bytes(), content)
+
+    def test_funnel_adoption_is_narrow_and_dry_run_read_only(self):
+        previous = self.install()
+        env = self.host.path('/etc/gamma/gamma.env')
+        original = env.read_bytes()
+        edited = original.replace(b'http://localhost:4444', b'https://fixture.tail123.ts.net')
+        env.write_bytes(edited)
+        with self.assertRaises(gamma.Failure):
+            gamma.reconfigure(self.host, self.funnel_args(), previous)
+        args = self.funnel_args('--adopt-public-origin', '--dry-run')
+        before = len(self.host.calls)
+        gamma.reconfigure(self.host, args, previous)
+        self.assertEqual(len(self.host.calls), before)
+        self.assertEqual(self.host.read_json(gamma.MANIFEST), previous)
+        self.assertFalse(self.host.path(gamma.JOURNAL).exists())
+        for invalid in (edited + b'# unexpected edit\n', edited.replace(b'\n', b'\r\n'),
+                        edited.replace(b'GAMMA_TRUST_PROXY=0', b'GAMMA_TRUST_PROXY=1')):
+            env.write_bytes(invalid)
+            with self.assertRaises(gamma.Failure):
+                gamma.reconfigure(self.host, args, previous)
+        env.write_bytes(edited)
+        gamma.reconfigure(self.host, self.funnel_args('--adopt-public-origin'), previous)
+        gamma.inspect(self.host, 'doctor')
+        gamma.reconfigure(self.host, gamma.parse_args(['--rollback-config']), self.host.read_json(gamma.MANIFEST))
+        self.assertEqual(env.read_bytes(), original)
+        gamma.inspect(self.host, 'doctor')
+
+    def test_funnel_failed_activation_restores_exact_configuration(self):
+        previous = self.install()
+        data = self.seed_data()
+        before = {name: self.host.path(name).read_bytes() for name in gamma.MANAGED}
+        self.host.fail = 'frontend'
+        with self.assertRaises(gamma.Failure):
+            gamma.reconfigure(self.host, self.funnel_args(), previous)
+        for name, content in before.items():
+            self.assertEqual(self.host.path(name).read_bytes(), content)
+        self.assertEqual(self.host.path('/var/lib/gamma/opencode.db').read_bytes(), data)
+        self.assertFalse(self.host.path(gamma.JOURNAL).exists())
+        gamma.inspect(self.host, 'doctor')
+
+    def test_funnel_rejects_backup_tampering_and_other_drift(self):
+        previous = self.install()
+        policy = self.host.path('/etc/gamma/opencode.json')
+        original = policy.read_bytes()
+        policy.write_bytes(original + b' ')
+        with self.assertRaises(gamma.Failure):
+            gamma.reconfigure(self.host, self.funnel_args('--dry-run'), previous)
+        policy.write_bytes(original)
+        gamma.reconfigure(self.host, self.funnel_args(), previous)
+        state = self.host.read_json(gamma.MANIFEST)
+        self.host.path(state['config_rollback']['path']).write_text('{}')
+        with self.assertRaisesRegex(gamma.Failure, 'backup drift'):
+            gamma.reconfigure(self.host, gamma.parse_args(['--rollback-config']), state)
+        self.assertEqual(self.host.read_json(gamma.MANIFEST), state)
+
+    def test_funnel_cli_migration_doctor_and_rollback(self):
+        self.install()
+        argv = ['--reconfigure', '--https', 'tailscale-funnel',
+                '--public-origin', 'https://fixture.tail123.ts.net']
+        with patch.object(gamma, 'Host', return_value=self.host), patch.object(os, 'geteuid', return_value=0):
+            with patch.dict(os.environ, {'HTTPS_PROXY': 'http://unused.invalid'}):
+                gamma.main([*argv, '--dry-run'])
+                self.assertEqual(self.host.read_json(gamma.MANIFEST)['options']['https'], 'ssh-tunnel')
+                gamma.main(argv)
+                gamma.main(['--doctor'])
+                gamma.main(['--rollback-config', '--dry-run'])
+                gamma.main(['--rollback-config'])
+                gamma.main(['--doctor'])
+        self.assertEqual(self.host.read_json(gamma.MANIFEST)['options']['https'], 'ssh-tunnel')
+
+    def test_funnel_adoption_rejects_permissions_and_incomplete_manifest(self):
+        previous = self.install()
+        env = self.host.path('/etc/gamma/gamma.env')
+        env.chmod(0o644)
+        with self.assertRaisesRegex(gamma.Failure, 'private'):
+            gamma.reconfigure(self.host, self.funnel_args('--dry-run'), previous)
+        env.chmod(0o600)
+        previous['files'].pop('/etc/gamma/opencode.json')
+        with self.assertRaisesRegex(gamma.Failure, 'Incomplete'):
+            gamma.reconfigure(self.host, self.funnel_args('--dry-run'), previous)
+
+    def test_funnel_fresh_install_and_origin_validation(self):
+        self.args = gamma.parse_args(['--install', '--non-interactive', '--https', 'tailscale-funnel',
+                                      '--public-origin', 'https://fixture.tail123.ts.net'])
+        self.options = gamma.configuration(self.args, None)
+        with patch.object(self.host, 'resolve', side_effect=AssertionError('DNS must not be required')):
+            state = self.install()
+        gamma.inspect(self.host, 'doctor')
+        self.assertFalse(any(Path(call[0]).name in ('certbot', 'tailscale') for call in self.host.calls))
+        for origin in ('http://fixture.tail123.ts.net', 'https://fixture.tail123.ts.net/',
+                       'https://fixture.tail123.ts.net.evil.test', 'https://user@fixture.tail123.ts.net',
+                       'https://fixture.tail123.ts.net:443', 'https://fixture.tail123.ts.net?x=1'):
+            args = gamma.parse_args(['--install', '--non-interactive', '--https', 'tailscale-funnel', '--public-origin', origin])
+            with self.assertRaises(gamma.Failure):
+                gamma.configuration(args, None)
+
     def test_proxy_rejected_without_disclosing_credentials(self):
         for scheme in ('socks5', 'http', 'https'):
             with self.assertRaises(gamma.Failure) as error:
