@@ -147,3 +147,67 @@ README: предлагается ссылка `[Развёртывание Gamma
 На HDD upgrade может дольше копировать offline snapshot; оставляйте место для исходных данных, снимка и failed-state quarantine. Никаких автоматических удалений или OS-specific uninstall не добавлено. Для вывода из эксплуатации сначала сохраните и проверьте backup, остановите/отключите сервисы и публикацию tunnel; удаление данных — отдельное решение владельца.
 
 Если iMac с 8 GB RAM не проходил старый RAM guard: обновлённый installer допускает `MemTotal >= 6291456 kB`, рекомендация 16 GiB выводится как предупреждение. Посмотреть значение: `awk '/^MemTotal:/ {print}' /proc/meminfo`. При OOM во время сборки проверьте текущую нагрузку и `free -h`; heap остаётся 4096 MiB, автоматически увеличивать его не нужно. Upgrade собирает новый release при работающих старых сервисах, поэтому браузеры/параллельные проекты могут уменьшить запас памяти.
+
+## Штатное обновление VPS и тестового iMac
+
+После публикации проверенного commit (заменить REVIEWED_COMMIT на полный SHA),
+из отдельного checkout этого release:
+
+```sh
+sudo ./install-gamma.sh --status
+sudo ./install-gamma.sh --doctor
+sudo ./install-gamma.sh --upgrade --non-interactive --ref REVIEWED_COMMIT
+sudo ./install-gamma.sh --doctor
+```
+
+Upgrade сохраняет HTTPS mode/Origin, credentials, workspaces и Preview-параметры.
+iMac остаётся на Tailscale Funnel; VPS — на выбранном Nginx TLS режиме. Legacy
+schema-1 manifest без preview_domain поддерживается. Если doctor обнаружил отсутствие
+BSL/Chromium в старом release, новый upgrade выполняет штатную установку зависимостей;
+managed-file drift и ошибки permissions нужно разобрать до продолжения.
+
+Installer создаёт offline snapshot перед активацией; сохраните отдельный backup
+вне диска сервера. Ошибка активации автоматически восстанавливает snapshot;
+прерванный install/upgrade восстанавливается при следующем mutating запуске.
+Не удаляйте manifest/journal и не подменяйте checksums для обхода drift checks.
+
+Preview можно менять отдельно в любом public HTTPS режиме:
+
+```sh
+sudo ./install-gamma.sh --reconfigure --preview-domain preview.example.net --dry-run
+sudo ./install-gamma.sh --reconfigure --preview-domain preview.example.net
+sudo ./install-gamma.sh --doctor --external
+# При необходимости вернуть предыдущую конфигурацию на этом же release:
+sudo ./install-gamma.sh --rollback-config --dry-run
+sudo ./install-gamma.sh --rollback-config
+```
+
+Операция перезапускает Gamma и отзывает browser sessions; данные не откатываются.
+Для Nginx TLS нельзя одновременно менять Origin/режим/сертификаты. Миграции между
+ssh-tunnel, tailscale-funnel и cloudflare-tunnel сохраняются с явным `--https` и
+`--public-origin`; настройка самих tunnel services остаётся отдельной.
+`--rollback-config` не является release/database rollback и не меняет внешние DNS,
+сертификаты или Preview Nginx config. Для успешного завершённого upgrade восстановление
+старой базы требует согласованного backup и учёта потери более новых записей.
+
+### Диагностика
+
+`--doctor` проверяет managed-file integrity, permissions, Bun/Node, APT packages,
+наличие BSL/Chromium, backend/frontend, anonymous API/SSE/PTY denial и CSRF.
+При включённом Preview проверяет его loopback listener и isolation headers.
+Только в режиме cloudflare-tunnel дополнительно смотрит cloudflared.service;
+другие режимы его наличия не требуют.
+
+`--doctor --external` проверяет HTTPS сертификат и маршруты настроенного public
+Origin, CSRF и wildcard Preview. Redirects не выполняются, credentials не отправляются.
+Проверка идёт с сервера и не заменяет проверку из внешней сети. Успешный HTTP probe
+не доказывает authenticated SSE/WebSocket frame relay: отдельно проверьте login,
+upload, ответ агента, терминал и закрытие потоков после logout.
+
+Для проверки живой Preview lease используйте `--doctor --external
+--preview-probe-file /etc/gamma/preview-probe.json`. Подготовьте disposable static
+index.html (<64 KiB), откройте его Preview и держите UI открытым для heartbeat.
+В root-owned 0600 JSON-файл через защищённый редактор поместите `url` (точный HTTPS
+URL корня lease) и `sha256` (digest index.html). Doctor проверит содержимое и headers,
+не выведет URL и не создаст сессию/проект. После закрытия Preview повторный probe
+должен завершиться ошибкой; затем удалите файл. URL не передавать аргументом команды.

@@ -67,3 +67,7 @@ test-results/
 .vscode/*
 !.vscode/*.example.json
 !packages/opencode/script/build-node.ts
+
+# Python installer test caches
+__pycache__/
+*.py[cod]

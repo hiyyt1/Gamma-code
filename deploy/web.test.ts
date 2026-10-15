@@ -78,7 +78,7 @@ async function fixture(origin = "http://127.0.0.1:4444") {
   return { url, origin, login, authorization }
 }
 
-for (const origin of ["http://127.0.0.1:4444", "https://fixture.tail123.ts.net"]) {
+for (const origin of ["http://127.0.0.1:4444", "https://fixture.tail123.ts.net", "https://nikita.gamma-platform.ru"]) {
   test("protects pages, every API family, SSE and WebSocket without Basic challenges", async () => {
     const app = await fixture(origin)
     for (const endpoint of ["/", "/knowledge", "/agents", "/anything/session/existing"]) {
@@ -196,4 +196,29 @@ test("refuses to start against an unprotected backend", async () => {
       port: 0,
     }),
   ).rejects.toThrow("Internal backend must require authentication")
+})
+
+test("rejects foreign Host even with valid cookies and forwarded authority", async () => {
+  const app = await fixture("https://nikita.gamma-platform.ru")
+  const cookie = await app.login()
+  for (const host of ["coffee.gamma-platform.ru", "preview.example.net", "nikita.gamma-platform.ru.evil.test"]) {
+    const response = await fetch(app.url + "/product/projects", {
+      headers: { Host: host, Cookie: cookie, Origin: app.origin, "X-Forwarded-Host": "nikita.gamma-platform.ru" },
+    })
+    expect(response.status).toBe(421)
+  }
+  expect(
+    (
+      await fetch(app.url + "/product/projects", {
+        headers: { Host: "nikita.gamma-platform.ru", Cookie: cookie },
+      })
+    ).status,
+  ).toBe(200)
+})
+
+test("independent installations never accept each other's session cookies", async () => {
+  const a = await fixture("https://nikita.gamma-platform.ru")
+  const b = await fixture("https://coffee.gamma-platform.ru")
+  const cookie = await a.login()
+  expect((await fetch(b.url + "/auth/session", { headers: { Cookie: cookie } })).status).toBe(401)
 })

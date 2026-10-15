@@ -150,3 +150,20 @@ bun test
 - [ ] После reboot Wi-Fi, cloudflared и обе Gamma units стартуют; проверены повтор установки, upgrade и restore на отдельной VM.
 
 Контейнерный прогон и тесты orchestration не отмечают эти пункты автоматически: [UBUNTU.md](UBUNTU.md).
+
+## Регрессии HTTPS / Preview перед публикацией
+
+- `cd deploy && bun test && bun typecheck`: auth/cookies/Origin/CSRF, Host,
+  межустановочные sessions, локальные SSE/WebSocket relay и revoke.
+- `cd packages/opencode && bun test test/server/site-preview.test.ts test/server/site-preview-nginx.test.ts && bun typecheck`:
+  static assets/SPA, traversal/symlink/hardlink, TTL/revoke и изоляция leases.
+  Nginx-тест использует реальный example config, приватный Unix socket и временный TLS
+  сертификат с проверкой trust/hostname; без nginx/openssl/curl он явно пропускается.
+- `cd deploy/installer && python3 -B -m unittest discover`: режимы HTTPS, migrations,
+  legacy schema-1 upgrade, Preview-only Nginx reconfigure, rollback и диагностика.
+- `cd deploy/installer && ./test-ubuntu.sh`: те же OS-boundary проверки в disposable
+  Ubuntu 24.04/26.04 containers; source mounted read-only. Это не booted-systemd VM.
+
+Перед production acceptance проверить настоящий DNS/TLS, certificate renewal,
+Preview и SSE/терминал через Nginx с внешнего устройства. Тестовые локальные
+сертификаты и подменённый OS boundary не подтверждают готовность реального VPS.

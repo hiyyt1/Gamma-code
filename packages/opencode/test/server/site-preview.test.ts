@@ -198,6 +198,47 @@ test("local mode only accepts an explicit loopback HTTP origin on a separate por
   }
 })
 
+test("independent preview services reject foreign capabilities even with the same DNS suffix", async () => {
+  const a = await ProductProjects.create("installation-a")
+  const b = await ProductProjects.create("installation-b")
+  await Bun.write(path.join(a.path, "index.html"), "Installation A")
+  await Bun.write(path.join(b.path, "index.html"), "Installation B")
+  const first = createPreview(config)
+  const second = createPreview(config)
+  const lease = await first.start("same-session-id", a.path, "")
+  const other = await second.start("same-session-id", b.path, "")
+  expect((await second.fetch(new Request(lease.url))).status).toBe(404)
+  expect((await first.fetch(new Request(other.url))).status).toBe(404)
+  expect(() => second.renew("same-session-id", lease.id)).toThrow("expired")
+  expect(await (await first.fetch(new Request(lease.url))).text()).toBe("Installation A")
+})
+
+test("production configuration rejects sibling cookie sites and malformed DNS labels", () => {
+  const keys = ["GAMMA_PREVIEW_LOCAL", "GAMMA_PREVIEW_DOMAIN", "GAMMA_PUBLIC_ORIGIN"]
+  const saved = keys.map((key) => process.env[key])
+  try {
+    delete process.env.GAMMA_PREVIEW_LOCAL
+    process.env.GAMMA_PUBLIC_ORIGIN = "https://nikita.gamma-platform.ru"
+    for (const domain of [
+      "preview.gamma-platform.ru",
+      "gamma-platform.ru",
+      "-bad.example.net",
+      "a..example.net",
+      "a".repeat(64) + ".net",
+    ]) {
+      process.env.GAMMA_PREVIEW_DOMAIN = domain
+      expect(configuration).toThrow("invalid_preview_config")
+    }
+    process.env.GAMMA_PREVIEW_DOMAIN = "nikita.gamma-preview.ru"
+    expect(configuration()).toEqual({ domain: "nikita.gamma-preview.ru", main: "https://nikita.gamma-platform.ru" })
+  } finally {
+    keys.forEach((key, index) => {
+      if (saved[index] === undefined) delete process.env[key]
+      else process.env[key] = saved[index]
+    })
+  }
+})
+
 test("embedded snapshots are bounded, revisioned and confined to the selected build", async () => {
   const { snapshot } = await import("../../src/server/site-preview")
   const project = await ProductProjects.create("snapshot")

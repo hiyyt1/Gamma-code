@@ -43,6 +43,15 @@ export async function createGammaServer(options: {
     maxRequestBodySize: 21 * 1024 * 1024,
     async fetch(request, server) {
       const url = new URL(request.url)
+      const host = request.headers.get("host") ?? url.host
+      // Accept the configured public host and direct loopback health/SSH probes.
+      // Forwarded headers never establish authority for cookies or API access.
+      if (
+        host !== new URL(options.auth.origin).host &&
+        host !== `127.0.0.1:${server.port}` &&
+        host !== `localhost:${server.port}`
+      )
+        return new Response(null, { status: 421, headers: { "Cache-Control": "no-store" } })
       if (url.pathname === "/auth/login") server.timeout(request, 15)
       const address = options.trustedProxy
         ? (request.headers.get("x-real-ip") ?? "unknown")

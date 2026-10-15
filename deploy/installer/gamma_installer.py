@@ -86,6 +86,9 @@ def parse_args(argv=None):
     parser.add_argument("--public-origin", help="Exact public HTTPS Origin; required for tailscale-funnel")
     parser.add_argument("--adopt-public-origin", action="store_true", help="Reconfigure only: accept precisely the requested Origin-only edit")
     parser.add_argument("--dry-run", action="store_true", help="Validate reconfigure/rollback without writes or restarts")
+    parser.add_argument("--preview-domain", help="Separate preview DNS suffix with wildcard DNS/TLS; empty disables preview")
+    parser.add_argument("--external", action="store_true", help="Doctor only: probe configured public HTTPS routes without credentials")
+    parser.add_argument("--preview-probe-file", help="Doctor --external only: root-owned 0600 JSON containing live Preview URL and expected fixture SHA-256; never logged")
     parser.add_argument("--email", help="ACME contact")
     parser.add_argument("--tls-cert", help="existing trusted fullchain PEM")
     parser.add_argument("--tls-key", help="existing root-only private key PEM")
@@ -121,6 +124,14 @@ def validate(options):
     elif options.get("public_origin"):
         require(options["public_origin"] == ("http://localhost:4444" if options["https"] == "ssh-tunnel" else "https://" + (options.get("domain") or "")),
                 "Public Origin does not match HTTPS mode/domain")
+    preview = options.get("preview_domain")
+    if preview:
+        require(options["https"] != "ssh-tunnel", "Public Preview requires a public HTTPS Gamma Origin")
+        require("." in preview and len(preview) <= 204
+                and all(re.fullmatch(r"[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?", label) for label in preview.split(".")), "Invalid Preview DNS suffix")
+        # Conservative cookie-site separation, deliberately not a public suffix parser.
+        require(preview.split(".")[-2:] != (options.get("domain") or "").split(".")[-2:],
+                "Preview must use an independent registrable domain (different final two DNS labels)")
     if options["https"] == "ssh-tunnel":
         require(not options.get("domain"), "ssh-tunnel mode uses http://localhost:4444 only; omit --domain")
         return
@@ -143,14 +154,14 @@ def configuration(args, previous):
     if previous:
         options = previous["options"].copy()
         for attr, key in [("domain", "domain"), ("https", "https"), ("public_origin", "public_origin"), ("workspaces", "workspaces"),
-                          ("permission_profile", "profile"), ("tls_cert", "tls_cert"), ("tls_key", "tls_key")]:
+                          ("permission_profile", "profile"), ("tls_cert", "tls_cert"), ("tls_key", "tls_key"), ("preview_domain", "preview_domain")]:
             require(getattr(args, attr) in (None, options.get(key)), "Existing settings differ; use --reconfigure, not install/upgrade")
         options.update(repo=args.repo, ref=args.ref)
         validate(options)
         return options
     options = {"repo": args.repo, "ref": args.ref, "domain": args.domain, "https": args.https,
                "email": args.email, "tls_cert": args.tls_cert, "tls_key": args.tls_key, "public_origin": args.public_origin,
-               "workspaces": args.workspaces or "/home/gamma/workspaces", "profile": args.permission_profile or "trusted-auto"}
+               "preview_domain": args.preview_domain, "workspaces": args.workspaces or "/home/gamma/workspaces", "profile": args.permission_profile or "trusted-auto"}
     if not args.non_interactive:
         if not options["https"]:
             options["domain"] = options["domain"] or input("Gamma domain (empty = secure SSH tunnel by IP): ").strip()
@@ -162,9 +173,9 @@ def configuration(args, previous):
             options["tls_key"] = options["tls_key"] or input("Private key PEM path: ").strip()
         if not args.workspaces:
             options["workspaces"] = input("Project storage [/home/gamma/workspaces]: ").strip() or "/home/gamma/workspaces"
-    if options["https"] == "tailscale-funnel":
-        if not options["public_origin"] and not args.non_interactive:
-            options["public_origin"] = input("Public Funnel HTTPS Origin: ").strip()
+    if options["https"] in ("tailscale-funnel", "cloudflare-tunnel"):
+        if not options["public_origin"] and not args.non_interactive and (options["https"] == "tailscale-funnel" or not options["domain"]):
+            options["public_origin"] = input("Public Tunnel HTTPS Origin: ").strip()
         options["domain"] = options["domain"] or urlsplit(options["public_origin"] or "").hostname
     validate(options)
     return options
@@ -172,6 +183,11 @@ def configuration(args, previous):
 
 def public_origin(options):
     return options.get("public_origin") or ("http://localhost:4444" if options["https"] == "ssh-tunnel" else "https://" + options["domain"])
+
+
+class NoRedirect(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        return None
 
 
 class Host:
@@ -258,12 +274,13 @@ class Host:
     def request(self, url, *, headers=None, body=None):
         request = urllib.request.Request(url, data=body, headers=headers or {})
         # Local probes must never be sent to an inherited outbound proxy.
-        opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+        opener = urllib.request.build_opener(urllib.request.ProxyHandler({}), NoRedirect())
         try:
             with opener.open(request, timeout=5) as response:
                 return response.status, response.headers, response.read(65536)
         except urllib.error.HTTPError as error:
-            return error.code, error.headers, error.read(65536)
+            with error:
+                return error.code, error.headers, error.read(65536)
         except (OSError, urllib.error.URLError):
             return 0, {}, b""
 
@@ -322,7 +339,7 @@ def preflight(host, options, previous):
         if len(parts) < 4:
             continue
         port = parts[3].rsplit(":", 1)[-1]
-        if port in ("4096", "4444"):
+        if port in ("4096", "4444") or port == "4097" and options.get("preview_domain"):
             require(bool(previous), f"Port {port} occupied; no service was stopped")
         if options["https"] in ("letsencrypt", "existing") and port in ("80", "443"):
             require('"nginx"' in line, f"Port {port} occupied by a non-Nginx process")
@@ -634,6 +651,8 @@ def rendered(options, release):
            "OPENCODE_CONFIG": "/etc/gamma/opencode.json", "OPENCODE_DISABLE_PROJECT_CONFIG": "1",
            "OPENCODE_DISABLE_AUTOUPDATE": "1", "OPENCODE_DISABLE_SHARE": "1",
            "OPENCODE_ENABLE_EXA": "1", "OPENCODE_WEBSEARCH_PROVIDER": "exa"}
+    if options.get("preview_domain"):
+        env.update(GAMMA_PREVIEW_DOMAIN=options["preview_domain"], GAMMA_PREVIEW_PORT="4097")
     files = {"/etc/gamma/gamma.env": (MARKER + "\n" + "".join(f"{key}={value}\n" for key, value in env.items()), 0o600),
              "/etc/gamma/opencode.json": (json.dumps(policy(options["profile"]), indent=2) + "\n", 0o644)}
     for name in ("backend", "web"):
@@ -718,9 +737,14 @@ def smoke(host, options, admin=None):
     require(code == 200 and b"<html" in body.lower(), "Frontend login page is missing or not HTML")
     for route in ("/global/health", "/session", "/product/projects", "/event", "/pty", "/api/session"):
         require(host.request("http://127.0.0.1:4444" + route)[0] == 401, "Gateway protection smoke failed")
+    if options.get("preview_domain"):
+        preview_host = "0" * 48 + "." + options["preview_domain"]
+        code, headers, body = host.request("http://127.0.0.1:4097/", headers={"Host": preview_host})
+        require(code == 404 and body == b"Preview expired" and "sandbox allow-scripts" in headers.get("Content-Security-Policy", ""),
+                "Preview readiness failed; invalid capabilities must be rejected with isolation headers")
     for line in host.ports().splitlines():
         fields = line.split()
-        if len(fields) >= 4 and fields[3].rsplit(":", 1)[-1] in ("4096", "4444"):
+        if len(fields) >= 4 and fields[3].rsplit(":", 1)[-1] in (("4096", "4444", "4097") if options.get("preview_domain") else ("4096", "4444")):
             require(fields[3].startswith("127.0.0.1:"), "Backend/gateway is not loopback-only")
     if admin:
         origin = public_origin(options)
@@ -816,7 +840,9 @@ def finish_message(state):
     print("Permissions: " + state["options"]["profile"] + ". Native Gamma policy persists across restarts.")
     print("Standard tools inherit auto permissions; role denies, delegation boundaries and business approvals remain.")
     print("Tools run as gamma, not root. This is NOT a sandbox: same-UID code can access Gamma credentials.")
-    print("Preview, optional agent toolchains and multi-user isolation require separate configuration; see docs/deployment.")
+    if state["options"].get("preview_domain"):
+        print("Preview configured locally; DNS/TLS/ingress must be provisioned separately. Run --doctor --external and a live Preview probe.")
+    print("Optional agent toolchains and multi-user isolation require separate configuration; see docs/deployment.")
 
 
 def deploy(host, args, options, previous, admin):
@@ -890,7 +916,7 @@ def reconfigure(host, args, previous):
     canonical = original
     options = previous["options"].copy()
     if args.mode == "rollback-config":
-        require(not args.https and not args.public_origin, "Rollback does not accept a new mode or Origin")
+        require(not args.https and not args.public_origin and args.preview_domain is None, "Rollback does not accept a new mode or Origin")
         check_drift(host, previous)
         pointer = previous.get("config_rollback")
         require(pointer, "No configuration rollback is available for this release")
@@ -908,13 +934,21 @@ def reconfigure(host, args, previous):
         require(set(rollback["files"]) == {env_path, NGINX}, "Invalid rollback file set")
         files = rollback["files"]
     else:
-        require(args.https in ("ssh-tunnel", "cloudflare-tunnel", "tailscale-funnel"),
-                "--reconfigure requires --https ssh-tunnel, cloudflare-tunnel or tailscale-funnel")
-        require(options["https"] in ("ssh-tunnel", "cloudflare-tunnel", "tailscale-funnel"),
-                "Migration from Nginx TLS requires separate certificate/listener planning; no files changed")
-        require(args.https == "ssh-tunnel" or args.public_origin, "Explicit --public-origin is required for a public tunnel")
-        options.update(https=args.https, public_origin=args.public_origin,
-                       domain=urlsplit(args.public_origin or "").hostname if args.https != "ssh-tunnel" else None)
+        require(args.https or args.preview_domain is not None, "Specify an HTTPS mode or --preview-domain")
+        mode = args.https or options["https"]
+        if options["https"] in ("letsencrypt", "existing"):
+            require(mode == options["https"] and args.public_origin in (None, public_origin(options))
+                    and not args.adopt_public_origin and args.preview_domain is not None,
+                    "Nginx TLS reconfiguration only changes Preview; keep the existing mode, Origin and certificates")
+        else:
+            require(mode in ("ssh-tunnel", "cloudflare-tunnel", "tailscale-funnel"),
+                    "Migration to Nginx TLS requires separate certificate/listener planning; no files changed")
+            origin = args.public_origin if args.https else args.public_origin or public_origin(options)
+            require(mode == "ssh-tunnel" or origin, "Explicit --public-origin is required for a public tunnel")
+            options.update(https=mode, public_origin=origin,
+                           domain=urlsplit(origin or "").hostname if mode != "ssh-tunnel" else None)
+        if args.preview_domain is not None:
+            options["preview_domain"] = args.preview_domain or None
         validate(options)
         if args.adopt_public_origin:
             require(args.public_origin and args.https != "ssh-tunnel", "Adoption requires an explicit public HTTPS Origin")
@@ -924,8 +958,13 @@ def reconfigure(host, args, previous):
         # Reversing only the approved line must reproduce the old digest. All other
         # files, settings and permissions still pass the ordinary integrity check.
         check_drift(host, previous, {env_path: canonical.encode()})
-        files = {env_path: env_setting(env_setting(canonical, "GAMMA_PUBLIC_ORIGIN", public_origin(options)), "GAMMA_TRUST_PROXY", "0"),
+        files = {env_path: env_setting(env_setting(canonical, "GAMMA_PUBLIC_ORIGIN", public_origin(options)), "GAMMA_TRUST_PROXY", "1" if options["https"] in ("letsencrypt", "existing") else "0"),
                  NGINX: nginx_config(options)}
+        # Only these two non-secret settings are managed here; preserve all other env.
+        if args.preview_domain is not None:
+            files[env_path] = re.sub(r"^GAMMA_PREVIEW_(?:DOMAIN|PORT)=[^\r\n]*\n?", "", files[env_path], flags=re.MULTILINE)
+            if options.get("preview_domain"):
+                files[env_path] += "GAMMA_PREVIEW_DOMAIN=" + options["preview_domain"] + "\nGAMMA_PREVIEW_PORT=4097\n"
     print("Configuration: " + previous["options"]["https"] + " -> " + options["https"])
     print("Public Origin: " + public_origin(options) + "; backend/gateway remain loopback-only")
     if args.dry_run:
@@ -965,7 +1004,7 @@ def reconfigure(host, args, previous):
     finish_message(state)
 
 
-def inspect(host, mode):
+def inspect(host, mode, external=False, preview_probe_file=None):
     state = host.read_json(MANIFEST)
     require(state and state.get("schema") == 1, "No installer-managed Gamma found; legacy installations require explicit migration")
     print("Installation: " + state["phase"] + "; commit: " + state.get("commit", "not activated"))
@@ -979,6 +1018,10 @@ def inspect(host, mode):
         require(installed.returncode == 0 and all(" install ok installed" in line for line in installed.stdout.splitlines()),
                 "Required OS packages are missing or incomplete; run --upgrade to provision dependencies")
         host.run(["nginx", "-t"])
+        release = host.path(state["release"])
+        require((release / "runtime/bsl-language-server.jar").is_file(), "BSL runtime artifact missing; repair using a verified release")
+        require((release / ".playwright").is_dir() and any((release / ".playwright").glob("chromium*/chrome-linux*/chrome")),
+                "Pinned Playwright Chromium runtime missing; repair using a verified release")
     # Status/doctor do not create a login session, run shell tools, or write a smoke file.
     for service in ("gamma-backend", "gamma-web"):
         host.run(["systemctl", "is-active", service])
@@ -991,18 +1034,84 @@ def inspect(host, mode):
             "Authenticated backend health failed")
     code, _, body = host.request("http://127.0.0.1:4444/login")
     require(code == 200 and b"<html" in body.lower(), "Frontend login page is missing or not HTML")
-    print("Services active/enabled; authenticated backend and frontend healthy; anonymous endpoints protected.")
+    print("LOCAL: services active/enabled; authenticated backend and frontend healthy; anonymous endpoints protected.")
+    print("Configured public Origin: " + public_origin(state["options"]))
+    if mode == "doctor":
+        for route in ("/product/projects", "/event", "/pty"):
+            require(host.request("http://127.0.0.1:4444" + route)[0] == 401, "Local anonymous API/stream route is not protected")
+        require(host.request("http://127.0.0.1:4444/auth/logout", headers={"Origin": "null", "Content-Type": "application/json"}, body=b"{}")[0] == 403,
+                "LOCAL CSRF protection failed")
+        if state["options"]["https"] == "cloudflare-tunnel":
+            active = host.run(["systemctl", "is-active", "cloudflared"], check=False).returncode == 0
+            print("LOCAL cloudflared.service: " + ("active (does not prove tunnel connectivity)" if active else "not active; inspect connector service"))
+        print("SSE/WebSocket authenticated transport: NOT TESTED by read-only doctor; run gateway integration/browser checks.")
+        if state["options"].get("preview_domain"):
+            preview_host = "0" * 48 + "." + state["options"]["preview_domain"]
+            code, headers, body = host.request("http://127.0.0.1:4097/", headers={"Host": preview_host})
+            require(code == 404 and body == b"Preview expired" and "sandbox allow-scripts" in headers.get("Content-Security-Policy", ""),
+                    "LOCAL Preview listener or isolation headers failed")
+            if external:
+                code, headers, body = host.request("https://" + preview_host + "/")
+                require(code == 404 and body == b"Preview expired" and "no-store" in headers.get("Cache-Control", ""),
+                        "EXTERNAL Preview wildcard DNS/TLS/route failed")
+                print("EXTERNAL Preview: invalid capability rejected over verified TLS; live lease content NOT TESTED.")
+            if not preview_probe_file:
+                print("Preview live lease content: NOT TESTED (requires an authenticated Preview session).")
+        else:
+            print("Preview: disabled; configure an independent domain and wildcard route.")
+        if external:
+            origin = public_origin(state["options"])
+            require(origin.startswith("https://"), "External doctor requires a public HTTPS Origin")
+            code, headers, body = host.request(origin + "/auth/session")
+            require(code == 401 and b'"unauthorized"' in body and "no-store" in headers.get("Cache-Control", ""),
+                    "EXTERNAL HTTPS authentication probe failed (TLS, routing, redirect or unexpected response)")
+            require(host.request(origin + "/auth/logout", headers={"Origin": "null", "Content-Type": "application/json"}, body=b"{}")[0] == 403,
+                    "EXTERNAL CSRF protection failed")
+            for route in ("/product/projects", "/event", "/pty"):
+                require(host.request(origin + route)[0] == 401, "EXTERNAL anonymous API/stream protection failed")
+            code, _, body = host.request(origin + "/login")
+            require(code == 200 and b"<html" in body.lower(), "EXTERNAL frontend route failed")
+            if preview_probe_file:
+                probe_preview(host, state["options"], preview_probe_file)
+            print("EXTERNAL: HTTPS certificate and anonymous routes verified from this host; remote client reachability and authenticated streams not tested.")
+        else:
+            print("EXTERNAL DNS/TLS/routes: NOT TESTED; use --doctor --external after DNS/tunnel activation.")
+
+
+def probe_preview(host, options, filename):
+    require(options.get("preview_domain"), "Live Preview probe requires configured Preview")
+    file = host.path(safe_path(filename))
+    host.no_symlink(file)
+    info = file.stat()
+    require(stat.S_ISREG(info.st_mode) and info.st_uid == host.uid("root") and stat.S_IMODE(info.st_mode) == 0o600
+            and info.st_size <= 4096, "Preview probe input must be root-owned 0600 JSON, at most 4 KiB")
+    probe = json.loads(file.read_text())
+    require(isinstance(probe, dict) and set(probe) == {"url", "sha256"}
+            and isinstance(probe["url"], str) and isinstance(probe["sha256"], str), "Invalid Preview probe input")
+    authority = "." + options["preview_domain"]
+    require(re.fullmatch(r"https://[a-f0-9]{48}" + re.escape(authority) + r"/", probe["url"])
+            and re.fullmatch(r"[a-f0-9]{64}", probe["sha256"]), "Preview probe must target an exact configured lease root")
+    code, headers, body = host.request(probe["url"])
+    require(code == 200 and "text/html" in headers.get("Content-Type", "")
+            and "no-store" in headers.get("Cache-Control", "") and not headers.get("Set-Cookie")
+            and "sandbox allow-scripts" in headers.get("Content-Security-Policy", "")
+            and hashlib.sha256(body).hexdigest() == probe["sha256"],
+            "EXTERNAL live Preview probe failed: lease, TLS, routing, content or isolation headers")
+    print("EXTERNAL live Preview: fixture digest and isolation headers verified; capability URL withheld.")
+
 
 
 def main(argv=None):
     args = parse_args(argv)
     require(not args.adopt_public_origin or args.mode == "reconfigure", "--adopt-public-origin requires --reconfigure")
     require(not args.dry_run or args.mode in ("reconfigure", "rollback-config"), "--dry-run requires --reconfigure or --rollback-config")
+    require(not args.external or args.mode == "doctor", "--external requires --doctor")
+    require(not args.preview_probe_file or args.mode == "doctor" and args.external, "--preview-probe-file requires --doctor --external")
     host = Host()
     require(os.geteuid() == 0, "Run with sudo; --check/--status/--doctor are read-only but inspect protected configuration")
     os.umask(0o077)
     if args.mode in ("status", "doctor"):
-        inspect(host, args.mode)
+        inspect(host, args.mode, args.external, args.preview_probe_file)
         return
     if args.mode not in ("reconfigure", "rollback-config"):
         check_proxy(os.environ)

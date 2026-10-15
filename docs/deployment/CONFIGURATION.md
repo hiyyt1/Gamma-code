@@ -309,3 +309,57 @@ User/workspace directories 0700; release после build root-owned, group/othe
 Финальные defaults: `dev:gamma` использует `deploy/opencode.json`, `OPENCODE_DISABLE_PROJECT_CONFIG=1` и build `NODE_OPTIONS=--max-old-space-size=4096`, если оператор не указал overrides. Installer рендерит ту же permission policy (allow + external_directory deny), сохраняет выбранный профиль при upgrade и задаёт `PLAYWRIGHT_BROWSERS_PATH` внутри immutable release. Proxy variables installer не принимает: необходим прямой egress, диагностика происходит до provisioning.
 
 В installer-режиме `cloudflare-tunnel` origin — `https://<ваш hostname>`, gateway — `127.0.0.1:4444`, trust proxy — 0. Локальный cloudflared направляется на gateway по HTTP; Secure cookie и exact-Origin проверки определяются публичным HTTPS origin, а не локальным транспортом. Настройка описана в [INSTALL.md](INSTALL.md).
+
+## Production VPS и независимые HTTPS-режимы
+
+Production: VPS с публичным IP → Nginx HTTPS → loopback gateway :4444 → backend :4096.
+iMac остаётся тестовой установкой с Tailscale Funnel. Каждая установка хранит SQLite,
+workspaces, Knowledge и LLM keys локально; центральные сервисы не требуются.
+
+| Режим | Публичный вход | GAMMA_TRUST_PROXY |
+| --- | --- | --- |
+| `letsencrypt` | Nginx, сертификат и renewal через Certbot | 1, Nginx перезаписывает X-Real-IP |
+| `existing` | Nginx, доверенный сертификат оператора | 1 |
+| `ssh-tunnel` | localhost через SSH forwarding | 0 |
+| `tailscale-funnel` | Отдельно настроенный Tailscale Funnel | 0 |
+| `cloudflare-tunnel` | Опциональный отдельно настроенный cloudflared | 0 |
+
+Ни один режим не требует другого. Cloudflare не нужен для Nginx, сертификатов или
+Preview. Gateway проверяет configured Host, точный Origin и CSRF; непосредственные
+loopback probes разрешены на его порту. Forwarded headers не определяют Origin.
+HTTPS cookies остаются host-only `__Host-`, Secure/HttpOnly; backend Basic credentials
+не передаются браузеру. SSE/WebSocket соединения закрываются при отзыве auth session.
+
+### Legacy Preview на отдельном HTTPS-домене
+
+Встроенный [Preview](../site-preview.md) включён без этих переменных и использует
+существующий origin Gamma. Ниже описан только совместимый старый внешний режим.
+
+`--preview-domain preview.example.net` задаёт `GAMMA_PREVIEW_DOMAIN` и loopback порт
+4097. Адрес сайта — `https://<random-lease>.preview.example.net/`. Wildcard DNS
+`*.preview.example.net` направляется непосредственно на IP VPS, а отдельный Nginx
+virtual host использует сертификат для `*.preview.example.net`. См. INSTALL.md.
+Никакой DNS allocator или запись на каждую ссылку не требуется.
+
+Параметр поддерживается при install и сохраняется при upgrade. Для включения,
+замены или отключения (`--preview-domain ''`) используйте `--reconfigure`.
+В режимах `letsencrypt`/`existing` это Preview-only операция: основной Origin,
+сертификаты и trust proxy сохраняются. Переходы между Nginx TLS и tunnel-режимами
+по-прежнему требуют отдельного плана сертификатов/listeners и автоматически не делаются.
+
+Legacy внешний Preview должен использовать отдельный регистрируемый домен. Проверка
+консервативна: одинаковые последние две DNS-метки отклоняются, поэтому разные домены
+под `co.uk` также не поддерживаются этой проверкой. Это не Public Suffix List.
+Локальный `.localhost` Preview для dev/manual deployments сохранён.
+
+Preview — static-only, без запуска dev servers или проксирования localhost-портов.
+Существующий renderer поддерживает HTML/CSS/JS, assets и build directories, SPA
+navigation fallback, refresh и revoke. CSP/iframe sandbox не даёт allow-same-origin,
+запрещает внешние подключения, workers и вложенные frames. Внешние CDN/HMR/backend API
+не поддерживаются: assets нужно включать в static build. Лимит файла — 8 MiB.
+
+Lease живёт 120 секунд без heartbeat; закрытие Preview отзывает её, restart backend
+отзывает все leases. Доступ к файлам использует workspace boundary, O_NOFOLLOW и
+запрет hardlinks. Выбранный static root доступен обладателю ссылки: секреты туда не
+помещать, в том числе JSON. Отключите access logs/cache для Preview; уже загруженный
+HTML невозможно удалить из памяти браузера после revoke.

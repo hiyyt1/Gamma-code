@@ -108,6 +108,14 @@ class TemporaryHost(gamma.Host):
             if command[1:] == ['--version']: output = gamma.BUN + '\n'
             elif command[1] == '-e':
                 return subprocess.run([shutil.which('bun'), *command[1:]], input=data, text=True, capture_output=True, check=True)
+            elif command[1:2] == ['script/1c-agent/download-bsl.ts']:
+                target = Path(command[2])
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_text('fixture jar')
+            elif command[1:] == ['node_modules/playwright/cli.js', 'install', 'chromium']:
+                target = self.path(extra['PLAYWRIGHT_BROWSERS_PATH']) / 'chromium-fixture/chrome-linux64/chrome'
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_text('fixture browser')
             elif command[1:] == ['run', 'build']:
                 self.builds += 1
                 (cwd / 'dist').mkdir(parents=True)
@@ -125,6 +133,11 @@ class TemporaryHost(gamma.Host):
 
     def request(self, url, *, headers=None, body=None):
         headers = headers or {}
+        if ':4097' in url:
+            if self.fail == 'preview':
+                self.fail = None
+                return 0, {}, b''
+            return 404, {'Content-Security-Policy': 'sandbox allow-scripts allow-forms', 'Cache-Control': 'no-store'}, b'Preview expired'
         if ':4096' in url:
             if 'gamma-backend' not in self.active: return 0, {}, b''
             return (200 if 'Authorization' in headers else 401), {}, b'{}'
@@ -137,6 +150,8 @@ class TemporaryHost(gamma.Host):
         if url.endswith('/auth/login'):
             self.cookie = True
             return 200, {'Set-Cookie': 'test=session; HttpOnly'}, b'{}'
+        if url.endswith('/auth/logout') and headers.get('Origin') == 'null':
+            return 403, {}, b'{}'
         if url.endswith('/auth/logout'):
             self.cookie = False
             return 200, {}, b'{}'
@@ -185,6 +200,144 @@ class InstallerTests(unittest.TestCase):
     def funnel_args(self, *extra):
         return gamma.parse_args(['--reconfigure', '--https', 'tailscale-funnel',
                                  '--public-origin', 'https://fixture.tail123.ts.net', *extra])
+
+    def nginx_preview_lifecycle(self, mode):
+        self.options.update(https=mode, domain='gamma.example.com', email='admin@example.com',
+                            tls_cert='/etc/test-cert.pem', tls_key='/etc/test-key.pem')
+        self.host.path('/etc/test-cert.pem').write_text('fixture')
+        self.host.path('/etc/test-key.pem').write_text('fixture')
+        self.host.path('/etc/test-key.pem').chmod(0o600)
+        previous = self.install()
+        # Published schema-1 manifests do not yet contain this optional setting.
+        previous['options'].pop('preview_domain', None)
+        self.host.json(gamma.MANIFEST, previous)
+        data = self.seed_data()
+        nginx = self.host.path(gamma.NGINX).read_bytes()
+        env = self.host.path('/etc/gamma/gamma.env').read_bytes()
+        args = gamma.parse_args(['--reconfigure', '--preview-domain', 'preview.example.net'])
+        gamma.reconfigure(self.host, gamma.parse_args(['--reconfigure', '--preview-domain', 'preview.example.net', '--dry-run']), previous)
+        self.assertEqual(self.host.path('/etc/gamma/gamma.env').read_bytes(), env)
+        self.host.fail = 'preview'
+        with self.assertRaisesRegex(gamma.Failure, 'Preview readiness'):
+            gamma.reconfigure(self.host, args, previous)
+        self.assertEqual(self.host.read_json(gamma.MANIFEST), previous)
+        self.assertEqual(self.host.path('/etc/gamma/gamma.env').read_bytes(), env)
+        gamma.reconfigure(self.host, args, previous)
+        state = self.host.read_json(gamma.MANIFEST)
+        self.assertIn('GAMMA_TRUST_PROXY=1', self.host.path('/etc/gamma/gamma.env').read_text())
+        self.assertEqual(self.host.path(gamma.NGINX).read_bytes(), nginx)
+        self.assertEqual(gamma.public_origin(state['options']), 'https://gamma.example.com')
+        gamma.inspect(self.host, 'doctor')
+        self.assertFalse(any('cloudflared' in call for call in self.host.calls))
+        calls = len(self.host.calls)
+        gamma.reconfigure(self.host, args, state)
+        self.assertEqual(len(self.host.calls), calls)
+        for changed in (['--https', 'ssh-tunnel'], ['--public-origin', 'https://other.example.com']):
+            with self.assertRaisesRegex(gamma.Failure, 'Nginx TLS'):
+                gamma.reconfigure(self.host, gamma.parse_args(['--reconfigure', '--preview-domain', 'preview.example.net', *changed]), state)
+        gamma.reconfigure(self.host, gamma.parse_args(['--rollback-config']), state)
+        self.assertEqual(self.host.path('/etc/gamma/gamma.env').read_bytes(), env)
+        self.assertEqual(self.host.path(gamma.NGINX).read_bytes(), nginx)
+        gamma.reconfigure(self.host, args, self.host.read_json(gamma.MANIFEST))
+        state = self.host.read_json(gamma.MANIFEST)
+        upgrade = gamma.parse_args(['--upgrade', '--non-interactive'])
+        for _ in range(2):
+            gamma.deploy(self.host, upgrade, gamma.configuration(upgrade, state), state, None)
+            state = self.host.read_json(gamma.MANIFEST)
+            self.assertEqual(state['options']['https'], mode)
+            self.assertEqual(state['options']['preview_domain'], 'preview.example.net')
+        self.assertEqual(self.host.path('/var/lib/gamma/opencode.db').read_bytes(), data)
+        gamma.reconfigure(self.host, gamma.parse_args(['--reconfigure', '--preview-domain', '']), state)
+        self.assertNotIn('GAMMA_PREVIEW_DOMAIN', self.host.path('/etc/gamma/gamma.env').read_text())
+        self.assertIn('GAMMA_TRUST_PROXY=1', self.host.path('/etc/gamma/gamma.env').read_text())
+
+    def test_letsencrypt_preview_lifecycle(self):
+        self.nginx_preview_lifecycle('letsencrypt')
+
+    def test_existing_tls_preview_lifecycle(self):
+        self.nginx_preview_lifecycle('existing')
+
+    def test_legacy_funnel_upgrade_preserves_configuration(self):
+        self.options.update(https='tailscale-funnel', domain='fixture.tail123.ts.net',
+                            public_origin='https://fixture.tail123.ts.net')
+        previous = self.install()
+        previous['options'].pop('preview_domain', None)
+        self.host.json(gamma.MANIFEST, previous)
+        env = self.host.path('/etc/gamma/gamma.env').read_text()
+        secret = self.host.path('/etc/gamma/backend.env').read_bytes()
+        data = self.seed_data()
+        args = gamma.parse_args(['--upgrade', '--non-interactive'])
+        gamma.deploy(self.host, args, gamma.configuration(args, previous), previous, None)
+        state = self.host.read_json(gamma.MANIFEST)
+        self.assertEqual(state['options'], previous['options'])
+        self.assertEqual(gamma.public_origin(state['options']), 'https://fixture.tail123.ts.net')
+        self.assertEqual(self.host.path('/etc/gamma/backend.env').read_bytes(), secret)
+        self.assertEqual(self.host.path('/var/lib/gamma/opencode.db').read_bytes(), data)
+        self.assertEqual(self.host.path('/etc/gamma/gamma.env').read_text().replace(state['release'], previous['release']), env)
+        gamma.inspect(self.host, 'doctor')
+
+    def test_cloudflare_preview_migration_rollback_upgrade(self):
+        previous = self.install()
+        data = self.seed_data()
+        gamma.reconfigure(self.host, self.funnel_args(), previous)
+        funnel = self.host.read_json(gamma.MANIFEST)
+        args = gamma.parse_args(['--reconfigure', '--https', 'cloudflare-tunnel',
+            '--public-origin', 'https://nikita.gamma-platform.ru', '--preview-domain', 'nikita.gamma-preview.ru'])
+        gamma.reconfigure(self.host, args, funnel)
+        state = self.host.read_json(gamma.MANIFEST)
+        self.assertIn('GAMMA_PREVIEW_DOMAIN=nikita.gamma-preview.ru', self.host.path('/etc/gamma/gamma.env').read_text())
+        gamma.inspect(self.host, 'doctor')
+        calls = len(self.host.calls)
+        gamma.reconfigure(self.host, args, state)
+        self.assertEqual(len(self.host.calls), calls)
+        gamma.reconfigure(self.host, gamma.parse_args(['--rollback-config']), state)
+        self.assertEqual(self.host.read_json(gamma.MANIFEST)['options'], funnel['options'])
+        self.assertNotIn('GAMMA_PREVIEW_DOMAIN', self.host.path('/etc/gamma/gamma.env').read_text())
+        gamma.reconfigure(self.host, args, self.host.read_json(gamma.MANIFEST))
+        state = self.host.read_json(gamma.MANIFEST)
+        upgrade = gamma.parse_args(['--upgrade', '--non-interactive'])
+        for _ in range(2):
+            gamma.deploy(self.host, upgrade, gamma.configuration(upgrade, state), state, None)
+            state = self.host.read_json(gamma.MANIFEST)
+            self.assertEqual(state['options']['preview_domain'], 'nikita.gamma-preview.ru')
+        self.assertEqual(self.host.path('/var/lib/gamma/opencode.db').read_bytes(), data)
+        disable = gamma.parse_args(['--reconfigure', '--https', 'ssh-tunnel', '--preview-domain', ''])
+        gamma.reconfigure(self.host, disable, state)
+        self.assertNotIn('GAMMA_PREVIEW_DOMAIN', self.host.path('/etc/gamma/gamma.env').read_text())
+
+    def test_preview_activation_failure_restores_configuration(self):
+        previous = self.install()
+        before = self.host.path('/etc/gamma/gamma.env').read_bytes()
+        args = gamma.parse_args(['--reconfigure', '--https', 'cloudflare-tunnel',
+            '--public-origin', 'https://nikita.gamma-platform.ru', '--preview-domain', 'nikita.gamma-preview.ru'])
+        self.host.fail = 'preview'
+        with self.assertRaisesRegex(gamma.Failure, 'Preview readiness'):
+            gamma.reconfigure(self.host, args, previous)
+        self.assertEqual(self.host.path('/etc/gamma/gamma.env').read_bytes(), before)
+        self.assertEqual(self.host.read_json(gamma.MANIFEST), previous)
+        self.assertFalse(self.host.path(gamma.JOURNAL).exists())
+
+    def test_preview_rejects_same_cookie_site_and_injection(self):
+        for domain in ('preview.gamma-platform.ru', 'gamma-platform.ru', 'bad\nINJECT=1', '*.preview.net', '-bad.preview.net'):
+            with self.subTest(domain=domain), self.assertRaises(gamma.Failure):
+                gamma.configuration(gamma.parse_args(['--install', '--non-interactive', '--https', 'cloudflare-tunnel',
+                    '--domain', 'nikita.gamma-platform.ru', '--preview-domain=' + domain]), None)
+
+    def test_cloudflare_origin_derives_hostname(self):
+        derived = gamma.configuration(gamma.parse_args(['--install', '--non-interactive', '--https', 'cloudflare-tunnel',
+            '--public-origin', 'https://nikita.gamma-platform.ru']), None)
+        self.assertEqual(derived['domain'], 'nikita.gamma-platform.ru')
+
+    def test_external_doctor_does_not_confuse_local_health_with_public_health(self):
+        state = self.install()
+        args = gamma.parse_args(['--reconfigure', '--https', 'cloudflare-tunnel',
+                                '--public-origin', 'https://nikita.gamma-platform.ru'])
+        gamma.reconfigure(self.host, args, state)
+        gamma.inspect(self.host, 'doctor')
+        self.assertIn('EXTERNAL DNS/TLS/routes: NOT TESTED', self.output.getvalue())
+        # The fake OS returns a bare 401, not the real public gateway response.
+        with self.assertRaisesRegex(gamma.Failure, 'EXTERNAL HTTPS'):
+            gamma.inspect(self.host, 'doctor', external=True)
 
     def test_funnel_migration_upgrade_and_rollback(self):
         previous = self.install()

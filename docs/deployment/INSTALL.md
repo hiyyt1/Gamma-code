@@ -35,7 +35,23 @@ sudo ./install-gamma.sh --check
 
 Без параметров домена эта проверка оценивает вариант SSH-туннеля. Проверка DNS/public портов требует тех же `--domain` и `--https`, что будут при установке. `--check` не скачивает runtime и не выполняет пробную сборку.
 
-## Домашний сервер: Ubuntu 26.04.1 и Cloudflare Tunnel
+## Домен и HTTPS — основной production-режим
+
+Заранее направить A и, если существует, AAAA выбранного домена на этот VPS. Разрешить входящие TCP 80/443 в панели облака/существующем firewall, сохранив SSH. Установщик **не меняет firewall и SSH**, не удаляет чужие Nginx sites. Домен вводится в переменную, адреса-примеры не выдаются за рабочие (**администратор**):
+
+```bash
+read -rp 'Домен Gamma: ' GAMMA_HOST
+read -rp 'Email для ACME: ' GAMMA_EMAIL
+sudo ./install-gamma.sh --install --domain "$GAMMA_HOST" --https letsencrypt --email "$GAMMA_EMAIL"
+```
+
+Сначала создаётся HTTP virtual host с ACME webroot и **404 для приложения**. Certbot получает сертификат; только после готовности приложения включается HTTPS proxy. HTTP затем перенаправляет на HTTPS. Настраиваются `certbot.timer`, renewal deploy-hook (`nginx -t` перед reload), выполняется renewal dry-run. Согласие с ACME terms передаётся Certbot; выбор `letsencrypt` означает согласие оператора.
+
+Для уже выданного **доверенного** сертификата: `--https existing --domain HOST --tls-cert /абсолютный/fullchain.pem --tls-key /абсолютный/private.pem`. Здесь HOST и два пути — значения оператора, не буквальные команды. Private key должен принадлежать root, без group/other доступа; проверяются SAN/hostname, срок > суток, соответствие key, затем настоящая TLS chain через curl без `-k`. Продление existing-сертификата обеспечивает оператор. Self-signed сертификат не считается готовым public production.
+
+## Опционально: домашний сервер и Cloudflare Tunnel
+
+Этот вариант не требуется VPS и не является планом миграции тестового iMac.
 
 Intel Core i5 с 4 ядрами, 8 GB RAM и HDD подходят при прохождении проверки доступной ОС памяти и свободного места. SSD ускоряет сборку и SQLite, но не обязателен. GPU и локальные модели не нужны. Wi-Fi допустим: настройте автоматическое подключение при загрузке и стабильный исходящий доступ; установщик сеть не перенастраивает.
 
@@ -62,20 +78,6 @@ sudo ./install-gamma.sh --doctor
 Установщик не получает токен Cloudflare, не устанавливает connector и не управляет аккаунтом/DNS. Настройка tunnel требует ваших данных Cloudflare; это отдельный шаг публикации, а не исправление зависимостей Gamma. Проброс входящих портов на роутере не нужен. Не открывайте 4096/4444 наружу. `GAMMA_TRUST_PROXY=0` намеренно не доверяет входному `X-Real-IP`: лимит входа общий для локального connector.
 
 После подключения проверьте внешний login/logout, SSE и terminal WebSocket. Локальные `--status`/`--doctor` **не подтверждают** доступность Cloudflare, внешний TLS или восстановление Wi-Fi после reboot. Область выполненных тестов: [аудит Ubuntu](UBUNTU.md).
-
-## Домен и HTTPS
-
-Заранее направить A и, если существует, AAAA выбранного домена на этот VPS. Разрешить входящие TCP 80/443 в панели облака/существующем firewall, сохранив SSH. Установщик **не меняет firewall и SSH**, не удаляет чужие Nginx sites. Домен вводится в переменную, адреса-примеры не выдаются за рабочие (**администратор**):
-
-```bash
-read -rp 'Домен Gamma: ' GAMMA_HOST
-read -rp 'Email для ACME: ' GAMMA_EMAIL
-sudo ./install-gamma.sh --install --domain "$GAMMA_HOST" --https letsencrypt --email "$GAMMA_EMAIL"
-```
-
-Сначала создаётся HTTP virtual host с ACME webroot и **404 для приложения**. Certbot получает сертификат; только после готовности приложения включается HTTPS proxy. HTTP затем перенаправляет на HTTPS. Настраиваются `certbot.timer`, renewal deploy-hook (`nginx -t` перед reload), выполняется renewal dry-run. Согласие с ACME terms передаётся Certbot; выбор `letsencrypt` означает согласие оператора.
-
-Для уже выданного **доверенного** сертификата: `--https existing --domain HOST --tls-cert /абсолютный/fullchain.pem --tls-key /абсолютный/private.pem`. Здесь HOST и два пути — значения оператора, не буквальные команды. Private key должен принадлежать root, без group/other доступа; проверяются SAN/hostname, срок > суток, соответствие key, затем настоящая TLS chain через curl без `-k`. Продление existing-сертификата обеспечивает оператор. Self-signed сертификат не считается готовым public production.
 
 ## Без домена: доступ по IP через SSH
 
@@ -295,3 +297,56 @@ Installer использует прямой HTTPS/APT egress. Если до не
 Сервис получает `LANG=C.UTF-8`, `LC_ALL=C.UTF-8`: без UTF-8 locale реальный Java BSL на чистой ОС возвращал пустые symbols для кириллических путей. Dev использует тот же default. Calc нужен для XLSX/CSV conversion; одного Impress недостаточно.
 
 На машинах с номинальными 8 GB RAM часть памяти может быть зарезервирована прошивкой и устройствами. `--check` использует `MemTotal` из `/proc/meminfo` в KiB: минимум **6 291 456 KiB**, а не маркировку модулей. При 6–16 GiB выводится предупреждение о рекомендации 16 GiB; оно не блокирует установку. Swap не заменяет этот минимум. Не запускать тяжёлые параллельные задачи во время сборки/upgrade; проверка MemTotal не гарантирует свободную память при любой нагрузке.
+
+## Legacy Preview на отдельном домене (необязательно)
+
+Рекомендуемый production-путь — раздел «Домен и HTTPS»: публичный IP, Nginx и
+`--https letsencrypt`. Cloudflare Tunnel не устанавливается и не требуется.
+iMac сохраняет Tailscale Funnel; его HTTPS mode при штатном upgrade не меняется.
+
+Встроенный Preview не требует следующих шагов. Они сохранены для старого внешнего режима.
+
+Для отдельного Preview (домены ниже — примеры, владение не предполагается):
+
+1. Подготовить отдельный регистрируемый домен, например `example.net`, отличный
+   от административного `example.com`. Выбрать Preview suffix `preview.example.net`.
+2. Создать wildcard A `*.preview.example.net` на IPv4 VPS. AAAA добавлять только
+   при настроенном IPv6. Это обычный DNS любого провайдера, без Tunnel/proxy.
+3. Отдельно получить доверенный сертификат для `*.preview.example.net` и настроить
+   автоматическое продление. Wildcard ACME использует DNS-01; installer получает
+   сертификат основного приложения через HTTP-01 и **не** выпускает Preview wildcard.
+   Credentials DNS-провайдера хранятся вне checkout с минимальными правами.
+4. Скопировать `deploy/gamma-preview.nginx.conf.example` в отдельный Nginx conf.d файл.
+   Заменить server_name regex и пути fullchain/private key. Основной домен продолжает
+   идти на :4444, Preview — только на :4097; Host сохраняется, Cookie/Authorization
+   снимаются. Порты 4096/4097/4444 остаются loopback-only. Access logs и cache Preview
+   выключены. Проверить `sudo nginx -t`, затем reload Nginx.
+5. В уже установленной Gamma включить Preview:
+
+   ```sh
+   sudo ./install-gamma.sh --reconfigure --preview-domain preview.example.net --dry-run
+   sudo ./install-gamma.sh --reconfigure --preview-domain preview.example.net
+   sudo ./install-gamma.sh --doctor --external
+   ```
+
+   Для новой установки можно сразу передать `--preview-domain` вместе с
+   `--https letsencrypt --domain HOST --email EMAIL`. Внешние DNS/TLS должны быть
+   подготовлены отдельно; installer проверяет локальный Preview listener.
+6. Открыть static build через файловую панель, проверить assets/JS, SPA refresh,
+   новую вкладку и revoke с внешнего устройства. Дополнительная проверка живой lease
+   описана в OPERATIONS.md (`--preview-probe-file`).
+
+Preview Nginx config и сертификат управляются оператором, вне installer manifest.
+`--rollback-config` восстанавливает Gamma env, но не эти внешние файлы/DNS. При
+отключённом Preview старый Nginx listener не даёт доступа к файлам: backend :4097
+не запущен. Переустановка и очистка пользовательских данных не нужны.
+
+## Время установки и готовые release-артефакты
+
+Текущий source-build путь сохраняется: frozen Bun dependencies, native modules,
+Chromium, BSL и frontend собираются в отдельном release как gamma-build. Обещать
+15 минут на HDD пока нельзя. Prebuilt download mode не реализован в этом изменении.
+Будущий архив должен иметь подписанный manifest (commit, OS/arch, Bun/Node/lockfile,
+размер и SHA-256), проверяться до extraction/execution и активироваться через
+существующие transaction journal, readiness и rollback. Нужны отдельные тесты
+ABI/Ubuntu matrix и безопасной распаковки; это не зависимость текущей установки.

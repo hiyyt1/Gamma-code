@@ -141,12 +141,16 @@ export function configuration() {
   if (
     !/^[a-z0-9](?:[a-z0-9.-]*[a-z0-9])$/.test(domain) ||
     domain.includes("..") ||
+    domain.length > 204 ||
+    domain.split(".").some((label) => !/^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$/.test(label)) ||
     origin.protocol !== "https:" ||
     origin.origin !== main
   )
     throw new Error("invalid_preview_config")
-  // A separate cookie domain is required; never nest preview under the application host.
-  if (domain === origin.hostname || domain.endsWith(`.${origin.hostname}`) || origin.hostname.endsWith(`.${domain}`))
+  // Conservative separation without a stale embedded Public Suffix List. This
+  // also rejects different registrable domains under e.g. co.uk; use a dedicated
+  // domain under a different suffix rather than silently sharing a cookie site.
+  if (domain.split(".").slice(-2).join(".") === origin.hostname.split(".").slice(-2).join("."))
     throw new Error("invalid_preview_config")
   return { domain, main }
 }
